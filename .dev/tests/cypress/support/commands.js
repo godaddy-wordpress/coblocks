@@ -1,8 +1,10 @@
 import { disableGutenbergFeatures, loginToSite } from '../helpers';
 
 before( function() {
-	loginToSite();
-	disableGutenbergFeatures();
+	loginToSite().then( () => {
+		cy.wait( 10000 );
+		disableGutenbergFeatures();
+	} );
 } );
 
 // Maintain WordPress logged in state
