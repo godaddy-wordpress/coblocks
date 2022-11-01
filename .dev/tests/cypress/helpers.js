@@ -93,10 +93,8 @@ export function disableGutenbergFeatures() {
 		}
 
 		if ( safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
-			cy.log( 'Was activated - toggle it' );
 			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
 		} else {
-			cy.log( 'Is not activated' );
 		}
 
 		safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
