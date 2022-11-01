@@ -69,6 +69,15 @@ export function SiteDesignStyles() {
 			designResp.stylesheet,
 			fontStylesCache,
 		].join( ' ' );
+
+		/**
+		 * The is-desktop-preview element is where other styles are located - within the body.
+		 * We need higher specificity for the selected Site Design for cascading style.
+		 */
+		const parentTargetClass = 'is-desktop-preview';
+		if ( stylesElement.parentElement.className !== parentTargetClass ) {
+			document.querySelector( `.${ parentTargetClass }` ).appendChild( stylesElement );
+		}
 	}, [ isUpdating, designResp ] );
 
 	useEffect( () => {
