@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-26T15:48:51+00:00\n"
+"POT-Creation-Date: 2022-11-01T02:09:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -227,28 +227,28 @@ msgid "Google Map API key for map rendering"
 msgstr ""
 
 #: includes/class-coblocks-labs.php:84
-#: includes/class-coblocks-settings.php:120
+#: includes/class-coblocks-settings.php:137
 msgid "Setting use to disable or enable typography controls across the site."
 msgstr ""
 
 #: includes/class-coblocks-labs.php:96
-#: includes/class-coblocks-settings.php:132
+#: includes/class-coblocks-settings.php:149
 msgid "Setting use to disable or enable custom color controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:108
+#: includes/class-coblocks-settings.php:125
 msgid "Setting use to disable or enable layout selector controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:144
+#: includes/class-coblocks-settings.php:161
 msgid "Setting use to disable or enable all color controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:156
+#: includes/class-coblocks-settings.php:173
 msgid "Setting use to disable or enable gradient controls and presets across the site."
 msgstr ""
 
-#: includes/class-coblocks-settings.php:168
+#: includes/class-coblocks-settings.php:185
 msgid "Setting use to disable or enable animation controls across the site."
 msgstr ""
 
@@ -479,7 +479,7 @@ msgstr ""
 #: src/blocks/social-profiles/inspector.js:218
 #: src/components/form-label-colors/label-color-control.js:43
 #: src/extensions/colors/index.js:59
-#: src/extensions/colors/settings-modal-control.js:123
+#: src/extensions/colors/settings-modal-control.js:137
 msgid "Color settings"
 msgstr ""
 
@@ -10063,24 +10063,24 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:124
+#: src/extensions/colors/settings-modal-control.js:136
 msgid "Allow color settings throughout the editor."
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:135
-msgid "Custom color pickers"
-msgstr ""
-
-#: src/extensions/colors/settings-modal-control.js:136
+#: src/extensions/colors/settings-modal-control.js:148
 msgid "Allow styling with custom colors."
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:147
-msgid "Gradient styles"
+#: src/extensions/colors/settings-modal-control.js:149
+msgid "Custom color pickers"
 msgstr ""
 
-#: src/extensions/colors/settings-modal-control.js:148
+#: src/extensions/colors/settings-modal-control.js:160
 msgid "Allow styling with gradient fills."
+msgstr ""
+
+#: src/extensions/colors/settings-modal-control.js:161
+msgid "Gradient styles"
 msgstr ""
 
 #. translators: block style
