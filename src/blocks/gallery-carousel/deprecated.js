@@ -1332,10 +1332,10 @@ const deprecated =
 							</div>
 							{ prevNextButtons && (
 								<>
-									<button className={ `nav-button__prev` } id={ `${ uuid }-prev` } >
+									<button className={ `nav-button__prev` } } >
 										<svg className="icon" style={ { transform: 'rotate(180deg)' } } />
 									</button>
-									<button className={ `nav-button__next` } id={ `${ uuid }-next` } >
+									<button className={ `nav-button__next` } >
 										<svg className="icon" />
 									</button>
 								</>
