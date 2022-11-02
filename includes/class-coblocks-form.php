@@ -329,7 +329,7 @@ class CoBlocks_Form {
 		?>
 
 		<input type="hidden" id="email-field-id" name="email-field-id" class="coblocks-email-field-id" value="field-<?php echo esc_attr( $label_slug ); ?>" />
-		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" aria-label="<?php echo esc_attr( $label_slug ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--email" <?php echo esc_attr( $required_attr ); ?> />
+		<input type="email" id="<?php echo esc_attr( $label_slug ); ?>" aria-label="<?php echo esc_attr( $label ); ?>" name="field-<?php echo esc_attr( $label_slug ); ?>[value]" class="coblocks-field coblocks-field--email" <?php echo esc_attr( $required_attr ); ?> />
 
 		<?php
 
@@ -497,8 +497,6 @@ class CoBlocks_Form {
 			empty( $styles ) ? '' : wp_kses_post( " style='$styles'" ),
 			esc_html( $label )
 		);
-
-		// $this->render_field_label( $atts, $label, $radio_count );
 
 		if ( isset( $atts['isInline'] ) ) {
 

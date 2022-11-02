@@ -6,7 +6,6 @@ import deprecatedIcons from './deprecated/deprecatedIcons';
 import deprecatedIconsToBackgroundImage from './deprecated/deprecatedIconsToBackgroundImage';
 import migrateToColumnUtilityClasses from './deprecated/migrateToColumnUtilityClasses';
 import migrateToAccessibleIcons from './deprecated/migrateToAccessibleIcons';
-import migrateHeadingLevel from './deprecated/migrateHeadingLevel';
 
 const deprecated = [
 	{
@@ -24,10 +23,6 @@ const deprecated = [
 	{
 		attributes: currentBlock.attributes,
 		save: migrateToAccessibleIcons,
-	},
-	{
-		attributes: currentBlock.attributes,
-		save: migrateHeadingLevel,
 	},
 ];
 
