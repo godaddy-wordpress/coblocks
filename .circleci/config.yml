@@ -72,9 +72,9 @@ executors:
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
-  php_80_browsers_mysql_mailhog:
+  php_81_browsers_mysql_mailhog:
     docker:
-      - image: cimg/php:8.0-browsers
+      - image: cimg/php:8.1-browsers
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -167,14 +167,14 @@ workflows:
               only: /^(?!canary).*$/
           requires:
             - build
-      - e2e_twentytwentytwo_chrome_latest:
+      - e2e_twentytwentythree_chrome_latest:
           filters:
             tags:
               only: /^(?!canary).*$/
           requires:
             - build
 
-      - e2e_chrome_wp_php80:
+      - e2e_chrome_wp_php81:
           filters:
             tags:
               only: /^(?!canary).*$/
@@ -407,7 +407,7 @@ commands:
     parameters:
       theme:
         type: string
-        default: twentytwentytwo
+        default: twentytwentythree
     steps:
       - browser-tools/install-browser-tools
       - checkout
@@ -778,27 +778,27 @@ jobs:
           browser: chrome
           wpversion: previous_major
 
-  e2e_twentytwentytwo_chrome_latest:
+  e2e_twentytwentythree_chrome_latest:
     executor: php_74_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
-          theme: twentytwentytwo
+          theme: twentytwentythree
 
-  e2e_chrome_wp_php80:
-    executor: php_80_browsers_mysql_mailhog
+  e2e_chrome_wp_php81:
+    executor: php_81_browsers_mysql_mailhog
     parallelism: 11
     steps:
       - run_e2e_tests:
           browser: chrome
-          theme: twentytwentytwo
+          theme: twentytwentythree
 
   a11y:
     executor: php_74_browsers_mysql_mailhog
     steps:
       - run_a11y_tests:
-          theme: twentytwentytwo
+          theme: twentytwentythree
 
   perf_tests_master:
     executor: php_74_browsers_mysql
