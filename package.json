@@ -101,7 +101,7 @@
 		"@wordpress/block-library": "^7.17.0",
 		"@wordpress/blocks": "^11.19.0",
 		"@wordpress/browserslist-config": "^5.3.0",
-		"@wordpress/components": "^21.3.0",
+		"@wordpress/components": "^19.10.0",
 		"@wordpress/compose": "^5.18.0",
 		"@wordpress/core-data": "^5.3.0",
 		"@wordpress/data": "^7.4.0",
