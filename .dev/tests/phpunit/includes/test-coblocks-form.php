@@ -308,7 +308,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 	 */
 	public function test_render_field_email() {
 
-		$this->expectOutputRegex( '/<input type="email" id="email" aria-label="email" name="field-email\[value\]" class="coblocks-field coblocks-field--email"  \/>/' );
+		$this->expectOutputRegex( '/<input type="email" id="email" aria-label="Email" name="field-email\[value\]" class="coblocks-field coblocks-field--email"  \/>/' );
 
 		echo $this->coblocks_form->render_field_email( [], '' );
 
