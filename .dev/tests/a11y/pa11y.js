@@ -32,15 +32,20 @@ if ( process.argv[ 2 ] ) {
 // Set up the pa11y config options
 const config = {
 	standard: packageJson.testing.accessibility.compliance,
-	hideElements: '#wpadminbar',
+	hideElements: '#wpadminbar, #gist5332801 > div > div:nth-child(2)',
 	includeWarnings: true,
 	rootElement: 'body',
 	threshold: 2,
 	timeout: 20000,
 	userAgent: 'pa11y',
+	wait: 2000,
 	width: 1280,
 	ignore: [
 		'notice',
+	],
+	actions: [
+		'screen capture ./.dev/tests/a11y/pa11y-homepage.png',
+		'wait for element button[aria-label="Previous"] to be visible',
 	],
 	log: {
 		debug: console.log.bind( console ),

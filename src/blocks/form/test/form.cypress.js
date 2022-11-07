@@ -10,7 +10,6 @@ describe( 'Test CoBlocks Form Block', function() {
 	//setup From block color data.
 	const formData = {
 		textColor: '#ffffff',
-		textColorRGB: 'rgb(255, 255, 255)',
 	};
 
 	/**
@@ -150,6 +149,9 @@ describe( 'Test CoBlocks Form Block', function() {
 			}
 		} );
 
+		cy.get( '.coblocks-field legend' )
+			.contains( 'Will you be attending?' );
+
 		cy.get( 'input[name="field-name[value][first-name]"]' )
 			.should( 'exist' );
 
@@ -256,6 +258,9 @@ describe( 'Test CoBlocks Form Block', function() {
 			}
 		} );
 
+		cy.get( '.coblocks-field legend' )
+			.contains( 'Time' );
+
 		cy.get( 'input[name="field-name[value][first-name]"]' )
 			.should( 'exist' );
 
@@ -318,7 +323,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	} );
 
 	/**
-	 * Test the coblock contact template.
+	 * Test the coblock form block sends and recieves properly.
 	 */
 	it( 'Test the form block email is sent and received.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
@@ -355,17 +360,20 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
+		// Mailserver is not necessarily installed locally
+		if ( helpers.isNotWPLocalEnv() ) {
+			cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
 
-		cy.get( '.coblocks-form__submitted ul li:first-child' ).contains( 'Name: Name' );
-		cy.get( '.coblocks-form__submitted ul li:nth-child(2)' ).contains( 'Email: email@example.com' );
-		cy.get( '.coblocks-form__submitted ul li:last-child' ).contains( 'Message: My message for you.' );
+			cy.get( '.coblocks-form__submitted ul li:first-child' ).contains( 'Name: Name' );
+			cy.get( '.coblocks-form__submitted ul li:nth-child(2)' ).contains( 'Email: email@example.com' );
+			cy.get( '.coblocks-form__submitted ul li:last-child' ).contains( 'Message: My message for you.' );
 
-		cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
-			.its( 'stdout' )
-			.should( 'contain', 'Name: Name' )
-			.should( 'contain', 'Email: email@example.com' )
-			.should( 'contain', 'Message: My message for you.' );
+			cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
+				.its( 'stdout' )
+				.should( 'contain', 'Name: Name' )
+				.should( 'contain', 'Email: email@example.com' )
+				.should( 'contain', 'Message: My message for you.' );
+		}
 
 		helpers.editPage();
 	} );
@@ -436,11 +444,14 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
+		// Mailserver is not necessarily installed locally
+		if ( helpers.isNotWPLocalEnv() ) {
+			cy.get( '.coblocks-form__submitted' ).contains( 'Your message was sent:' );
 
-		cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
-			.its( 'stdout' )
-			.should( 'contain', 'Custom Subject Line: Email From email@example.com - Name' );
+			cy.exec( 'curl http://127.0.0.1:8025/api/v2/messages' )
+				.its( 'stdout' )
+				.should( 'contain', 'Custom Subject Line: Email From email@example.com - Name' );
+		}
 
 		helpers.editPage();
 	} );
@@ -497,7 +508,10 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form__submit button' )
 			.click();
 
-		cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
+		// Mailserver is not necessarily installed locally
+		if ( helpers.isNotWPLocalEnv() ) {
+			cy.get( '.coblocks-form__submitted' ).contains( 'Thank you for submitting this form!' );
+		}
 
 		helpers.editPage();
 	} );
@@ -507,7 +521,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	 * and are able to successfully save the block without errors.
 	 */
 	it( 'Test that color values are able to set and save.', function() {
-		const { textColor, textColorRGB } = formData;
+		const { textColor } = formData;
 		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
@@ -531,9 +545,6 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.addFormChild( 'phone' );
 
-		helpers.addFormChild( 'checkbox' );
-		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
-
 		helpers.addFormChild( 'select' );
 		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
 
@@ -552,15 +563,8 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form' )
 			.should( 'exist' );
 
-		/**
-		 * Checkbox === select
-		 * Select   === select
-		 * Radio    === choose-one
-		 * Textarea === message.
-		 */
-		[ 'text', 'email', 'website', 'select', 'phone', 'choose-one', 'message', 'name' ].forEach( ( field ) => {
-			cy.get( `label[for="${ field }"]` )
-				.should( 'have.css', 'color', textColorRGB );
+		cy.get( '.coblocks-label' ).each( ( $el ) => {
+			cy.wrap( $el ).should( 'have.class', 'has-text-color' );
 		} );
 	} );
 } );

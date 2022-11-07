@@ -22,6 +22,7 @@ const scripts = [
 	'coblocks-lightbox',
 	'coblocks-masonry',
 	'coblocks-post-carousel',
+	'coblocks-services',
 	'coblocks-tinyswiper-initializer',
 	'coblocks-gist',
 ];
