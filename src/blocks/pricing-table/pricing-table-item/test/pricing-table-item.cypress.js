@@ -39,6 +39,8 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 	 */
 	it( 'Test pricing-table block saves with content values set.', function() {
 		const { textColor, backgroundColor, textColorRGB, backgroundColorRGB, title, currency, amount, features, buttonText } = pricingTableItemData;
+		let featuresText = features;
+
 		helpers.addBlockToPost( 'coblocks/pricing-table', true );
 
 		const firstTableItem = () => {
@@ -66,7 +68,13 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__title' ).should( 'have.text', title );
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__currency' ).should( 'have.text', currency );
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__amount' ).should( 'have.text', amount );
-		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features > li' ).should( 'have.text', features );
+
+		// There is a slight spacing difference in WP 6.1
+		if ( helpers.isWP61AtLeast() ) {
+			featuresText = ' ' + featuresText;
+		}
+
+		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features > li' ).should( 'have.text', featuresText );
 		firstTableItem().find( '.wp-block-button' ).should( 'have.text', buttonText );
 	} );
 } );

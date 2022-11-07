@@ -59,16 +59,33 @@ class CoBlocks_Settings {
 			'coblocksSettings',
 			array(
 				'coblocksSettingsEnabled' => (bool) apply_filters( 'coblocks_show_settings_panel', true ),
+				'deprecateWith61'         => (bool) $this->deprecate_with_61(),
 			)
 		);
 	}
 
 	/**
+	 * Compare current version with 6.1 WordPress.
+	 *
+	 * @access public
+	 */
+	public function deprecate_with_61() {
+		return (bool) is_wp_version_compatible( '6.1' );
+	}
+
+	/**
 	 * Propagate CoBlocks settings to editor.
+	 * Starting with WordPress 6.1 Color settings are disabled.
+	 * We no longer propagate settings for 6.1 color settings.
 	 *
 	 * @access public
 	 */
 	public function coblocks_feature_propagation() {
+		// Short-circuit feature propagation to prevent missing color controls in 6.1.
+		if ( $this->deprecate_with_61() ) {
+			return;
+		}
+
 		if ( ! get_option( 'coblocks_custom_colors_controls_enabled' ) ) {
 			add_theme_support( 'disable-custom-colors' );
 		}
