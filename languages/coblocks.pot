@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-11-03T14:37:07+00:00\n"
+"POT-Creation-Date: 2022-11-08T19:31:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: coblocks\n"
@@ -252,15 +252,15 @@ msgstr ""
 msgid "Setting use to disable or enable animation controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:327
+#: includes/class-coblocks-site-design.php:304
 msgid "Error processing your request."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:351
+#: includes/class-coblocks-site-design.php:328
 msgid "A design_style must be passed."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:363
+#: includes/class-coblocks-site-design.php:340
 msgid "An available design_style must be passed."
 msgstr ""
 
@@ -10265,8 +10265,8 @@ msgstr ""
 msgid "Color Palettes"
 msgstr ""
 
-#: src/extensions/site-design/component.js:34
-#: src/extensions/site-design/component.js:42
+#: src/extensions/site-design/component.js:35
+#: src/extensions/site-design/component.js:43
 msgid "Site design"
 msgstr ""
 
