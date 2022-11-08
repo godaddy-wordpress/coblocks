@@ -1,3 +1,4 @@
+/* global siteDesign */
 /**
  * External dependencies
  */
@@ -61,14 +62,27 @@ export function SiteDesignStyles() {
 			return;
 		}
 
-		const stylesElement = document.getElementById( 'site-design-styles' );
+		// The style elements living in the body are those initialized by `add_editor_style` call.
+		// These style elements are non-mutable and need to be manipulated on the fly for the purpose of this component.
+		const taggedStyle = Array.from( document.querySelectorAll( 'style.is-design-style' ) );
+		const originalStyle = () => Array.from( document.querySelectorAll( '.is-desktop-preview style' ) )
+			.filter( ( elem ) => elem.innerHTML?.includes( `style-${ siteDesign.currentDesignStyle }` ) );
+
+		// Reference to the present style tag if class is defined or by original query if not yet modified.
+		const currentDesignStyleTag = ( taggedStyle.length ? taggedStyle : originalStyle() )[ 0 ];
 
 		fontStylesCache = !! fontStylesCache ? fontStylesCache : designResp.fontStyles;
 
-		stylesElement.innerHTML = [
+		// Set the style element innerHTML to remove the old design style.
+		currentDesignStyleTag.innerHTML = [
 			designResp.stylesheet,
 			fontStylesCache,
 		].join( ' ' );
+
+		// Here we tag the style element so that we can continue to target and change on user action.
+		if ( currentDesignStyleTag.className !== 'is-design-style' ) {
+			currentDesignStyleTag.className = 'is-design-style';
+		}
 	}, [ isUpdating, designResp ] );
 
 	useEffect( () => {
