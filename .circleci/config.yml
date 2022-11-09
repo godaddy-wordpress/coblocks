@@ -418,6 +418,12 @@ commands:
       - install_wordpress_with_coblocks:
           theme: "<< parameters.theme >>"
       - run:
+          name: Install Composer dependencies
+          command: |
+            sudo composer self-update --1
+            composer validate --strict
+            composer install
+      - run:
           name: Setup pa11y Test Database
           command: |
             ./vendor/bin/wp db reset --yes --path=/tmp/wordpress
