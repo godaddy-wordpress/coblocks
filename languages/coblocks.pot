@@ -8,9 +8,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-11-09T19:54:24+00:00\n"
+"POT-Creation-Date: 2022-11-10T22:35:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: coblocks\n"
 
 #. Plugin Name of the plugin
@@ -64,16 +64,23 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:491
-msgid "Close Gallery"
-msgstr ""
-
-#: includes/class-coblocks-block-assets.php:492
+#: includes/class-coblocks-block-assets.php:394
+#: includes/class-coblocks-block-assets.php:535
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:493
+#: includes/class-coblocks-block-assets.php:395
+#: includes/class-coblocks-block-assets.php:536
 msgid "Next"
+msgstr ""
+
+#: includes/class-coblocks-block-assets.php:441
+#: src/blocks/food-and-drinks/food-item/inspector.js:36
+msgid "Image"
+msgstr ""
+
+#: includes/class-coblocks-block-assets.php:534
+msgid "Close Gallery"
 msgstr ""
 
 #. translators: placeholder for 'email' string.
@@ -85,7 +92,7 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:51
-#: includes/class-coblocks-form.php:1046
+#: includes/class-coblocks-form.php:1052
 #: src/blocks/form/edit.js:288
 #: src/blocks/form/fields/name/index.js:30
 #: src/blocks/form/index.js:56
@@ -120,6 +127,10 @@ msgstr ""
 msgid "Google reCaptcha secret key for form spam protection"
 msgstr ""
 
+#: includes/class-coblocks-form.php:229
+msgid "Email Verify"
+msgstr ""
+
 #. translators: block name
 #. translators: icon label
 #: includes/class-coblocks-form.php:229
@@ -148,6 +159,14 @@ msgstr ""
 
 #: includes/class-coblocks-form.php:263
 msgid "Last"
+msgstr ""
+
+#: includes/class-coblocks-form.php:282
+msgid "Plus One First Name"
+msgstr ""
+
+#: includes/class-coblocks-form.php:287
+msgid "Plus One Last Name"
 msgstr ""
 
 #: includes/class-coblocks-form.php:351
@@ -185,39 +204,39 @@ msgid "Choose one"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:547
-#: includes/class-coblocks-form.php:596
+#: includes/class-coblocks-form.php:554
+#: includes/class-coblocks-form.php:603
 #: src/blocks/form/fields/select/index.js:23
 #: src/blocks/form/fields/select/transforms.js:14
 msgid "Select"
 msgstr ""
 
-#: includes/class-coblocks-form.php:627
+#: includes/class-coblocks-form.php:634
 msgid "Please select at least one checkbox."
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:678
+#: includes/class-coblocks-form.php:685
 #: src/blocks/form/fields/website/index.js:23
 #: src/blocks/form/fields/website/transforms.js:14
 msgid "Website"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:712
+#: includes/class-coblocks-form.php:719
 #: src/blocks/form/fields/hidden/index.js:23
 #: src/blocks/form/fields/hidden/transforms.js:14
 msgid "Hidden"
 msgstr ""
 
 #. translators: block name
-#: includes/class-coblocks-form.php:793
+#: includes/class-coblocks-form.php:799
 #: src/blocks/form/edit.js:131
 #: src/blocks/form/fields/submit-button/index.js:49
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:1037
+#: includes/class-coblocks-form.php:1043
 #: src/blocks/form/edit.js:294
 msgid "name"
 msgstr ""
@@ -1399,10 +1418,6 @@ msgstr ""
 msgid "Item settings"
 msgstr ""
 
-#: src/blocks/food-and-drinks/food-item/inspector.js:36
-msgid "Image"
-msgstr ""
-
 #: src/blocks/food-and-drinks/food-item/inspector.js:39
 msgid "Showing an image for this item."
 msgstr ""
@@ -2269,11 +2284,13 @@ msgstr ""
 #: src/blocks/gallery-carousel/deprecated.js:763
 #: src/blocks/gallery-carousel/deprecated.js:942
 #: src/blocks/gallery-carousel/deprecated.js:1124
+#: src/blocks/gallery-carousel/deprecated.js:1306
 #: src/blocks/gallery-carousel/save.js:131
 msgid "Carousel Gallery"
 msgstr ""
 
 #: src/blocks/gallery-carousel/deprecated.js:1166
+#: src/blocks/gallery-carousel/deprecated.js:1348
 #: src/blocks/gallery-carousel/save.js:173
 msgid "gallery thumbnail"
 msgstr ""
@@ -2300,6 +2317,10 @@ msgstr ""
 #: src/blocks/gallery-carousel/gallery-carousel-item.js:53
 #: src/components/block-gallery/gallery.js:109
 msgid "Write gallery caption…"
+msgstr ""
+
+#: src/blocks/gallery-carousel/gallery-carousel-item.js:117
+msgid "Gallery Image"
 msgstr ""
 
 #. translators: block description
