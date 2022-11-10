@@ -10,7 +10,6 @@ describe( 'Test CoBlocks Form Block', function() {
 	//setup From block color data.
 	const formData = {
 		textColor: '#ffffff',
-		textColorRGB: 'rgb(255, 255, 255)',
 	};
 
 	/**
@@ -150,6 +149,9 @@ describe( 'Test CoBlocks Form Block', function() {
 			}
 		} );
 
+		cy.get( '.coblocks-field legend' )
+			.contains( 'Will you be attending?' );
+
 		cy.get( 'input[name="field-name[value][first-name]"]' )
 			.should( 'exist' );
 
@@ -256,6 +258,9 @@ describe( 'Test CoBlocks Form Block', function() {
 			}
 		} );
 
+		cy.get( '.coblocks-field legend' )
+			.contains( 'Time' );
+
 		cy.get( 'input[name="field-name[value][first-name]"]' )
 			.should( 'exist' );
 
@@ -318,7 +323,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	} );
 
 	/**
-	 * Test the coblock contact template.
+	 * Test the coblock form block sends and recieves properly.
 	 */
 	it( 'Test the form block email is sent and received.', function() {
 		helpers.addBlockToPost( 'coblocks/form', true );
@@ -516,7 +521,7 @@ describe( 'Test CoBlocks Form Block', function() {
 	 * and are able to successfully save the block without errors.
 	 */
 	it( 'Test that color values are able to set and save.', function() {
-		const { textColor, textColorRGB } = formData;
+		const { textColor } = formData;
 		helpers.addBlockToPost( 'coblocks/form', true );
 
 		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
@@ -540,9 +545,6 @@ describe( 'Test CoBlocks Form Block', function() {
 
 		helpers.addFormChild( 'phone' );
 
-		helpers.addFormChild( 'checkbox' );
-		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
-
 		helpers.addFormChild( 'select' );
 		cy.get( '.coblocks-option__input' ).type( 'text', { force: true } );
 
@@ -561,15 +563,8 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-form' )
 			.should( 'exist' );
 
-		/**
-		 * Checkbox === select
-		 * Select   === select
-		 * Radio    === choose-one
-		 * Textarea === message.
-		 */
-		[ 'text', 'email', 'website', 'select', 'phone', 'choose-one', 'message', 'name' ].forEach( ( field ) => {
-			cy.get( `label[for="${ field }"]` )
-				.should( 'have.css', 'color', textColorRGB );
+		cy.get( '.coblocks-label' ).each( ( $el ) => {
+			cy.wrap( $el ).should( 'have.class', 'has-text-color' );
 		} );
 	} );
 } );

@@ -130,7 +130,7 @@ const save = ( props ) => {
 	return (
 		<div aria-label={ __( `Carousel Gallery`, 'coblocks' ) } >
 			<div className={ innerClasses }>
-				<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } id={ uuid } style={ swiperStyles } >
+				<div className={ swiperClasses } data-swiper={ JSON.stringify( swiperOptions ) } style={ swiperStyles } >
 					<div className="swiper-wrapper">
 						{ images.map( ( image, index ) => {
 							return (

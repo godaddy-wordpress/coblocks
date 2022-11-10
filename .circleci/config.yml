@@ -182,10 +182,10 @@ workflows:
             - build
 
       # A11Y TESTING
-      # - a11y:
-      #     filters:
-      #       tags:
-      #         only: /^(?!canary).*$/
+      - a11y:
+          filters:
+            tags:
+              only: /^(?!canary).*$/
 
       # PERF TESTING
       - perf_tests_master:
@@ -314,8 +314,8 @@ commands:
           name: Activate CoBlocks
           command: |
             npx grunt build
-            mv ./build/coblocks /tmp/wordpress/wp-content/plugins/coblocks-testing
-            ./vendor/bin/wp plugin activate coblocks-testing --path=/tmp/wordpress
+            mv ./build/coblocks /tmp/wordpress/wp-content/plugins/coblocks
+            ./vendor/bin/wp plugin activate coblocks --path=/tmp/wordpress
 
   # Enable debug mode for use in E2E tests.
   enable_debug_mode_for_e2e:
@@ -423,6 +423,8 @@ commands:
             ./vendor/bin/wp db reset --yes --path=/tmp/wordpress
             ./vendor/bin/wp db import .dev/tests/a11y/coblocks_pa11y.sql --path=/tmp/wordpress
             ./vendor/bin/wp search-replace https://coblocks-pa11y.test http://coblocks.test --path=/tmp/wordpress
+            rm -rf /tmp/wordpress/wp-content/uploads/2022
+            mv .dev/tests/a11y/media/2022 /tmp/wordpress/wp-content/uploads/
       - start_wpcli_server
       - run:
           name: Run a11y tests
@@ -432,6 +434,8 @@ commands:
             if [[ $RESULTS != *"All accessibility tests have passed"* ]]; then
               exit 1
             fi
+      - store_artifacts:
+          path: ~/project/.dev/tests/a11y/pa11y-homepage.png
 
   setup_perf_tests:
     steps:

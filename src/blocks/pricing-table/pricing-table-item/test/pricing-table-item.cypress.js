@@ -65,16 +65,16 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 			.should( 'have.css', 'background-color', backgroundColorRGB )
 			.should( 'have.css', 'color', textColorRGB );
 
-		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__title' ).should( 'have.html', title );
-		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__currency' ).should( 'have.html', currency );
-		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__amount' ).should( 'have.html', amount );
+		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__title' ).should( 'have.text', title );
+		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__currency' ).should( 'have.text', currency );
+		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__amount' ).should( 'have.text', amount );
 
 		// There is a slight spacing difference in WP 6.1
 		if ( helpers.isWP61AtLeast() ) {
 			featuresText = ' ' + featuresText;
 		}
 
-		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features > li' ).should( 'have.html', featuresText );
+		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features > li' ).should( 'have.text', featuresText );
 		firstTableItem().find( '.wp-block-button' ).should( 'have.text', buttonText );
 	} );
 } );

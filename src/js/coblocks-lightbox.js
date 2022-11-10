@@ -31,15 +31,18 @@
 		imageContainer.setAttribute( 'class', 'coblocks-lightbox__image' );
 
 		const image = document.createElement( 'img' );
+		image.setAttribute( 'alt', 'Placeholder' );
 
 		const caption = document.createElement( 'figcaption' );
 		caption.setAttribute( 'class', 'coblocks-lightbox__caption' );
 
 		const arrowLeftContainer = document.createElement( 'button' );
 		arrowLeftContainer.setAttribute( 'class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left' );
+		arrowLeftContainer.setAttribute( 'aria-label', leftLabel );
 
 		const arrowRightContainer = document.createElement( 'button' );
 		arrowRightContainer.setAttribute( 'class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right' );
+		arrowRightContainer.setAttribute( 'aria-label', rightLabel );
 
 		const arrowRight = document.createElement( 'div' );
 		arrowRight.setAttribute( 'class', 'arrow-right' );
