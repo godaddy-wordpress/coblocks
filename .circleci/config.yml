@@ -766,6 +766,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: chrome
+          wpversion: 6.1.1-RC1
 
   e2e_firefox_wp_latest:
     executor: php_74_browsers_mysql_mailhog
@@ -773,6 +774,7 @@ jobs:
     steps:
       - run_e2e_tests:
           browser: firefox
+          wpversion: 6.1.1-RC1
 
   e2e_chrome_wp_previous_major:
     executor: php_74_browsers_mysql_mailhog
@@ -789,6 +791,7 @@ jobs:
       - run_e2e_tests:
           browser: chrome
           theme: twentytwentythree
+          wpversion: 6.1.1-RC1
 
   e2e_chrome_wp_php80:
     executor: php_80_browsers_mysql_mailhog
@@ -797,6 +800,7 @@ jobs:
       - run_e2e_tests:
           browser: chrome
           theme: twentytwentythree
+          wpversion: 6.1.1-RC1
 
   a11y:
     executor: php_74_browsers_mysql_mailhog
