@@ -83,6 +83,29 @@ class CoBlocks_Site_Design {
 
 		add_action( 'wp_ajax_site_design_update_design_style', array( $this, 'update_design_style' ) );
 		add_action( 'rest_api_init', array( $this, 'design_endpoint' ) );
+
+		/**
+		 * Add the shared styles to the editor
+		 */
+		add_action(
+			'admin_init',
+			function() {
+				$suffix = SCRIPT_DEBUG ? '' : '.min';
+				$rtl    = ! is_rtl() ? '' : '-rtl';
+				// Enqueue  shared editor styles.
+				add_editor_style(
+					"dist/css/style-editor{$rtl}{$suffix}.css"
+				);
+			}
+		);
+
+		add_action(
+			'admin_head',
+			function() {
+				printf( '<style id="site-design-styles">%s</style>', esc_html( $this->get_editor_styles() ) );
+			}
+		);
+
 	}
 
 	/**
