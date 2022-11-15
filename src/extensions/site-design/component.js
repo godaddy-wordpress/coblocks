@@ -66,7 +66,7 @@ export function SiteDesignStyles() {
 		// These style elements are non-mutable and need to be manipulated on the fly for the purpose of this component.
 		const taggedStyle = Array.from( document.querySelectorAll( 'style.is-design-style' ) );
 		const originalStyle = () => Array.from( document.querySelectorAll( '.is-desktop-preview style' ) )
-			.filter( ( elem ) => elem.innerHTML?.includes( `style-${ siteDesign.currentDesignStyle }` ) );
+			.filter( ( elem ) => elem?.innerHTML?.includes( `style-${ siteDesign.currentDesignStyle }` ) );
 
 		// Reference to the present style tag if class is defined or by original query if not yet modified.
 		const currentDesignStyleTag = ( taggedStyle.length ? taggedStyle : originalStyle() )[ 0 ];
