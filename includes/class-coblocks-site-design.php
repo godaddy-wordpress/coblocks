@@ -83,6 +83,14 @@ class CoBlocks_Site_Design {
 
 		add_action( 'wp_ajax_site_design_update_design_style', array( $this, 'update_design_style' ) );
 		add_action( 'rest_api_init', array( $this, 'design_endpoint' ) );
+
+		add_action(
+			'admin_head',
+			function() {
+				printf( '<style id="site-design-styles">%s</style>', esc_html( $this->get_editor_styles() ) );
+			}
+		);
+
 	}
 
 	/**
