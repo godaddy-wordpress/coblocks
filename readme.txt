@@ -122,6 +122,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.25.2 / 2022-11-15 =
+##### Bug fixes
+* Hotfix Site Design controls [#2446](https://github.com/godaddy-wordpress/coblocks/pull/2446)
+
 = 2.25.1 / 2022-11-14 =
 
 ##### Enhancements
