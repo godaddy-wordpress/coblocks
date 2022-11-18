@@ -144,10 +144,10 @@ export class PostTypePanel extends Component {
 					{ type: 'snackbar' }
 				);
 
-				if ( postType.slug === 'page' ) {
-					// Open up the layout selector.
-					props.openTemplateSelector();
-				}
+				// if ( postType.slug === 'page' ) {
+				// Open up the layout selector.
+				//	props.openTemplateSelector();
+				//}
 			} )
 			.catch( () => {
 				props.createErrorNotice(

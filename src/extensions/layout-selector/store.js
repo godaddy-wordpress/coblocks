@@ -9,7 +9,7 @@ import { kebabCase } from 'lodash';
  */
 import { controls } from '@wordpress/data-controls';
 import memoize from 'memize';
-import { createReduxStore, register, resolveSelect } from '@wordpress/data';
+import { createReduxStore, register, select } from '@wordpress/data';
 
 const DEFAULT_STATE = {
 	categories: coblocksLayoutSelector.categories || [],
@@ -132,7 +132,11 @@ const store = createReduxStore( 'coblocks/template-selector', {
 
 	resolvers: {
 		* isTemplateSelectorActive() {
-			const isCleanNewPost = yield resolveSelect( 'core/editor', 'isCleanNewPost' );
+			console.log( 'dada' );
+			console.log( select( 'core/editor' ).isCleanNewPost() );
+			console.log( select( 'core/editor' ).isEditedPostNew() );
+			console.log( select( 'core/editor' ).isEditedPostEmpty() );
+			const isCleanNewPost = select( 'core/editor' ).isCleanNewPost() || select( 'core/editor' ).isEditedPostEmpty();
 			return isCleanNewPost && actions.openTemplateSelector();
 		},
 	},
