@@ -8,8 +8,8 @@ import { kebabCase } from 'lodash';
  * WordPress dependencies
  */
 import memoize from 'memize';
-import { registerStore } from '@wordpress/data';
-import { controls, select } from '@wordpress/data-controls';
+import { registerStore, select } from '@wordpress/data';
+import { controls } from '@wordpress/data-controls';
 
 const DEFAULT_STATE = {
 	templateSelector: false,
@@ -132,8 +132,11 @@ const store = registerStore( 'coblocks/template-selector', {
 
 	resolvers: {
 		* isTemplateSelectorActive() {
-			const isCleanNewPost = yield select( 'core/editor', 'isCleanNewPost' );
-			return isCleanNewPost && actions.openTemplateSelector();
+			const isCleanNewPost = select( 'core/editor' ).isCleanNewPost();
+			const isEditedPostEmpty = select( 'core/editor' ).isEditedPostEmpty();
+			const shouldShowTemplateSelector = isCleanNewPost || isEditedPostEmpty;
+
+			return shouldShowTemplateSelector && actions.openTemplateSelector();
 		},
 	},
 
