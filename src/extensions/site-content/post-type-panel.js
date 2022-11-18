@@ -426,7 +426,7 @@ export default compose( [
 		const {
 			getEntityRecords,
 			getEntityRecord,
-			getEntity,
+			getEntityConfig,
 		} = select( 'core' );
 
 		const filteredPosts = {};
@@ -448,7 +448,7 @@ export default compose( [
 			homepageType,
 			homepostId,
 			isInRenameMode: isInRenameMode(),
-			settingsEntity: getEntity( 'root', 'site' ),
+			settingsEntity: getEntityConfig( 'root', 'site' ),
 		};
 	} ),
 
