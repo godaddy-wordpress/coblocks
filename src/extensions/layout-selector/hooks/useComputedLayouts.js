@@ -6,14 +6,14 @@ import { orderBy } from 'lodash';
 /**
  * WordPress dependencies
  */
-import { useSelect, useDispatch } from '@wordpress/data';
-import { createBlock, rawHandler } from '@wordpress/blocks';
 import { useEffect } from '@wordpress/element';
+import { createBlock, rawHandler } from '@wordpress/blocks';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 /**
  * Internal Dependencies
  */
-import { requestIdleCallback, cancelIdleCallback } from '../../../utils/background-task-api';
+import { cancelIdleCallback, requestIdleCallback } from '../../../utils/background-task-api';
 
 const MAX_SUGGESTED_ITEMS = 6;
 

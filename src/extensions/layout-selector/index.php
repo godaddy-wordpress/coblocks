@@ -10,7 +10,7 @@
  *
  * @return array
  */
-function coblocks_layout_selector_categories() {
+function coblocks_layout_selector_categories(): array {
 	$categories = array(
 		array(
 			'slug'  => 'most-used',
@@ -47,7 +47,7 @@ function coblocks_layout_selector_categories() {
  *
  * @return array
  */
-function coblocks_layout_selector_layouts() {
+function coblocks_layout_selector_layouts(): array {
 	$layouts = array();
 
 	/**

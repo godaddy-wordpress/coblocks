@@ -7,17 +7,17 @@ import { kebabCase } from 'lodash';
 /**
  * WordPress dependencies
  */
-import memoize from 'memize';
-import { registerStore, resolveSelect } from '@wordpress/data';
 import { controls } from '@wordpress/data-controls';
+import memoize from 'memize';
+import { createReduxStore, register, resolveSelect } from '@wordpress/data';
 
 const DEFAULT_STATE = {
-	templateSelector: false,
-	layouts: coblocksLayoutSelector.layouts || [],
-	computedLayouts: [],
 	categories: coblocksLayoutSelector.categories || [],
-	selectedCategory: 'most-used',
+	computedLayouts: [],
 	layoutUsage: {},
+	layouts: coblocksLayoutSelector.layouts || [],
+	selectedCategory: 'most-used',
+	templateSelector: false,
 };
 
 // Module constants
@@ -46,16 +46,16 @@ const calculateFrequency = memoize( ( time, count ) => {
 } );
 
 const actions = {
-	openTemplateSelector: () => ( { type: 'OPEN_TEMPLATE_SELECTOR' } ),
 	closeTemplateSelector: () => ( { type: 'CLOSE_TEMPLATE_SELECTOR' } ),
-	updateLayouts: ( layouts ) => ( { type: 'UPDATE_LAYOUTS', layouts } ),
-	updateComputedLayouts: ( computedLayouts ) => ( { type: 'UPDATE_COMPUTED_LAYOUTS', computedLayouts } ),
-	updateCategories: ( categories ) => ( { type: 'UPDATE_CATEGORIES', categories } ),
-	updateSelectedCategory: ( selectedCategory ) => ( { type: 'UPDATE_CATEGORY', selectedCategory } ),
 	incrementLayoutUsage: ( layout ) => ( { type: 'INCREMENT_LAYOUT_USAGE', layout, time: Date.now() } ),
+	openTemplateSelector: () => ( { type: 'OPEN_TEMPLATE_SELECTOR' } ),
+	updateCategories: ( categories ) => ( { type: 'UPDATE_CATEGORIES', categories } ),
+	updateComputedLayouts: ( computedLayouts ) => ( { type: 'UPDATE_COMPUTED_LAYOUTS', computedLayouts } ),
+	updateLayouts: ( layouts ) => ( { type: 'UPDATE_LAYOUTS', layouts } ),
+	updateSelectedCategory: ( selectedCategory ) => ( { type: 'UPDATE_CATEGORY', selectedCategory } ),
 };
 
-const store = registerStore( 'coblocks/template-selector', {
+const store = createReduxStore( 'coblocks/template-selector', {
 	reducer( state = DEFAULT_STATE, action ) {
 		switch ( action.type ) {
 			case 'OPEN_TEMPLATE_SELECTOR':
@@ -95,8 +95,8 @@ const store = registerStore( 'coblocks/template-selector', {
 					layoutUsage: {
 						...state.layoutUsage,
 						[ layoutSlug ]: {
-							time: action.time,
 							count: state.layoutUsage[ layoutSlug ] ? state.layoutUsage[ layoutSlug ].count + 1 : 1,
+							time: action.time,
 						},
 					},
 				};
@@ -139,5 +139,7 @@ const store = registerStore( 'coblocks/template-selector', {
 
 	persist: [ 'layoutUsage' ],
 } );
+
+register( store );
 
 export default store;

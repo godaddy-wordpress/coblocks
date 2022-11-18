@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { useSelect } from '@wordpress/data';
 import { useMemo } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 
 function useCategories( layouts ) {
 	const categories = useSelect( ( select ) => select( 'coblocks/template-selector' ).getCategories(), [] );

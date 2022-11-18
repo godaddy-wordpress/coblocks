@@ -21,11 +21,6 @@ console = {
 	warn: () => { },
 };
 
-global.coblocksLayoutSelector = {
-	categories: [],
-	layouts: [],
-};
-
 // Mock site design state for tests.
 const siteDesignURLBase = 'http://localhost:8889';
 // Disable reason: sorting keys for this object is superfluous.
