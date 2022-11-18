@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { registerStore } from '@wordpress/data';
+import { createReduxStore, register } from '@wordpress/data';
 
 const DEFAULT_STATE = {
 	isInRenameMode: null,
@@ -34,10 +34,12 @@ export const selectors = {
 	isInRenameMode: ( state ) => state.isInRenameMode,
 };
 
-const store = registerStore( 'coblocks/site-content', {
-	reducer,
+const store = createReduxStore( 'coblocks/site-content', {
 	actions,
+	reducer,
 	selectors,
 } );
+
+register( store );
 
 export default store;
