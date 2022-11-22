@@ -1,10 +1,13 @@
-import { disableGutenbergFeatures, loginToSite } from '../helpers';
+import { disableGutenbergFeatures, isNotWPLocalEnv, loginToSite } from '../helpers';
 
 before( function() {
 	loginToSite().then( () => {
-		// Waiting to see if the Welcome Guide will show up. Could probably be improved, but
-		// for the moment, it seems hard to tie the wait to something else
-		cy.wait( 10000 );
+		if ( isNotWPLocalEnv() ) {
+			// Waiting to see if the Welcome Guide will show up. Could probably be improved, but
+			// for the moment, it seems hard to tie the wait to something else
+			cy.wait( 10000 );
+		}
+
 		disableGutenbergFeatures();
 	} );
 } );

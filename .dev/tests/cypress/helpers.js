@@ -561,3 +561,14 @@ export function isWP61AtLeast() {
 
 	return Cypress.$( "[class*='branch-6-']" ).length > 0;
 }
+
+function getIframeDocument( containerClass ) {
+	return cy.get( containerClass + ' iframe' ).its( '0.contentDocument' ).should( 'exist' );
+}
+
+export function getIframeBody( containerClass ) {
+	return getIframeDocument( containerClass ).its( 'body' ).should( 'not.be.undefined' )
+		// wraps "body" DOM element to allow
+		// chaining more Cypress commands, like ".find(...)"
+		.then( cy.wrap );
+}
