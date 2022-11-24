@@ -1,10 +1,13 @@
-name: Labeler
+name: 'Github / Labeler'
 
-on: push
+on:
+  push:
+    paths:
+      - '.github/labels.yml'
 
 jobs:
   labeler:
-
+    name: Label
     runs-on: ubuntu-latest
 
     steps:
