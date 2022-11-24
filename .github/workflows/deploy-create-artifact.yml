@@ -41,7 +41,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install --no-dev --prefer-dist --optimize-autoloader
+          composer install --prefer-dist --optimize-autoloader
           yarn install --immutable
 
       - name: Build plugin
