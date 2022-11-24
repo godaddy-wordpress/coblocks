@@ -1,0 +1,17 @@
+# List all files and directories to be deployed with the Go thene.
+# Use the rsync syntax https://linux.die.net/man/1/rsync
+
++ /assets/
++ /includes/
++ /dist/
++ /languages/
++ /src/blocks/
++ /src/components/
++ /src/extensions/
++ /LICENSE
++ /readme.txt
++ /class-coblocks.php
++ /uninstall.php
+
+# Exclude everything else
+- /*

@@ -1,0 +1,17 @@
+name: 'Deploy / Create Release'
+
+on:
+  pull_request:
+    branches:
+      - master
+  milestone:
+    types: [ closed ]
+
+env:
+  ARTIFACT_NAME: 'coblocks-plugin'
+  ARTIFACT_ZIP: 'coblocks.zip'
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/deploy-create-artifact.yml
