@@ -16,9 +16,7 @@ jobs:
         run: composer install --prefer-dist --optimize-autoloader
 
       - name: PHPCS
-        uses: 10up/wpcs-action@stable
-        with:
-          use_local_config: true
+        run: composer lint
 
   css:
     runs-on: ubuntu-latest
