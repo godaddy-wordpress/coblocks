@@ -12,8 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Yarn Install
-        run: sudo yarn install
+      - name: Composer Install
+        run: composer install --prefer-dist --optimize-autoloader
 
       - name: PHPCS
         uses: 10up/wpcs-action@stable
