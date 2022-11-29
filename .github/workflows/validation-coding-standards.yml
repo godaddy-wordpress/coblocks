@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Yarn Install
+        run: sudo yarn install
+
       - name: PHPCS
         uses: 10up/wpcs-action@stable
         with:
