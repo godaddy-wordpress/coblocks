@@ -12,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: 10up/wpcs-action@stable
+      - name: PHPCS
+        uses: 10up/wpcs-action@stable
         with:
           use_local_config: true
 
