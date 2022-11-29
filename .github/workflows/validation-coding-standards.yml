@@ -1,0 +1,44 @@
+name: 'Validation / Coding Standards'
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    name: PHP
+    steps:
+      - uses: actions/checkout@v2
+        uses: 10up/wpcs-action@stable
+        with:
+          use_local_config: true
+
+  css:
+    runs-on: ubuntu-latest
+    name: CSS
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: php-actions/composer@v5
+
+      - name: Yarn Install
+        run: sudo yarn install
+
+      - name: Run stylelint
+        run: yarn lint:css
+
+  js:
+    runs-on: ubuntu-latest
+    name: JS
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: php-actions/composer@v5
+
+      - name: Yarn Install
+        run: sudo yarn install
+
+      - name: Run eslint
+        run: yarn lint:js
