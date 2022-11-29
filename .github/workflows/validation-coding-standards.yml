@@ -6,7 +6,8 @@ jobs:
     name: PHP
     steps:
       - uses: actions/checkout@v2
-        uses: 10up/wpcs-action@stable
+
+      - uses: 10up/wpcs-action@stable
         with:
           use_local_config: true
 
