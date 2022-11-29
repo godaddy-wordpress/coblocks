@@ -3,7 +3,7 @@ name: 'Validation / Coding Standards'
 on:
   pull_request:
     branches:
-      - master
+      - feature/github-actions-migration
 
 jobs:
   php:
