@@ -40,11 +40,25 @@ jobs:
           plugins: '[".","https://downloads.wordpress.org/plugin/woocommerce.zip"]'
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
-      # - name: Prepare tests
-      #   run: |
-      #     cd $(wp-env install-path)
-      #     docker-compose run --rm -u $(id -u) -e HOME=/tmp tests-cli cp wp-content/themes/go/.dev/tests/php/assets/es_ES.mo wp-content/themes/go/languages/es_ES.mo
-
       - name: Run tests
         run: |
           wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'
+
+  js:
+    name: JS Unit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run tests
+        run: yarn run test:js
