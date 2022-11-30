@@ -1,5 +1,7 @@
 name: 'Validation / Coding Standards'
 
+on: push
+
 jobs:
   php:
     runs-on: ubuntu-latest
