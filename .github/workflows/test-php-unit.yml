@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i -g yarn &
+          npm i -g yarn
           composer install --prefer-dist --optimize-autoloader &
           yarn install --immutable
 
