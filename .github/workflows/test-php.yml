@@ -10,19 +10,19 @@ on:
 
 jobs:
   php_unit_74:
-    name: Build
+    name: PHP 7.4
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: '7.4'
 
   php_unit_80:
-    name: Build
+    name: PHP 8.0
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: '8.0'
 
   php_unit_81:
-    name: Build
+    name: PHP 8.1
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: '8.1'

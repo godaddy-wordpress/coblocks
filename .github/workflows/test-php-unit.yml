@@ -1,4 +1,4 @@
-name: WIP Test / PHP / Unit
+name: WIP Test / PHP
 
 on:
   workflow_call:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   php_unit:
-    name: Unit
+    name: Unit Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
