@@ -1,10 +1,5 @@
 name: 'Validation / Coding Standards'
 
-on:
-  pull_request:
-    branches:
-      - master
-
 jobs:
   php:
     runs-on: ubuntu-latest
