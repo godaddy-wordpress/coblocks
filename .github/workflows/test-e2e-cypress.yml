@@ -15,6 +15,10 @@ on:
         required: false
         type: string
         default: ""
+      phpVersion:
+        required: false
+        type: string
+        default: "8.1"
 
 jobs:
   test_e2e:
@@ -28,6 +32,7 @@ jobs:
         uses: godaddy-wordpress/setup-wp-env@v1
         with:
           core: ${{ inputs.wpVersion }}
+          phpVersion: ${{ inputs.phpVersion }}
           plugins: '["."]'
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
@@ -56,6 +61,8 @@ jobs:
 
       - name: Prepare tests
         run: |
+          WP_CORE_VERSION=$(wp-env run cli "wp core version")
+          echo "WP_CORE_VERSION=${WP_CORE_VERSION}" >> $GITHUB_ENV
           wp-env run cli "wp post generate --count=5"
           wp-env run cli "wp theme activate ${{ inputs.theme }}"
           wp-env run cli "wp option update permalink_structure '/%postname%'"
@@ -64,5 +71,5 @@ jobs:
         run: |
           echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
-          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --parallel --group e2e-${{ inputs.browser }}-wp-${{ inputs.wpVersion }} --headed
+          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --record --key e2e-${{ inputs.browser }}-${{ runner.os }} --parallel --group e2e-${{ inputs.browser }}-wp-$WP_CORE_VERSION --headed
 
