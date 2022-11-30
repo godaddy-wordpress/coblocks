@@ -50,6 +50,7 @@ jobs:
       - name: Prepare Go
         if: ${{ inputs.theme == 'go' }}
         run: |
+          wp-env install-path
           cd $(wp-env install-path)
           ls -lA
 
