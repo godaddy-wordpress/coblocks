@@ -9,40 +9,20 @@ on:
       - feature/github-actions-migration-WPEX-2610
 
 jobs:
-  php_unit:
-    name: Unit
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  php_unit_74:
+    name: Build
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '7.4'
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
+  php_unit_80:
+    name: Build
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.0'
 
-      - name: Setup WP-CLI
-        uses: godaddy-wordpress/setup-wp-cli@1
-
-      - name: Install dependencies
-        run: |
-          npm i -g yarn
-          composer install
-          yarn install --immutable
-
-      - name: Build plugin
-        run: |
-          yarn build
-
-      - name: Setup wp-env
-        uses: godaddy-wordpress/setup-wp-env@v1
-        with:
-          core: 'WordPress/WordPress#6.1'
-          phpVersion: '7.4'
-          plugins: '[".","https://downloads.wordpress.org/plugin/woocommerce.zip"]'
-          themes: '["https://downloads.wordpress.org/theme/go.zip"]'
-
-      - name: Run tests
-        run: |
-          wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'
+  php_unit_81:
+    name: Build
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.1'
