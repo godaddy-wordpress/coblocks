@@ -50,10 +50,13 @@ jobs:
       - name: Prepare Go
         if: ${{ inputs.theme == 'go' }}
         run: |
-          ls -lA $(wp-env install-path)/WordPress
-          ls -lA $(wp-env install-path)/WordPress/wp-content/themes
           cd $(wp-env install-path)/go
-          ls -lA
+          mkdir -p coblocks/icons
+          echo '<svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><circle class="inner-circle" cx="20" cy="20" r="8" stroke-width="8" stroke-dasharray="50.2655 50.2655" stroke-dashoffset="0"></circle></svg>' >> coblocks/icons/custom.svg
+          ls -lA $(wp-env install-path)/WordPress/wp-content/themes/go
+          ls -lA $(wp-env install-path)/WordPress/wp-content/themes/go/coblocks/icons
+          ls -lA $(wp-env install-path)/go
+          ls -lA $(wp-env install-path)/go/coblocks/icons
 
       # - name: Prepare tests
       #   run: |
