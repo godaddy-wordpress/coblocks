@@ -57,8 +57,6 @@ jobs:
       - name: Prepare Go Check
         if: ${{ inputs.theme == 'go' }}
         run: |
-          ls -lA $(wp-env install-path)/WordPress/wp-content/themes/go
-          ls -lA $(wp-env install-path)/WordPress/wp-content/themes/go/coblocks/icons
           ls -lA $(wp-env install-path)/go
           ls -lA $(wp-env install-path)/go/coblocks/icons
 
