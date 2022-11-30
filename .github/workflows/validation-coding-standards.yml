@@ -1,6 +1,6 @@
 name: 'Validation / Coding Standards'
 
-on: push
+on: pull_request
 
 jobs:
   php:
