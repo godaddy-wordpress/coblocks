@@ -16,7 +16,7 @@
 	],
 	"testing": {
 		"urls": {
-			"local": "http://coblocks.test",
+			"local": "http://localhost:8888",
 			"staging": "",
 			"production": ""
 		},
