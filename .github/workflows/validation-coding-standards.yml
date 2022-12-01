@@ -1,40 +1,58 @@
 name: 'Validation / Coding Standards'
 
-on: pull_request
+on:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   php:
     runs-on: ubuntu-latest
     name: PHP
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Composer Install
         run: composer install --prefer-dist --optimize-autoloader
 
-      - name: PHPCS
+      - name: Install dependencies
         run: composer lint
 
   css:
     runs-on: ubuntu-latest
     name: CSS
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Yarn Install
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Run stylelint
+      - name: Run lint
         run: yarn lint:css
 
   js:
     runs-on: ubuntu-latest
     name: JS
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Yarn Install
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Run eslint
+      - name: Run lint
         run: yarn lint:js
