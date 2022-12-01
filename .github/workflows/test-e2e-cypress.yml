@@ -68,8 +68,11 @@ jobs:
           wp-env run cli "wp option update permalink_structure '/%postname%'"
 
       - name: Run tests
+        env:
+          record-key: ${{ secrets.CYPRESS_RECORD_KEY }}
         run: |
+          CYPRESS_RECORD_KEY=${{ env.record-key }}
           echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
-          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --parallel --group e2e-${{ inputs.browser }}-wp-$WP_CORE_VERSION --headed
+          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --record --parallel --group e2e-${{ inputs.browser }}-wp-$WP_CORE_VERSION --headed
 
