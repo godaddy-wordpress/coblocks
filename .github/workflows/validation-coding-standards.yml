@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: PHP
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Composer Install
         run: composer install --prefer-dist --optimize-autoloader
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     name: CSS
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Yarn Install
         run: yarn install --immutable
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     name: JS
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Yarn Install
         run: yarn install --immutable
