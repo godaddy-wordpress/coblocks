@@ -23,6 +23,7 @@ module.exports = defineConfig( {
 		runMode: 0,
 	},
 	screenshotsFolder: '.dev/tests/cypress/screenshots',
+	videosFolder: '.dev/tests/cypress/videos',
 	viewportHeight: 1440,
 	viewportWidth: 2560,
 } );

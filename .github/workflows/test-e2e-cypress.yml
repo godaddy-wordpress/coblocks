@@ -71,6 +71,5 @@ jobs:
         run: |
           echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
-          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }}
-          ls -lA
+          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --parallel --group e2e-${{ inputs.browser }}-wp-$WP_CORE_VERSION --headed
 
