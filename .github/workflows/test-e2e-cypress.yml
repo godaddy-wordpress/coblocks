@@ -49,11 +49,13 @@ jobs:
       - name: Setup WP-CLI
         uses: godaddy-wordpress/setup-wp-cli@1
 
-      - name: Install dependencies and build
+      - name: Install dependencies
         run: |
-          npm i -g yarn
           composer install --prefer-dist --optimize-autoloader &
           yarn install --immutable
+
+      - name: Build plugin
+        run: |
           yarn build
 
       - name: Prepare Go
