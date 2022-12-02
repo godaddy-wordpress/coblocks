@@ -7,6 +7,7 @@ import { startCase } from 'lodash';
 /**
  * WordPress Dependencies
  */
+import { addFilter } from '@wordpress/hooks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { __, sprintf } from '@wordpress/i18n';
 import { PanelBody, RangeControl } from '@wordpress/components';
@@ -174,5 +175,8 @@ const applyAttributes = ( settings ) => {
 
 	return settings;
 };
+
+// this is needed to ensure that the padding information is persisted to the saved data
+addFilter( 'blocks.getSaveElement', 'coblocks/padding-controls/save-padding-class', applySaveProps );
 
 export { applyAttributes, useEditorProps, applySaveProps, usePaddingControls };
