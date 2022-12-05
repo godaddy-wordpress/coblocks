@@ -109,6 +109,7 @@ workflows:
               only: /^(?!canary).*$/
 
       - pr_artifact_comment:
+          context: GoDaddy-Github-Enterprise
           requires:
             - build
           filters:
@@ -199,6 +200,7 @@ workflows:
              only: /^(?!canary).*$/
 
       - aggregate_perf_test_results:
+         context: GoDaddy-Github-Enterprise
          filters:
            tags:
              only: /^(?!canary).*$/
@@ -207,6 +209,7 @@ workflows:
            - perf_tests_master
 
       - canary-release:
+          context: GoDaddy-Github-Enterprise
           filters:
             branches:
               only: master
@@ -226,6 +229,7 @@ workflows:
             - js
 
       - deploy:
+          context: GoDaddy-Github-Enterprise
           requires:
             - unit_testing_php_74
             - unit_testing_php_80

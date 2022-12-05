@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 6.1
 Requires PHP: 7.4
-Stable tag: 2.25.2
+Stable tag: 2.25.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.25.3 / 2022-12-05 =
+===================
+##### Bug fixes
+* Fix how/when the Template Selector shows [#2448](https://github.com/godaddy-wordpress/coblocks/pull/2448)
+
 = 2.25.2 / 2022-11-15 =
 ##### Bug fixes
 * Hotfix Site Design controls [#2446](https://github.com/godaddy-wordpress/coblocks/pull/2446)
@@ -145,7 +150,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 ##### Bug fixes
 * Fix 404 on CSS dependency [#2438](https://github.com/godaddy-wordpress/coblocks/pull/2438)
 * Fix Lightbox being opened with improper keypress [#2432](https://github.com/godaddy-wordpress/coblocks/pull/2432)
-  
+
 ##### Misc
 * Make sure that the Welcome Guide does not show in the Cypress tests [#2441](https://github.com/godaddy-wordpress/coblocks/pull/2441)
 * Fix conditional to determine if we are using a WP version >= WP 6.1 in the tests [#2437](https://github.com/godaddy-wordpress/coblocks/pull/2437)
