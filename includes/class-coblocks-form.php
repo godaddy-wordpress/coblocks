@@ -797,7 +797,7 @@ class CoBlocks_Form {
 	public function render_field_submit_button( $atts ) {
 
 		$btn_text             = isset( $atts['submitButtonText'] ) ? $atts['submitButtonText'] : __( 'Submit', 'coblocks' );
-		$btn_class            = isset( $atts['submitButtonClasses'] ) ? " {$atts['submitButtonClasses']}" : '';
+		$btn_class            = isset( $atts['className'] ) ? " {$atts['className']}" : '';
 		$styles               = array();
 		$recaptcha_site_key   = get_option( 'coblocks_google_recaptcha_site_key' );
 		$recaptcha_secret_key = get_option( 'coblocks_google_recaptcha_secret_key' );
