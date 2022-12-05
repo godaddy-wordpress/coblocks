@@ -109,6 +109,7 @@ workflows:
               only: /^(?!canary).*$/
 
       - pr_artifact_comment:
+          context: GoDaddy-Github-Enterprise
           requires:
             - build
           filters:
