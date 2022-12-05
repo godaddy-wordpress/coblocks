@@ -200,6 +200,7 @@ workflows:
              only: /^(?!canary).*$/
 
       - aggregate_perf_test_results:
+         context: GoDaddy-Github-Enterprise
          filters:
            tags:
              only: /^(?!canary).*$/
