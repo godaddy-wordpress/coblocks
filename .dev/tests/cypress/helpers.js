@@ -177,8 +177,6 @@ export function savePage() {
  */
 
 export function checkForBlockErrors( blockName ) {
-	disableGutenbergFeatures();
-
 	cy.get( '.block-editor-warning' ).should( 'not.exist' );
 
 	cy.get( 'body.php-error' ).should( 'not.exist' );
