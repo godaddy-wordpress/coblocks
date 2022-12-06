@@ -4,10 +4,6 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Alert Block', function() {
-	beforeEach( () => {
-		helpers.disableGutenbergFeatures();
-	} );
-
 	/**
 	 * Test that we can add a alert block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
