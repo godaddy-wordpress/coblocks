@@ -29,8 +29,11 @@ jobs:
     name: E2E Test
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         spec:
+          - accordion.cypress.js
+          - alert.cypress.js
           - author.cypress.js
 
     steps:
@@ -89,7 +92,7 @@ jobs:
         if: ${{ failure() }}
         uses: actions/upload-artifact@v3
         with:
-          name: cypress-video-${{ matrix.spec }}-failure
+          name: cypress--${{ matrix.spec }}-test-failure-video
           path: ./.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
           retention-days: 1
 
