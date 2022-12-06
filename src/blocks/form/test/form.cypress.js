@@ -566,5 +566,60 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '.coblocks-label' ).each( ( $el ) => {
 			cy.wrap( $el ).should( 'have.class', 'has-text-color' );
 		} );
+
+		helpers.editPage();
+	} );
+
+	/**
+	 * Test that the form submit button styles are applied on the front of site.
+	 * https://github.com/godaddy-wordpress/coblocks/pull/2449
+	 */
+	it( 'Test that the submit button styles are applied.', function() {
+		helpers.addBlockToPost( 'coblocks/form', true );
+
+		cy.get( '[data-type="coblocks/form"] .components-placeholder' ).then( ( placeholder ) => {
+			if ( placeholder.prop( 'outerHTML' ).includes( 'block-editor-block-variation-picker' ) ) {
+				cy.get( placeholder )
+					.find( '.block-editor-block-variation-picker__variations li:first-child' )
+					.find( 'button' ).click( { force: true } );
+			} else {
+				cy.get( '.block-editor-inner-blocks__template-picker-options li:first-child' )
+					.click();
+
+				cy.get( '.block-editor-inner-blocks__template-picker-options' )
+					.should( 'not.exist' );
+			}
+		} );
+
+		const styles = [
+			'outline',
+			'circular',
+			'3d',
+			'shadow',
+		];
+
+		for ( let i = 0; i < styles.length; i++ ) {
+			const buttonStyleClass = `is-style-${ styles[ i ] }`;
+
+			cy.get( '[data-type="coblocks/form"] .coblocks-form__submit' ).click( { force: true } );
+
+			// Switch styles.
+			// Note: We use i+2 to avoid 'Fill'.
+			cy.get( `.block-editor-block-styles__variants button:nth-child(${ i + 2 })` ).click( { force: true } );
+
+			// Check button has proper style class.
+			cy.get( '[data-type="coblocks/form"] .coblocks-form__submit div' ).should( 'have.class', buttonStyleClass );
+
+			helpers.savePage();
+			helpers.checkForBlockErrors( 'coblocks/form' );
+			helpers.viewPage();
+
+			cy.get( '.coblocks-form' )
+				.should( 'exist' );
+
+			cy.get( '.coblocks-form__submit button[type="submit"]' ).should( 'have.class', buttonStyleClass );
+
+			helpers.editPage();
+		}
 	} );
 } );

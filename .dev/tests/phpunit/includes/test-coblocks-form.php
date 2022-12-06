@@ -590,7 +590,7 @@ class CoBlocks_Form_Tests extends WP_UnitTestCase {
 		$this->expectOutputRegex( '/<button type="submit" class="wp-block-button__link custom-button-class" style="background-color: #B4D455; color: #333333;">Submit<\/button>/' );
 
 		$atts = [
-			'submitButtonClasses'         => 'custom-button-class',
+			'className'                   => 'custom-button-class',
 			'customBackgroundButtonColor' => '#B4D455',
 			'customTextButtonColor'       => '#333333',
 		];
