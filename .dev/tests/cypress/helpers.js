@@ -156,8 +156,7 @@ export function addNewGroupToPost() {
 export function savePage() {
 	cy.get( '.editor-post-publish-button__button[aria-disabled="false"]' ).click();
 
-	cy.get( '.editor-post-publish-button__button[aria-disabled="true"]' ).should( 'exist' );
-	cy.wait( 2000 );
+	cy.wait( 5000 );
 
 	// Reload the page to ensure that we're not hitting any block errors
 	cy.reload();
