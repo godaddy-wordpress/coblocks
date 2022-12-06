@@ -1,0 +1,27 @@
+name: WIP Test / JS
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+
+  js_unit:
+    name: Unit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run tests
+        run: yarn run test:js

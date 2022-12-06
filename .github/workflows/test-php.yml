@@ -1,0 +1,25 @@
+name: WIP Test / PHP
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  php_unit_74:
+    name: PHP 7.4
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '7.4'
+
+  php_unit_80:
+    name: PHP 8.0
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.0'
+
+  php_unit_81:
+    name: PHP 8.1
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.1'

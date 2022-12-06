@@ -1,4 +1,4 @@
-name: 'Compliance / Translations'
+name: 'Translation'
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   update:
-    name: Localize
+    name: Localization
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
