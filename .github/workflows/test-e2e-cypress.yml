@@ -86,4 +86,11 @@ jobs:
           ./node_modules/.bin/cypress verify
           ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --spec $CYPRESS_SPEC
 
+      - name: Upload failure video
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-video-${{ matrix.spec }}-failure
+          path: ./cypress/videos.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
+          retention-days: 1
 
