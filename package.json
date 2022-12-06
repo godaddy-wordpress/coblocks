@@ -16,7 +16,7 @@
 	],
 	"testing": {
 		"urls": {
-			"local": "http://localhost:8888",
+			"local": "http://localhost:8889",
 			"staging": "",
 			"production": ""
 		},
