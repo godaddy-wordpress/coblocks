@@ -1,4 +1,4 @@
-import { isNotWPLocalEnv, loginToSite } from '../helpers';
+import { disableGutenbergFeatures, isNotWPLocalEnv, loginToSite } from '../helpers';
 
 before( function() {
 	loginToSite().then( () => {
@@ -7,6 +7,8 @@ before( function() {
 			// for the moment, it seems hard to tie the wait to something else
 			cy.wait( 10000 );
 		}
+
+		disableGutenbergFeatures();
 	} );
 } );
 

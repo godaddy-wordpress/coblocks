@@ -13,6 +13,7 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 	const createNewPost = () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=post' );
+		helpers.disableGutenbergFeatures();
 		helpers.addBlockToPost( 'coblocks/gallery-collage' );
 	};
 
