@@ -77,5 +77,5 @@ jobs:
         run: |
           echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
-          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --record --key ${{ secrets.record-key }} --parallel --group e2e-${{ inputs.browser }}-wp-$WP_CORE_VERSION --headed
+          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --headed --spec ./src/blocks/accordion/test/accordion.cypress.js
 
