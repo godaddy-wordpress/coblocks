@@ -25,7 +25,7 @@ on:
         required: true
 
 jobs:
-  test_e2e:
+  test_cypress_e2e:
     name: E2E Test
     runs-on: ubuntu-latest
     steps:
@@ -77,5 +77,6 @@ jobs:
         run: |
           echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
-          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --headed --spec ./src/blocks/accordion/test/accordion.cypress.js
+          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --headed --spec ./src/blocks/alert/test/alert.cypress.js
+
 
