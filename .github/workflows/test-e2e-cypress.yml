@@ -41,8 +41,8 @@ jobs:
       - name: Run tests
         run: |
           ls -lA
-          ls -lA ./src/
-          ls -1 ./src/**/${{ matrix.spec }}
+          ls -lA ./src/**/*.cypress.js
+          ls -1 './src/**/**/${{ matrix.spec }}'
           exit 0
 
 
