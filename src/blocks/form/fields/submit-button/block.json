@@ -19,9 +19,6 @@
 		},
 		"customTextButtonColor": {
 			"type": "string"
-		},
-		"submitButtonClasses": {
-			"type": "string"
 		}
 	},
 	"title": "Submit",
