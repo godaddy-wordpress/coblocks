@@ -91,7 +91,7 @@ jobs:
         if: ${{ failure() }}
         uses: actions/upload-artifact@v3
         with:
-          name: FAIL--${{ matrix.spec }}
+          name: ${{ matrix.spec }}-fail.mp4
           path: ./.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
           retention-days: 1
 
