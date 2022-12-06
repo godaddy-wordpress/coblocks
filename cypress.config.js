@@ -11,7 +11,7 @@ module.exports = defineConfig( {
 		supportFile: '.dev/tests/cypress/support/commands.js',
 	},
 	env: {
-		testURL: 'http://localhost:8889',
+		testURL: 'http://localhost:8888',
 		wpPassword: 'password',
 		wpUsername: 'admin',
 	},
