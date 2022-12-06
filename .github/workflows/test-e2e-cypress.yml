@@ -91,6 +91,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cypress-video-${{ matrix.spec }}-failure
-          path: ./cypress/videos.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
+          path: ./.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
           retention-days: 1
 
