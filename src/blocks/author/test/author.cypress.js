@@ -4,6 +4,22 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Author Block', function() {
+	before( () => {
+		helpers.loginToSite().then( () => {
+			if ( helpers.isNotWPLocalEnv() ) {
+				cy.wait( 10000 );
+			}
+
+			helpers.disableGutenbergFeatures();
+		} );
+	} );
+
+	beforeEach( () => {
+		if ( wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+			wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+		}
+	} );
+
 	/**
 	 * Test that we can add a author block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
