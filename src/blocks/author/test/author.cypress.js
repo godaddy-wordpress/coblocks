@@ -88,7 +88,10 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		cy.get( '.wp-block-coblocks-author' ).then( ( author ) => {
 			if ( ! author.prop( 'outerHTML' ).includes( 'editor-url-input' ) ) { // wp 5.4
-				cy.get( author ).find( '.wp-block-button__link' ).click();
+				cy.get( '.wp-block-coblocks-author__name' ).click();
+				cy.get( '.wp-block-coblocks-author .wp-block-button__link' ).click();
+				cy.get( '.wp-block-coblocks-author__name' ).click();
+				cy.get( '.wp-block-coblocks-author .wp-block-button__link' ).click();
 				cy.get( '.block-editor-block-toolbar' )
 					.find( 'button.components-button[aria-label="Link"]' )
 					.click();
