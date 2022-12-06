@@ -32,6 +32,7 @@ jobs:
       fail-fast: false
       matrix:
         spec:
+          - accordion.cypress.js
           - alert.cypress.js
           - author.cypress.js
 
