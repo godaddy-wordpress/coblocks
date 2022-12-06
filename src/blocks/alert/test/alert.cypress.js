@@ -19,6 +19,8 @@ describe( 'Test CoBlocks Alert Block', function() {
 
 		helpers.savePage();
 
+		helpers.disableGutenbergFeatures();
+
 		helpers.checkForBlockErrors( 'coblocks/alert' );
 	} );
 

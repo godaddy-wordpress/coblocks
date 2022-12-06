@@ -17,6 +17,8 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		helpers.savePage();
 
+		helpers.disableGutenbergFeatures();
+
 		helpers.checkForBlockErrors( 'coblocks/author' );
 
 		helpers.viewPage();
