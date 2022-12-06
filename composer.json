@@ -30,7 +30,7 @@
 	},
 	"require": {
 		"php": ">=7.4",
-		"godaddy-wordpress/styles": "^1.0.5"
+		"godaddy-wordpress/styles": "^2.0.2"
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
