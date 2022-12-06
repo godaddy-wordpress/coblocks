@@ -1,7 +1,5 @@
 name: WIP Test / E2E
 
-run-name: "E2E Test ${${{ matrix.spec }}##*/}"
-
 on:
   workflow_call:
     inputs:
