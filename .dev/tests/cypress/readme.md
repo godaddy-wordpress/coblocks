@@ -9,7 +9,7 @@ Welcome to our end-to-end testing suite for CoBlocks blocks! There are a number 
 ### Add your local test credentials
 ```bash
 $ echo '{
-  "testURL": "https://localhost:8888",
+  "testURL": "https://localhost:8889",
   "wpUsername": "admin",
   "wpPassword": "password",
 }' > cypress.env.json
