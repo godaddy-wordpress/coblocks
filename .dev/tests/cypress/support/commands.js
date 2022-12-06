@@ -1,3 +1,11 @@
+import { disableGutenbergFeatures, loginToSite } from '../helpers';
+
+before( function() {
+	loginToSite().then( () => {
+		disableGutenbergFeatures();
+	} );
+} );
+
 // Maintain WordPress logged in state
 Cypress.Cookies.defaults( {
 	preserve: /wordpress_.*/,

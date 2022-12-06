@@ -4,20 +4,14 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Author Block', function() {
-	before( () => {
-		helpers.loginToSite().then( () => {
-			if ( helpers.isNotWPLocalEnv() ) {
-				cy.wait( 10000 );
-			}
-
-			helpers.disableGutenbergFeatures();
-		} );
-	} );
-
 	beforeEach( () => {
-		if ( wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
-			wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
-		}
+		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=post', {
+			onLoad: ( contentWindow ) => {
+				if ( !! contentWindow.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+					contentWindow.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+				}
+			},
+		} );
 	} );
 
 	/**
