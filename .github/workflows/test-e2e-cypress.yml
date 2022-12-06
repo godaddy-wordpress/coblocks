@@ -40,8 +40,7 @@ jobs:
 
       - name: Run tests
         run: |
-          CYPRESS_SPEC=$(ls -1 ./src/**/${{ matrix.spec }})
-          echo $CYPRESS_SPEC
+          ls -1 ./src/**/${{ matrix.spec }}
           exit 0
 
 
