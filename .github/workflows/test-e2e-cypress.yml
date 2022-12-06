@@ -31,8 +31,8 @@ jobs:
     strategy:
       matrix:
         spec:
-          - ./src/blocks/alert/test/alert.cypress.js
-          - ./src/blocks/author/test/author.cypress.js
+          - alert.cypress.js
+          - author.cypress.js
 
     steps:
       - name: Checkout
@@ -81,8 +81,9 @@ jobs:
 
       - name: Run tests
         run: |
+          CYPRESS_SPEC=$(ls -1 ./src/**/${{ matrix.spec }})
           echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
-          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --spec ${{ matrix.spec }}
+          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --spec $CYPRESS_SPEC
 
 
