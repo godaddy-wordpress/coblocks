@@ -154,7 +154,7 @@ export function addNewGroupToPost() {
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  */
 export function savePage() {
-	cy.get( '.editor-post-publish-button__button[aria-disabled="false"]' ).click();
+	cy.get( '.editor-post-publish-button__button' ).click();
 
 	cy.wait( 5000 );
 
