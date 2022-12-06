@@ -4,9 +4,6 @@ on:
   pull_request:
     branches:
       - master
-  push:
-    branches:
-      - feature/github-actions-migration-WPEX-2610
 
 jobs:
   php_unit_74:
