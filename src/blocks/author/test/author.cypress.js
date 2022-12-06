@@ -17,8 +17,6 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		helpers.viewPage();
 
-		helpers.disableGutenbergFeatures();
-
 		cy.get( '.wp-block-coblocks-author' )
 			.should( 'not.exist' );
 
