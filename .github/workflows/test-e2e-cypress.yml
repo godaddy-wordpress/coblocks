@@ -27,7 +27,7 @@ on:
 jobs:
   test_cypress_e2e:
     name: E2E Test
-    run-name: "E2E Test ${${{ matrix.spec }}##*/}"
+    run-name: "E2E Test ${{ matrix.spec }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
