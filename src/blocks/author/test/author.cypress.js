@@ -4,10 +4,6 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Author Block', function() {
-	before( () => {
-		helpers.disableGutenbergFeatures();
-	} );
-
 	/**
 	 * Test that we can add a author block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.

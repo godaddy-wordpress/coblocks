@@ -76,6 +76,8 @@ export function getWindowObject() {
 
 		if ( ! win?.wp ) {
 			throw new Error( 'Window property was invoked within Editor but `win.wp` is not defined.' );
+		} else if ( win.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+			win.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
 		}
 
 		return win;
