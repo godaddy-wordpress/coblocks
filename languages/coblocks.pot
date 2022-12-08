@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-12-06T14:54:34+00:00\n"
+"POT-Creation-Date: 2022-12-08T20:25:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: coblocks\n"
@@ -128,7 +128,7 @@ msgid "Google reCaptcha secret key for form spam protection"
 msgstr ""
 
 #: includes/class-coblocks-form.php:229
-msgid "Email Verify"
+msgid "Enter your email address to verify"
 msgstr ""
 
 #. translators: block name
