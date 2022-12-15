@@ -1198,10 +1198,10 @@
   resolved "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@es-joy/jsdoccomment@~0.33.0":
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.33.0.tgz#59416d08442d0fdbb316fc1cb491e750db80b9ad"
-  integrity sha512-bkxMGTlHPE4vfarXt1L1fOm81O18jTRFNgh3Fm4iPKctfWxcpJw4cpth5BhLkGZy4HFzGn/KfD/zGks/J+ZIIw==
+"@es-joy/jsdoccomment@~0.36.1":
+  version "0.36.1"
+  resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.36.1.tgz#c37db40da36e4b848da5fd427a74bae3b004a30f"
+  integrity sha512-922xqFsTpHs6D0BUiG4toiyPOMc8/jafnWKxz1KWgS4XzKPy2qXf1Pe6UFuNSCQqt6tOuhAWXBNuuyUhJmw9Vg==
   dependencies:
     comment-parser "1.3.1"
     esquery "^1.4.0"
@@ -3132,16 +3132,16 @@
     react "^17.0.2"
     react-dom "^17.0.2"
 
-"@wordpress/env@^4.6.0":
-  version "4.6.0"
-  resolved "https://registry.npmjs.org/@wordpress/env/-/env-4.6.0.tgz"
-  integrity sha512-n9OFDFdJizICunAo45kMt4vUPrD5YaEGOmm34Uw6bhep7r8uRTcWcPpXWCval0Scjy6kwiawUWm1wv2pfcFgvA==
+"@wordpress/env@^5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/env/-/env-5.8.0.tgz#0c66bcc256d59bd4fc6cd8a8e39860baf8cff6e6"
+  integrity sha512-AwT7jdiztYe0DkckjCfey5y5Fwgna3O218FtT9M3Ubg2o49mjA+C52KDcevtabynmpSCHAnhVcy7JDst5xn7zQ==
   dependencies:
     chalk "^4.0.0"
     copy-dir "^1.3.0"
     docker-compose "^0.22.2"
     extract-zip "^1.6.7"
-    got "^10.7.0"
+    got "^11.8.5"
     inquirer "^7.1.0"
     js-yaml "^3.13.1"
     ora "^4.0.2"
@@ -4967,7 +4967,7 @@ commander@~9.0.0:
 
 comment-parser@1.3.1:
   version "1.3.1"
-  resolved "https://registry.npmjs.org/comment-parser/-/comment-parser-1.3.1.tgz"
+  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-1.3.1.tgz#3d7ea3adaf9345594aedee6563f422348f165c1b"
   integrity sha512-B52sN2VNghyq5ofvUsqZjmk6YkihBX5vMSChmSK9v4ShjKf3Vk5Xcmgpw4o+iIgtrnM/u5FiMpz9VKb8lpBveA==
 
 common-path-prefix@^3.0.0:
@@ -6111,11 +6111,11 @@ eslint-plugin-jest@^25.2.3:
     "@typescript-eslint/experimental-utils" "^5.0.0"
 
 eslint-plugin-jsdoc@^37.0.3, eslint-plugin-jsdoc@^39.2.5:
-  version "39.3.14"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-39.3.14.tgz#2591bf48907a7527a6e689fd721634364d08fe4e"
-  integrity sha512-kle7ot5xvzXwWzg7ElzTPM/y1IWUo0kfa5X+ZwOC/7Jw81OJaqIaNEk+2ZH+HcKkbwRUQ3RTdK9qsm4p5vbXAQ==
+  version "39.6.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-39.6.4.tgz#b940aebd3eea26884a0d341785d2dc3aba6a38a7"
+  integrity sha512-fskvdLCfwmPjHb6e+xNGDtGgbF8X7cDwMtVLAP2WwSf9Htrx68OAx31BESBM1FAwsN2HTQyYQq7m4aW4Q4Nlag==
   dependencies:
-    "@es-joy/jsdoccomment" "~0.33.0"
+    "@es-joy/jsdoccomment" "~0.36.1"
     comment-parser "1.3.1"
     debug "^4.3.4"
     escape-string-regexp "^4.0.0"
@@ -7256,7 +7256,7 @@ good-listener@^1.2.2:
   dependencies:
     delegate "^3.1.2"
 
-got@^10.7.0, got@^11.8.5:
+got@^11.8.5:
   version "11.8.5"
   resolved "https://registry.yarnpkg.com/got/-/got-11.8.5.tgz#ce77d045136de56e8f024bebb82ea349bc730046"
   integrity sha512-o0Je4NvQObAuZPHLFoRSkdG2lTgtcynqymzg2Vupdx6PorhaT5MCbIyXG6d4D94kk8ZG57QeosgdiqfJWhEhlQ==
@@ -8838,7 +8838,7 @@ jsbn@~0.1.0:
 
 jsdoc-type-pratt-parser@~3.1.0:
   version "3.1.0"
-  resolved "https://registry.npmjs.org/jsdoc-type-pratt-parser/-/jsdoc-type-pratt-parser-3.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/jsdoc-type-pratt-parser/-/jsdoc-type-pratt-parser-3.1.0.tgz#a4a56bdc6e82e5865ffd9febc5b1a227ff28e67e"
   integrity sha512-MgtD0ZiCDk9B+eI73BextfRrVQl0oyzRG8B2BjORts6jbunj4ScKPcyXGTbB6eXL4y9TzxCm6hyeLq/2ASzNdw==
 
 jsdom@^16.6.0, jsdom@^16.7.0:
@@ -9699,7 +9699,7 @@ moment-timezone@^0.5.31:
   dependencies:
     moment ">= 2.9.0"
 
-"moment@>= 2.9.0", moment@>=1.6.0, moment@^2.22.1, moment@^2.29.4:
+"moment@>= 2.9.0", moment@>=1.6.0, moment@^2.22.1:
   version "2.29.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
   integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
@@ -11953,14 +11953,14 @@ signal-exit@^3.0.2, signal-exit@^3.0.3, signal-exit@^3.0.6, signal-exit@^3.0.7:
   resolved "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
-simple-git@^3.5.0:
-  version "3.7.1"
-  resolved "https://registry.npmjs.org/simple-git/-/simple-git-3.7.1.tgz"
-  integrity sha512-+Osjtsumbtew2y9to0pOYjNzSIr4NkKGBg7Po5SUtjQhaJf2QBmiTX/9E9cv9rmc7oUiSGFIB9e7ys5ibnT9+A==
+simple-git@^3.15.0, simple-git@^3.15.1, simple-git@^3.5.0:
+  version "3.15.1"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.15.1.tgz#57f595682cb0c2475d5056da078a05c8715a25ef"
+  integrity sha512-73MVa5984t/JP4JcQt0oZlKGr42ROYWC3BcUZfuHtT3IHKPspIvL0cZBnvPXF7LL3S/qVeVHVdYYmJ3LOTw4Rg==
   dependencies:
     "@kwsites/file-exists" "^1.1.1"
     "@kwsites/promise-deferred" "^1.1.1"
-    debug "^4.3.3"
+    debug "^4.3.4"
 
 simple-html-tokenizer@^0.5.7:
   version "0.5.11"
