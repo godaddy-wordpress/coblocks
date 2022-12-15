@@ -49,7 +49,7 @@
 	"scripts": {
 		"lint": "@php ./vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1",
 		"lint:fix": "@php ./vendor/bin/phpcbf",
-		"test": "@php ./vendor/bin/phpunit",
+		"test": "@php ./vendor/bin/phpunit --debug",
 		"mozart-compose": [
 			"\"vendor/bin/mozart\" compose",
 			"composer dump-autoload",
