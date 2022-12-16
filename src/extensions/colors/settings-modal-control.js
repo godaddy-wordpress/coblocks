@@ -1,13 +1,12 @@
-/* global coblocksSettings */
 /**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { CheckboxControl } from '@wordpress/components';
 import { registerPlugin } from '@wordpress/plugins';
-import { useEffect } from '@wordpress/element';
 import { useEntityProp } from '@wordpress/core-data';
 import { useDispatch, useSelect } from '@wordpress/data';
+import { useEffect, useRef } from '@wordpress/element';
 
 /**
  * Internal Dependencies
@@ -29,105 +28,82 @@ function CoBlocksEditorSettingsControls() {
 		return { settings: select( 'core/block-editor' ).getSettings() };
 	}, [] );
 
+	const prevColorSettings = useRef( null );
+
 	const { updateSettings } = useDispatch( 'core/block-editor' );
 
-	/**
-	 * Toggles an editor setting while maintaining the original setting in localStorage.
-	 *
-	 * @param {string}  key       The local storage key of the toggled option.
-	 * @param {boolean} isEnabled The enabled state of the option.
-	 * @return {Array} The restored value or an empty array (if disabled).
-	 */
-	const setEditorSetting = ( key, isEnabled ) => {
-		// Identify if experimental keys are passed and fetch those values directly
-		let settingValue;
-		switch ( key ) {
-			case '__experimentalFeatures.color.palette':
-				settingValue = settings?.__experimentalFeatures?.color?.palette ?? { core: [] };
-				break;
-			case '__experimentalFeatures.color.gradients':
-				settingValue = settings?.__experimentalFeatures?.color?.gradients ?? { core: [] };
-				break;
-			default:
-				settingValue = settings[ key ];
-				break;
-		}
-
-		const localStorageValue = localStorage.getItem( key );
-		/**
-		 * Check whether the localStorage value is valid and should be used or discard to use original setting.
-		 *
-		 * @return {boolean} Whether or not the parsed localStorage is valid.
-		 */
-		const localStorageValueIsValid = () => {
-			if ( Array.isArray( localStorageValue ) && ! localStorageValue.length ) {
-				return false;
-			}
-
-			if ( localStorageValue?.constructor === Object && Object.keys( localStorageValue )?.length === 0 ) {
-				return false;
-			}
-
-			return true;
-		};
-
-		// Backup settings if no key exists or if invalid value saved.
-		if ( ! isEnabled && ! localStorageValueIsValid() ) {
-			localStorage.setItem( key, JSON.stringify( settingValue ) );
-		}
-
-		// Feature is enabled so parse the stored value or return existing setting value.
-		if ( isEnabled ) {
-			// Check if stored value is empty array.
-			return localStorageValue && localStorageValueIsValid()
-				? JSON.parse( localStorageValue ) : settingValue;
-		}
-
-		// Feature is disabled return empty array to disable the setting.
-		return [];
-	};
-	const enableEditorSetting = ( key ) => setEditorSetting( key, true );
-	const disableEditorSetting = ( key ) => setEditorSetting( key, false );
-
 	useEffect( () => {
-		if ( coblocksSettings.deprecateWith61 ) {
-			return;
-		}
-
 		// Skip if the settings have not loaded yet.
 		const hasSettings = [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ].every( ( value ) => value !== undefined );
-		if ( ! hasSettings ) {
+		if ( ! hasSettings || ! settings ) {
 			return;
 		}
 
-		updateSettings( {
-			colors: colorPanelEnabled ? enableEditorSetting( 'colors' ) : disableEditorSetting( 'colors' ),
-			disableCustomColors: ! customColorsEnabled,
-			disableCustomGradients: ! gradientPresetsEnabled,
-			gradients: gradientPresetsEnabled ? enableEditorSetting( 'gradients' ) : disableEditorSetting( 'gradients' ),
+		let newSettings = {};
 
-			// Handle experimental features for WP 5.8
-			/* eslint-disable sort-keys */
-			__experimentalFeatures: {
-				...settings?.__experimentalFeatures,
-				color: {
-					...settings?.__experimentalFeatures?.color,
-					palette: colorPanelEnabled
-						? enableEditorSetting( '__experimentalFeatures.color.palette' )
-						: disableEditorSetting( '__experimentalFeatures.color.palette' ),
-					gradients: gradientPresetsEnabled
-						? enableEditorSetting( '__experimentalFeatures.color.gradients' )
-						: disableEditorSetting( '__experimentalFeatures.color.gradients' ),
+		if ( ! colorPanelEnabled ) {
+			prevColorSettings.current = {
+				colors: settings.colors,
+				gradients: settings.gradients,
+
+				/* eslint-disable sort-keys */
+				__experimentalFeatures: settings?.__experimentalFeatures,
+				/* eslint-enable sort-keys */
+			};
+
+			newSettings = {
+				...newSettings,
+				colors: [],
+				disableCustomColors: true,
+				disableCustomGradients: true,
+				gradients: [],
+
+				/* eslint-disable sort-keys */
+				__experimentalFeatures: {
+					...settings?.__experimentalFeatures,
+					color: {
+						...settings?.__experimentalFeatures?.color,
+						palette: {
+							default: [],
+							theme: [],
+						},
+						gradients: {
+							default: [],
+							theme: [],
+						},
+					},
 				},
-			},
-			/* eslint-enable sort-keys */
-		} );
-	}, [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ] );
+				/* eslint-enable sort-keys */
+			};
+		}
 
-	const settingsEnabled = ! coblocksSettings?.deprecateWith61;
-	if ( ! settingsEnabled ) {
-		return null;
-	}
+		if ( colorPanelEnabled && prevColorSettings.current?.colors ) {
+			newSettings = {
+				...newSettings,
+				colors: prevColorSettings.current.colors,
+				disableCustomColors: false,
+				disableCustomGradients: false,
+				gradients: prevColorSettings.current.gradients,
+
+				/* eslint-disable sort-keys */
+				__experimentalFeatures: {
+					...settings?.__experimentalFeatures,
+					color: {
+						...settings?.__experimentalFeatures?.color,
+						palette: {
+							...prevColorSettings.current.__experimentalFeatures.color.palette,
+						},
+						gradients: {
+							...prevColorSettings.current.__experimentalFeatures.color.gradients,
+						},
+					},
+				},
+				/* eslint-enable sort-keys */
+			};
+		}
+
+		updateSettings( newSettings );
+	}, [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ] );
 
 	return (
 		<CoBlocksSettingsModalControl>

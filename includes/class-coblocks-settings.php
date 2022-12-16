@@ -59,7 +59,6 @@ class CoBlocks_Settings {
 			'coblocksSettings',
 			array(
 				'coblocksSettingsEnabled' => (bool) apply_filters( 'coblocks_show_settings_panel', true ),
-				'deprecateWith61'         => (bool) $this->deprecate_with_61(),
 			)
 		);
 	}
