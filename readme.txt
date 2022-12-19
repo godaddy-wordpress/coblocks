@@ -123,61 +123,43 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 == Changelog ==
 
 = 2.25.4 / 2022-12-16 =
-===================
-##### Enhancements
+
 * Improve Form block a11y text [a0b764a3](https://github.com/godaddy-wordpress/coblocks/commit/a0b764a35ed2b9b0cafc48df808383523cc16d58)
-
-##### Bug fixes
 * Fix Form block button style issue [#2449](https://github.com/godaddy-wordpress/coblocks/pull/2449)
-
-##### Misc
 * Update dependencies [#2453](https://github.com/godaddy-wordpress/coblocks/pull/2453), [#2455](https://github.com/godaddy-wordpress/coblocks/pull/2455) and [#2459](https://github.com/godaddy-wordpress/coblocks/pull/2459)
 * Fix Github auth in CircleCI [#2456](https://github.com/godaddy-wordpress/coblocks/pull/2456)
 
 = 2.25.3 / 2022-12-05 =
-===================
-##### Bug fixes
+
 * Fix how/when the Template Selector shows [#2448](https://github.com/godaddy-wordpress/coblocks/pull/2448)
 
 = 2.25.2 / 2022-11-15 =
-##### Bug fixes
+
 * Hotfix Site Design controls [#2446](https://github.com/godaddy-wordpress/coblocks/pull/2446)
 
 = 2.25.1 / 2022-11-14 =
 
-##### Enhancements
 * Enhance a11y accessibility across blocks. [#2430](https://github.com/godaddy-wordpress/coblocks/pull/2430)
-
-##### Bug fixes
 * Improve reliability of Site Design controls. [#2442](https://github.com/godaddy-wordpress/coblocks/pull/2442)
 
 = 2.25.0 / 2022-11-03 =
 
-##### Enhancements
 * Compatibility with WP 6.1 [#2439](https://github.com/godaddy-wordpress/coblocks/pull/2439)
 * Drop support for PHP 5.6 [#2408](https://github.com/godaddy-wordpress/coblocks/pull/2408)
 * Introduce Accessibility tests for CoBlocks [#2427](https://github.com/godaddy-wordpress/coblocks/pull/2427)
 * Disable color controls for WordPress 6.1+ [#2420](https://github.com/godaddy-wordpress/coblocks/pull/2420)
-
-##### Bug fixes
 * Fix 404 on CSS dependency [#2438](https://github.com/godaddy-wordpress/coblocks/pull/2438)
 * Fix Lightbox being opened with improper keypress [#2432](https://github.com/godaddy-wordpress/coblocks/pull/2432)
-
-##### Misc
 * Make sure that the Welcome Guide does not show in the Cypress tests [#2441](https://github.com/godaddy-wordpress/coblocks/pull/2441)
 * Fix conditional to determine if we are using a WP version >= WP 6.1 in the tests [#2437](https://github.com/godaddy-wordpress/coblocks/pull/2437)
 * Fix broken tests with WP 6.1 RC1 [#2435](https://github.com/godaddy-wordpress/coblocks/pull/2435)
 
 = 2.24.4 / 2022-09-16 =
 
-##### Misc
 * Update Go commands to fix deploy and canary [#2425](https://github.com/godaddy-wordpress/coblocks/pull/2425) and [#2426](https://github.com/godaddy-wordpress/coblocks/pull/2426)
 
 = 2.24.3 / 2022-09-16 =
 
-##### Bug fixes
 * Fix button order in editor header [#2423](https://github.com/godaddy-wordpress/coblocks/pull/2423)
-
-##### Misc
 * Upgrade to Cypress 10 [#2424](https://github.com/godaddy-wordpress/coblocks/pull/2424)
 * Update various dependencies [#2422](https://github.com/godaddy-wordpress/coblocks/pull/2422) and [#2412](https://github.com/godaddy-wordpress/coblocks/pull/2412)
