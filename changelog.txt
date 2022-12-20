@@ -1,3 +1,7 @@
+2.25.5 / 2022-12-20
+===================
+### Bug fixes
+* Fix form button colors and resolve color bleed [#2461](https://github.com/godaddy-wordpress/coblocks/pull/2461)
 
 2.25.4 / 2022-12-16
 ===================

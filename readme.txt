@@ -122,6 +122,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.25.5 / 2022-12-20 =
+
+* Fix form button colors and resolve color bleed  [#2461](https://github.com/godaddy-wordpress/coblocks/pull/2461)
+
 = 2.25.4 / 2022-12-16 =
 
 * Improve Form block a11y text [a0b764a3](https://github.com/godaddy-wordpress/coblocks/commit/a0b764a35ed2b9b0cafc48df808383523cc16d58)
