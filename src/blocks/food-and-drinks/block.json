@@ -1,4 +1,5 @@
 {
+	"apiVersion": 2,
 	"name": "coblocks/food-and-drinks",
 	"category": "layout",
 	"attributes": {
@@ -21,6 +22,13 @@
 		"headingLevel": {
 			"type": "integer",
 			"default": 4
+		},
+		"className": {
+			"type": "string"
+		},
+		"list": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"title": "Food & Drink",

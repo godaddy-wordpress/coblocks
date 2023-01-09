@@ -14,6 +14,6 @@ import * as services from './blocks/services';
 	pricingTable,
 	pricingTableItem,
 	row,
-	service,
 	services,
+	service,
 ].forEach( registerBlock );

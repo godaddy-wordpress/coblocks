@@ -1,32 +1,21 @@
 {
+	"apiVersion": 2,
 	"name": "coblocks/gif",
 	"category": "media",
 	"attributes": {
 		"url": {
-			"attribute": "src",
-			"selector": "img",
-			"source": "attribute",
 			"type": "string"
-		},
-		"alt": {
-			"attribute": "alt",
-			"selector": "img",
-			"source": "attribute",
-			"type": "string",
-			"default": ""
-		},
-		"caption": {
-			"type": "string",
-			"source": "html",
-			"selector": "figcaption"
 		},
 		"align": {
 			"type": "string"
 		},
-		"width": {
-			"type": "number"
+		"caption": {
+			"type": "string"
 		},
 		"height": {
+			"type": "number"
+		},
+		"width": {
 			"type": "number"
 		}
 	},

@@ -1,4 +1,6 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
 	"name": "coblocks/media-card",
 	"category": "layout",
 	"attributes": {
@@ -17,10 +19,7 @@
 			"type": "number"
 		},
 		"mediaUrl": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "div div figure video, div div figure img",
-			"attribute": "src"
+			"type": "string"
 		},
 		"mediaType": {
 			"type": "string"
@@ -45,8 +44,19 @@
 			"default": false
 		}
 	},
-	"title": "Media Card",
+	"supports": {
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		}
+	},
 	"textdomain": "coblocks",
-	"editorScript": "blocks-7",
-	"description": "Add an image or video with an offset card side-by-side."
+	"title": "Media Card"
 }

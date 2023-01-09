@@ -1222,6 +1222,19 @@ const svgs = {
 		],
 		icon: <Icon icon={CoblocksIcons['FireStyles']['default']} />,
 	},
+	fish: {
+		/* translators: icon label */
+		label: __('Fish', 'coblocks'),
+		keywords: [
+			/* translators: icon keyword */
+			__('fish', 'coblocks'),
+			/* translators: icon keyword */
+			__('sea', 'coblocks'),
+			/* translators: icon keyword */
+			__('sea-creature', 'coblocks'),
+		],
+		icon: <Icon icon={CoblocksIcons['FishStyles']['default']} />,
+	},
 	flare: {
 		/* translators: icon label */
 		label: __('Flare', 'coblocks'),
@@ -1710,6 +1723,23 @@ const svgs = {
 			__('world', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['GlobeStyles']['default']} />,
+	},
+	gluten_free: {
+		/* translators: icon label */
+		label: __('Gluten Free', 'coblocks'),
+		keywords: [
+			/* translators: icon keyword */
+			__('no-gluten', 'coblocks'),
+			/* translators: icon keyword */
+			__('gluten', 'coblocks'),
+			/* translators: icon keyword */
+			__('free', 'coblocks'),
+			/* translators: icon keyword */
+			__('food', 'coblocks'),
+			/* translators: icon keyword */
+			__('diet', 'coblocks'),
+		],
+		icon: <Icon icon={CoblocksIcons['GlutenFreeStyles']['default']} />,
 	},
 	grid_position: {
 		/* translators: icon label */
@@ -2705,6 +2735,23 @@ const svgs = {
 		icon: <Icon icon={CoblocksIcons['SpaStyles']['default']} />,
 		icon_outlined: <Icon icon={CoblocksIcons['SpaStyles']['outlined']} />,
 	},
+	spicy: {
+		/* translators: icon label */
+		label: __('Spicy', 'coblocks'),
+		keywords: [
+			/* translators: icon keyword */
+			__('heat', 'coblocks'),
+			/* translators: icon keyword */
+			__('hot', 'coblocks'),
+			/* translators: icon keyword */
+			__('flavor', 'coblocks'),
+			/* translators: icon keyword */
+			__('spicy', 'coblocks'),
+			/* translators: icon keyword */
+			__('spice', 'coblocks'),
+		],
+		icon: <Icon icon={CoblocksIcons['SpicyStyles']['default']} />,
+	},
 	star: {
 		/* translators: icon label */
 		label: __('Star', 'coblocks'),
@@ -3025,6 +3072,34 @@ const svgs = {
 			__('time machine', 'coblocks'),
 		],
 		icon: <Icon icon={CoblocksIcons['UpdateStyles']['default']} />,
+	},
+	vegan: {
+		/* translators: icon label */
+		label: __('Vegan', 'coblocks'),
+		keywords: [
+			/* translators: icon keyword */
+			__('vegan', 'coblocks'),
+			/* translators: icon keyword */
+			__('diet', 'coblocks'),
+			/* translators: icon keyword */
+			__('health', 'coblocks'),
+		],
+		icon: <Icon icon={CoblocksIcons['VeganStyles']['default']} />,
+	},
+	vegetarian: {
+		/* translators: icon label */
+		label: __('Vegetarian', 'coblocks'),
+		keywords: [
+			/* translators: icon keyword */
+			__('plant-eater', 'coblocks'),
+			/* translators: icon keyword */
+			__('veggies', 'coblocks'),
+			/* translators: icon keyword */
+			__('diet', 'coblocks'),
+			/* translators: icon keyword */
+			__('herbavore', 'coblocks'),
+		],
+		icon: <Icon icon={CoblocksIcons['VegetarianStyles']['default']} />,
 	},
 	verifieduser: {
 		/* translators: icon label */

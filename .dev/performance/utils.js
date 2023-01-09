@@ -3,7 +3,7 @@
  */
 const inquirer = require( 'inquirer' );
 const fs = require( 'fs' );
-const childProcess = require( 'child_process' );
+const { childProcess } = require( 'child_process' );
 const { v4: uuid } = require( 'uuid' );
 const path = require( 'path' );
 const os = require( 'os' );

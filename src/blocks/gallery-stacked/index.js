@@ -1,59 +1,53 @@
 /**
- * External dependencies
- */
-import { GalleryStackedIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-
-/**
  * Internal dependencies
  */
-import deprecated from './deprecated';
-import edit from './edit';
-import { hasFormattingCategory } from '../../utils/block-helpers';
+import { BLOCK_VARIATION_GALLERY_STACKED } from '../../block-variations/core/gallery';
 import metadata from './block.json';
-import save from './save';
-import transforms from './transforms';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { Icon } from '@wordpress/components';
+import { dispatch } from '@wordpress/data';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 /**
  * Block constants
  */
-const { name, category } = metadata;
+const { name } = metadata;
 
 const settings = {
-	attributes: metadata.attributes,
-	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
-	deprecated,
-	/* translators: block description */
-	description: __( 'Display multiple images in a single column stacked gallery.', 'coblocks' ),
-	edit,
-	example: {
-		attributes: {
-			fullwidth: false,
-			images: [
-				{ index: 0, url: 'https://s.w.org/images/core/5.3/Windbuchencom.jpg' },
-				{ index: 1, url: 'https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg' },
-			],
-		},
+	edit: ( props ) => {
+		const { replaceBlocks } = dispatch( 'core/block-editor' );
+		replaceBlocks(
+			[ props.clientId ],
+			switchToBlockType( props, 'core/gallery' )
+		);
+		return null;
 	},
-	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'gallery', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'photos', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'lightbox', 'coblocks' ),
-	],
-	save,
-	/* translators: block name */
-	title: __( 'Stacked', 'coblocks' ),
-	transforms,
+	parent: [],
+	save: () => null,
+	transforms: {
+		to: [
+			{
+				blocks: [ 'core/gallery' ],
+				transform: ( attributes ) => {
+					const galleryAttributes = Object.fromEntries(
+						Object.entries( attributes ).filter(
+							( attribute ) => 'images' !== attribute[ 0 ]
+						)
+					);
+					return createBlock(
+						'core/gallery',
+						Object.assign( {}, BLOCK_VARIATION_GALLERY_STACKED.attributes, galleryAttributes ),
+						attributes.images.map( ( image ) => {
+							return createBlock( 'core/image', image );
+						} ),
+					);
+				},
+				type: 'block',
+			},
+		],
+	},
 };
 
-export { name, category, icon, metadata, settings };
+export { name, metadata, settings };

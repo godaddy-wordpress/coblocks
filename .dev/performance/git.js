@@ -170,16 +170,16 @@ async function replaceContentFromRemoteBranch(
 }
 
 module.exports = {
+	checkoutRemoteBranch,
+	cherrypickCommitIntoBranch,
 	clone,
 	commit,
-	checkoutRemoteBranch,
 	createLocalBranch,
 	createLocalTag,
+	discardLocalChanges,
 	fetch,
 	pushBranchToOrigin,
 	pushTagsToOrigin,
-	discardLocalChanges,
-	resetLocalBranchAgainstOrigin,
-	cherrypickCommitIntoBranch,
 	replaceContentFromRemoteBranch,
+	resetLocalBranchAgainstOrigin,
 };
