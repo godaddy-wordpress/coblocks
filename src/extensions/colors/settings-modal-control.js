@@ -17,6 +17,7 @@ import {
 	COLORS_FEATURE_ENABLED_KEY,
 	COLORS_GRADIENT_FEATURE_ENABLED_KEY,
 } from './constants';
+import { update } from 'lodash';
 
 function CoBlocksEditorSettingsControls() {
 	const [ colorPanelEnabled, setColorPanelEnabled ] = useEntityProp( 'root', 'site', COLORS_FEATURE_ENABLED_KEY );
@@ -32,78 +33,201 @@ function CoBlocksEditorSettingsControls() {
 
 	const { updateSettings } = useDispatch( 'core/block-editor' );
 
+	const saveToStorage = ( key, value ) => {
+		localStorage.setItem( key, JSON.stringify( value ) );
+	};
+
+	const retrieveFromStorage = ( key ) => {
+		const foundKey = localStorage.getItem( key );
+
+		if ( ! foundKey ) {
+			return null;
+		}
+
+		return JSON.parse( foundKey );
+	};
+
 	useEffect( () => {
-		// Skip if the settings have not loaded yet.
-		const hasSettings = [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ].every( ( value ) => value !== undefined );
-		if ( ! hasSettings || ! settings ) {
-			return;
-		}
+		const savedColors = retrieveFromStorage( 'colors' );
+		const savedGradients = retrieveFromStorage( 'gradients' );
+		const savedExperimentalPalette = retrieveFromStorage( '__experimentalFeatures.color.palette' );
+		const savedExperimentalGradients = retrieveFromStorage( '__experimentalFeatures.color.gradients' );
 
-		let newSettings = {};
+		const initialSettings = {
+			...settings,
+			colors: savedColors,
+			disableCustomColors: savedColors.length === 0,
+			disableCustomGradients: savedGradients.length === 0,
+			gradients: savedGradients,
 
-		if ( ! colorPanelEnabled ) {
-			prevColorSettings.current = {
-				colors: settings.colors,
-				gradients: settings.gradients,
-
-				/* eslint-disable sort-keys */
-				__experimentalFeatures: settings?.__experimentalFeatures,
-				/* eslint-enable sort-keys */
-			};
-
-			newSettings = {
-				...newSettings,
-				colors: [],
-				disableCustomColors: true,
-				disableCustomGradients: true,
-				gradients: [],
-
-				/* eslint-disable sort-keys */
-				__experimentalFeatures: {
-					...settings?.__experimentalFeatures,
-					color: {
-						...settings?.__experimentalFeatures?.color,
-						palette: {
-							default: [],
-							theme: [],
-						},
-						gradients: {
-							default: [],
-							theme: [],
-						},
-					},
+			/* eslint-disable sort-keys */
+			__experimentalFeatures: {
+				...settings?.__experimentalFeatures,
+				color: {
+					...settings?.__experimentalFeatures?.color,
+					gradients: savedExperimentalGradients ? savedExperimentalGradients : { default: [], theme: [] },
+					palette: savedExperimentalPalette ? savedExperimentalPalette : { default: [], theme: [] },
 				},
-				/* eslint-enable sort-keys */
-			};
-		}
+			},
+			/* eslint-enable sort-keys */
+		};
 
-		if ( colorPanelEnabled && prevColorSettings.current?.colors ) {
-			newSettings = {
-				...newSettings,
-				colors: prevColorSettings.current.colors,
-				disableCustomColors: false,
-				disableCustomGradients: false,
-				gradients: prevColorSettings.current.gradients,
+		// setColorPanelEnabled( savedColors.length > 0 );
+		// setCustomColorsEnabled( savedColors.length > 0 );
+		// setGradientPresetsEnabled( savedGradients.length > 0 );
 
-				/* eslint-disable sort-keys */
-				__experimentalFeatures: {
-					...settings?.__experimentalFeatures,
-					color: {
-						...settings?.__experimentalFeatures?.color,
-						palette: {
-							...prevColorSettings.current.__experimentalFeatures.color.palette,
-						},
-						gradients: {
-							...prevColorSettings.current.__experimentalFeatures.color.gradients,
-						},
-					},
-				},
-				/* eslint-enable sort-keys */
-			};
-		}
+		console.log( 'initialSettings', initialSettings );
 
-		updateSettings( newSettings );
-	}, [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ] );
+		updateSettings( initialSettings );
+	}, [ updateSettings ] );
+
+	// useEffect( () => {
+	// 	// Skip if the settings have not loaded yet.
+	// 	const hasSettings = [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ].every( ( value ) => value !== undefined );
+	// 	if ( ! hasSettings || ! settings ) {
+	// 		return;
+	// 	}
+
+	// 	let newSettings = {};
+
+	// 	if ( prevColorSettings.current === null ) {
+	// 		console.log( 'MOUNT' );
+	// 		const savedColors = retrieveFromStorage( 'colors' );
+	// 		const savedGradients = retrieveFromStorage( 'gradients' );
+	// 		const savedExperimentalPalette = retrieveFromStorage( '__experimentalFeatures.color.palette' );
+	// 		const savedExperimentalGradients = retrieveFromStorage( '__experimentalFeatures.color.gradients' );
+
+	// 		prevColorSettings.current = {
+	// 			colors: savedColors,
+	// 			disableCustomColors: savedColors.length > 0,
+	// 			disableCustomGradients: savedGradients.length > 0,
+	// 			gradients: savedGradients,
+
+	// 			/* eslint-disable sort-keys */
+	// 			__experimentalFeatures: {
+	// 				...settings?.__experimentalFeatures,
+	// 				color: {
+	// 					...settings?.__experimentalFeatures?.color,
+	// 					gradients: savedExperimentalGradients ? savedExperimentalGradients : { default: [], theme: [] },
+	// 					palette: savedExperimentalPalette ? savedExperimentalPalette : { default: [], theme: [] },
+	// 				},
+	// 			},
+	// 			/* eslint-enable sort-keys */
+	// 		};
+
+	// 		newSettings = {
+	// 			...settings,
+	// 			colors: savedColors,
+	// 			disableCustomColors: savedColors.length === 0,
+	// 			disableCustomGradients: savedGradients.length === 0,
+	// 			gradients: savedGradients,
+
+	// 			__experimentalFeatures: {
+	// 				...settings?.__experimentalFeatures,
+	// 				color: {
+	// 					...settings?.__experimentalFeatures?.color,
+	// 					gradients: savedExperimentalGradients ? savedExperimentalGradients : { default: [], theme: [] },
+	// 					palette: savedExperimentalPalette ? savedExperimentalPalette : { default: [], theme: [] },
+	// 				},
+	// 			},
+
+	// 		};
+
+	// 		setColorPanelEnabled( savedColors.length > 0 );
+	// 		setCustomColorsEnabled( savedColors.length > 0 );
+	// 		setGradientPresetsEnabled( savedGradients.length > 0 );
+	// 	} else if ( ! colorPanelEnabled ) {
+	// 		console.log( 'DISABLE' );
+	// 		saveToStorage( 'colors', [] );
+	// 		saveToStorage( 'gradients', [] );
+	// 		saveToStorage( '__experimentalFeatures.color.palette', { default: [], theme: [] } );
+	// 		saveToStorage( '__experimentalFeatures.color.gradients', { default: [], theme: [] } );
+
+	// 		prevColorSettings.current = {
+	// 			colors: [],
+	// 			disableCustomColors: true,
+	// 			disableCustomGradients: true,
+	// 			gradients: [],
+
+	// 			/* eslint-disable sort-keys */
+	// 			__experimentalFeatures: {
+	// 				...settings?.__experimentalFeatures,
+	// 				color: {
+	// 					...settings?.__experimentalFeatures?.color,
+	// 					palette: {
+	// 						default: [],
+	// 						theme: [],
+	// 					},
+	// 					gradients: {
+	// 						default: [],
+	// 						theme: [],
+	// 					},
+	// 				},
+	// 			},
+	// 			/* eslint-enable sort-keys */
+	// 		};
+
+	// 		newSettings = {
+	// 			...newSettings,
+	// 			colors: [],
+	// 			disableCustomColors: true,
+	// 			disableCustomGradients: true,
+	// 			gradients: [],
+
+	// 			/* eslint-disable sort-keys */
+	// 			__experimentalFeatures: {
+	// 				...settings?.__experimentalFeatures,
+	// 				color: {
+	// 					...settings?.__experimentalFeatures?.color,
+	// 					palette: {
+	// 						default: [],
+	// 						theme: [],
+	// 					},
+	// 					gradients: {
+	// 						default: [],
+	// 						theme: [],
+	// 					},
+	// 				},
+	// 			},
+	// 			/* eslint-enable sort-keys */
+	// 		};
+	// 	} else if ( colorPanelEnabled && prevColorSettings.current?.colors ) {
+	// 		console.log( 'ENABLE' );
+	// 		saveToStorage( 'colors', prevColorSettings.current.colors );
+	// 		saveToStorage( 'gradients', prevColorSettings.current.gradients );
+	// 		saveToStorage( '__experimentalFeatures.color.palette', { ...prevColorSettings.current.__experimentalFeatures.color.palette } );
+	// 		saveToStorage( '__experimentalFeatures.color.gradients', { ...prevColorSettings.current.__experimentalFeatures.color.gradients } );
+
+	// 		newSettings = {
+	// 			...newSettings,
+	// 			colors: prevColorSettings.current.colors,
+	// 			disableCustomColors: false,
+	// 			disableCustomGradients: false,
+	// 			gradients: prevColorSettings.current.gradients,
+
+	// 			/* eslint-disable sort-keys */
+	// 			__experimentalFeatures: {
+	// 				...settings?.__experimentalFeatures,
+	// 				color: {
+	// 					...settings?.__experimentalFeatures?.color,
+	// 					palette: {
+	// 						...prevColorSettings.current.__experimentalFeatures.color.palette,
+	// 					},
+	// 					gradients: {
+	// 						...prevColorSettings.current.__experimentalFeatures.color.gradients,
+	// 					},
+	// 				},
+	// 			},
+	// 			/* eslint-enable sort-keys */
+	// 		};
+	// 	}
+
+	// 	// console.log( 'DIRECTLY BEFORE UPDATE SETTINGS', newSettings );
+
+	// 	updateSettings( newSettings );
+	// }, [ colorPanelEnabled, customColorsEnabled, gradientPresetsEnabled ] );
+
+	console.log( 'settings directly before render', settings.colors );
 
 	return (
 		<CoBlocksSettingsModalControl>
