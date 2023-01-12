@@ -159,6 +159,18 @@ class CoBlocks_Block_Assets {
 			array(),
 			$asset_file['version']
 		);
+
+		$name       = 'style-coblocks-extensions';
+		$filepath   = 'dist/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
+		$rtl        = ! is_rtl() ? '' : '-rtl';
+	
+		wp_enqueue_style(
+			'coblocks-extensions',
+			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			array(),
+			$asset_file['version']
+		);
 	}
 
 	/**

@@ -36,7 +36,7 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 		$this->block_attributes['name']      = $this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' )->textContent;
 		$this->block_attributes['biography'] = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-author__biography")]' )->textContent;
 
-		var_dump( $this->block_attributes );
+		// var_dump( $this->block_attributes );
 
 		return array_filter( $this->block_attributes );
 	}
