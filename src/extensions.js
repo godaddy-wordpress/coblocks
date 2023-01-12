@@ -22,3 +22,9 @@ import './extensions/layout-selector';
 
 // Formats
 import './formats';
+
+// Block Styles
+import './block-styles/core/paragraph';
+
+// Block Variations
+import './block-variations/core/paragraph';
