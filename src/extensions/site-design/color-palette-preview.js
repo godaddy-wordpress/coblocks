@@ -168,13 +168,13 @@ export function ColorPalettePreviewCustom( { previousPalette, onUpdateColors, on
 
 	return (
 		<div className="color-palette-custom components-site-design__custom">
-			<div className="color-palette-custom__title">Custom Colors</div>
+			<div className="color-palette-custom__title">{ __( 'Custom Colors', 'coblocks' ) }</div>
 
 			{ previousPalette && (
 				<button
 					className="components-site-design__custom__dismiss"
 					onClick={ onDismissCustom }>
-					<span>Dismiss custom color</span>
+					<span>{ __( 'Dismiss custom color', 'coblocks' ) }</span>
 				</button>
 			) }
 
@@ -186,7 +186,21 @@ export function ColorPalettePreviewCustom( { previousPalette, onUpdateColors, on
 						<ColorPicker
 							color={ getColorValue( currentColors, name, color ) }
 							disableAlpha
-							onChangeComplete={ ( newColor ) => onUpdateColors( { [ name ]: newColor.hex } ) }
+							onChangeComplete={ ( newColor ) => {
+								const backgroundElements = document.getElementsByClassName( `has-${ name }-background-color` );
+								if ( backgroundElements.length ) {
+									for ( let i = 0; i < backgroundElements.length; i++ ) {
+										backgroundElements[ i ].style.backgroundColor = newColor.hex;
+									}
+								}
+								const colorElements = document.getElementsByClassName( `has-${ name }-color` );
+								if ( colorElements.length ) {
+									for ( let i = 0; i < colorElements.length; i++ ) {
+										colorElements[ i ].style.color = newColor.hex;
+									}
+								}
+								onUpdateColors( { [ name ]: newColor.hex } );
+							} }
 						/>
 					}
 					renderToggle={ ( { isOpen, onToggle } ) =>
