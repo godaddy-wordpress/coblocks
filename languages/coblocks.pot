@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-01-13T15:45:25+00:00\n"
+"POT-Creation-Date: 2023-01-14T04:50:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: coblocks\n"
@@ -10284,6 +10284,14 @@ msgstr ""
 
 #: src/extensions/site-design/color-palette-preview.js:97
 msgid "Color Palettes"
+msgstr ""
+
+#: src/extensions/site-design/color-palette-preview.js:171
+msgid "Custom Colors"
+msgstr ""
+
+#: src/extensions/site-design/color-palette-preview.js:177
+msgid "Dismiss custom color"
 msgstr ""
 
 #: src/extensions/site-design/component.js:34
