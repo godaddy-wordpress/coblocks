@@ -52,7 +52,11 @@ class CoBlocks_Generated_Styles {
 	 * @access public
 	 */
 	public function enqueue_styles() {
-		wp_add_inline_style( 'coblocks-frontend', $this->styles() );
+		$styles = $this->styles();
+		if ( is_null( $styles ) ) {
+			return;
+		}
+		wp_add_inline_style( 'coblocks-frontend', $styles );
 	}
 
 	/**
