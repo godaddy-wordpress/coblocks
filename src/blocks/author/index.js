@@ -7,7 +7,7 @@ import metadata from './block.json';
  * WordPress dependencies
  */
 import { createBlock } from '@wordpress/blocks';
-import { dispatch } from '@wordpress/data';
+import { dispatch, select } from '@wordpress/data';
 
 /**
  * Block constants
@@ -18,15 +18,32 @@ const settings = {
 	edit: ( props ) => {
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
 		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
+		const isRTL = select( 'core/editor' ).getEditorSettings().isRTL;
 
-		const authorNameBlock = createBlock( 'core/paragraph', { content: props.attributes.name, fontSize: 'medium' } );
-		const authorBioBlock = createBlock( 'core/paragraph', { content: props.attributes.biography } );
+		const authorNameBlock = createBlock( 'core/heading', {
+			content: props.attributes.name,
+			level: 4,
+			// Font controls - default is fontSize and style is used for custom setting.
+			...( props.attributes.hasOwnProperty( 'fontSize' ) && { fontSize: props.attributes.fontSize } ),
+			...( props.attributes.hasOwnProperty( 'style' ) && { style: props.attributes.style } ),
+
+			// Headings do not inherit color from parent - we descend the style here for initial match.
+			...( props.attributes.hasOwnProperty( 'textColor' ) && { textColor: props.attributes.textColor } ),
+		} );
+
+		const authorBioBlock = createBlock( 'core/paragraph', {
+			content: props.attributes.biography,
+			// Font controls - default is fontSize and style is used for custom setting.
+			...( props.attributes.hasOwnProperty( 'fontSize' ) && { fontSize: props.attributes.fontSize } ),
+			...( props.attributes.hasOwnProperty( 'style' ) && { style: props.attributes.style } ),
+		} );
+
 		const buttonBlock = parentBlock.innerBlocks;
 		const imageBlock = createBlock( 'core/image', { className: 'is-style-rounded', id: props.attributes.imgId, url: props.attributes.imgUrl } );
 
-		// Set buttons to align left.
+		// Set buttons to align.
 		buttonBlock.forEach( function( button, index ) {
-			buttonBlock[ index ].attributes.align = 'left';
+			buttonBlock[ index ].attributes.align = isRTL ? 'right' : 'left';
 		} );
 
 		const leftColumn = createBlock( 'core/column', { width: '25%' }, [ imageBlock ] );
@@ -42,17 +59,35 @@ const settings = {
 					},
 				},
 			},
-			...( props.attributes.hasOwnProperty( 'style' ) && { style: props.attributes.style } ),
 		};
 
+		let animationProps = {};
+		if ( typeof props.attributes.animation !== 'undefined' ) {
+			animationProps = {
+				animation: props.attributes.animation,
+			};
+		}
+
+		let fontSizeProps = {};
+		if ( typeof props.attributes.fontSize !== 'undefined' ) {
+			fontSizeProps = {
+				fontSize: props.attributes.fontSize,
+			};
+		}
+
 		const columnsBlockProps = {
+			className: props.attributes?.className ?? '',
 			content: props.attributes.biography,
+			...animationProps,
 			...columnsStyleProps,
+			...fontSizeProps,
 			...( props.attributes.hasOwnProperty( 'textColor' ) && { textColor: props.attributes.textColor } ),
 			...( props.attributes.hasOwnProperty( 'backgroundColor' ) && { backgroundColor: props.attributes.backgroundColor } ),
 		};
 
-		const columnsBlock = createBlock( 'core/columns', columnsBlockProps, [ leftColumn, rightColumn ] );
+		const columnsBlock = createBlock( 'core/columns', columnsBlockProps, [
+			...( isRTL ? [ leftColumn, rightColumn ] : [ rightColumn, leftColumn ] ),
+		] );
 
 		replaceBlocks(
 			[ props.clientId ],

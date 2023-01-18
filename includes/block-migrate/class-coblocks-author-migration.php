@@ -26,30 +26,38 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		if ( array_key_exists( 'imgId', $this->block_attributes ) ) {
-			$image_src = wp_get_attachment_image_src( $this->block_attributes['imgId'] );
-			if ( false !== $image_src ) {
-				$this->block_attributes['imgUrl'] = $image_src[0];
-			}
-		}
-
 		$name_inner_html = '';
 		$name_children   = $this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' )->childNodes;
 		foreach ( $name_children as $child ) {
-			$name_inner_html .= $child->ownerDocument->saveXML( $child );
+			$name_inner_html .= $child->ownerDocument->saveHTML( $child );
 		}
 
 		$bio_inner_html = '';
 		$bio_children   = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-author__biography")]' )->childNodes;
 		foreach ( $bio_children as $child ) {
-			$bio_inner_html .= $child->ownerDocument->saveXML( $child );
+			$bio_inner_html .= $child->ownerDocument->saveHTML( $child );
 		}
 
-		$this->block_attributes['name']      = $name_inner_html;
-		$this->block_attributes['biography'] = $bio_inner_html;
+		
+		$result = array(
+			'name' => $name_inner_html,
+			'biography' => $bio_inner_html,
+		);
+		
+		if ( array_key_exists( 'imgId', $this->block_attributes ) ) {
+			$image_src = wp_get_attachment_image_src( $this->block_attributes['imgId'] );
+			if ( false !== $image_src ) {
+				$result = array_merge(
+					$result,
+					array('imgUrl' => $image_src[0]),
+				);
+			}
+		}
 
-		// var_dump( $this->block_attributes['className'] );
+		var_dump( $result );
 
-		return array_filter( $this->block_attributes );
+		return array_merge( $this->block_attributes, $result );
+		
+		return array_merge( $this->block_attributes, $result );
 	}
 }

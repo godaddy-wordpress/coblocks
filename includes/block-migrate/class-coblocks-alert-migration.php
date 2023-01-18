@@ -26,18 +26,20 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
+		var_dump($this->block_attributes['textAlign']);
+
 		$alert_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-alert")]' );
 
 		$title_inner_html = '';
 		$title_children   = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' )->childNodes;
 		foreach ( $title_children as $child ) {
-			$title_inner_html .= $child->ownerDocument->saveXML( $child );
+			$title_inner_html .= $child->ownerDocument->saveHTML( $child );
 		}
 
 		$title_inner_html = '';
 		$text_children    = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->childNodes;
 		foreach ( $text_children as $child ) {
-			$title_inner_html .= $child->ownerDocument->saveXML( $child );
+			$title_inner_html .= $child->ownerDocument->saveHTML( $child );
 		}
 
 		$result = array(
@@ -51,7 +53,7 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 				)
 			),
 		);
-
+		var_dump($this->block_attributes['textAlign']);
 		if ( isset( $this->block_attributes['textAlign'] ) ) {
 			$result              = array_merge(
 				$result,
