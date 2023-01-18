@@ -16,8 +16,12 @@ const { name } = metadata;
 
 const settings = {
 	edit: ( props ) => {
+		const parentBlock = select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
+		if ( ! parentBlock ) {
+			return null;
+		}
+
 		const { replaceBlocks } = dispatch( 'core/block-editor' );
-		const parentBlock = wp.data.select( 'core/editor' ).getBlocksByClientId( props.clientId )[ 0 ];
 		const isRTL = select( 'core/editor' ).getEditorSettings().isRTL;
 
 		const authorNameBlock = createBlock( 'core/heading', {
@@ -75,7 +79,7 @@ const settings = {
 			};
 		}
 
-		const columnsBlockProps = {
+		let columnsBlockProps = {
 			className: props.attributes?.className ?? '',
 			content: props.attributes.biography,
 			...animationProps,
@@ -85,9 +89,21 @@ const settings = {
 			...( props.attributes.hasOwnProperty( 'backgroundColor' ) && { backgroundColor: props.attributes.backgroundColor } ),
 		};
 
-		const columnsBlock = createBlock( 'core/columns', columnsBlockProps, [
-			...( isRTL ? [ leftColumn, rightColumn ] : [ rightColumn, leftColumn ] ),
-		] );
+		// Does not have background color set. Use default block color from CoBlocks.
+		if ( ! props.attributes.hasOwnProperty( 'backgroundColor' ) ) {
+			// $dark-opacity-light-200 computed #8C8C971A - no variable access in root.
+			columnsBlockProps = {
+				...columnsBlockProps,
+				style: {
+					...columnsBlockProps?.style,
+					color: {
+						background: '#8C8C971A',
+					},
+				},
+			};
+		}
+
+		const columnsBlock = createBlock( 'core/columns', columnsBlockProps, [ leftColumn, rightColumn ] );
 
 		replaceBlocks(
 			[ props.clientId ],
