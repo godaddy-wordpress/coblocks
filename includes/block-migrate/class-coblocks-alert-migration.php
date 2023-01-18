@@ -28,20 +28,44 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	protected function migrate_attributes() {
 		$alert_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-alert")]' );
 
+		$title_inner_html = '';
+		$title_children   = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' )->childNodes;
+		foreach ( $title_children as $child ) {
+			$title_inner_html .= $child->ownerDocument->saveXML( $child );
+		}
+
+		$title_inner_html = '';
+		$text_children    = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->childNodes;
+		foreach ( $text_children as $child ) {
+			$title_inner_html .= $child->ownerDocument->saveXML( $child );
+		}
+
 		$result = array(
 			'content' => implode(
 				'<br />',
 				array_filter(
 					array(
-						$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' )->textContent,
-						$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->textContent,
+						$title_inner_html,
+						$title_inner_html,
 					)
 				)
 			),
 		);
 
+		if ( isset( $this->block_attributes['textAlign'] ) ) {
+			$result              = array_merge(
+				$result,
+				array_filter(
+					array(
+						'align' => $this->block_attributes['textAlign'],
+					)
+				),
+			);
+			$result['className'] = $this->add_to_class( 'has-text-align-' . $this->block_attributes['textAlign'], $result );
+		}
+
 		if ( ! $this->get_attribute_from_classname( 'is-style-', $alert_wrapper ) ) {
-			$result['className'] = 'is-style-info';
+			$result['className'] = $this->add_to_class( 'is-style-info', $result );
 		}
 
 		$result = $this->get_alert_colors( $this->block_attributes, $result );
@@ -67,5 +91,18 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Add className onto alert block. This will append onto the existing className if defined.
+	 *
+	 * @param  string $class_to_add Class to add.
+	 * @param  array  $result       Paragraph block attributes.
+	 *
+	 * @return array New combined classes.
+	 */
+	private function add_to_class( $class_to_add, $result ) {
+		$new_class = isset( $result['className'] ) ? "{$result['className']} {$class_to_add}" : $class_to_add;
+		return $new_class;
 	}
 }

@@ -43,7 +43,6 @@ add_action(
 			array(
 				CoBlocks_Alert_Migration::class,
 				CoBlocks_Author_Migration::class,
-				CoBlocks_Posts_Migration::class,
 			)
 		);
 

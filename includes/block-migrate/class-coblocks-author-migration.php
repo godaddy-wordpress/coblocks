@@ -33,10 +33,22 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 			}
 		}
 
-		$this->block_attributes['name']      = $this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' )->textContent;
-		$this->block_attributes['biography'] = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-author__biography")]' )->textContent;
+		$name_inner_html = '';
+		$name_children   = $this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' )->childNodes;
+		foreach ( $name_children as $child ) {
+			$name_inner_html .= $child->ownerDocument->saveXML( $child );
+		}
 
-		// var_dump( $this->block_attributes );
+		$bio_inner_html = '';
+		$bio_children   = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-author__biography")]' )->childNodes;
+		foreach ( $bio_children as $child ) {
+			$bio_inner_html .= $child->ownerDocument->saveXML( $child );
+		}
+
+		$this->block_attributes['name']      = $name_inner_html;
+		$this->block_attributes['biography'] = $bio_inner_html;
+
+		// var_dump( $this->block_attributes['className'] );
 
 		return array_filter( $this->block_attributes );
 	}
