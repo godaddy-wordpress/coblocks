@@ -113,8 +113,8 @@ const settings = {
 			buttonBlock[ index ].attributes.align = isRTL ? 'right' : 'left';
 		} );
 
-		const leftColumn = createBlock( 'core/column', { width: '25%' }, [ imageBlock ] );
-		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock(), authorBioBlock(), ...buttonBlock ] );
+		const leftColumn = createBlock( 'core/column', { verticalAlignment: 'center', width: '25%' }, [ imageBlock ] );
+		const rightColumn = createBlock( 'core/column', { verticalAlignment: 'center', width: '75%' }, [ authorNameBlock(), authorBioBlock(), ...buttonBlock ] );
 
 		const columnsBlock = () => {
 			let columnsBlockProps = {
@@ -131,6 +131,18 @@ const settings = {
 					},
 				},
 			};
+
+			// 			<!-- wp:columns {"verticalAlignment":null,"style":{"spacing":{"padding":{"bottom":"2.5rem","left":"2.5rem","right":"2.5rem","top":"2.5rem"}},"color":{"background":"#8C8C971A"}}} -->
+			// <div class="wp-block-columns has-background" style="background-color:#8C8C971A;padding-top:2.5rem;padding-right:2.5rem;padding-bottom:2.5rem;padding-left:2.5rem"><!-- wp:column {"verticalAlignment":"center","width":"25%"} -->
+			// <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:25%"><!-- wp:image {"id":54,"className":"is-style-rounded"} -->
+			// <figure class="wp-block-image is-style-rounded"><img src="http://localhost:8888/wp-content/uploads/2023/01/vneck-tee-2-150x150.jpg" alt="" class="wp-image-54"/></figure>
+			// <!-- /wp:image --></div>
+			// <!-- /wp:column -->
+
+			// <!-- wp:column {"verticalAlignment":"center","width":"75%"} -->
+			// <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:75%"><!-- wp:heading {"level":4} -->
+			// <h4>Autho<sup>r name</sup></h4>
+			// <!-- /wp:heading -->
 
 			// Headings do not inherit color from parent - we descend the style here for initial match.
 			if ( hasCustomTextColor ) {
@@ -164,9 +176,9 @@ const settings = {
 				};
 			}
 
+			// Does not have background color set. Use default block color from CoBlocks.
 			const hasNoBackgroundColorSet = ! props.attributes.hasOwnProperty( 'backgroundColor' ) &&
 				! props.attributes?.style?.color?.hasOwnProperty( 'background' );
-			// Does not have background color set. Use default block color from CoBlocks.
 			if ( hasNoBackgroundColorSet ) {
 				// $dark-opacity-light-200 computed #8C8C971A - no variable access in root.
 				columnsBlockProps = { ...columnsBlockProps,
