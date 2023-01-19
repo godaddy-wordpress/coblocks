@@ -1,4 +1,7 @@
 .wp-block-coblocks-reviews {
+	.components-placeholder {
+		min-height: 0;
+	}
 
 	.search_button {
 		padding-top: 16px;
@@ -9,28 +12,38 @@
 		margin-left: 24px;
 	}
 
-	.components-business-selector__container {
-		padding: 16px;
-	}
-
-	.components-business-selector__business_item {
+	.search-result {
+		border-bottom: 1px solid #ddd;
 		column-gap: 16px;
 		display: flex;
 		flex-direction: row;
+		padding: 2em 0 1.5em;
+		width: 100%;
 
-		padding: 16px;
+		&:first-of-type {
+			padding-top: 1em;
+		}
 
-		.information_box {
+		&:last-of-type {
+			border-bottom: 0;
+			padding-bottom: 0.5em;
+		}
 
-			.business_title {
+		&__infos {
+			flex-grow: 1;
+
+			&__title {
+				font-size: 1.1rem;
 				font-weight: 700;
 				margin: 0;
+				padding-top: 0.32em;
 			}
 
-			.business_location {
-				margin: 0;
+			&__location {
+				font-size: 1rem;
+				line-height: 1.5;
+				margin: 0 0 0.5em;
 			}
-
 		}
 	}
 
@@ -64,7 +77,6 @@
 					height: 128px;
 					max-width: 128px;
 				}
-
 			}
 
 			.content {

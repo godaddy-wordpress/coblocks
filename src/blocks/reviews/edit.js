@@ -314,35 +314,28 @@ const SelectBusiness = ( props ) => {
 			isColumnLayout={ true }
 			label={ __( 'Find your business on Yelp', 'coblocks' ) }
 		>
-			<p>{ isFetchingBusinesses ? 'Loading' : businessSearchResults.length } result{ businessSearchResults.length !== 1 && 's' } for <span style={ { fontWeight: 600 } }>{ businessName }, { businessLocation }</span> <Button className="edit_search_button" onClick={ transitionStepBack }>Edit Search</Button></p>
+			<p className="mt-0">{ isFetchingBusinesses ? 'Loading' : businessSearchResults.length } result{ businessSearchResults.length !== 1 && 's' } for <span style={ { fontWeight: 600 } }>{ businessName }, { businessLocation }</span> <Button className="edit_search_button" onClick={ transitionStepBack }>Edit Search</Button></p>
 
 			{ isFetchingBusinesses && <Spinner /> }
 
 			{ businessSearchResults.length > 0 &&
-			<div className="components-business-selector__container">
+			<div className="search-results">
 				{ businessSearchResults.map( ( biz, index ) => (
-					<div key={ index }>
-
-						<div className="components-business-selector__business_item">
-							<div className="thumbnail_image">
-								<img alt="business thumbnail" height={ 32 } src={ biz.thumbnail.key } />
-							</div>
-							<div className="information_box">
-								<p className="business_title">{ biz.title }</p>
-								<p className="business_location">{ biz.subtitle }</p>
-								<Button isSecondary onClick={ () => {
-									selectBusiness( extractBizIdFromURL( biz.redirect_url ) );
-								} }>Select</Button>
-
-								<hr />
-							</div>
-
+					<div key={ index } className="search-result">
+						<div className="thumbnail_image">
+							<img alt="business thumbnail" height={ 32 } src={ biz.thumbnail.key } />
+						</div>
+						<div className="search-result__infos">
+							<h3 className="search-result__infos__title">{ biz.title }</h3>
+							<p className="search-result__infos__location">{ biz.subtitle }</p>
+							<Button isSecondary onClick={ () => {
+								selectBusiness( extractBizIdFromURL( biz.redirect_url ) );
+							} }>Select</Button>
 						</div>
 					</div>
 				) ) }
 			</div>
 			}
-
 		</Placeholder>
 	);
 };
