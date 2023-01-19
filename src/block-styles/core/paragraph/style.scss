@@ -9,6 +9,12 @@ p {
 		border-radius: 4px;
 		box-sizing: border-box;
 		padding: $grid-unit-40;
+
+		// Nested for high-specificity override of core styles.
+		&.coblocks-alert-paragraph {
+			margin-bottom: var(--go--spacing--vertical);
+			margin-top: var(--go--spacing--vertical);
+		}
 	}
 
 	&:not(.has-background) {

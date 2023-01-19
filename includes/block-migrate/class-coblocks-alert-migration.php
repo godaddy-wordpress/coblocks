@@ -35,11 +35,11 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 			$title_inner_html .= $child->ownerDocument->saveHTML( $child );
 		}
 
-		$title_inner_html = '';
-		$text_children    = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->childNodes;
+		$text_inner_html = '';
+		$text_children   = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->childNodes;
 		foreach ( $text_children as $child ) {
 			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-			$title_inner_html .= $child->ownerDocument->saveHTML( $child );
+			$text_inner_html .= $child->ownerDocument->saveHTML( $child );
 		}
 
 		$result = array(
@@ -48,11 +48,19 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 				array_filter(
 					array(
 						$title_inner_html,
-						$title_inner_html,
+						$text_inner_html,
 					)
 				)
 			),
 		);
+
+		// Descend existing className.
+		if ( isset( $this->block_attributes['className'] ) ) {
+			$result = array_merge(
+				$result,
+				array( 'className' => $this->block_attributes['className'] ),
+			);
+		}
 
 		if ( isset( $this->block_attributes['textAlign'] ) ) {
 			$result              = array_merge(
@@ -70,7 +78,9 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 			$result['className'] = $this->add_to_class( 'is-style-info', $result );
 		}
 
-		$result = $this->get_alert_colors( $this->block_attributes, $result );
+		// We target this class for high-specificity styles i.e. margin.
+		$result              = $this->get_alert_colors( $this->block_attributes, $result );
+		$result['className'] = $this->add_to_class( 'coblocks-alert-paragraph', $result );
 
 		return array_merge( $this->block_attributes, $result );
 	}
@@ -96,7 +106,7 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	}
 
 	/**
-	 * Add className onto alert block. This will append onto the existing className if defined.
+	 * Append class strings with a space separation.
 	 *
 	 * @param  string $class_to_add Class to add.
 	 * @param  array  $result       Block attributes.
@@ -104,7 +114,11 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	 * @return array New combined classes.
 	 */
 	private function add_to_class( $class_to_add, $result ) {
-		$new_class = isset( $result['className'] ) ? "{$result['className']} {$class_to_add}" : $class_to_add;
-		return $new_class;
+		if ( array_key_exists( 'className', $result ) ) {
+			$existing_class         = $result['className'];
+			return $existing_class .= " {$class_to_add}";
+		} else {
+			return $class_to_add;
+		}
 	}
 }
