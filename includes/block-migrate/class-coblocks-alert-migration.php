@@ -99,7 +99,7 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	 * Add className onto alert block. This will append onto the existing className if defined.
 	 *
 	 * @param  string $class_to_add Class to add.
-	 * @param  array  $result       Paragraph block attributes.
+	 * @param  array  $result       Block attributes.
 	 *
 	 * @return array New combined classes.
 	 */
