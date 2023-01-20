@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-01-19T17:30:08+00:00\n"
+"POT-Creation-Date: 2023-01-20T17:01:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: coblocks\n"
@@ -867,10 +867,8 @@ msgid "Seconds until counter completes"
 msgstr ""
 
 #. translators: block name
-#. translators: icon label
 #: src/blocks/dynamic-separator/index.js:28
-#: src/blocks/icon/svgs-generated.js:898
-msgid "Dynamic HR"
+msgid "Dynamic Separator"
 msgstr ""
 
 #. translators: block description
@@ -910,7 +908,7 @@ msgstr ""
 
 #. translators: hr is html markup (horizonal rule)
 #: src/blocks/dynamic-separator/inspector.js:35
-msgid "Dynamic HR settings"
+msgid "Dynamic Separator settings"
 msgstr ""
 
 #: src/blocks/dynamic-separator/inspector.js:36
@@ -7280,6 +7278,11 @@ msgstr ""
 msgid "paper"
 msgstr ""
 
+#. translators: icon label
+#: src/blocks/icon/svgs-generated.js:898
+msgid "Dynamic HR"
+msgstr ""
+
 #. translators: icon keyword
 #: src/blocks/icon/svgs-generated.js:901
 msgid "cursor"
@@ -10461,7 +10464,7 @@ msgstr ""
 
 #: src/blocks/dynamic-separator/block.json
 msgctxt "block title"
-msgid "Dynamic HR"
+msgid "Dynamic Separator"
 msgstr ""
 
 #: src/blocks/dynamic-separator/block.json
