@@ -104,21 +104,4 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 
 		return $result;
 	}
-
-	/**
-	 * Append class strings with a space separation.
-	 *
-	 * @param  string $class_to_add Class to add.
-	 * @param  array  $result       Block attributes.
-	 *
-	 * @return array New combined classes.
-	 */
-	private function add_to_class( $class_to_add, $result ) {
-		if ( array_key_exists( 'className', $result ) ) {
-			$existing_class         = $result['className'];
-			return $existing_class .= " {$class_to_add}";
-		} else {
-			return $class_to_add;
-		}
-	}
 }

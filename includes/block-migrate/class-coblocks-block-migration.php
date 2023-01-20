@@ -194,4 +194,21 @@ abstract class CoBlocks_Block_Migration {
 	protected function query_selector( $expression, DOMNode $context_node = null ) {
 		return $this->query_selector_all( $expression, $context_node )->item( 0 );
 	}
+
+	/**
+	 * Append class strings with a space separation.
+	 *
+	 * @param  string $class_to_add Class to add.
+	 * @param  array  $attributes       Block attributes.
+	 *
+	 * @return array New combined classes.
+	 */
+	protected function add_to_class( $class_to_add, $attributes ) {
+		if ( array_key_exists( 'className', $attributes ) ) {
+			$existing_class         = $attributes['className'];
+			return $existing_class .= " {$class_to_add}";
+		} else {
+			return $class_to_add;
+		}
+	}
 }

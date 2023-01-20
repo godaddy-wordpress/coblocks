@@ -192,17 +192,6 @@ const settings = {
 	save: () => null,
 	/* translators: block name */
 	title: metadata.title,
-	transforms: {
-		to: [
-			{
-				blocks: [ 'core/author' ],
-				transform: ( attributes ) => {
-					return createBlock( 'core/author', attributes );
-				},
-				type: 'block',
-			},
-		],
-	},
 };
 
 export { name, metadata, settings };

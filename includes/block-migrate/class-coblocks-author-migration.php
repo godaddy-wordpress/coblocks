@@ -45,6 +45,15 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 			'biography' => $bio_inner_html,
 		);
 
+		// Descend existing className.
+		if ( isset( $this->block_attributes['className'] ) ) {
+			$result = array_merge(
+				$result,
+				array( 'className' => $this->block_attributes['className'] ),
+			);
+		}
+
+		// Get imgUrl which typically exists in post-content.
 		if ( array_key_exists( 'imgId', $this->block_attributes ) ) {
 			$image_src = wp_get_attachment_image_src( $this->block_attributes['imgId'] );
 			if ( false !== $image_src ) {
@@ -54,6 +63,8 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 				);
 			}
 		}
+
+		$result['className'] = $this->add_to_class( 'coblocks-author-columns', $result );
 
 		return array_merge( $this->block_attributes, $result );
 	}
