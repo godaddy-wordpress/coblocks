@@ -16,7 +16,6 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-block-
  */
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-alert-migration.php';
 require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-author-migration.php';
-require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-posts-migration.php';
 
 /**
  * Hook into the post object before it's returned to the editor.
