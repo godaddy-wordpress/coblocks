@@ -101,7 +101,7 @@ describe( 'Test CoBlocks Dynamic Separator Block', function() {
 	it( 'Test dynamic separator height increase.', function() {
 		helpers.addBlockToPost( 'coblocks/dynamic-separator', true );
 
-		helpers.openSettingsPanel( 'Dynamic HR settings' );
+		helpers.openSettingsPanel( 'Dynamic Separator settings' );
 		cy.get( '.components-panel__body.is-opened input[type="number"]' )
 			.clear()
 			.type( 200 );
