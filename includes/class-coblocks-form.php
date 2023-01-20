@@ -226,7 +226,7 @@ class CoBlocks_Form {
 
 			<form action="<?php echo esc_url( sprintf( '%1$s#%2$s', set_url_scheme( get_the_permalink() ), $this->form_hash ) ); ?>" method="post">
 				<?php echo do_blocks( $content ); ?>
-				<input class="coblocks-field verify" aria-label="<?php esc_attr_e( 'Email Verify', 'coblocks' ); ?>" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
+				<input class="coblocks-field verify" aria-label="<?php esc_attr_e( 'Enter your email address to verify', 'coblocks' ); ?>" type="email" name="coblocks-verify-email" autocomplete="off" placeholder="<?php esc_attr_e( 'Email', 'coblocks' ); ?>" tabindex="-1">
 				<input type="hidden" name="form-hash" value="<?php echo esc_attr( $this->form_hash ); ?>">
 
 				<?php

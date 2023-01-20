@@ -1,3 +1,19 @@
+2.25.5 / 2022-12-20
+===================
+### Bug fixes
+* Fix form button colors and resolve color bleed [#2461](https://github.com/godaddy-wordpress/coblocks/pull/2461)
+
+2.25.4 / 2022-12-16
+===================
+### Enhancements
+* Improve Form block a11y text [a0b764a3](https://github.com/godaddy-wordpress/coblocks/commit/a0b764a35ed2b9b0cafc48df808383523cc16d58)
+
+### Bug fixes
+* Fix Form block button style issue [#2449](https://github.com/godaddy-wordpress/coblocks/pull/2449)
+
+### Misc
+* Update dependencies [#2453](https://github.com/godaddy-wordpress/coblocks/pull/2453), [#2455](https://github.com/godaddy-wordpress/coblocks/pull/2455) and [#2459](https://github.com/godaddy-wordpress/coblocks/pull/2459)
+* Fix Github auth in CircleCI [#2456](https://github.com/godaddy-wordpress/coblocks/pull/2456)
 
 2.25.3 / 2022-12-05
 ===================

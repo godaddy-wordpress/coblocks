@@ -13,7 +13,7 @@
 			"type": "string"
 		}
 	},
-	"title": "Dynamic HR",
+	"title": "Dynamic Separator",
 	"textdomain": "coblocks",
 	"editorScript": "blocks-2",
 	"description": "Add a resizable spacer between other blocks."
