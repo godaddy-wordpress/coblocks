@@ -24,26 +24,18 @@ const config = {
 			},
 		},
 
-		{
-			name: 'webkit',
-			use: {
-				...devices[ 'Desktop Safari' ],
-			},
-		},
-
-		/* Test against mobile viewports. */
-		{
-			name: 'Mobile Chrome',
-			use: {
-				...devices[ 'Pixel 5' ],
-			},
-		},
-		{
-			name: 'Mobile Safari',
-			use: {
-				...devices[ 'iPhone 12' ],
-			},
-		},
+		/**
+		 * WordPress version 6.1+ throws and error with the version of Webkit
+		 * that Playwright currently utilizes. Likely this will be resolved when
+		 * Gutenberg finishes migrating to Playwright, and then we can use the
+		 * wordpress/e2e-test-utils-playwright package from Core.
+		 */
+		// {
+		// 	name: 'webkit',
+		// 	use: {
+		// 		...devices[ 'Desktop Safari' ],
+		// 	},
+		// },
 	],
 
 	reporter: process.env.CI ? 'dot' : [ [ 'html', { open: 'never' } ] ],
