@@ -32,7 +32,7 @@ const Inspector = ( props ) => {
 			<InspectorControls>
 				<PanelBody
 					/* translators: hr is html markup (horizonal rule) */
-					title={ __( 'Dynamic HR settings', 'coblocks' ) }>
+					title={ __( 'Dynamic Separator settings', 'coblocks' ) }>
 					<BaseControl id={ `height-control-${ clientId }` } label={ __( 'Height in pixels', 'coblocks' ) }>
 						<input
 							type="number"
