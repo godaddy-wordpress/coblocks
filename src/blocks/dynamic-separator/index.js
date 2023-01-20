@@ -25,7 +25,7 @@ const { name, category, attributes } = metadata;
 
 const settings = {
 	/* translators: block name */
-	title: __( 'Dynamic HR', 'coblocks' ),
+	title: __( 'Dynamic Separator', 'coblocks' ),
 	/* translators: block description */
 	description: __( 'Add a resizable spacer between other blocks.', 'coblocks' ),
 	icon: <Icon icon={ icon } />,

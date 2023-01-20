@@ -135,11 +135,34 @@ export const updateDesignStyle = ( designStyle ) => ( {
 } );
 
 export function* updateColorPalette( colorPalette ) {
-	if ( colorPalette !== 'custom' ) {
-		const designStyleObj = yield select( STORE_KEY, 'getDesignStyleObj' );
-		const defaultColors = Object.fromEntries( designStyleObj.palettes )[ colorPalette ];
+	const designStyleObj = yield select( STORE_KEY, 'getDesignStyleObj' );
+	const defaultColors = Object.fromEntries( designStyleObj.palettes )[ colorPalette ];
 
+	if ( colorPalette !== 'custom' ) {
 		yield updateCustomColors( defaultColors );
+	}
+
+	if ( null === defaultColors || undefined === defaultColors || ! Object.entries( defaultColors ).length ) {
+		return {
+			newState: { colorPalette },
+			type: UPDATE_COLOR_PALETTE,
+		};
+	}
+
+	for ( const [ key, value ] of Object.entries( defaultColors ) ) {
+		const backgroundElements = document.getElementsByClassName( `has-${ key }-background-color` );
+		if ( backgroundElements.length ) {
+			for ( let i = 0; i < backgroundElements.length; i++ ) {
+				backgroundElements[ i ].style.backgroundColor = value;
+			}
+		}
+
+		const colorElements = document.getElementsByClassName( `has-${ key }-color` );
+		if ( colorElements.length ) {
+			for ( let i = 0; i < colorElements.length; i++ ) {
+				colorElements[ i ].style.color = value;
+			}
+		}
 	}
 
 	return {
