@@ -1,6 +1,5 @@
 {
 	"name": "coblocks/posts",
-	"apiVersion": 2,
 	"category": "layout",
 	"attributes": {
 		"className": {
