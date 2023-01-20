@@ -49,7 +49,7 @@ const config = {
 	reporter: process.env.CI ? 'dot' : [ [ 'html', { open: 'never' } ] ],
 	retries: process.env.CI ? 2 : 0,
 	testDir: './src',
-	testMatch: '**/src/**/**/*.playwright.spec.js',
+	testMatch: '**/src/**/**/*.playwright.js',
 	timeout: 30 * 1000,
 	use: {
 		actionTimeout: 0,
