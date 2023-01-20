@@ -29,4 +29,5 @@ cypress.env.json
 /test-results/
 /playwright-report/
 /playwright/.cache/
+.dev/tests/playwright/videos/
 .dev/tests/playwright/storage-state.json
