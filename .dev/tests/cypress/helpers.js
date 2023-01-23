@@ -228,10 +228,6 @@ export function clearBlocks() {
 		safeWin.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
 			safeWin.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
 		);
-
-		if ( safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
-			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
-		}
 	} );
 }
 
