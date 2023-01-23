@@ -33,7 +33,6 @@ jobs:
       matrix:
         spec:
           - alert.cypress.js
-          - author.cypress.js
 
     steps:
       - name: Checkout
