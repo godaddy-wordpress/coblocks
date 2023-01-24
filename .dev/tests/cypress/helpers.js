@@ -35,7 +35,7 @@ export function addFormChild( name ) {
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	return goTo( '/wp-admin/post-new.php?post_type=post' )
+	return goTo( '/wp-admin/post-new.php?post_type=post', true )
 		.then( ( window ) => {
 			if ( window.location.pathname === '/wp-login.php' ) {
 			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
@@ -53,11 +53,14 @@ export function loginToSite() {
 /**
  * Go to a specific URI.
  *
- * @param {string} path The URI path to go to.
+ * @param {string}  path  The URI path to go to.
+ * @param {boolean} login If this is a login page.
  */
-export function goTo( path = '/wp-admin' ) {
+export function goTo( path = '/wp-admin', login = false ) {
 	return cy.visit( Cypress.env( 'testURL' ) + path ).then( () => {
-		return getWindowObject();
+		return login ? cy.window().then( ( win ) => {
+			return win;
+		} ) : getWindowObject();
 	} );
 }
 
