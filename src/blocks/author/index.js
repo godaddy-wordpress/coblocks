@@ -132,7 +132,7 @@ const settings = {
 				},
 			};
 
-			// Headings do not inherit color from parent - we descend the style here for initial match.
+			// Migrate text colors into columns block props.
 			if ( hasCustomTextColor ) {
 				columnsBlockProps = { ...columnsBlockProps,
 					style: { ...columnsBlockProps?.style,
@@ -148,7 +148,7 @@ const settings = {
 				};
 			}
 
-			// Headings do not inherit color from parent - we descend the style here for initial match.
+			// Migrate background colors into columns block props.
 			if ( hasCustomBackgroundColor ) {
 				columnsBlockProps = { ...columnsBlockProps,
 					style: { ...columnsBlockProps?.style,
