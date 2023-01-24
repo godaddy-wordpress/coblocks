@@ -47,6 +47,24 @@ add_action(
 
 		$parsed_blocks = array_map( array( $migration_runner, 'migrate_block' ), $parsed_blocks );
 
+		// var_dump($parsed_blocks);
+		// function recursive_print_array($data, $level = 0){
+		// 	foreach($data as $key=>$value){
+		// 		if(is_array($value)){
+		// 			recursive_print_array($value, $level+1);
+		// 		}else{
+		// 			echo str_repeat("\t", $level).$key.": ".$value."\n";
+		// 		}
+		// 	}
+		// }
+		// echo "<textarea>";
+
+		// recursive_print_array($parsed_blocks);
+		// echo "</textarea>";
+
+
+
+		// echo print_r($parsed_blocks, true);
 		// re-serialize the blocks so WordPress can continue processing as usual.
 		$post->post_content = serialize_blocks( $parsed_blocks );
 	}
