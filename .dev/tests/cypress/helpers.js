@@ -67,7 +67,7 @@ export function goTo( path = '/wp-admin' ) {
  */
 export function getWindowObject() {
 	const editorUrlStrings = [ 'post-new.php', 'action=edit' ];
-	return cy.window().then( ( win ) => {
+	return cy.window().its( 'wp.data' ).should( 'exist' ).then( ( win ) => {
 		const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
 
 		if ( isEditorPage.length === 0 ) {
@@ -86,7 +86,7 @@ export function getWindowObject() {
  * Disable Gutenberg Tips
  */
 export function disableGutenbergFeatures() {
-	return cy.window().its( 'wp.data' ).should( 'exist' ).then( ( safeWin ) => {
+	return getWindowObject().then( ( safeWin ) => {
 		// Enable "Top Toolbar"
 		if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
 			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
@@ -94,6 +94,7 @@ export function disableGutenbergFeatures() {
 
 		if ( safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
 			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+		} else {
 		}
 
 		safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
