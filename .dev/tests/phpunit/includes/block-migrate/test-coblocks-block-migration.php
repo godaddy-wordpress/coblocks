@@ -60,9 +60,6 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 		);
 		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
 
-		// var_dump( $block_wrapper->invoke( $this->instance ) );
-		// exit;
-
 		$this->assertIsArray( $block_wrapper->invoke( $this->instance ) );
 		$this->assertEmpty( $block_wrapper->invoke( $this->instance ) );
 	}
@@ -126,7 +123,7 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 		$parsed_block = parse_blocks(
 			<<<BLOCKHTML
 			<!-- wp:coblocks/test-block -->
-			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+			<div data-data="sample" class="wp-block-coblocks-test-block this-feature-this-value has-feature">
 			</div>
 			<!-- /wp:coblocks/test-block -->
 			BLOCKHTML
@@ -144,6 +141,11 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 			'wp-block-coblocks-test-block this-feature-this-value has-feature',
 			$get_element_attribute->invokeArgs( $this->instance, array( $block_wrapper->invoke( $this->instance ), 'class' ) )
 		);
+
+		$this->assertEquals(
+			'sample',
+			$get_element_attribute->invokeArgs( $this->instance, array( $block_wrapper->invoke( $this->instance ), 'data-data' ) )
+		);
 	}
 
 	public function test_get_element_attribute_text_content() {
@@ -151,7 +153,7 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 			<<<BLOCKHTML
 			<!-- wp:coblocks/test-block {"attribute-one":"value-one","attribute-two":"value-one"} -->
 			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
-				<div class="child-element"></div>
+				<div class="child-element specific-content"><i>Italics</i><b>Bold</b><sup>Superscript</sup><sub>Subscript</sub></div>
 				<div class="child-element"></div>
 				some text content
 			</div>
@@ -168,8 +170,44 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 		$get_element_attribute->setAccessible( true );
 
 		$this->assertEquals(
-			"\n\t\n\t\n\tsome text content\n",
+			"\n\tItalicsBoldSuperscriptSubscript\n\t\n\tsome text content\n",
 			$get_element_attribute->invokeArgs( $this->instance, array( $block_wrapper->invoke( $this->instance ), 'textContent' ) )
+		);
+	}
+
+	public function test_get_element_attribute_inner_html() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block {"attribute-one":"value-one","attribute-two":"value-one"} -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+				<div class="child-element specific-content"><i>Italics</i><b>Bold</b><sup>Superscript</sup><sub>Subscript</sub></div>
+				<div class="child-element"></div>
+				some text content
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+
+		$block_wrapper = new ReflectionMethod( $this->instance, 'block_wrapper' );
+		$block_wrapper->setAccessible( true );
+
+		$get_element_attribute = new ReflectionMethod( $this->instance, 'get_element_attribute' );
+		$get_element_attribute->setAccessible( true );
+
+		$query_selector = new ReflectionMethod( $this->instance, 'query_selector' );
+		$query_selector->setAccessible( true );
+
+		$result = $query_selector->invokeArgs( $this->instance, array( '//div[contains(@class,"specific-content")]') );
+
+		$this->assertEquals(
+			"<i>Italics</i><b>Bold</b><sup>Superscript</sup><sub>Subscript</sub>",
+			$get_element_attribute->invokeArgs( $this->instance, array( 
+				$result,
+				'innerHTML' 
+				) 
+			)
 		);
 	}
 

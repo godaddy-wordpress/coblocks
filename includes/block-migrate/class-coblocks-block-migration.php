@@ -148,6 +148,21 @@ abstract class CoBlocks_Block_Migration {
 			return $element->textContent; // @phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		}
 
+		if ( 'innerHTML' === $attribute ) {
+			if ( ! property_exists( $element, 'childNodes' ) ) {
+				return '';
+			}
+
+			// Get child nodes to iterate.
+			$elem_child_nodes = $element->childNodes; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			$inner_html       = '';
+			foreach ( $elem_child_nodes as $child ) {
+				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				$inner_html .= $child->ownerDocument->saveHTML( $child );
+			}
+			return $inner_html;
+		}
+
 		$attr = $element->attributes->getNamedItem( $attribute );
 		return empty( $attr ) ? null : $attr->nodeValue; // @phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 	}

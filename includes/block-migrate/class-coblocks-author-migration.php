@@ -26,19 +26,14 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	protected function migrate_attributes() {
-		$name_inner_html = '';
-		$name_children   = $this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' )->childNodes;
-		foreach ( $name_children as $child ) {
-			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-			$name_inner_html .= $child->ownerDocument->saveHTML( $child );
-		}
-
-		$bio_inner_html = '';
-		$bio_children   = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-author__biography")]' )->childNodes;
-		foreach ( $bio_children as $child ) {
-			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-			$bio_inner_html .= $child->ownerDocument->saveHTML( $child );
-		}
+		$name_inner_html = $this->get_element_attribute(
+			$this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' ),
+			'innerHTML'
+		);
+		$bio_inner_html  = $this->get_element_attribute(
+			$this->query_selector( '//p[contains(@class,"wp-block-coblocks-author__biography")]' ),
+			'innerHTML'
+		);
 
 		$result = array(
 			'name'      => $name_inner_html,

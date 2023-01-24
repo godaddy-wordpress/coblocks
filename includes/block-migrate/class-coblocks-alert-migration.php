@@ -28,19 +28,14 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	protected function migrate_attributes() {
 		$alert_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-alert")]' );
 
-		$title_inner_html = '';
-		$title_children   = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' )->childNodes;
-		foreach ( $title_children as $child ) {
-			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-			$title_inner_html .= $child->ownerDocument->saveHTML( $child );
-		}
-
-		$text_inner_html = '';
-		$text_children   = $this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' )->childNodes;
-		foreach ( $text_children as $child ) {
-			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-			$text_inner_html .= $child->ownerDocument->saveHTML( $child );
-		}
+		$title_inner_html = $this->get_element_attribute(
+			$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' ),
+			'innerHTML'
+		);
+		$text_inner_html  = $this->get_element_attribute(
+			$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__text")]' ),
+			'innerHTML'
+		);
 
 		$result = array(
 			'content' => implode(
