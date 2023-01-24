@@ -67,7 +67,7 @@ export function goTo( path = '/wp-admin' ) {
  */
 export function getWindowObject() {
 	const editorUrlStrings = [ 'post-new.php', 'action=edit' ];
-	return cy.window().its( 'wp.data' ).should( 'exist' ).then( ( win ) => {
+	return cy.window().then( ( win ) => {
 		const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
 
 		if ( isEditorPage.length === 0 ) {
