@@ -25,7 +25,7 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @inheritDoc
 	 */
-	protected function migrate_attributes() {
+	function migrate_attributes() {
 		$name_inner_html = $this->get_element_attribute(
 			$this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' ),
 			'innerHTML'
