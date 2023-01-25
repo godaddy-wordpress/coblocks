@@ -84,7 +84,7 @@ jobs:
           CYPRESS_SPEC=$(find ./src/* -name ${{ matrix.spec }} -type f)
           echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
-          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --spec $CYPRESS_SPEC
+          yarn test:e2e --spec $CYPRESS_SPEC
 
       - name: Upload failure video
         if: ${{ failure() }}
