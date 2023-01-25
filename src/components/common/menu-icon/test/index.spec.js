@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 /**
  * Internal dependencies
@@ -12,7 +12,9 @@ describe( 'coblocks-menu-icon', () => {
 	let wrapper;
 
 	beforeEach( () => {
-		wrapper = shallow( <CoBlocksMenuIcon /> );
+		const { container } = render( <CoBlocksMenuIcon /> );
+
+		wrapper = container;
 	} );
 
 	afterEach( () => {
@@ -21,7 +23,7 @@ describe( 'coblocks-menu-icon', () => {
 
 	describe( '#render', () => {
 		it( 'should be rendered', () => {
-			expect( wrapper.find( '.coblocks-menu-icon' ) ).toHaveLength( 1 );
+			expect( wrapper.getElementsByClassName( 'coblocks-menu-icon' ).length ).toBe( 1 );
 		} );
 	} );
 } );
