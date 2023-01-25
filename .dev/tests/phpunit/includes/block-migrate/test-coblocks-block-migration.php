@@ -8,7 +8,7 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	private $instance;
 
 	public function set_up() {
-		$this->instance = new Block_Migration_Mock;
+		$this->instance = new Block_Migration_Mock();
 	}
 
 	public function tear_down() {
@@ -199,14 +199,16 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 		$query_selector = new ReflectionMethod( $this->instance, 'query_selector' );
 		$query_selector->setAccessible( true );
 
-		$result = $query_selector->invokeArgs( $this->instance, array( '//div[contains(@class,"specific-content")]') );
+		$result = $query_selector->invokeArgs( $this->instance, array( '//div[contains(@class,"specific-content")]' ) );
 
 		$this->assertEquals(
-			"<i>Italics</i><b>Bold</b><sup>Superscript</sup><sub>Subscript</sub>",
-			$get_element_attribute->invokeArgs( $this->instance, array( 
-				$result,
-				'innerHTML' 
-				) 
+			'<i>Italics</i><b>Bold</b><sup>Superscript</sup><sub>Subscript</sub>',
+			$get_element_attribute->invokeArgs(
+				$this->instance,
+				array(
+					$result,
+					'innerHTML',
+				)
 			)
 		);
 	}
@@ -234,10 +236,13 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 
 		$attribute_mapping = array( 'new_attr_key' => 'class' );
 
-		$mapped_attributes = $get_element_attributes->invokeArgs( $this->instance, array(
-			$block_wrapper->invoke( $this->instance ),
-			$attribute_mapping,
-		) );
+		$mapped_attributes = $get_element_attributes->invokeArgs(
+			$this->instance,
+			array(
+				$block_wrapper->invoke( $this->instance ),
+				$attribute_mapping,
+			)
+		);
 
 		$this->assertIsArray( $mapped_attributes );
 		$this->assertEquals( 'wp-block-coblocks-test-block this-feature-this-value has-feature', $mapped_attributes['new_attr_key'] );
@@ -261,9 +266,12 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 		$query_selector_all = new ReflectionMethod( $this->instance, 'query_selector_all' );
 		$query_selector_all->setAccessible( true );
 
-		$result = $query_selector_all->invokeArgs( $this->instance, array(
-			'//div[contains(@class,"child-element")]'
-		) );
+		$result = $query_selector_all->invokeArgs(
+			$this->instance,
+			array(
+				'//div[contains(@class,"child-element")]',
+			)
+		);
 
 		$this->assertIsIterable( $result );
 		$this->assertCount( 2, $result );
@@ -287,9 +295,12 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 		$query_selector = new ReflectionMethod( $this->instance, 'query_selector' );
 		$query_selector->setAccessible( true );
 
-		$result = $query_selector->invokeArgs( $this->instance, array(
-			'//div[contains(@class,"child-element")]'
-		) );
+		$result = $query_selector->invokeArgs(
+			$this->instance,
+			array(
+				'//div[contains(@class,"child-element")]',
+			)
+		);
 
 		$this->assertInstanceOf( DOMElement::class, $result );
 	}
@@ -297,13 +308,11 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 
 class Block_Migration_Mock extends CoBlocks_Block_Migration {
 
-	public static function block_name()
-	{
+	public static function block_name() {
 		return 'coblocks/test-block';
 	}
 
-	protected function migrate_attributes()
-	{
+	protected function migrate_attributes() {
 		return array();
 	}
 }
