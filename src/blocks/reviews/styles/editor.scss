@@ -1,4 +1,6 @@
 .wp-block-coblocks-reviews {
+	margin: 1em 0;
+
 	.components-placeholder {
 		min-height: 0;
 	}
@@ -10,41 +12,6 @@
 	.edit_search_button {
 		color: #1e90ff;
 		margin-left: 24px;
-	}
-
-	.search-result {
-		border-bottom: 1px solid #ddd;
-		column-gap: 16px;
-		display: flex;
-		flex-direction: row;
-		padding: 2em 0 1.5em;
-		width: 100%;
-
-		&:first-of-type {
-			padding-top: 1em;
-		}
-
-		&:last-of-type {
-			border-bottom: 0;
-			padding-bottom: 0.5em;
-		}
-
-		&__infos {
-			flex-grow: 1;
-
-			&__title {
-				font-size: 1.1rem;
-				font-weight: 700;
-				margin: 0;
-				padding-top: 0.32em;
-			}
-
-			&__location {
-				font-size: 1rem;
-				line-height: 1.5;
-				margin: 0 0 0.5em;
-			}
-		}
 	}
 
 	.component-is-loading-reviews {
@@ -59,42 +26,4 @@
 			margin: 0;
 		}
 	}
-
-	.component-loaded-reviews {
-		.review {
-			background-color: #dcdcdc;
-			column-gap: 24px;
-			display: flex;
-			flex-direction: row;
-			padding: 8px;
-
-			.left-panel {
-				align-items: center;
-				display: flex;
-				flex-direction: row;
-
-				img {
-					height: 128px;
-					max-width: 128px;
-				}
-			}
-
-			.content {
-				.comment {
-					font-size: 14px;
-					max-width: 200ch;
-					overflow: hidden;
-					text-overflow: ellipsis;
-				}
-				.meta {
-					.meta-group {
-						display: flex;
-						justify-content: space-between;
-						width: 100%;
-					}
-				}
-			}
-		}
-	}
-
 }

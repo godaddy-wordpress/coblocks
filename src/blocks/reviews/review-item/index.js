@@ -8,12 +8,12 @@ import { MountainsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  */
 import edit from './edit';
 import metadata from './block.json';
+import save from './save';
 
 /**
  * WordPress dependencies.
  */
 import { Icon } from '@wordpress/components';
-import { InnerBlocks } from '@wordpress/block-editor';
 import { __, _x } from '@wordpress/i18n';
 
 /**
@@ -27,7 +27,7 @@ const settings = {
 	edit,
 	icon: <Icon icon={ icon } />,
 	parent: [ 'coblocks/reviews' ],
-	save: () => <InnerBlocks.Content />,
+	save,
 	supports: {
 		html: false,
 		reusable: false,

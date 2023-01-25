@@ -1,0 +1,75 @@
+.wp-block-coblocks-reviews {
+	.wp-block-coblocks-review-item {
+		background-color: #fafafa;
+		margin-bottom: 1em;
+		padding: 1em;
+
+		&.is-selected {
+			background-color: #eee;
+		}
+
+		&__header {
+			display: flex;
+			flex-direction: row;
+			gap: 1.25em;
+			position: relative;
+
+			&__avatar {
+				border-radius: 50%;
+				height: 64px;
+				width: 64px;
+			}
+
+			&__meta {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				justify-content: center;
+				width: 100%;
+
+				p {
+					margin: 0 0 0.5em;
+				}
+			}
+
+			&__checkbox {
+				margin: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+
+			&__name {
+				font-size: 1.2em;
+				font-weight: 700;
+				margin: 0 0 0.25em;
+			}
+
+			&__rating {
+				font-size: 1em;
+				margin-bottom: 0 !important;
+
+				& > svg {
+					position: relative;
+					top: 2px;
+
+					&:last-of-type {
+						margin-right: 0.25em;
+					}
+				}
+			}
+		}
+
+		&__comment {
+			font-size: 0.9em;
+
+			p {
+				margin: 0 0 0.5em;
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}

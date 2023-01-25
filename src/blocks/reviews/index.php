@@ -91,7 +91,7 @@ class Coblocks_Yelp_Proxy {
 					'biz_id' => array(
 						'description'       => 'The yelp business id of the business to get reviews for.',
 						'type'              => 'string',
-						'sanitize_callback' => 'sanitize_text_field',
+						// 'sanitize_callback' => 'sanitize_text_field', // @todo Won't work with accents. Try searching for pasta / Montréal, and select any
 					),
 				),
 				'callback'            => array( $this, 'yelp_biz_reviews_api_proxy' ),

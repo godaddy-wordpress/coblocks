@@ -8,19 +8,17 @@ import { MountainsIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 /**
  * Internal dependencies
  */
-import CustomAppender from './appender';
+import { renderRating } from './utils';
 
 /**
  * WordPress dependencies
  */
-
 import { __ } from '@wordpress/i18n';
 import { addQueryArgs } from '@wordpress/url';
 import apiFetch from '@wordpress/api-fetch';
 import { compose } from '@wordpress/compose';
 import { createBlock } from '@wordpress/blocks';
 import { InnerBlocks } from '@wordpress/block-editor';
-
 import {
 	Button,
 	ButtonGroup,
@@ -44,7 +42,7 @@ const Edit = ( props ) => {
 		BUSINESS_SEARCH: 'business_search',
 		SELECT_BUSINESS: 'select_business',
 		SELECT_REVIEWS: 'select_reviews',
-		SAVED_PREVIEW: 'saved_preview',
+		SAVED_PREVIEW: 'saved_preview', /* eslint-disable-line sort-keys */
 	};
 
 	const { insertBlock } = useDispatch( 'core/block-editor' );
@@ -97,7 +95,7 @@ const Edit = ( props ) => {
 							avatarUrl: json.url,
 							comment: review.comment,
 							localizedDate: review.localizedDate,
-							rating: review.rating + ' / 5',
+							rating: review.rating,
 						} );
 						// insert the created block
 						insertBlock( newReviewItem, innerBlocks.length, clientId, true );
@@ -107,21 +105,11 @@ const Edit = ( props ) => {
 			setAttributes( { saved: true } );
 		};
 
-		const insertCustomReview = () => {
-			const customReview = createBlock( 'coblocks/review-item' );
-			insertBlock( customReview, innerBlocks.length, clientId, true );
-		};
-
 		return (
 			<div>
-
 				{ innerBlocks.length === 0 && <span><Spinner /> Loading your reviews...</span> }
 
-				<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-					renderAppender={ () => <CustomAppender onClick={ insertCustomReview } /> }
-				/>
-
+				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
 			</div>
 		);
 	};
@@ -181,7 +169,7 @@ const BusinessSearch = ( props ) => {
 	 *
 	 * @return {boolean} "Search Yelp" button disable state
 	 */
-	const shouldSearchBeDisabled = () => ( businessName.length === 0 ) || ( businessLocation.length === 0 );
+	const shouldSearchBeDisabled = businessName.length === 0 || businessLocation.length === 0;
 
 	return (
 		<Placeholder
@@ -203,18 +191,17 @@ const BusinessSearch = ( props ) => {
 			<TextControl
 				label="Business Location"
 				onChange={ ( newBizLoc ) => setBusinessLocation( newBizLoc ) }
+				onKeyDown={ ( event ) => event.key === 'Enter' && ! shouldSearchBeDisabled && transitionStepNext() }
 				value={ businessLocation }
 			/>
 
 			<div className="search_button">
 				<Button
-					disabled={ shouldSearchBeDisabled() }
+					disabled={ shouldSearchBeDisabled }
 					isPrimary
 					onClick={ transitionStepNext }
 				>
-
 					{ __( 'Search Yelp', 'coblocks' ) }
-
 				</Button>
 			</div>
 
@@ -321,7 +308,7 @@ const SelectBusiness = ( props ) => {
 			{ businessSearchResults.length > 0 &&
 			<div className="search-results">
 				{ businessSearchResults.map( ( biz, index ) => (
-					<div key={ index } className="search-result">
+					<div className="search-result" key={ index }>
 						<div className="thumbnail_image">
 							<img alt="business thumbnail" height={ 32 } src={ biz.thumbnail.key } />
 						</div>
@@ -383,10 +370,10 @@ const SelectReviews = ( props ) => {
 		} else {
 			// insert the new review
 			copy[ review.id ] = {
-				id: review.id,
 				author: review.user.markupDisplayName,
 				authorAvatarSrc: review.user.src,
 				comment: review.comment.text,
+				id: review.id,
 				localizedDate: review.localizedDate,
 				rating: review.rating,
 			};
@@ -419,44 +406,44 @@ const SelectReviews = ( props ) => {
 				isColumnLayout={ true }
 				label={ __( 'Select Reviews', 'coblocks' ) }
 			>
-				{ paginatedBusinessReviews[ paginatePageNumber ] === undefined && <div className="component-is-loading-reviews">
-					<p className="loader-status-text" >Loading Reviews</p>
-					<Spinner />
-				</div> }
+				{ paginatedBusinessReviews[ paginatePageNumber ] === undefined && (
+					<div className="component-is-loading-reviews">
+						<p className="loader-status-text" >Loading Reviews</p>
+						<Spinner />
+					</div>
+				) }
 
-				<div className="component-loaded-reviews">
+				<div className="wp-block-coblocks-reviews">
 					{
 						paginatedBusinessReviews[ paginatePageNumber ] !== undefined && paginatedBusinessReviews[ paginatePageNumber ].map( ( review, index ) => {
 							return (
-								<div key={ index }>
-
-									<div className="review">
-										<div className="left-panel">
-											<input className="review-selector-checkbox" checked={ review.id in selectedReviews } onChange={ () => onReviewToggle( review ) } type="checkbox" />
-											<img alt="user avatar" src={ review.user.src } />
+								<div
+									className={ `wp-block-coblocks-review-item ${ review.id in selectedReviews ? ' is-selected' : '' }` }
+									key={ index }
+								>
+									<div className="wp-block-coblocks-review-item__header">
+										<img
+											alt=""
+											className="wp-block-coblocks-review-item__header__avatar"
+											src={ review.user.src }
+										/>
+										<div className="wp-block-coblocks-review-item__header__meta">
+											<input
+												checked={ review.id in selectedReviews }
+												className="wp-block-coblocks-review-item__header__checkbox"
+												onChange={ () => onReviewToggle( review ) }
+												type="checkbox"
+											/>
+											<h3 className="wp-block-coblocks-review-item__header__name">{ review.user.markupDisplayName }</h3>
+											<p className="wp-block-coblocks-review-item__header__rating">{ renderRating( review.rating ) } { review.localizedDate }</p>
 										</div>
-
-										<div className="content">
-											<p className="comment" dangerouslySetInnerHTML={ { __html: review.comment.text } }></p>
-											<div className="meta">
-												<div className="meta-group">
-													<p>{ review.user.markupDisplayName }</p>
-													<p>{ review.localizedDate }</p>
-												</div>
-												<div className="meta-group">
-													<p>{ review.rating } / 5</p>
-													<p><a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a></p>
-												</div>
-
-											</div>
-										</div>
-
 									</div>
 
-									<hr />
-
+									<div className="wp-block-coblocks-review-item__comment">
+										<p dangerouslySetInnerHTML={ { __html: review.comment.text } }></p>
+										<p><a href={ 'https://www.yelp.com/biz/' + review.business.alias + '?hrid=' + review.id }>See on Yelp.com</a></p>
+									</div>
 								</div>
-
 							);
 						} )
 					}

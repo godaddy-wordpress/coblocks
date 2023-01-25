@@ -4,10 +4,13 @@
 	"name": "coblocks/review-item",
 	"category": "layout",
 	"attributes": {
-		"comment": {
+        "author": {
 			"type": "string"
 		},
-        "author": {
+        "avatarUrl": {
+            "type": "string"
+        },
+		"comment": {
 			"type": "string"
 		},
         "localizedDate": {
@@ -15,10 +18,7 @@
 		},
         "rating": {
 			"type": "string"
-		},
-        "avatarUrl": {
-            "type": "string"
-        }
+		}
 	},
 	"title": "Review Item",
 	"textdomain": "coblocks",

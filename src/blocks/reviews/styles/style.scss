@@ -1,0 +1,38 @@
+.wp-block-coblocks-reviews {
+	font-size: 1em;
+
+	.search-result {
+		border-bottom: 1px solid #ddd;
+		column-gap: 16px;
+		display: flex;
+		flex-direction: row;
+		padding: 2em 0 1.5em;
+		width: 100%;
+
+		&:first-of-type {
+			padding-top: 1em;
+		}
+
+		&:last-of-type {
+			border-bottom: 0;
+			padding-bottom: 0.5em;
+		}
+
+		&__infos {
+			flex-grow: 1;
+
+			&__title {
+				font-size: 1.1rem;
+				font-weight: 700;
+				margin: 0;
+				padding-top: 0.32em;
+			}
+
+			&__location {
+				font-size: 1rem;
+				line-height: 1.5;
+				margin: 0 0 0.5em;
+			}
+		}
+	}
+}
