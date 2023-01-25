@@ -25,7 +25,7 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @inheritDoc
 	 */
-	function migrate_attributes() {
+	public function migrate_attributes() {
 		$name_inner_html = $this->get_element_attribute(
 			$this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' ),
 			'innerHTML'
@@ -57,6 +57,24 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 					array( 'imgUrl' => $image_src[0] ),
 				);
 			}
+		}
+
+		/**
+		 * External URI causes `wp_get_attachment_image_src` to return `false` so we fall back. 
+		 * 
+		 * If user modified post-content outside or copy/paste block markup
+		 * then its possible for image src to be external. Get the src from markup.
+		 */
+		if ( ! isset( $result['imgUrl'] ) ) {
+			$author_image_uri = $this->get_element_attribute(
+				$this->query_selector( '//img[contains(@class,"wp-block-coblocks-author__avatar-img")]' ),
+				'src'
+			);
+
+			$result = array_merge(
+				$result,
+				array( 'imgUrl' => $author_image_uri ),
+			);
 		}
 
 		$result['className'] = $this->add_to_class( 'coblocks-author-columns', $result );

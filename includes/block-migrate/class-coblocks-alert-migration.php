@@ -25,7 +25,7 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	 *
 	 * @inheritDoc
 	 */
-	function migrate_attributes() {
+	public function migrate_attributes() {
 		$alert_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-alert")]' );
 
 		$title_inner_html = $this->get_element_attribute(
