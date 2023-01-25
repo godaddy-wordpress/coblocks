@@ -1,5 +1,4 @@
-import { mount } from 'enzyme';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import {
 	registerStore,
@@ -53,40 +52,41 @@ describe( 'font-preview', () => {
 		} );
 	} );
 
-	// describe( 'FontPreview', () => {
-	// 	let wrapper;
-	//
-	// 	const defaultProps = {
-	// 		font: [
-	// 			[ 'Heebo', [ 400, 700 ] ],
-	// 			[ 'Fira Code', [ 400, 700 ] ],
-	// 		],
-	// 	};
-	//
-	// 	const setup = ( props = {} ) => {
-	// 		const setupProps = { ...defaultProps, ...props };
-	// 		return mount( <FontPreview { ...setupProps } /> );
-	// 	};
-	//
-	// 	beforeEach( () => {
-	// 		wrapper = setup();
-	// 	} );
-	//
-	// 	afterEach( () => {
-	// 		jest.clearAllMocks();
-	// 	} );
-	//
-	// 	it( 'should be rendered', () => {
-	// 		expect( wrapper.exists( '.components-site-design-fonts__option' ) ).toEqual( true );
-	// 	} );
-	//
-	// 	it( 'should update the selected font', () => {
-	// 		wrapper = setup();
-	//
-	// 		expect( select( STORE_KEY ).getSelectedFonts() ).toEqual( [ [ 'Poppins', [ '600' ] ], [ 'Quicksand', [ '400', '600' ] ] ] );
-	//
-	// 		wrapper.find( '.components-site-design-fonts__option__section' ).invoke( 'onClick' )();
-	// 		expect( select( STORE_KEY ).getSelectedFonts() ).toEqual( defaultProps.font );
-	// 	} );
-	// } );
+	describe( 'FontPreview', () => {
+		let wrapper;
+
+		const defaultProps = {
+			font: [
+				[ 'Heebo', [ 400, 700 ] ],
+				[ 'Fira Code', [ 400, 700 ] ],
+			],
+		};
+
+		const setup = ( props = {} ) => {
+			const setupProps = { ...defaultProps, ...props };
+			const { container } = render( <FontPreview { ...setupProps } /> );
+
+			return container;
+		};
+
+		beforeEach( () => {
+			wrapper = setup();
+		} );
+
+		afterEach( () => {
+			jest.clearAllMocks();
+		} );
+
+		it( 'should be rendered', () => {
+			expect( wrapper.getElementsByClassName( 'components-site-design-fonts__option' ).length ).toBe( 1 );
+		} );
+
+		it( 'should update the selected font', () => {
+			expect( select( STORE_KEY ).getSelectedFonts() ).toEqual( [ [ 'Poppins', [ '600' ] ], [ 'Quicksand', [ '400', '600' ] ] ] );
+
+			fireEvent.click( screen.getByRole('button') );
+
+			expect( select( STORE_KEY ).getSelectedFonts() ).toEqual( defaultProps.font );
+		} );
+	} );
 } );
