@@ -29,7 +29,7 @@ jobs:
     name: E2E Test
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         spec:
           - accordion.cypress.js
