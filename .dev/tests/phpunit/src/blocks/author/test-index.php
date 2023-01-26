@@ -70,7 +70,7 @@ class CoBlocks_Block_Author_Migration_Test extends WP_UnitTestCase {
 		);
 
 		$migrated_block_attributes = $this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
-		// var_dump($migrated_block_attributes);
+
 		$expected_attributes = array(
             "imgId"=> 58,
             "className"=> "custom-class coblocks-author-columns",
