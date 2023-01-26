@@ -20,6 +20,10 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 		return 'coblocks/author';
 	}
 
+	public function get_image_src( $image_id ) {
+		return wp_get_attachment_image_src( $image_id );
+	}
+
 	/**
 	 * Produce new attributes from the migrated block.
 	 *
