@@ -14,7 +14,7 @@ jobs:
     name: "Chrome - WP 6"
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
-      wpVersion: "6"
+      wpVersion: "WordPress/WordPress#6.0.3"
 
   # firefox_e2e:
   #   name: Firefox
