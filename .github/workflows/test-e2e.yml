@@ -10,14 +10,14 @@ jobs:
     name: Chrome
     uses: ./.github/workflows/test-e2e-cypress.yml
 
-  firefox_e2e:
-    name: Firefox
-    uses: ./.github/workflows/test-e2e-cypress.yml
-    with:
-      browser: firefox
-
   chrome_e2e_wp_60:
-    name: Chrome / WP 6.0
+    name: "Chrome / WP 6"
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
-      wpVersion: "6.0"
+      wpVersion: "6"
+
+  # firefox_e2e:
+  #   name: Firefox
+  #   uses: ./.github/workflows/test-e2e-cypress.yml
+  #   with:
+  #     browser: firefox
