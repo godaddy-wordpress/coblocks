@@ -123,9 +123,9 @@ jobs:
         run: |
           WP_CORE_VERSION=$(wp-env run cli "wp core version")
           echo "WP_CORE_VERSION=${WP_CORE_VERSION}" >> $GITHUB_ENV
-          wp-env run cli "wp post generate --count=5"
-          wp-env run cli "wp theme activate ${{ inputs.theme }}"
-          wp-env run cli "wp option update permalink_structure '/%postname%'"
+          wp-env run tests-cli "wp post generate --count=5"
+          wp-env run tests-cli "wp theme activate ${{ inputs.theme }}"
+          wp-env run tests-cli "wp option update permalink_structure '/%postname%'"
 
       - name: Run tests
         run: |

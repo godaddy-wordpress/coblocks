@@ -6,15 +6,9 @@ on:
       - master
 
 jobs:
-  # chrome_e2e:
-  #   name: Chrome
-  #   uses: ./.github/workflows/test-e2e-cypress.yml
-
-  chrome_e2e_wp_59:
-    name: "Chrome - WP5.9"
+  chrome_e2e:
+    name: Chrome
     uses: ./.github/workflows/test-e2e-cypress.yml
-    with:
-      wpVersion: "WordPress/WordPress#5.9"
 
   # firefox_e2e:
   #   name: Firefox
