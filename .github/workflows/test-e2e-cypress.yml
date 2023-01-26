@@ -36,7 +36,7 @@ jobs:
           - alert.cypress.js
           - click-to-tweet.cypress.js
           - counter.cypress.js
-          # - dynamic-separator.cypress.js
+          - dynamic-separator.cypress.js
           - event-item.cypress.js
           - events.cypress.js
           - faq.cypress.js
@@ -58,7 +58,7 @@ jobs:
           - logos.cypress.js
           - map.cypress.js
           - media-card.cypress.js
-          # - opentable.cypress.js
+          - opentable.cypress.js
           - post-carousel.cypress.js
           - posts.cypress.js
           - pricing-table-item.cypress.js

@@ -12,8 +12,16 @@ jobs:
     secrets:
       record-key: ${{ secrets.CYPRESS_RECORD_KEY }}
 
-  # firefox_e2e:
-  #   name: Firefox
-  #   uses: ./.github/workflows/test-e2e-cypress.yml
-  #   with:
-  #     browser: firefox
+  firefox_e2e:
+    name: Firefox
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      browser: firefox
+
+  chrome_e2e_wp_60:
+    name: Chrome / WP 6.0
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    secrets:
+      record-key: ${{ secrets.CYPRESS_RECORD_KEY }}
+    with:
+      wpVersion: "6.0"
