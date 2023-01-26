@@ -11,7 +11,7 @@ jobs:
     uses: ./.github/workflows/test-e2e-cypress.yml
 
   chrome_e2e_wp_60:
-    name: "Chrome / WP 6"
+    name: "Chrome - WP 6"
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
       wpVersion: "6"
