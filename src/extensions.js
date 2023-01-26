@@ -28,3 +28,4 @@ import './block-styles/core/paragraph';
 
 // Block Variations
 import './block-variations/core/paragraph';
+import './block-variations/core/columns';
