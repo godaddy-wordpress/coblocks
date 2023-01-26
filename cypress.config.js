@@ -20,7 +20,7 @@ module.exports = defineConfig( {
 	projectId: 'sovnn2',
 	retries: {
 		openMode: 0,
-		runMode: 1,
+		runMode: 0,
 	},
 	screenshotsFolder: '.dev/tests/cypress/screenshots',
 	videosFolder: '.dev/tests/cypress/videos',
