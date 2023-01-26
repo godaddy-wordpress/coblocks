@@ -1,14 +1,11 @@
-import { disableGutenbergFeatures, isNotWPLocalEnv, loginToSite } from '../helpers';
+import { disableGutenbergFeatures, goTo, loginToSite } from '../helpers';
 
 before( function() {
 	loginToSite().then( () => {
-		if ( isNotWPLocalEnv() ) {
-			// Waiting to see if the Welcome Guide will show up. Could probably be improved, but
-			// for the moment, it seems hard to tie the wait to something else
-			cy.wait( 10000 );
-		}
-
-		disableGutenbergFeatures();
+		goTo( '/wp-admin/post-new.php?post_type=post' ).then( () => {
+			cy.wait( 2000 );
+			disableGutenbergFeatures();
+		} );
 	} );
 } );
 
