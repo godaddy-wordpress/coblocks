@@ -32,8 +32,9 @@ jobs:
       fail-fast: false
       matrix:
         spec:
-          - alert.cypress.js
           - accordion.cypress.js
+          - alert.cypress.js
+          - click-to-tweet.cypress.js
 
     steps:
       - name: Checkout
