@@ -76,7 +76,7 @@ const settings = {
 				};
 			}
 
-			return createBlock( 'core/heading', authorNameBlockProps );
+			return createBlock( 'core/paragraph', authorNameBlockProps );
 		};
 
 		const authorBioBlock = () => {
@@ -113,8 +113,8 @@ const settings = {
 			buttonBlock[ index ].attributes.align = isRTL ? 'right' : 'left';
 		} );
 
-		const leftColumn = createBlock( 'core/column', { verticalAlignment: 'center', width: '25%' }, [ imageBlock ] );
-		const rightColumn = createBlock( 'core/column', { verticalAlignment: 'center', width: '75%' }, [ authorNameBlock(), authorBioBlock(), ...buttonBlock ] );
+		const leftColumn = createBlock( 'core/column', { width: '25%' }, [ imageBlock ] );
+		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock(), authorBioBlock(), ...buttonBlock ] );
 
 		const columnsBlock = () => {
 			let columnsBlockProps = {
