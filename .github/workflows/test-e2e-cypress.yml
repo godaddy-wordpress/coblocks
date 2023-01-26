@@ -22,7 +22,7 @@ on:
     secrets:
       record-key:
         description: 'Record key for Cypress Dashboard'
-        required: true
+        required: false
 
 jobs:
   test_cypress_e2e:
