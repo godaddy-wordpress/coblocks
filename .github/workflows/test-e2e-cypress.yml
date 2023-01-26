@@ -123,14 +123,14 @@ jobs:
         run: |
           WP_CORE_VERSION=$(wp-env run cli "wp core version")
           echo "WP_CORE_VERSION=${WP_CORE_VERSION}" >> $GITHUB_ENV
-          wp-env run tests-cli "wp post generate --count=5"
-          wp-env run tests-cli "wp theme activate ${{ inputs.theme }}"
-          wp-env run tests-cli "wp option update permalink_structure '/%postname%'"
+          wp-env run cli "wp post generate --count=5"
+          wp-env run cli "wp theme activate ${{ inputs.theme }}"
+          wp-env run cli "wp option update permalink_structure '/%postname%'"
 
       - name: Run tests
         run: |
           CYPRESS_SPEC=$(find ./src/* -name ${{ matrix.spec }} -type f)
-          echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
+          echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8888"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
           ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --spec $CYPRESS_SPEC
 
