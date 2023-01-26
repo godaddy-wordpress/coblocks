@@ -20,6 +20,11 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 		return 'coblocks/author';
 	}
 
+	/**
+	 * Extraction of logic to get author block image uri.
+	 *
+	 * @param string|id $image_id The id of the image in use.
+	 */
 	public function get_image_src( $image_id ) {
 		return wp_get_attachment_image_src( $image_id );
 	}
@@ -64,8 +69,8 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 		}
 
 		/**
-		 * External URI causes `wp_get_attachment_image_src` to return `false` so we fall back. 
-		 * 
+		 * External URI causes `wp_get_attachment_image_src` to return `false` so we fall back.
+		 *
 		 * If user modified post-content outside or copy/paste block markup
 		 * then its possible for image src to be external. Get the src from markup.
 		 */
