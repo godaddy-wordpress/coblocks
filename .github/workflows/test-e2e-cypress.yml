@@ -1,4 +1,4 @@
-name: WIP Test / E2E
+name: Test / E2E
 
 on:
   workflow_call:

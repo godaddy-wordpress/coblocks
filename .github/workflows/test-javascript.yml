@@ -1,4 +1,4 @@
-name: WIP Test / JS
+name: Test / JS
 
 on:
   pull_request:

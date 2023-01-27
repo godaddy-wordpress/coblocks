@@ -1,4 +1,4 @@
-name: WIP Test / PHP
+name: Test / PHP
 
 on:
   pull_request:

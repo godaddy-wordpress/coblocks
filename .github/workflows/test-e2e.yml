@@ -1,4 +1,4 @@
-name: WIP Test / E2E
+name: Test / E2E
 
 on:
   pull_request:
