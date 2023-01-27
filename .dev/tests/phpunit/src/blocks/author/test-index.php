@@ -1,4 +1,7 @@
 <?php
+
+require_once dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/compare-block-attributes.php';
+
 /**
  * Test includes/block-migrate/class-coblocks-block-migration.php
  *
@@ -53,8 +56,8 @@ class CoBlocks_Block_Author_Migration_Test extends WP_UnitTestCase {
 			);
 		}
 
-		// We expect recursive_array_diff to return empty array if expected attributes match migrated attributes.
-		$this->assertTrue( empty( $this->recursive_array_diff( $expected_attributes, $migrated_block_attributes ) ) );
+		// We expect compare_block_attributes to return empty array if expected attributes match migrated attributes.
+		$this->assertTrue( empty( compare_block_attributes( $expected_attributes, $migrated_block_attributes ) ) );
 	}
 
 	public function test_author_block_migration_attributes_custom_colors() {
@@ -101,47 +104,7 @@ class CoBlocks_Block_Author_Migration_Test extends WP_UnitTestCase {
 			);
 		}
 
-		// We expect recursive_array_diff to return empty array if expected attributes match migrated attributes.
-		$this->assertTrue( empty( $this->recursive_array_diff( $expected_attributes, $migrated_block_attributes ) ) );
-	}
-
-	/**
-	 * Compares two arrays recursively and returns the differences.
-	 *
-	 * This function compares two arrays recursively by checking each key and value of the arrays.
-	 * If a key exists in both arrays, but the value differs, that key and value is added to the
-	 * returned array of differences. If a key exists in one array but not the other, the key and
-	 * value is added to the returned array of differences.
-	 *
-	 * @param array $array1 This should be the expected attributes.
-	 * @param array $array2 This should be the migrated block attributes.
-	 *
-	 * @return array An array of the attributes that are missing from the expected array.
-	 */
-	function recursive_array_diff( $array1, $array2 ) {
-		$diff = array();
-
-		foreach ( $array1 as $key => $value ) {
-			// If the key exists in the second array.
-			if ( array_key_exists( $key, $array2 ) ) {
-				// If the value is an array, recursively compare the arrays.
-				if ( is_array( $value ) ) {
-					$recursive_diff = $this->recursive_array_diff( $value, $array2[ $key ] );
-					// If there are differences, add the key and differences to the final diff array.
-					if ( count( $recursive_diff ) ) {
-						$diff[ $key ] = $recursive_diff; }
-				} else {
-					// If the values are not the same, add the key and value to the final diff array.
-					if ( $value != $array2[ $key ] ) {
-						$diff[ $key ] = $value;
-					}
-				}
-			} else {
-				// If the key does not exist in the second array, add the key and value to the final diff array.
-				$diff[ $key ] = $value;
-			}
-		}
-
-		return $diff;
+		// We expect compare_block_attributes to return empty array if expected attributes match migrated attributes.
+		$this->assertTrue( empty( compare_block_attributes( $expected_attributes, $migrated_block_attributes ) ) );
 	}
 }
