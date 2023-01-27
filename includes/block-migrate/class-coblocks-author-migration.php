@@ -49,7 +49,24 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 			'biography' => $bio_inner_html,
 		);
 
-		// Descend existing className.
+		/**
+		 * User set anchors are defined by top-level id in markup.
+		 * Pass into new block with attribute name 'anchor'.
+		 */
+		$anchor_id = $this->get_element_attribute(
+			$this->query_selector( '//div[contains(@class,"wp-block-coblocks-author")]' ),
+			'id',
+		);
+		if ( isset( $anchor_id ) ) {
+			$result = array_merge(
+				$result,
+				array( 'anchor' => $anchor_id ),
+			);
+		}
+
+		/**
+		 * Descend existing className.
+		 */
 		if ( isset( $this->block_attributes['className'] ) ) {
 			$result = array_merge(
 				$result,
@@ -57,7 +74,9 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 			);
 		}
 
-		// Get imgUrl which typically exists in post-content.
+		/**
+		 * Get imgUrl which typically exists in post-content.
+		 */
 		if ( array_key_exists( 'imgId', $this->block_attributes ) ) {
 			$image_src = wp_get_attachment_image_src( $this->block_attributes['imgId'] );
 			if ( false !== $image_src ) {

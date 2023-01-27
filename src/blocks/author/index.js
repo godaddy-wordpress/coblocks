@@ -120,6 +120,7 @@ const settings = {
 			let columnsBlockProps = {
 				...( props.attributes.hasOwnProperty( 'className' ) && { className: props.attributes.className } ),
 				...( props.attributes.hasOwnProperty( 'animation' ) && { animation: props.attributes.animation } ),
+				...( props.attributes.hasOwnProperty( 'anchor' ) && { anchor: props.attributes.anchor } ),
 				style: {
 					spacing: {
 						padding: {
