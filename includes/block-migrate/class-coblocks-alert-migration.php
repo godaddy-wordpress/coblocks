@@ -26,8 +26,9 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	public function migrate_attributes() {
-		$alert_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-alert")]' );
-
+		/**
+		 * Get the title and text innerHTML.
+		 */
 		$title_inner_html = $this->get_element_attribute(
 			$this->query_selector( '//p[contains(@class,"wp-block-coblocks-alert__title")]' ),
 			'innerHTML'
@@ -37,6 +38,9 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 			'innerHTML'
 		);
 
+		/**
+		 * Apply title and text innerHTML to the migrated attributes.
+		 */
 		$result = array(
 			'content' => implode(
 				'<br />',
@@ -49,7 +53,9 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 			),
 		);
 
-		// Descend existing className.
+		/**
+		 * Descend existing className attribute from parsed attributes.
+		 */
 		if ( isset( $this->block_attributes['className'] ) ) {
 			$result = array_merge(
 				$result,
@@ -57,6 +63,9 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 			);
 		}
 
+		/**
+		 * Apply textAlign attribute.
+		 */
 		if ( isset( $this->block_attributes['textAlign'] ) ) {
 			$result              = array_merge(
 				$result,
@@ -69,12 +78,22 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 			$result['className'] = $this->add_to_class( 'has-text-align-' . $this->block_attributes['textAlign'], $result );
 		}
 
+		/**
+		 * Get alert style className and set migrated attributes.
+		 */
+		$alert_wrapper = $this->query_selector( '//div[contains(@class,"wp-block-coblocks-alert")]' );
 		if ( ! $this->get_attribute_from_classname( 'is-style-', $alert_wrapper ) ) {
 			$result['className'] = $this->add_to_class( 'is-style-info', $result );
 		}
 
-		// We target this class for high-specificity styles i.e. margin.
+		/**
+		 * Handle setting the migrated attributes custom colors.
+		 */
 		$result              = $this->get_alert_colors( $this->block_attributes, $result );
+
+		/**
+		 * Add `coblocks-alert-paragraph` class for CoBlocks styles selector.
+		 */
 		$result['className'] = $this->add_to_class( 'coblocks-alert-paragraph', $result );
 
 		return array_merge( $this->block_attributes, $result );

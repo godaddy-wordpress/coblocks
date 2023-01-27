@@ -35,6 +35,9 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 	 * @inheritDoc
 	 */
 	public function migrate_attributes() {
+		/**
+		 * Get the name and bio innerHTML.
+		 */
 		$name_inner_html = $this->get_element_attribute(
 			$this->query_selector( '//span[contains(@class,"wp-block-coblocks-author__name")]' ),
 			'innerHTML'
@@ -44,10 +47,25 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 			'innerHTML'
 		);
 
+		/**
+		 * Apply name and bio to the resulting attributes.
+		 */
 		$result = array(
 			'name'      => $name_inner_html,
 			'biography' => $bio_inner_html,
 		);
+
+		/**
+		 * Check if user has already bolded the block name anywhere.
+		 * Apply strong tags to the name for styling consistency if not strong.
+		 */
+		$name_has_bold = ( strpos( $name_inner_html, '<b>' ) || strpos( $name_inner_html, '<strong>' ) );
+		if ( ! $name_has_bold ) {
+			$result = array_merge(
+				$result,
+				array( 'name' => "<strong>{$name_inner_html}</strong>" ),
+			);
+		}
 
 		/**
 		 * User set anchors are defined by top-level id in markup.
@@ -105,6 +123,9 @@ class CoBlocks_Author_Migration extends CoBlocks_Block_Migration {
 			);
 		}
 
+		/**
+		 * Add `coblocks-author-columns` class for CoBlocks styles selector.
+		 */
 		$result['className'] = $this->add_to_class( 'coblocks-author-columns', $result );
 
 		return array_merge( $this->block_attributes, $result );
