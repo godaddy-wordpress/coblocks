@@ -16,26 +16,26 @@
 function compare_block_attributes( $expected, $actual, $debug = false ) {
 	$diff = array();
 
-	foreach ( $actual as $actual_key => $actual_value ) {
+	foreach ( $expected as $expected_key => $expected_value ) {
 		// If the key exists in the second array.
-		if ( array_key_exists( $actual_key, $expected ) ) {
+		if ( array_key_exists( $expected_key, $actual ) ) {
 			// If the value is an array, recursively compare the arrays.
-			if ( is_array( $actual_value ) ) {
-				$recursive_diff = compare_block_attributes( $expected[ $actual_key ], $actual_value, );
+			if ( is_array( $expected_value ) ) {
+				$recursive_diff = compare_block_attributes( $expected_value, $actual[ $expected_key ] );
 
 				// If there a difference, add the key and differences to the final diff array.
 				if ( count( $recursive_diff ) ) {
-					$diff[ $actual_key ] = $recursive_diff;
+					$diff[ $expected_key ] = $recursive_diff;
 				}
 			} else {
 				// If the values are not the same, add the key and value to the final diff array.
-				if ( $actual_value != $expected[ $actual_key ] ) {
-					$diff[ $actual_key ] = $actual_value;
+				if ( $expected_value != $actual[ $expected_key ] ) {
+					$diff[ $expected_key ] = $expected_value;
 				}
 			}
 		} else {
 			// If the key does not exist in the second array, add the key and value to the final diff array.
-			$diff[ $actual_key ] = $actual_value;
+			$diff[ $expected_key ] = $expected_value;
 		}
 	}
 

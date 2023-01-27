@@ -38,7 +38,8 @@ class CoBlocks_Block_Author_Migration_Test extends WP_UnitTestCase {
 			'textColor'       => 'primary',
 			'fontSize'        => 'large',
 			'animation'       => 'fadeIn',
-			'name'            => 'Author Name Here',
+			'anchor'          => 'anchor',
+			'name'            => '<strong>Author Name Here</strong>',
 			'biography'       => '<strong>T</strong><em>h</em><a href="https://example.com" data-type="URL" data-id="https://example.com">i</a><mark style="background-color:rgba(0, 0, 0, 0);color:#0600ff" class="has-inline-color">s</mark> <code>i</code><img class="wp-image-11" style="width: 150px;" src="https://wxn.a14.myftpupload.com/wp-content/uploads/2023/01/product-image-2.jpg" alt=""> <kbd>a</kbd> <s>c</s><sub>o</sub><sup>o</sup><span class="uppercase">l</span> author bio',
 			'imgUrl'          => 'http://localhost:8888/wp-content/uploads/2023/01/vnech-tee-green-1.jpg',
 		);
@@ -86,7 +87,8 @@ class CoBlocks_Block_Author_Migration_Test extends WP_UnitTestCase {
 				),
 			),
 			'animation' => 'fadeIn',
-			'name'      => 'Author Name Here',
+			'anchor'    => 'anchor',
+			'name'      => '<strong>Author Name Here</strong>',
 			'biography' => '<strong>T</strong><em>h</em><a href="https://example.com" data-type="URL" data-id="https://example.com">i</a><mark style="background-color:rgba(0, 0, 0, 0);color:#0600ff" class="has-inline-color">s</mark> <code>i</code><img class="wp-image-11" style="width: 150px;" src="https://wxn.a14.myftpupload.com/wp-content/uploads/2023/01/product-image-2.jpg" alt=""> <kbd>a</kbd> <s>c</s><sub>o</sub><sup>o</sup><span class="uppercase">l</span> author bio',
 			'imgUrl'    => 'https://example.org/wp-content/uploads/2023/01/qtq80-vLRESQ.jpeg',
 		);
