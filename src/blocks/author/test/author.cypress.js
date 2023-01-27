@@ -4,16 +4,6 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Author Block', function() {
-	beforeEach( () => {
-		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=post', {
-			onLoad: ( contentWindow ) => {
-				if ( !! contentWindow.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
-					contentWindow.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
-				}
-			},
-		} );
-	} );
-
 	/**
 	 * Test that we can add a author block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.
@@ -88,10 +78,7 @@ describe( 'Test CoBlocks Author Block', function() {
 
 		cy.get( '.wp-block-coblocks-author' ).then( ( author ) => {
 			if ( ! author.prop( 'outerHTML' ).includes( 'editor-url-input' ) ) { // wp 5.4
-				cy.get( '.wp-block-coblocks-author__name' ).click();
-				cy.get( '.wp-block-coblocks-author .wp-block-button__link' ).click();
-				cy.get( '.wp-block-coblocks-author__name' ).click();
-				cy.get( '.wp-block-coblocks-author .wp-block-button__link' ).click();
+				cy.get( author ).find( '.wp-block-button__link' ).click();
 				cy.get( '.block-editor-block-toolbar' )
 					.find( 'button.components-button[aria-label="Link"]' )
 					.click();

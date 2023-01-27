@@ -14,19 +14,19 @@ describe( 'Extension: Layout Selector', () => {
 			helpers.disableGutenbergFeatures();
 
 			// Reset settings.
-			helpers.getWindowObject().then( ( win ) => {
-				win.wp.data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
+			helpers.getWPDataObject().then( ( data ) => {
+				data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
 					[ LAYOUT_SELECTOR_FEATURE_ENABLED_KEY ]: true,
 				} );
 
-				win.wp.data.dispatch( 'coblocks/template-selector' ).updateCategories(
+				data.dispatch( 'coblocks/template-selector' ).updateCategories(
 					[
 						{ slug: 'test-one', title: 'Test One' },
 						{ slug: 'test-two', title: 'Test Two' },
 					]
 				);
 
-				win.wp.data.dispatch( 'coblocks/template-selector' ).updateLayouts(
+				data.dispatch( 'coblocks/template-selector' ).updateLayouts(
 					[
 						{
 							blocks: [ [ 'core/paragraph', { content: 'Test One paragraph.' }, [] ] ],

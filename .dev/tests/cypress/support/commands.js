@@ -1,8 +1,11 @@
-import { disableGutenbergFeatures, loginToSite } from '../helpers';
+import { disableGutenbergFeatures, goTo, loginToSite } from '../helpers';
 
 before( function() {
 	loginToSite().then( () => {
-		disableGutenbergFeatures();
+		goTo( '/wp-admin/post-new.php?post_type=post' ).then( () => {
+			cy.wait( 2000 );
+			disableGutenbergFeatures();
+		} );
 	} );
 } );
 

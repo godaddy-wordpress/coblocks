@@ -12,11 +12,3 @@ jobs:
   chrome_e2e:
     name: Chrome
     uses: ./.github/workflows/test-e2e-cypress.yml
-    secrets:
-      record-key: ${{ secrets.CYPRESS_RECORD_KEY }}
-
-  # firefox_e2e:
-  #   name: Firefox
-  #   uses: ./.github/workflows/test-e2e-cypress.yml
-  #   with:
-  #     browser: firefox
