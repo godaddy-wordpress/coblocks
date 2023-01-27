@@ -10,8 +10,8 @@ jobs:
     name: Chrome
     uses: ./.github/workflows/test-e2e-cypress.yml
 
-  # firefox_e2e:
-  #   name: Firefox
-  #   uses: ./.github/workflows/test-e2e-cypress.yml
-  #   with:
-  #     browser: firefox
+  firefox_e2e:
+    name: Firefox
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      browser: firefox
