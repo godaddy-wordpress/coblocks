@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import {
 	registerStore,
@@ -34,7 +34,9 @@ describe( 'font-preview', () => {
 		let wrapper;
 
 		const setup = ( props = {} ) => {
-			return mount( <FontPreviews { ...props } /> );
+			const { container } = render( <FontPreviews { ...props } /> );
+
+			return container;
 		};
 
 		beforeEach( () => {
@@ -46,7 +48,7 @@ describe( 'font-preview', () => {
 		} );
 
 		it( 'should be rendered', () => {
-			expect( wrapper.exists( '.site-design--fonts__panel' ) ).toEqual( true );
+			expect( wrapper.getElementsByClassName( 'site-design--fonts__panel' ).length ).toBe( 1 );
 		} );
 	} );
 
@@ -62,7 +64,9 @@ describe( 'font-preview', () => {
 
 		const setup = ( props = {} ) => {
 			const setupProps = { ...defaultProps, ...props };
-			return mount( <FontPreview { ...setupProps } /> );
+			const { container } = render( <FontPreview { ...setupProps } /> );
+
+			return container;
 		};
 
 		beforeEach( () => {
@@ -74,15 +78,14 @@ describe( 'font-preview', () => {
 		} );
 
 		it( 'should be rendered', () => {
-			expect( wrapper.exists( '.components-site-design-fonts__option' ) ).toEqual( true );
+			expect( wrapper.getElementsByClassName( 'components-site-design-fonts__option' ).length ).toBe( 1 );
 		} );
 
 		it( 'should update the selected font', () => {
-			wrapper = setup();
-
 			expect( select( STORE_KEY ).getSelectedFonts() ).toEqual( [ [ 'Poppins', [ '600' ] ], [ 'Quicksand', [ '400', '600' ] ] ] );
 
-			wrapper.find( '.components-site-design-fonts__option__section' ).invoke( 'onClick' )();
+			fireEvent.click( screen.getByRole('button') );
+
 			expect( select( STORE_KEY ).getSelectedFonts() ).toEqual( defaultProps.font );
 		} );
 	} );
