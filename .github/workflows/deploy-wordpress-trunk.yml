@@ -16,6 +16,7 @@ jobs:
 
   deploy_trunk:
     name: Trunk
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download plugin
