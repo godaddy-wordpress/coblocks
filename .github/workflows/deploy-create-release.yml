@@ -102,7 +102,7 @@ jobs:
         run: |
           gh release create $RELEASE_VERSION -n "${{ github.event.milestone.description }}" -t "$RELEASE_VERSION"
 
-      - name: Download theme
+      - name: Download plugin
         uses: actions/download-artifact@v3
         with:
           name: ${{ env.ARTIFACT_NAME }}
