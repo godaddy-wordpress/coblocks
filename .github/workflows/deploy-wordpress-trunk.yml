@@ -1,0 +1,29 @@
+name: 'WIP Deploy / WordPress'
+
+on:
+  push:
+    branches:
+      - 'feature/github-actions-migration'
+
+env:
+  ARTIFACT_NAME: 'coblocks-plugin'
+  ARTIFACT_ZIP: 'coblocks.zip'
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/deploy-create-artifact.yml
+
+  deploy_trunk:
+    name: Trunk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download plugin
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: build
+
+      - name: Unzip
+        run: |
+          ls -lA build
