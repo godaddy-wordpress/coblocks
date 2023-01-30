@@ -175,6 +175,7 @@
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
+		"eslint-plugin-jsdoc": "^39.2.5",
 		"simple-git": "^3.16.0"
 	},
 	"lint-staged": {
