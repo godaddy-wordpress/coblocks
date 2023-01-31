@@ -9,3 +9,9 @@ jobs:
   chrome_e2e:
     name: Chrome
     uses: ./.github/workflows/test-e2e-cypress.yml
+
+  chrome_e2e_php74:
+    name: Chrome
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      phpVersion: "7.4"
