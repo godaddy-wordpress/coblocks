@@ -2,8 +2,8 @@ name: 'WIP Deploy / WordPress'
 
 on:
   push:
-    branches:
-      - 'feature/github-actions-migration'
+    tags:
+      - '^([0-9]+\.){2}(\*|[0-9]+)(-.*)?$'
 
 env:
   ARTIFACT_NAME: 'coblocks-plugin'
@@ -11,14 +11,17 @@ env:
 
 jobs:
   build:
-    name: Build
+    name: Create artifact
     uses: ./.github/workflows/deploy-create-artifact.yml
 
-  deploy_trunk:
-    name: Trunk
+  deploy:
+    name: SVN
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Download plugin
         uses: actions/download-artifact@v3
         with:
@@ -27,4 +30,30 @@ jobs:
 
       - name: Unzip
         run: |
-          ls -lA build
+          unzip build/${{ env.ARTIFACT_ZIP }}
+
+      - name: Checkout from WordPress.org
+        run: |
+          svn co https://develop.svn.wordpress.org/trunk/ wp/coblocks
+          rm -rf wp/coblocks/trunk/*
+
+      - name: Sync code changes
+        run: |
+          cp -a build/coblocks/* wp/coblocks/trunk/
+
+      - name: Create new tag
+        run: |
+          svn cp wp/coblocks/trunk wp/coblocks/tags/${{ github.ref_name }}
+          svn commit -m "Tagging version ${{ github.ref_name }}"
+
+      - name: Sync asset changes
+        run: |
+          rm -rf wp/coblocks/assets/*
+          cp -a .wordpress-org/* wp/coblocks/assets/
+
+      - name: Deploy to WordPress.org
+        run: |
+          cd wp/coblocks
+          svn add * --force
+          svn status | grep '^!' | awk '{print $2}' | xargs svn delete
+          svn status
