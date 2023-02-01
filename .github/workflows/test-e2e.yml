@@ -10,6 +10,12 @@ jobs:
     name: Chrome
     uses: ./.github/workflows/test-e2e-cypress.yml
 
+  chrome_e2e_go:
+    name: Chrome
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      theme: go
+
   chrome_e2e_php74:
     name: Chrome
     uses: ./.github/workflows/test-e2e-cypress.yml
