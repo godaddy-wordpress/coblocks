@@ -35,29 +35,27 @@ export function addFormChild( name ) {
  * Login to our test WordPress site
  */
 export function loginToSite() {
-	return goTo( '/wp-admin/post-new.php?post_type=post' )
-		.then( ( window ) => {
-			if ( window.location.pathname === '/wp-login.php' ) {
-			// WordPress has a wp_attempt_focus() function that fires 200ms after the wp-login.php page loads.
-			// We need to wait a short time before trying to login.
-				cy.wait( 250 );
+	return goTo( '/wp-login.php', true )
+		.then( () => {
+			cy.wait( 250 );
 
-				cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
-				cy.get( '#user_pass' ).type( Cypress.env( 'wpPassword' ) );
-				cy.get( '#wp-submit' ).click();
-			}
-		} )
-		.get( '.wp-block-post-title' ).should( 'exist' );
+			cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
+			cy.get( '#user_pass' ).type( Cypress.env( 'wpPassword' ) );
+			cy.get( '#wp-submit' ).click();
+		} );
 }
 
 /**
  * Go to a specific URI.
  *
- * @param {string} path The URI path to go to.
+ * @param {string}  path  The URI path to go to.
+ * @param {boolean} login If this is a login page.
  */
-export function goTo( path = '/wp-admin' ) {
+export function goTo( path = '/wp-admin', login = false ) {
 	return cy.visit( Cypress.env( 'testURL' ) + path ).then( () => {
-		return getWindowObject();
+		return login ? cy.window().then( ( win ) => {
+			return win;
+		} ) : getWPDataObject();
 	} );
 }
 
@@ -65,20 +63,9 @@ export function goTo( path = '/wp-admin' ) {
  * Safely obtain the window object or error
  * when the window object is not available.
  */
-export function getWindowObject() {
-	const editorUrlStrings = [ 'post-new.php', 'action=edit' ];
-	return cy.window().then( ( win ) => {
-		const isEditorPage = editorUrlStrings.filter( ( str ) => win.location.href.includes( str ) );
-
-		if ( isEditorPage.length === 0 ) {
-			throw new Error( 'Check the previous test, window property was invoked outside of Editor.' );
-		}
-
-		if ( ! win?.wp ) {
-			throw new Error( 'Window property was invoked within Editor but `win.wp` is not defined.' );
-		}
-
-		return win;
+export function getWPDataObject() {
+	return cy.window().its( 'wp.data' ).then( ( data ) => {
+		return data;
 	} );
 }
 
@@ -86,18 +73,17 @@ export function getWindowObject() {
  * Disable Gutenberg Tips
  */
 export function disableGutenbergFeatures() {
-	return getWindowObject().then( ( safeWin ) => {
+	return getWPDataObject().then( ( data ) => {
 		// Enable "Top Toolbar"
-		if ( ! safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
-			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
+		if ( ! data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
+			data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
 		}
 
-		if ( safeWin.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
-			safeWin.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
-		} else {
+		if ( data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+			data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
 		}
 
-		safeWin.wp.data.dispatch( 'core/editor' ).disablePublishSidebar();
+		data.dispatch( 'core/editor' ).disablePublishSidebar();
 	} );
 }
 
@@ -226,9 +212,9 @@ export function editPage() {
  * Clear all blocks from the editor
  */
 export function clearBlocks() {
-	getWindowObject().then( ( safeWin ) => {
-		safeWin.wp.data.dispatch( 'core/block-editor' ).removeBlocks(
-			safeWin.wp.data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
+	getWPDataObject().then( ( data ) => {
+		data.dispatch( 'core/block-editor' ).removeBlocks(
+			data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
 		);
 	} );
 }
