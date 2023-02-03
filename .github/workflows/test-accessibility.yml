@@ -1,4 +1,4 @@
-name: WIP Test / Accessibility
+name: Test / Accessibility
 
 on:
   pull_request:

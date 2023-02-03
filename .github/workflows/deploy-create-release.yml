@@ -56,7 +56,7 @@ jobs:
           git push
 
   build:
-    name: Build
+    name: Create artifact
     uses: ./.github/workflows/deploy-create-artifact.yml
     needs: update
 
@@ -102,7 +102,7 @@ jobs:
         run: |
           gh release create $RELEASE_VERSION -n "${{ github.event.milestone.description }}" -t "$RELEASE_VERSION"
 
-      - name: Download theme
+      - name: Download plugin
         uses: actions/download-artifact@v3
         with:
           name: ${{ env.ARTIFACT_NAME }}
