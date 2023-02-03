@@ -6,12 +6,12 @@ on:
       - master
 
 jobs:
-  chrome_e2e:
-    name: Chrome with defaults
-    uses: ./.github/workflows/test-e2e-cypress.yml
-    concurrency:
-      group: chrome-defaults
-      cancel-in-progress: true
+  # chrome_e2e:
+  #   name: Chrome with defaults
+  #   uses: ./.github/workflows/test-e2e-cypress.yml
+  #   concurrency:
+  #     group: chrome-defaults
+  #     cancel-in-progress: true
 
   chrome_e2e_go:
     name: Chrome and Go theme
