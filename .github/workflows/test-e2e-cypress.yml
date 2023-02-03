@@ -130,7 +130,7 @@ jobs:
           wp-env run cli "wp option update permalink_structure '/%postname%'"
           if [ "${{ inputs.theme }}" = "https://downloads.wordpress.org/theme/go.zip" ]; then
             wp-env run test-cli "wp theme activate go"
-          else
+          fi
 
       - name: Run tests
         run: |
