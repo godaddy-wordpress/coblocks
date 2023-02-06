@@ -51,6 +51,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          composer install --no-interaction --no-progress --no-suggest --optimize-autoloader --prefer-dist
           yarn install --immutable
 
       - name: Run version update
