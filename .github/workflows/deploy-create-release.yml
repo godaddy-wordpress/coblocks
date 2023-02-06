@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.repository.default_branch }}
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -120,3 +122,47 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload $RELEASE_VERSION ${{ env.ARTIFACT_ZIP }}
+
+  deploy:
+    name: Deploy to WordPress.org
+    needs: [ build, tag ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set version
+        run: |
+          echo "NEW_TAG_VERSION=${{ github.event.milestone.title }}" >> $GITHUB_ENV
+
+      - name: Download plugin
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: build/coblocks
+
+      - name: Checkout from WordPress.org
+        run: |
+          svn co http://svn.wp-plugins.org/coblocks wp/coblocks
+          rm -rf wp/coblocks/trunk/*
+
+      - name: Sync code changes
+        run: |
+          cp -a build/coblocks/* wp/coblocks/trunk/
+
+      - name: Create new tag
+        run: |
+          svn cp wp/coblocks/trunk wp/coblocks/tags/$NEW_TAG_VERSION
+          svn commit -m "Tagging version $NEW_TAG_VERSION"
+
+      - name: Sync asset changes
+        run: |
+          rm -rf wp/coblocks/assets/*
+          cp -a .wordpress-org/* wp/coblocks/assets/
+
+      - name: Deploy to WordPress.org
+        run: |
+          cd wp/coblocks
+          svn add * --force
+          svn status | grep '^!' | awk '{print $2}' | xargs svn delete
+          svn ci --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password ${{ secrets.GODADDY_WPORG_PASSWORD }} -m "Deploy $NEW_TAG_VERSION version of CoBlocks"
