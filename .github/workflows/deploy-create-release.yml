@@ -25,6 +25,9 @@ jobs:
       - name: Setup git user
         uses: godaddy-wordpress/setup-godaddy-git-user@v1
 
+      - name: Setup WP-CLI
+        uses: godaddy-wordpress/setup-wp-cli@1
+
       # Yarn is still required on this project, so we need to make sure it is
       # installed globally.
       - name: Install yarn
@@ -41,6 +44,10 @@ jobs:
               echo "::error::Milestone title does not match semver format: '$NEW_TAG_VERSION'"
               exit 1
           fi
+
+      - name: Update changelog.txt
+        run: |
+          echo "${{ github.event.milestone.title }} / $(date +%Y-%m-%d)\n===================\n${{ github.event.milestone.description }}\n\n$(cat changelog.txt)" > changelog.txt
 
       - name: Install dependencies
         run: |

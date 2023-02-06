@@ -122,6 +122,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 2.26.0 / 2023-02-06 =
+
+* Migrated from using CircleCI to Github Actions for our automated testing and deploys. [#2451](https://github.com/godaddy-wordpress/coblocks/pull/2451)
+* Switched from using distexclude to distinclude for more verbose includes in the public plugin. [#2451](https://github.com/godaddy-wordpress/coblocks/pull/2451)
+
 = 2.25.5 / 2022-12-20 =
 
 * Fix form button colors and resolve color bleed  [#2461](https://github.com/godaddy-wordpress/coblocks/pull/2461)
