@@ -55,7 +55,7 @@ jobs:
           yarn install --immutable
 
       - name: Run version update
-        run: yarn version --new-version $NEW_TAG_VERSION
+        run: npm version $NEW_TAG_VERSION
 
       - name: Push changes
         run: |

@@ -53,7 +53,7 @@
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
 		"update:icon": "node src/blocks/icon/svgs-generator.js && cp -R node_modules/@godaddy-wordpress/coblocks-icons/src/svg/ src/blocks/icon/svgs",
-		"version": "grunt version && grunt update-pot && git add -A ."
+		"version": "grunt version && grunt update-pot"
 	},
 	"locales": {
 		"ar": "العربية",
