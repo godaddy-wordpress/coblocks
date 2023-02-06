@@ -3,6 +3,9 @@ name: 'Deploy / Create Artifact'
 on:
   workflow_call:
     inputs:
+      checkout-ref:
+        required: false
+        type: string
       retention-days:
         required: false
         type: number
@@ -13,7 +16,6 @@ env:
   ARTIFACT_PATH: 'coblocks'
   ARTIFACT_ZIP: 'coblocks.zip'
 
-# First build our plugin, then create and store the artifact.
 jobs:
   build:
     name: Build
@@ -22,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: ${{ inputs.checkout-ref }} || ${{ github.event.repository.default_branch }}
 
       - name: Setup Node
         uses: actions/setup-node@v3
