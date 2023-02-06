@@ -42,6 +42,10 @@ jobs:
               exit 1
           fi
 
+      - name: Update changelog.txt
+        run: |
+          echo "${{ github.event.milestone.title }} / $(date +%Y-%m-%d)\n===================\n${{ github.event.milestone.description }}\n\n$(cat changelog.txt)" > changelog.txt
+
       - name: Install dependencies
         run: |
           yarn install --immutable
