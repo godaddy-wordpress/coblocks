@@ -57,4 +57,4 @@ jobs:
           cd wp/coblocks
           svn add * --force
           svn status | grep '^!' | awk '{print $2}' | xargs svn delete
-          svn status
+          svn ci --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password ${{ secrets.GODADDY_WPORG_PASSWORD }} -m "Deploy ${{ github.ref_name }} version of CoBlocks"
