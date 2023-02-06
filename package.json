@@ -37,7 +37,6 @@
 		"po2jed": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`-coblocks-editor.json\" && echo \"$FROM > $TO\" && po2json $FROM $TO -f jed' '{}' \\;",
 		"po2mo": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`.mo\" && echo \"$FROM > $TO\" && msgfmt $FROM -o $TO' '{}' \\;",
 		"postinstall": "yarn update:icon",
-		"postversion": "git push && git push --tags",
 		"pot2json": "./vendor/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"prepare": "husky install .dev/husky",
 		"setup": "yarn install && yarn run build && wp-env start && yarn php:composer:install",
