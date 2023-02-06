@@ -1,4 +1,4 @@
-name: 'WIP Deploy / WordPress'
+name: 'Deploy / WordPress'
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
 
 env:
   ARTIFACT_NAME: 'coblocks-plugin'
-  ARTIFACT_ZIP: 'coblocks.zip'
+  ARTIFACT_ZIP: 'coblocks-plugin.zip'
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
 
       - name: Checkout from WordPress.org
         run: |
-          svn co https://develop.svn.wordpress.org/trunk/ wp/coblocks
+          svn co http://svn.wp-plugins.org/coblocks wp/coblocks
           rm -rf wp/coblocks/trunk/*
 
       - name: Sync code changes
