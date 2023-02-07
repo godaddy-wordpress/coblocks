@@ -156,7 +156,7 @@ jobs:
         run: |
           svn cp wp/coblocks/trunk wp/coblocks/tags/$NEW_TAG_VERSION
           cd wp/coblocks
-          svn commit -m "Tagging version $NEW_TAG_VERSION"
+          svn commit -m "Tagging version $NEW_TAG_VERSION" --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password ${{ secrets.GODADDY_WPORG_PASSWORD }}
 
       - name: Sync asset changes
         run: |
