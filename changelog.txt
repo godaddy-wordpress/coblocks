@@ -1,3 +1,10 @@
+2.26.3 / 2023-02-07
+===================
+### Bug fixes
+
+- Fixes issue with SVN checkin for the new tag.
+- Corrects changelog.txt markup and addresses automated output. 
+
 2.26.2 / 2023-02-07
 ===================
 ### Bug fixes
