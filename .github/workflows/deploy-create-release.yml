@@ -155,6 +155,7 @@ jobs:
       - name: Create new tag
         run: |
           svn cp wp/coblocks/trunk wp/coblocks/tags/$NEW_TAG_VERSION
+          cd wp/coblocks
           svn commit -m "Tagging version $NEW_TAG_VERSION"
 
       - name: Sync asset changes
