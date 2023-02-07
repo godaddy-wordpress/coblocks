@@ -156,7 +156,7 @@ jobs:
         run: |
           svn cp wp/coblocks/trunk wp/coblocks/tags/$NEW_TAG_VERSION
           cd wp/coblocks
-          svn commit -m "Tagging version $NEW_TAG_VERSION" --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password "${{ secrets.GODADDY_WPORG_PASSWORD }}"
+          svn commit -m "Tagging version $NEW_TAG_VERSION" --no-auth-cache --non-interactive --username "${{ secrets.GODADDY_WPORG_USERNAME }}" --password "${{ secrets.GODADDY_WPORG_PASSWORD }}"
 
       - name: Sync asset changes
         run: |
@@ -168,4 +168,4 @@ jobs:
           cd wp/coblocks
           svn add * --force
           svn status | grep '^!' | awk '{print $2}' | xargs svn delete
-          svn ci --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password "${{ secrets.GODADDY_WPORG_PASSWORD }}" -m "Deploy $NEW_TAG_VERSION version of CoBlocks"
+          svn ci --no-auth-cache --non-interactive --username "${{ secrets.GODADDY_WPORG_USERNAME }}" --password "${{ secrets.GODADDY_WPORG_PASSWORD }}" -m "Deploy $NEW_TAG_VERSION version of CoBlocks"
