@@ -1,3 +1,9 @@
+2.26.4 / 2023-02-07
+===================
+### Bug fixes
+
+- Fix issue with SVN authentication in Workflow.
+
 2.26.3 / 2023-02-07
 ===================
 ### Bug fixes
