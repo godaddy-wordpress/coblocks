@@ -49,7 +49,7 @@ jobs:
 
       - name: Update changelog.txt
         run: |
-          printf "${{ github.event.milestone.title }} / $(date +%Y-%m-%d)\n===================\n${{ github.event.milestone.description }}\n\n$(cat changelog.txt)" > changelog.txt
+          echo -e "${{ github.event.milestone.title }} / $(date +%Y-%m-%d)\n===================\n${{ github.event.milestone.description }}\n\n$(cat changelog.txt)" > changelog.txt
 
       - name: Install dependencies
         run: |
