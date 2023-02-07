@@ -1,4 +1,6 @@
-2.26.0 / 2023-02-06\n===================\n### Enhancements
+2.26.1 / 2023-02-07\n===================\n### Fix
+
+- Fixes issue with WP.org Deploy workflow.\n\n2.26.0 / 2023-02-06\n===================\n### Enhancements
 - Migrated from using CircleCI to Github Actions for our automated testing and deploys.
 - Switched from using distexclude to distinclude for more verbose includes in the public plugin.\n\n2.25.5 / 2022-12-20
 ===================
