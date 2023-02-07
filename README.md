@@ -1,6 +1,12 @@
 # CoBlocks: Page Builder Blocks for Gutenberg
 
-[![CircleCI](https://circleci.com/gh/godaddy-wordpress/coblocks/tree/master.svg?style=svg)](https://circleci.com/gh/godaddy-wordpress/coblocks/tree/master) [![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://github.com/godaddy-wordpress/coblocks/blob/master/LICENSE) <img src="https://www.w3.org/WAI/wcag2AA.png" width="55" />
+
+[![Test Accessibility](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-accessibility.yml/badge.svg)](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-accessibility.yml)
+[![Test PHP](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-php.yml/badge.svg)](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-php.yml)
+[![Test JS](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-javascript.yml/badge.svg)](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-javascript.yml)
+[![Test E2E](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-e2e.yml/badge.svg)](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-e2e.yml)
+
+[![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/coblocks.svg?style=flat)](https://wordpress.org/plugins/coblocks/) [![WordPress](https://img.shields.io/wordpress/v/coblocks.svg?style=flat)]() [![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg)](https://github.com/godaddy-wordpress/coblocks/blob/master/LICENSE) <img src="https://www.w3.org/WAI/wcag2AA.png" width="55" />
 
 [CoBlocks](https://wordpress.org/plugins/coblocks/) is a suite of professional page building content blocks for the WordPress Gutenberg block editor. This is the most innovative collection of page building WordPress blocks for the new Gutenberg block editor. We will make you rethink what WordPress is capable of.
 
