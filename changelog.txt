@@ -1,3 +1,9 @@
+2.26.9 / 2023-02-08
+===================
+### Bug fixes
+
+- Remove superfluous brackets.
+
 2.26.8 / 2023-02-08
 ===================
 ### Enhancements
