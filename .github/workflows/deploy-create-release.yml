@@ -155,5 +155,5 @@ jobs:
           plugin-name: coblocks
           plugin-version: ${{ env.NEW_TAG_VERSION }}
           plugin-assets: .wordpress-org
-          svn-username: ${{ secrets.GODADDY_WPORG_USERNAME }}}
-          svn-password: ${{ secrets.GODADDY_WPORG_PASSWORD }}}
+          svn-username: ${{ secrets.GODADDY_WPORG_USERNAME }}
+          svn-password: ${{ secrets.GODADDY_WPORG_PASSWORD }}
