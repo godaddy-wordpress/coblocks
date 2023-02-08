@@ -141,29 +141,19 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ env.ARTIFACT_NAME }}
-          path: build/coblocks
+          path: .artifacts
 
-      - name: Checkout from WordPress.org
+      - name: Unzip artifact
         run: |
-          svn co http://svn.wp-plugins.org/coblocks wp/coblocks
-          rm -rf wp/coblocks/trunk/*
-
-      - name: Sync code changes
-        run: |
-          cp -a build/coblocks/* wp/coblocks/trunk/
-
-      - name: Create new tag
-        run: |
-          svn cp wp/coblocks/trunk wp/coblocks/tags/$NEW_TAG_VERSION
-
-      - name: Sync asset changes
-        run: |
-          rm -rf wp/coblocks/assets/*
-          cp -a .wordpress-org/* wp/coblocks/assets/
+          mkdir -p .wp-plugin-deploy
+          unzip .artifacts/${{ env.ARTIFACT_ZIP }} -d .wp-plugin-deploy/
+          mv .wp-plugin-deploy/coblocks .wp-plugin-deploy/coblocks-artifact
 
       - name: Deploy to WordPress.org
-        run: |
-          cd wp/coblocks
-          svn add * --force
-          svn status | grep '^!' | awk '{print $2}' | xargs svn delete
-          svn ci --no-auth-cache --non-interactive --username "${{ secrets.GODADDY_WPORG_USERNAME }}" --password "${{ secrets.GODADDY_WPORG_PASSWORD }}" -m "Deploy $NEW_TAG_VERSION version of CoBlocks"
+        uses: godaddy-wordpress/deploy-plugin-artifact@v1
+        with:
+          plugin-name: coblocks
+          plugin-version: ${{ env.NEW_TAG_VERSION }}
+          plugin-assets: .wordpress-org
+          svn-username: ${{ secrets.GODADDY_WPORG_USERNAME }}}
+          svn-password: ${{ secrets.GODADDY_WPORG_PASSWORD }}}
