@@ -1,13 +1,11 @@
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import '../data/store';
 import { SiteDesignControls } from '../component';
-import DesignPreviews from '../design-preview';
-import ColorPalettePreviews from '../color-palette-preview';
-import FontPreviews from '../font-preview';
 
 const setup = ( props = {} ) => {
-	return shallow( <SiteDesignControls { ...props } /> );
+	const { container } = render( <SiteDesignControls { ...props } /> );
+	return container;
 };
 
 // Mock DOM for style tag updates.
@@ -20,7 +18,7 @@ document.getElementsByTagName( 'head' )[ 0 ].appendChild( stylesElement );
 global.ajaxurl = '';
 global.window.fetch = () => new Promise( () => {} );
 
-describe( 'SiteDesign', () => {
+describe.only( 'SiteDesign', () => {
 	let wrapper;
 
 	beforeEach( () => {
@@ -32,8 +30,9 @@ describe( 'SiteDesign', () => {
 	} );
 
 	it( 'renders', () => {
-		expect( wrapper.find( DesignPreviews ) ).toHaveLength( 1 );
-		expect( wrapper.find( ColorPalettePreviews ) ).toHaveLength( 1 );
-		expect( wrapper.find( FontPreviews ) ).toHaveLength( 1 );
+		expect( wrapper.querySelector( '.components-site-design-designs' ) ).toBeInTheDocument;
+		expect( wrapper.querySelector( '.site-design--colors__panel' ) ).toBeInTheDocument;
+		expect( wrapper.querySelector( '.site-design--colors__panel' ) ).toBeInTheDocument;
+		expect( wrapper.querySelector( '.components-site-design-fonts' ) ).toBeInTheDocument;
 	} );
 } );
