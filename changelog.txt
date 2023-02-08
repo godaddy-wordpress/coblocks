@@ -1,3 +1,9 @@
+2.26.8 / 2023-02-08
+===================
+### Enhancements
+
+- Run WordPress.org deploy with new GoDaddy WordPress Action.
+
 2.26.7 / 2023-02-07
 ===================
 ### Bug fixes
