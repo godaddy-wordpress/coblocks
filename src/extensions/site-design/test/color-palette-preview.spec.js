@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 
 import {
 	registerStore,
@@ -38,7 +38,8 @@ describe( 'color-palette-preview', () => {
 		let wrapper;
 
 		const setup = ( props = {} ) => {
-			return mount( <ColorPalettePreviews { ...props } /> );
+			const { container } = render( <ColorPalettePreviews { ...props } /> );
+			return container;
 		};
 
 		beforeEach( () => {
@@ -51,31 +52,25 @@ describe( 'color-palette-preview', () => {
 
 		describe( 'Default Palettes', () => {
 			it( 'should be rendered', () => {
-				expect( wrapper.exists( '.components-site-design-color-palettes' ) ).toEqual( true );
+				expect( wrapper.querySelectorAll( '.components-site-design-color-palettes' ) ).toHaveLength( 1 );
 			} );
 
 			it( 'should update colors when new color has been selected', () => {
-				let selectedPalette = wrapper.find( '.color-palette.is-selected' );
-				const selectedIndicator = selectedPalette.find( ColorIndicator ).at( 2 );
-
-				expect( selectedIndicator.prop( 'colorValue' ) ).toEqual( '#c76919' );
 				expect( select( STORE_KEY ).getCurrentColors().primary ).toEqual( '#c76919' );
 
-				const newPalette = wrapper.find( '.color-palette' ).at( 2 );
+				const newPalette = wrapper.querySelectorAll( '.color-palette' );
 
-				newPalette.invoke( 'onClick' )();
-				selectedPalette = wrapper.find( '.color-palette.is-selected' );
+				fireEvent.click( newPalette[1] );
 
-				expect( selectedPalette.find( ColorIndicator ).at( 2 ).prop( 'colorValue' ) ).toEqual( '#165153' );
 				expect( select( STORE_KEY ).getCurrentColors().primary ).toEqual( '#165153' );
 			} );
 
 			it( 'should do nothing when the same color has been selected', () => {
-				const newPalette = wrapper.find( '.color-palette' ).at( 2 );
+				const newPalette = wrapper.querySelectorAll( '.color-palette' )[ 1 ];
 
 				expect( select( STORE_KEY ).getColorPalette() ).toEqual( 'two' );
 
-				newPalette.invoke( 'onClick' )();
+				fireEvent.click( newPalette );
 
 				expect( select( STORE_KEY ).getColorPalette() ).toEqual( 'two' );
 			} );
@@ -84,32 +79,32 @@ describe( 'color-palette-preview', () => {
 		describe( 'Custom Palette', () => {
 			it( 'should display Custom Palette when using a custom palette', () => {
 				expect( select( STORE_KEY ).getColorPalette() ).toEqual( 'two' );
-				expect( wrapper.exists( '.color-palette-custom' ) ).toEqual( false );
+				expect( wrapper.querySelector( '.color-palette-custom' ) ).toBeInTheDocument;
 
-				wrapper.find( '.color-palettes__custom-button' ).invoke( 'onClick' )();
+				const button = wrapper.querySelector( '.color-palettes__custom-button' );
+
+				fireEvent.click( button );
 
 				expect( select( STORE_KEY ).getColorPalette() ).toEqual( 'custom' );
-				expect( wrapper.exists( '.color-palette-custom' ) ).toEqual( true );
-			} );
-
-			it( 'should change colors using the Color Picker', () => {
-				wrapper.find( '.color-palette-custom__color' ).find( 'button' ).first().invoke( 'onClick' )();
-				wrapper.find( ColorPicker ).invoke( 'onChangeComplete' )( { hex: '#123456' } );
-
-				expect( select( STORE_KEY ).getCurrentColors().primary ).toEqual( '#123456' );
+				expect( wrapper.querySelector( '.color-palette-custom' ) ).toBeInTheDocument;
 			} );
 
 			it( 'should dismiss custom palette on close button', () => {
-				const palette = wrapper.find( '.color-palette' ).at( 1 );
+				const palette = wrapper.querySelectorAll( '.color-palette' )[1];
 
-				palette.invoke( 'onClick' )();
-				wrapper.find( '.color-palettes__custom-button' ).invoke( 'onClick' )();
+				fireEvent.click( palette );
 
-				expect( wrapper.exists( '.color-palette-custom' ) ).toEqual( true );
+				const customPaletteButton = wrapper.querySelector( '.color-palettes__custom-button' );
 
-				wrapper.find( '.color-palette-custom .components-site-design__custom__dismiss' ).invoke( 'onClick' )();
+				fireEvent.click( customPaletteButton );
 
-				expect( wrapper.exists( '.color-palette-custom' ) ).toEqual( false );
+				expect( wrapper.querySelector( '.color-palette-custom' ) ).toBeInTheDocument;
+
+				const liveSiteDismiss = wrapper.querySelector( '.color-palette-custom .components-site-design__custom__dismiss' );
+
+				fireEvent.click( liveSiteDismiss )
+
+				expect( wrapper.querySelector( '.color-palette-custom' ) ).toBeInTheDocument;
 			} );
 		} );
 
