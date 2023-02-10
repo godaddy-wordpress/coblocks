@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 import PostMenuActions from '../post-menu-actions';
 
@@ -60,11 +60,11 @@ describe( 'post-menu-actions', () => {
 
 		describe( 'onDuplicatePost()', () => {
 			it( 'should trigger post duplication', () => {
-				const toggleButton = wrapper.querySelector( '.content-management__panel__actions__button' );
+				const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[0];
 
 				fireEvent.click( toggleButton );
 
-				const duplicateButton = wrapper.querySelectorAll( '.content-management-actions__item' )[6];
+				const duplicateButton = wrapper.querySelectorAll( '.content-management-actions__item' )[2];
 
 				fireEvent.click( duplicateButton );
 
@@ -78,9 +78,12 @@ describe( 'post-menu-actions', () => {
 
 				fireEvent.click(toggleButton);
 
-				const contentManagementItem = wrapper.querySelectorAll( '.content-management-actions__item' )[9];
+				let contentManagementItem = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
 
 				fireEvent.click( contentManagementItem );
+
+				contentManagementItem = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
+
 				fireEvent.click( contentManagementItem );
 
 				expect( defaultProps.onDeletePost ).toHaveBeenCalled();
@@ -93,9 +96,12 @@ describe( 'post-menu-actions', () => {
 
 				fireEvent.click( toggleButton );
 
-				const contentManagementActionsItem = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
+				let contentManagementActionsItem = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
 
 				fireEvent.click( contentManagementActionsItem );
+
+				contentManagementActionsItem = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
+
 				fireEvent.click( contentManagementActionsItem );
 
 				expect( defaultProps.onSetAsHomePost ).toHaveBeenCalled();
@@ -114,7 +120,7 @@ describe( 'post-menu-actions', () => {
 
 				fireEvent.click( toggleButton );
 
-				const pinButton = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
+				const pinButton = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
 
 				fireEvent.click( pinButton );
 
@@ -133,7 +139,7 @@ describe( 'post-menu-actions', () => {
 
 				fireEvent.click( toggleButton );
 
-				const pinButton = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
+				const pinButton = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
 
 				fireEvent.click( pinButton );
 
