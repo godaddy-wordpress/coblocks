@@ -14,7 +14,7 @@
 ## Our Vision
 
 The vision for CoBlocks is to create a suite of WordPress blocks and tools to help folks make beautiful websites easily.
-
+ 
 ### Our Blocks
 
 -   Accordion Block
