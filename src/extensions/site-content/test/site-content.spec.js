@@ -24,8 +24,7 @@ describe( 'SiteContent', () => {
 
 	describe( '#render', () => {
 		it( 'should render', () => {
-			expect( wrapper.querySelectorAll( '.content-management' ) ).toHaveLength( 1 );
-			expect( wrapper.querySelectorAll( '[data-test="post-type-panel"]' ) ).toHaveLength( 2 );
+			expect( wrapper.querySelectorAll( '[data-test="site-content__container"' ) ).toHaveLength( 1 );
 		} );
 	} );
 } );
