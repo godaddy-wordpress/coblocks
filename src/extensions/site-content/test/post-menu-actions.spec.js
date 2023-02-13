@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 import PostMenuActions from '../post-menu-actions';
 
@@ -16,7 +16,8 @@ const defaultProps = {
 const setup = ( props = {} ) => {
 	const setupProps = { ...defaultProps, ...props };
 
-	return mount( <PostMenuActions { ...setupProps } /> );
+	const { container } = render( <PostMenuActions { ...setupProps } /> );
+	return container;
 };
 
 describe( 'post-menu-actions', () => {
@@ -28,30 +29,30 @@ describe( 'post-menu-actions', () => {
 
 	describe( '#render', () => {
 		it( 'should show the dropdown button', () => {
-			expect( wrapper.find( '.content-management__panel__actions__button' ) ).toBeTruthy();
+			expect( wrapper.querySelector( '.content-management__panel__actions__button' ) ).toBeInTheDocument;
 		} );
 
 		it( 'should show the dropdown once activated', () => {
-			const toggleButton = wrapper.find( '.content-management__panel__actions__button' ).first();
+			const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[0];
 
-			expect( wrapper.find( '.content-management-actions' ) ).toHaveLength( 0 );
+			expect( wrapper.querySelectorAll( '.content-management-actions' ) ).toHaveLength( 0 );
 
-			toggleButton.invoke( 'onClick' )();
+			fireEvent.click( toggleButton );
 
-			expect( wrapper.find( '.content-management-actions' ) ).toBeTruthy();
+			expect( wrapper.querySelectorAll( '.content-management-actions' ) ).toBeInTheDocument;
 		} );
 	} );
 
 	describe( '#methods', () => {
 		describe( 'onRenamePost()', () => {
 			it( 'should trigger post duplication', () => {
-				const toggleButton = wrapper.find( '.content-management__panel__actions__button' ).first();
+				const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[0];
 
-				toggleButton.invoke( 'onClick' )();
+				fireEvent.click( toggleButton );
 
-				const renameButton = wrapper.find( '.content-management-actions__item' ).at( 1 );
+				const renameButton = wrapper.querySelectorAll( '.content-management-actions__item' )[0];
 
-				renameButton.invoke( 'onClick' )();
+				fireEvent.click( renameButton );
 
 				expect( defaultProps.onRenamePost ).toHaveBeenCalled();
 			} );
@@ -59,13 +60,13 @@ describe( 'post-menu-actions', () => {
 
 		describe( 'onDuplicatePost()', () => {
 			it( 'should trigger post duplication', () => {
-				const toggleButton = wrapper.find( '.content-management__panel__actions__button' ).first();
+				const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[0];
 
-				toggleButton.invoke( 'onClick' )();
+				fireEvent.click( toggleButton );
 
-				const duplicateButton = wrapper.find( '.content-management-actions__item' ).at( 7 );
+				const duplicateButton = wrapper.querySelectorAll( '.content-management-actions__item' )[2];
 
-				duplicateButton.invoke( 'onClick' )();
+				fireEvent.click( duplicateButton );
 
 				expect( defaultProps.onDuplicatePost ).toHaveBeenCalled();
 			} );
@@ -73,11 +74,17 @@ describe( 'post-menu-actions', () => {
 
 		describe( 'onDeletePost()', () => {
 			it( 'should trigger post deletion', () => {
-				const toggleButton = wrapper.find( '.content-management__panel__actions__button' ).first();
-				toggleButton.invoke( 'onClick' )();
+				const toggleButton = wrapper.querySelector( '.content-management__panel__actions__button' );
 
-				wrapper.find( '.content-management-actions__item' ).at( 10 ).invoke( 'onClick' )();
-				wrapper.find( '.content-management-actions__item' ).at( 10 ).invoke( 'onClick' )();
+				fireEvent.click(toggleButton);
+
+				let contentManagementItem = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
+
+				fireEvent.click( contentManagementItem );
+
+				contentManagementItem = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
+
+				fireEvent.click( contentManagementItem );
 
 				expect( defaultProps.onDeletePost ).toHaveBeenCalled();
 			} );
@@ -85,12 +92,17 @@ describe( 'post-menu-actions', () => {
 
 		describe( 'onSetAsHomePost()', () => {
 			it( 'should trigger post being set as home', () => {
-				const toggleButton = wrapper.find( '.content-management__panel__actions__button' ).first();
+				const toggleButton = wrapper.querySelector( '.content-management__panel__actions__button' );
 
-				toggleButton.invoke( 'onClick' )();
+				fireEvent.click( toggleButton );
 
-				wrapper.find( '.content-management-actions__item' ).at( 4 ).invoke( 'onClick' )();
-				wrapper.find( '.content-management-actions__item' ).at( 4 ).invoke( 'onClick' )();
+				let contentManagementActionsItem = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
+
+				fireEvent.click( contentManagementActionsItem );
+
+				contentManagementActionsItem = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
+
+				fireEvent.click( contentManagementActionsItem );
 
 				expect( defaultProps.onSetAsHomePost ).toHaveBeenCalled();
 			} );
@@ -104,13 +116,13 @@ describe( 'post-menu-actions', () => {
 					shouldDiplayPinAction: true,
 				} );
 
-				const toggleButton = wrapper.find( '.content-management__panel__actions__button' ).first();
+				const toggleButton = wrapper.querySelector( '.content-management__panel__actions__button' );
 
-				toggleButton.invoke( 'onClick' )();
+				fireEvent.click( toggleButton );
 
-				const pinButton = wrapper.find( '.content-management-actions__item' ).at( 4 );
+				const pinButton = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
 
-				pinButton.invoke( 'onClick' )();
+				fireEvent.click( pinButton );
 
 				expect( defaultProps.onPinPost ).toHaveBeenCalled();
 			} );
@@ -123,13 +135,13 @@ describe( 'post-menu-actions', () => {
 					shouldDiplayPinAction: true,
 				} );
 
-				const toggleButton = wrapper.find( '.content-management__panel__actions__button' ).first();
+				const toggleButton = wrapper.querySelector( '.content-management__panel__actions__button' );
 
-				toggleButton.invoke( 'onClick' )();
+				fireEvent.click( toggleButton );
 
-				const pinButton = wrapper.find( '.content-management-actions__item' ).at( 4 );
+				const pinButton = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
 
-				pinButton.invoke( 'onClick' )();
+				fireEvent.click( pinButton );
 
 				expect( defaultProps.onPinPost ).toHaveBeenCalled();
 			} );
