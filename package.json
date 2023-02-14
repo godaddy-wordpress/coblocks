@@ -2,7 +2,7 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "2.25.5",
+	"version": "2.26.11",
 	"tested_up_to": "6.1",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
@@ -37,7 +37,6 @@
 		"po2jed": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`-coblocks-editor.json\" && echo \"$FROM > $TO\" && po2json $FROM $TO -f jed' '{}' \\;",
 		"po2mo": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`.mo\" && echo \"$FROM > $TO\" && msgfmt $FROM -o $TO' '{}' \\;",
 		"postinstall": "yarn update:icon",
-		"postversion": "git push && git push --tags",
 		"pot2json": "./vendor/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"prepare": "husky install .dev/husky",
 		"setup": "yarn install && yarn run build && wp-env start && yarn php:composer:install",
@@ -54,7 +53,7 @@
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
 		"update:icon": "node src/blocks/icon/svgs-generator.js && cp -R node_modules/@godaddy-wordpress/coblocks-icons/src/svg/ src/blocks/icon/svgs",
-		"version": "grunt version && grunt update-pot && git add -A ."
+		"version": "grunt version && grunt update-pot"
 	},
 	"locales": {
 		"ar": "العربية",
@@ -176,6 +175,7 @@
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
+		"@sideway/formula": "^3.0.1",
 		"eslint-plugin-jsdoc": "^39.2.5",
 		"simple-git": "^3.16.0"
 	},

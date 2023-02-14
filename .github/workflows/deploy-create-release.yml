@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.repository.default_branch }}
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -24,6 +26,9 @@ jobs:
 
       - name: Setup git user
         uses: godaddy-wordpress/setup-godaddy-git-user@v1
+
+      - name: Setup WP-CLI
+        uses: godaddy-wordpress/setup-wp-cli@1
 
       # Yarn is still required on this project, so we need to make sure it is
       # installed globally.
@@ -42,16 +47,21 @@ jobs:
               exit 1
           fi
 
+      - name: Update changelog.txt
+        run: |
+          echo -e "${{ github.event.milestone.title }} / $(date +%Y-%m-%d)\n===================\n${{ github.event.milestone.description }}\n\n$(cat changelog.txt)" > changelog.txt
+
       - name: Install dependencies
         run: |
+          composer install --no-interaction --no-progress --no-suggest --optimize-autoloader --prefer-dist
           yarn install --immutable
 
       - name: Run version update
-        run: yarn version --new-version $NEW_TAG_VERSION
+        run: npm --no-git-tag-version version $NEW_TAG_VERSION
 
       - name: Push changes
         run: |
-          git add .
+          git add -A .
           git commit -m "Updating to version $NEW_TAG_VERSION" --no-verify
           git push
 
@@ -112,3 +122,38 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload $RELEASE_VERSION ${{ env.ARTIFACT_ZIP }}
+
+  deploy:
+    name: Deploy to WordPress.org
+    needs: [ build, tag ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+           ref: ${{ github.event.repository.default_branch }}
+
+      - name: Set version
+        run: |
+          echo "NEW_TAG_VERSION=${{ github.event.milestone.title }}" >> $GITHUB_ENV
+
+      - name: Download plugin
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: .artifacts
+
+      - name: Unzip artifact
+        run: |
+          mkdir -p .wp-plugin-deploy
+          unzip .artifacts/${{ env.ARTIFACT_ZIP }} -d .wp-plugin-deploy/
+          mv .wp-plugin-deploy/coblocks .wp-plugin-deploy/coblocks-artifact
+
+      - name: Deploy to WordPress.org
+        uses: godaddy-wordpress/deploy-plugin-artifact@v1
+        with:
+          plugin-name: coblocks
+          plugin-version: ${{ env.NEW_TAG_VERSION }}
+          plugin-assets: ".wordpress-org"
+          svn-username: "${{ secrets.GODADDY_WPORG_USERNAME }}"
+          svn-password: "${{ secrets.GODADDY_WPORG_PASSWORD }}"
