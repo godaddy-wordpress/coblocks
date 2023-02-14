@@ -2,8 +2,8 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "2.24.2",
-	"tested_up_to": "6.0",
+	"version": "2.26.11",
+	"tested_up_to": "6.1",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
 	"repository": "godaddy-wordpress/coblocks",
@@ -14,6 +14,16 @@
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
 	],
+	"testing": {
+		"urls": {
+			"local": "http://localhost:8889",
+			"staging": "",
+			"production": ""
+		},
+		"accessibility": {
+			"compliance": "WCAG2A"
+		}
+	},
 	"scripts": {
 		"build": "wp-scripts build",
 		"clean": "wp-env stop && rm -rf build dist/* node_modules vendor wordpress",
@@ -27,12 +37,12 @@
 		"po2jed": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`-coblocks-editor.json\" && echo \"$FROM > $TO\" && po2json $FROM $TO -f jed' '{}' \\;",
 		"po2mo": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`.mo\" && echo \"$FROM > $TO\" && msgfmt $FROM -o $TO' '{}' \\;",
 		"postinstall": "yarn update:icon",
-		"postversion": "git push && git push --tags",
 		"pot2json": "./vendor/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"prepare": "husky install .dev/husky",
 		"setup": "yarn install && yarn run build && wp-env start && yarn php:composer:install",
 		"start:debug": "DEBUG_MODE=on wp-scripts start --progress",
 		"start": "wp-scripts start --progress",
+		"test:a11y": "node .dev/tests/a11y/pa11y.js",
 		"test:e2e": "cypress run --config video=false --browser chrome",
 		"test:e2e:debug": "npx cypress open",
 		"test:e2e:headed": "yarn test:e2e --headed",
@@ -43,7 +53,7 @@
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
 		"update:icon": "node src/blocks/icon/svgs-generator.js && cp -R node_modules/@godaddy-wordpress/coblocks-icons/src/svg/ src/blocks/icon/svgs",
-		"version": "grunt version && grunt update-pot && git add -A ."
+		"version": "grunt version && grunt update-pot"
 	},
 	"locales": {
 		"ar": "العربية",
@@ -82,7 +92,9 @@
 		"@jest/core": "^27.4.5",
 		"@react-google-maps/api": "^2.7.0",
 		"@testing-library/jest-dom": "^5.16.1",
+		"@testing-library/react": "^12.1.5",
 		"@testing-library/react-hooks": "^7.0.2",
+		"@testing-library/user-event": "^14.4.3",
 		"@wordpress/api-fetch": "^6.5.0",
 		"@wordpress/base-styles": "^4.4.0",
 		"@wordpress/blob": "^3.8.0",
@@ -102,7 +114,7 @@
 		"@wordpress/edit-post": "^6.5.0",
 		"@wordpress/editor": "^12.7.0",
 		"@wordpress/element": "^4.6.0",
-		"@wordpress/env": "^4.6.0",
+		"@wordpress/env": "^5.8.0",
 		"@wordpress/eslint-plugin": "^10.0.1",
 		"@wordpress/hooks": "^3.8.0",
 		"@wordpress/i18n": "^4.8.0",
@@ -124,7 +136,7 @@
 		"commander": "^8.3.0",
 		"copy-webpack-plugin": "^10.2.0",
 		"counterup2": "^2.0.2",
-		"cypress": "^9.5.1",
+		"cypress": "^11.1.0",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
 		"enzyme": "^3.11.0",
@@ -149,6 +161,7 @@
 		"lodash": "^4.17.21",
 		"matchdep": "^2.0.0",
 		"memize": "^1.0.5",
+		"pa11y": "^6.2.3",
 		"po2json": "^1.0.0-alpha",
 		"prettier": "^2.5.1",
 		"prop-types": "^15.8.1",
@@ -156,14 +169,14 @@
 		"react-masonry-component": "^6.2.1",
 		"react-spring": "^9.4.4",
 		"rtlcss-webpack-plugin": "^4.0.6",
-		"simple-git": "^3.5.0",
+		"simple-git": "^3.16.0",
 		"tiny-swiper": "^2.2.0",
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
+		"@sideway/formula": "^3.0.1",
 		"eslint-plugin-jsdoc": "^39.2.5",
-		"got": "^11.8.5",
-		"moment": "^2.29.4"
+		"simple-git": "^3.16.0"
 	},
 	"lint-staged": {
 		"*.scss": [

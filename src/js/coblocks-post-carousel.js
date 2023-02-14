@@ -1,3 +1,4 @@
+/*global coblocksPostCarousel*/
 import TinySwiper from 'tiny-swiper';
 import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.js';
 
@@ -17,6 +18,9 @@ import TinySwiperPluginNavigation from 'tiny-swiper/lib/modules/navigation.min.j
 
 					const swiperBackButton = frontEndContainer.querySelector( `#wp-coblocks-post-carousel-swiper-prev` );
 					const swiperNextButton = frontEndContainer.querySelector( `#wp-coblocks-post-carousel-swiper-next` );
+
+					swiperBackButton.setAttribute( 'aria-label', coblocksPostCarousel.carouselPrevButtonAriaLabel );
+					swiperNextButton.setAttribute( 'aria-label', coblocksPostCarousel.carouselNextButtonAriaLabel );
 
 					const swiperSlies = frontEndContainer.querySelectorAll( '.swiper-slide' );
 

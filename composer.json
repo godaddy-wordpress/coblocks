@@ -5,7 +5,7 @@
 	"license": "GPL-2.0-only",
 	"config": {
 		"platform": {
-			"php": "5.6.20"
+			"php": "7.4"
 		},
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true,
@@ -29,20 +29,20 @@
 		}
 	},
 	"require": {
-		"php": ">=5.6",
-		"godaddy-wordpress/styles": "^0.4.1"
+		"php": ">=7.4",
+		"godaddy-wordpress/styles": "^2.0.2"
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
 		"godaddy-wordpress/json2po": "^1.0",
 		"godaddy-wordpress/pot2json": "^1.0",
-		"johnpbloch/wordpress-core": "^5.8",
+		"johnpbloch/wordpress-core": "^6.0.1",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"phpunit/phpunit": "^5",
+		"phpunit/phpunit": "^9.5.21",
 		"squizlabs/php_codesniffer": "^3.5",
 		"wp-cli/wp-cli-bundle": "^2.4",
 		"wp-coding-standards/wpcs": "^2.1",
-		"wp-phpunit/wp-phpunit": "^5.8",
+		"wp-phpunit/wp-phpunit": "^6.0.1",
 		"yoast/phpunit-polyfills": "^1.0.1",
 		"coenjacobs/mozart": "^0.3.0"
 	},

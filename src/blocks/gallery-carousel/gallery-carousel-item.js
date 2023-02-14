@@ -114,6 +114,7 @@ const GalleryCarouselItem = ( {
 				position: 'relative',
 			} }
 			tabIndex={ index }
+			ariaLabel={ __( 'Gallery Image', 'coblocks' ) }
 		>
 			{ renderGalleryItem }
 			{ isItemSelected ? renderCaption : null }

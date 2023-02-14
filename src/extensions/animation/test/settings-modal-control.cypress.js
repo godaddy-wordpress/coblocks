@@ -11,8 +11,8 @@ before( () => {
 describe( 'Settings Modal: Animation feature', () => {
 	beforeEach( () => {
 		// Reset settings.
-		helpers.getWindowObject().then( ( win ) => {
-			win.wp.data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
+		helpers.getWPDataObject().then( ( data ) => {
+			data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
 				[ ANIMATION_FEATURE_ENABLED_KEY ]: true,
 			} );
 		} );

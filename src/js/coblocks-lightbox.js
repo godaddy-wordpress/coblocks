@@ -31,15 +31,18 @@
 		imageContainer.setAttribute( 'class', 'coblocks-lightbox__image' );
 
 		const image = document.createElement( 'img' );
+		image.setAttribute( 'alt', 'Placeholder' );
 
 		const caption = document.createElement( 'figcaption' );
 		caption.setAttribute( 'class', 'coblocks-lightbox__caption' );
 
 		const arrowLeftContainer = document.createElement( 'button' );
 		arrowLeftContainer.setAttribute( 'class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--left' );
+		arrowLeftContainer.setAttribute( 'aria-label', leftLabel );
 
 		const arrowRightContainer = document.createElement( 'button' );
 		arrowRightContainer.setAttribute( 'class', 'coblocks-lightbox__arrow coblocks-lightbox__arrow--right' );
+		arrowRightContainer.setAttribute( 'aria-label', rightLabel );
 
 		const arrowRight = document.createElement( 'div' );
 		arrowRight.setAttribute( 'class', 'arrow-right' );
@@ -142,15 +145,23 @@
 								( images[ imgIndex ] && images[ imgIndex ].nextElementSibling )
 									? getImageCaption( images[ imgIndex ] ) : '';
 					} );
-					setKeyboardListener();
 				}
 			},
 		};
 
+		function openLightbox() {
+			// Initial display value of wrapper is ''. If display !== 'flex' should simplify the logic here.
+			const isClosed = wrapper.style.display !== 'flex';
+			if ( isClosed ) {
+				wrapper.style.display = 'flex';
+				setKeyboardListener();
+			}
+		}
+
 		function changeImage( imageIndex ) {
 			imagePreloader.setPreloadImages();
 			index = imageIndex;
-			wrapper.style.display = 'flex';
+			openLightbox();
 			wrapperBackground.style.backgroundImage = `url(${ imagePreloader[ `img-${ index }` ].src })`;
 			image.src = imagePreloader[ `img-${ index }` ].src;
 			caption.innerHTML = imagePreloader[ `img-${ index }` ][ 'data-caption' ];
@@ -165,8 +176,7 @@
 				return;
 			}
 
-			const lightboxDisplayValue = wrapper;
-			const lightboxIsOpen = ( typeof lightboxDisplayValue !== 'undefined' && lightboxDisplayValue?.style?.display === 'flex' );
+			const lightboxIsOpen = wrapper.style.display === 'flex';
 
 			if ( lightboxIsOpen ) {
 				const code = event.code;

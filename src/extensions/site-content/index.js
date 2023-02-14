@@ -46,7 +46,7 @@ export const CoBlocksSiteContent = ( props ) => {
 	const { postTypes } = props;
 
 	return (
-		<>
+		<span data-test="site-content__container">
 			<PluginSidebar
 				className="content-management"
 				icon={
@@ -55,16 +55,17 @@ export const CoBlocksSiteContent = ( props ) => {
 						label={ __( 'Site content', 'coblocks' ) }
 						slug="site-content" />
 				}
-				title={ __( 'Site contents', 'coblocks' ) }>
+				title={ __( 'Site contents', 'coblocks' ) }
+			>
 				{ postTypes.map( ( postType ) => (
-					<PostTypePanel
-						data-test="post-type-panel"
-						key={ postType.slug }
-						loadPostIntoEditor={ loadPostIntoEditor }
-						postType={ postType } />
+					<span data-test="post-type-panel" key={ postType.slug }>
+						<PostTypePanel
+							loadPostIntoEditor={ loadPostIntoEditor }
+							postType={ postType } />
+					</span>
 				) ) }
 			</PluginSidebar>
-		</>
+		</span>
 	);
 };
 

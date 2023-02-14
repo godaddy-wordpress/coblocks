@@ -1,8 +1,12 @@
-import { disableGutenbergFeatures, loginToSite } from '../helpers';
+import { disableGutenbergFeatures, goTo, loginToSite } from '../helpers';
 
 before( function() {
-	loginToSite();
-	disableGutenbergFeatures();
+	loginToSite().then( () => {
+		goTo( '/wp-admin/post-new.php?post_type=post' ).then( () => {
+			cy.wait( 2000 );
+			disableGutenbergFeatures();
+		} );
+	} );
 } );
 
 // Maintain WordPress logged in state
