@@ -5,6 +5,14 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Block: Accordion', () => {
 	beforeEach( () => {
+		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=post', {
+			onLoad: ( contentWindow ) => {
+				if ( !! contentWindow.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+					contentWindow.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+				}
+			},
+		} );
+
 		helpers.addBlockToPost( 'coblocks/accordion', true );
 	} );
 

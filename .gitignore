@@ -26,3 +26,8 @@ languages/*.po
 cypress.env.json
 .wp-env.json
 .wp-env.override.json
+/test-results/
+/playwright-report/
+/playwright/.cache/
+.dev/tests/playwright/videos/
+.dev/tests/playwright/storage-state.json

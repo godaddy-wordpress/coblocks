@@ -4,6 +4,16 @@
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Alert Block', function() {
+	beforeEach( () => {
+		cy.visit( Cypress.env( 'testURL' ) + '/wp-admin/post-new.php?post_type=post', {
+			onLoad: ( contentWindow ) => {
+				if ( !! contentWindow.wp.data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+					contentWindow.wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+				}
+			},
+		} );
+	} );
+
 	/**
 	 * Test that we can add a alert block to the content, not add any text or
 	 * alter any settings, and are able to successfully save the block without errors.

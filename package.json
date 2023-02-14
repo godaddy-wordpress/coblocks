@@ -90,6 +90,7 @@
 		"@godaddy-wordpress/eslint-config": "^0.6.0",
 		"@godaddy-wordpress/stylelint-config": "^0.6.0",
 		"@jest/core": "^27.4.5",
+		"@playwright/test": "^1.29.2",
 		"@react-google-maps/api": "^2.7.0",
 		"@testing-library/jest-dom": "^5.16.1",
 		"@testing-library/react": "^12.1.5",
