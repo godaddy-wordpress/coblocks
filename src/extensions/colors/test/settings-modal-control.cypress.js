@@ -14,14 +14,14 @@ describe( 'Settings Modal: Colors feature', () => {
 	beforeEach( () => {
 		if ( ! helpers.isWP61AtLeast() ) {
 			// Reset settings.
-			helpers.getWindowObject().then( ( win ) => {
-				win.wp.data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
+			helpers.getWPDataObject().then( ( data ) => {
+				data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
 					[ COLORS_CUSTOM_FEATURE_ENABLED_KEY ]: true,
 					[ COLORS_FEATURE_ENABLED_KEY ]: true,
 					[ COLORS_GRADIENT_FEATURE_ENABLED_KEY ]: true,
 				} );
 
-				win.wp.data.dispatch( 'core/block-editor' ).updateSettings( {
+				data.dispatch( 'core/block-editor' ).updateSettings( {
 					colors: [
 						{
 							color: 'rgb(255,255,255)',

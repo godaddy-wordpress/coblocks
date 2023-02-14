@@ -1,0 +1,64 @@
+name: 'Deploy / Create Artifact'
+
+on:
+  workflow_call:
+    inputs:
+      checkout-ref:
+        required: false
+        type: string
+      retention-days:
+        required: false
+        type: number
+        default: 1
+
+env:
+  ARTIFACT_NAME: 'coblocks-plugin'
+  ARTIFACT_PATH: 'coblocks'
+  ARTIFACT_ZIP: 'coblocks.zip'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.checkout-ref != '' && inputs.checkout-ref || github.event.repository.default_branch }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Setup WP-CLI
+        uses: godaddy-wordpress/setup-wp-cli@main
+
+      # Yarn is still required on this project, so we need to make sure it is
+      # installed globally.
+      - name: Install yarn
+        run: |
+          npm i -g yarn
+
+      - name: Install dependencies
+        run: |
+          composer install --prefer-dist --optimize-autoloader
+          yarn install --immutable
+
+      - name: Build plugin
+        run: |
+          yarn build
+
+      - name: Create distribution artifact
+        run: |
+          rsync --archive --recursive --filter='protect .git' --delete --prune-empty-dirs --include-from="$GITHUB_WORKSPACE/.distinclude" "$GITHUB_WORKSPACE/" "$GITHUB_WORKSPACE/$ARTIFACT_PATH/"
+          zip -r $ARTIFACT_ZIP $ARTIFACT_PATH
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.ARTIFACT_ZIP }}
+          if-no-files-found: error
+          retention-days: ${{ inputs.retention-days }}

@@ -2,7 +2,7 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "2.25.5",
+	"version": "2.26.11",
 	"tested_up_to": "6.1",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
@@ -16,7 +16,7 @@
 	],
 	"testing": {
 		"urls": {
-			"local": "http://coblocks.test",
+			"local": "http://localhost:8889",
 			"staging": "",
 			"production": ""
 		},
@@ -37,7 +37,6 @@
 		"po2jed": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`-coblocks-editor.json\" && echo \"$FROM > $TO\" && po2json $FROM $TO -f jed' '{}' \\;",
 		"po2mo": "cd languages && find . -name '*.po' -execdir /bin/bash -c 'FROM=\"$0\" && TO=\"`basename $0 .po`.mo\" && echo \"$FROM > $TO\" && msgfmt $FROM -o $TO' '{}' \\;",
 		"postinstall": "yarn update:icon",
-		"postversion": "git push && git push --tags",
 		"pot2json": "./vendor/bin/pot2json languages/coblocks.pot languages/coblocks.json",
 		"prepare": "husky install .dev/husky",
 		"setup": "yarn install && yarn run build && wp-env start && yarn php:composer:install",
@@ -54,7 +53,7 @@
 		"test:performance": "wp-scripts test-e2e --config .dev/performance/jest.performance.config.js",
 		"test:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'",
 		"update:icon": "node src/blocks/icon/svgs-generator.js && cp -R node_modules/@godaddy-wordpress/coblocks-icons/src/svg/ src/blocks/icon/svgs",
-		"version": "grunt version && grunt update-pot && git add -A ."
+		"version": "grunt version && grunt update-pot"
 	},
 	"locales": {
 		"ar": "العربية",
@@ -93,7 +92,9 @@
 		"@jest/core": "^27.4.5",
 		"@react-google-maps/api": "^2.7.0",
 		"@testing-library/jest-dom": "^5.16.1",
+		"@testing-library/react": "^12.1.5",
 		"@testing-library/react-hooks": "^7.0.2",
+		"@testing-library/user-event": "^14.4.3",
 		"@wordpress/api-fetch": "^6.5.0",
 		"@wordpress/base-styles": "^4.4.0",
 		"@wordpress/blob": "^3.8.0",
@@ -168,14 +169,13 @@
 		"react-masonry-component": "^6.2.1",
 		"react-spring": "^9.4.4",
 		"rtlcss-webpack-plugin": "^4.0.6",
-		"simple-git": "^3.15.1",
+		"simple-git": "^3.16.0",
 		"tiny-swiper": "^2.2.0",
 		"uuid": "^8.3.2"
 	},
 	"resolutions": {
 		"eslint-plugin-jsdoc": "^39.2.5",
-		"json5": "^2.2.2",
-		"simple-git": "^3.15.0"
+		"simple-git": "^3.16.0"
 	},
 	"lint-staged": {
 		"*.scss": [
