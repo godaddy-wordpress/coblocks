@@ -3,14 +3,14 @@
 /**
  * WordPress Dependencies
  */
-import { render } from '@wordpress/element';
 import domReady from '@wordpress/dom-ready';
+import { render } from '@wordpress/element';
 
 /**
  * Internal Dependencies
  */
-import './styles/style.scss';
 import DeactivateModal from '../common-action-modal';
+import './styles/style.scss';
 
 const API_BASE_URL = 'https://wpnux.godaddy.com/v3/api';
 
