@@ -137,9 +137,9 @@ jobs:
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'  
         run: |
           ls $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/
-          # ls $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/{{matrix.spec}}.html
+          ls $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.html
 
-          postContent=$(cat $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/{{matrix.spec}}.html)
+          postContent=$(cat $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.html)
 
           postId=$(wp-env run cli "post create --post_type=post --post_title='My New Post' --porcelain --post_content='$postContent'")
           echo "postId=$postId" >> $GITHUB_OUTPUT
