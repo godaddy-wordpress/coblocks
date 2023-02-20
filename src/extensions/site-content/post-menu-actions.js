@@ -34,7 +34,9 @@ const PostMenuActions = ( props ) => {
 	const PostMenuAction = ( { label, icon, onClickAction, modifierClass = null } ) => (
 		<MenuItem
 			className={ `content-management-actions__item${ modifierClass ? ` ${ modifierClass }` : '' }` }
-			onClick={ onClickAction }>
+			data-testid="post-menu-action__container"
+			onClick={ onClickAction }
+		>
 			{ icon }
 			{ label }
 		</MenuItem>
@@ -73,6 +75,7 @@ const PostMenuActions = ( props ) => {
 								<PostMenuAction
 									icon={ ICONS.ICON_HOME }
 									label={ __( 'Set as homepage', 'coblocks' ) }
+									modifierClass="set-home-post"
 									onClickAction={ () => setIsConfirming( 'homepage' ) } />
 							) }
 						</>
@@ -82,6 +85,7 @@ const PostMenuActions = ( props ) => {
 						<PostMenuAction
 							icon={ ICONS.ICON_PIN }
 							label={ props.isSticky ? __( 'Unpin post', 'coblocks' ) : __( 'Pin post', 'coblocks' ) }
+							modifierClass="pin-action"
 							onClickAction={ () => {
 								props.onPinPost();
 								onClose();
@@ -91,6 +95,7 @@ const PostMenuActions = ( props ) => {
 					<PostMenuAction
 						icon={ <Icon icon={ PageDuplicateIcon } /> }
 						label={ __( 'Duplicate', 'coblocks' ) }
+						modifierClass="duplicate-post"
 						onClickAction={ () => {
 							props.onDuplicatePost();
 							setIsConfirming( false );
