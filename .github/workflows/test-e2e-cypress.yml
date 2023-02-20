@@ -136,12 +136,8 @@ jobs:
       - name: Create post and get ID
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'  
         run: |
-          ls $GITHUB_WORKSPACE
-          ls $GITHUB_WORKSPACE/.dev/
-          ls $GITHUB_WORKSPACE/.dev/tests/
-          ls $GITHUB_WORKSPACE/.dev/tests/cypress/
           ls $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/
-          ls $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/{{matrix.spec}}.html
+          # ls $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/{{matrix.spec}}.html
 
           postContent=$(cat $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/{{matrix.spec}}.html)
 
