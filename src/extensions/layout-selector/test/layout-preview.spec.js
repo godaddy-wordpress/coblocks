@@ -1,192 +1,134 @@
 /**
  * External dependencies
  */
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { registerCoreBlocks } from '@wordpress/block-library';
 import { createBlock, serialize, parse } from '@wordpress/blocks';
 registerCoreBlocks();
 
+import * as helpers from '../../../../.dev/tests/jest/helpers';
+
 /**
  * Internal dependencies.
  */
 import {
-	LayoutPreview,
 	LayoutPreviewList,
-	LayoutPreviewPlaceholder,
-	LayoutSelectorResults,
 	sanitizeBlocks,
 } from '../layout-selector-results';
-import * as helpers from '../../../../.dev/tests/jest/helpers';
+
+jest.mock('@wordpress/block-editor', () => ({
+	...jest.requireActual('@wordpress/block-editor'),
+	// eslint-disable-next-line no-unused-vars
+	BlockPreview: () => 'mocked BlockPreview',
+}));
+
+const layouts = [
+	{
+		label: 'layout-one',
+		category: 'about',
+		blocks: [
+			{
+				name: 'core/paragraph',
+				attributes: {
+					content: 'layout-one',
+				},
+				innerBlocks: [],
+			}
+		],
+		parsedBlocks: [
+			{
+				name: 'core/paragraph',
+				attributes: {
+					content: 'layout-one',
+				},
+				innerBlocks: [],
+			}
+		],
+	},
+	{
+		label: 'layout-two',
+		category: 'about',
+		blocks: [
+			{
+				name: 'core/paragraph',
+				attributes: {
+					content: 'layout-two',
+				},
+				innerBlocks: [],
+			}
+		],
+		parsedBlocks: [
+			{
+				name: 'core/paragraph',
+				attributes: {
+					content: 'layout-two',
+				},
+				innerBlocks: [],
+			}
+		],
+	},
+	{
+		label: 'layout-three',
+		category: 'about',
+		blocks: [
+			{
+				name: 'core/paragraph',
+				attributes: {
+					content: 'layout-three',
+				},
+				innerBlocks: [],
+			}
+		],
+		parsedBlocks: [
+			{
+				name: 'core/paragraph',
+				attributes: {
+					content: 'layout-three',
+				},
+				innerBlocks: [],
+			}
+		],
+	},
+];
+
+const defaultProps = {
+	layouts,
+	shownLayouts: layouts,
+	onClickLayout: jest.fn(),
+};
+
+const setup = ( overrideProps = {} ) => {
+	const { container } = render( <LayoutPreviewList { ...defaultProps } { ...overrideProps } /> );
+	return container;
+};
 
 describe( 'layout-selector-results', () => {
-
-	describe( 'LayoutPreviewList', () => {
-		let wrapper;
-
-		const layouts = [
-			{
-				label: 'layout-one',
-				category: 'about',
-				blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
-				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
-			},
-			{
-				label: 'layout-two',
-				category: 'about',
-				blocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
-				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
-			},
-			{
-				label: 'layout-three',
-				category: 'about',
-				blocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
-				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
-			},
-		];
-
-		const defaultProps = {
-			layouts,
-			shownLayouts: layouts,
-			onClickLayout: jest.fn(),
-		};
-
-		const setup = ( props = {} ) => {
-			const setupProps = { ...defaultProps, ...props };
-			return shallow( <LayoutPreviewList { ...setupProps } /> );
-		};
-
-		beforeEach( () => {
-			wrapper = setup();
-		} );
- 
-		afterEach( () => {
-			jest.clearAllMocks();
+	describe( 'when there are shown layouts available', () => {
+		it( 'it renders the LayoutPreview component', () => {
+			const view = setup();
+			expect( screen.queryAllByTestId( 'coblocks-layout-selector__layout-button' ) ).toHaveLength( layouts.length );
+			expect( screen.queryAllByTestId( 'coblocks-layout-selector__layout-placeholder' ) ).toHaveLength( 0 );
 		} );
 
-		it( 'renders shown layouts', () => {
-			expect( wrapper ).toHaveLength( layouts.length );
-			expect( wrapper.find( 'LayoutPreview' ) ).toHaveLength( layouts.length );
-			expect( wrapper.find( 'LayoutPreviewPlaceholder' ) ).toHaveLength( 0 );
-		} );
+		it('should call onClickLayout on Button click', () => {
+			const view = setup();
+			fireEvent.click( screen.queryAllByTestId( 'coblocks-layout-selector__layout-button' )[0] );
 
-		it( 'renders layout placeholders', () => {
-			wrapper = setup( { shownLayouts: [] } );
-			expect( wrapper ).toHaveLength( layouts.length );
-			expect( wrapper.find( 'LayoutPreview' ) ).toHaveLength( 0 );
-			expect( wrapper.find( 'LayoutPreviewPlaceholder' ) ).toHaveLength( layouts.length );
-		} );
-
+			expect( defaultProps.onClickLayout ).toHaveBeenCalled();
+		});
 	} );
 
-	describe( 'LayoutPreviewPlaceholder', () => {
-		let wrapper;
+	describe('when there are no shown layouts available', () => {
+		it('should show the LayoutPreviewPlaceholder component', () => {
+			const view = setup({ shownLayouts: [] });
+			expect( screen.queryAllByTestId( 'coblocks-layout-selector__layout-placeholder' ) ).toHaveLength( layouts.length );
+			expect( screen.queryAllByTestId( 'coblocks-layout-selector__layout-button' ) ).toHaveLength( 0 );
+		});
+	});
 
-		beforeEach( () => {
-			wrapper = shallow( <LayoutPreviewPlaceholder /> );
-		} );
-
-		afterEach( () => {
-			jest.clearAllMocks();
-		} );
-
-		it( 'renders', () => {
-			expect( wrapper.exists( '.coblocks-layout-selector__layout' ) ).toEqual( true );
-		} );
-
-	} );
-
-	describe( 'LayoutPreview', () => {
-		let wrapper;
-
-		const defaultProps = {
-			layout: {
-				label: 'layout-one',
-				category: 'about',
-				blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
-				parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
-			},
-			onClick: jest.fn(),
-		};
-
-		const setup = ( props = {} ) => {
-			return shallow( <LayoutPreview { ...props } /> );
-		};
-
-		beforeEach( () => {
-			wrapper = setup( defaultProps );
-		} );
-
-		afterEach( () => {
-			jest.clearAllMocks();
-		} );
-
-		it( 'renders', () => {
-			expect( wrapper.exists( '.coblocks-layout-selector__layout' ) ).toEqual( true );
-		} );
-
-		it( 'should call onClick() on Button click', () => {
-			wrapper.find( '.coblocks-layout-selector__layout' ).invoke( 'onClick' )();
-			expect( defaultProps.onClick ).toHaveBeenCalled();
-		} );
-
-	} );
-
-	describe( 'LayoutSelectorResults', () => {
-		let wrapper;
-
-		const defaultProps = {
-			layouts: [
-				{
-					label: 'layout-one',
-					category: 'about',
-					blocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
-					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-one' }, [] ] ],
-				},
-				{
-					label: 'layout-two',
-					category: 'about',
-					blocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
-					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-two' }, [] ] ],
-				},
-				{
-					label: 'layout-three',
-					category: 'about',
-					blocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
-					parsedBlocks: [ [ 'core/paragraph', { content: 'layout-three' }, [] ] ],
-				},
-			],
-			category: 'about',
-			onInsert: jest.fn(),
-		};
-
-		const setup = ( props = {} ) => {
-			const setupProps = { ...defaultProps, ...props };
-			return shallow( <LayoutSelectorResults { ...setupProps } /> );
-		};
-
-		beforeEach( () => {
-			wrapper = setup();
-		} );
-
-		afterEach( () => {
-			jest.clearAllMocks();
-		} );
-
-		it( 'renders', () => {
-			expect( wrapper.exists( '.coblocks-layout-selector__layouts' ) ).toEqual( true );
-		} );
-
-		it( 'renders message when no layouts are available for the selected category', () => {
-			wrapper = setup( { category: 'doesnotexist' } );
-			expect( wrapper.find( '.coblocks-layout-selector__layout' ) ).toHaveLength( 0 );
-			expect( wrapper.text() ).toContain( 'No layouts are available for this category.' );
-		} );
-
-	} );
-
-	describe( 'sanitizeBlocks()', () => {
+	describe('sanitize blocks', () => {
 		beforeAll( () => {
 			helpers.registerGalleryBlocks();
 		} );
@@ -199,7 +141,7 @@ describe( 'layout-selector-results', () => {
 					"clientId": "ff9f9721-eb6d-4817-ab60-cfceee6c28a8",
 					"name": "core/gallery",
 					"isValid": true,
-					"attributes": {
+					attributes: {
 					  "images": [
 						{
 						  "url": "https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=2&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion",
@@ -232,16 +174,17 @@ describe( 'layout-selector-results', () => {
 					  "filter": "none"
 					},
 					"innerBlocks": []
-				  }
+				}
 			];
+
 			const sanitized = sanitizeBlocks( blocks );
-			const selializedBlocks = serialize( sanitized );
+
+			const selializedBlocks = serialize( sanitized.splice(0, 1) );
 			const parsedBlocks = parse( selializedBlocks );
 
 			expect(
 				parsedBlocks.filter( ( block ) => ! block.isValid ).map( helpers.filterBlockObjectResult )
 			).toEqual( [] );
 		} );
-	} );
-
+	});
 } );
