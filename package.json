@@ -139,7 +139,6 @@
 		"cypress": "^11.1.0",
 		"cypress-log-to-output": "1.1.2",
 		"email-validator": "^2.0.4",
-		"enzyme": "^3.11.0",
 		"eslint-plugin-cypress": "^2.10.3",
 		"esm": "^3.2.25",
 		"expect-puppeteer": "^6.0.2",
