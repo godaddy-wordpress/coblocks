@@ -141,7 +141,7 @@ describe( 'layout-selector-results', () => {
 					"clientId": "ff9f9721-eb6d-4817-ab60-cfceee6c28a8",
 					"name": "core/gallery",
 					"isValid": true,
-					attributes: {
+					"attributes": {
 					  "images": [
 						{
 						  "url": "https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=2&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion",
