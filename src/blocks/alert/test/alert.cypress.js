@@ -6,7 +6,7 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Test CoBlocks Alert Block', function() {
 	let postId;
 	before( () => {
-		cy.fixture( '../.dev/tests/cypress/fixtures/github-actions-output.json' )
+		cy.fixture( `../.dev/tests/cypress/fixtures/${ Cypress.spec.name }.json` )
 			.then( ( output ) => {
 				postId = output[ Cypress.spec.name ] ?? '';
 			} );
