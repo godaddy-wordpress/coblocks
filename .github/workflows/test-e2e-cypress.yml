@@ -136,9 +136,6 @@ jobs:
       - name: Create post and get ID
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'  
         run: |
-          ls $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/
-          ls $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.html
-
           postContent=$(cat $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.html)
 
           postId=$(wp-env run cli "post create --post_type=post --post_title='My New Post' --porcelain --post_content='$postContent'")
@@ -150,6 +147,7 @@ jobs:
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js' 
         run: |
           path="$GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/github-actions-output.json"
+          ls -l $path
           chown $USER "$path"
           chmod u+w "$path"
           echo "{\"${{matrix.spec}}\": \"$(echo "${{ steps.create-post.outputs.postId }}")\"}" > "$path"
