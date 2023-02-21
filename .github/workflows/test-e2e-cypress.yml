@@ -146,7 +146,7 @@ jobs:
       - name: Save post ID to file
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js' 
         run: |
-          path="$GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}"
+          path="$GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.json"
           touch "$path"
           echo "{\"${{matrix.spec}}\": \"$(echo "${{ steps.create-post.outputs.postId }}")\"}" > "$path"
 
