@@ -150,7 +150,7 @@ jobs:
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js' 
         run: |
           path=$( $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/github-actions-output.json )
-          echo "{\"${{matrix.spec}}\": \"$(echo "${{ steps.create-post.outputs.postId }}")\"}" > "$path"
+          sudo echo "{\"${{matrix.spec}}\": \"$(echo "${{ steps.create-post.outputs.postId }}")\"}" > "$path"
 
       - name: Run tests
         run: |
