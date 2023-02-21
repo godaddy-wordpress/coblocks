@@ -10,9 +10,6 @@ describe( 'Test CoBlocks Alert Block', function() {
 			.then( ( output ) => {
 				postId = output[ Cypress.spec.name ] ?? '';
 			} );
-		console.log( postId );
-		cy.log( 'here is the postID' );
-		cy.log( postId );
 	} );
 
 	it( 'Test posts block column and post count controls.', function() {
