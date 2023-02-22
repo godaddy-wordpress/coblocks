@@ -50,8 +50,8 @@ export const LayoutSelectorResults = ( { layouts, category, onInsert } ) => {
 			<div className="coblocks-layout-selector__layouts">
 				<LayoutPreviewList
 					layouts={ filteredLayouts }
-					shownLayouts={ currentShowLayouts }
 					onClickLayout={ onInsert }
+					shownLayouts={ currentShowLayouts }
 				/>
 			</div>
 		)
@@ -71,7 +71,9 @@ export const LayoutPreview = ( { layout, onClick } ) => {
 	return (
 		<Button
 			className={ classnames( 'coblocks-layout-selector__layout' ) }
-			onClick={ () => onClick( layout ) }>
+			data-testid="coblocks-layout-selector__layout-button"
+			onClick={ () => onClick( layout ) }
+		>
 
 			<Spinner />
 
@@ -108,7 +110,7 @@ export const sanitizeBlocks = ( blocks ) => {
  */
 export const LayoutPreviewPlaceholder = () => {
 	return (
-		<div className="coblocks-layout-selector__layout is-placeholder">
+		<div className="coblocks-layout-selector__layout is-placeholder" data-testid="coblocks-layout-selector__layout-placeholder">
 			<Spinner />
 		</div>
 	);

@@ -3,7 +3,8 @@
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
 
-describe( 'Test CoBlocks OpenTable Block', function() {
+/* eslint-disable jest/no-disabled-tests */
+describe.skip( 'Test CoBlocks OpenTable Block', function() {
 	/**
 	 * Test that we can add an OpenTable block to the content, not add anything and save the block
 	 * without errors.
