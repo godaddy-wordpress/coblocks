@@ -1,7 +1,6 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import apiFetch from '@wordpress/api-fetch';
 import { PostTypePanel } from '../post-type-panel';
-import PostMenuActions from '../post-menu-actions';
 import { propsMockData, propsPostTypeMockData } from './mock-data';
 
 const defaultProps = {
@@ -131,9 +130,9 @@ describe( 'post-type-panel', () => {
 
 		describe( 'onSetAsHome()', () => {
 			it( 'should set as home page', () => {
-				const view = setup({ currentPostType: 'post' });
+				const view = setup({	currentPostType: 'post' });
 
-				const postMenuActions = view.querySelectorAll('.content-management__panel__actions')[1];
+				const postMenuActions = view.querySelectorAll('.content-management__panel__actions')[2];
 				const postMenuButtonToggle = postMenuActions.querySelectorAll('.content-management__panel__actions__button')[0];
 
 				fireEvent.click( postMenuButtonToggle );
@@ -160,7 +159,7 @@ describe( 'post-type-panel', () => {
 			} );
 		} );
 
-		describe.only( 'add new page', () => {
+		describe( 'add new page', () => {
 			it( 'should be able to add a new page', () => {
 				const view = setup({ currentPostType: 'post' });
 

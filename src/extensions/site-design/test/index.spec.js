@@ -18,7 +18,7 @@ document.getElementsByTagName( 'head' )[ 0 ].appendChild( stylesElement );
 global.ajaxurl = '';
 global.window.fetch = () => new Promise( () => {} );
 
-describe.only( 'SiteDesign', () => {
+describe( 'SiteDesign', () => {
 	let wrapper;
 
 	beforeEach( () => {
