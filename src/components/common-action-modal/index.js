@@ -1,7 +1,7 @@
-import { Button, ButtonGroup, CheckboxControl, Modal, TextControl } from '@wordpress/components';
-import { safeHTML } from '@wordpress/dom';
-import { useCallback, useEffect, useState } from '@wordpress/element';
 import PropTypes from 'prop-types';
+import { useCallback, useEffect, useState } from '@wordpress/element';
+
+import CommonActionModal from './common-action-modal';
 
 const language = document.documentElement.getAttribute( 'lang' ) || 'en-US';
 
@@ -31,6 +31,8 @@ const DeactivateModal = ( { apiUrl, getParams, isEvent, pageData } ) => {
 	const [ isOpen, setOpen ] = useState( false );
 	const [ feedbackData, setFeedbackData ] = useState( null );
 	const [ formData, setFormData ] = useState( {} );
+
+	const closeModal = () => setOpen( false );
 
 	useEffect( () => {
 		const getData = async () => {
@@ -124,59 +126,14 @@ const DeactivateModal = ( { apiUrl, getParams, isEvent, pageData } ) => {
 	}
 
 	return (
-		<Modal
-			className="common-deactivate-modal"
-			onRequestClose={ () => setOpen( false ) }
-			title={ feedbackData.labels.title }
-		>
-			<div className="common-deactivate-modal__checkbox">
-				{ feedbackData.choices.map( ( choice ) => {
-					const isChecked = formData.choices.indexOf( choice.slug ) >= 0;
-					return (
-						<div key={ choice.slug }>
-							<CheckboxControl
-								checked={ isChecked }
-								label={ choice.label }
-								onChange={ ( checked ) => onCheckboxChange( checked, choice.slug ) }
-							/>
-							{ !! choice.text_field && (
-								<TextControl
-									className={ `common-deactivate-modal__text ${
-										isChecked ? 'show' : ''
-									}` }
-									onChange={ ( value ) => onTextChange( choice.text_field, value ) }
-									value={ formData[ choice.text_field ] }
-								/>
-							) }
-						</div>
-					);
-				} ) }
-			</div>
-			<ButtonGroup>
-				<Button
-					className="common-deactivate-modal__button"
-					onClick={ () => onAction( true ) }
-					variant="primary"
-				>
-					{ feedbackData.labels.submit_deactivate }
-				</Button>
-				<Button
-					className="common-deactivate-modal__button"
-					onClick={ () => onAction( false ) }
-					variant="link"
-				>
-					{ feedbackData.labels.skip_deactivate }
-				</Button>
-			</ButtonGroup>
-
-			<footer className="common-deactivate-modal__footer">
-				<div
-					dangerouslySetInnerHTML={ {
-						__html: safeHTML( feedbackData.labels.privacy_disclaimer ),
-					} }
-				/>
-			</footer>
-		</Modal>
+		<CommonActionModal
+			closeModal={ closeModal }
+			feedbackData={ feedbackData }
+			formData={ formData }
+			onAction={ onAction }
+			onCheckboxChange={ onCheckboxChange }
+			onTextChange={ onTextChange }
+		/>
 	);
 };
 

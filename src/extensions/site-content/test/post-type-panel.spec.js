@@ -1,7 +1,6 @@
-import { shallow } from 'enzyme';
+import { render, fireEvent, screen } from '@testing-library/react';
 import apiFetch from '@wordpress/api-fetch';
 import { PostTypePanel } from '../post-type-panel';
-import PostMenuActions from '../post-menu-actions';
 import { propsMockData, propsPostTypeMockData } from './mock-data';
 
 const defaultProps = {
@@ -27,150 +26,143 @@ const defaultProps = {
 	cancelRenameMode: jest.fn(),
 };
 
-jest.mock( '@wordpress/api-fetch', () => jest.fn() );
+jest.mock( '@wordpress/api-fetch', () => jest.fn( () => Promise.resolve( { data: {} } ) ) );
 
 const setup = ( props = {} ) => {
 	const setupProps = { ...defaultProps, ...props };
 
-	return shallow( <PostTypePanel { ...setupProps } /> );
+	const { container } = render( <PostTypePanel { ...setupProps } /> );
+	return container;
 };
 
 describe( 'post-type-panel', () => {
-	let wrapper;
-
-	beforeEach( () => {
-		wrapper = setup();
-	} );
-
 	describe( '#render', () => {
 		it( 'should render default content for Site Content Panel with Pages', () => {
-			wrapper = setup( {
+			const view = setup( {
 				postType: {
 					...propsPostTypeMockData,
 					slug: 'page',
 				},
 			} );
 
-			expect( wrapper.find( '.content-management__panel' ) ).toHaveLength( 1 );
-			expect( wrapper.find( PostMenuActions ) ).toHaveLength( defaultProps.entities.length );
-		} );
-
-		it( 'should render default content for Site Content Panel with Posts', () => {
-			expect( wrapper.find( '.content-management__panel' ) ).toHaveLength( 1 );
-			expect( wrapper.find( PostMenuActions ) ).toHaveLength( defaultProps.entities.length );
+			expect( view.querySelectorAll( '.content-management__panel' ) ).toHaveLength( 1 );
+			expect( view.querySelectorAll( '.content-management__panel__actions' ) ).toHaveLength( defaultProps.entities.length );
 		} );
 	} );
 
 	describe( '#methods', () => {
 		describe( 'onDelete()', () => {
-			// TODO: This should have an assertion.
-			// eslint-disable-next-line jest/expect-expect
 			it( 'should delete', () => {
-				apiFetch.mockImplementation( () => Promise.resolve( { data: 'someData' } ) );
+				const view = setup({ currentPostType: 'post' });
 
-				const postMenuActions = wrapper.find( PostMenuActions ).first();
+				const postMenuActions = view.querySelectorAll('.content-management__panel__actions')[0];
+				const postMenuButtonToggle = postMenuActions.querySelectorAll('.content-management__panel__actions__button')[0];
 
-				postMenuActions.invoke( 'onDeletePost' )();
-			} );
-		} );
+				fireEvent.click( postMenuButtonToggle );
 
-		describe( 'onUnDelete()', () => {
-			it( 'should revert delete', () => {
-				wrapper.instance().onUnDelete( { id: 2 } );
+				const deleteButtonToggle = postMenuActions.querySelectorAll( '.is-destructive' )[0];
 
-				expect( defaultProps.savePost ).toHaveBeenCalled();
+				expect( deleteButtonToggle.textContent ).toBe( `Delete ${defaultProps.postType === 'page' ? 'Page' : 'Post'}` );
+
+				fireEvent.click( deleteButtonToggle );
+
+				const deleteButtonConfirm = postMenuActions.querySelectorAll( '.is-destructive' )[0];
+
+				expect( deleteButtonConfirm.textContent ).toBe( 'Really delete?' );
+
+				fireEvent.click( deleteButtonConfirm );
+
+				expect( apiFetch ).toHaveBeenCalledWith({
+					method: 'DELETE',
+					path: expect.any( String )
+				});
 			} );
 		} );
 
 		describe( 'onDuplicate()', () => {
 			it( 'should duplicate', () => {
-				apiFetch.mockImplementation( () => Promise.resolve( { data: 'someData' } ) );
+				const view = setup({ currentPostType: 'post' });
 
-				const postMenuActions = wrapper.find( PostMenuActions ).first();
+				const postMenuActions = view.querySelectorAll('.content-management__panel__actions')[0];
+				const postMenuButtonToggle = postMenuActions.querySelectorAll('.content-management__panel__actions__button')[0];
 
-				postMenuActions.invoke( 'onDuplicatePost' )();
+				fireEvent.click( postMenuButtonToggle );
 
-				expect( apiFetch ).toHaveBeenCalled();
+				const duplicatePostButton = postMenuActions.querySelectorAll( '.duplicate-post' )[0];
+
+				fireEvent.click( duplicatePostButton );
+
+				expect( defaultProps.saveEntityRecord ).toHaveBeenCalledWith(
+					'postType',
+					defaultProps.postType.slug,
+					{
+						content: expect.any( String ),
+						excerpt: expect.any( String ),
+						status: 'draft',
+						title: expect.any( String )
+					}
+				)
 			} );
 		} );
 
 		describe( 'onPin()', () => {
-			it( 'should pin post', () => { // eslint-disable-line jest/expect-expect
-				apiFetch.mockImplementation( () => Promise.resolve( { data: 'someData' } ) );
+			it( 'should pin post', () => {
+				const view = setup({ currentPostType: 'post' });
 
-				const postMenuActions = wrapper.find( PostMenuActions ).first();
+				const postMenuActions = view.querySelectorAll('.content-management__panel__actions')[0];
+				const postMenuButtonToggle = postMenuActions.querySelectorAll('.content-management__panel__actions__button')[0];
 
-				postMenuActions.invoke( 'onPinPost' )();
+				fireEvent.click( postMenuButtonToggle );
 
-				expect( apiFetch ).toHaveBeenCalled();
+				const pinPostButton = postMenuActions.querySelectorAll( '.pin-action' )[0];
+
+				fireEvent.click( pinPostButton );
+
+				expect( apiFetch ).toHaveBeenCalledWith({
+					data: {
+						sticky: expect.any( Boolean )
+					},
+					method: 'POST',
+					path: expect.any( String )
+				});
 			} );
 		} );
 
 		describe( 'onSetAsHome()', () => {
 			it( 'should set as home page', () => {
-				apiFetch.mockImplementation( () => Promise.resolve( { data: 'someData' } ) );
+				const view = setup({	currentPostType: 'post' });
 
-				const postMenuActions = wrapper.find( PostMenuActions ).first();
+				const postMenuActions = view.querySelectorAll('.content-management__panel__actions')[2];
+				const postMenuButtonToggle = postMenuActions.querySelectorAll('.content-management__panel__actions__button')[0];
 
-				postMenuActions.invoke( 'onSetAsHomePost' )();
+				fireEvent.click( postMenuButtonToggle );
 
-				expect( apiFetch ).toHaveBeenCalled();
-			} );
-		} );
+				const setHomePostButton = postMenuActions.querySelectorAll( '.set-home-post' )[0];
 
-		describe( 'handleInputKeys()', () => {
-			it( 'should handle Enter key', () => {
-				wrapper.instance().onCompleteRename = jest.fn();
-				wrapper.instance().handleInputKeys(
-					{
-						key: 'Enter',
-						preventDefault: jest.fn(),
+				expect( setHomePostButton.textContent ).toBe( 'Set as homepage' );
+
+				fireEvent.click( setHomePostButton );
+
+				const setHomePostConfirm = postMenuActions.querySelectorAll( '.is-confirming' )[0];
+
+				expect( setHomePostConfirm.textContent ).toBe( 'Really set as homepage?' );
+
+				fireEvent.click( setHomePostConfirm );
+
+				expect( apiFetch ).toHaveBeenCalledWith({
+					data: {
+						page_on_front: expect.any( Number )
 					},
-					{}
-				);
-
-				expect( wrapper.instance().onCompleteRename ).toHaveBeenCalled();
-			} );
-
-			it( 'should handle Escape key', () => {
-				wrapper.instance().onResetRename = jest.fn();
-				wrapper.instance().handleInputKeys(
-					{
-						key: 'Escape',
-					},
-					{}
-				);
-
-				expect( wrapper.instance().onResetRename ).toHaveBeenCalled();
-			} );
-
-			it( 'should handle Space key', () => {
-				const preventDefault = jest.fn();
-
-				wrapper.instance().handleInputKeys(
-					{
-						key: ' ',
-						preventDefault,
-						stopPropagation: jest.fn(),
-					},
-					{}
-				);
-
-				expect( preventDefault ).toHaveBeenCalled();
-			} );
-
-			it( 'should handle default', () => { // eslint-disable-line jest/expect-expect
-				wrapper.instance().handleInputKeys(
-					{
-						key: 'someNonMappedKey',
-					},
-					{}
-				);
+					method: 'POST',
+					path: expect.any( String )
+				});
 			} );
 		} );
 
 		describe( 'add new page', () => {
 			it( 'should be able to add a new page', () => {
+				const view = setup({ currentPostType: 'post' });
+
 				const url = `/wp-admin/post-new.php?post_type=${ defaultProps.postType.slug }`;
 
 				Object.defineProperty( window, 'location', {
@@ -179,7 +171,7 @@ describe( 'post-type-panel', () => {
 					},
 				} );
 
-				wrapper.find( '.content-management__add-new-button' ).invoke( 'onClick' )();
+				fireEvent.click( view.querySelectorAll( '.content-management__add-new-button' )[0] );
 
 				expect( window.location.href ).toEqual( url );
 			} );
