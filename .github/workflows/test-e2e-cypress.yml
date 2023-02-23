@@ -31,12 +31,13 @@ jobs:
       fail-fast: false
       matrix:
         spec:
-          # - accordion.cypress.js
+          - accordion.cypress.js
           - alert.cypress.js
-          # - click-to-tweet.cypress.js
-          # - counter.cypress.js
-          # - dynamic-separator.cypress.js
-          # - event-item.cypress.js
+          - author.cypress.js
+          - click-to-tweet.cypress.js
+          - counter.cypress.js
+          - dynamic-separator.cypress.js
+          - event-item.cypress.js
           # - events.cypress.js
           # - faq.cypress.js
           # - feature.cypress.js
