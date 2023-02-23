@@ -15,8 +15,22 @@ describe( 'Test CoBlocks Author Block', function() {
 	it( 'Test Author block migrates into core blocks.', function() {
 		helpers.goTo( `/wp-admin/post.php?post=${ postId }&action=edit` );
 
-		helpers.openBlockNavigator();
-		cy.get( '[data-type="core/columns"]' ).should( 'have.length', 3 );
+		// Two blocks
+		cy.get( '[data-type="core/columns"]' ).should( 'have.length', 2 );
+
+		// Two blocks two columns each four total.
+		cy.get( '[data-type="core/column"]' ).should( 'have.length', 4 );
+
+		// Two blocks two images.
+		cy.get( '[data-type="core/image"]' ).should( 'have.length', 2 );
+
+		// Two blocks two buttons.
+		cy.get( '[data-type="core/button"]' ).should( 'have.length', 2 );
+
+		// Two blocks two headings two bios.
+		cy.get( '[data-type="core/paragraph"]' ).should( 'have.length', 4 );
+
+		// Should be no error.
 		helpers.checkForBlockErrors( 'core/columns' );
 	} );
 } );

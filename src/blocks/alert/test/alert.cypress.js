@@ -15,7 +15,7 @@ describe( 'Test CoBlocks Alert Block', function() {
 	it( 'Test Alert block migrates into core blocks.', function() {
 		helpers.goTo( `/wp-admin/post.php?post=${ postId }&action=edit` );
 
-		helpers.openBlockNavigator();
+		// Three alert blocks in fixture. Should end up as three paragraph blocks.
 		cy.get( '[data-type="core/paragraph"]' ).should( 'have.length', 3 );
 		helpers.checkForBlockErrors( 'core/paragraph' );
 	} );
