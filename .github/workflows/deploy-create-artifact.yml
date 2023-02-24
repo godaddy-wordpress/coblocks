@@ -48,7 +48,8 @@ jobs:
 
       - name: Build plugin
         run: |
-          yarn build
+          npx grunt build
+          npx grunt compress
 
       - name: Create distribution artifact
         run: |

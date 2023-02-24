@@ -42,7 +42,7 @@ jobs:
 
       - name: Sync code changes
         run: |
-          cp -a build/coblocks/* wp/coblocks/trunk/
+          cp -a coblocks/* wp/coblocks/trunk/
 
       - name: Create new tag
         run: |
