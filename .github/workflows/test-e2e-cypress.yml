@@ -109,7 +109,8 @@ jobs:
 
       - name: Build plugin
         run: |
-          yarn build
+          npx grunt build
+          mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/coblocks
 
       - name: Prepare Theme
         run: |
