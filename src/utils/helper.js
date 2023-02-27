@@ -116,13 +116,7 @@ export const registerBlock = ( block ) => {
 		category = 'coblocks';
 	}
 
-	let icon = '';
-	if ( !! settings?.icon ) {
-		icon = {
-			foreground: getBlockIconColor(),
-			src: settings.icon,
-		};
-	}
+	const icon = setIconColor( settings?.icon );
 
 	const isV2 = block?.metadata?.apiVersion === 2;
 	const v2Settings = isV2 ? block?.metadata : {};
@@ -145,6 +139,32 @@ export const registerBlock = ( block ) => {
  */
 export function getBlockIconColor() {
 	return '#09757A';
+}
+
+/**
+ * Returns the icon enhanced with color used in the block editor.
+ *
+ * @param {string} icon Icon object represents `settings.icon`
+ */
+export function setIconColor( icon ) {
+	let iconSetting = '';
+	if ( !! icon ) {
+		iconSetting = {
+			foreground: getBlockIconColor(),
+			src: icon,
+		};
+	}
+	return iconSetting;
+}
+
+/**
+ * Returns the icon SVG element enhanced with color props used in the block editor.
+ *
+ * @param {string} icon Icon SVG object represents `settings.icon` wrapped in color props.
+ */
+export function setIconColorProps( icon ) {
+	// Icon is immutable. We can spread the object to clone it with new color props.
+	return { ...icon, props: { ...{ ...icon.props }, ...{ style: { color: getBlockIconColor() } } } };
 }
 
 /**
