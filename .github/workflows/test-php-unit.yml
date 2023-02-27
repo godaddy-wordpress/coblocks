@@ -33,7 +33,8 @@ jobs:
 
       - name: Build plugin
         run: |
-          yarn build
+          npx grunt build
+          mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
 
       - name: Setup wp-env
         uses: godaddy-wordpress/setup-wp-env@v1
