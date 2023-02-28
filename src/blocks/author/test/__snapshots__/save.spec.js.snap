@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`coblocks/author should render with content 1`] = `
+"<!-- wp:coblocks/author -->
+<div class=\\"wp-block-coblocks-author\\"><div class=\\"wp-block-coblocks-author__content\\"><span class=\\"wp-block-coblocks-author__name\\">Author Name</span><p class=\\"wp-block-coblocks-author__biography\\">Author biography</p></div></div>
+<!-- /wp:coblocks/author -->"
+`;
+
+exports[`coblocks/author should render with custom class name 1`] = `"<!-- wp:coblocks/author {\\"className\\":\\"my-custom-class\\"} /-->"`;
+
+exports[`coblocks/author should render with imageUrl attribute 1`] = `
+"<!-- wp:coblocks/author -->
+<div class=\\"wp-block-coblocks-author\\"><figure class=\\"wp-block-coblocks-author__avatar\\"><img class=\\"wp-block-coblocks-author__avatar-img\\" src=\\"150x150.png\\"/></figure><div class=\\"wp-block-coblocks-author__content\\"></div></div>
+<!-- /wp:coblocks/author -->"
+`;

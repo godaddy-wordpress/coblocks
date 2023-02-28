@@ -230,15 +230,6 @@ export function getBlockSlug() {
 }
 
 /**
- * Open the block navigator.
- */
-export function openBlockNavigator( ) {
-	cy.get( '.edit-post-header__toolbar' ).find(
-		'.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle,.edit-post-header-toolbar__document-overview-toggle'
-	).click();
-}
-
-/**
  * Click on a style button within the style panel
  *
  * @param {string} style Name of the style to apply

@@ -2,33 +2,34 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "coblocks/author",
+	"category": "layout",
 	"attributes": {
 		"biography": {
-			"type": "string"
+			"type": "array",
+			"source": "children",
+			"selector": ".wp-block-coblocks-author__biography",
+			"default": []
 		},
 		"name": {
-			"type": "string"
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-author__name"
 		},
 		"imgId": {
 			"type": "number"
 		},
 		"imgUrl": {
-			"type": "string"
-		},
-		"anchor": {
-			"type": "string"
+			"type": "string",
+			"source": "attribute",
+			"attribute": "src",
+			"selector": "img"
 		}
 	},
 	"supports": {
 		"anchor": true,
 		"html": false,
 		"color": {
-			"gradients": true,
-			"link": true,
-			"__experimentalDefaultControls": {
-				"background": true,
-				"text": true
-			}
+			"link": false
 		},
 		"typography": {
 			"fontSize": true,
@@ -43,5 +44,7 @@
 		}
 	},
 	"title": "Author",
-	"editorScript": "blocks-1"
+	"textdomain": "coblocks",
+	"editorScript": "blocks-1",
+	"description": "Add an author biography to build credibility and authority."
 }

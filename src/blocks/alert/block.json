@@ -1,17 +1,48 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
 	"name": "coblocks/alert",
+	"category": "formatting",
 	"attributes": {
-		"content": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-alert__title"
+		},
+		"value": {
+			"type": "string",
+			"source": "html",
+			"selector": ".wp-block-coblocks-alert__text",
+			"default": ""
+		},
+		"backgroundColor": {
+			"type": "string"
+		},
+		"customBackgroundColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+			"type": "string"
+		},
+		"titleColor": {
+			"type": "string"
+		},
+		"customTitleColor": {
+			"type": "string"
+		},
+		"borderColor": {
+			"type": "string"
+		},
+		"customBorderColor": {
+			"type": "string"
+		},
+		"textAlign": {
 			"type": "string"
 		}
 	},
-	"supports": {
-		"color": {
-			"link": false
-		}
-	},
+	"title": "Alert",
 	"textdomain": "coblocks",
-	"title": "Alert"
+	"editorScript": "blocks-1",
+	"description": "Provide contextual feedback messages or notices."
 }
