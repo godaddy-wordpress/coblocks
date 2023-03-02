@@ -135,6 +135,10 @@ jobs:
 
       - name: Upgrade to beta version
         run: |
+          cd $(wp-env install-path)/tests-WordPress/wp-content/
+          mkdir upgrade
+          cd $(wp-env install-path)/WordPress/wp-content/
+          mkdir upgrade
           wp-env run tests-cli "wp core update --version=6.2-beta4"
           wp-env run cli "wp core update --version=6.2-beta4"
 
