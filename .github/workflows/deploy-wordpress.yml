@@ -34,9 +34,9 @@ jobs:
 
       - name: Extract Archive
         run: |
+          cd build
           unzip coblocks.zip
           ls -la
-        path: build/coblocks
 
       - name: Debugging with ssh
         uses: lhotari/action-upterm@v1
