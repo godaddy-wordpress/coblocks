@@ -1,12 +1,9 @@
 name: 'Deploy / WordPress'
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Semantic version to deploy to WordPress.org'
-        type: string
-        required: true
+  pull_request:
+    branches:
+      - master
 
 env:
   ARTIFACT_NAME: 'coblocks-plugin'
@@ -43,20 +40,22 @@ jobs:
       - name: Sync code changes
         run: |
           cp -a coblocks/* wp/coblocks/trunk/
+          ls -la wp/coblocks/trunk/
 
       - name: Create new tag
         run: |
           svn cp wp/coblocks/trunk wp/coblocks/tags/${{ inputs.version }}
-          svn commit -m "Tagging version ${{ inputs.version }}"
+          ls -la wp/coblocks/tags/${{ inputs.version }}
 
       - name: Sync asset changes
         run: |
           rm -rf wp/coblocks/assets/*
           cp -a .wordpress-org/* wp/coblocks/assets/
+          ls -la wp/coblocks/assets/
 
       - name: Deploy to WordPress.org
         run: |
           cd wp/coblocks
-          svn add * --force
-          svn status | grep '^!' | awk '{print $2}' | xargs svn delete
-          svn ci --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password ${{ secrets.GODADDY_WPORG_PASSWORD }} -m "Deploy ${{ inputs.version }} version of CoBlocks"
+          ls -la wp/coblocks
+          ls -la wp/coblocks/trunk/
+          ls -la wp/coblocks/tags/${{ inputs.version }}
