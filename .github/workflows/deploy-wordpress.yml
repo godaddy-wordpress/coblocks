@@ -39,6 +39,9 @@ jobs:
           rm -rf build/coblocks/coblocks-plugin.zip
           ls -la build/coblocks/
 
+      - name: Debugging with ssh
+        uses: lhotari/action-upterm@v1
+
       - name: Checkout from WordPress.org
         run: |
           svn co http://svn.wp-plugins.org/coblocks wp/coblocks
