@@ -102,11 +102,6 @@ jobs:
       # empty .wp-env.json or .wp-env.override.json file will throw a warning. We
       # provide a minimum config which includes only an empty env object, that can
       # be overridden with the Action's env input.
-      - name: Create the configuration file
-        shell: bash
-        run: |
-          WP_ENV_CONFIG=$(jq -cnr '{ "env" : ${{ inputs.env }} }')
-          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
       - name: Set the WordPress version
         shell: bash
         run: |
