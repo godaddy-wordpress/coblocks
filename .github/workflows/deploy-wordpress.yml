@@ -32,6 +32,12 @@ jobs:
           name: ${{ env.ARTIFACT_NAME }}
           path: build/coblocks
 
+      - name: Extract Archive
+        run: |
+          unzip build/coblocks/coblocks-plugin.zip
+          rm -rf build/coblocks/coblocks-plugin.zip
+          ls -la build/coblocks/
+
       - name: Checkout from WordPress.org
         run: |
           svn co http://svn.wp-plugins.org/coblocks wp/coblocks
