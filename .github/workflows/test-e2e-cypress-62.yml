@@ -95,8 +95,8 @@ jobs:
       #     themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
       - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
+        uses: actions/setup-node@v3
+        with:
         node-version: 'lts/*'
 
       - name: Install wp-env
