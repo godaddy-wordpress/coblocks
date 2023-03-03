@@ -89,7 +89,7 @@ jobs:
       - name: Setup wp-env
         uses: godaddy-wordpress/setup-wp-env@v1
         with:
-          core: 6.2-beta4
+          core: ${{ inputs.wpVersion }}
           phpVersion: ${{ inputs.phpVersion }}
           plugins: '["."]'
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
