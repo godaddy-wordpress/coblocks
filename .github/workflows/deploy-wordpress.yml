@@ -63,5 +63,5 @@ jobs:
         run: |
           cd wp/coblocks
           ls -la .
-          ls -la /trunk/
-          ls -la /tags/${{ inputs.version }}
+          ls -la ./trunk/
+          ls -la ./tags/${{ inputs.version }}
