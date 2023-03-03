@@ -38,9 +38,6 @@ jobs:
           unzip coblocks.zip
           ls -la
 
-      - name: Debugging with ssh
-        uses: lhotari/action-upterm@v1
-
       - name: Checkout from WordPress.org
         run: |
           svn co http://svn.wp-plugins.org/coblocks wp/coblocks
@@ -48,7 +45,7 @@ jobs:
 
       - name: Sync code changes
         run: |
-          cp -a build/coblocks/* wp/coblocks/trunk/
+          cp -a build/coblocks/coblocks/* wp/coblocks/trunk/
           ls -la wp/coblocks/trunk/
 
       - name: Create new tag
