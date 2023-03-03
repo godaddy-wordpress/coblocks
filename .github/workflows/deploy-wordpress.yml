@@ -56,6 +56,6 @@ jobs:
       - name: Deploy to WordPress.org
         run: |
           cd wp/coblocks
-          ls -la wp/coblocks
-          ls -la wp/coblocks/trunk/
-          ls -la wp/coblocks/tags/${{ inputs.version }}
+          ls -la .
+          ls -la /trunk/
+          ls -la /tags/${{ inputs.version }}
