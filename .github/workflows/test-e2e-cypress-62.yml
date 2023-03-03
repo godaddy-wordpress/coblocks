@@ -114,7 +114,7 @@ jobs:
 
       - name: Prepare Theme
         run: |
-          $installPath=$(wp-env install-path)
+          installPath=$(wp-env install-path)
           if [ "${{ inputs.theme }}" = "https://downloads.wordpress.org/theme/go.zip" ]; then
             cd $installPath/go
           else
