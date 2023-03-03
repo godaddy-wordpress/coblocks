@@ -35,7 +35,6 @@ jobs:
       - name: Extract Archive
         run: |
           unzip build/coblocks/coblocks.zip
-          rm -rf build/coblocks/coblocks.zip
           ls -la build/coblocks/
 
       - name: Debugging with ssh
