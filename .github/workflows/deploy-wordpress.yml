@@ -26,9 +26,6 @@ jobs:
         with:
           ref: ${{ inputs.version }}
 
-      - name: Debugging with ssh
-        uses: lhotari/action-upterm@v1
-
       - name: Download plugin
         uses: actions/download-artifact@v3
         with:
@@ -42,7 +39,7 @@ jobs:
 
       - name: Sync code changes
         run: |
-          cp -a coblocks/* wp/coblocks/trunk/
+          cp -a build/coblocks/* wp/coblocks/trunk/
           ls -la wp/coblocks/trunk/
 
       - name: Create new tag
