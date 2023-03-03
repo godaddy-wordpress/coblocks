@@ -86,13 +86,60 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup wp-env
-        uses: godaddy-wordpress/setup-wp-env@v1
-        with:
-          core: ${{ inputs.wpVersion }}
-          phpVersion: ${{ inputs.phpVersion }}
-          plugins: '["."]'
-          themes: '["https://downloads.wordpress.org/theme/go.zip"]'
+      # - name: Setup wp-env
+      #   uses: godaddy-wordpress/setup-wp-env@v1
+      #   with:
+      #     core: ${{ inputs.wpVersion }}
+      #     phpVersion: ${{ inputs.phpVersion }}
+      #     plugins: '["."]'
+      #     themes: '["https://downloads.wordpress.org/theme/go.zip"]'
+
+      - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'lts/*'
+
+      - name: Install wp-env
+        shell: bash
+        run: npm -g i @wordpress/env
+
+      # Although @wordpress/env ships with a default configuration, a missing or
+      # empty .wp-env.json or .wp-env.override.json file will throw a warning. We
+      # provide a minimum config which includes only an empty env object, that can
+      # be overridden with the Action's env input.
+      - name: Create the configuration file
+        shell: bash
+        run: |
+          WP_ENV_CONFIG=$(jq -cnr '{ "env" : ${{ inputs.env }} }')
+          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
+      - name: Set the WordPress version
+        shell: bash
+        run: |
+          curl -o wordpress-beta.zip -L https://wordpress.org/wordpress-6.2-beta4.zip && unzip -q wordpress-beta.zip -d ./wordpress-beta
+          WP_ENV_CONFIG=$(jq -cr '.core = "./wordpress-beta/wordpress"' <<< "$WP_ENV_CONFIG")
+          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
+      - name: Set the PHP version
+        shell: bash
+        run: |
+          WP_ENV_CONFIG=$(jq -cr '.phpVersion = "${{ inputs.phpVersion }}"' <<< "$WP_ENV_CONFIG")
+          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
+      - name: Set the plugins
+        shell: bash
+        run: |
+          WP_ENV_CONFIG=$(jq -cr '.plugins = '["."]'' <<< "$WP_ENV_CONFIG")
+          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
+      - name: Set the themes
+        shell: bash
+        run: |
+          WP_ENV_CONFIG=$(jq -cr '.themes = '["https://downloads.wordpress.org/theme/go.zip"]'' <<< "$WP_ENV_CONFIG")
+          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
+      - name: Create .wp-env.override.json
+        shell: bash
+        run: jq -c . > .wp-env.override.json <<< "$WP_ENV_CONFIG"
+
+      - name: Start wp-env
+        shell: bash
+        run: wp-env start
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -138,17 +185,17 @@ jobs:
             wp-env run tests-cli "wp theme activate go"
           fi
 
-      - name: Upgrade to beta version
-        shell: bash
-        run: |
-          ls "{{ steps.prepare-theme.outputs.installPath }}"
-          ls "{{ steps.prepare-theme.outputs.installPath }}/tests-WordPress/"
-          cd "{{ steps.prepare-theme.outputs.installPath }}/tests-WordPress/wp-content/"
-          mkdir upgrade
-          cd "{{ steps.prepare-theme.outputs.installPath }}/WordPress/wp-content/"
-          mkdir upgrade
-          wp-env run tests-cli "wp core update --version=6.2-beta4"
-          wp-env run cli "wp core update --version=6.2-beta4"
+      # - name: Upgrade to beta version
+      #   shell: bash
+      #   run: |
+      #     ls "{{ steps.prepare-theme.outputs.installPath }}"
+      #     ls "{{ steps.prepare-theme.outputs.installPath }}/tests-WordPress/"
+      #     cd "{{ steps.prepare-theme.outputs.installPath }}/tests-WordPress/wp-content/"
+      #     mkdir upgrade
+      #     cd "{{ steps.prepare-theme.outputs.installPath }}/WordPress/wp-content/"
+      #     mkdir upgrade
+      #     wp-env run tests-cli "wp core update --version=6.2-beta4"
+      #     wp-env run cli "wp core update --version=6.2-beta4"
 
       # Only create a new post if running the migrated specs
       - name: Create post and get ID
