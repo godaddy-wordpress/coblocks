@@ -34,7 +34,7 @@ jobs:
 
       - name: Extract Archive
         run: |
-          cd build
+          cd build/coblocks
           unzip coblocks.zip
           ls -la
 
