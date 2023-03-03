@@ -26,6 +26,9 @@ jobs:
         with:
           ref: ${{ inputs.version }}
 
+      - name: Debugging with ssh
+        uses: lhotari/action-upterm@v1
+
       - name: Download plugin
         uses: actions/download-artifact@v3
         with:
