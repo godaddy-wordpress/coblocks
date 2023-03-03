@@ -140,7 +140,7 @@ jobs:
 
       - name: Upgrade to beta version
         run: |
-          ls {{ steps.prepare-theme.outputs.installPath }}
+          ls "{{ steps.prepare-theme.outputs.installPath }}"
           ls "{{ steps.prepare-theme.outputs.installPath }}/tests-WordPress/"
           cd "{{ steps.prepare-theme.outputs.installPath }}/tests-WordPress/wp-content/"
           mkdir upgrade
