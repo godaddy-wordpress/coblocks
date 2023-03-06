@@ -108,25 +108,10 @@ jobs:
           curl -o wordpress-beta.zip -L https://wordpress.org/wordpress-6.2-beta4.zip && unzip -q wordpress-beta.zip -d ./wordpress-beta
           WP_ENV_CONFIG=$(jq -cnr '{}')
           WP_ENV_CONFIG=$(jq -cr '.core = "./wordpress-beta/wordpress"' <<< "$WP_ENV_CONFIG")
-          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
-      - name: Set the PHP version
-        shell: bash
-        run: |
           WP_ENV_CONFIG=$(jq -cr '.phpVersion = "${{ inputs.phpVersion }}"' <<< "$WP_ENV_CONFIG")
-          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
-      - name: Set the plugins
-        shell: bash
-        run: |
           WP_ENV_CONFIG=$(jq -cr '.plugins = ["."]' <<< "$WP_ENV_CONFIG")
-          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
-      - name: Set the themes
-        shell: bash
-        run: |
           WP_ENV_CONFIG=$(jq --argjson arr '["https://downloads.wordpress.org/theme/go.zip"]' '.themes = $arr' <<< "$WP_ENV_CONFIG")
-          echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
-      - name: Create .wp-env.override.json
-        shell: bash
-        run: jq -c . > .wp-env.override.json <<< "$WP_ENV_CONFIG"
+          jq -c . > .wp-env.override.json <<< "$WP_ENV_CONFIG"
 
       - name: Start wp-env
         shell: bash
