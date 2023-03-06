@@ -117,7 +117,7 @@ jobs:
       - name: Set the plugins
         shell: bash
         run: |
-          WP_ENV_CONFIG=$(jq -cr '.plugins = '["."]'' <<< "$WP_ENV_CONFIG")
+          WP_ENV_CONFIG=$(jq -cr '.plugins = ["."]' <<< "$WP_ENV_CONFIG")
           echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
       - name: Set the themes
         shell: bash
