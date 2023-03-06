@@ -96,7 +96,7 @@ jobs:
 
       - name: Install wp-env
         shell: bash
-        run: npm -g i @wordpress/env
+        run: npm i -g @wordpress/env
 
       # Although @wordpress/env ships with a default configuration, a missing or
       # empty .wp-env.json or .wp-env.override.json file will throw a warning. We
@@ -105,9 +105,8 @@ jobs:
       - name: Set the WordPress version
         shell: bash
         run: |
-          curl -o wordpress-beta.zip -L https://wordpress.org/wordpress-6.2-beta4.zip && unzip -q wordpress-beta.zip -d ./wordpress-beta
           WP_ENV_CONFIG=$(jq -cnr '{}')
-          WP_ENV_CONFIG=$(jq -cr '.core = "./wordpress-beta/wordpress"' <<< "$WP_ENV_CONFIG")
+          WP_ENV_CONFIG=$(jq -cr '.core = "https://wordpress.org/wordpress-6.2-beta4.zip"' <<< "$WP_ENV_CONFIG")
           WP_ENV_CONFIG=$(jq -cr '.phpVersion = "${{ inputs.phpVersion }}"' <<< "$WP_ENV_CONFIG")
           WP_ENV_CONFIG=$(jq -cr '.plugins = ["."]' <<< "$WP_ENV_CONFIG")
           WP_ENV_CONFIG=$(jq --argjson arr '["https://downloads.wordpress.org/theme/go.zip"]' '.themes = $arr' <<< "$WP_ENV_CONFIG")
