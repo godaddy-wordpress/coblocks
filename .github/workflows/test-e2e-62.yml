@@ -1,4 +1,4 @@
-name: Test / E2E
+name: Test / E2E - 6.2-beta4
 
 on:
   pull_request:

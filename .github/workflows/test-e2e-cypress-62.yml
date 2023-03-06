@@ -106,6 +106,7 @@ jobs:
         shell: bash
         run: |
           curl -o wordpress-beta.zip -L https://wordpress.org/wordpress-6.2-beta4.zip && unzip -q wordpress-beta.zip -d ./wordpress-beta
+          WP_ENV_CONFIG=$(jq -cnr '{}')
           WP_ENV_CONFIG=$(jq -cr '.core = "./wordpress-beta/wordpress"' <<< "$WP_ENV_CONFIG")
           echo "WP_ENV_CONFIG=$WP_ENV_CONFIG" >> $GITHUB_ENV
       - name: Set the PHP version
