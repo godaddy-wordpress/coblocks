@@ -134,6 +134,9 @@ jobs:
         run: |
           yarn build
 
+      - name: Debugging with ssh
+        uses: lhotari/action-upterm@v1
+
       - name: Prepare Theme
         run: |
           if [ "${{ inputs.theme }}" = "https://downloads.wordpress.org/theme/go.zip" ]; then
@@ -157,17 +160,17 @@ jobs:
 
       # Only create a new post if running the migrated specs
       - name: Create post and get ID
-        if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'  
+        if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'
         run: |
           postContent=$(cat $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.html)
 
           postId=$(wp-env run tests-cli "post create --post_type=post --post_title='${{matrix.spec}}' --porcelain --post_content='$postContent'")
           echo "postId=$postId" >> $GITHUB_OUTPUT
         id: create-post
-      
+
       # Only retrieve the post ID if running the first spec
       - name: Save post ID to file
-        if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js' 
+        if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'
         run: |
           path="$GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.json"
           touch "$path"
@@ -187,4 +190,3 @@ jobs:
           name: ${{ matrix.spec }}-fail.mp4
           path: ./.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
           retention-days: 1
-
