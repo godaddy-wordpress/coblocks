@@ -109,7 +109,9 @@ jobs:
           WP_ENV_CONFIG=$(jq -cr '.core = "https://wordpress.org/wordpress-6.2-beta4.zip"' <<< "$WP_ENV_CONFIG")
           WP_ENV_CONFIG=$(jq -cr '.phpVersion = "${{ inputs.phpVersion }}"' <<< "$WP_ENV_CONFIG")
           WP_ENV_CONFIG=$(jq -cr '.plugins = ["."]' <<< "$WP_ENV_CONFIG")
-          WP_ENV_CONFIG=$(jq --argjson arr '["https://downloads.wordpress.org/theme/go.zip"]' '.themes = $arr' <<< "$WP_ENV_CONFIG")
+          if [ -n "${{ inputs.theme }}" ]; then
+            WP_ENV_CONFIG=$(jq --argjson arr '["https://downloads.wordpress.org/theme/go.zip"]' '.themes = $arr' <<< "$WP_ENV_CONFIG")
+          fi
           jq -c . > .wp-env.override.json <<< "$WP_ENV_CONFIG"
 
       - name: Start wp-env

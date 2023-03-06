@@ -206,6 +206,11 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		cy.get( '[data-wp-component="ToolsPanelHeader"] button' ).click();
 		cy.get( 'button' ).contains( 'Font size' ).click();
 
+		// Styles tab introduced in 6.2.
+		if ( Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' ) ) {
+			cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
+		}
+
 		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue = Cypress.$( 'figcaption.coblocks-gallery--caption' ).css( 'font-size' );
 			Array.from( elems ).forEach( ( elem ) => {

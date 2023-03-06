@@ -48,6 +48,11 @@ describe( 'Block: Highlight', function() {
 	 * Test the highlight block custom classes
 	 */
 	it( 'Test the Font size changes as expected.', function() {
+		// Styles tab introduced in 6.2.
+		if ( Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' ) ) {
+			cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
+		}
+
 		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue = Cypress.$( '.wp-block-coblocks-highlight' ).css( 'font-size' );
 			Array.from( elems ).forEach( ( elem ) => {
