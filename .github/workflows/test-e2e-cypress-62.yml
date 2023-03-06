@@ -134,7 +134,7 @@ jobs:
         run: |
           yarn build
 
-      - name: Debugging with ssh
+      - name: Debugging with SSH
         uses: lhotari/action-upterm@v1
 
       - name: Prepare Theme
