@@ -85,9 +85,6 @@ jobs:
         run: |
           yarn build
 
-      - name: Debugging with SSH
-        uses: lhotari/action-upterm@v1
-
       - name: Prepare Theme
         run: |
           if [ "${{ inputs.theme }}" = "https://downloads.wordpress.org/theme/go.zip" ]; then
