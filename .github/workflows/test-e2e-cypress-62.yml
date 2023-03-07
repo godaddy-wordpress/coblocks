@@ -142,6 +142,7 @@ jobs:
             cd $(wp-env install-path)/go
           else
             echo "This is in the default theme path"
+            ls -l $(wp-env install-path)
             ls -l $(wp-env install-path)/tests-WordPress
             ls -l $(wp-env install-path)/tests-WordPress/wp-content/
             ls -l $(wp-env install-path)/tests-WordPress/wp-content/themes/
