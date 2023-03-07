@@ -1,9 +1,12 @@
 name: 'Deploy / WordPress'
 
 on:
-  pull_request:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Semantic version to deploy to WordPress.org'
+        type: string
+        required: true
 
 env:
   ARTIFACT_NAME: 'coblocks-plugin'
@@ -62,6 +65,3 @@ jobs:
       - name: Deploy to WordPress.org
         run: |
           cd wp/coblocks
-          ls -la .
-          ls -la ./trunk/
-          ls -la ./tags/${{ inputs.version }}
