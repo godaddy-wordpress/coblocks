@@ -31,17 +31,17 @@ jobs:
           composer install --prefer-dist --optimize-autoloader &
           yarn install --immutable
 
-      - name: Build plugin
-        run: |
-          npx grunt build
-          mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
-
       - name: Setup wp-env
         uses: godaddy-wordpress/setup-wp-env@v1
         with:
           phpVersion: ${{ inputs.phpVersion }}
           plugins: '[".","https://downloads.wordpress.org/plugin/woocommerce.zip"]'
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
+
+      - name: Build plugin
+        run: |
+          npx grunt build
+          mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
 
       - name: Run tests
         run: |
