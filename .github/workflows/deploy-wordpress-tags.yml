@@ -1,0 +1,60 @@
+name: 'Deploy / WordPress Tags'
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  ARTIFACT_NAME: 'coblocks-plugin'
+  ARTIFACT_ZIP: 'coblocks-plugin.zip'
+
+jobs:
+  build:
+    name: Create artifact
+    uses: ./.github/workflows/deploy-create-artifact.yml
+    with:
+      checkout-ref: ${{ github.ref_name }}
+
+  deploy:
+    name: Deploy tags to WordPress.org
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Download plugin
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: build/coblocks
+
+      - name: Extract Archive
+        run: |
+          cd build/coblocks
+          unzip coblocks.zip
+          ls -la
+
+      - name: Checkout from WordPress.org
+        run: svn co http://svn.wp-plugins.org/coblocks wp/coblocks
+
+      - name: Create new tag
+        run: |
+          cp -a build/coblocks/coblocks/* wp/coblocks/tags/${{ github.ref_name }}
+          ls -la wp/coblocks/tags/${{ github.ref_name }}
+
+      - name: Sync asset changes
+        run: |
+          rm -rf wp/coblocks/assets/*
+          cp -a .wordpress-org/* wp/coblocks/assets/
+          ls -la wp/coblocks/assets/
+
+      - name: Deploy to WordPress.org
+        run: |
+          cd wp/coblocks
+          svn add * --force
+          svn status | grep '^!' | awk '{print $2}' | xargs svn delete
+          svn ci --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password ${{ secrets.GODADDY_WPORG_PASSWORD }} -m "Deploy ${{ github.ref_name }} version of CoBlocks"
