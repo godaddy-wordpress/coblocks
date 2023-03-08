@@ -36,16 +36,16 @@ jobs:
           - author.cypress.js
           - click-to-tweet.cypress.js
           - counter.cypress.js
-          # - dynamic-separator.cypress.js
-          # - event-item.cypress.js
-          # - events.cypress.js
-          # - faq.cypress.js
-          # - feature.cypress.js
-          # - features.cypress.js
-          # - food-item.cypress.js
-          # - food-and-drinks.cypress.js
-          # - form.cypress.js
-          # - gallery-carousel.cypress.js
+          - dynamic-separator.cypress.js
+          - event-item.cypress.js
+          - events.cypress.js
+          - faq.cypress.js
+          - feature.cypress.js
+          - features.cypress.js
+          - food-item.cypress.js
+          - food-and-drinks.cypress.js
+          - form.cypress.js
+          - gallery-carousel.cypress.js
           # - gallery-collage.cypress.js
           # - gallery-masonry.cypress.js
           # - gallery-offset.cypress.js

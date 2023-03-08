@@ -109,6 +109,13 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
 
+	/**
+	 * The network request to block-directory may be cached and is not consistently fired with each test.
+	 * Instead of intercepting we can await known dom elements that appear only when search results are present.
+	 * This should correct a race condition in CI.
+	 */
+	cy.get( 'div.block-editor-inserter__main-area:not(.show-as-tabs)' );
+
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click();
 
