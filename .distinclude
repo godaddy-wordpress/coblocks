@@ -1,4 +1,4 @@
-# List all files and directories to be deployed with the Go thene.
+# List all files and directories to be deployed with the CoBlocks
 # Use the rsync syntax https://linux.die.net/man/1/rsync
 
 + /*
