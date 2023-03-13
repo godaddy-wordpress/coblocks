@@ -94,6 +94,9 @@ We appreciate all contributions and don't want a wall of rules to get in the way
 
 Are you new at contributing to CoBlocks? If so, here is a selection of [good first issues](https://github.com/godaddy-wordpress/coblocks/labels/good%20first%20issue) we've marked especially for first-timers. And if you catch yourself spinning your wheels, we're here to help!
 
+## Release
+[New Release Workflow](.github/RELEASE.md)
+
 ## Screenshots
 
 ## [![Build modular grid systems with the CoBlocks Row and Columns blocks](https://user-images.githubusercontent.com/1813435/51091007-6aea2e00-1752-11e9-8ac5-4e6cb307ef47.gif)](https://wordpress.org/plugins/coblocks/)
