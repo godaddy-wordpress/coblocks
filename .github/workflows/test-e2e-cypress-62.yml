@@ -46,13 +46,13 @@ jobs:
           - food-and-drinks.cypress.js
           - form.cypress.js
           - gallery-carousel.cypress.js
-          # - gallery-collage.cypress.js
-          # - gallery-masonry.cypress.js
-          # - gallery-offset.cypress.js
-          # - gallery-stacked.cypress.js
-          # - gif.cypress.js
-          # - gist.cypress.js
-          # - hero.cypress.js
+          - gallery-collage.cypress.js
+          - gallery-masonry.cypress.js
+          - gallery-offset.cypress.js
+          - gallery-stacked.cypress.js
+          - gif.cypress.js
+          - gist.cypress.js
+          - hero.cypress.js
           # - highlight.cypress.js
           # - icon.cypress.js
           # - logos.cypress.js
@@ -86,37 +86,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # - name: Setup wp-env
-      #   uses: godaddy-wordpress/setup-wp-env@v1
-      #   with:
-      #     core: ${{ inputs.wpVersion }}
-      #     phpVersion: ${{ inputs.phpVersion }}
-      #     plugins: '["."]'
-      #     themes: '["https://downloads.wordpress.org/theme/go.zip"]'
+      - name: Setup wp-env
+        uses: godaddy-wordpress/setup-wp-env@v1
+        with:
+          core: ${{ inputs.wpVersion }}
+          phpVersion: ${{ inputs.phpVersion }}
+          plugins: '["."]'
+          themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
-      - name: Install wp-env
-        shell: bash
-        run: npm i -g @wordpress/env
+      # - name: Install wp-env
+      #   shell: bash
+      #   run: npm i -g @wordpress/env
 
-      # Although @wordpress/env ships with a default configuration, a missing or
-      # empty .wp-env.json or .wp-env.override.json file will throw a warning. We
-      # provide a minimum config which includes only an empty env object, that can
-      # be overridden with the Action's env input.
-      - name: Set the WordPress version
-        shell: bash
-        run: |
-          WP_ENV_CONFIG=$(jq -cnr '{}')
-          WP_ENV_CONFIG=$(jq -cr '.core = "https://wordpress.org/wordpress-6.2-beta4.zip"' <<< "$WP_ENV_CONFIG")
-          WP_ENV_CONFIG=$(jq -cr '.phpVersion = "${{ inputs.phpVersion }}"' <<< "$WP_ENV_CONFIG")
-          WP_ENV_CONFIG=$(jq -cr '.plugins = ["."]' <<< "$WP_ENV_CONFIG")
-          if [ "" != "${{ inputs.theme }}" ]; then
-            WP_ENV_CONFIG=$(jq --argjson arr '["https://downloads.wordpress.org/theme/go.zip"]' '.themes = $arr' <<< "$WP_ENV_CONFIG")
-          fi
-          jq -c . > .wp-env.override.json <<< "$WP_ENV_CONFIG"
-
-      - name: Start wp-env
-        shell: bash
-        run: wp-env start
+      # # Although @wordpress/env ships with a default configuration, a missing or
+      # # empty .wp-env.json or .wp-env.override.json file will throw a warning. We
+      # # provide a minimum config which includes only an empty env object, that can
+      # # be overridden with the Action's env input.
+      # - name: Set the WordPress version
+      #   shell: bash
+      #   run: |
+      #     WP_ENV_CONFIG=$(jq -cnr '{}')
+      #     WP_ENV_CONFIG=$(jq -cr '.core = "https://wordpress.org/wordpress-6.2-RC2.zip"' <<< "$WP_ENV_CONFIG")
+      #     WP_ENV_CONFIG=$(jq -cr '.phpVersion = "${{ inputs.phpVersion }}"' <<< "$WP_ENV_CONFIG")
+      #     WP_ENV_CONFIG=$(jq -cr '.plugins = ["."]' <<< "$WP_ENV_CONFIG")
+      #     if [ "" != "${{ inputs.theme }}" ]; then
+      #       WP_ENV_CONFIG=$(jq --argjson arr '["https://downloads.wordpress.org/theme/go.zip"]' '.themes = $arr' <<< "$WP_ENV_CONFIG")
+      #     fi
+      #     jq -c . > .wp-env.override.json <<< "$WP_ENV_CONFIG"
 
       - name: Setup Node
         uses: actions/setup-node@v3
