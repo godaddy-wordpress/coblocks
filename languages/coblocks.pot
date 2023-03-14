@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-08T23:35:05+00:00\n"
+"POT-Creation-Date: 2023-02-23T22:43:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: coblocks\n"
@@ -7259,7 +7259,7 @@ msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/svgs-generated.js:885
-#: src/extensions/site-content/post-menu-actions.js:93
+#: src/extensions/site-content/post-menu-actions.js:97
 msgid "Duplicate"
 msgstr ""
 
@@ -10192,39 +10192,39 @@ msgstr ""
 msgid "Site contents"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:48
+#: src/extensions/site-content/post-menu-actions.js:50
 msgid "Select an action"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:54
+#: src/extensions/site-content/post-menu-actions.js:56
 msgid "Rename"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:65
+#: src/extensions/site-content/post-menu-actions.js:67
 msgid "Really set as homepage?"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:75
+#: src/extensions/site-content/post-menu-actions.js:77
 msgid "Set as homepage"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:84
+#: src/extensions/site-content/post-menu-actions.js:87
 msgid "Unpin post"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:84
+#: src/extensions/site-content/post-menu-actions.js:87
 msgid "Pin post"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:103
+#: src/extensions/site-content/post-menu-actions.js:108
 msgid "Really delete?"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:113
+#: src/extensions/site-content/post-menu-actions.js:118
 msgid "Delete Page"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:113
+#: src/extensions/site-content/post-menu-actions.js:118
 msgid "Delete Post"
 msgstr ""
 
