@@ -1,0 +1,51 @@
+[tool.tartufo]
+exclude-path-patterns = [
+	{path-pattern = 'tartufo\.toml'},
+	{path-pattern = 'package-lock\.json'},
+	{path-pattern = 'yarn\.lock'},
+	{path-pattern = 'composer\.lock'},
+	{path-pattern = 'languages/(.*).json'},
+	{path-pattern = '\.dev/tests/a11y/coblocks_pa11y\.sql'},
+	{path-pattern = 'src/blocks/gallery-(.*)/index\.js'},
+	{path-pattern = '(.*)/editor\.scss'},
+	{path-pattern = 'includes/(.*)/content(.*)\.txt'},
+	{path-pattern = 'readme.txt'},
+	{path-pattern = 'includes/admin/class-coblocks-dashboard-welcome\.php'}
+]
+exclude-entropy-patterns = [
+
+]
+
+exclude-signatures = [
+	# ignore false positives, mostly blob ids and gist ids
+	{signature = '86d2c86feb8ed8c063c00a5a8ab81f892d9e22494b0d286bc5f2a810d3b4e19e'},
+	{signature = '5c4413483eea46d4744a11a22ba2508fdd02651d5a5a846d37e43532e4bb3577'},
+	{signature = '0bb58f81a1e15975555a90eddf962470d22ddfc137afd0c5d54950a20d4e4f86'},
+	{signature = 'aa30b23a16b0b97782605ad52325354d9d904994e79b1ff7c84c6f6ff750f91c'},
+	{signature = '0fbf1bd7e481328324dc636df436131913a7b3fe558d1cd23ae09ba1afbad40c'},
+	{signature = '2f583862caa08e436e570b6fbed7b3c036f393469c4646a93eddb85656c69793'},
+	{signature = 'db6af5825e5d0e3c22ccc52601fa2fd7b0b3132af56e57a97a4bca518ef9c9d6'},
+	{signature = '817da6172d1c6b59ad0f50d21e3787170c9849471e2bbcc027ada8ed772133dc'},
+	{signature = 'b805fecd7b3a24a8ac566a22af854989222dfb7543fab68d7980ab436d883bf0'},
+	{signature = 'ece3d80f893ee071da60137689c673df9afc5fd653beceba88bdd9fce8917643'},
+	{signature = '8c927802306dba5179f95cfb5de37f70dc743c43106f179f867beadf2ea2f208'},
+	{signature = '038e6ba32f7ec71dd81ebacbba6b2a32e45e938b9b125decd50f73667b837982'},
+	{signature = 'c58226770e681f36ed64100be1062f4bd576300280ea5879bb188d8219ecac5a'},
+	{signature = '056de1f259bdbc2e75de353df4067f0270c1646f1815ae61a282bb9d89de0c0e'},
+	{signature = 'ea1673befd706c332f2406c08cb2668a66c880995d62c11fadbbb7257cc5fd89'},
+	{signature = '211a645ca19532da5cbb1a53506588ec5598eaa6c2d4398b7e5516ef23340f84'},
+	{signature = 'd746976e6fa52c8b3d7392bfe5fe364e94fde40ae2e7ec5a6be4a8c2b7cfd1c4'},
+	{signature = 'e5a344c2f33c51c3be538c901e90ce9a76942383bd84a16d09788a292d5f1c64'},
+	{signature = 'ecd2dfb345686c0d1508835cb030e3f21c863764607a93305b9267bee5542c7e'},
+	{signature = 'd9357d76966768ff53649db18c75d6afe2fa9c0203cd4024bc0678d15708f2b1'},
+	{signature = '663852e2bae55e8475b59be149d3777aa3a7cb9a1447c2680ac265e7909935a4'},
+	{signature = 'c96669d79b687b676f7d846fe56bd5e130bd9f72e9ab3421096ae47a55c0b7d7'},
+	{signature = '7ee4169fd93ca0890c9617ee70f1169a5f3b15fcb4362aa0ddf9c1d1dc94930c'},
+	{signature = '530c8ada3464faa972a44297d9592401fbf565e8d985b671ef76316c9a2c8b5c'},
+	{signature = '2f011c90d5e16e76a836bc0150cd0ba8d37825f511c2d7370958a33ab87146c4'},
+	{signature = 'a95f069e3d6c9be5bf0c418b5e15fbe6d8030de5080b1c97ad8faafc78649b92'},
+	{signature = '8c1d6c706708d9fb48d013afdf4bf25369359601c3965940fb7f1b9a0a1097ad'},
+	{signature = '455c3e8bb0c8664aa84dd95b55fc03c727180eee674283e77e329a356c6c363b'},
+	{signature = 'a45c12fa5895c03c884b2e2bd9760ded9266f4624c169a190eaf3b8ba4eede27'},
+	{signature = '9a515de882410535ad318b26a57504cba0c8be5a8da4b8530f1aad3c9a80897a'},
+]
