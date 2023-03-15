@@ -604,7 +604,9 @@ class CoBlocks_Block_Assets {
 	public function has_masonry_v1_block() {
 		$v1_regex = '/<!-- wp:coblocks\/gallery-masonry.*|\n*(coblocks-gallery--item).*|\n*<!-- \/wp:coblocks\/gallery-masonry -->/m';
 
-		preg_match_all( $v1_regex, get_the_content(), $matches );
+		global $post;
+
+		preg_match_all( $v1_regex, $post->post_content, $matches );
 		return isset( $matches[0] ) && isset( $matches[0][2] ) && ! empty( $matches[0][2] );
 	}
 
