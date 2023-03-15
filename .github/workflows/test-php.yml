@@ -23,3 +23,9 @@ jobs:
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: '8.1'
+    
+  php_unit_82:
+    name: PHP 8.2
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.2'
