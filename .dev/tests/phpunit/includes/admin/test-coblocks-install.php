@@ -8,7 +8,7 @@ class CoBlocks_Install_Tests extends WP_UnitTestCase {
 
 	private $coblocks_install;
 
-	public function set_up() {
+	public function set_up(): void {
 
 		parent::set_up();
 
@@ -20,7 +20,7 @@ class CoBlocks_Install_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 
 		parent::tear_down();
 
