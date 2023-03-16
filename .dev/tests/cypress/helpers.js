@@ -16,8 +16,12 @@ export function closeLayoutSelector() {
 /**
  * Returns true if styles tab exists false otherwise.
  */
-export function hasStylesSidebarTab() {
-	return !! Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' )?.length;
+export function selectStylesTabIfExists() {
+	if ( ! Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' )?.length ) {
+		return;
+	}
+
+	cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
 }
 
 /**
@@ -247,9 +251,22 @@ export function getBlockSlug() {
  * Open the block navigator.
  */
 export function openBlockNavigator( ) {
-	cy.get( '.edit-post-header__toolbar' ).find(
-		'.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle,.edit-post-header-toolbar__document-overview-toggle'
-	).click();
+	cy.get( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle,.edit-post-header-toolbar__document-overview-toggle' ).then( ( element ) => {
+		if ( ! element.hasClass( 'is-pressed' ) ) {
+			element.click();
+		}
+	} );
+}
+
+/**
+ * Close the block navigator.
+ */
+export function closeBlockNavigator() {
+	const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
+	if ( inserterButton.length > 0 ) {
+		cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' )
+			.click();
+	}
 }
 
 /**
@@ -274,7 +291,7 @@ export function setBlockStyle( style ) {
  * @param {boolean} isChildBlock Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
-	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
+	openBlockNavigator();
 
 	if ( isChildBlock ) {
 		cy.get( '.block-editor-list-view__expander svg' ).first().click();
@@ -288,11 +305,8 @@ export function selectBlock( name, isChildBlock = false ) {
 		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
 		.click()
 		.then( () => {
-		// Then close the block navigator if still open.
-			const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
-			if ( !! inserterButton.length ) {
-				cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' ).click();
-			}
+			// Then close the block navigator if still open.
+			closeBlockNavigator();
 		} );
 }
 

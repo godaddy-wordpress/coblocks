@@ -207,9 +207,7 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		cy.get( 'button' ).contains( 'Font size' ).click();
 
 		// Styles tab introduced in 6.2.
-		if ( helpers.hasStylesSidebarTab() ) {
-			cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
-		}
+		helpers.selectStylesTabIfExists();
 
 		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue = Cypress.$( 'figcaption.coblocks-gallery--caption' ).css( 'font-size' );

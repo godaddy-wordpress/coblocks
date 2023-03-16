@@ -32,21 +32,21 @@ describe( 'Test CoBlocks Dynamic Separator Block', function() {
 
 		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Line' )
-			.click();
+			.click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-dynamic-separator' )
 			.should( 'have.class', 'is-style-line' );
 
 		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
-			.contains( 'Dot' )
-			.click();
+			.contains( /Dot|Default/ )
+			.click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-dynamic-separator' )
 			.should( 'have.class', 'is-style-dots' );
 
 		cy.get( '.block-editor-block-styles__item-label, .block-editor-block-styles__item-text' )
 			.contains( 'Fullwidth' )
-			.click();
+			.click( { force: true } );
 
 		cy.get( '.wp-block-coblocks-dynamic-separator' )
 			.should( 'have.class', 'is-style-fullwidth' );

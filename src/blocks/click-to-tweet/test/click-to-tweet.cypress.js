@@ -59,9 +59,7 @@ describe( 'Test CoBlocks Click to Tweet Block', function() {
 		cy.get( '.wp-block-coblocks-click-to-tweet__text' ).focus().type( 'Some custom data here.' );
 
 		// Styles tab introduced in 6.2.
-		if ( helpers.hasStylesSidebarTab() ) {
-			cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
-		}
+		helpers.selectStylesTabIfExists();
 
 		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue;
