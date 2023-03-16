@@ -49,7 +49,7 @@ describe( 'Block: Highlight', function() {
 	 */
 	it( 'Test the Font size changes as expected.', function() {
 		// Styles tab introduced in 6.2.
-		if ( Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' ) ) {
+		if ( helpers.hasStylesSidebarTab() ) {
 			cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
 		}
 

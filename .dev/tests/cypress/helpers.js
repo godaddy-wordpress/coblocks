@@ -14,6 +14,13 @@ export function closeLayoutSelector() {
 }
 
 /**
+ * Returns true if styles tab exists false otherwise.
+ */
+export function hasStylesSidebarTab() {
+	return !! Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' )?.length;
+}
+
+/**
  * Add Form block child element by name.
  *
  * @param {string} name the name of the child block to add.
