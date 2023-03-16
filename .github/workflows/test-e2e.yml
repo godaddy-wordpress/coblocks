@@ -34,3 +34,13 @@ jobs:
     concurrency:
       group: chrome-php74
       cancel-in-progress: true
+
+  chrome_e2e_php82:
+    name: Chrome on PHP 8.2
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      wpVersion: "WordPress/WordPress#6.1.1"
+      phpVersion: "8.2"
+    concurrency:
+      group: chrome-php74
+      cancel-in-progress: true

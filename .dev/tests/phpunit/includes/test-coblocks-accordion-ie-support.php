@@ -6,7 +6,7 @@
  */
 class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 
-	public function set_up() {
+	public function set_up(): void {
 
 		parent::set_up();
 
@@ -14,7 +14,7 @@ class CoBlocks_Accordion_IE_Support_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 
 		parent::tear_down();
 

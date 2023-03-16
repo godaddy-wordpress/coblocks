@@ -6,7 +6,7 @@
  */
 class CoBlocks_Tests extends WP_UnitTestCase {
 
-	public function set_up() {
+	public function set_up(): void {
 
 		parent::set_up();
 
@@ -23,7 +23,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 
 		parent::tear_down();
 
@@ -210,7 +210,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 				$this->assertTrue(
 					file_exists( COBLOCKS_PLUGIN_DIR . $path_to_asset ),
-					"${minfied_asset_string} ${asset_type} asset not found: " . COBLOCKS_PLUGIN_DIR . "${path_to_asset}"
+					"{$minfied_asset_string} {$asset_type} asset not found: " . COBLOCKS_PLUGIN_DIR . "{$path_to_asset}"
 				);
 
 			}

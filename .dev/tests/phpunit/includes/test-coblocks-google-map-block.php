@@ -8,7 +8,7 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 
 	private $coblocks_google_map_block;
 
-	public function set_up() {
+	public function set_up(): void {
 
 		parent::set_up();
 
@@ -18,7 +18,7 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 
 		parent::tear_down();
 

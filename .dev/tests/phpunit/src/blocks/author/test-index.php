@@ -10,11 +10,11 @@ require_once dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/compare-bl
 class CoBlocks_Block_Author_Migration_Test extends WP_UnitTestCase {
 	private $instance;
 
-	public function set_up() {
+	public function set_up(): void {
 		$this->instance = new CoBlocks_Author_Migration();
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 		$this->instance = null;
 	}
 

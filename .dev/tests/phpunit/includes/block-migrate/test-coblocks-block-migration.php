@@ -7,11 +7,11 @@
 class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 	private $instance;
 
-	public function set_up() {
+	public function set_up(): void {
 		$this->instance = new Block_Migration_Mock();
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 		$this->instance = null;
 	}
 
