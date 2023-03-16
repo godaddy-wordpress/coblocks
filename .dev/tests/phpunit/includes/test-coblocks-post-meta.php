@@ -24,7 +24,7 @@ class CoBlocks_Post_Meta_Tests extends WP_Test_REST_TestCase {
 
 	}
 
-	public function set_up() {
+	public function set_up(): void {
 
 		parent::set_up();
 
@@ -44,7 +44,7 @@ class CoBlocks_Post_Meta_Tests extends WP_Test_REST_TestCase {
 
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 
 		parent::tear_down();
 

@@ -1,12 +1,9 @@
-name: 'Deploy / WordPress'
+name: 'Deploy / WordPress Tags'
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Semantic version to deploy to WordPress.org'
-        type: string
-        required: true
+  push:
+    tags:
+      - '*'
 
 env:
   ARTIFACT_NAME: 'coblocks-plugin'
@@ -17,17 +14,17 @@ jobs:
     name: Create artifact
     uses: ./.github/workflows/deploy-create-artifact.yml
     with:
-      checkout-ref: ${{ inputs.version }}
+      checkout-ref: ${{ github.ref_name }}
 
   deploy:
-    name: Manual
+    name: Deploy tags to WordPress.org
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.version }}
+          ref: ${{ github.ref_name }}
 
       - name: Download plugin
         uses: actions/download-artifact@v3
@@ -42,19 +39,12 @@ jobs:
           ls -la
 
       - name: Checkout from WordPress.org
-        run: |
-          svn co http://svn.wp-plugins.org/coblocks wp/coblocks
-          rm -rf wp/coblocks/trunk/*
-
-      - name: Sync code changes
-        run: |
-          cp -a build/coblocks/coblocks/* wp/coblocks/trunk/
-          ls -la wp/coblocks/trunk/
+        run: svn co http://svn.wp-plugins.org/coblocks wp/coblocks
 
       - name: Create new tag
         run: |
-          svn cp wp/coblocks/trunk wp/coblocks/tags/${{ inputs.version }}
-          ls -la wp/coblocks/tags/${{ inputs.version }}
+          cp -a build/coblocks/coblocks/* wp/coblocks/tags/${{ github.ref_name }}
+          ls -la wp/coblocks/tags/${{ github.ref_name }}
 
       - name: Sync asset changes
         run: |
@@ -67,4 +57,4 @@ jobs:
           cd wp/coblocks
           svn add * --force
           svn status | grep '^!' | awk '{print $2}' | xargs svn delete
-          svn ci --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password ${{ secrets.GODADDY_WPORG_PASSWORD }} -m "Deploy ${{ inputs.version }} version of CoBlocks"
+          svn ci --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password ${{ secrets.GODADDY_WPORG_PASSWORD }} -m "Deploy ${{ github.ref_name }} version of CoBlocks"
