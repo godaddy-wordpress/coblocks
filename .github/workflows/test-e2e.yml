@@ -13,7 +13,6 @@ jobs:
       wpVersion: "WordPress/WordPress#6.1.1"
     concurrency:
       group: chrome-defaults
-      cancel-in-progress: true
 
   chrome_e2e_go:
     name: Chrome and Go theme
@@ -23,7 +22,6 @@ jobs:
       theme: "https://downloads.wordpress.org/theme/go.zip"
     concurrency:
       group: chrome-go-theme
-      cancel-in-progress: true
 
   chrome_e2e_php74:
     name: Chrome on PHP 7.4
@@ -33,7 +31,6 @@ jobs:
       phpVersion: "7.4"
     concurrency:
       group: chrome-php74
-      cancel-in-progress: true
 
   chrome_e2e_php82:
     name: Chrome on PHP 8.2
@@ -42,5 +39,4 @@ jobs:
       wpVersion: "WordPress/WordPress#6.1.1"
       phpVersion: "8.2"
     concurrency:
-      group: chrome-php74
-      cancel-in-progress: true
+      group: chrome-php82
