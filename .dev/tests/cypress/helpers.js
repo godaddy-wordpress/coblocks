@@ -18,10 +18,8 @@ export function closeLayoutSelector() {
  */
 export function selectStylesTabIfExists() {
 	if ( ! Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' )?.length ) {
-		return;
+		cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
 	}
-
-	cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
 }
 
 /**
