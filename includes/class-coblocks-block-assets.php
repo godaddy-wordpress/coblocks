@@ -606,7 +606,9 @@ class CoBlocks_Block_Assets {
 
 		global $post;
 
-		preg_match_all( $v1_regex, $post->post_content, $matches );
+		$post_content = ! empty( $post ) ? $post->post_content : get_the_content();
+
+		preg_match_all( $v1_regex, $post_content, $matches );
 		return isset( $matches[0] ) && isset( $matches[0][2] ) && ! empty( $matches[0][2] );
 	}
 
