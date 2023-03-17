@@ -5,7 +5,7 @@ export function closeLayoutSelector() {
 	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
 		if ( layoutSelectorModal > 0 ) {
 			cy.get( '.coblocks-layout-selector-modal' )
-				.find( '.components-button[aria-label="Close dialog"]' ).first()
+				.find( '.components-button[aria-label*="Close"]' ).first()
 				.click();
 		}
 	} );
@@ -117,7 +117,10 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
+	if ( Cypress.$( '.edit-post-header-toolbar__inserter-toggle[aria-pressed="false"]' ) ) {
+		cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle[aria-pressed="false"]' ).click();
+	}
+
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
 
 	/**

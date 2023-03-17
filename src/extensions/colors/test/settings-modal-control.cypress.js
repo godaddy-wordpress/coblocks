@@ -52,7 +52,7 @@ describe( 'Settings Modal: Colors feature', () => {
 
 	afterEach( () => {
 		if ( ! helpers.isWP61AtLeast() ) {
-			cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
+			cy.get( '.components-modal__header button[aria-label*="Close"]' ).click();
 		}
 	} );
 
