@@ -17,7 +17,7 @@ export function closeLayoutSelector() {
  * Returns true if styles tab exists false otherwise.
  */
 export function selectStylesTabIfExists() {
-	if ( ! Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' )?.length ) {
+	if ( Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' ).length > 0 ) {
 		cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
 	}
 }
