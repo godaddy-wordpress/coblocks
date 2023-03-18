@@ -46,6 +46,10 @@ describe( 'Block: Food Item', () => {
 			cy.get( descriptionEditableSelector ).focus().type( '{selectall}{del}', { force: true } );
 			cy.get( '.wp-block-coblocks-food-item' ).should( 'have.class', 'is-empty' );
 		} );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
 
 	it( 'can toggle image', () => {
@@ -56,6 +60,8 @@ describe( 'Block: Food Item', () => {
 
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /image/i ).click();
 		cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
+
+		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
@@ -74,6 +80,8 @@ describe( 'Block: Food Item', () => {
 
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /price/i ).click();
 		cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'not.exist' );
+
+		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
@@ -95,6 +103,8 @@ describe( 'Block: Food Item', () => {
 			cy.get( '.components-base-control__field' ).contains( controlLabel ).click();
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( `.wp-block-coblocks-food-item__attribute--${ className }` ).should( 'exist' );
 		} );
+
+		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/food-item' );
 	} );
