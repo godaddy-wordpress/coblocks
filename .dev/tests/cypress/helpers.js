@@ -17,8 +17,9 @@ export function closeLayoutSelector() {
  * Returns true if styles tab exists false otherwise.
  */
 export function selectStylesTabIfExists() {
-	if ( Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' ).length > 0 ) {
-		cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
+	// WP 6.2
+	if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+		cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
 	}
 }
 
@@ -201,22 +202,12 @@ export function viewPage() {
 
 	cy.get( 'button[data-label="Post"]' );
 
-	// WP 6.1
-	if ( isWP61AtLeast() ) {
-		cy.get( '.edit-post-post-url__dropdown button' ).click();
+	cy.get( '.edit-post-post-url__dropdown button' ).click();
 
-		cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
-			const linkAddress = Cypress.$( pageLink ).attr( 'href' );
-			cy.visit( linkAddress );
-		} );
-	} else { // <= WP 6.0
-		openSettingsPanel( /permalink/i );
-
-		cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
-			const linkAddress = Cypress.$( pageLink ).attr( 'href' );
-			cy.visit( linkAddress );
-		} );
-	}
+	cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
+		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
+		cy.visit( linkAddress );
+	} );
 }
 
 /**
@@ -407,20 +398,10 @@ export const upload = {
  * @param {string} hexColor
  */
 export function setColorSettingsFoldableSetting( settingName, hexColor ) {
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		openSettingsPanel( /color settings|color/i );
-	}
-
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
-
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		cy.get( '[aria-label="Show detailed inputs"]' ).click();
-	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -434,11 +415,6 @@ export function setColorPanelSetting( settingName, hexColor ) {
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
-
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		cy.get( '[aria-label="Show detailed inputs"]' ).click();
-	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
