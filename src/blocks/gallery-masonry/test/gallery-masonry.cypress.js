@@ -93,20 +93,22 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
-		cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).click();
+		if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+			helpers.selectBlock( 'masonry gallery' );
 
-		cy.get( '.edit-post-visual-editor figcaption[role="textbox"] span' ).click( { force: true } );
+			cy.get( 'figcaption[role="textbox"]' ).click( { force: true } );
 
-		cy.get( '.edit-post-visual-editor figcaption[role="textbox"]' ).focus().type( caption );
+			cy.get( 'figcaption[role="textbox"]' ).focus().type( caption );
+		} else {
+			cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).click();
+
+			cy.get( '.edit-post-visual-editor figcaption[role="textbox"] span' ).click( { force: true } );
+
+			cy.get( '.edit-post-visual-editor figcaption[role="textbox"]' ).focus().type( caption );
+		}
 
 		helpers.savePage();
 
@@ -130,20 +132,22 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
-		cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).click();
+		if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+			helpers.selectBlock( 'masonry gallery' );
 
-		cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
+			cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
 
-		cy.get( '.edit-post-visual-editor figcaption[role="textbox"]' ).focus();
+			cy.get( 'figcaption[role="textbox"]' ).click();
+		} else {
+			cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).click();
+
+			cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
+
+			cy.get( '.edit-post-visual-editor figcaption[role="textbox"]' ).focus();
+		}
 
 		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
 
