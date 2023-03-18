@@ -16,6 +16,10 @@ describe( 'Test CoBlocks Lightbox Controls extension on core/image', function() 
 
 		cy.get( '.has-lightbox' ).should( 'not.exist' );
 
+		helpers.savePage();
+
+		helpers.selectBlock( 'image' );
+
 		helpers.toggleSettingCheckbox( /Lightbox/ );
 
 		cy.get( '.has-lightbox' ).should( 'exist' );
