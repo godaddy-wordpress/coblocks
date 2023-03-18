@@ -148,8 +148,13 @@ export function addNewGroupToPost() {
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
 
-	// The different structure of classes is here
-	cy.get( '.block-editor-block-types-list__item' ).first().click();
+	if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+		cy.wait( 1000 );
+
+		cy.get( '.block-editor-block-types-list__list-item' ).contains( 'Group' ).click();
+	} else {
+		cy.get( '.block-editor-block-types-list__item' ).first().click();
+	}
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type='core/group']` ).should( 'exist' ).then( () => {
