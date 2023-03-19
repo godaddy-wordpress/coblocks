@@ -272,11 +272,20 @@ export function closeBlockNavigator() {
  * @param {string} style Name of the style to apply
  */
 export function setBlockStyle( style ) {
-	if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
-		selectStylesTabIfExists();
-	} else {
-		openSettingsPanel( RegExp( 'styles', 'i' ) );
-	}
+	openSettingsPanel( RegExp( 'styles', 'i' ) );
+
+	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
+		.contains( RegExp( style, 'i' ) )
+		.click();
+}
+
+/**
+ * Click on a style button within the new style panel
+ *
+ * @param {string} style Name of the style to apply
+ */
+export function setNewBlockStyle( style ) {
+	selectStylesTabIfExists();
 
 	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )

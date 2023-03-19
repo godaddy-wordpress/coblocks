@@ -20,7 +20,12 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 
 		selectBlock();
 
-		helpers.setBlockStyle( 'card' );
+		if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+			helpers.setNewBlockStyle( 'card' );
+		} else {
+			helpers.setBlockStyle( 'card' );
+		}
+
 		cy.get( '.edit-post-visual-editor .wp-block-media-text.is-style-card' ).should( 'exist' );
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'core/media-text' );
@@ -29,7 +34,12 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 		helpers.editPage();
 		selectBlock();
 
-		helpers.setBlockStyle( 'overlap' );
+		if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+			helpers.setNewBlockStyle( 'overlap' );
+		} else {
+			helpers.setBlockStyle( 'overlap' );
+		}
+
 		cy.get( '.edit-post-visual-editor .wp-block-media-text.is-style-overlap' ).should( 'exist' );
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'core/media-text' );
@@ -38,7 +48,12 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 		helpers.editPage();
 		selectBlock();
 
-		helpers.setBlockStyle( 'outline' );
+		if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+			helpers.setNewBlockStyle( 'outline' );
+		} else {
+			helpers.setBlockStyle( 'outline' );
+		}
+
 		cy.get( '.edit-post-visual-editor .wp-block-media-text.is-style-outline' ).should( 'exist' );
 		helpers.savePage();
 		helpers.checkForBlockErrors( 'core/media-text' );
