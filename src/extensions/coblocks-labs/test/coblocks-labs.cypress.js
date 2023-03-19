@@ -2,13 +2,18 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
+import { LAYOUT_SELECTOR_FEATURE_ENABLED_KEY } from '../../layout-selector/constants';
 
 describe( 'Extension: CoBlocks Labs', () => {
 	beforeEach( () => {
 		helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 
-		// The new page post_type admin page is already loaded before tests run.
-		// cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
+		// Close layout selector to focus on the CoBlocks labs feature
+		helpers.getWPDataObject().then( ( data ) => {
+			data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
+				[ LAYOUT_SELECTOR_FEATURE_ENABLED_KEY ]: false,
+			} );
+		} );
 	} );
 
 	it( 'renders modal with three items', () => {
