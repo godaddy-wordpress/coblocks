@@ -97,6 +97,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		helpers.openSettingsPanel( 'Link settings' );
 
+		cy.contains( 'Link URL' );
+
 		cy.get( '.components-base-control__label' ).contains( 'Link URL' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).next() ).type( 'https://www.google.com' );
 		} );
