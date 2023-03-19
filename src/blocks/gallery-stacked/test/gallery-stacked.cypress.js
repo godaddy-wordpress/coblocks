@@ -203,11 +203,11 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 		cy.get( '.coblocks-gallery--item' ).first().click()
 			.find( 'figcaption' ).focus().type( caption );
 
-		cy.get( '[data-wp-component="ToolsPanelHeader"] button' ).click();
-		cy.get( 'button' ).contains( 'Font size' ).click();
-
 		// Styles tab introduced in 6.2.
 		helpers.selectStylesTabIfExists();
+
+		cy.get( '[data-wp-component="ToolsPanelHeader"] button' ).click();
+		cy.get( 'button' ).contains( 'Font size' ).click();
 
 		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue = Cypress.$( 'figcaption.coblocks-gallery--caption' ).css( 'font-size' );
