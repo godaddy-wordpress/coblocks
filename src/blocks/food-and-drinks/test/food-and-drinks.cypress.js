@@ -91,15 +91,9 @@ describe( 'Block: Food and Drinks', function() {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 		helpers.selectBlock( 'food & drink' );
 
-		let priceSelector = '.wp-block-coblocks-food-item__price';
-
-		if ( helpers.isWP61AtLeast() ) {
-			priceSelector = '[aria-label="$0.00"]';
-		}
-
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '[aria-label="$0.00"]' ).should( 'exist' );
 		} );
 
 		helpers.selectBlock( 'Food & Drink' );
@@ -109,7 +103,7 @@ describe( 'Block: Food and Drinks', function() {
 
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
-			cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'not.exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '[aria-label="$0.00"]' ).should( 'not.exist' );
 		} );
 
 		helpers.savePage();
@@ -142,12 +136,6 @@ describe( 'Block: Food and Drinks', function() {
 	} );
 
 	it( 'can insert menu section with the same attributes', () => {
-		let priceSelector = '.wp-block-coblocks-food-item__price';
-
-		if ( helpers.isWP61AtLeast() ) {
-			priceSelector = '[aria-label="$0.00"]';
-		}
-
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
 		helpers.selectBlock( 'food & drink' );
 
@@ -165,7 +153,7 @@ describe( 'Block: Food and Drinks', function() {
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).last().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'exist' );
-			cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'exist' );
+			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '[aria-label="$0.00"]' ).should( 'exist' );
 
 			cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 		} );

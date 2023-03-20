@@ -17,8 +17,7 @@ export function closeLayoutSelector() {
  * Returns true if styles tab exists false otherwise.
  */
 export function selectStylesTabIfExists() {
-	// WP 6.2
-	if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+	if ( isWP62AtLeast() ) {
 		cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
 	}
 }
@@ -148,7 +147,7 @@ export function addNewGroupToPost() {
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
 
-	if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+	if ( isWP62AtLeast() ) {
 		cy.wait( 1000 );
 
 		cy.get( '.block-editor-block-types-list__list-item' ).contains( 'Group' ).click();
@@ -572,12 +571,10 @@ export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
 
-// A condition to determine if we are testing on WordPress 6.1+
-export function isWP61AtLeast() {
-	// WP 6.0 uses the branch-6 class, and version 6.1+ uses branch-6-x (ex : branch-6-1 for WP 6.1)
-	// So we are looking for a class that starts with branch-6-
-
-	return Cypress.$( "[class*='branch-6-']" ).length > 0;
+// A condition to determine if we are testing on WordPress 6.2+
+// This function should be removed in the process of the work for WP 6.3 compatibility
+export function isWP62AtLeast() {
+	return Cypress.$( "[class*='branch-6-2']" ).length > 0 || Cypress.$( "[class*='branch-6-3']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {

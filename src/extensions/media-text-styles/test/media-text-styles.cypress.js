@@ -20,7 +20,7 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 
 		selectBlock();
 
-		if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+		if ( helpers.isWP62AtLeast() ) {
 			helpers.setNewBlockStyle( 'card' );
 		} else {
 			helpers.setBlockStyle( 'card' );
@@ -34,7 +34,7 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 		helpers.editPage();
 		selectBlock();
 
-		if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+		if ( helpers.isWP62AtLeast() ) {
 			helpers.setNewBlockStyle( 'overlap' );
 		} else {
 			helpers.setBlockStyle( 'overlap' );
@@ -48,7 +48,7 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 		helpers.editPage();
 		selectBlock();
 
-		if ( Cypress.$( "[class*='branch-6-2']" ).length > 0 ) {
+		if ( helpers.isWP62AtLeast() ) {
 			helpers.setNewBlockStyle( 'outline' );
 		} else {
 			helpers.setBlockStyle( 'outline' );

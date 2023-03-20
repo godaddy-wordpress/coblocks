@@ -66,14 +66,8 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.savePage();
 
@@ -99,14 +93,8 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
@@ -135,14 +123,8 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
@@ -189,14 +171,8 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.toggleSettingCheckbox( /captions/i );
 

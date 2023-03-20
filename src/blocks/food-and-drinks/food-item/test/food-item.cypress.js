@@ -17,33 +17,23 @@ describe( 'Block: Food Item', () => {
 	} );
 
 	it( 'removes .is-empty when the \'title\', \'description\', \'price\' attributes have content', () => {
-		let headingClass = '.wp-block-coblocks-food-item__heading';
-		let priceEditableSelector = '.wp-block-coblocks-food-item__price .block-editor-rich-text__editable';
-		let descriptionEditableSelector = '.wp-block-coblocks-food-item__description .block-editor-rich-text__editable';
-
-		if ( helpers.isWP61AtLeast() ) {
-			headingClass += '-wrapper';
-			priceEditableSelector = '[aria-label="$0.00"]';
-			descriptionEditableSelector = '[aria-label="Add description…"]';
-		}
-
 		cy.get( '[data-type="coblocks/food-item"]' ).first().within( () => {
 		// Set heading.
-			cy.get( headingClass + ' .block-editor-rich-text__editable' ).focus().type( 'item heading', { force: true } );
+			cy.get( '.wp-block-coblocks-food-item__heading-wrapper .block-editor-rich-text__editable' ).focus().type( 'item heading', { force: true } );
 			cy.get( '.wp-block-coblocks-food-item' ).should( 'not.have.class', 'is-empty' );
-			cy.get( headingClass + ' .block-editor-rich-text__editable' ).focus().type( '{selectall}{del}', { force: true } );
+			cy.get( '.wp-block-coblocks-food-item__heading-wrapper .block-editor-rich-text__editable' ).focus().type( '{selectall}{del}', { force: true } );
 			cy.get( '.wp-block-coblocks-food-item' ).should( 'have.class', 'is-empty' );
 
 			// Set price.
-			cy.get( priceEditableSelector ).focus().type( 'item price', { force: true } );
+			cy.get( '[aria-label="$0.00"]' ).focus().type( 'item price', { force: true } );
 			cy.get( '.wp-block-coblocks-food-item' ).should( 'not.have.class', 'is-empty' );
-			cy.get( priceEditableSelector ).focus().type( '{selectall}{del}', { force: true } );
+			cy.get( '[aria-label="$0.00"]' ).focus().type( '{selectall}{del}', { force: true } );
 			cy.get( '.wp-block-coblocks-food-item' ).should( 'have.class', 'is-empty' );
 
 			// Set description.
-			cy.get( descriptionEditableSelector ).focus().type( 'item description', { force: true } );
+			cy.get( '[aria-label="Add description…"]' ).focus().type( 'item description', { force: true } );
 			cy.get( '.wp-block-coblocks-food-item' ).should( 'not.have.class', 'is-empty' );
-			cy.get( descriptionEditableSelector ).focus().type( '{selectall}{del}', { force: true } );
+			cy.get( '[aria-label="Add description…"]' ).focus().type( '{selectall}{del}', { force: true } );
 			cy.get( '.wp-block-coblocks-food-item' ).should( 'have.class', 'is-empty' );
 		} );
 
@@ -67,19 +57,13 @@ describe( 'Block: Food Item', () => {
 	} );
 
 	it( 'can toggle price', () => {
-		let priceSelector = '.wp-block-coblocks-food-item__price';
-
-		if ( helpers.isWP61AtLeast() ) {
-			priceSelector = '[aria-label="$0.00"]';
-		}
-
 		cy.get( '[data-type="coblocks/food-item"]' ).first().click();
-		cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'exist' );
+		cy.get( '[data-type="coblocks/food-item"]' ).first().find( '[aria-label="$0.00"]' ).should( 'exist' );
 
 		helpers.openSettingsPanel( /item settings/i );
 
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /price/i ).click();
-		cy.get( '[data-type="coblocks/food-item"]' ).first().find( priceSelector ).should( 'not.exist' );
+		cy.get( '[data-type="coblocks/food-item"]' ).first().find( '[aria-label="$0.00"]' ).should( 'not.exist' );
 
 		helpers.savePage();
 
