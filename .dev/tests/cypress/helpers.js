@@ -130,7 +130,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( 'div.block-editor-inserter__main-area:not(.show-as-tabs)' );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' ).then( () => {
