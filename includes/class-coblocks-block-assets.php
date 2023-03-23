@@ -604,7 +604,16 @@ class CoBlocks_Block_Assets {
 	public function has_masonry_v1_block() {
 		$v1_regex = '/<!-- wp:coblocks\/gallery-masonry.*|\n*(coblocks-gallery--item).*|\n*<!-- \/wp:coblocks\/gallery-masonry -->/m';
 
-		preg_match_all( $v1_regex, get_the_content(), $matches );
+		global $post;
+
+		/**
+		 * Resolves a fatal error bug on PHP 8+ with Timber.
+		 *
+		 * @see https://wordpress.org/support/topic/the-method-has_masonry_v1_block-produces-a-fatal-error-on-php-8-0-22-and-above/
+		 */
+		$post_content = ! empty( $post ) ? $post->post_content : get_the_content();
+
+		preg_match_all( $v1_regex, $post_content, $matches );
 		return isset( $matches[0] ) && isset( $matches[0][2] ) && ! empty( $matches[0][2] );
 	}
 
