@@ -608,6 +608,7 @@ class CoBlocks_Block_Assets {
 
 		/**
 		 * Resolves a fatal error bug on PHP 8+ with Timber.
+		 *
 		 * @see https://wordpress.org/support/topic/the-method-has_masonry_v1_block-produces-a-fatal-error-on-php-8-0-22-and-above/
 		 */
 		$post_content = ! empty( $post ) ? $post->post_content : get_the_content();
