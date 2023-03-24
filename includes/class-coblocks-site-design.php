@@ -99,8 +99,7 @@ class CoBlocks_Site_Design {
 	 * @return boolean
 	 */
 	public static function short_circuit_check() {
-		$active_theme = get_stylesheet();
-		return 'go' !== $active_theme;
+		return 'go' !== get_stylesheet();
 	}
 
 	/**
