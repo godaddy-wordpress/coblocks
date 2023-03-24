@@ -14,19 +14,20 @@ import { __, sprintf } from '@wordpress/i18n';
 import { Button, DropdownMenu, Icon, MenuGroup, MenuItem, Modal, Path, SVG } from '@wordpress/components';
 import { Component, isValidElement } from '@wordpress/element';
 import { compose, ifCondition } from '@wordpress/compose';
-import { useSelect, withDispatch, withSelect } from '@wordpress/data';
+import { register, useSelect, withDispatch, withSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies
  */
 import { LAYOUT_SELECTOR_FEATURE_ENABLED_KEY } from './constants';
 import { LayoutSelectorResults } from './layout-selector-results';
+import templateStore from './store';
 import useCategories from './hooks/useCategories';
 import useComputedLayouts from './hooks/useComputedLayouts';
 import CoBlocksLayoutSelectorFill, { Slot } from './layout-selector-slot';
 import './settings-modal-control'; // CoBlocks Settings
 import './layout-selector-control'; // CoBlocks Labs
-import './store';
+register( templateStore );
 
 const SidebarItem = ( { slug, title, isSelected, onClick } ) => {
 	return (
