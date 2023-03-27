@@ -10,7 +10,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
 	}
 
-    public function set_up() {
+    public function set_up(): void {
 		parent::set_up();
 
 		set_current_screen( 'dashboard' );
@@ -21,7 +21,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		$wp_styles = new WP_Styles();
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );

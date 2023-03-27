@@ -6,7 +6,7 @@
  */
 class CoBlocks_Post_Carousel_Index_Tests extends WP_UnitTestCase {
 
-	public function set_up() {
+	public function set_up(): void {
 		parent::set_up();
 
 		include_once COBLOCKS_PLUGIN_DIR . 'src/blocks/post-carousel/index.php';
@@ -14,7 +14,7 @@ class CoBlocks_Post_Carousel_Index_Tests extends WP_UnitTestCase {
 		set_current_screen( 'edit-post' );
 	}
 
-	public function tear_down() {
+	public function tear_down(): void {
 		parent::tear_down();
 
 		unset( $GLOBALS['current_screen'] );

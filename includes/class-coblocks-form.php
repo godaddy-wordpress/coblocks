@@ -174,7 +174,7 @@ class CoBlocks_Form {
 		foreach ( $form_blocks as $form_block ) {
 
 			register_block_type(
-				"coblocks/field-${form_block}",
+				"coblocks/field-{$form_block}",
 				array(
 					'parent'          => array( 'coblocks/form' ),
 					'render_callback' => array( $this, sprintf( 'render_field_%s', str_replace( '-', '_', $form_block ) ) ),
