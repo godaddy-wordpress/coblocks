@@ -209,7 +209,7 @@ class CoBlocks_Form {
 		<div class="coblocks-form" id="<?php echo esc_attr( $this->form_hash ); ?>">
 
 			<?php
-			if ( htmlspecialchars( $submitted_hash ) === $this->form_hash ) {
+			if ( $submitted_hash && htmlspecialchars( $submitted_hash ) === $this->form_hash ) {
 
 				$submit_form = $this->process_form_submission( $atts );
 
