@@ -662,7 +662,9 @@ class CoBlocks_Block_Assets {
 	 * @return boolean True when an element on the page has .coblocks-animate class, else false.
 	 */
 	public function has_coblocks_animation() {
-		return false !== strpos( get_the_content(), 'coblocks-animate' );
+		ob_start();
+		the_content();
+		return false !== strpos( ob_get_clean(), 'coblocks-animate' );
 	}
 }
 
