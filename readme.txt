@@ -3,7 +3,7 @@ Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur, jasonlemay, snovosel
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 7.4
 Stable tag: 2.26.11
 License: GPL-2.0
@@ -122,10 +122,14 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-= 2.26.0 / 2023-02-06 =
+= 3.0.1 / 2023-03-27 =
 
-* Migrated from using CircleCI to Github Actions for our automated testing and deploys. [#2451](https://github.com/godaddy-wordpress/coblocks/pull/2451)
-* Switched from using distexclude to distinclude for more verbose includes in the public plugin. [#2451](https://github.com/godaddy-wordpress/coblocks/pull/2451)
+* Introduce CoBlocks block migrations. [#2470](https://github.com/godaddy-wordpress/coblocks/pull/2470)
+* WP 6.2 compatibility. [#2501](https://github.com/godaddy-wordpress/coblocks/pull/2501)
+* Fix CoBlocks Settings and Labs modal with Gutenberg. [#2473](https://github.com/godaddy-wordpress/coblocks/pull/2473)
+* Fix System Status bug when running WooCommerce and PHP 8.2. [#2510](https://github.com/godaddy-wordpress/coblocks/pull/2510)
+* Fix Animation under some core-only circumstances. [#2509](https://github.com/godaddy-wordpress/coblocks/pull/2509)
+* PHP 8.2 compatibility. [#2511](https://github.com/godaddy-wordpress/coblocks/pull/2511)
 
 = 2.25.5 / 2022-12-20 =
 
