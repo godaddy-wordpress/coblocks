@@ -649,14 +649,22 @@ class CoBlocks_Block_Assets {
 		}
 
 		if ( false !== strpos( $admin_page, 'post.php' ) && isset( $_GET['post'] ) ) {
-			$wp_post = get_post( htmlspecialchars( filter_input( INPUT_GET, wp_unslash( $_GET['post'] ) ) ) );
+			$post = filter_input( INPUT_GET, wp_unslash( $_GET['post'] ) );
+			if ( ! $post ) {
+				return false;
+			}
+			$wp_post = get_post( htmlspecialchars( $post ) );
 			if ( isset( $wp_post ) && isset( $wp_post->post_type ) && $this->is_post_type_gutenberg( $wp_post->post_type ) ) {
 				return true;
 			}
 		}
 
 		if ( false !== strpos( $admin_page, 'revision.php' ) && isset( $_GET['revision'] ) ) {
-			$wp_post     = get_post( htmlspecialchars( filter_input( INPUT_GET, wp_unslash( $_GET['revision'] ) ) ) );
+			$revision = filter_input( INPUT_GET, wp_unslash( $_GET['revision'] ) );
+			if ( ! $revision ) {
+				return false;
+			}
+			$wp_post     = get_post( htmlspecialchars( $revision ) );
 			$post_parent = get_post( $wp_post->post_parent );
 			if ( isset( $post_parent ) && isset( $post_parent->post_type ) && $this->is_post_type_gutenberg( $post_parent->post_type ) ) {
 				return true;
