@@ -5,12 +5,21 @@ export function closeLayoutSelector() {
 	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
 		if ( layoutSelectorModal > 0 ) {
 			cy.get( '.coblocks-layout-selector-modal' )
-				.find( '.components-button[aria-label="Close dialog"]' ).first()
+				.find( '.components-button[aria-label*="Close"]' ).first()
 				.click();
 		}
 	} );
 
 	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
+}
+
+/**
+ * Returns true if styles tab exists false otherwise.
+ */
+export function selectStylesTabIfExists() {
+	if ( isWP62AtLeast() ) {
+		cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
+	}
 }
 
 /**
@@ -106,11 +115,21 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
+	if ( Cypress.$( '.edit-post-header-toolbar__inserter-toggle[aria-pressed="false"]' ) ) {
+		cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle[aria-pressed="false"]' ).click();
+	}
+
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
 
+	/**
+	 * The network request to block-directory may be cached and is not consistently fired with each test.
+	 * Instead of intercepting we can await known dom elements that appear only when search results are present.
+	 * This should correct a race condition in CI.
+	 */
+	cy.get( 'div.block-editor-inserter__main-area:not(.show-as-tabs)' );
+
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' ).then( () => {
@@ -128,8 +147,13 @@ export function addNewGroupToPost() {
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
 
-	// The different structure of classes is here
-	cy.get( '.block-editor-block-types-list__item' ).first().click();
+	if ( isWP62AtLeast() ) {
+		cy.wait( 1000 );
+
+		cy.get( '.block-editor-block-types-list__list-item' ).contains( 'Group' ).click();
+	} else {
+		cy.get( '.block-editor-block-types-list__item' ).first().click();
+	}
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type='core/group']` ).should( 'exist' ).then( () => {
@@ -182,22 +206,12 @@ export function viewPage() {
 
 	cy.get( 'button[data-label="Post"]' );
 
-	// WP 6.1
-	if ( isWP61AtLeast() ) {
-		cy.get( '.edit-post-post-url__dropdown button' ).click();
+	cy.get( '.edit-post-post-url__dropdown button' ).click();
 
-		cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
-			const linkAddress = Cypress.$( pageLink ).attr( 'href' );
-			cy.visit( linkAddress );
-		} );
-	} else { // <= WP 6.0
-		openSettingsPanel( /permalink/i );
-
-		cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
-			const linkAddress = Cypress.$( pageLink ).attr( 'href' );
-			cy.visit( linkAddress );
-		} );
-	}
+	cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
+		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
+		cy.visit( linkAddress );
+	} );
 }
 
 /**
@@ -233,9 +247,22 @@ export function getBlockSlug() {
  * Open the block navigator.
  */
 export function openBlockNavigator( ) {
-	cy.get( '.edit-post-header__toolbar' ).find(
-		'.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle,.edit-post-header-toolbar__document-overview-toggle'
-	).click();
+	cy.get( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle,.edit-post-header-toolbar__document-overview-toggle' ).then( ( element ) => {
+		if ( ! element.hasClass( 'is-pressed' ) ) {
+			element.click();
+		}
+	} );
+}
+
+/**
+ * Close the block navigator.
+ */
+export function closeBlockNavigator() {
+	const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
+	if ( inserterButton.length > 0 ) {
+		cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' )
+			.click();
+	}
 }
 
 /**
@@ -252,6 +279,19 @@ export function setBlockStyle( style ) {
 }
 
 /**
+ * Click on a style button within the new style panel
+ *
+ * @param {string} style Name of the style to apply
+ */
+export function setNewBlockStyle( style ) {
+	selectStylesTabIfExists();
+
+	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
+		.contains( RegExp( style, 'i' ) )
+		.click();
+}
+
+/**
  * Select the block using the Block navigation component.
  * Input parameter is the name of the block to select.
  * Allows chaining.
@@ -260,7 +300,7 @@ export function setBlockStyle( style ) {
  * @param {boolean} isChildBlock Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
-	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
+	openBlockNavigator();
 
 	if ( isChildBlock ) {
 		cy.get( '.block-editor-list-view__expander svg' ).first().click();
@@ -274,11 +314,8 @@ export function selectBlock( name, isChildBlock = false ) {
 		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
 		.click()
 		.then( () => {
-		// Then close the block navigator if still open.
-			const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
-			if ( !! inserterButton.length ) {
-				cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' ).click();
-			}
+			// Then close the block navigator if still open.
+			closeBlockNavigator();
 		} );
 }
 
@@ -378,20 +415,10 @@ export const upload = {
  * @param {string} hexColor
  */
 export function setColorSettingsFoldableSetting( settingName, hexColor ) {
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		openSettingsPanel( /color settings|color/i );
-	}
-
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
-
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		cy.get( '[aria-label="Show detailed inputs"]' ).click();
-	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -405,11 +432,6 @@ export function setColorPanelSetting( settingName, hexColor ) {
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
-
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		cy.get( '[aria-label="Show detailed inputs"]' ).click();
-	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -549,12 +571,10 @@ export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
 
-// A condition to determine if we are testing on WordPress 6.1+
-export function isWP61AtLeast() {
-	// WP 6.0 uses the branch-6 class, and version 6.1+ uses branch-6-x (ex : branch-6-1 for WP 6.1)
-	// So we are looking for a class that starts with branch-6-
-
-	return Cypress.$( "[class*='branch-6-']" ).length > 0;
+// A condition to determine if we are testing on WordPress 6.2+
+// This function should be removed in the process of the work for WP 6.3 compatibility
+export function isWP62AtLeast() {
+	return Cypress.$( "[class*='branch-6-2']" ).length > 0 || Cypress.$( "[class*='branch-6-3']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {

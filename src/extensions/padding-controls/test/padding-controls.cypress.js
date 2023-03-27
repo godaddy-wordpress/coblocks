@@ -8,12 +8,7 @@ describe( 'Extension: CoBlocks Padding Controls', function() {
 	 * Test that the CoBlocks panel padding controls function as expected.
 	 */
 	it( 'Can control padding settings as expected.', function() {
-		// WP 6.1 : Group icon class in inserter has different structure than the other blocks
-		if ( helpers.isWP61AtLeast() ) {
-			helpers.addNewGroupToPost();
-		} else {
-			helpers.addBlockToPost( 'core/group', true );
-		}
+		helpers.addNewGroupToPost();
 
 		helpers.selectBlock( 'group' );
 

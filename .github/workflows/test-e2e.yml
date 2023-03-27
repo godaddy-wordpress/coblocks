@@ -42,5 +42,5 @@ jobs:
       wpVersion: "WordPress/WordPress#6.1.1"
       phpVersion: "8.2"
     concurrency:
-      group: chrome-php74
+      group: chrome-php82
       cancel-in-progress: true

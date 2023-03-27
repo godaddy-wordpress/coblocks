@@ -26,6 +26,9 @@ describe( 'Block: Accordion', () => {
 	 */
 	it( 'can be modified without errors', () => {
 		cy.get( '[data-type="coblocks/accordion"] .wp-block-coblocks-accordion-item__title' ).type( 'title' );
+
+		helpers.savePage();
+
 		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );
 
@@ -54,6 +57,8 @@ describe( 'Block: Accordion', () => {
 		cy.get( '.coblocks-block-appender button' ).click();
 
 		cy.get( '[data-type="coblocks/accordion"]' ).find( '[data-type="coblocks/accordion-item"]' ).should( 'have.length', 2 );
+
+		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/accordion' );
 	} );

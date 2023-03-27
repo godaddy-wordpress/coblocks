@@ -6,11 +6,11 @@ import * as helpers from '../../../../.dev/tests/cypress/helpers';
 describe( 'Block: Events', function() {
 	// Setup events data.
 	const eventsData = {
-		ical: 'https://calendar.google.com/calendar/ical/8hohgb8qv19fgvjbbkcehe0ce0%40group.calendar.google.com/public/basic.ics',
 		color: {
 			textColor: '#ffffff',
 			textColorRGB: 'rgb(255, 255, 255)',
 		},
+		ical: 'https://calendar.google.com/calendar/ical/8hohgb8qv19fgvjbbkcehe0ce0%40group.calendar.google.com/public/basic.ics',
 	};
 
 	beforeEach( () => {

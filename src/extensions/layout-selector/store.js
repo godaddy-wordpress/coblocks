@@ -7,17 +7,17 @@ import { kebabCase } from 'lodash';
 /**
  * WordPress dependencies
  */
-import memoize from 'memize';
-import { registerStore, select } from '@wordpress/data';
 import { controls } from '@wordpress/data-controls';
+import memoize from 'memize';
+import { createReduxStore, select } from '@wordpress/data';
 
 const DEFAULT_STATE = {
-	templateSelector: false,
-	layouts: coblocksLayoutSelector.layouts || [],
-	computedLayouts: [],
 	categories: coblocksLayoutSelector.categories || [],
-	selectedCategory: 'most-used',
+	computedLayouts: [],
 	layoutUsage: {},
+	layouts: coblocksLayoutSelector.layouts || [],
+	selectedCategory: 'most-used',
+	templateSelector: false,
 };
 
 // Module constants
@@ -46,16 +46,19 @@ const calculateFrequency = memoize( ( time, count ) => {
 } );
 
 const actions = {
-	openTemplateSelector: () => ( { type: 'OPEN_TEMPLATE_SELECTOR' } ),
 	closeTemplateSelector: () => ( { type: 'CLOSE_TEMPLATE_SELECTOR' } ),
-	updateLayouts: ( layouts ) => ( { type: 'UPDATE_LAYOUTS', layouts } ),
-	updateComputedLayouts: ( computedLayouts ) => ( { type: 'UPDATE_COMPUTED_LAYOUTS', computedLayouts } ),
-	updateCategories: ( categories ) => ( { type: 'UPDATE_CATEGORIES', categories } ),
-	updateSelectedCategory: ( selectedCategory ) => ( { type: 'UPDATE_CATEGORY', selectedCategory } ),
-	incrementLayoutUsage: ( layout ) => ( { type: 'INCREMENT_LAYOUT_USAGE', layout, time: Date.now() } ),
+	incrementLayoutUsage: ( layout ) => ( { layout, time: Date.now(), type: 'INCREMENT_LAYOUT_USAGE' } ),
+	openTemplateSelector: () => ( { type: 'OPEN_TEMPLATE_SELECTOR' } ),
+	updateCategories: ( categories ) => ( { categories, type: 'UPDATE_CATEGORIES' } ),
+	updateComputedLayouts: ( computedLayouts ) => ( { computedLayouts, type: 'UPDATE_COMPUTED_LAYOUTS' } ),
+	updateLayouts: ( layouts ) => ( { layouts, type: 'UPDATE_LAYOUTS' } ),
+	updateSelectedCategory: ( selectedCategory ) => ( { selectedCategory, type: 'UPDATE_CATEGORY' } ),
 };
 
-const store = registerStore( 'coblocks/template-selector', {
+const store = createReduxStore( 'coblocks/template-selector', {
+	actions,
+	controls,
+	persist: [ 'layoutUsage' ],
 	reducer( state = DEFAULT_STATE, action ) {
 		switch ( action.type ) {
 			case 'OPEN_TEMPLATE_SELECTOR':
@@ -95,8 +98,8 @@ const store = registerStore( 'coblocks/template-selector', {
 					layoutUsage: {
 						...state.layoutUsage,
 						[ layoutSlug ]: {
-							time: action.time,
 							count: state.layoutUsage[ layoutSlug ] ? state.layoutUsage[ layoutSlug ].count + 1 : 1,
+							time: action.time,
 						},
 					},
 				};
@@ -104,31 +107,6 @@ const store = registerStore( 'coblocks/template-selector', {
 
 		return state;
 	},
-
-	actions,
-
-	selectors: {
-		isTemplateSelectorActive: ( state ) => state.templateSelector,
-		hasLayouts: ( state ) => !! state.layouts.length,
-		getLayouts: ( state ) => {
-			const layouts = state.layouts || [];
-
-			return layouts.map( ( layout ) => {
-				const { time, count = 0 } = state.layoutUsage[ kebabCase( layout.label ) ] || {};
-				return {
-					...layout,
-					frequency: calculateFrequency( time, count ),
-				};
-			} );
-		},
-		getComputedLayouts: ( state ) => state.computedLayouts,
-		getCategories: ( state ) => state.categories || [],
-		hasCategories: ( state ) => !! state.categories.length,
-		getSelectedCategory: ( state ) => state.selectedCategory,
-		getLayoutUsage: ( state ) => state.layoutUsage,
-	},
-
-	controls,
 
 	resolvers: {
 		* isTemplateSelectorActive() {
@@ -139,8 +117,25 @@ const store = registerStore( 'coblocks/template-selector', {
 			return shouldShowTemplateSelector && actions.openTemplateSelector();
 		},
 	},
-
-	persist: [ 'layoutUsage' ],
+	selectors: {
+		getCategories: ( state ) => state.categories || [],
+		getComputedLayouts: ( state ) => state.computedLayouts,
+		getLayoutUsage: ( state ) => state.layoutUsage,
+		getLayouts: ( state ) => {
+			const layouts = state.layouts || [];
+			return layouts.map( ( layout ) => {
+				const { time, count = 0 } = state.layoutUsage[ kebabCase( layout.label ) ] || {};
+				return {
+					...layout,
+					frequency: calculateFrequency( time, count ),
+				};
+			} );
+		},
+		getSelectedCategory: ( state ) => state.selectedCategory,
+		hasCategories: ( state ) => !! state.categories.length,
+		hasLayouts: ( state ) => !! state.layouts.length,
+		isTemplateSelectorActive: ( state ) => state.templateSelector,
+	},
 } );
 
 export default store;

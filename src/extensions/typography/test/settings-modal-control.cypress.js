@@ -26,7 +26,7 @@ describe( 'Settings Modal: Typography feature', () => {
 	} );
 
 	afterEach( () => {
-		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
+		cy.get( '.components-modal__header button[aria-label*="Close"]' ).click();
 	} );
 
 	it( 'can turn off all animation settings', () => {

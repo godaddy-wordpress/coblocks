@@ -206,7 +206,7 @@ const EventsEdit = ( props ) => {
 					<Button
 						disabled={ ! stateExternalCalendarUrl }
 						isPrimary
-						type="submit"
+						onClick={ () => saveExternalCalendarUrl() }
 					>
 						{ __( 'Use URL', 'coblocks' ) }
 					</Button>
