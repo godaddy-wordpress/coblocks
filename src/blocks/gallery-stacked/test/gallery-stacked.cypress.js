@@ -66,14 +66,8 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.savePage();
 
@@ -99,14 +93,8 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
@@ -135,14 +123,8 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
@@ -189,25 +171,19 @@ describe( 'Test CoBlocks Gallery Stacked Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
 		cy.get( '.coblocks-gallery--item' ).first().click()
 			.find( 'figcaption' ).focus().type( caption );
 
-		cy.get( '[data-wp-component="ToolsPanelHeader"] button' ).click();
-		cy.get( 'button' ).contains( 'Font size' ).click();
-
 		// Styles tab introduced in 6.2.
 		helpers.selectStylesTabIfExists();
+
+		cy.get( '[data-wp-component="ToolsPanelHeader"] button' ).click();
+		cy.get( 'button' ).contains( 'Font size' ).click();
 
 		cy.get( '.components-toggle-group-control-option, .components-toggle-group-control-option-base' ).then( ( elems ) => {
 			let dataValue = Cypress.$( 'figcaption.coblocks-gallery--caption' ).css( 'font-size' );

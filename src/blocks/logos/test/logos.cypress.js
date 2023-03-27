@@ -54,14 +54,8 @@ describe( 'Test CoBlocks Logos Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.checkForBlockErrors( 'coblocks/logos' );
 
@@ -88,14 +82,8 @@ describe( 'Test CoBlocks Logos Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		// 'whit' instead of 'white' is intentional. Sometimes when rendering with smaller screens,
 		// it shows Black & Whit... instead of Black & White
@@ -125,14 +113,8 @@ describe( 'Test CoBlocks Logos Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.setBlockStyle( /grayscale/i );
 
@@ -160,14 +142,8 @@ describe( 'Test CoBlocks Logos Block', function() {
 			.first( 'li' )
 			.click();
 
-		cy.get( '.media-frame-toolbar .media-toolbar-primary' ).then( ( mediaToolbar ) => {
-			if ( mediaToolbar.prop( 'outerHTML' ).includes( 'Insert gallery' ) ) { // wp 5.4
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			} else { // pre wp 5.4
-				cy.get( 'button' ).contains( /create a new gallery/i ).click();
-				cy.get( 'button' ).contains( /insert gallery/i ).click();
-			}
-		} );
+		cy.get( 'button' ).contains( /create a new gallery/i ).click();
+		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		helpers.setBlockStyle( /default/i );
 

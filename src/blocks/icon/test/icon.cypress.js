@@ -97,6 +97,8 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		helpers.openSettingsPanel( 'Link settings' );
 
+		cy.contains( 'Link URL' );
+
 		cy.get( '.components-base-control__label' ).contains( 'Link URL' ).then( ( $settingLabel ) => {
 			cy.get( Cypress.$( $settingLabel ).next() ).type( 'https://www.google.com' );
 		} );
@@ -131,11 +133,6 @@ describe( 'Test CoBlocks Icon Block', function() {
 
 		// Make sure that controls who are lazy loaded finished loading
 		cy.contains( 'Color settings' );
-
-		// Not needed in WP 6.1 anymore
-		if ( ! helpers.isWP61AtLeast() ) {
-			helpers.openSettingsPanel( 'Color settings' );
-		}
 
 		helpers.setColorSettingsFoldableSetting( 'background', '#e60099' );
 		helpers.setColorSettingsFoldableSetting( 'icon color', '#55e7ff' );

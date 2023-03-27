@@ -1,11 +1,11 @@
 /**
  * WordPress dependencies
  */
-import { useSelect } from '@wordpress/data';
+import { select } from '@wordpress/data';
 import { useMemo } from '@wordpress/element';
 
 function useCategories( layouts ) {
-	const categories = useSelect( ( select ) => select( 'coblocks/template-selector' ).getCategories(), [] );
+	const categories = select( 'coblocks/template-selector' ).getCategories();
 
 	const getLayoutsInCategory = ( category ) => {
 		return layouts.filter( ( layout ) => layout.category === category ) || [];

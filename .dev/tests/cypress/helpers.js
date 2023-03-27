@@ -17,8 +17,8 @@ export function closeLayoutSelector() {
  * Returns true if styles tab exists false otherwise.
  */
 export function selectStylesTabIfExists() {
-	if ( Cypress.$( 'div[role="tablist"]>button[id*="-styles"]' ).length > 0 ) {
-		cy.get( 'div[role="tablist"]>button[id*="-styles"]' ).click();
+	if ( isWP62AtLeast() ) {
+		cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
 	}
 }
 
@@ -129,7 +129,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( 'div.block-editor-inserter__main-area:not(.show-as-tabs)' );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' ).then( () => {
@@ -147,8 +147,13 @@ export function addNewGroupToPost() {
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
 
-	// The different structure of classes is here
-	cy.get( '.block-editor-block-types-list__item' ).first().click();
+	if ( isWP62AtLeast() ) {
+		cy.wait( 1000 );
+
+		cy.get( '.block-editor-block-types-list__list-item' ).contains( 'Group' ).click();
+	} else {
+		cy.get( '.block-editor-block-types-list__item' ).first().click();
+	}
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type='core/group']` ).should( 'exist' ).then( () => {
@@ -201,22 +206,12 @@ export function viewPage() {
 
 	cy.get( 'button[data-label="Post"]' );
 
-	// WP 6.1
-	if ( isWP61AtLeast() ) {
-		cy.get( '.edit-post-post-url__dropdown button' ).click();
+	cy.get( '.edit-post-post-url__dropdown button' ).click();
 
-		cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
-			const linkAddress = Cypress.$( pageLink ).attr( 'href' );
-			cy.visit( linkAddress );
-		} );
-	} else { // <= WP 6.0
-		openSettingsPanel( /permalink/i );
-
-		cy.get( '.edit-post-post-link__link' ).then( ( pageLink ) => {
-			const linkAddress = Cypress.$( pageLink ).attr( 'href' );
-			cy.visit( linkAddress );
-		} );
-	}
+	cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
+		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
+		cy.visit( linkAddress );
+	} );
 }
 
 /**
@@ -277,6 +272,19 @@ export function closeBlockNavigator() {
  */
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
+
+	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
+		.contains( RegExp( style, 'i' ) )
+		.click();
+}
+
+/**
+ * Click on a style button within the new style panel
+ *
+ * @param {string} style Name of the style to apply
+ */
+export function setNewBlockStyle( style ) {
+	selectStylesTabIfExists();
 
 	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
@@ -407,20 +415,10 @@ export const upload = {
  * @param {string} hexColor
  */
 export function setColorSettingsFoldableSetting( settingName, hexColor ) {
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		openSettingsPanel( /color settings|color/i );
-	}
-
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
-
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		cy.get( '[aria-label="Show detailed inputs"]' ).click();
-	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -434,11 +432,6 @@ export function setColorPanelSetting( settingName, hexColor ) {
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 	cy.get( '.components-color-palette__custom-color' ).click();
-
-	// Not needed in WP 6.1 anymore
-	if ( ! isWP61AtLeast() ) {
-		cy.get( '[aria-label="Show detailed inputs"]' ).click();
-	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -578,12 +571,10 @@ export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
 
-// A condition to determine if we are testing on WordPress 6.1+
-export function isWP61AtLeast() {
-	// WP 6.0 uses the branch-6 class, and version 6.1+ uses branch-6-x (ex : branch-6-1 for WP 6.1)
-	// So we are looking for a class that starts with branch-6-
-
-	return Cypress.$( "[class*='branch-6-']" ).length > 0;
+// A condition to determine if we are testing on WordPress 6.2+
+// This function should be removed in the process of the work for WP 6.3 compatibility
+export function isWP62AtLeast() {
+	return Cypress.$( "[class*='branch-6-2']" ).length > 0 || Cypress.$( "[class*='branch-6-3']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {

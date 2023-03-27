@@ -69,10 +69,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__currency' ).should( 'have.text', currency );
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__amount' ).should( 'have.text', amount );
 
-		// There is a slight spacing difference in WP 6.1
-		if ( helpers.isWP61AtLeast() ) {
-			featuresText = ' ' + featuresText;
-		}
+		featuresText = ' ' + featuresText;
 
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features > li' ).should( 'have.text', featuresText );
 		firstTableItem().find( '.wp-block-button' ).should( 'have.text', buttonText );

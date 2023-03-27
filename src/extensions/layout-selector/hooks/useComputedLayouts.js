@@ -6,14 +6,14 @@ import { orderBy } from 'lodash';
 /**
  * WordPress dependencies
  */
-import { useSelect, useDispatch } from '@wordpress/data';
-import { createBlock, rawHandler } from '@wordpress/blocks';
 import { useEffect } from '@wordpress/element';
+import { createBlock, rawHandler } from '@wordpress/blocks';
+import { select, useDispatch } from '@wordpress/data';
 
 /**
  * Internal Dependencies
  */
-import { requestIdleCallback, cancelIdleCallback } from '../../../utils/background-task-api';
+import { cancelIdleCallback, requestIdleCallback } from '../../../utils/background-task-api';
 
 const MAX_SUGGESTED_ITEMS = 6;
 
@@ -31,11 +31,11 @@ let computedLayouts = [];
 let computedCategories = [];
 
 function useComputedLayouts() {
-	const layouts = useSelect( ( select ) => select( 'coblocks/template-selector' ).getLayouts(), [] );
-	const computedLayoutsStore = useSelect( ( select ) => select( 'coblocks/template-selector' ).getComputedLayouts(), [] );
-	const selectedCategory = useSelect( ( select ) => select( 'coblocks/template-selector' ).getSelectedCategory(), [] );
-	const { updateComputedLayouts } = useDispatch( 'coblocks/template-selector' );
+	const layouts = select( 'coblocks/template-selector' ).getLayouts();
+	const computedLayoutsStore = select( 'coblocks/template-selector' ).getComputedLayouts();
+	const selectedCategory = select( 'coblocks/template-selector' ).getSelectedCategory();
 
+	const { updateComputedLayouts } = useDispatch( 'coblocks/template-selector' );
 	const parseBlocks = ( layout ) => {
 		if ( ! [ selectedCategory ].includes( layout.category ) ) {
 			return layout.parsedBlocks ? layout.parsedBlocks : [];
@@ -47,7 +47,7 @@ function useComputedLayouts() {
 			);
 		}
 
-		return rawHandler( { HTML: layout.postContent } );
+		return rawHandler( { HTML: layout.postContent } ) || [];
 	};
 
 	const parseLayout = ( layout ) => ( { ...layout, parsedBlocks: parseBlocks( layout ) } );
