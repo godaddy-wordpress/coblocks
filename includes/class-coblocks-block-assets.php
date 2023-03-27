@@ -143,7 +143,7 @@ class CoBlocks_Block_Assets {
 			}
 		}
 
-		if ( ! $has_coblock && ! $this->is_page_gutenberg() ) {
+		if ( ! $has_coblock && ! $this->is_page_gutenberg() && ! $this->has_coblocks_animation() ) {
 			return;
 		}
 
@@ -663,6 +663,17 @@ class CoBlocks_Block_Assets {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Determine if the page content contains an element with a coblocks-animate class.
+	 *
+	 * @return boolean True when an element on the page has .coblocks-animate class, else false.
+	 */
+	public function has_coblocks_animation() {
+		ob_start();
+		the_content();
+		return false !== strpos( ob_get_clean(), 'coblocks-animate' );
 	}
 }
 
