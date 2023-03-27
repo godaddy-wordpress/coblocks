@@ -1,74 +1,19 @@
-2.26.11 / 2023-02-08
-===================
-
-
-2.26.10 / 2023-02-08
-===================
-### Bug fixes
-
-- Try wrapping in quotes.
-
-2.26.9 / 2023-02-08
-===================
-### Bug fixes
-
-- Remove superfluous brackets.
-
-2.26.8 / 2023-02-08
-===================
+3.0.1 / 2023-03-27
+==================
 ### Enhancements
 
-- Run WordPress.org deploy with new GoDaddy WordPress Action.
+- Introduce CoBlocks block migrations. [#2470](https://github.com/godaddy-wordpress/coblocks/pull/2470)
+- WP 6.2 compatibility. [#2501](https://github.com/godaddy-wordpress/coblocks/pull/2501)
 
-2.26.7 / 2023-02-07
-===================
 ### Bug fixes
 
-- Skip svn commit on tag step.
+- Fix CoBlocks Settings and Labs modal with Gutenberg. [#2473](https://github.com/godaddy-wordpress/coblocks/pull/2473)
+- Fix System Status bug when running WooCommerce and PHP 8.2. [#2510](https://github.com/godaddy-wordpress/coblocks/pull/2510)
+- Fix Animation under some core-only circumstances. [#2509](https://github.com/godaddy-wordpress/coblocks/pull/2509)
 
-2.26.6 / 2023-02-07
-===================
-### Bug Fixes
+### Misc
 
-- Quote username in SVN commit.
-
-2.26.5 / 2023-02-07
-===================
-### Bug fixes
-
-- Quote password for SVN commit.
-
-2.26.4 / 2023-02-07
-===================
-### Bug fixes
-
-- Fix issue with SVN authentication in Workflow.
-
-2.26.3 / 2023-02-07
-===================
-### Bug fixes
-
-- Fixes issue with SVN checkin for the new tag.
-- Corrects changelog.txt markup and addresses automated output. 
-
-2.26.2 / 2023-02-07
-===================
-### Bug fixes
-
-- Fix issue with checkout ref conditional.
-
-2.26.1 / 2023-02-07
-===================
-### Bug fixes
-
-- Fixes issue with WP.org Deploy workflow.
-
-2.26.0 / 2023-02-06
-===================
-### Enhancements
-
-- Migrated from using CircleCI to Github Actions for our automated testing and deploys.
-- Switched from using distexclude to distinclude for more verbose includes in the public plugin.
+- PHP 8.2 compatibility. [#2511](https://github.com/godaddy-wordpress/coblocks/pull/2511)
 
 2.25.5 / 2022-12-20
 ===================
