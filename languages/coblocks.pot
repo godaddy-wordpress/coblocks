@@ -1,14 +1,14 @@
 # Copyright (c) 2023 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 2.26.11\n"
+"Project-Id-Version: CoBlocks 3.0.1\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-23T22:43:42+00:00\n"
+"POT-Creation-Date: 2023-03-27T22:27:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: coblocks\n"
@@ -64,22 +64,22 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:394
-#: includes/class-coblocks-block-assets.php:535
+#: includes/class-coblocks-block-assets.php:406
+#: includes/class-coblocks-block-assets.php:547
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:395
-#: includes/class-coblocks-block-assets.php:536
+#: includes/class-coblocks-block-assets.php:407
+#: includes/class-coblocks-block-assets.php:548
 msgid "Next"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:441
+#: includes/class-coblocks-block-assets.php:453
 #: src/blocks/food-and-drinks/food-item/inspector.js:36
 msgid "Image"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:534
+#: includes/class-coblocks-block-assets.php:546
 msgid "Close Gallery"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 #. translators: block keyword
 #. translators: icon keyword
 #: includes/class-coblocks-form.php:51
-#: includes/class-coblocks-form.php:1052
+#: includes/class-coblocks-form.php:1064
 #: src/blocks/form/edit.js:288
 #: src/blocks/form/fields/name/index.js:30
 #: src/blocks/form/index.js:56
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: includes/class-coblocks-form.php:1043
+#: includes/class-coblocks-form.php:1055
 #: src/blocks/form/edit.js:294
 msgid "name"
 msgstr ""
@@ -271,15 +271,15 @@ msgstr ""
 msgid "Setting use to disable or enable animation controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:312
+#: includes/class-coblocks-site-design.php:311
 msgid "Error processing your request."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:336
+#: includes/class-coblocks-site-design.php:335
 msgid "A design_style must be passed."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:348
+#: includes/class-coblocks-site-design.php:347
 msgid "An available design_style must be passed."
 msgstr ""
 
@@ -425,6 +425,98 @@ msgstr ""
 msgid "Portfolio"
 msgstr ""
 
+#: src/block-styles/core/paragraph/index.js:11
+msgid "Info"
+msgstr ""
+
+#: src/block-styles/core/paragraph/index.js:15
+msgid "Success"
+msgstr ""
+
+#: src/block-styles/core/paragraph/index.js:19
+msgid "Warning"
+msgstr ""
+
+#: src/block-styles/core/paragraph/index.js:23
+msgid "error"
+msgstr ""
+
+#. translators: block variation description
+#: src/block-variations/core/columns/index.js:33
+msgid "Blocks layout representing an author block."
+msgstr ""
+
+#. translators: placeholder used in block example.
+#: src/block-variations/core/columns/index.js:53
+msgid "Author Name"
+msgstr ""
+
+#. translators: placeholder used in block example.
+#: src/block-variations/core/columns/index.js:59
+msgid "Author Biography"
+msgstr ""
+
+#: src/block-variations/core/columns/index.js:73
+msgid "Author Link"
+msgstr ""
+
+#: src/block-variations/core/columns/index.js:93
+msgid "Author name"
+msgstr ""
+
+#: src/block-variations/core/columns/index.js:94
+msgid "Author bio"
+msgstr ""
+
+#: src/block-variations/core/columns/index.js:96
+msgid "Author link"
+msgstr ""
+
+#. translators: block variation name
+#: src/block-variations/core/columns/index.js:104
+msgid "Author Block"
+msgstr ""
+
+#. translators: block variation description
+#: src/block-variations/core/paragraph/index.js:24
+msgid "Informational alert."
+msgstr ""
+
+#. translators: block variation name
+#: src/block-variations/core/paragraph/index.js:29
+msgid "Informational alert"
+msgstr ""
+
+#. translators: block variation description
+#: src/block-variations/core/paragraph/index.js:37
+msgid "Warning alert."
+msgstr ""
+
+#. translators: block variation name
+#: src/block-variations/core/paragraph/index.js:42
+msgid "Warning alert"
+msgstr ""
+
+#. translators: block variation description
+#: src/block-variations/core/paragraph/index.js:50
+msgid "Error alert."
+msgstr ""
+
+#. translators: block variation name
+#: src/block-variations/core/paragraph/index.js:55
+msgid "Error alert"
+msgstr ""
+
+#. translators: block variation description
+#: src/block-variations/core/paragraph/index.js:64
+msgid "Success alert."
+msgstr ""
+
+#. translators: block variation name
+#: src/block-variations/core/paragraph/index.js:69
+msgid "Success alert"
+msgstr ""
+
 #. translators: toggle label to display the accordion open
 #. translators: visually display open as opposed to closed
 #: src/blocks/accordion/accordion-item/controls.js:29
@@ -480,7 +572,6 @@ msgid "Accordion Item settings"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:74
-#: src/blocks/alert/inspector.js:49
 #: src/blocks/click-to-tweet/inspector.js:39
 #: src/blocks/dynamic-separator/inspector.js:52
 #: src/blocks/events/event-item/inspector.js:30
@@ -503,7 +594,6 @@ msgid "Color settings"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:80
-#: src/blocks/alert/inspector.js:55
 #: src/blocks/dynamic-separator/inspector.js:58
 #: src/blocks/features/feature/inspector.js:110
 #: src/blocks/features/inspector.js:177
@@ -521,7 +611,6 @@ msgid "Background color"
 msgstr ""
 
 #: src/blocks/accordion/accordion-item/inspector.js:85
-#: src/blocks/alert/inspector.js:60
 #: src/blocks/click-to-tweet/inspector.js:28
 #: src/blocks/events/event-item/inspector.js:23
 #: src/blocks/faq/faq-item/inspector.js:21
@@ -567,152 +656,6 @@ msgstr ""
 
 #: src/blocks/accordion/inspector.js:31
 msgid "Supporting Internet Explorer by loading a JavaScript polyfill on this page."
-msgstr ""
-
-#. translators: placeholder text for input box
-#: src/blocks/alert/edit.js:94
-#: src/blocks/services/service/edit.js:219
-msgid "Write title…"
-msgstr ""
-
-#. translators: placeholder text for input box
-#: src/blocks/alert/edit.js:102
-msgid "Write text…"
-msgstr ""
-
-#. translators: block name
-#. translators: icon label
-#: src/blocks/alert/index.js:28
-#: src/blocks/icon/svgs-generated.js:95
-msgid "Alert"
-msgstr ""
-
-#. translators: block description
-#: src/blocks/alert/index.js:30
-msgid "Provide contextual feedback messages or notices."
-msgstr ""
-
-#. translators: block keyword
-#. translators: icon keyword
-#: src/blocks/alert/index.js:35
-#: src/blocks/icon/deprecated/svgsv1.js:1117
-#: src/blocks/icon/svgs-generated.js:2156
-msgid "notice"
-msgstr ""
-
-#. translators: block keyword
-#. translators: icon keyword
-#: src/blocks/alert/index.js:37
-#: src/blocks/icon/deprecated/svgs.js:732
-#: src/blocks/icon/deprecated/svgsfocusable.js:731
-#: src/blocks/icon/deprecated/svgsv1.js:678
-#: src/blocks/icon/deprecated/svgsv1.js:700
-#: src/blocks/icon/deprecated/svgsv1.js:722
-#: src/blocks/icon/deprecated/svgsv1.js:741
-#: src/blocks/icon/svgs-generated.js:177
-#: src/blocks/icon/svgs-generated.js:872
-#: src/blocks/icon/svgs-generated.js:1379
-#: src/blocks/icon/svgs-generated.js:2421
-#: src/blocks/icon/svgs-generated.js:2530
-msgid "message"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/alert/index.js:43
-msgid "Info"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/alert/index.js:49
-msgid "Success"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/alert/index.js:54
-msgid "Warning"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/alert/index.js:59
-msgid "Error"
-msgstr ""
-
-#: src/blocks/alert/index.js:69
-msgid "This is an alert block"
-msgstr ""
-
-#: src/blocks/alert/index.js:70
-msgid "An alert is a message that displays outside the flow of typical content. Alerts provide contextual feedback, typically asking readers to take an action."
-msgstr ""
-
-#: src/blocks/alert/save.js:45
-msgid "Alert section of type"
-msgstr ""
-
-#: src/blocks/alert/save.js:47
-msgid "Alert section"
-msgstr ""
-
-#: src/blocks/author/controls.js:26
-msgid "Author controls"
-msgstr ""
-
-#: src/blocks/author/controls.js:34
-msgid "Edit avatar"
-msgstr ""
-
-#: src/blocks/author/edit.js:55
-msgid "Drop to upload as avatar"
-msgstr ""
-
-#. translators: placeholder text used for the author name
-#: src/blocks/author/edit.js:108
-msgid "Write author name…"
-msgstr ""
-
-#. translators: placeholder text used for the biography
-#: src/blocks/author/edit.js:122
-msgid "Write a biography that distills objective credibility and authority to your readers…"
-msgstr ""
-
-#. translators: content placeholder
-#: src/blocks/author/edit.js:130
-msgid "Author link…"
-msgstr ""
-
-#. translators: block description
-#: src/blocks/author/index.js:30
-msgid "Add an author biography to build credibility and authority."
-msgstr ""
-
-#. translators: example biography
-#: src/blocks/author/index.js:35
-msgid "Born to express, not to impress. A maker making the world I want."
-msgstr ""
-
-#. translators: example female name
-#: src/blocks/author/index.js:38
-msgid "Jane Doe"
-msgstr ""
-
-#. translators: block keyword
-#: src/blocks/author/index.js:45
-msgid "biography"
-msgstr ""
-
-#. translators: block keyword
-#. translators: icon keyword
-#: src/blocks/author/index.js:47
-#: src/blocks/icon/svgs-generated.js:1687
-#: src/blocks/icon/svgs-generated.js:2221
-msgid "profile"
-msgstr ""
-
-#. translators: block name
-#. translators: icon label
-#: src/blocks/author/index.js:51
-#: src/blocks/icon/svgs-generated.js:207
-msgid "Author"
 msgstr ""
 
 #. translators: block name
@@ -4418,6 +4361,21 @@ msgid "comment"
 msgstr ""
 
 #. translators: icon keyword
+#: src/blocks/icon/deprecated/svgs.js:732
+#: src/blocks/icon/deprecated/svgsfocusable.js:731
+#: src/blocks/icon/deprecated/svgsv1.js:678
+#: src/blocks/icon/deprecated/svgsv1.js:700
+#: src/blocks/icon/deprecated/svgsv1.js:722
+#: src/blocks/icon/deprecated/svgsv1.js:741
+#: src/blocks/icon/svgs-generated.js:177
+#: src/blocks/icon/svgs-generated.js:872
+#: src/blocks/icon/svgs-generated.js:1379
+#: src/blocks/icon/svgs-generated.js:2421
+#: src/blocks/icon/svgs-generated.js:2530
+msgid "message"
+msgstr ""
+
+#. translators: icon keyword
 #: src/blocks/icon/deprecated/svgs.js:734
 #: src/blocks/icon/deprecated/svgsfocusable.js:733
 msgid "reply"
@@ -5955,6 +5913,12 @@ msgid "info"
 msgstr ""
 
 #. translators: icon keyword
+#: src/blocks/icon/deprecated/svgsv1.js:1117
+#: src/blocks/icon/svgs-generated.js:2156
+msgid "notice"
+msgstr ""
+
+#. translators: icon keyword
 #: src/blocks/icon/deprecated/svgsv1.js:1119
 #: src/blocks/icon/svgs-generated.js:2158
 msgid "notification"
@@ -7037,6 +7001,11 @@ msgstr ""
 msgid "item"
 msgstr ""
 
+#. translators: icon label
+#: src/blocks/icon/svgs-generated.js:95
+msgid "Alert"
+msgstr ""
+
 #. translators: icon keyword
 #: src/blocks/icon/svgs-generated.js:98
 #: src/blocks/icon/svgs-generated.js:1313
@@ -7093,6 +7062,11 @@ msgstr ""
 #. translators: icon label
 #: src/blocks/icon/svgs-generated.js:185
 msgid "Audiotrack"
+msgstr ""
+
+#. translators: icon label
+#: src/blocks/icon/svgs-generated.js:207
+msgid "Author"
 msgstr ""
 
 #. translators: icon keyword
@@ -7643,6 +7617,12 @@ msgstr ""
 #. translators: icon keyword
 #: src/blocks/icon/svgs-generated.js:1685
 msgid "cat"
+msgstr ""
+
+#. translators: icon keyword
+#: src/blocks/icon/svgs-generated.js:1687
+#: src/blocks/icon/svgs-generated.js:2221
+msgid "profile"
 msgstr ""
 
 #. translators: icon label
@@ -8954,6 +8934,11 @@ msgstr ""
 msgid "Toggle to show call to action buttons."
 msgstr ""
 
+#. translators: placeholder text for input box
+#: src/blocks/services/service/edit.js:219
+msgid "Write title…"
+msgstr ""
+
 #. translators: content placeholder
 #: src/blocks/services/service/edit.js:228
 msgid "Write description…"
@@ -10123,25 +10108,25 @@ msgstr ""
 msgid "Crop settings"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:94
+#: src/extensions/layout-selector/index.js:95
 msgid "Add New Page"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:95
+#: src/extensions/layout-selector/index.js:96
 msgid "Pick one of these layouts or start with a blank page."
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:108
+#: src/extensions/layout-selector/index.js:109
 msgid "Layouts"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:132
-#: src/extensions/layout-selector/index.js:160
+#: src/extensions/layout-selector/index.js:133
+#: src/extensions/layout-selector/index.js:161
 msgid "Add blank page"
 msgstr ""
 
 #. translators: %s is the post title.
-#: src/extensions/layout-selector/index.js:242
+#: src/extensions/layout-selector/index.js:243
 msgid "\"%s\" layout has been added to the page."
 msgstr ""
 
@@ -10407,19 +10392,9 @@ msgctxt "block title"
 msgid "Alert"
 msgstr ""
 
-#: src/blocks/alert/block.json
-msgctxt "block description"
-msgid "Provide contextual feedback messages or notices."
-msgstr ""
-
 #: src/blocks/author/block.json
 msgctxt "block title"
 msgid "Author"
-msgstr ""
-
-#: src/blocks/author/block.json
-msgctxt "block description"
-msgid "Add an author biography to build credibility and authority."
 msgstr ""
 
 #: src/blocks/buttons/block.json
