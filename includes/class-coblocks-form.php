@@ -201,7 +201,7 @@ class CoBlocks_Form {
 	public function render_form( $atts, $content ) {
 
 		$this->form_hash = sha1( $content );
-		$submitted_hash  = filter_input( INPUT_POST, 'form-hash', FILTER_SANITIZE_STRING );
+		$submitted_hash  = filter_input( INPUT_POST, 'form-hash' );
 
 		ob_start();
 		?>
@@ -209,7 +209,7 @@ class CoBlocks_Form {
 		<div class="coblocks-form" id="<?php echo esc_attr( $this->form_hash ); ?>">
 
 			<?php
-			if ( $submitted_hash === $this->form_hash ) {
+			if ( $submitted_hash && htmlspecialchars( $submitted_hash ) === $this->form_hash ) {
 
 				$submit_form = $this->process_form_submission( $atts );
 
@@ -851,17 +851,29 @@ class CoBlocks_Form {
 	 */
 	public function process_form_submission( $atts ) {
 
-		$form_submission = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+		$form_submission = filter_input( INPUT_POST, 'action' );
 
-		if ( ! $form_submission || 'coblocks-form-submit' !== $form_submission ) {
+		if ( ! $form_submission ) {
 
 			return;
 
 		}
 
-		$nonce = filter_input( INPUT_POST, 'form-submit', FILTER_SANITIZE_STRING );
+		if ( 'coblocks-form-submit' !== htmlspecialchars( $form_submission ) ) {
 
-		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'coblocks-form-submit' ) ) {
+			return;
+
+		}
+
+		$nonce = filter_input( INPUT_POST, 'form-submit' );
+
+		if ( ! $nonce ) {
+
+			return;
+
+		}
+
+		if ( ! wp_verify_nonce( htmlspecialchars( $nonce ), 'coblocks-form-submit' ) ) {
 
 			return;
 
@@ -870,9 +882,9 @@ class CoBlocks_Form {
 		/**
 		 * Check if the honeypot field was filled out and if so, bail.
 		 */
-		$honeypot_check = filter_input( INPUT_POST, 'coblocks-verify-email', FILTER_SANITIZE_STRING );
+		$honeypot_check = filter_input( INPUT_POST, 'coblocks-verify-email' );
 
-		if ( ! empty( $honeypot_check ) ) {
+		if ( ! empty( htmlspecialchars( $honeypot_check ) ) ) {
 
 			$this->remove_url_form_hash();
 

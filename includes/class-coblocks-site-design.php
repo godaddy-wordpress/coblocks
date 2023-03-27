@@ -247,17 +247,17 @@ class CoBlocks_Site_Design {
 	 */
 	protected function sanitize_request_params( $request_params = null ) {
 		$args = array(
-			'design_style'     => FILTER_SANITIZE_STRING,
-			'color_palette'    => FILTER_SANITIZE_STRING,
-			'fonts'            => FILTER_SANITIZE_STRING,
-			'font_size'        => FILTER_SANITIZE_STRING,
+			'design_style'     => FILTER_SANITIZE_SPECIAL_CHARS,
+			'color_palette'    => FILTER_SANITIZE_SPECIAL_CHARS,
+			'fonts'            => FILTER_SANITIZE_SPECIAL_CHARS,
+			'font_size'        => FILTER_SANITIZE_SPECIAL_CHARS,
 			'type_ratio'       => FILTER_VALIDATE_FLOAT,
 			'should_update'    => FILTER_VALIDATE_BOOLEAN,
 			'initial_load'     => FILTER_VALIDATE_BOOLEAN,
-			'primary_color'    => FILTER_SANITIZE_STRING,
-			'secondary_color'  => FILTER_SANITIZE_STRING,
-			'tertiary_color'   => FILTER_SANITIZE_STRING,
-			'background_color' => FILTER_SANITIZE_STRING,
+			'primary_color'    => FILTER_SANITIZE_SPECIAL_CHARS,
+			'secondary_color'  => FILTER_SANITIZE_SPECIAL_CHARS,
+			'tertiary_color'   => FILTER_SANITIZE_SPECIAL_CHARS,
+			'background_color' => FILTER_SANITIZE_SPECIAL_CHARS,
 		);
 
 		return is_array( $request_params )
