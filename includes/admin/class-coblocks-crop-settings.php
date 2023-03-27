@@ -86,7 +86,7 @@ class CoBlocks_Crop_Settings {
 	 * Retrieve the original image.
 	 */
 	public function get_original_image() {
-		$nonce = filter_input( INPUT_POST, 'nonce', FILTER_SANITIZE_STRING );
+		$nonce = htmlspecialchars( filter_input( INPUT_POST, 'nonce' ) );
 
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'cropSettingsOriginalImageNonce' ) ) {
 			wp_send_json_error( 'No nonce value present' );
@@ -119,7 +119,7 @@ class CoBlocks_Crop_Settings {
 	 * Cropping.
 	 */
 	public function api_crop() {
-		$nonce = filter_input( INPUT_POST, 'nonce', FILTER_SANITIZE_STRING );
+		$nonce = htmlspecialchars( filter_input( INPUT_POST, 'nonce' ) );
 
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'cropSettingsNonce' ) ) {
 			wp_send_json_error( 'No nonce value present' );
