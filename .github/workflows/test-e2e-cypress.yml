@@ -17,7 +17,7 @@ on:
       phpVersion:
         required: false
         type: string
-        default: "8.1"
+        default: "8.2"
     secrets:
       record-key:
         description: 'Record key for Cypress Dashboard'
@@ -77,6 +77,7 @@ jobs:
           - lightbox-controls-image.cypress.js
           - media-text-styles.cypress.js
           - padding-controls.cypress.js
+          - settings-modal-control.cypress.js
 
 
     steps:

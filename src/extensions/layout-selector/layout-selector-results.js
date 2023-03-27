@@ -7,12 +7,12 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { applyFilters } from '@wordpress/hooks';
+import { BlockPreview } from '@wordpress/block-editor';
+import { useAsyncList } from '@wordpress/compose';
 import { useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
-import { useAsyncList } from '@wordpress/compose';
 import { Button, Spinner } from '@wordpress/components';
-import { BlockPreview } from '@wordpress/block-editor';
-import { applyFilters } from '@wordpress/hooks';
 
 /**
  * Render the layout previews into columns.
