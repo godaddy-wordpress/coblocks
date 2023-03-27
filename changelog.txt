@@ -27,6 +27,20 @@
 - PHP 8.2 compatibility.
 
 3.0.1 / 2023-03-27
+===================
+# Features
+- Introduce CoBlocks block migrations.
+- WP 6.2 compatibility
+
+# Bug fixes
+- Fix CoBlocks Settings and Labs modal with Gutenberg.
+- Fix System Status bug when running WooCommerce and PHP 8.2.
+- Fix Animation under some core-only circumstances.
+
+# Misc
+- PHP 8.2 compatibility.
+
+3.0.1 / 2023-03-27
 ==================
 ### Enhancements
 
