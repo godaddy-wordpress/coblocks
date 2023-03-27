@@ -90,13 +90,13 @@ class CoBlocks_Crop_Settings {
 
 		if ( ! $nonce ) {
 
-			wp_send_json_error();
+			wp_send_json_error( 'No nonce value present.' );
 
 		}
 
 		if ( ! wp_verify_nonce( htmlspecialchars( $nonce ), 'cropSettingsOriginalImageNonce' ) ) {
 
-			wp_send_json_error( 'No nonce value present' );
+			wp_send_json_error( 'Invalid nonce value.' );
 
 		}
 
@@ -104,7 +104,7 @@ class CoBlocks_Crop_Settings {
 
 		if ( ! $id ) {
 
-			wp_send_json_error();
+			wp_send_json_error( 'Missing id value.' );
 
 		}
 
@@ -131,12 +131,14 @@ class CoBlocks_Crop_Settings {
 
 		if ( ! $nonce ) {
 
-			wp_send_json_error();
+			wp_send_json_error( 'No nonce value present.' );
 
 		}
 
 		if ( ! wp_verify_nonce( htmlspecialchars( $nonce ), 'cropSettingsNonce' ) ) {
-			wp_send_json_error( 'No nonce value present' );
+
+			wp_send_json_error( 'Invalid nonce value.' );
+
 		}
 
 		if (
