@@ -4,13 +4,14 @@
 + /includes/
 + /dist/
 + /languages/
-+ /src/blocks/
-+ /src/components/
-+ /src/extensions/
++ /src/
 + /LICENSE
 + /readme.txt
 + /class-coblocks.php
 + /uninstall.php
-
 # Exclude everything else
 - /*
+- /src/*.js
+- /src/**/*.js
+- /src/**/*.scss
+- /src/**/test/
