@@ -43,5 +43,6 @@
 		}
 	},
 	"title": "Author",
-	"editorScript": "blocks-1"
+	"editorScript": "blocks-1",
+	"category": "theme"
 }

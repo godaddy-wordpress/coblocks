@@ -13,5 +13,6 @@
 		}
 	},
 	"textdomain": "coblocks",
-	"title": "Alert"
+	"title": "Alert",
+	"category": "theme"
 }
