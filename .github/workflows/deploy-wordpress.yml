@@ -66,4 +66,4 @@ jobs:
         run: |
           cd wp/coblocks
           svn add * --force
-          svn ci --no-auth-cache --username ${{ secrets.GODADDY_WPORG_USERNAME }} --password ${{ secrets.GODADDY_WPORG_PASSWORD }} -m "Deploy ${{ inputs.version }} version of CoBlocks"
+          svn ci --no-auth-cache --username="${{ secrets.GODADDY_WPORG_USERNAME }}" --password="${{ secrets.GODADDY_WPORG_PASSWORD }}" -m "Deploy ${{ inputs.version }} version of CoBlocks"
