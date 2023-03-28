@@ -681,16 +681,12 @@ class CoBlocks_Block_Assets {
 	public function has_coblocks_animation() {
 		global $post;
 
-		ob_start();
-		the_content();
-		$the_content = ob_get_clean();
-
 		/**
 		 * Resolves a fatal error bug on PHP 8+ with Timber.
 		 *
 		 * @see https://wordpress.org/support/topic/the-method-has_masonry_v1_block-produces-a-fatal-error-on-php-8-0-22-and-above/
 		 */
-		$post_content = ! empty( $post ) ? $post->post_content : $the_content;
+		$post_content = ! empty( $post ) ? $post->post_content : get_the_content();
 
 		return false !== strpos( $post_content, 'coblocks-animate' );
 	}
