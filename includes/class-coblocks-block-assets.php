@@ -644,7 +644,7 @@ class CoBlocks_Block_Assets {
 			return true;
 		}
 
-		if ( false !== strpos( $admin_page, 'post-new.php' ) && isset( $_GET['post_type'] ) && $this->is_post_type_gutenberg( htmlspecialchars( filter_input( INPUT_GET, wp_unslash( $_GET['post_type'] ) ) ) ) ) {
+		if ( false !== strpos( $admin_page, 'post-new.php' ) && isset( $_GET['post_type'] ) && $this->is_post_type_gutenberg( filter_input( INPUT_GET, wp_unslash( $_GET['post_type'] ), FILTER_SANITIZE_SPECIAL_CHARS ) ) ) {
 			return true;
 		}
 
