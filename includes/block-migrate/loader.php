@@ -27,11 +27,11 @@ require_once COBLOCKS_PLUGIN_DIR . 'includes/block-migrate/class-coblocks-author
 add_action(
 	'the_post',
 	function( WP_Post &$post ) {
-		if ( ! function_exists( 'get_current_screen' ) ) {
+		if ( function_exists('is_admin') && ! is_admin() ) {
 			return;
 		}
-
-		if ( ! is_admin() || ! get_current_screen()->is_block_editor ) {
+		
+		if ( function_exists( 'get_current_screen' ) && ! get_current_screen()->is_block_editor ) {
 			return;
 		}
 
