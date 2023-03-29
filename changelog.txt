@@ -1,5 +1,10 @@
 3.0.2 / 2023-03-29
 ===================
+# Bug fix
+- Resolve issue with migration loader and animation check logic.
+
+3.0.2 / 2023-03-29
+===================
 # Bug fixes
 - Fix issue around missing loader dependencies. [#2515](https://github.com/godaddy-wordpress/coblocks/pull/2515)
 
