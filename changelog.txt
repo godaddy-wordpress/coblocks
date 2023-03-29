@@ -1,3 +1,8 @@
+3.0.2 / 2023-03-29
+===================
+# Bug fixes
+- Fix issue around missing loader dependencies. [#2515](https://github.com/godaddy-wordpress/coblocks/pull/2515)
+
 3.0.1 / 2023-03-28
 ===================
 # Features
@@ -11,93 +16,6 @@
 
 # Misc
 - PHP 8.2 compatibility.
-
-3.0.1 / 2023-03-28
-===================
-# Features
-- Introduce CoBlocks block migrations.
-- WP 6.2 compatibility
-
-# Bug fixes
-- Fix CoBlocks Settings and Labs modal with Gutenberg.
-- Fix System Status bug when running WooCommerce and PHP 8.2.
-- Fix Animation under some core-only circumstances.
-
-# Misc
-- PHP 8.2 compatibility.
-
-3.0.1 / 2023-03-27
-===================
-# Features
-- Introduce CoBlocks block migrations.
-- WP 6.2 compatibility
-
-# Bug fixes
-- Fix CoBlocks Settings and Labs modal with Gutenberg.
-- Fix System Status bug when running WooCommerce and PHP 8.2.
-- Fix Animation under some core-only circumstances.
-
-# Misc
-- PHP 8.2 compatibility.
-
-3.0.1 / 2023-03-27
-===================
-# Features
-- Introduce CoBlocks block migrations.
-- WP 6.2 compatibility
-
-# Bug fixes
-- Fix CoBlocks Settings and Labs modal with Gutenberg.
-- Fix System Status bug when running WooCommerce and PHP 8.2.
-- Fix Animation under some core-only circumstances.
-
-# Misc
-- PHP 8.2 compatibility.
-
-3.0.1 / 2023-03-27
-===================
-# Features
-- Introduce CoBlocks block migrations.
-- WP 6.2 compatibility
-
-# Bug fixes
-- Fix CoBlocks Settings and Labs modal with Gutenberg.
-- Fix System Status bug when running WooCommerce and PHP 8.2.
-- Fix Animation under some core-only circumstances.
-
-# Misc
-- PHP 8.2 compatibility.
-
-3.0.1 / 2023-03-27
-===================
-# Features
-- Introduce CoBlocks block migrations.
-- WP 6.2 compatibility
-
-# Bug fixes
-- Fix CoBlocks Settings and Labs modal with Gutenberg.
-- Fix System Status bug when running WooCommerce and PHP 8.2.
-- Fix Animation under some core-only circumstances.
-
-# Misc
-- PHP 8.2 compatibility.
-
-3.0.1 / 2023-03-27
-==================
-### Enhancements
-
-- Introduce CoBlocks block migrations. [#2470](https://github.com/godaddy-wordpress/coblocks/pull/2470)
-- WP 6.2 compatibility. [#2501](https://github.com/godaddy-wordpress/coblocks/pull/2501)
-
-### Bug fixes
-
-- Fix CoBlocks Settings and Labs modal with Gutenberg. [#2473](https://github.com/godaddy-wordpress/coblocks/pull/2473)
-- Fix System Status bug when running WooCommerce and PHP 8.2. [#2510](https://github.com/godaddy-wordpress/coblocks/pull/2510)
-- Fix Animation under some core-only circumstances. [#2509](https://github.com/godaddy-wordpress/coblocks/pull/2509)
-
-### Misc
-
-- PHP 8.2 compatibility. [#2511](https://github.com/godaddy-wordpress/coblocks/pull/2511)
 
 2.25.5 / 2022-12-20
 ===================

@@ -122,6 +122,10 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 3.0.2 / 2023-03-29 =
+
+* Fix issue around missing loader dependencies. [#2515](https://github.com/godaddy-wordpress/coblocks/pull/2515)
+
 = 3.0.1 / 2023-03-27 =
 
 * Introduce CoBlocks block migrations. [#2470](https://github.com/godaddy-wordpress/coblocks/pull/2470)
