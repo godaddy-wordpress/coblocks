@@ -56,6 +56,21 @@ const Swiper = ( props ) => {
 
 	const swiperWrapperRef = useRef( null );
 
+	/*
+		This helper function will determine if we are in the site-editor or the Gutenberg editor
+	*/
+	const determineDocumentObject = () => {
+		const siteEditorIframeContainer = document.querySelector( '.edit-site-visual-editor__editor-canvas' );
+
+		let currentDocument = document;
+
+		if ( siteEditorIframeContainer ) {
+			currentDocument = siteEditorIframeContainer.contentDocument;
+		}
+
+		return currentDocument;
+	};
+
 	useEffect( () => {
 		if ( ! isDraggable ) {
 			swiperWrapperRef.current.addEventListener( ( 'mousedown' ), ( e ) => e.stopPropagation() );
@@ -80,10 +95,12 @@ const Swiper = ( props ) => {
 
 	useEffect( () => {
 		try {
-			const swiperContainer = document.getElementById( uuid );
+			const currentDocument = determineDocumentObject();
 
-			const swiperBackButton = document.getElementById( `${ uuid }-prev` );
-			const swiperNextButton = document.getElementById( `${ uuid }-next` );
+			const swiperContainer = currentDocument.getElementById( uuid );
+
+			const swiperBackButton = currentDocument.getElementById( `${ uuid }-prev` );
+			const swiperNextButton = currentDocument.getElementById( `${ uuid }-next` );
 
 			const newSwiper = new TinySwiper( swiperContainer, {
 				centeredSlides: false,

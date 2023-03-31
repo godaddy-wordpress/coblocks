@@ -435,25 +435,25 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
-
-			wp_enqueue_script(
-				'coblocks-tinyswiper-initializer',
-				$dir . 'coblocks-tinyswiper-initializer.js',
-				array(),
-				COBLOCKS_VERSION,
-				true
-			);
-
-			wp_localize_script(
-				'coblocks-tinyswiper-initializer',
-				'coblocksTinyswiper',
-				array(
-					'carouselPrevButtonAriaLabel' => $previous_aria_label,
-					'carouselNextButtonAriaLabel' => $next_aria_label,
-					'sliderImageAriaLabel'        => __( 'Image', 'coblocks' ),
-				)
-			);
 		}
+
+		wp_enqueue_script(
+			'coblocks-tinyswiper-initializer',
+			$dir . 'coblocks-tinyswiper-initializer.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
+
+		wp_localize_script(
+			'coblocks-tinyswiper-initializer',
+			'coblocksTinyswiper',
+			array(
+				'carouselPrevButtonAriaLabel' => $previous_aria_label,
+				'carouselNextButtonAriaLabel' => $next_aria_label,
+				'sliderImageAriaLabel'        => __( 'Image', 'coblocks' ),
+			)
+		);
 
 		// Post Carousel block.
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {

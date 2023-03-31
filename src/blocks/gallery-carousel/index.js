@@ -7,14 +7,14 @@ import { GalleryCarouselIcon as icon } from '@godaddy-wordpress/coblocks-icons';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { Suspense } from '@wordpress/element';
 import { Icon, Spinner } from '@wordpress/components';
-import { lazy, Suspense } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
 import deprecated from './deprecated';
-const Edit = lazy( () => import( './edit' ) );
+import Edit from './edit';
 import { GalleryAttributes } from '../../components/block-gallery/shared';
 import { hasFormattingCategory } from '../../utils/block-helpers';
 import metadata from './block.json';
