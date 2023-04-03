@@ -35,7 +35,6 @@ module.exports = {
 		'sort-keys': [ 'warn', 'asc', { natural: true } ],
 		'react/destructuring-assignment': [ 'warn', 'always' ],
 		'react/jsx-sort-props': [ 'warn', { ignoreCase: true } ],
-		'jsx-a11y/img-redundant-alt': [ 'warn' ],
 	},
 	overrides: [
 		{
