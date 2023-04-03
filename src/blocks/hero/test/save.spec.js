@@ -3,7 +3,7 @@
  */
 import { JSDOM } from 'jsdom';
 import '@testing-library/jest-dom/extend-expect';
-import { registerBlockType, createBlock, serialize } from '@wordpress/blocks';
+import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
@@ -169,6 +169,7 @@ describe( 'coblocks/hero', () => {
 			expect( serializedBlock ).toContain( `hero-${ layoutOption }-align` );
 
 			if ( layoutOption !== 'center-left' ) { // center-left === default layout
+				// eslint-disable-next-line jest/no-conditional-expect
 				expect( serializedBlock ).toContain( `"layout":"${ layoutOption }"` );
 			}
 			expect( serializedBlock ).toMatchSnapshot();
