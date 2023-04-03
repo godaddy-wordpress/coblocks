@@ -24,6 +24,7 @@ const CoBlocksFieldOption = ( props ) => {
 	}, [ isInFocus ] );
 
 	const onChangeOption = ( event ) => {
+		// eslint-disable-next-line react/destructuring-assignment
 		props.onChangeOption( index, event.target.value );
 	};
 
@@ -35,19 +36,21 @@ const CoBlocksFieldOption = ( props ) => {
 		}
 
 		if ( event.key === 'Backspace' && event.target.value === '' ) {
+			// eslint-disable-next-line react/destructuring-assignment
 			props.onChangeOption( index );
 			event.preventDefault();
 		}
 	};
 
 	const onDeleteOption = () => {
+		// eslint-disable-next-line react/destructuring-assignment
 		props.onChangeOption( index );
 	};
 
 	return (
 		<li className="coblocks-option">
 			{ type && type !== 'select' && (
-				<input className="coblocks-option__type" type={ type } disabled />
+				<input className="coblocks-option__type" disabled type={ type } />
 			) }
 			{ ! isSelected && type && type !== 'select' && (
 				option
@@ -55,13 +58,13 @@ const CoBlocksFieldOption = ( props ) => {
 			{ isSelected && (
 				<>
 					<input
-						type="text"
 						className="coblocks-option__input"
-						value={ option }
-						placeholder={ __( 'Write option…', 'coblocks' ) }
 						onChange={ onChangeOption }
 						onKeyDown={ onKeyPress }
+						placeholder={ __( 'Write option…', 'coblocks' ) }
 						ref={ textInput }
+						type="text"
+						value={ option }
 					/>
 					<Button
 						className="coblocks-option__remove"

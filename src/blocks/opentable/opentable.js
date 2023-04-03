@@ -16,22 +16,27 @@ export function transformRIDs( rids, className ) {
 }
 
 const OpenTable = ( props ) => {
-	const rids = props.attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.rid );
-	const className = props.className.substring( props.className.lastIndexOf( '-' ) + 1 );
-	const ridsString = transformRIDs( rids, className );
+	const {
+		attributes,
+		className,
+	} = props;
+
+	const rids = attributes.restaurantIDs.map( ( restaurantObject ) => restaurantObject.rid );
+	const classNameCleaned = className.substring( className.lastIndexOf( '-' ) + 1 );
+	const ridsString = transformRIDs( rids, classNameCleaned );
 	const isMultiple = rids.length > 1;
 
 	const styles = [ 'wide', 'tall', 'standard', 'button' ];
-	if ( ! styles.includes( className ) ) {
+	if ( ! styles.includes( classNameCleaned ) ) {
 		return (
 			<div className="iframe__overflow-wrapper">
 				<iframe
+					frameBorder="0"
 					id="opentable-iframe"
 					scrolling="no"
-					frameBorder="0"
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 					style={ { width: '224px', height: isMultiple ? '362px' : '302px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 				/>
 			</div>
 
@@ -41,32 +46,32 @@ const OpenTable = ( props ) => {
 		<div className="iframe__overflow-wrapper">
 			{ { tall: (
 				<iframe
-					id="opentable-iframe"
 					frameBorder="0"
+					id="opentable-iframe"
 					scrolling="no"
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ attributes.language }&theme=tall&overlay=false&insideiframe=true&disablega=true` }
 					style={ { width: '289px', height: isMultiple ? '551px' : '491px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=tall&overlay=false&insideiframe=true&disablega=true` }
 				/>
 			), standard: (
 				<iframe
-					id="opentable-iframe"
 					frameBorder="0"
+					id="opentable-iframe"
 					scrolling="no"
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 					style={ { width: '225px', height: isMultiple ? '362px' : '302px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 				/>
 			), button: (
 				<iframe
-					id="opentable-iframe"
 					frameBorder="0"
+					id="opentable-iframe"
 					scrolling="no"
+					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 					style={ { width: '210px', height: '116px', display: 'block', margin: 'auto' } }
 					title="open table frame"
-					src={ `//www.opentable.com/widget/reservation/canvas?rid=${ ridsString }&domain=com&lang=${ props.attributes.language }&theme=standard&overlay=false&insideiframe=true&disablega=true` }
 				/>
-			) }[ className ]
+			) }[ classNameCleaned ]
 			}
 		</div>
 	);

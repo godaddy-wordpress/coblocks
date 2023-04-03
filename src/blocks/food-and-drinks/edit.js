@@ -212,21 +212,21 @@ const FoodAndDrinksEdit = ( props ) => {
 				onChangeHeadingLevel={ onChangeHeadingLevel }
 			/>
 			<Inspector
-				attributes={ attributes }
 				activeStyle={ activeStyle }
+				attributes={ attributes }
 				layoutOptions={ layoutOptions }
+				onSetColumns={ setColumns }
+				onSetGutter={ setGutter }
 				onToggleImages={ toggleImages }
 				onTogglePrices={ togglePrices }
 				onUpdateStyle={ updateStyle }
-				onSetColumns={ setColumns }
-				onSetGutter={ setGutter }
 			/>
 			<div className={ classes }>
 				<InnerBlocks
+					__experimentalCaptureToolbars={ true }
 					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ TEMPLATE }
 					templateInsertUpdatesSelection={ false }
-					__experimentalCaptureToolbars={ true }
 				/>
 				{ isSelected &&
 					<CustomAppender onClick={ insertNewItem } />
@@ -274,20 +274,27 @@ export default compose( [
 
 	// Ensure there is a minimum of one coblocks/food-item innerBlock per column set.
 	( WrappedComponent ) => ( ownProps ) => {
+		const {
+			attributes,
+			clientId,
+			innerBlocks,
+			insertBlock,
+		} = ownProps;
+
 		// This is a newly added block if we have zero innerBlocks. We want the TEMPLATE definition to be used in this case.
-		if ( ownProps.innerBlocks.length > 0 ) {
-			const foodItemBlocksCount = ownProps.innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/food-item' ), 0 );
+		if ( innerBlocks.length > 0 ) {
+			const foodItemBlocksCount = innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/food-item' ), 0 );
 
 			// Add a new block if the count is less than the columns set.
 			// We don't need a loop here because this will trigger a component update as soon as we insert a block (triggering this HOC again).
-			if ( foodItemBlocksCount < ownProps.attributes.columns ) {
-				ownProps.insertBlock(
+			if ( foodItemBlocksCount < attributes.columns ) {
+				insertBlock(
 					createBlock( 'coblocks/food-item', {
-						showImage: ownProps.attributes.showImages,
-						showPrice: ownProps.attributes.showPrices,
+						showImage: attributes.showImages,
+						showPrice: attributes.showPrices,
 					} ),
-					ownProps.innerBlocks.length,
-					ownProps.clientId,
+					innerBlocks.length,
+					clientId,
 					false
 				);
 			}

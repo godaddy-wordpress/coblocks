@@ -11,16 +11,23 @@ import GutterControl from '../../components/gutter-control/gutter-control';
  */
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
+import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
 
 const Inspector = ( props ) => {
+	const {
+		attributes,
+		setAttributes,
+		enableGutter,
+		enableCaptions,
+	} = props;
+
 	/**
 	 * setCaptionStyleTo
 	 *
 	 * @param {string} value
 	 */
 	const setCaptionStyleTo = ( value ) => {
-		props.setAttributes( { captionStyle: value } );
+		setAttributes( { captionStyle: value } );
 	};
 
 	/**
@@ -38,7 +45,7 @@ const Inspector = ( props ) => {
 	 * @param {boolean} value
 	 */
 	const setShadowTo = ( value ) => {
-		props.setAttributes( { shadow: value } );
+		setAttributes( { shadow: value } );
 	};
 
 	/**
@@ -49,13 +56,6 @@ const Inspector = ( props ) => {
 	const getLightboxHelp = ( checked ) => {
 		return checked ? __( 'Image lightbox is enabled.', 'coblocks' ) : __( 'Toggle to enable the image lightbox.', 'coblocks' );
 	};
-
-	const {
-		attributes,
-		setAttributes,
-		enableGutter,
-		enableCaptions,
-	} = props;
 
 	const {
 		shadow,
@@ -90,29 +90,29 @@ const Inspector = ( props ) => {
 			<PanelBody title={ __( 'Collage settings', 'coblocks' ) }>
 				{ enableGutter && <GutterControl { ...props } /> }
 				{ ! enableGutter && <OptionSelectorControl
-					label={ __( 'Shadow', 'coblocks' ) }
-					options={ shadowOptions }
 					currentOption={ shadow }
-					showNoneOption
+					label={ __( 'Shadow', 'coblocks' ) }
 					onChange={ ( newShadow ) => setShadowTo( newShadow ) }
+					options={ shadowOptions }
+					showNoneOption
 				/> }
 				<ToggleControl
-					label={ __( 'Lightbox', 'coblocks' ) }
 					checked={ !! lightbox }
-					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 					help={ getLightboxHelp }
+					label={ __( 'Lightbox', 'coblocks' ) }
+					onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
 				/>
 				{ enableCaptions && <ToggleControl
-					label={ __( 'Captions', 'coblocks' ) }
 					checked={ !! captions }
-					onChange={ () => setAttributes( { captions: ! captions } ) }
 					help={ getCaptionsHelp }
+					label={ __( 'Captions', 'coblocks' ) }
+					onChange={ () => setAttributes( { captions: ! captions } ) }
 				/> }
 				{ captions && <SelectControl
 					label={ __( 'Caption style', 'coblocks' ) }
-					value={ captionStyle }
 					onChange={ setCaptionStyleTo }
 					options={ captionOptions }
+					value={ captionStyle }
 				/> }
 			</PanelBody>
 			<GalleryLinkSettings { ...props } />

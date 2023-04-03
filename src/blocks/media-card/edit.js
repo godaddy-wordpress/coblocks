@@ -10,7 +10,7 @@ import get from 'lodash/get';
 import applyWithColors from './colors';
 import Controls from './controls';
 import Inspector from './inspector';
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../components/background';
+import { BackgroundClasses, BackgroundDropZone, BackgroundStyles, BackgroundVideo } from '../../components/background';
 import MediaContainer from './media-container';
 
 /**
@@ -101,6 +101,7 @@ const Edit = ( props ) => {
 		coblocks,
 		backgroundImg,
 		hasCardShadow,
+		insertBlocksAfter,
 		paddingTop,
 		paddingRight,
 		paddingBottom,
@@ -214,11 +215,11 @@ const Edit = ( props ) => {
 			<>
 				<MediaContainer
 					className={ className }
+					commitWidthChange={ commitWidthChange }
 					figureClass="wp-block-coblocks-media-card__media-container"
+					onDropMedia={ onDropMedia }
 					onSelectMedia={ onSelectMedia }
 					onWidthChange={ onWidthChange }
-					commitWidthChange={ commitWidthChange }
-					onDropMedia={ onDropMedia }
 					{ ...{ mediaAlt, mediaId, mediaType, mediaUrl, mediaPosition, hasImgShadow, mediaWidth } }
 				/>
 			</>
@@ -253,13 +254,13 @@ const Edit = ( props ) => {
 								}
 							) }
 						>
-							{ ( typeof props.insertBlocksAfter !== 'undefined' ) && (
+							{ ( typeof insertBlocksAfter !== 'undefined' ) && (
 								<InnerBlocks
-									template={ TEMPLATE }
-									allowedBlocks={ ALLOWED_BLOCKS }
-									templateLock={ true }
-									templateInsertUpdatesSelection={ false }
 									__experimentalCaptureToolbars={ true }
+									allowedBlocks={ ALLOWED_BLOCKS }
+									template={ TEMPLATE }
+									templateInsertUpdatesSelection={ false }
+									templateLock={ true }
 								/>
 							) }
 						</div>

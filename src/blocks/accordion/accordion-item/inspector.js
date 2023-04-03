@@ -8,8 +8,8 @@ import applyWithColors from './colors';
  */
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
-import { InspectorControls, ContrastChecker, PanelColorSettings } from '@wordpress/block-editor';
-import { PanelBody, withFallbackStyles, ToggleControl } from '@wordpress/components';
+import { ContrastChecker, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl, withFallbackStyles } from '@wordpress/components';
 
 /**
  * Fallback styles
@@ -31,28 +31,28 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * @param { Object } props
  */
 const Inspector = ( props ) => {
+	const {
+		attributes,
+		backgroundColor,
+		textColor,
+		fallbackBackgroundColor,
+		fallbackTextColor,
+		setAttributes,
+		setBackgroundColor,
+		setTextColor,
+	} = props;
+
 	const getDisplayOpenHelp = ( checked ) => {
 		return checked ? __( 'Accordion item is open by default.', 'coblocks' ) : __( 'Toggle to set this accordion item to be open by default.', 'coblocks' );
 	};
 
 	const setBorderColor = () => {
-		props.setAttributes( {
-			borderColor: props.backgroundColor.color,
+		setAttributes( {
+			borderColor: backgroundColor.color,
 		} );
 
 		return setBackgroundColor;
 	};
-
-	const {
-		attributes,
-		setAttributes,
-		backgroundColor,
-		textColor,
-		fallbackBackgroundColor,
-		fallbackTextColor,
-		setBackgroundColor,
-		setTextColor,
-	} = props;
 
 	const {
 		open,
@@ -64,15 +64,13 @@ const Inspector = ( props ) => {
 				<PanelBody title={ __( 'Accordion Item settings', 'coblocks' ) }>
 					<ToggleControl
 						/* translators: visually display open as opposed to closed */
-						label={ __( 'Display as open', 'coblocks' ) }
 						checked={ !! open }
 						help={ getDisplayOpenHelp }
+						label={ __( 'Display as open', 'coblocks' ) }
 						onChange={ () => setAttributes( { open: ! open } ) }
 					/>
 				</PanelBody>
 				<PanelColorSettings
-					title={ __( 'Color settings', 'coblocks' ) }
-					initialOpen={ false }
 					colorSettings={ [
 						{
 							value: backgroundColor.color,
@@ -85,6 +83,8 @@ const Inspector = ( props ) => {
 							label: __( 'Text color', 'coblocks' ),
 						},
 					] }
+					initialOpen={ false }
+					title={ __( 'Color settings', 'coblocks' ) }
 				>
 					<ContrastChecker
 						{ ...{

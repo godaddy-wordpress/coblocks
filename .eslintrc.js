@@ -33,7 +33,6 @@ module.exports = {
 			memberSyntaxSortOrder: [ 'all', 'single', 'multiple', 'none' ],
 		} ],
 		'sort-keys': [ 'warn', 'asc', { natural: true } ],
-		'react/destructuring-assignment': [ 'warn', 'always' ],
 		'react/jsx-sort-props': [ 'warn', { ignoreCase: true } ],
 	},
 	overrides: [
