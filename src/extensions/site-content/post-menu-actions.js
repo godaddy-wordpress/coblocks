@@ -23,6 +23,18 @@ import * as ICONS from './icons';
 import classnames from 'classnames';
 
 const PostMenuActions = ( props ) => {
+	const {
+		isSticky,
+		onDeletePost,
+		onDuplicatePost,
+		onPinPost,
+		onRenamePost,
+		onSetAsHomePost,
+		postType,
+		shouldDiplayPinAction,
+		shouldDisplayHomepageAction,
+	} = props;
+
 	const [ isConfirming, setIsConfirming ] = useState( null );
 
 	const handleInputKeys = ( event, onToggle ) => {
@@ -55,11 +67,11 @@ const PostMenuActions = ( props ) => {
 						icon={ ICONS.ICON_RENAME }
 						label={ __( 'Rename', 'coblocks' ) }
 						onClickAction={ () => {
-							props.onRenamePost();
+							onRenamePost();
 							onClose();
 						} } />
 
-					{ props.shouldDisplayHomepageAction && (
+					{ shouldDisplayHomepageAction && (
 						<>
 							{ isConfirming && isConfirming === 'homepage' ? (
 								<PostMenuAction
@@ -67,7 +79,7 @@ const PostMenuActions = ( props ) => {
 									label={ __( 'Really set as homepage?', 'coblocks' ) }
 									modifierClass="is-confirming"
 									onClickAction={ () => {
-										props.onSetAsHomePost();
+										onSetAsHomePost();
 										setIsConfirming( null );
 										onClose();
 									} } />
@@ -81,13 +93,13 @@ const PostMenuActions = ( props ) => {
 						</>
 					) }
 
-					{ props.shouldDiplayPinAction &&
+					{ shouldDiplayPinAction &&
 						<PostMenuAction
 							icon={ ICONS.ICON_PIN }
-							label={ props.isSticky ? __( 'Unpin post', 'coblocks' ) : __( 'Pin post', 'coblocks' ) }
+							label={ isSticky ? __( 'Unpin post', 'coblocks' ) : __( 'Pin post', 'coblocks' ) }
 							modifierClass="pin-action"
 							onClickAction={ () => {
-								props.onPinPost();
+								onPinPost();
 								onClose();
 							} } />
 					}
@@ -97,7 +109,7 @@ const PostMenuActions = ( props ) => {
 						label={ __( 'Duplicate', 'coblocks' ) }
 						modifierClass="duplicate-post"
 						onClickAction={ () => {
-							props.onDuplicatePost();
+							onDuplicatePost();
 							setIsConfirming( false );
 							onClose();
 						} } />
@@ -108,14 +120,14 @@ const PostMenuActions = ( props ) => {
 							label={ __( 'Really delete?', 'coblocks' ) }
 							modifierClass="is-destructive"
 							onClickAction={ () => {
-								props.onDeletePost();
+								onDeletePost();
 								setIsConfirming( null );
 								onClose();
 							} } />
 					) : (
 						<PostMenuAction
 							icon={ <Icon icon={ TrashIcon } /> }
-							label={ props.postType === 'page' ? __( 'Delete Page', 'coblocks' ) : __( 'Delete Post', 'coblocks' ) }
+							label={ postType === 'page' ? __( 'Delete Page', 'coblocks' ) : __( 'Delete Post', 'coblocks' ) }
 							modifierClass="is-destructive"
 							onClickAction={ () => setIsConfirming( 'delete' ) } />
 					) }

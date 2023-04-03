@@ -28,25 +28,7 @@ const Inspector = lazy( () => import( './inspector' ) );
  */
 const SocialProfilesEdit = ( props ) => {
 	const {
-		attributes: {
-			borderRadius,
-			customBlockBackgroundColor,
-			facebook,
-			hasColors,
-			houzz,
-			iconSize,
-			instagram,
-			linkedin,
-			padding,
-			pinterest,
-			size,
-			textAlign,
-			tiktok,
-			twitter,
-			yelp,
-			youtube,
-			align,
-		},
+		attributes,
 		className,
 		isSelected,
 		backgroundColor,
@@ -54,6 +36,26 @@ const SocialProfilesEdit = ( props ) => {
 		textColor,
 		setAttributes,
 	} = props;
+
+	const {
+		align,
+		borderRadius,
+		customBlockBackgroundColor,
+		facebook,
+		hasColors,
+		houzz,
+		iconSize,
+		instagram,
+		linkedin,
+		padding,
+		pinterest,
+		size,
+		textAlign,
+		tiktok,
+		twitter,
+		yelp,
+		youtube,
+	} = attributes;
 
 	const [ currentIcon, setCurrentIcon ] = useState( '' );
 
@@ -198,7 +200,7 @@ const SocialProfilesEdit = ( props ) => {
 			<div className={ classes } style={ { textAlign, backgroundColor: blockBackgroundColor.color || '' } }>
 				<ul>
 					{ socialItems.map( ( socialItem ) => (
-						( placeholder || ( props.attributes[ socialItem.slug ] || isSelected ) ) && (
+						( placeholder || ( attributes[ socialItem.slug ] || isSelected ) ) && (
 							<li key={ `social-profile-item-${ socialItem.slug }` }>
 								<button
 									aria-expanded={ currentIcon === socialItem.slug }
@@ -207,12 +209,12 @@ const SocialProfilesEdit = ( props ) => {
 										buttonClasses,
 										`wp-block-coblocks-social__button--${ socialItem.slug }`,
 										{
-											'is-empty': ! props.attributes[ socialItem.slug ],
+											'is-empty': ! attributes[ socialItem.slug ],
 											'is-selected': currentIcon === socialItem.slug,
 										}
 									) }
-									style={ buttonStyles }
 									onClick={ () => setCurrentIcon( socialItem.slug ) }
+									style={ buttonStyles }
 								>
 									<span
 										className="wp-block-coblocks-social__icon"
@@ -234,14 +236,14 @@ const SocialProfilesEdit = ( props ) => {
 											<Dashicon icon="admin-links" />
 											<div className="block-editor-url-input block-editor-url-input editor-url-input--coblocks">
 												<TextControl
-													value={ props.attributes[ socialItem.slug ] }
+													onChange={ ( value ) => {
+														setAttributes( { [ socialItem.slug ]: value } );
+													} }
 													/* eslint-disable jsx-a11y/no-autofocus */
 													// Disable Reason: The rule is meant to prevent enabling auto-focus, not disabling it.
 													placeholder={ socialItem.placeholder }
 													/* eslint-enable jsx-a11y/no-autofocus */
-													onChange={ ( value ) => {
-														setAttributes( { [ socialItem.slug ]: value } );
-													} }
+													value={ attributes[ socialItem.slug ] }
 												/>
 											</div>
 											<Button

@@ -45,12 +45,16 @@ function FontAdvanced( props ) {
 	const currentBodyFont = fontsOptions.find( ( option ) => option.key === bodyFontName );
 	const currentBodyWeight = currentBodyFont.weightsOptions.find( ( option ) => option.key === bodyWeights[ 0 ] );
 
+	const {
+		onClose,
+	} = props;
+
 	return (
 		<div className="components-site-design__custom">
 			<strong>{ __( 'Custom Font Options', 'coblocks' ) }</strong>
 			<button
 				className="components-site-design__custom__dismiss"
-				onClick={ props.onClose }>
+				onClick={ onClose }>
 				<span>Dismiss custom color</span>
 			</button>
 			<fieldset className="components-site-design__custom__body">

@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal dependencies
  */
-import { BackgroundStyles, BackgroundClasses, BackgroundVideo, BackgroundDropZone } from '../../components/background';
+import { BackgroundClasses, BackgroundDropZone, BackgroundStyles, BackgroundVideo } from '../../components/background';
 import applyWithColors from './colors';
 import Inspector from './inspector';
 import Controls from './controls';
@@ -20,7 +20,7 @@ import { compose } from '@wordpress/compose';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { isBlobURL } from '@wordpress/blob';
 import { Spinner } from '@wordpress/components';
-import { withDispatch, withSelect, useSelect, useDispatch } from '@wordpress/data';
+import { useDispatch, useSelect, withDispatch, withSelect } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
 
 /**
@@ -169,10 +169,10 @@ const Edit = ( props ) => {
 						{ isBlobURL( backgroundImg ) && <Spinner /> }
 						{ BackgroundVideo( attributes ) }
 						<InnerBlocks
-							template={ TEMPLATE }
-							allowedBlocks={ ALLOWED_BLOCKS }
-							templateInsertUpdatesSelection={ false }
 							__experimentalCaptureToolbars={ true }
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ TEMPLATE }
+							templateInsertUpdatesSelection={ false }
 						/>
 					</div>
 				</GutterWrapper>
@@ -191,16 +191,23 @@ export default compose( [
 	} ) ),
 	// Ensure there is a minimum of one coblocks/feature innerBlock per column set.
 	( WrappedComponent ) => ( ownProps ) => {
+		const {
+			attributes,
+			clientId,
+			innerBlocks,
+			insertBlock,
+		} = ownProps;
+
 		// This is a newly added block if we have zero innerBlocks. We want the TEMPLATE definition to be used in this case.
-		if ( ownProps.innerBlocks.length > 0 ) {
-			const featureBlocksCount = ownProps.innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/feature' ), 0 );
+		if ( innerBlocks.length > 0 ) {
+			const featureBlocksCount = innerBlocks.reduce( ( acc, cur ) => acc + ( cur.name === 'coblocks/feature' ), 0 );
 			// Add a new block if the count is less than the columns set.
 			// We don't need a loop here because this will trigger a component update as soon as we insert a block (triggering this HOC again).
-			if ( featureBlocksCount < ownProps.attributes.columns ) {
-				ownProps.insertBlock(
+			if ( featureBlocksCount < attributes.columns ) {
+				insertBlock(
 					createBlock( 'coblocks/feature' ),
-					ownProps.innerBlocks.length,
-					ownProps.clientId,
+					innerBlocks.length,
+					clientId,
 					false
 				);
 			}

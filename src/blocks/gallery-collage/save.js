@@ -69,6 +69,7 @@ const save = ( { attributes } ) => {
 								}
 							);
 							const imgClasses = classnames( image.id && [ `wp-image-${ image.id }` ] );
+							// eslint-disable-next-line jsx-a11y/img-redundant-alt
 							const img = typeof image.url === 'undefined' ? null : ( <img alt="Gallery Image" className={ imgClasses } data-id={ image.id } data-imglink={ image.imgLink } data-index={ image.index } data-link={ image.link } src={ image.url } /> );
 
 							return (

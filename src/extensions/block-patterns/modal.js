@@ -4,15 +4,15 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
+import { withDispatch, withSelect } from '@wordpress/data';
 import { BlockPreview } from '@wordpress/block-editor';
 import { serialize } from '@wordpress/blocks';
 import apiFetch from '@wordpress/api-fetch';
 import {
 	Button,
 	Modal,
-	TextControl,
 	SelectControl,
+	TextControl,
 } from '@wordpress/components';
 
 /**
@@ -44,8 +44,10 @@ class CoBlocksBlockPatternsModal extends Component {
 			closeModal,
 			createErrorNotice,
 			createSuccessNotice,
+			getSettings,
 			selectedBlocks,
 			setIsInserterOpened,
+			updateSettings,
 		} = this.props;
 
 		apiFetch( {
@@ -67,10 +69,10 @@ class CoBlocksBlockPatternsModal extends Component {
 				closeModal();
 
 				// Inject block pattern into the inserter.
-				this.props.updateSettings( {
-					...this.props.getSettings(),
+				updateSettings( {
+					...getSettings(),
 					__experimentalBlockPatterns: [
-						...this.props.getSettings().__experimentalBlockPatterns,
+						...getSettings().__experimentalBlockPatterns,
 						{
 							title: name,
 							name: `coblocks_pattern/${ name }`,
@@ -116,19 +118,19 @@ class CoBlocksBlockPatternsModal extends Component {
 
 		return isOpen && (
 			<Modal
+				className="coblocks-block-patterns__modal"
+				onRequestClose={ closeModal }
 				title={ (
 					<>
 						{ __( 'Save Design Pattern', 'coblocks' ) }
 						<InfoPopover
-							title={ __( 'Design Patterns', 'coblocks' ) }
 							popoverProps={ { position: 'top center' } }
+							title={ __( 'Design Patterns', 'coblocks' ) }
 						>
 							{ __( 'Create reusable content and designs that can be quickly added anywhere, but not be tied to other copies of itself (i.e. changing one will not affect the others).', 'coblocks' ) }
 						</InfoPopover>
 					</>
 				) }
-				onRequestClose={ closeModal }
-				className="coblocks-block-patterns__modal"
 			>
 				<div className="coblocks-block-patterns__preview">
 					<BlockPreview
@@ -148,11 +150,11 @@ class CoBlocksBlockPatternsModal extends Component {
 					/>
 					<SelectControl
 						label={ __( 'Category', 'coblocks' ) }
+						onChange={ ( category ) => this.setState( { category } ) }
 						options={ [
 							{ label: __( 'Select a pattern category', 'coblocks' ), value: '' },
 							...blockPatternCategories.map( ( category ) => ( { ...category, value: category.name } ) ),
 						] }
-						onChange={ ( category ) => this.setState( { category } ) }
 					/>
 					<Button isPrimary type="submit">
 						{ __( 'Save Pattern', 'coblocks' ) }

@@ -32,6 +32,7 @@ const GalleryCarouselEdit = ( props ) => {
 	const {
 		attributes,
 		className,
+		clientId,
 		isSelected,
 		noticeUI,
 		setAttributes,
@@ -95,7 +96,7 @@ const GalleryCarouselEdit = ( props ) => {
 
 	const handleSelectCarousel = () => {
 		if ( ! isSelected ) {
-			selectBlock( props.clientId );
+			selectBlock( clientId );
 		}
 	};
 
