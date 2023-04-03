@@ -26,19 +26,13 @@ module.exports = {
 			assertFunctionNames: [ 'expect', 'cy.get', 'helpers.checkForBlockErrors' ],
 		} ],
 
-		// Temp override to slowly change everything
-		'sort-imports': [ 'warn', {
-			allowSeparatedGroups: true,
-			ignoreCase: true,
-			memberSyntaxSortOrder: [ 'all', 'single', 'multiple', 'none' ],
-		} ],
-		'sort-keys': [ 'warn', 'asc', { natural: true } ],
-		'react/jsx-sort-props': [ 'warn', { ignoreCase: true } ],
+		'sort-imports': [ 'off' ],
+		'sort-keys': [ 'off' ],
+		'react/jsx-sort-props': [ 'off' ],
 	},
 	overrides: [
 		{
 			files: [ 'deprecated.js', 'save.js' ],
-			rules: { 'sort-keys': 'warn' },
 		},
 	],
 };

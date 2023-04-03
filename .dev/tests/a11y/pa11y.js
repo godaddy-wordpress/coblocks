@@ -61,9 +61,9 @@ const config = {
 /**
  * Run Accessibility Test
  *
- * @param {string} url test URL
- * @param {Object} config test configuration option
- * @param {Function} [cb] Callback
+ * @param {string}   url    test URL
+ * @param {Object}   config test configuration option
+ * @param {Function} [cb]   Callback
  * @return {Object} test results
  */
 pa11y( url, config, ( error, results ) => {
