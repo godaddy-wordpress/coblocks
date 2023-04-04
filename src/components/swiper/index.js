@@ -56,19 +56,15 @@ const Swiper = ( props ) => {
 
 	const swiperWrapperRef = useRef( null );
 
-	/*
-		This helper function will determine if we are in the site-editor or the Gutenberg editor
-	*/
+	// This helper function will determine if we are in the site-editor or the Gutenberg editor
 	const determineDocumentObject = () => {
 		const siteEditorIframeContainer = document.querySelector( '.edit-site-visual-editor__editor-canvas' );
 
-		let currentDocument = document;
-
 		if ( siteEditorIframeContainer ) {
-			currentDocument = siteEditorIframeContainer.contentDocument;
+			return siteEditorIframeContainer.contentDocument;
 		}
 
-		return currentDocument;
+		return document;
 	};
 
 	useEffect( () => {
