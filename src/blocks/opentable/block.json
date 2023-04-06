@@ -13,6 +13,5 @@
 	},
 	"title": "OpenTable",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-7",
 	"description": "Embed an OpenTable Reservations Widget."
 }

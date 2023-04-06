@@ -25,7 +25,6 @@
 	},
 	"title": "Name",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-3",
 	"description": "A text field for collecting the first and last names.",
 	"parent": [
 		"coblocks/form"

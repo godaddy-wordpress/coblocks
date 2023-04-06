@@ -92,6 +92,5 @@
 	},
 	"textdomain": "coblocks",
 	"title": "Stacked",
-	"editorScript": "blocks-10",
 	"description": "Display multiple images in a single column stacked gallery."
 }

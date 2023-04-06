@@ -57,6 +57,5 @@
 	},
 	"title": "Icon",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-8",
 	"description": "Add a stylized graphic symbol to communicate something more."
 }

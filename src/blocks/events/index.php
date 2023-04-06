@@ -266,29 +266,3 @@ function coblocks_render_multi_day_event_item( $start_date, $end_date, ...$event
 function coblocks_render_single_day_event_item( ...$event_data ) {
 	return coblocks_render_event_item( ...$event_data );
 }
-
-/**
- * Registers the `events` block on server.
- */
-function coblocks_register_events_block() {
-
-	// Return early if this function does not exist.
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	// Load attributes from block.json.
-	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/events/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
-
-	register_block_type(
-		'coblocks/events',
-		array(
-			'attributes'      => $metadata['attributes'],
-			'render_callback' => 'coblocks_render_events_block',
-		)
-	);
-}
-
-add_action( 'init', 'coblocks_register_events_block' );

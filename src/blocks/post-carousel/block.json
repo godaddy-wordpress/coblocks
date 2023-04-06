@@ -73,6 +73,5 @@
 	},
 	"title": "Post Carousel (CoBlocks)",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-11",
 	"description": "Display posts or an external blog feed as a carousel."
 }

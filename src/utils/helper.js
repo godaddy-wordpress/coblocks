@@ -124,7 +124,7 @@ export const registerBlock = ( block ) => {
 		v2Settings.attributes = { ...v2Settings.attributes, ...settings?.attributes };
 	}
 
-	registerBlockType( name, {
+	registerBlockType( block.metadata, {
 		...settings,
 		category,
 		icon,

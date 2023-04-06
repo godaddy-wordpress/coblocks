@@ -23,16 +23,16 @@ import { metadata as stackedMeta, name as stackedName, settings as stackedSettin
 // Imports used for registerFormBlocks().
 // Form, Name, Date, Textarea, Phone, Text, Website, Hidden
 import { name as formBlockName, settings as formBlockSettings } from '../../../src/blocks/form';
-import { name as formCheckboxBlockName, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/checkbox';
-import { name as formDateBlockName, settings as formDateBlockSettings } from '../../../src/blocks/form/fields/date';
-import { name as formHiddenBlockName, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/hidden';
-import { name as formNameBlockName, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/name';
-import { name as formPhoneBlockName, settings as formPhoneBlockSettings } from '../../../src/blocks/form/fields/phone';
-import { name as formRadioBlockName, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/radio';
-import { name as formSelectBlockName, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/select';
-import { name as formTextareaBlockName, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/textarea';
-import { name as formTextBlockName, settings as formTextBlockSettings } from '../../../src/blocks/form/fields/text';
-import { name as formWebsiteBlockName, settings as formWebsiteBlockSettings } from '../../../src/blocks/form/fields/website';
+import { name as formCheckboxBlockName, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/field-checkbox';
+import { name as formDateBlockName, settings as formDateBlockSettings } from '../../../src/blocks/form/fields/field-date';
+import { name as formHiddenBlockName, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/field-hidden';
+import { name as formNameBlockName, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/field-name';
+import { name as formPhoneBlockName, settings as formPhoneBlockSettings } from '../../../src/blocks/form/fields/field-phone';
+import { name as formRadioBlockName, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/field-radio';
+import { name as formSelectBlockName, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/field-select';
+import { name as formTextareaBlockName, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/field-textarea';
+import { name as formTextBlockName, settings as formTextBlockSettings } from '../../../src/blocks/form/fields/field-text';
+import { name as formWebsiteBlockName, settings as formWebsiteBlockSettings } from '../../../src/blocks/form/fields/field-website';
 
 /**
  * WordPress dependencies

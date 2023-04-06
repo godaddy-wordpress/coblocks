@@ -9,6 +9,5 @@
 	},
 	"title": "Offset",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-7",
 	"description": "Display images in an offset brick pattern gallery."
 }

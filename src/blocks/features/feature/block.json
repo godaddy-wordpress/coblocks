@@ -18,7 +18,6 @@
 	},
 	"title": "Feature",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-2",
 	"description": "A singular child column within a parent features block.",
 	"parent": [ "coblocks/features" ]
 }

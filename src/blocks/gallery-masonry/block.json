@@ -96,6 +96,5 @@
 		"html": false
 	},
 	"editorStyle": "wp-block-coblocks-gallery-masonry-editor",
-	"style": "wp-block-coblocks-gallery-masonry",
-	"editorScript": "blocks-5"
+	"style": "wp-block-coblocks-gallery-masonry"
 }

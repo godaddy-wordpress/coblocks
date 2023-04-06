@@ -112,20 +112,3 @@ function coblocks_render_icon_block( $attrs ) {
 		)
 	);
 }
-
-/**
- * Registers the block on server.
- */
-function coblocks_register_icon_block() {
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	register_block_type(
-		COBLOCKS_PLUGIN_DIR . 'src/blocks/icon',
-		array(
-			'render_callback' => 'coblocks_render_icon_block',
-		)
-	);
-}
-add_action( 'init', 'coblocks_register_icon_block' );

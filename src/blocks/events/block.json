@@ -30,6 +30,5 @@
 	},
 	"title": "Events",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-2",
 	"description": "Add a list of events or display events from a public calendar."
 }

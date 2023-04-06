@@ -1,9 +1,10 @@
 {
-	"name": "coblocks/field-checkbox",
+	"name": "coblocks/field-radio",
+	"category": "layout",
 	"attributes": {
 		"label": {
 			"type": "string",
-			"default": "Checkbox"
+			"default": "Choose one"
 		},
 		"required": {
 			"type": "boolean",
@@ -18,11 +19,9 @@
 			"default": false
 		}
 	},
-	"category": "layout",
-	"title": "Checkbox",
+	"title": "Radio",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-3",
-	"description": "A checkbox field with multiple options where multiple choices can be made.",
+	"description": "A field with multiple options where only one choice can be made.",
 	"parent": [
 		"coblocks/form"
 	]

@@ -57,6 +57,5 @@
 	},
 	"title": "Collage",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-3",
 	"description": "Assemble images into a beautiful collage gallery."
 }

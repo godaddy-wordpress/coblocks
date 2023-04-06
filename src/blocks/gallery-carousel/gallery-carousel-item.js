@@ -108,13 +108,13 @@ const GalleryCarouselItem = ( {
 
 	return (
 		<div
+			aria-label={ __( 'Gallery Image', 'coblocks' ) }
 			className={ galleryItemClasses }
 			role="button"
 			style={ {
 				position: 'relative',
 			} }
 			tabIndex={ index }
-			ariaLabel={ __( 'Gallery Image', 'coblocks' ) }
 		>
 			{ renderGalleryItem }
 			{ isItemSelected ? renderCaption : null }

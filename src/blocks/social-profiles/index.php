@@ -178,30 +178,3 @@ function coblocks_render_social_profiles_block( $attributes ) {
 
 	return $block_content;
 }
-
-/**
- * Registers the block on server.
- */
-function coblocks_register_social_profiles_block() {
-	// Return early if this function does not exist.
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	// Load attributes from block.json.
-	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/social-profiles/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
-
-	register_block_type(
-		'coblocks/social-profiles',
-		array(
-			'editor_script'   => 'coblocks-editor',
-			'editor_style'    => 'coblocks-editor',
-			'style'           => 'coblocks-frontend',
-			'attributes'      => $metadata['attributes'],
-			'render_callback' => 'coblocks_render_social_profiles_block',
-		)
-	);
-}
-add_action( 'init', 'coblocks_register_social_profiles_block' );

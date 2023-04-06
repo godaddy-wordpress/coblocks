@@ -1,20 +1,19 @@
 {
-	"name": "coblocks/field-website",
+	"name": "coblocks/field-textarea",
 	"category": "layout",
 	"attributes": {
 		"label": {
 			"type": "string",
-			"default": "Website"
+			"default": "Message"
 		},
 		"required": {
 			"type": "boolean",
 			"default": false
 		}
 	},
-	"title": "Website",
+	"title": "Textarea",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-3",
-	"description": "A text field for collecting a URL.",
+	"description": "A text box for longer responses.",
 	"parent": [
 		"coblocks/form"
 	]

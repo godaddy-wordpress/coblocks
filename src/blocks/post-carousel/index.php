@@ -325,32 +325,6 @@ function coblocks_get_rss_post_carousel_info( $posts ) {
 }
 
 /**
- * Registers the `post-carousel` block on server.
- */
-function coblocks_register_post_carousel_block() {
-	// Return early if this function does not exist.
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	$dir = CoBlocks()->asset_source( 'js' );
-
-	// Load attributes from block.json.
-	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/post-carousel/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
-
-	register_block_type(
-		'coblocks/post-carousel',
-		array(
-			'attributes'      => $metadata['attributes'],
-			'render_callback' => 'coblocks_render_post_carousel_block',
-		)
-	);
-}
-add_action( 'init', 'coblocks_register_post_carousel_block' );
-
-/**
  * Handles outdated versions of the `coblocks/post-carousel` block by converting
  * attribute `categories` from a numeric string to an array with key `id`.
  *

@@ -1,20 +1,19 @@
 {
-	"name": "coblocks/field-phone",
+	"name": "coblocks/field-date",
 	"category": "layout",
 	"attributes": {
 		"label": {
 			"type": "string",
-			"default": "Phone"
+			"default": "Date"
 		},
 		"required": {
 			"type": "boolean",
 			"default": false
 		}
 	},
-	"title": "Phone",
+	"title": "Date",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-3",
-	"description": "A text field for collecting a phone number.",
+	"description": "A field for requesting date selections with a date picker.",
 	"parent": [
 		"coblocks/form"
 	]
