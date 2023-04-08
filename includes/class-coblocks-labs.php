@@ -54,7 +54,23 @@ class CoBlocks_Labs {
 	 * @return boolean
 	 */
 	public static function is_go_active() {
-		return defined( 'GO_VERSION' ) && 'go' === get_option( 'stylesheet' );
+		return 'go' === get_option( 'stylesheet' );
+	}
+
+	/**
+	 * Checks if Go theme's get_design_style() method is accessible, otherwise assumes FSE context.
+	 *
+	 * @since 3.1.0
+	 * @return boolean
+	 */
+	public static function is_go_se() {
+		// Check if the \Go\Core class exists and the get_design_style method is accessible.
+		$is_design_style_accessible = self::is_go_active()
+			&& class_exists( '\Go\Core' )
+			&& method_exists( '\Go\Core', 'get_design_style' );
+
+		// If the method is not accessible, assume FSE context.
+		return ! $is_design_style_accessible;
 	}
 
 	/**
@@ -115,6 +131,13 @@ class CoBlocks_Labs {
 			update_option( 'coblocks_site_design_controls_enabled', 0 );
 			update_option( 'coblocks_layout_selector_controls_enabled', 0 );
 		}
+
+		// Site design is disabled when in GSE context.
+		$is_go_se = self::is_go_se();
+
+		if ( $is_go_se ) {
+			update_option( 'coblocks_site_design_controls_enabled', 0 );
+		}
 	}
 
 	/**
@@ -129,6 +152,7 @@ class CoBlocks_Labs {
 			array(
 				'isGoThemeActive'     => self::is_go_active(),
 				'isGoThemeInstalled'  => self::is_go_installed(),
+				'isGoSiteEditor'      => self::is_go_se(),
 				'goThemeInstallUri'   => admin_url( 'theme-install.php?theme=go' ),
 				'goThemeDetailsUri'   => admin_url( 'themes.php' ) . '?theme=go',
 				'launchGuideEligible' => ! empty( get_option( 'wpnux_export_data' ) ),

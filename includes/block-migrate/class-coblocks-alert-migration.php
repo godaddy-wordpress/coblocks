@@ -89,7 +89,7 @@ class CoBlocks_Alert_Migration extends CoBlocks_Block_Migration {
 		/**
 		 * Handle setting the migrated attributes custom colors.
 		 */
-		$result              = $this->get_alert_colors( $this->block_attributes, $result );
+		$result = $this->get_alert_colors( $this->block_attributes, $result );
 
 		/**
 		 * Add `coblocks-alert-paragraph` class for CoBlocks styles selector.

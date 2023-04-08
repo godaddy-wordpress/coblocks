@@ -15,6 +15,7 @@ registerPlugin( 'coblocks-site-design-control', {
 	render: () => (
 		<CoBlocksLabsToggleControl
 			conditionalDisable={ true }
+			conditionalDisableFSE={ true }
 			description={ __( 'Easily explore curated design styles, then customize your colors and fonts inside the editor to get the perfect fit.', 'coblocks' ) }
 			imageAlt={ __( 'Site design example', 'coblocks' ) }
 			imageSrc={ SiteDesignImage }

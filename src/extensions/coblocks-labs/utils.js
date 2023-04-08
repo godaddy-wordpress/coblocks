@@ -51,6 +51,46 @@ export const conditionalHelpMessage = ( ) => {
 };
 
 /**
+ * The Site Design feature is deprecated with Go FSE and is disabled when Go FSE is active.
+ *
+ * @return {string} - Conditional string to use the feature or disabled
+ */
+export const GSEHelpMessage = ( ) => {
+	const {
+		isGoThemeActive,
+		isGoThemeInstalled,
+		isGoSiteEditor,
+		goThemeDetailsUri,
+		goThemeInstallUri,
+	} = safeCoBlocksLabsData;
+
+	if ( isGoSiteEditor ) {
+		return __( 'This feature is deprecated and replaced with Go Site Editor.', 'coblocks' );
+	}
+
+	if ( isGoThemeActive && isGoThemeInstalled ) {
+		return __( 'This feature requires the Go Theme.', 'coblocks' );
+	}
+
+	if ( isGoThemeInstalled ) {
+		return (
+			<> { __( 'This feature requires the Go Theme - ', 'coblocks' ) }
+				<a href={ goThemeDetailsUri } rel="noopener noreferrer" target="_blank">
+					{ __( 'Activate', 'coblocks' ) }
+				</a>
+			</> );
+	}
+
+	// Feature will remain disabled with GSE but still allows user to manage site design through Go.
+	return (
+		<> { __( 'This feature requires the Go Theme - ', 'coblocks' ) }
+			<a href={ goThemeInstallUri } rel="noopener noreferrer" target="_blank">
+				{ __( 'Install now', 'coblocks' ) }
+			</a>
+		</> );
+};
+
+/**
  *
  * @return {boolean} Whether or not the Site Design and Layout Selector controls are enabled.
  */
