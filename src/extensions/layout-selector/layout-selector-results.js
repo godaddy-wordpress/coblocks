@@ -74,10 +74,11 @@ export const LayoutPreview = ( { layout, onClick } ) => {
 			data-testid="coblocks-layout-selector__layout-button"
 			onClick={ () => onClick( layout ) }
 		>
-
 			<Spinner />
+			<div className="coblocks-layout-selector__layout-preview-container">
+				<BlockPreview blocks={ sanitizedBlocks } viewportWidth={ 700 } />
+			</div>
 
-			<BlockPreview blocks={ sanitizedBlocks } viewportWidth={ 700 } />
 		</Button>
 	);
 };

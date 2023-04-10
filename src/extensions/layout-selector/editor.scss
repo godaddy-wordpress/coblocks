@@ -291,7 +291,7 @@
 	&__layouts {
 		column-count: 1;
 		column-gap: 1em;
-		padding-top: 4px;
+		padding-top: 1em;
 
 		@include break-small() {
 			column-count: 2;
@@ -303,6 +303,11 @@
 		@include break-large() {
 			column-count: 2;
 		}
+	}
+
+	&__layout-preview-container {
+		margin: 2em;
+		width: 100%;
 	}
 
 	&__layout {
@@ -323,7 +328,6 @@
 
 		.block-editor-block-preview__container {
 			background-color: var(--go--color--background, $white);
-			margin: 2em;
 			position: relative;
 			z-index: 10;
 
