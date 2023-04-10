@@ -493,53 +493,6 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		/**
-		 * Enqueue specific scripts for the given core blocks.
-		 *
-		 * @param string $block_content The block content to be rendered.
-		 * @param array  $block         The block attributes.
-		 *
-		 * @return string The original block content.
-		 */
-		function coblocks_enqueue_scripts_for_core_blocks( $block_content, $block ) {
-
-			$block_name = $block['blockName'];
-
-			// Allowed blocks for the lightbox script.
-			$lightbox_allowed_blocks = array(
-				'core/gallery',
-				'core/image',
-				'core/block',
-			);
-
-			// Allowed blocks for the gist script.
-			$gist_allowed_blocks = array(
-				'core/embed',
-			);
-
-			if ( in_array( $block_name, $lightbox_allowed_blocks, true ) ) {
-				wp_enqueue_script(
-					'coblocks-lightbox',
-					$dir . 'coblocks-lightbox.js',
-					array(),
-					COBLOCKS_VERSION,
-					true
-				);
-			}
-
-			if ( in_array( $block_name, $gist_allowed_blocks, true ) ) {
-				wp_enqueue_script(
-					'coblocks-gist-script',
-					$dir . 'coblocks-gist-script.js',
-					array(),
-					COBLOCKS_VERSION,
-					true
-				);
-			}
-
-			return $block_content;
-		}
-
 		add_filter( 'render_block', 'coblocks_enqueue_scripts_for_core_blocks', 10, 2 );
 
 		wp_localize_script(
@@ -552,6 +505,53 @@ class CoBlocks_Block_Assets {
 			)
 		);
 
+	}
+
+	/**
+	 * Enqueue specific scripts for the given core blocks.
+	 *
+	 * @param string $block_content The block content to be rendered.
+	 * @param array  $block         The block attributes.
+	 *
+	 * @return string The original block content.
+	 */
+	public function coblocks_enqueue_scripts_for_core_blocks( $block_content, $block ) {
+
+		$block_name = $block['blockName'];
+
+		// Allowed blocks for the lightbox script.
+		$lightbox_allowed_blocks = array(
+			'core/gallery',
+			'core/image',
+			'core/block',
+		);
+
+		// Allowed blocks for the gist script.
+		$gist_allowed_blocks = array(
+			'core/embed',
+		);
+
+		if ( in_array( $block_name, $lightbox_allowed_blocks, true ) ) {
+			wp_enqueue_script(
+				'coblocks-lightbox',
+				$dir . 'coblocks-lightbox.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
+		if ( in_array( $block_name, $gist_allowed_blocks, true ) ) {
+			wp_enqueue_script(
+				'coblocks-gist-script',
+				$dir . 'coblocks-gist-script.js',
+				array(),
+				COBLOCKS_VERSION,
+				true
+			);
+		}
+
+		return $block_content;
 	}
 
 	/**
