@@ -72,9 +72,7 @@ const Swiper = ( props ) => {
 			swiperWrapperRef.current.addEventListener( ( 'mousedown' ), ( e ) => e.stopPropagation() );
 
 			return () => {
-				if ( swiperWrapperRef && swiperWrapperRef.current ) {
-					swiperWrapperRef.current.removeEventListener( ( 'mousedown' ), ( e ) => e.stopPropagation() );
-				}
+				swiperWrapperRef?.current?.removeEventListener( ( 'mousedown' ), ( e ) => e.stopPropagation() );
 			};
 		}
 	}, [ isDraggable ] );
