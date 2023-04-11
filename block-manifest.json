@@ -1,0 +1,164 @@
+{
+    "accordion": {
+        "attributes": true
+    },
+    "accordion-item": {
+        "child": true
+    },
+    "alert": {
+        "attributes": true
+    },
+    "author": {
+        "attributes": true
+    },
+    "buttons": {},
+    "field-checkbox": {
+        "child": true,
+        "render_callback": true
+    },
+    "click-to-tweet": {
+        "attributes": true
+    },
+    "column": {
+        "child": true
+    },
+    "counter": {
+        "script": true
+    },
+    "field-date": {
+        "child": true,
+        "render_callback": true
+    },
+    "dynamic-separator": {},
+    "field-email": {
+        "child": true,
+        "render_callback": true
+    },
+    "event-item": {
+        "child": true
+    },
+    "events": {
+        "attributes": true,
+        "render_callback": true,
+        "script": true
+    },
+    "faq": {},
+    "faq-item": {
+        "child": true
+    },
+    "feature": {
+        "child": true
+    },
+    "features": {},
+    "food-and-drinks": {},
+    "food-item": {
+        "child": true
+    },
+    "form": {},
+    "gallery-carousel": {
+        "script": [
+            "coblocks-lightbox",
+            "coblocks-tiny-swiper",
+            "coblocks-tinyswiper-initializer"
+        ]
+    },
+    "gallery-masonry": {
+        "script": [
+            "coblocks-lightbox"
+        ]
+    },
+    "gallery-offset": {
+        "script": [
+            "coblocks-lightbox"
+        ]
+    },
+    "gallery-stacked": {
+        "script": [
+            "coblocks-lightbox"
+        ]
+    },
+    "gif": {},
+    "gist": {
+        "view_script": true
+    },
+    "hero": {},
+    "field-hidden": {
+        "child": true,
+        "render_callback": true
+    },
+    "highlight": {},
+    "icon": {
+        "render_callback": true
+    },
+    "logos": {},
+    "map": {},
+    "media-card": {},
+    "field-name": {
+        "child": true,
+        "render_callback": true
+    },
+    "opentable": {},
+    "field-phone": {
+        "child": true,
+        "render_callback": true
+    },
+    "post-carousel": {
+        "attributes": true,
+        "render_callback": true,
+        "script": true
+    },
+    "posts": {
+        "attributes": true,
+        "render_callback": true
+    },
+    "pricing-table": {},
+    "pricing-table-item": {
+        "child": true
+    },
+    "field-radio": {
+        "child": true,
+        "render_callback": true
+    },
+    "row": {},
+    "field-select": {
+        "child": true,
+        "render_callback": true
+    },
+    "service": {
+        "child": true
+    },
+    "services": {
+        "script": true
+    },
+    "share": {
+        "attributes": true,
+        "render_callback": true
+    },
+    "shape-divider": {
+        "render_callback": true
+    },
+    "social-profiles": {
+        "attributes": true,
+        "render_callback": true
+    },
+    "field-submit-button": {
+        "child": true,
+        "render_callback": true
+    },
+    "testimonials": {},
+    "testimonial": {
+        "child": true
+    },
+    "field-text": {
+        "child": true,
+        "render_callback": true
+    },
+    "field-textarea": {
+        "child": true,
+        "render_callback": true
+    },
+    "field-website": {
+        "child": true,
+        "render_callback": true
+    }
+}

@@ -233,8 +233,8 @@ function coblocks_post_carousel( $posts, $attributes ) {
 	$block_content .= '</div>';
 	$block_content .= '</div>';
 
-	$block_content .= '<button class="wp-coblocks-post-carousel-nav-button__prev" id="wp-coblocks-post-carousel-swiper-prev" style="visibility:hidden" />';
-	$block_content .= '<button class="wp-coblocks-post-carousel-nav-button__next" id="wp-coblocks-post-carousel-swiper-next" style="visibility:hidden" />';
+	$block_content .= sprintf( '<button class="wp-coblocks-post-carousel-nav-button__prev" id="wp-coblocks-post-carousel-swiper-prev" style="visibility:hidden" aria-label="%s" />', __( 'Previous post', 'coblocks' ) );
+	$block_content .= sprintf( '<button class="wp-coblocks-post-carousel-nav-button__next" id="wp-coblocks-post-carousel-swiper-next" style="visibility:hidden" aria-label="%s" />', __( 'Next post', 'coblocks' ) );
 
 	$block_content .= '</div>';
 

@@ -171,8 +171,8 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		$events_layout .= '</div>';
 
-		$events_layout .= '<button class="wp-coblocks-events-nav-button__prev" id="wp-coblocks-event-swiper-prev" style="visibility: hidden" />';
-		$events_layout .= '<button class="wp-coblocks-events-nav-button__next" id="wp-coblocks-event-swiper-next" style="visibility: hidden" />';
+		$events_layout .= sprintf( '<button class="wp-coblocks-events-nav-button__prev" id="wp-coblocks-event-swiper-prev" style="visibility: hidden" aria-label="%s"/>', __( 'Previous post', 'coblocks' ) );
+		$events_layout .= sprintf( '<button class="wp-coblocks-events-nav-button__next" id="wp-coblocks-event-swiper-next" style="visibility: hidden" aria-label="%s"/>', __( 'Next post', 'coblocks' ) );
 
 		$events_layout .= '</div>';
 
