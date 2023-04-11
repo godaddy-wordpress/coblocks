@@ -52,17 +52,17 @@ class CoBlocks_Register_Blocks_Tests extends WP_UnitTestCase {
 		$reflection     = new ReflectionClass( $this->coblocks_register_blocks );
 		$new_reflection = new CoBlocks_Register_Blocks();
 
-		$expected = [
+		$expected = array(
 			'slug' => 'coblocks',
-		];
+		);
 
 		$slug = $reflection->getProperty( 'slug' );
 
 		$slug->setAccessible( true );
 
-		$check = [
+		$check = array(
 			'slug' => $slug->getValue( $new_reflection ),
-		];
+		);
 
 		$this->assertEquals( $expected, $check );
 
@@ -73,15 +73,15 @@ class CoBlocks_Register_Blocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_construct_actions() {
 
-		$actions = [
-			[ 'init', 'register_blocks', 99 ],
-		];
+		$actions = array(
+			array( 'init', 'register_blocks', 99 ),
+		);
 
 		foreach ( $actions as $action_data ) {
 
 			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
 
-			if ( ! has_action( $action_data[0], [ $this->coblocks_register_blocks, $action_data[1] ] ) ) {
+			if ( ! has_action( $action_data[0], array( $this->coblocks_register_blocks, $action_data[1] ) ) ) {
 
 				$this->fail( "$action_data[0] is not attached to CoBlocks:$action_data[1]. It might also have the wrong priority (validated priority: $priority)" );
 
@@ -101,7 +101,7 @@ class CoBlocks_Register_Blocks_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_register_blocks->register_blocks();
 
-		$expected_registered_blocks = [
+		$expected_registered_blocks = array(
 			'coblocks/accordion',
 			'coblocks/alert',
 			'coblocks/author',
@@ -112,7 +112,7 @@ class CoBlocks_Register_Blocks_Tests extends WP_UnitTestCase {
 			'coblocks/gallery-carousel',
 			'coblocks/gallery-masonry',
 			'coblocks/gallery-stacked',
-		];
+		);
 
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 

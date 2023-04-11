@@ -140,7 +140,8 @@ class CoBlocks_Register_Blocks {
 					'script' => true,
 				),
 				'field-date'          => array(
-					'child' => true,
+					'child'           => true,
+					'render_callback' => true,
 				),
 				'dynamic-separator'   => array(),
 				'field-email'         => array(
@@ -186,7 +187,8 @@ class CoBlocks_Register_Blocks {
 				),
 				'hero'                => array(),
 				'field-hidden'        => array(
-					'child' => true,
+					'child'           => true,
+					'render_callback' => true,
 				),
 				'highlight'           => array(),
 				'icon'                => array(
@@ -196,11 +198,13 @@ class CoBlocks_Register_Blocks {
 				'map'                 => array(),
 				'media-card'          => array(),
 				'field-name'          => array(
-					'child' => true,
+					'child'           => true,
+					'render_callback' => true,
 				),
 				'opentable'           => array(),
 				'field-phone'         => array(
-					'child' => true,
+					'child'           => true,
+					'render_callback' => true,
 				),
 				'post-carousel'       => array(
 					'attributes'      => true,

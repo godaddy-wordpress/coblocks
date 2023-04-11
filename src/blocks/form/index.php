@@ -58,7 +58,7 @@ function coblocks_render_form_block( $atts, $content ) {
 			<?php
 			// Output a submit button if it's not found in the block content.
 			if ( false === strpos( $content, 'coblocks-form__submit' ) ) :
-				echo \CoBlocks_Form::render_field_submit_button( $atts );
+				echo coblocks_render_field_submit_button_block( $atts );
 				endif;
 			?>
 			</form>

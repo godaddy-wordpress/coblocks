@@ -1,6 +1,6 @@
 <?php
 /**
- * Test includes/admin/class-coblocks-url-generator.php
+ * Test src/blocks/share/index.php
  *
  * @package CoBlocks
  */
@@ -11,8 +11,6 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 	public function set_up(): void {
 
 		parent::set_up();
-
-		include_once COBLOCKS_PLUGIN_DIR . 'src/blocks/share/index.php';
 
 		set_current_screen( 'edit-post' );
 
@@ -32,40 +30,17 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 
 	}
 
-	/**
-	 * Test the file actions are hooked properly
-	 */
-	public function test_file_actions() {
-
-		$actions = [
-			[ 'init', 'coblocks_register_share_block' ],
-		];
-
-		foreach ( $actions as $action_data ) {
-
-			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
-
-			if ( ! has_action( $action_data[0], $action_data[1] ) ) {
-
-				$this->fail( "$action_data[0] is not attached to $action_data[1]." );
-
-			}
-		}
-
-		$this->assertTrue( true );
-
-	}
 
 	/**
 	 * Test the social block markup returns correctly
 	 */
 	public function test_coblocks_render_share_block() {
 
-		$attributes = [
+		$attributes = array(
 			'className' => 'test-class-name',
 			'size'      => 'large',
 			'hasColors' => true,
-		];
+		);
 
 		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name has-colors has-button-size-large" style=" "><ul></ul></div>', coblocks_render_share_block( $attributes ) );
 
@@ -76,10 +51,10 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 	 */
 	public function test_coblocks_render_share_block_style_mask() {
 
-		$attributes = [
+		$attributes = array(
 			'className' => 'test-class-name is-style-mask',
 			'hasColors' => true,
-		];
+		);
 
 		$this->assertEquals( '<div class="wp-block-coblocks-social test-class-name is-style-mask has-colors" style=" "><ul></ul></div>', coblocks_render_share_block( $attributes ) );
 
@@ -90,9 +65,9 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 	 */
 	public function test_coblocks_render_share_block_platforms() {
 
-		$attributes = [
+		$attributes = array(
 			'twitter' => true,
-		];
+		);
 
 		$this->assertMatchesRegularExpression( '/<a href="http:\/\/twitter.com\/share\?text=&#038;url=" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--twitter     " title="Share on Twitter" style="">/', coblocks_render_share_block( $attributes ) );
 
@@ -103,9 +78,9 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 	 */
 	public function test_coblocks_render_share_block_filter_twitter_share_url() {
 
-		$attributes = [
+		$attributes = array(
 			'twitter' => true,
-		];
+		);
 
 		add_filter(
 			'coblocks_twitter_share_url',
@@ -124,12 +99,12 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 	public function test_coblocks_render_share_block_with_thumbnail() {
 
 		$post_id = wp_insert_post(
-			[
+			array(
 				'post_author'  => 1,
 				'post_content' => '<!-- wp:coblocks/social --><!-- /wp:coblocks/social -->',
 				'post_title'   => 'CoBlocks Social',
 				'post_status'  => 'publish',
-			]
+			)
 		);
 
 		$this->thumbnail_id = media_sideload_image( 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260', $post_id, 'Test cat image.', 'id' );
@@ -140,9 +115,9 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 
 		$post = get_post( $post_id );
 
-		$attributes = [
+		$attributes = array(
 			'pinterest' => true,
-		];
+		);
 
 		$site_url = str_replace( '/', '\/', get_site_url() );
 
@@ -150,31 +125,23 @@ class CoBlocks_Social_Index_Tests extends WP_UnitTestCase {
 
 	}
 
-	/**
-	 * Test the share block is registered
-	 *
-	 * @expectedIncorrectUsage WP_Block_Type_Registry::register
-	 */
-	public function test_coblocks_register_share_block() {
-
-		coblocks_register_share_block();
-
-		$expected_registered_blocks = [
-			'coblocks/social',
-		];
+	public function test_phone_field_block_registered() {
 
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 
-		foreach ( $expected_registered_blocks as $coblocks_block ) {
+		$this->assertArrayHasKey( 'coblocks/social', $registered_blocks );
 
-			if ( ! array_key_exists( $coblocks_block, $registered_blocks ) ) {
+	}
 
-				$this->fail( "$coblocks_block is not registered." );
+	/**
+	 * Test the social block markup returns correctly with custom block background color
+	 */
+	public function test_coblocks_render_share_block_custom_block_background_color() {
+		$attributes = array(
+			'customBlockBackgroundColor' => '#123456',
+			'hasColors'                  => true,
+		);
 
-			}
-		}
-
-		$this->assertTrue( true );
-
+		$this->assertMatchesRegularExpression( '/<div class="wp-block-coblocks-social has-background has-colors" style="background-color:#123456;?\s?"><ul>/', coblocks_render_share_block( $attributes ) );
 	}
 }

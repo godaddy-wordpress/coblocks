@@ -57,15 +57,15 @@ class CoBlocks_Post_Meta_Tests extends WP_Test_REST_TestCase {
 	 */
 	public function test_construct_actions() {
 
-		$actions = [
-			[ 'init', 'register_meta' ],
-		];
+		$actions = array(
+			array( 'init', 'register_meta' ),
+		);
 
 		foreach ( $actions as $action_data ) {
 
 			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
 
-			if ( ! has_action( $action_data[0], [ $this->coblocks_post_meta, $action_data[1] ] ) ) {
+			if ( ! has_action( $action_data[0], array( $this->coblocks_post_meta, $action_data[1] ) ) ) {
 
 				$this->fail( "$action_data[0] is not attached to CoBlocks:$action_data[1]. It might also have the wrong priority (validated priority: $priority)" );
 
@@ -81,12 +81,12 @@ class CoBlocks_Post_Meta_Tests extends WP_Test_REST_TestCase {
 	 */
 	public function test_register_meta() {
 
-		$atts = [
+		$atts = array(
 			'_coblocks_attr'                 => 'testvalue',
 			'_coblocks_dimensions'           => 'testvalue',
 			'_coblocks_dimensions'           => 'testvalue',
 			'_coblocks_accordion_ie_support' => 'testvalue',
-		];
+		);
 
 		foreach ( $atts as $attribute => $value ) {
 

@@ -10,7 +10,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
 	}
 
-    public function set_up(): void {
+	public function set_up(): void {
 		parent::set_up();
 
 		set_current_screen( 'dashboard' );
@@ -18,7 +18,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		// Reset queued scripts and styles.
 		global $wp_scripts, $wp_styles;
 		$wp_scripts = new WP_Scripts();
-		$wp_styles = new WP_Styles();
+		$wp_styles  = new WP_Styles();
 	}
 
 	public function tear_down(): void {
@@ -49,7 +49,12 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		add_filter(
 			'coblocks_layout_selector_categories',
 			function() {
-				return array( array( 'slug' => 'filtered', 'title' => 'filtered' ) );
+				return array(
+					array(
+						'slug'  => 'filtered',
+						'title' => 'filtered',
+					),
+				);
 			}
 		);
 
@@ -90,7 +95,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 						'category' => 'testing',
 						'label'    => 'testing',
 						'blocks'   => array(),
-					)
+					),
 				);
 			}
 		);
@@ -121,7 +126,7 @@ class CoBlocks_Layout_Selector_Tests extends WP_UnitTestCase {
 		coblocks_localize_layout_selector();
 		$localized = $wp_scripts->get_data( 'coblocks-editor', 'data' );
 
-		$layouts = coblocks_layout_selector_layouts();
+		$layouts    = coblocks_layout_selector_layouts();
 		$categories = coblocks_layout_selector_categories();
 
 		$this->assertStringContainsString( 'var coblocksLayoutSelector', $localized );

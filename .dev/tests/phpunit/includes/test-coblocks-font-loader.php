@@ -49,16 +49,16 @@ class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 	 */
 	public function test_construct_actions() {
 
-		$actions = [
-			[ 'wp_enqueue_scripts', 'fonts_loader' ],
-			[ 'admin_enqueue_scripts', 'fonts_loader' ],
-		];
+		$actions = array(
+			array( 'wp_enqueue_scripts', 'fonts_loader' ),
+			array( 'admin_enqueue_scripts', 'fonts_loader' ),
+		);
 
 		foreach ( $actions as $action_data ) {
 
 			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
 
-			if ( ! has_action( $action_data[0], [ $this->coblocks_font_loader, $action_data[1] ] ) ) {
+			if ( ! has_action( $action_data[0], array( $this->coblocks_font_loader, $action_data[1] ) ) ) {
 
 				$this->fail( "$action_data[0] is not attached to CoBlocks:$action_data[1]. It might also have the wrong priority (validated priority: $priority)" );
 
@@ -75,12 +75,12 @@ class CoBlocks_Font_Loader_Tests extends WP_UnitTestCase {
 	public function test_font_loader() {
 
 		$post_id = wp_insert_post(
-			[
+			array(
 				'post_author'  => 1,
 				'post_content' => 'Font Loader Test',
 				'post_title'   => 'Font Loader Test',
 				'post_status'  => 'publish',
-			]
+			)
 		);
 
 		update_post_meta( $post_id, '_coblocks_attr', 'Roboto,Lato' );
