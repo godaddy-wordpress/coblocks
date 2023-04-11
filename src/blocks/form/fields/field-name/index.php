@@ -33,7 +33,8 @@ function coblocks_render_field_name_block( $atts ) {
 
 	ob_start();
 
-	\CoBlocks_Form::render_field_label( $atts, $label, $name_count );
+	$coblocks_form = new \CoBlocks_Form();
+	$coblocks_form->render_field_label( $atts, $label, $checkbox_count );
 
 	?>
 		<input type="hidden" id="name-field-id" name="name-field-id" class="coblocks-name-field-id" value="field-<?php echo esc_attr( $label_slug ); ?>" />

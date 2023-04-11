@@ -69,7 +69,8 @@ function coblocks_render_field_checkbox_block( $atts ) {
 		)
 	);
 
-	\CoBlocks_Form::render_field_label( $atts, $label, $checkbox_count );
+	$coblocks_form = new \CoBlocks_Form();
+	$coblocks_form->render_field_label( $atts, $label, $checkbox_count );
 
 	if ( isset( $atts['isInline'] ) ) {
 

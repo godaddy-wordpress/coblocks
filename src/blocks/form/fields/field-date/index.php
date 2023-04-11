@@ -30,7 +30,8 @@ function coblocks_render_field_date_block( $atts ) {
 
 	ob_start();
 
-	\CoBlocks_Form::render_field_label( $atts, $label, $date_count );
+	$coblocks_form = new \CoBlocks_Form();
+	$coblocks_form->render_field_label( $atts, $label, $checkbox_count );
 
 	?>
 

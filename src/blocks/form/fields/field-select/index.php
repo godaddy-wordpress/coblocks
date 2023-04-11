@@ -38,7 +38,8 @@ function coblocks_render_field_select_block( $atts ) {
 
 	ob_start();
 
-	\CoBlocks_Form::render_field_label( $atts, $label, $select_count );
+	$coblocks_form = new \CoBlocks_Form();
+	$coblocks_form->render_field_label( $atts, $label, $checkbox_count );
 
 	printf(
 		'<select class="select coblocks-field" name="field-%1$s[value]">',
