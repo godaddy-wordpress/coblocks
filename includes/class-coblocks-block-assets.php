@@ -286,6 +286,8 @@ class CoBlocks_Block_Assets {
 		$form_subject = $form->default_subject();
 		$success_text = $form->default_success_text();
 
+		$default_color_settings = $this->get_default_color_settings();
+
 		wp_localize_script(
 			'coblocks-editor',
 			'coblocksBlockData',
@@ -304,9 +306,57 @@ class CoBlocks_Block_Assets {
 				'animationControlsEnabled'       => $animation_controls_enabled,
 				'localeCode'                     => get_locale(),
 				'baseApiNamespace'               => COBLOCKS_API_NAMESPACE,
+				'defaultColorSettings'           => $default_color_settings,
 			)
 		);
 
+		add_filter( 'block_editor_settings_all', array( $this, 'coblocks_color_settings_enabled' ), 10, 2 );
+	}
+
+	/**
+	 * Get the default color settings before the editor overrides this data
+	 *
+	 * @access public
+	 */
+	public function get_default_color_settings() {
+		$editor_settings = get_block_editor_settings( array(), null );
+
+		$default_editor_color_settings = array(
+			'colors'                 => $editor_settings['colors'],
+			'gradients'              => $editor_settings['gradients'],
+			'disableCustomColors'    => $editor_settings['disableCustomColors'],
+			'disableCustomGradients' => $editor_settings['disableCustomGradients'],
+			'__experimentalFeatures' => $editor_settings['__experimentalFeatures'],
+		);
+
+		return $default_editor_color_settings;
+	}
+
+	/**
+	 * Set the correct color settings data if the color settings have been disabled
+	 *
+	 * @access public
+	 *
+	 * @param object $editor_settings block editor settings object.
+	 * @param object $editor_context block editor context object.
+	 */
+	public function coblocks_color_settings_enabled( $editor_settings, $editor_context ) {
+		$coblocks_color_panel_enabled = get_option( 'coblocks_color_panel_controls_enabled' );
+
+		if ( empty( $coblocks_color_panel_enabled ) ) {
+			$editor_settings['colors'] = array();
+			$editor_settings['gradients'] = array();
+			$editor_settings['disableCustomColors'] = true;
+			$editor_settings['disableCustomGradients'] = true;
+
+			$editor_settings['__experimentalFeatures']['color']['palette']['default'] = array();
+			$editor_settings['__experimentalFeatures']['color']['palette']['theme'] = array();
+
+			$editor_settings['__experimentalFeatures']['color']['gradients']['default'] = array();
+			$editor_settings['__experimentalFeatures']['color']['gradients']['theme'] = array();
+		}
+
+		return $editor_settings;
 	}
 
 	/**
