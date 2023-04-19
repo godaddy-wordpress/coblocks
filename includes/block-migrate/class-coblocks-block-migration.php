@@ -58,18 +58,18 @@ abstract class CoBlocks_Block_Migration {
 	public function migrate( $parsed_block_attributes, $parsed_block_html ) {
 		$this->block_wrapper    = null;
 		$this->block_attributes = empty( $parsed_block_attributes ) ? array() : $parsed_block_attributes;
-	
+
 		if ( ! empty( $parsed_block_html ) ) {
 			// libxml can't parse HTML5 elements still so disable warnings for it.
 			libxml_use_internal_errors( true );
-	
-			$html = iconv( "UTF-8", "UTF-8//IGNORE", $parsed_block_html );
+
+			$html = iconv( 'UTF-8', 'UTF-8//IGNORE', $parsed_block_html );
 			$this->document->loadHTML( '<?xml encoding="UTF-8">' . $html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
 			$this->xpath = new DOMXPath( $this->document );
-	
+
 			libxml_clear_errors();
 		}
-	
+
 		return array_filter( $this->migrate_attributes() );
 	}
 
