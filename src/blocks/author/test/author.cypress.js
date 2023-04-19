@@ -24,6 +24,8 @@ describe( 'Test CoBlocks Author Block', function() {
 		// Two blocks two images.
 		cy.get( '[data-type="core/image"]' ).should( 'have.length', 2 );
 
+		// Two blocks two core/buttons with two core/button inside.
+		cy.get( '[data-type="core/buttons"]' ).should( 'have.length', 2 );
 		// Two blocks two buttons.
 		cy.get( '[data-type="core/button"]' ).should( 'have.length', 2 );
 
