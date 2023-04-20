@@ -304,6 +304,33 @@ class CoBlocks_Block_Migration_Test extends WP_UnitTestCase {
 
 		$this->assertInstanceOf( DOMElement::class, $result );
 	}
+
+	public function test_special_characters_preservation() {
+		$parsed_block = parse_blocks(
+			<<<BLOCKHTML
+			<!-- wp:coblocks/test-block {"attribute-one":"value-one","attribute-two":"value-one"} -->
+			<div class="wp-block-coblocks-test-block this-feature-this-value has-feature">
+				<div class="child-element"></div>
+				<div class="child-element"></div>
+				Ą Ć Ę Α Β Γ А Б В Ա Բ Գ א ב ג ء أ آ अ आ इ ก ข ฃ 一 二 三
+			</div>
+			<!-- /wp:coblocks/test-block -->
+			BLOCKHTML
+		);
+	
+		$this->instance->migrate( $parsed_block[0]['attrs'], $parsed_block[0]['innerHTML'] );
+	
+		$block_wrapper = new ReflectionMethod( $this->instance, 'block_wrapper' );
+		$block_wrapper->setAccessible( true );
+	
+		$get_element_attribute = new ReflectionMethod( $this->instance, 'get_element_attribute' );
+		$get_element_attribute->setAccessible( true );
+	
+		$this->assertEquals(
+			"\n\t\n\t\n\tĄ Ć Ę Α Β Γ А Б В Ա Բ Գ א ב ג ء أ آ अ आ इ ก ข ฃ 一 二 三\n",
+			$get_element_attribute->invokeArgs( $this->instance, array( $block_wrapper->invoke( $this->instance ), 'textContent' ) )
+		);
+	}
 }
 
 class Block_Migration_Mock extends CoBlocks_Block_Migration {
