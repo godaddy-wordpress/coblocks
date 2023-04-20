@@ -11,7 +11,7 @@ import ColorTransforms from './transform';
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
-import { withColors, PanelColorSettings } from '@wordpress/block-editor';
+import { withColors, PanelColorSettings, BlockColorsStyleSelector } from '@wordpress/block-editor';
 
 /**
  * Export
@@ -21,6 +21,8 @@ export {
 	ColorSettingsClasses,
 	ColorTransforms,
 };
+
+console.log( 'BlockColorsStyleSelector', BlockColorsStyleSelector );
 
 /**
  * Color Settings
