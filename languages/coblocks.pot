@@ -1,14 +1,14 @@
 # Copyright (c) 2023 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.0.2\n"
+"Project-Id-Version: CoBlocks 3.0.3\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-29T14:50:17+00:00\n"
+"POT-Creation-Date: 2023-04-20T20:27:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: coblocks\n"
@@ -52,7 +52,7 @@ msgid "Block Patterns"
 msgstr ""
 
 #: includes/class-block-patterns.php:47
-#: src/extensions/block-patterns/modal.js:146
+#: src/extensions/block-patterns/modal.js:148
 msgid "Description"
 msgstr ""
 
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:453
+#: includes/class-coblocks-block-assets.php:454
 #: src/blocks/food-and-drinks/food-item/inspector.js:36
 msgid "Image"
 msgstr ""
@@ -149,7 +149,7 @@ msgstr ""
 #: includes/class-coblocks-form.php:258
 #: src/blocks/form/fields/name/index.js:23
 #: src/blocks/form/fields/name/transforms.js:14
-#: src/extensions/block-patterns/modal.js:141
+#: src/extensions/block-patterns/modal.js:143
 msgid "Name"
 msgstr ""
 
@@ -358,29 +358,29 @@ msgstr ""
 #. translators: icon label
 #: src/blocks/social-profiles/index.php:68
 #: src/blocks/icon/svgs-generated.js:1031
-#: src/blocks/social-profiles/edit.js:121
+#: src/blocks/social-profiles/edit.js:123
 msgid "Facebook"
 msgstr ""
 
 #. translators: icon label
 #: src/blocks/social-profiles/index.php:72
 #: src/blocks/icon/svgs-generated.js:2975
-#: src/blocks/social-profiles/edit.js:127
+#: src/blocks/social-profiles/edit.js:129
 msgid "Twitter"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:76
-#: src/blocks/social-profiles/edit.js:133
+#: src/blocks/social-profiles/edit.js:135
 msgid "Instagram"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:80
-#: src/blocks/social-profiles/edit.js:139
+#: src/blocks/social-profiles/edit.js:141
 msgid "TikTok"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:84
-#: src/blocks/social-profiles/edit.js:145
+#: src/blocks/social-profiles/edit.js:147
 msgid "Pinterest"
 msgstr ""
 
@@ -389,17 +389,17 @@ msgid "Linkedin"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:93
-#: src/blocks/social-profiles/edit.js:157
+#: src/blocks/social-profiles/edit.js:159
 msgid "YouTube"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:97
-#: src/blocks/social-profiles/edit.js:163
+#: src/blocks/social-profiles/edit.js:165
 msgid "Yelp"
 msgstr ""
 
 #: src/blocks/social-profiles/index.php:101
-#: src/blocks/social-profiles/edit.js:169
+#: src/blocks/social-profiles/edit.js:171
 msgid "Houzz"
 msgstr ""
 
@@ -518,9 +518,8 @@ msgid "Success alert"
 msgstr ""
 
 #. translators: toggle label to display the accordion open
-#. translators: visually display open as opposed to closed
 #: src/blocks/accordion/accordion-item/controls.js:29
-#: src/blocks/accordion/accordion-item/inspector.js:67
+#: src/blocks/accordion/accordion-item/inspector.js:69
 msgid "Display as open"
 msgstr ""
 
@@ -530,8 +529,7 @@ msgstr ""
 msgid "Add content…"
 msgstr ""
 
-#. translators: Accordion is the block name
-#: src/blocks/accordion/accordion-item/edit.js:97
+#: src/blocks/accordion/accordion-item/edit.js:111
 msgid "Write accordion item title…"
 msgstr ""
 
@@ -559,11 +557,11 @@ msgstr ""
 msgid "faq"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:35
+#: src/blocks/accordion/accordion-item/inspector.js:46
 msgid "Accordion item is open by default."
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:35
+#: src/blocks/accordion/accordion-item/inspector.js:46
 msgid "Toggle to set this accordion item to be open by default."
 msgstr ""
 
@@ -571,7 +569,39 @@ msgstr ""
 msgid "Accordion Item settings"
 msgstr ""
 
-#: src/blocks/accordion/accordion-item/inspector.js:74
+#: src/blocks/accordion/accordion-item/inspector.js:78
+#: src/blocks/dynamic-separator/inspector.js:58
+#: src/blocks/features/feature/inspector.js:110
+#: src/blocks/features/inspector.js:177
+#: src/blocks/hero/inspector.js:150
+#: src/blocks/icon/inspector.js:339
+#: src/blocks/media-card/inspector.js:155
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:53
+#: src/blocks/row/column/inspector.js:170
+#: src/blocks/row/inspector.js:221
+#: src/blocks/shape-divider/inspector.js:82
+#: src/blocks/social-profiles/inspector.js:87
+#: src/blocks/social-profiles/inspector.js:105
+#: src/extensions/colors/index.js:47
+msgid "Background color"
+msgstr ""
+
+#: src/blocks/accordion/accordion-item/inspector.js:83
+#: src/blocks/click-to-tweet/inspector.js:28
+#: src/blocks/events/event-item/inspector.js:23
+#: src/blocks/faq/faq-item/inspector.js:21
+#: src/blocks/features/feature/inspector.js:114
+#: src/blocks/features/inspector.js:181
+#: src/blocks/hero/inspector.js:155
+#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
+#: src/blocks/row/column/inspector.js:175
+#: src/blocks/row/inspector.js:226
+#: src/blocks/social-profiles/inspector.js:97
+#: src/extensions/colors/index.js:54
+msgid "Text color"
+msgstr ""
+
+#: src/blocks/accordion/accordion-item/inspector.js:87
 #: src/blocks/click-to-tweet/inspector.js:39
 #: src/blocks/dynamic-separator/inspector.js:52
 #: src/blocks/events/event-item/inspector.js:30
@@ -591,38 +621,6 @@ msgstr ""
 #: src/extensions/colors/index.js:59
 #: src/extensions/colors/settings-modal-control.js:137
 msgid "Color settings"
-msgstr ""
-
-#: src/blocks/accordion/accordion-item/inspector.js:80
-#: src/blocks/dynamic-separator/inspector.js:58
-#: src/blocks/features/feature/inspector.js:110
-#: src/blocks/features/inspector.js:177
-#: src/blocks/hero/inspector.js:150
-#: src/blocks/icon/inspector.js:339
-#: src/blocks/media-card/inspector.js:155
-#: src/blocks/pricing-table/pricing-table-item/inspector.js:53
-#: src/blocks/row/column/inspector.js:170
-#: src/blocks/row/inspector.js:221
-#: src/blocks/shape-divider/inspector.js:82
-#: src/blocks/social-profiles/inspector.js:87
-#: src/blocks/social-profiles/inspector.js:105
-#: src/extensions/colors/index.js:47
-msgid "Background color"
-msgstr ""
-
-#: src/blocks/accordion/accordion-item/inspector.js:85
-#: src/blocks/click-to-tweet/inspector.js:28
-#: src/blocks/events/event-item/inspector.js:23
-#: src/blocks/faq/faq-item/inspector.js:21
-#: src/blocks/features/feature/inspector.js:114
-#: src/blocks/features/inspector.js:181
-#: src/blocks/hero/inspector.js:155
-#: src/blocks/pricing-table/pricing-table-item/inspector.js:58
-#: src/blocks/row/column/inspector.js:175
-#: src/blocks/row/inspector.js:226
-#: src/blocks/social-profiles/inspector.js:97
-#: src/extensions/colors/index.js:54
-msgid "Text color"
 msgstr ""
 
 #: src/blocks/accordion/edit.js:106
@@ -1130,7 +1128,7 @@ msgstr ""
 
 #: src/blocks/features/edit.js:114
 #: src/blocks/features/feature/edit.js:122
-#: src/blocks/media-card/edit.js:126
+#: src/blocks/media-card/edit.js:127
 msgid "Add as background"
 msgstr ""
 
@@ -1303,14 +1301,14 @@ msgid "Gluten free"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:181
-#: src/blocks/gallery-collage/edit.js:126
+#: src/blocks/gallery-collage/edit.js:127
 #: src/blocks/services/service/edit.js:129
 #: src/blocks/testimonials/testimonial/edit.js:158
 msgid "Drop image to replace"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:195
-#: src/blocks/gallery-collage/edit.js:168
+#: src/blocks/gallery-collage/edit.js:170
 #: src/blocks/services/service/edit.js:149
 #: src/blocks/testimonials/testimonial/edit.js:190
 #: src/components/block-gallery/gallery-image.js:224
@@ -1753,7 +1751,7 @@ msgid "Secret key"
 msgstr ""
 
 #: src/blocks/form/edit.js:402
-#: src/blocks/gallery-collage/edit.js:183
+#: src/blocks/gallery-collage/edit.js:185
 #: src/components/block-gallery/gallery-image.js:261
 msgid "Saving"
 msgstr ""
@@ -1796,11 +1794,11 @@ msgstr ""
 msgid "option"
 msgstr ""
 
-#: src/blocks/form/fields/coblocks-option.js:61
+#: src/blocks/form/fields/coblocks-option.js:64
 msgid "Write option…"
 msgstr ""
 
-#: src/blocks/form/fields/coblocks-option.js:69
+#: src/blocks/form/fields/coblocks-option.js:72
 msgid "Remove Option"
 msgstr ""
 
@@ -2101,7 +2099,7 @@ msgstr ""
 
 #. translators: block style
 #: src/blocks/form/fields/submit-button/index.js:40
-#: src/blocks/gallery-collage/inspector.js:93
+#: src/blocks/gallery-collage/inspector.js:94
 #: src/blocks/gallery-stacked/inspector.js:143
 #: src/extensions/button-styles/index.js:25
 msgid "Shadow"
@@ -2237,7 +2235,7 @@ msgid "gallery thumbnail"
 msgstr ""
 
 #. translators: %1$d is the order number of the image, %2$d is the total number of images
-#: src/blocks/gallery-carousel/edit.js:196
+#: src/blocks/gallery-carousel/edit.js:197
 #: src/blocks/gallery-masonry/v1/edit.js:217
 #: src/blocks/gallery-offset/edit.js:218
 #: src/blocks/gallery-stacked/edit.js:181
@@ -2245,12 +2243,12 @@ msgid "image %1$d of %2$d in gallery"
 msgstr ""
 
 #. translators: %s: Type of gallery variation
-#: src/blocks/gallery-carousel/edit.js:234
+#: src/blocks/gallery-carousel/edit.js:235
 msgid "%s Carousel"
 msgstr ""
 
 #. translators: block name
-#: src/blocks/gallery-carousel/edit.js:245
+#: src/blocks/gallery-carousel/edit.js:246
 #: src/blocks/gallery-carousel/index.js:37
 msgid "Carousel"
 msgstr ""
@@ -2311,7 +2309,7 @@ msgid "Toggle for percentage based height."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:39
-#: src/blocks/gallery-collage/inspector.js:50
+#: src/blocks/gallery-collage/inspector.js:57
 #: src/blocks/gallery-masonry/inspector.js:168
 #: src/blocks/gallery-masonry/v1/inspector.js:69
 #: src/blocks/gallery-offset/inspector.js:63
@@ -2321,7 +2319,7 @@ msgid "Image lightbox is enabled."
 msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:40
-#: src/blocks/gallery-collage/inspector.js:50
+#: src/blocks/gallery-collage/inspector.js:57
 #: src/blocks/gallery-masonry/inspector.js:169
 #: src/blocks/gallery-masonry/v1/inspector.js:70
 #: src/blocks/gallery-offset/inspector.js:64
@@ -2348,8 +2346,8 @@ msgstr ""
 #: src/blocks/icon/inspector.js:189
 #: src/blocks/testimonials/testimonial/inspector.js:87
 #: src/components/typography-controls/index.js:196
-#: src/extensions/site-design/font-advanced.js:86
-#: src/extensions/site-design/font-advanced.js:129
+#: src/extensions/site-design/font-advanced.js:90
+#: src/extensions/site-design/font-advanced.js:133
 msgid "Size"
 msgstr ""
 
@@ -2365,7 +2363,7 @@ msgstr ""
 
 #: src/blocks/gallery-carousel/inspector.js:158
 #: src/blocks/gallery-carousel/variations.js:142
-#: src/blocks/gallery-collage/inspector.js:100
+#: src/blocks/gallery-collage/inspector.js:102
 #: src/blocks/gallery-masonry/inspector.js:218
 #: src/blocks/gallery-masonry/v1/inspector.js:139
 #: src/blocks/gallery-offset/inspector.js:128
@@ -2411,19 +2409,19 @@ msgstr ""
 msgid "Replace Image"
 msgstr ""
 
-#: src/blocks/gallery-collage/edit.js:158
+#: src/blocks/gallery-collage/edit.js:159
 #: src/blocks/services/service/edit.js:157
 #: src/components/block-gallery/gallery-image.js:212
 msgid "Replace"
 msgstr ""
 
-#: src/blocks/gallery-collage/edit.js:183
-#: src/blocks/social-profiles/edit.js:251
+#: src/blocks/gallery-collage/edit.js:185
+#: src/blocks/social-profiles/edit.js:253
 #: src/components/block-gallery/gallery-image.js:261
 msgid "Apply"
 msgstr ""
 
-#: src/blocks/gallery-collage/edit.js:192
+#: src/blocks/gallery-collage/edit.js:197
 #: src/blocks/gif/edit.js:218
 #: src/components/block-gallery/gallery-image.js:273
 msgid "Write caption…"
@@ -2463,14 +2461,14 @@ msgstr ""
 msgid "Layered"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:32
+#: src/blocks/gallery-collage/inspector.js:39
 #: src/blocks/gallery-masonry/v1/inspector.js:63
 #: src/blocks/gallery-offset/inspector.js:59
 #: src/blocks/gallery-stacked/inspector.js:93
 msgid "Showing captions for each media item."
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:32
+#: src/blocks/gallery-collage/inspector.js:39
 #: src/blocks/gallery-masonry/v1/inspector.js:64
 #: src/blocks/gallery-offset/inspector.js:60
 #: src/blocks/gallery-stacked/inspector.js:94
@@ -2481,7 +2479,7 @@ msgstr ""
 msgid "Collage settings"
 msgstr ""
 
-#: src/blocks/gallery-collage/inspector.js:106
+#: src/blocks/gallery-collage/inspector.js:108
 #: src/blocks/gallery-masonry/v1/inspector.js:146
 #: src/blocks/gallery-offset/inspector.js:134
 #: src/blocks/gallery-stacked/inspector.js:136
@@ -2504,7 +2502,7 @@ msgid "ADD MEDIA"
 msgstr ""
 
 #: src/blocks/gallery-masonry/edit.js:37
-#: src/blocks/logos/edit.js:53
+#: src/blocks/logos/edit.js:63
 #: src/components/block-gallery/gallery-placeholder.js:79
 msgid "Drag images, upload new ones or select files from your library."
 msgstr ""
@@ -3964,8 +3962,8 @@ msgstr ""
 #: src/blocks/icon/deprecated/svgsv1.js:482
 #: src/blocks/icon/svgs-generated.js:1294
 #: src/components/typography-controls/index.js:166
-#: src/extensions/site-design/font-advanced.js:59
-#: src/extensions/site-design/font-advanced.js:101
+#: src/extensions/site-design/font-advanced.js:63
+#: src/extensions/site-design/font-advanced.js:105
 msgid "Font"
 msgstr ""
 
@@ -7233,7 +7231,7 @@ msgstr ""
 
 #. translators: icon label
 #: src/blocks/icon/svgs-generated.js:885
-#: src/extensions/site-content/post-menu-actions.js:97
+#: src/extensions/site-content/post-menu-actions.js:109
 msgid "Duplicate"
 msgstr ""
 
@@ -7990,7 +7988,7 @@ msgstr ""
 msgid "Edit logos"
 msgstr ""
 
-#: src/blocks/logos/edit.js:52
+#: src/blocks/logos/edit.js:62
 msgid "Logos & Badges"
 msgstr ""
 
@@ -9060,79 +9058,79 @@ msgstr ""
 msgid "Share on LinkedIn"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:122
+#: src/blocks/social-profiles/edit.js:124
 msgid "https://facebook.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:123
+#: src/blocks/social-profiles/edit.js:125
 msgid "Add Facebook profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:128
+#: src/blocks/social-profiles/edit.js:130
 msgid "https://twitter.com/"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:129
+#: src/blocks/social-profiles/edit.js:131
 msgid "Add Twitter profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:134
+#: src/blocks/social-profiles/edit.js:136
 msgid "https://instagram.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:135
+#: src/blocks/social-profiles/edit.js:137
 msgid "Add Instagram profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:140
+#: src/blocks/social-profiles/edit.js:142
 msgid "https://tiktok.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:141
+#: src/blocks/social-profiles/edit.js:143
 msgid "Add TikTok profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:146
+#: src/blocks/social-profiles/edit.js:148
 msgid "https://pinterest.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:147
+#: src/blocks/social-profiles/edit.js:149
 msgid "Add Pinterest profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:151
+#: src/blocks/social-profiles/edit.js:153
 msgid "LinkedIn"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:152
+#: src/blocks/social-profiles/edit.js:154
 msgid "https://linkedin.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:153
+#: src/blocks/social-profiles/edit.js:155
 msgid "Add LinkedIn profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:158
+#: src/blocks/social-profiles/edit.js:160
 msgid "https://youtube.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:159
+#: src/blocks/social-profiles/edit.js:161
 msgid "Add YouTube profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:164
+#: src/blocks/social-profiles/edit.js:166
 msgid "https://yelp.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:165
+#: src/blocks/social-profiles/edit.js:167
 msgid "Add Yelp profile"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:170
+#: src/blocks/social-profiles/edit.js:172
 msgid "https://houzz.com"
 msgstr ""
 
-#: src/blocks/social-profiles/edit.js:171
+#: src/blocks/social-profiles/edit.js:173
 msgid "Add Houzz profile"
 msgstr ""
 
@@ -9873,8 +9871,8 @@ msgid "Capitalize"
 msgstr ""
 
 #: src/components/typography-controls/index.js:174
-#: src/extensions/site-design/font-advanced.js:72
-#: src/extensions/site-design/font-advanced.js:115
+#: src/extensions/site-design/font-advanced.js:76
+#: src/extensions/site-design/font-advanced.js:119
 msgid "Weight"
 msgstr ""
 
@@ -9988,39 +9986,39 @@ msgid "Add Design Pattern"
 msgstr ""
 
 #. translators: %s is the pattern name.
-#: src/extensions/block-patterns/modal.js:87
+#: src/extensions/block-patterns/modal.js:89
 msgid "\"%s\" pattern has been saved."
 msgstr ""
 
-#: src/extensions/block-patterns/modal.js:94
+#: src/extensions/block-patterns/modal.js:96
 msgid "View Patterns"
 msgstr ""
 
-#: src/extensions/block-patterns/modal.js:105
+#: src/extensions/block-patterns/modal.js:107
 msgid "Failed to save new pattern."
 msgstr ""
 
-#: src/extensions/block-patterns/modal.js:121
+#: src/extensions/block-patterns/modal.js:125
 msgid "Save Design Pattern"
 msgstr ""
 
-#: src/extensions/block-patterns/modal.js:123
+#: src/extensions/block-patterns/modal.js:128
 msgid "Design Patterns"
 msgstr ""
 
-#: src/extensions/block-patterns/modal.js:126
+#: src/extensions/block-patterns/modal.js:130
 msgid "Create reusable content and designs that can be quickly added anywhere, but not be tied to other copies of itself (i.e. changing one will not affect the others)."
 msgstr ""
 
-#: src/extensions/block-patterns/modal.js:150
+#: src/extensions/block-patterns/modal.js:152
 msgid "Category"
 msgstr ""
 
-#: src/extensions/block-patterns/modal.js:152
+#: src/extensions/block-patterns/modal.js:155
 msgid "Select a pattern category"
 msgstr ""
 
-#: src/extensions/block-patterns/modal.js:158
+#: src/extensions/block-patterns/modal.js:160
 msgid "Save Pattern"
 msgstr ""
 
@@ -10177,39 +10175,39 @@ msgstr ""
 msgid "Site contents"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:50
+#: src/extensions/site-content/post-menu-actions.js:62
 msgid "Select an action"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:56
+#: src/extensions/site-content/post-menu-actions.js:68
 msgid "Rename"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:67
+#: src/extensions/site-content/post-menu-actions.js:79
 msgid "Really set as homepage?"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:77
+#: src/extensions/site-content/post-menu-actions.js:89
 msgid "Set as homepage"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:87
+#: src/extensions/site-content/post-menu-actions.js:99
 msgid "Unpin post"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:87
+#: src/extensions/site-content/post-menu-actions.js:99
 msgid "Pin post"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:108
+#: src/extensions/site-content/post-menu-actions.js:120
 msgid "Really delete?"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:118
+#: src/extensions/site-content/post-menu-actions.js:130
 msgid "Delete Page"
 msgstr ""
 
-#: src/extensions/site-content/post-menu-actions.js:118
+#: src/extensions/site-content/post-menu-actions.js:130
 msgid "Delete Post"
 msgstr ""
 
@@ -10295,19 +10293,19 @@ msgstr ""
 msgid "Easily explore curated design styles, then customize your colors and fonts to get the perfect fit."
 msgstr ""
 
-#: src/extensions/site-design/font-advanced.js:50
+#: src/extensions/site-design/font-advanced.js:54
 msgid "Custom Font Options"
 msgstr ""
 
-#: src/extensions/site-design/font-advanced.js:57
+#: src/extensions/site-design/font-advanced.js:61
 msgid "HEADING"
 msgstr ""
 
-#: src/extensions/site-design/font-advanced.js:98
+#: src/extensions/site-design/font-advanced.js:102
 msgid "Heading font size"
 msgstr ""
 
-#: src/extensions/site-design/font-advanced.js:99
+#: src/extensions/site-design/font-advanced.js:103
 msgid "BODY"
 msgstr ""
 
