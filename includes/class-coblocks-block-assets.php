@@ -349,6 +349,8 @@ class CoBlocks_Block_Assets {
 			$editor_settings['disableCustomColors'] = true;
 			$editor_settings['disableCustomGradients'] = true;
 
+      $editor_settings['__experimentalFeatures']['color']['text'] = false;
+      $editor_settings['__experimentalFeatures']['color']['background'] = false;
 			$editor_settings['__experimentalFeatures']['color']['palette']['default'] = array();
 			$editor_settings['__experimentalFeatures']['color']['palette']['theme'] = array();
 

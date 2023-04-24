@@ -2,16 +2,12 @@
  * Internal dependencies
  */
 import ColorSettings, { ColorSettingsAttributes } from './index';
-import {
-	COLORS_FEATURE_ENABLED_KEY,
-} from './constants';
 import './settings-modal-control';
 
 /**
  * WordPress dependencies
  */
 import { InspectorControls } from '@wordpress/block-editor';
-import { useEntityProp } from '@wordpress/core-data';
 
 /**
  * Inspector.
@@ -20,8 +16,6 @@ import { useEntityProp } from '@wordpress/core-data';
  * @return {Object} Settings for the Settings Sidebar.
  */
 const Inspector = ( props ) => {
-	const [ colorPanelEnabled ] = useEntityProp( 'root', 'site', COLORS_FEATURE_ENABLED_KEY );
-
 	const allowedBlocks = [ 'core/cover', 'core/button', 'core/list', 'core/quote' ];
 
 	const { name: blockName } = props;
@@ -42,16 +36,6 @@ const Inspector = ( props ) => {
 
 	extendedProps.attributes.textPanelHideColor = true;
 	extendedProps.attributes.textPanelShowSpacingControls = true;
-
-	// if ( ! colorPanelEnabled && [ 'core/cover' ].includes( blockName ) ) {
-	// 	const colorSettingsPanel = document.querySelector( '.color-block-support-panel' );
-
-	// 	console.log( 'colorSettingsPanel', colorSettingsPanel );
-
-	// 	if ( colorSettingsPanel ) {
-	// 		colorSettingsPanel.style.display = 'none';
-	// 	}
-	// }
 
 	return (
 		<InspectorControls>
