@@ -106,3 +106,20 @@ export const controlDisable = ( ) => {
 
 	return true;
 };
+
+/**
+ * Helper function to determine the disabled value based on the given conditions.
+ *
+ * @param {boolean} conditionalDisable    - Indicates if the control should be disabled based on certain conditions.
+ * @param {boolean} conditionalDisableFSE - Indicates if the control should be disabled in Full Site Editor context.
+ * @return {boolean} - The final disabled value.
+ */
+export const disabledValue = ( conditionalDisable, conditionalDisableFSE ) => {
+	if ( conditionalDisableFSE && !! safeCoBlocksLabsData?.isGoSiteEditor ) {
+		return true;
+	}
+	if ( conditionalDisable ) {
+		return controlDisable();
+	}
+	return false;
+};

@@ -8,7 +8,7 @@ import { useEntityProp } from '@wordpress/core-data';
  * Internal dependencies
  */
 import CoBlocksLabsModalControl from './coblocks-labs-slot';
-import { conditionalHelpMessage, controlDisable, GSEHelpMessage } from './utils';
+import { conditionalHelpMessage, GSEHelpMessage, disabledValue } from './utils';
 
 function CoBlocksLabsToggleControl( {
 	label,
@@ -23,17 +23,8 @@ function CoBlocksLabsToggleControl( {
 } ) {
 	const [ setting, saveSetting ] = useEntityProp( 'root', 'site', settingsKey );
 
-	const disabledValue = () => {
-		let disabled = false;
-		if ( conditionalDisable ) {
-			disabled = controlDisable();
-		}
-
-		if ( conditionalDisableFSE ) {
-			disabled = true;
-		}
-		return disabled;
-	};
+	// Determine the disabled value using the helper function
+	const disabled = disabledValue( conditionalDisable, conditionalDisableFSE );
 
 	const helpCB = ( message ) => conditionalDisableFSE ? GSEHelpMessage( message ) : conditionalHelpMessage( message );
 
@@ -45,7 +36,7 @@ function CoBlocksLabsToggleControl( {
 					{ description && <p className="coblocks-labs-modal__section__description">{ description }</p> }
 					<ToggleControl
 						checked={ !! setting }
-						disabled={ disabledValue() }
+						disabled={ disabled }
 						help={ showGoHelp ? helpCB( help ) : '' }
 						onChange={ saveSetting } />
 				</div>

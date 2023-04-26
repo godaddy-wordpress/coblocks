@@ -58,19 +58,17 @@ class CoBlocks_Labs {
 	}
 
 	/**
-	 * Checks if Go theme's get_design_style() method is accessible, otherwise assumes FSE context.
+	 * Checks if the Go theme's get_design_style() method is accessible, otherwise assumes FSE context.
 	 *
 	 * @since 3.1.0
 	 * @return boolean
 	 */
 	public static function is_go_se() {
-		// Check if the \Go\Core class exists and the get_design_style method is accessible.
-		$is_design_style_accessible = self::is_go_active()
-			&& class_exists( '\Go\Core' )
-			&& method_exists( '\Go\Core', 'get_design_style' );
-
-		// If the method is not accessible, assume FSE context.
-		return ! $is_design_style_accessible;
+		if ( ! self::is_go_active() ) {
+			return false;
+		}
+		// No Method = FSE || Go classic.
+		return ! ( function_exists( '\Go\Core\get_design_style' ) );
 	}
 
 	/**
