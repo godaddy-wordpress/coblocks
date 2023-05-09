@@ -304,6 +304,9 @@ class CoBlocks_Block_Assets {
 				'animationControlsEnabled'       => $animation_controls_enabled,
 				'localeCode'                     => get_locale(),
 				'baseApiNamespace'               => COBLOCKS_API_NAMESPACE,
+				'searchForm'                     => array(
+					'homeURL' => esc_url( home_url( '/' ) ),
+				),
 			)
 		);
 
@@ -548,6 +551,31 @@ class CoBlocks_Block_Assets {
 				'rightLabel' => __( 'Next', 'coblocks' ),
 			)
 		);
+
+		$header = $this->get_template_content( 'header' );
+		$footer = $this->get_template_content( 'footer' );
+
+		// Counter block.
+		if ( $this->is_page_gutenberg() || has_block( 'coblocks/go-search' ) || has_block( 'core/go-search' ) || has_block( 'coblocks/go-search', $header . $footer ) ) {
+			$asset_file = $this->get_asset_file( 'dist/js/coblocks-go-search' );
+			wp_enqueue_script(
+				'coblocks-go-search-script',
+				$dir . 'coblocks-go-search.js',
+				$asset_file['dependencies'],
+				COBLOCKS_VERSION,
+				true
+			);
+
+			$theme = wp_get_theme();
+
+			wp_localize_script(
+				'coblocks-go-search-script',
+				'coblocksGoSearch',
+				array(
+					'isGoActive' => 'Go' === $theme->get( 'Name' ),
+				)
+			);
+		}
 	}
 
 	/**
@@ -689,6 +717,36 @@ class CoBlocks_Block_Assets {
 		$post_content = ! empty( $post ) ? $post->post_content : get_the_content();
 
 		return false !== strpos( $post_content, 'coblocks-animate' );
+	}
+
+	/**
+	 * Retrieve template content.
+	 *
+	 * @param string $template_type  The name of the template content to retrieve.
+	 *
+	 * @return string Template content.
+	 */
+	public function get_template_content( $template_type ) {
+		$template_part = get_block_template( get_stylesheet() . '//' . $template_type, 'wp_template_part' );
+		if ( ! $template_part || empty( $template_part->content ) ) {
+			return;
+		}
+		$blocks        = parse_blocks( $template_part->content );
+		$template_slug = $blocks[0]['attrs']['slug'] ?? false;
+		if ( ! $template_slug ) {
+			return;
+		}
+		$args = array(
+			'name'        => $template_slug,
+			'post_type'   => 'wp_template_part',
+			'post_status' => 'publish',
+			'numberposts' => 1,
+		);
+		$my_posts = get_posts( $args );
+		if ( ! $my_posts ) {
+			return;
+		}
+		return $my_posts[0]->post_content;
 	}
 }
 

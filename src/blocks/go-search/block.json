@@ -1,0 +1,14 @@
+{
+	"name": "coblocks/go-search",
+	"category": "common",
+	"attributes": {
+		"count": {
+			"type": "number",
+			"default": "1"
+		}
+	},
+	"title": "Go Search",
+	"textdomain": "coblocks",
+	"editorScript": "blocks-1",
+	"description": "Search modal for the header."
+}
