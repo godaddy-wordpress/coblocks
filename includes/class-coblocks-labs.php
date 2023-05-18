@@ -60,7 +60,7 @@ class CoBlocks_Labs {
 	/**
 	 * Checks if the Go theme's get_design_style() method is accessible, otherwise assumes FSE context.
 	 *
-	 * @since 3.1.0
+	 * @since 2.0.0 In the Go theme release 2.0.
 	 * @return boolean
 	 */
 	public static function is_go_se() {
@@ -123,17 +123,13 @@ class CoBlocks_Labs {
 	 * @access public
 	 */
 	public function propagate_settings() {
-		$go_active = self::is_go_active();
-
-		if ( ! $go_active ) {
+		if ( ! self::is_go_active() ) {
 			update_option( 'coblocks_site_design_controls_enabled', 0 );
 			update_option( 'coblocks_layout_selector_controls_enabled', 0 );
 		}
 
 		// Site design is disabled when in GSE context.
-		$is_go_se = self::is_go_se();
-
-		if ( $is_go_se ) {
+		if ( self::is_go_se() ) {
 			update_option( 'coblocks_site_design_controls_enabled', 0 );
 		}
 	}
