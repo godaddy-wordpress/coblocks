@@ -106,15 +106,17 @@ const settings = {
 		};
 
 		const buttonBlock = parentBlock.innerBlocks;
-		const imageBlock = createBlock( 'core/image', { className: 'is-style-rounded', id: props.attributes.imgId, url: props.attributes.imgUrl } );
-
 		// Set buttons to align.
 		buttonBlock.forEach( function( button, index ) {
 			buttonBlock[ index ].attributes.align = isRTL ? 'right' : 'left';
 		} );
+		// Button blocks are no-longer stand-alone and should be within `core/buttons` block.
+		const coreButtons = createBlock( 'core/buttons', { }, [ ...buttonBlock ] );
+
+		const imageBlock = createBlock( 'core/image', { className: 'is-style-rounded', id: props.attributes.imgId, url: props.attributes.imgUrl } );
 
 		const leftColumn = createBlock( 'core/column', { width: '25%' }, [ imageBlock ] );
-		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock(), authorBioBlock(), ...buttonBlock ] );
+		const rightColumn = createBlock( 'core/column', { width: '75%' }, [ authorNameBlock(), authorBioBlock(), coreButtons ] );
 
 		const columnsBlock = () => {
 			let columnsBlockProps = {

@@ -44,7 +44,7 @@ abstract class CoBlocks_Block_Migration {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->document = new DOMDocument();
+		$this->document = new DOMDocument( '1.0', 'UTF-8' );
 	}
 
 	/**
@@ -63,7 +63,8 @@ abstract class CoBlocks_Block_Migration {
 			// libxml can't parse HTML5 elements still so disable warnings for it.
 			libxml_use_internal_errors( true );
 
-			$this->document->loadHTML( $parsed_block_html );
+			$html = iconv( 'UTF-8', 'UTF-8//IGNORE', $parsed_block_html );
+			$this->document->loadHTML( '<?xml encoding="UTF-8">' . $html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
 			$this->xpath = new DOMXPath( $this->document );
 
 			libxml_clear_errors();
