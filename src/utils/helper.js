@@ -100,8 +100,10 @@ export const computeFontSize = ( fontSize ) => {
 };
 
 /**
- * Function to register an individual block.
+ * DEPRECATED Function to register an individual block. This function follows the old registration paradigm.
+ * Over time usage should be replaced with `registerBlockV2`.
  *
+ * @deprecated 3.0.4 Use `registerBlockV2` instead.
  * @param {Object} block The block to be registered.
  */
 export const registerBlock = ( block ) => {
@@ -118,6 +120,7 @@ export const registerBlock = ( block ) => {
 
 	const icon = setIconColor( settings?.icon );
 
+	// The metadata is not supposed to be passed as args but as the sole parameter with args as overrides.
 	const isV2 = block?.metadata?.apiVersion === 2;
 	const v2Settings = isV2 ? block?.metadata : {};
 	if ( !! settings?.attributes && isV2 ) {
@@ -132,6 +135,29 @@ export const registerBlock = ( block ) => {
 		// V2 Block API Upgrades
 		...v2Settings,
 	} );
+};
+
+/**
+ * Function to register an individual block.
+ * Handles block.json registration.
+ *
+ * @param {Object} metadata The block to be registered.
+ * @param {Object} settings Settings object should have edit and save function for JS blocks.
+ */
+export const registerBlockV2 = ( metadata, settings ) => {
+	if ( ! metadata ) {
+		return;
+	}
+
+	// Changes here handle registration using just the metadata file.
+	if ( metadata?.apiVersion === 2 ) {
+		// Block metadata was passed in as the sole parameter.
+		const icon = setIconColor( metadata?.icon );
+		return registerBlockType( metadata, {
+			...settings,
+			icon,
+		} );
+	}
 };
 
 /**

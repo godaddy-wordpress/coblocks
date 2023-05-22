@@ -12,5 +12,7 @@
 		"align": [ "wide", "full" ],
 		"html": false
 	},
-	"icon": "search"
+	"icon": "search",
+	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json"
 }

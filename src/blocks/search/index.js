@@ -15,8 +15,6 @@ import { Dashicon } from '@wordpress/components';
 /**
  * Block constants
  */
-const { name, category } = metadata;
-
 const settings = {
 	edit,
 	save() {
@@ -52,4 +50,4 @@ const settings = {
 
 };
 
-export { name, category, metadata, settings };
+export { metadata, settings };

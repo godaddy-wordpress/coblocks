@@ -1,12 +1,12 @@
-import { registerBlock } from './utils/helper';
+import { registerBlockV2 } from './utils/helper';
 
 // Styles
 import './styles/blocks/search.scss';
 
 // Register Block in JS
-import * as search from './blocks/search';
+import { metadata, settings } from './blocks/search';
 
 /**
  * Function to register blocks provided by CoBlocks.
  */
-registerBlock( search );
+registerBlockV2( metadata, settings );
