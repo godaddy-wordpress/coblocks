@@ -15,26 +15,10 @@ import { Dashicon } from '@wordpress/components';
 /**
  * Block constants
  */
-const { name, category, attributes } = metadata;
+const { name, category } = metadata;
 
 const settings = {
-	attributes,
-	/* translators: block description */
-	description: __( 'Go search field.', 'coblocks' ),
 	edit,
-	example: {
-		attributes: {
-			count: 2,
-		},
-	},
-	icon: 'search',
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'go', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'search', 'coblocks' ),
-	],
 	save() {
 		return (
 			<>
@@ -65,12 +49,7 @@ const settings = {
 			</>
 		);
 	},
-	supports: {
-		align: [ 'wide', 'full' ],
-		html: false,
-	},
-	/* translators: block name */
-	title: __( 'Go Search', 'coblocks' ),
+
 };
 
 export { name, category, metadata, settings };

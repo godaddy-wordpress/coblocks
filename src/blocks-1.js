@@ -17,7 +17,6 @@ import * as alert from './blocks/alert';
 import * as author from './blocks/author';
 import * as buttons from './blocks/buttons';
 import * as carousel from './blocks/gallery-carousel';
-import * as goSearch from './blocks/go-search';
 
 /**
  * Function to register blocks provided by CoBlocks.
@@ -29,5 +28,4 @@ import * as goSearch from './blocks/go-search';
 	author,
 	buttons,
 	carousel,
-	goSearch,
 ].forEach( registerBlock );

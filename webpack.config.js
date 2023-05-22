@@ -19,7 +19,7 @@ const scripts = [
 	'coblocks-fromEntries',
 	'coblocks-google-maps',
 	'coblocks-google-recaptcha',
-	'coblocks-go-search',
+	'coblocks-search-script',
 	'coblocks-lightbox',
 	'coblocks-masonry',
 	'coblocks-post-carousel',

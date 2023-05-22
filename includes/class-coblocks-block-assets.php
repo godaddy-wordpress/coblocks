@@ -401,7 +401,8 @@ class CoBlocks_Block_Assets {
 		}
 
 		// Define where the asset is loaded from.
-		$dir = CoBlocks()->asset_source( 'js' );
+		$assets_dir    = CoBlocks()->asset_source();
+		$assets_js_dir = CoBlocks()->asset_source( 'js' );
 
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
@@ -412,7 +413,7 @@ class CoBlocks_Block_Assets {
 		// Enqueue for coblocks animations.
 		wp_enqueue_script(
 			'coblocks-animation',
-			$dir . 'coblocks-animation.js',
+			$assets_js_dir . 'coblocks-animation.js',
 			array(),
 			COBLOCKS_VERSION,
 			true
@@ -422,7 +423,7 @@ class CoBlocks_Block_Assets {
 		if ( $this->has_masonry_v1_block() ) {
 			wp_enqueue_script(
 				'coblocks-masonry',
-				$dir . 'coblocks-masonry.js',
+				$assets_js_dir . 'coblocks-masonry.js',
 				array( 'jquery', 'masonry', 'imagesloaded' ),
 				COBLOCKS_VERSION,
 				true
@@ -442,7 +443,7 @@ class CoBlocks_Block_Assets {
 
 		wp_enqueue_script(
 			'coblocks-tinyswiper-initializer',
-			$dir . 'coblocks-tinyswiper-initializer.js',
+			$assets_js_dir . 'coblocks-tinyswiper-initializer.js',
 			array(),
 			COBLOCKS_VERSION,
 			true
@@ -462,7 +463,7 @@ class CoBlocks_Block_Assets {
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-post-carousel',
-				$dir . 'coblocks-post-carousel.js',
+				$assets_js_dir . 'coblocks-post-carousel.js',
 				array(),
 				COBLOCKS_VERSION,
 				true
@@ -482,7 +483,7 @@ class CoBlocks_Block_Assets {
 		if ( $this->is_page_gutenberg() || has_block( 'coblocks/events' ) || has_block( 'core/block' ) ) {
 			wp_enqueue_script(
 				'coblocks-events',
-				$dir . 'coblocks-events.js',
+				$assets_js_dir . 'coblocks-events.js',
 				array(),
 				COBLOCKS_VERSION,
 				true
@@ -503,7 +504,7 @@ class CoBlocks_Block_Assets {
 			$asset_file = $this->get_asset_file( 'dist/js/coblocks-counter' );
 			wp_enqueue_script(
 				'coblocks-counter-script',
-				$dir . 'coblocks-counter.js',
+				$assets_js_dir . 'coblocks-counter.js',
 				$asset_file['dependencies'],
 				COBLOCKS_VERSION,
 				true
@@ -515,7 +516,7 @@ class CoBlocks_Block_Assets {
 			$asset_file = $this->get_asset_file( 'dist/js/coblocks-services' );
 			wp_enqueue_script(
 				'coblocks-services-script',
-				$dir . 'coblocks-services.js',
+				$assets_js_dir . 'coblocks-services.js',
 				$asset_file['dependencies'],
 				COBLOCKS_VERSION,
 				true
@@ -535,7 +536,7 @@ class CoBlocks_Block_Assets {
 		) {
 			wp_enqueue_script(
 				'coblocks-lightbox',
-				$dir . 'coblocks-lightbox.js',
+				$assets_js_dir . 'coblocks-lightbox.js',
 				array(),
 				COBLOCKS_VERSION,
 				true
@@ -552,30 +553,28 @@ class CoBlocks_Block_Assets {
 			)
 		);
 
-		$header = $this->get_template_content( 'header' );
-		$footer = $this->get_template_content( 'footer' );
+		wp_register_script(
+			'coblocks-search-script',
+			$assets_js_dir . 'coblocks-search-script.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
 
-		// Counter block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/go-search' ) || has_block( 'core/go-search' ) || has_block( 'coblocks/go-search', $header . $footer ) ) {
-			$asset_file = $this->get_asset_file( 'dist/js/coblocks-go-search' );
-			wp_enqueue_script(
-				'coblocks-go-search-script',
-				$dir . 'coblocks-go-search.js',
-				$asset_file['dependencies'],
-				COBLOCKS_VERSION,
-				true
-			);
+		wp_register_style(
+			'coblocks-search-style',
+			$assets_dir . 'coblocks-search.css',
+			array(),
+			COBLOCKS_VERSION
+		);
 
-			$theme = wp_get_theme();
-
-			wp_localize_script(
-				'coblocks-go-search-script',
-				'coblocksGoSearch',
-				array(
-					'isGoActive' => 'Go' === $theme->get( 'Name' ),
-				)
-			);
-		}
+		wp_register_script(
+			'coblocks-search-editor',
+			$assets_dir . 'coblocks-search.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
 	}
 
 	/**
@@ -736,7 +735,7 @@ class CoBlocks_Block_Assets {
 		if ( ! $template_slug ) {
 			return;
 		}
-		$args = array(
+		$args     = array(
 			'name'        => $template_slug,
 			'post_type'   => 'wp_template_part',
 			'post_status' => 'publish',

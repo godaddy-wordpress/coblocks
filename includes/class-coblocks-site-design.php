@@ -99,7 +99,9 @@ class CoBlocks_Site_Design {
 	 * @return boolean
 	 */
 	public static function short_circuit_check() {
-		return 'go' !== get_stylesheet();
+		return 'go' !== get_stylesheet() ||
+			// Temporary logic to short-circuit if GSE active.
+			! ( function_exists( '\Go\Core\get_design_style' ) );
 	}
 
 	/**

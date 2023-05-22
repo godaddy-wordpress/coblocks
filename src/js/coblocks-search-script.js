@@ -1,22 +1,6 @@
-/* global coblocksGoSearch */
-
-import { unregisterBlockType } from '@wordpress/blocks';
-import domReady from '@wordpress/dom-ready';
-
 ( function() {
 	'use strict';
 
-	if ( ! coblocksGoSearch.isGoActive ) {
-		domReady( function() {
-			unregisterBlockType( 'coblocks/go-search' );
-		} );
-		return;
-	}
-
-	/*
-		Gist block links are disabled by default
-		on front end only, we remove the block to allow for clicking
-	*/
 	document.addEventListener( 'DOMContentLoaded', function() {
 		const params = new URLSearchParams( location.search );
 		const searchQuery = params.get( 's' );

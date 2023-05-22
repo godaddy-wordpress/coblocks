@@ -1,0 +1,16 @@
+{
+	"name": "coblocks/search",
+	"category": "common",
+	"title": "CoBlocks Search",
+	"textdomain": "coblocks",
+	"description": "Search modal for the header.",
+	"viewScript": "coblocks-search-script",
+	"style": "coblocks-search-style",
+	"editorScript": "coblocks-search-editor",
+	"keywords": [ "go" ],
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false
+	},
+	"icon": "search"
+}
