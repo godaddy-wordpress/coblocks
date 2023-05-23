@@ -123,13 +123,15 @@ class CoBlocks_Labs {
 	 * @access public
 	 */
 	public function propagate_settings() {
-		if ( ! self::is_go_active() ) {
+		$is_go_active = ! self::is_go_active();
+		if ( $is_go_active ) {
 			update_option( 'coblocks_site_design_controls_enabled', 0 );
 			update_option( 'coblocks_layout_selector_controls_enabled', 0 );
 		}
 
+		$is_go_se = self::is_go_se();
 		// Site design is disabled when in GSE context.
-		if ( self::is_go_se() ) {
+		if ( $is_go_se ) {
 			update_option( 'coblocks_site_design_controls_enabled', 0 );
 		}
 	}
