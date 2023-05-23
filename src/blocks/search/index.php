@@ -10,7 +10,7 @@
  *
  * This function generates the HTML for the block to be rendered on the front-end.
  */
-function coblocks_coblocks_render_coblocks_search_block() {
+function coblocks_render_coblocks_search_block() {
 	$button_html = '<button class="header__search-toggle" data-toggle-target=".search-modal" data-set-focus=".search-modal .search-form__input" type="button" aria-controls="js-site-search">'
 		. '<div class="search-toggle-icon">'
 		. '<span class="dashicons dashicons-search"></span>'
