@@ -304,9 +304,6 @@ class CoBlocks_Block_Assets {
 				'animationControlsEnabled'       => $animation_controls_enabled,
 				'localeCode'                     => get_locale(),
 				'baseApiNamespace'               => COBLOCKS_API_NAMESPACE,
-				'searchForm'                     => array(
-					'homeURL' => esc_url( home_url( '/' ) ),
-				),
 			)
 		);
 

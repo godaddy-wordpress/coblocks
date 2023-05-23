@@ -194,8 +194,14 @@ class CoBlocks_Register_Blocks {
 			)
 		);
 
+		require_once COBLOCKS_PLUGIN_DIR . 'src/blocks/search/index.php';
 		// Begin block.json registration.
-		register_block_type( $this->get_block_metadata_path( 'search' ) );
+		register_block_type(
+			$this->get_block_metadata_path( 'search' ),
+			array(
+				'render_callback' => 'coblocks_render_coblocks_search_block',
+			)
+		);
 	}
 }
 

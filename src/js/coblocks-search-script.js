@@ -1,6 +1,5 @@
 ( function() {
 	'use strict';
-
 	document.addEventListener( 'DOMContentLoaded', function() {
 		const params = new URLSearchParams( location.search );
 		const searchQuery = params.get( 's' );
