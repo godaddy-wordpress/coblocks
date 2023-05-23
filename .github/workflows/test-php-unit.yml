@@ -45,4 +45,4 @@ jobs:
 
       - name: Run tests
         run: |
-          wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'
+          wp-env run tests-cli --env-cwd=/var/www/html phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose
