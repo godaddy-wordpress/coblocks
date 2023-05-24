@@ -6,13 +6,20 @@ on:
       phpVersion:
         required: false
         type: string
-        default: 8.1
+        default: '8.1'
 
 jobs:
   php_unit:
     name: Unit Test
     runs-on: ubuntu-latest
     steps:
+      - name: ssh
+        uses: ryanchapman/gha-ssh@v1
+        timeout-minutes: 10
+        with:
+          authorized_github_users: 'AnthonyLedesma'
+          debug: true
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -42,6 +49,7 @@ jobs:
         run: |
           npx grunt build
           mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
+
 
       - name: Run tests
         run: |
