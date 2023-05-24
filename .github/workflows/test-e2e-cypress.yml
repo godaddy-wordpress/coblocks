@@ -1,4 +1,4 @@
-name: Test / E2E Cypress runner
+name: Test / E2E Cypress Job
 
 on:
   workflow_call:
