@@ -1,4 +1,4 @@
-name: Test / E2E
+name: Test / E2E Cypress runner
 
 on:
   workflow_call:
@@ -109,6 +109,7 @@ jobs:
       - name: Build plugin
         run: |
           npx grunt build
+          # moving the built directory to this location means no dev files in tests-container.
           mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
 
       - name: Prepare Theme

@@ -39,7 +39,6 @@ jobs:
       - name: Build plugin
         run: |
           npx grunt build
-          mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
 
       - name: Prepare tests
         run: |
