@@ -13,13 +13,6 @@ jobs:
     name: Unit Test
     runs-on: ubuntu-latest
     steps:
-      - name: ssh
-        uses: ryanchapman/gha-ssh@v1
-        timeout-minutes: 10
-        with:
-          authorized_github_users: 'AnthonyLedesma'
-          debug: true
-
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -45,12 +38,6 @@ jobs:
           plugins: '[".","https://downloads.wordpress.org/plugin/woocommerce.zip"]'
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
-      - name: Build plugin
-        run: |
-          npx grunt build
-          mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
-
-
       - name: Run tests
         run: |
-          wp-env run tests-wordpress $(wp-env install-path)/tests-WordPress/wp-content/plugins/coblocks/vendor/bin/phpunit -c $(wp-env install-path)/tests-WordPress/wp-content/plugins/coblocks/phpunit.xml.dist --verbose
+          wp-env run tests-wordpress /var/www/html/wp-content/plugins/coblocks/vendor/bin/phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose
