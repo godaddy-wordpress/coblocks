@@ -38,6 +38,11 @@ jobs:
           plugins: '[".","https://downloads.wordpress.org/plugin/woocommerce.zip"]'
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
+      - name: Build plugin
+        run: |
+          # We are not testing directly against the build, but some tests assert the existence dist/.
+          npx grunt build
+
       - name: Run tests
         run: |
           wp-env run tests-wordpress /var/www/html/wp-content/plugins/coblocks/vendor/bin/phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose
