@@ -6,7 +6,7 @@ on:
       phpVersion:
         required: false
         type: string
-        default: 8.1
+        default: '8.1'
 
 jobs:
   php_unit:
@@ -40,8 +40,8 @@ jobs:
 
       - name: Build plugin
         run: |
+          # We are not testing directly against the build, but some tests assert the existence dist/.
           npx grunt build
-          mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
 
       - name: Run tests
         run: |
