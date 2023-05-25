@@ -5,7 +5,7 @@ Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
 Tested up to: 6.2
 Requires PHP: 7.4
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,6 +121,15 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 3.0.3 / 2023-04-20 =
+
+* Fix Layout Selector styles in WordPress 6.2. [#2518](https://github.com/godaddy-wordpress/coblocks/pull/2518)
+* Fix Gallery Carousel in the site editor. [#2519](https://github.com/godaddy-wordpress/coblocks/pull/2519)
+* Remove temporary linting rules. [#2520](https://github.com/godaddy-wordpress/coblocks/pull/2520)
+* Fix Carousel block in WordPress 6.2. [#2525](https://github.com/godaddy-wordpress/coblocks/pull/2525)
+* Fix migrating blocks with special characters. [#2526](https://github.com/godaddy-wordpress/coblocks/pull/2526)
+* Add logic so that we use core/buttons instead of core/button. [#2527](https://github.com/godaddy-wordpress/coblocks/pull/2527)
 
 = 3.0.2 / 2023-03-29 =
 

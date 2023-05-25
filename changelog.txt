@@ -1,3 +1,27 @@
+3.0.3 / 2023-04-20
+===================
+# Bug fix
+- Fix Layout Selector styles in WordPress 6.2. [#2518](https://github.com/godaddy-wordpress/coblocks/pull/2518)
+- Fix Gallery Carousel in the site editor. [#2519](https://github.com/godaddy-wordpress/coblocks/pull/2519)
+- Fix Carousel block in WordPress 6.2. [#2525](https://github.com/godaddy-wordpress/coblocks/pull/2525)
+- Fix migrating blocks with special characters. [#2526](https://github.com/godaddy-wordpress/coblocks/pull/2526)
+
+# Misc
+- Remove temporary linting rules. [#2520](https://github.com/godaddy-wordpress/coblocks/pull/2520)
+- Add logic so that we use core/buttons instead of core/button. [#2527](https://github.com/godaddy-wordpress/coblocks/pull/2527)
+
+3.0.3 / 2023-04-20
+===================
+# Bug fix
+- Fix Layout Selector styles in WordPress 6.2. [#2518](https://github.com/godaddy-wordpress/coblocks/pull/2518)
+- Fix Gallery Carousel in the site editor. [#2519](https://github.com/godaddy-wordpress/coblocks/pull/2519)
+- Fix Carousel block in WordPress 6.2. [#2525](https://github.com/godaddy-wordpress/coblocks/pull/2525)
+- Fix migrating blocks with special characters. [#2526](https://github.com/godaddy-wordpress/coblocks/pull/2526)
+
+# Misc
+- Remove temporary linting rules. [#2520](https://github.com/godaddy-wordpress/coblocks/pull/2520)
+- Add logic so that we use core/buttons instead of core/button. [#2527](https://github.com/godaddy-wordpress/coblocks/pull/2527)
+
 3.0.2 / 2023-03-29
 ===================
 # Bug fix

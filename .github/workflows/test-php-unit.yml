@@ -6,7 +6,7 @@ on:
       phpVersion:
         required: false
         type: string
-        default: 8.1
+        default: '8.1'
 
 jobs:
   php_unit:
@@ -40,9 +40,9 @@ jobs:
 
       - name: Build plugin
         run: |
+          # We are not testing directly against the build, but some tests assert the existence dist/.
           npx grunt build
-          mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
 
       - name: Run tests
         run: |
-          wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose'
+          wp-env run tests-wordpress /var/www/html/wp-content/plugins/coblocks/vendor/bin/phpunit -c /var/www/html/wp-content/plugins/coblocks/phpunit.xml.dist --verbose
