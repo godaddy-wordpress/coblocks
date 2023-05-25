@@ -132,13 +132,12 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
-	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' ).then( () => {
-		// Then close the block inserter if still open.
-		const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
-		if ( !! inserterButton.length ) {
-			cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
-		}
-	} );
+	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' );
+	// Then close the block inserter if still open.
+	const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
+	if ( !! inserterButton.length ) {
+		cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
+	}
 }
 
 export function addNewGroupToPost() {
@@ -393,13 +392,15 @@ export const upload = {
 	 */
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
-		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileContent ) => {
+		let fileContent;
+		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileCont ) => {
+			fileContent = fileCont;
 			cy.get( `[data-type="${ blockName }"] input[type="file"]` ).first()
 				.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
-
-			// Now validate upload is complete and is not a blob.
-			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
 		} );
+
+		// Now validate upload is complete and is not a blob.
+		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
 	},
 	spec: {
 		fileName: '150x150.png',

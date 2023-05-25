@@ -1,4 +1,4 @@
-name: Test / E2E
+name: Test / E2E Runner
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ jobs:
     name: Chrome with defaults
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
-      wpVersion: "WordPress/WordPress#6.1.1"
+      wpVersion: "WordPress/WordPress#6.2.2"
     concurrency:
       group: chrome-defaults
       cancel-in-progress: true
@@ -19,7 +19,7 @@ jobs:
     name: Chrome and Go theme
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
-      wpVersion: "WordPress/WordPress#6.1.1"
+      wpVersion: "WordPress/WordPress#6.2.2"
       theme: "https://downloads.wordpress.org/theme/go.zip"
     concurrency:
       group: chrome-go-theme
@@ -29,18 +29,8 @@ jobs:
     name: Chrome on PHP 7.4
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
-      wpVersion: "WordPress/WordPress#6.1.1"
+      wpVersion: "WordPress/WordPress#6.2.2"
       phpVersion: "7.4"
     concurrency:
       group: chrome-php74
-      cancel-in-progress: true
-
-  chrome_e2e_php82:
-    name: Chrome on PHP 8.2
-    uses: ./.github/workflows/test-e2e-cypress.yml
-    with:
-      wpVersion: "WordPress/WordPress#6.1.1"
-      phpVersion: "8.2"
-    concurrency:
-      group: chrome-php82
       cancel-in-progress: true
