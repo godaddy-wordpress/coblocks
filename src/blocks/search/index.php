@@ -30,7 +30,7 @@ function coblocks_render_coblocks_search_block() {
 					<label htmlfor="search-field">
 						<span class="screen-reader-text"><?php esc_html_e( 'Search For', 'coblocks' ); ?></span>
 					</label>
-					<input itemprop="query-input" type="search" id="search-field" class="input input--search search-form__input" autocomplete="off" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'coblocks' ); ?>" name="s" />
+					<input itemprop="query-input" type="search" id="search-field" class="input input--search search-form__input" autocomplete="off" required placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'coblocks' ); ?>" name="s" />
 					<button type="submit" class="search-input__button">
 						<span class="search-input__label"><?php esc_html_e( 'Submit', 'coblocks' ); ?></span>
 						<span class="dashicons dashicons-search"></span>
