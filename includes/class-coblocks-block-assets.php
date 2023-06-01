@@ -714,36 +714,6 @@ class CoBlocks_Block_Assets {
 
 		return false !== strpos( $post_content, 'coblocks-animate' );
 	}
-
-	/**
-	 * Retrieve template content.
-	 *
-	 * @param string $template_type  The name of the template content to retrieve.
-	 *
-	 * @return string Template content.
-	 */
-	public function get_template_content( $template_type ) {
-		$template_part = get_block_template( get_stylesheet() . '//' . $template_type, 'wp_template_part' );
-		if ( ! $template_part || empty( $template_part->content ) ) {
-			return;
-		}
-		$blocks        = parse_blocks( $template_part->content );
-		$template_slug = $blocks[0]['attrs']['slug'] ?? false;
-		if ( ! $template_slug ) {
-			return;
-		}
-		$args     = array(
-			'name'        => $template_slug,
-			'post_type'   => 'wp_template_part',
-			'post_status' => 'publish',
-			'numberposts' => 1,
-		);
-		$my_posts = get_posts( $args );
-		if ( ! $my_posts ) {
-			return;
-		}
-		return $my_posts[0]->post_content;
-	}
 }
 
 CoBlocks_Block_Assets::register();
