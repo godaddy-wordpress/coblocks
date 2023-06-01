@@ -10,7 +10,7 @@ import { Dashicon } from '@wordpress/components';
 const GoSearchEdit = () => {
 	return (
 		<>
-			<button id="header__search-toggle" className="header__search-toggle" data-toggle-target=".search-modal" data-set-focus=".search-modal .search-form__input" type="button" aria-controls="js-site-search">
+			<button id="header__search-toggle" className="header__search-toggle" data-toggle-target=".coblocks-search-modal" data-set-focus=".coblocks-search-modal .search-form__input" type="button" aria-controls="js-site-search">
 				<div className="search-toggle-icon">
 					<Dashicon icon="search" />
 				</div>
