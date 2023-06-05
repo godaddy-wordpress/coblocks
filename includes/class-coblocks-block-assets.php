@@ -148,7 +148,7 @@ class CoBlocks_Block_Assets {
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
 
-		wp_register_style(
+		wp_enqueue_style(
 			'coblocks-extensions',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
@@ -223,7 +223,7 @@ class CoBlocks_Block_Assets {
 				}
 			}
 
-			wp_enqueue_script(
+			wp_register_script(
 				$name,
 				COBLOCKS_PLUGIN_URL . $filepath . '.js',
 				array_merge( $asset_file['dependencies'], array( 'wp-api', 'coblocks-editor' ) ),

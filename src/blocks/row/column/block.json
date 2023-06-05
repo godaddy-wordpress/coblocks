@@ -21,8 +21,8 @@
 	"title": "Column",
 	"textdomain": "coblocks",
 	"description": "An immediate child of a row.",
+	"editorScript": ["coblocks-2"],
 	"parent": [
 		"coblocks/row"
-	],
-	"apiVersion": 2
+	]
 }

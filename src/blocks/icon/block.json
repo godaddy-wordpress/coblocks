@@ -58,6 +58,6 @@
 	"title": "Icon",
 	"textdomain": "coblocks",
 	"description": "Add a stylized graphic symbol to communicate something more.",
-	"render": "index.php",
-	"apiVersion": 2
+	"editorScript": ["coblocks-8"],
+	"render": "index.php"
 }

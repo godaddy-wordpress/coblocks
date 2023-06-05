@@ -13,6 +13,6 @@
 	},
 	"title": "Accordion",
 	"textdomain": "coblocks",
-	"description": "Organize content within collapsable accordion items.",
-	"apiVersion": 2
+	"editorScript": ["coblocks-1"],
+	"description": "Organize content within collapsable accordion items."
 }

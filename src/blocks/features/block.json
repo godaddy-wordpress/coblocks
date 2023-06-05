@@ -17,6 +17,6 @@
 	},
 	"title": "Features",
 	"textdomain": "coblocks",
-	"description": "Add up to four columns of small notes for your product or service.",
-	"apiVersion": 2
+	"editorScript": ["coblocks-2"],
+	"description": "Add up to four columns of small notes for your product or service."
 }

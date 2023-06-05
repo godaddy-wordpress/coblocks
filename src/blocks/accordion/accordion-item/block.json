@@ -29,6 +29,6 @@
 	"title": "Accordion Item",
 	"textdomain": "coblocks",
 	"description": "Add collapsable accordion items to accordions.",
-	"parent": [ "coblocks/accordion" ],
-	"apiVersion": 2
+	"editorScript": ["coblocks-1"],
+	"parent": [ "coblocks/accordion" ]
 }

@@ -27,6 +27,6 @@
 	"parent": [
 		"coblocks/form"
 	],
-	"render": "index.php",
-	"apiVersion": 2
+	"editorScript": ["coblocks-3"],
+	"render": "index.php"
 }

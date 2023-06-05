@@ -153,7 +153,13 @@ class CoBlocks_Register_Blocks {
 		$slug   = $this->slug;
 		$blocks = $this->load_block_manifest();
 		foreach ( $blocks as $block_name => $block_options ) {
-			$default_options = array();
+
+			// Bulk styles for blocks.
+			// We need to split the styles and specify the handle for each block in the block.json file.
+			$default_options = array(
+				'editor_style' => $slug . '-editor',
+				'style'        => $slug . '-frontend',
+			);
 
 			// Block has a render_callback defined.
 			if ( isset( $block_options['render_callback'] ) ) {

@@ -43,6 +43,6 @@
 	"title": "Shape Divider",
 	"textdomain": "coblocks",
 	"description": "Add a shape divider to visually distinguish page sections.",
-	"render": "index.php",
-	"apiVersion": 2
+	"editorScript": ["coblocks-10"],
+	"render": "index.php"
 }

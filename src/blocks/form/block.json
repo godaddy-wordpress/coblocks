@@ -19,10 +19,7 @@
 	"textdomain": "coblocks",
 	"description": "Add a contact form to your page.",
 	"render": "index.php",
-	"apiVersion": 2,
-	"editorScript": ["blocks-4"],
-	"editorStyle": ["coblocks-editor"],
-	"style": ["coblocks-frontend", "coblocks-extensions"],
+	"editorScript": ["coblocks-4"],
 	"keywords": ["about", "contact", "email"],
 	"supports": {
 		"customClassName": false,

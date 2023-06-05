@@ -1,6 +1,5 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
 	"name": "coblocks/author",
 	"attributes": {
 		"biography": {
@@ -43,5 +42,6 @@
 		}
 	},
 	"title": "Author",
-	"category": "theme"
+	"category": "theme",
+	"editorScript": ["coblocks-1"]
 }

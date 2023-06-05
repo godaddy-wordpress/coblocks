@@ -74,6 +74,6 @@
 	"title": "Post Carousel (CoBlocks)",
 	"textdomain": "coblocks",
 	"description": "Display posts or an external blog feed as a carousel.",
-	"render": "index.php",
-	"apiVersion": 2
+	"editorScript": ["coblocks-11"],
+	"render": "index.php"
 }

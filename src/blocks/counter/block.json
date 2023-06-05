@@ -1,6 +1,5 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
 	"name": "coblocks/counter",
 	"title": "Counter",
 	"category": "widgets",
@@ -43,5 +42,6 @@
 				"fontSize": true
 			}
 		}
-	}
+	},
+	"editorScript": ["coblocks-13"]
 }

@@ -32,6 +32,6 @@
 	},
 	"title": "Gif",
 	"textdomain": "coblocks",
-	"description": "Pick a gif, any gif.",
-	"apiVersion": 2
+	"editorScript": ["coblocks-9"],
+	"description": "Pick a gif, any gif."
 }

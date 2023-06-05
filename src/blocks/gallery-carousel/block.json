@@ -1,6 +1,5 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
 	"name": "coblocks/gallery-carousel",
 	"category": "media",
 	"attributes": {

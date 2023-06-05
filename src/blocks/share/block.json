@@ -86,6 +86,6 @@
 	"title": "Share",
 	"textdomain": "coblocks",
 	"description": "Add social sharing links to help you get likes and shares.",
-	"render": "index.php",
-	"apiVersion": 2
+	"editorScript": ["coblocks-10"],
+	"render": "index.php"
 }

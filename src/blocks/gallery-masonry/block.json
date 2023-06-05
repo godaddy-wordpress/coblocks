@@ -1,6 +1,5 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
 	"name": "coblocks/gallery-masonry",
 	"title": "Masonry Gallery",
 	"category": "media",
@@ -82,6 +81,7 @@
 		"allowResize": "allowResize",
 		"imageCrop": "imageCrop"
 	},
+	"editorScript": ["coblocks-5"],
 	"supports": {
 		"anchor": true,
 		"gutter": {

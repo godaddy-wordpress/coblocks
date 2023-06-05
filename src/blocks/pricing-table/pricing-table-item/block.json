@@ -39,8 +39,8 @@
 	"title": "Pricing Table Item",
 	"textdomain": "coblocks",
 	"description": "A pricing table to help visitors compare products and plans.",
+	"editorScript": ["coblocks-6"],
 	"parent": [
 		"coblocks/pricing-table"
-	],
-	"apiVersion": 2
+	]
 }

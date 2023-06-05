@@ -74,6 +74,6 @@
 	"title": "Food Item",
 	"textdomain": "coblocks",
 	"description": "A food and drink item within the Food & Drinks block.",
-	"parent": [ "coblocks/food-and-drinks" ],
-	"apiVersion": 2
+	"editorScript": ["coblocks-4"],
+	"parent": [ "coblocks/food-and-drinks" ]
 }

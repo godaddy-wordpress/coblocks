@@ -31,6 +31,6 @@
 	"title": "Events",
 	"textdomain": "coblocks",
 	"description": "Add a list of events or display events from a public calendar.",
-	"render": "index.php",
-	"apiVersion": 2
+	"editorScript": ["coblocks-2"],
+	"render": "index.php"
 }

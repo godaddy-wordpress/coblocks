@@ -83,6 +83,6 @@
 	"title": "Posts",
 	"textdomain": "coblocks",
 	"description": "Display posts or an RSS feed as stacked or horizontal cards.",
-	"render": "index.php",
-	"apiVersion": 2
+	"editorScript": ["coblocks-11"],
+	"render": "index.php"
 }
