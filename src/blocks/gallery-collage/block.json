@@ -57,5 +57,6 @@
 	},
 	"title": "Collage",
 	"textdomain": "coblocks",
-	"description": "Assemble images into a beautiful collage gallery."
+	"description": "Assemble images into a beautiful collage gallery.",
+	"apiVersion": 2
 }

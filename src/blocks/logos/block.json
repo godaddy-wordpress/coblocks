@@ -37,5 +37,6 @@
 	},
 	"title": "Logos",
 	"textdomain": "coblocks",
-	"description": "Add logos, badges, or certifications to build credibility."
+	"description": "Add logos, badges, or certifications to build credibility.",
+	"apiVersion": 2
 }

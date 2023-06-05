@@ -23,5 +23,6 @@
 	"description": "An immediate child of a row.",
 	"parent": [
 		"coblocks/row"
-	]
+	],
+	"apiVersion": 2
 }

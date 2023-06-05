@@ -23,5 +23,6 @@
 	},
 	"title": "Row",
 	"textdomain": "coblocks",
-	"description": "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns."
+	"description": "Add a structured wrapper for column blocks, then add content blocks you’d like to the columns.",
+	"apiVersion": 2
 }

@@ -57,5 +57,6 @@
 	},
 	"title": "Hero",
 	"textdomain": "coblocks",
-	"description": "An introductory area of a page accompanied by a small amount of text and a call to action."
+	"description": "An introductory area of a page accompanied by a small amount of text and a call to action.",
+	"apiVersion": 2
 }

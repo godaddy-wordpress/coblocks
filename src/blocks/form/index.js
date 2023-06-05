@@ -15,7 +15,6 @@ import variations from './variations';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
 import { InnerBlocks } from '@wordpress/block-editor';
 
@@ -41,33 +40,9 @@ if ( typeof coblocksBlockData !== 'undefined' ) {
 
 const settings = {
 	attributes: conditionalBlockAttributes,
-	/* translators: block description */
-	description: __( 'Add a contact form to your page.', 'coblocks' ),
 	edit,
-	example: {
-		attributes: {
-			subject: __( 'Subject example', 'coblocks' ),
-		},
-	},
 	icon: <Icon icon={ icon } />,
-	keywords: [
-		'coblocks',
-		/* translators: block keyword */
-		__( 'email', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'about', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'contact', 'coblocks' ),
-	],
 	save: InnerBlocks.Content,
-	supports: {
-		customClassName: false,
-		html: false,
-		labelColor: true,
-		reusable: false,
-	},
-	/* translators: block name */
-	title: __( 'Form', 'coblocks' ),
 	variations,
 };
 

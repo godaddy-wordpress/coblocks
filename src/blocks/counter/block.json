@@ -43,7 +43,5 @@
 				"fontSize": true
 			}
 		}
-	},
-	"editorStyle": "wp-block-coblocks-counter-editor",
-	"style": "wp-block-coblocks-counter"
+	}
 }

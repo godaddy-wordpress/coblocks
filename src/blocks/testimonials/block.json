@@ -46,7 +46,5 @@
 				"fontSize": true
 			}
 		}
-	},
-	"editorStyle": "wp-block-coblocks-testimonials-editor",
-	"style": "wp-block-coblocks-testimonials"
+	}
 }

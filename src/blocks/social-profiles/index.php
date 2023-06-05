@@ -12,7 +12,7 @@
  *
  * @return string Returns the block content.
  */
-function coblocks_render_social_profiles_block( $attributes ) {
+function coblocks_render_coblocks_social_profiles_block( $attributes ) {
 
 	global $post;
 

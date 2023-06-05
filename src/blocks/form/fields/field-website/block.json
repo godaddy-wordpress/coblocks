@@ -16,5 +16,7 @@
 	"description": "A text field for collecting a URL.",
 	"parent": [
 		"coblocks/form"
-	]
+	],
+	"render": "index.php",
+	"apiVersion": 2
 }

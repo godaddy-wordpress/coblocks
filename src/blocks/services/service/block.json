@@ -70,5 +70,6 @@
 	"description": "A single service item within a services block.",
 	"parent": [
 		"coblocks/services"
-	]
+	],
+	"apiVersion": 2
 }

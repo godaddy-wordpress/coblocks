@@ -24,5 +24,7 @@
 	"description": "A checkbox field with multiple options where multiple choices can be made.",
 	"parent": [
 		"coblocks/form"
-	]
+	],
+	"render": "index.php",
+	"apiVersion": 2
 }

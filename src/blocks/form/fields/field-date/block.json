@@ -16,5 +16,7 @@
 	"description": "A field for requesting date selections with a date picker.",
 	"parent": [
 		"coblocks/form"
-	]
+	],
+	"render": "index.php",
+	"apiVersion": 2
 }

@@ -7,12 +7,13 @@
 
 /**
  * Renders the block on server.
+ * Share Block AKA Social Block (deprecated name).
  *
  * @param array $attributes The block attributes.
  *
  * @return string Returns the block content.
  */
-function coblocks_render_share_block( $attributes ) {
+function coblocks_render_coblocks_social_block( $attributes ) {
 
 	global $post;
 

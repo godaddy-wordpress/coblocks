@@ -47,5 +47,6 @@
 	},
 	"title": "Media Card",
 	"textdomain": "coblocks",
-	"description": "Add an image or video with an offset card side-by-side."
+	"description": "Add an image or video with an offset card side-by-side.",
+	"apiVersion": 2
 }

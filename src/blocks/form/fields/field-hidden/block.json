@@ -16,5 +16,7 @@
 	"description": "A hidden text field for collecting additional data.",
 	"parent": [
 		"coblocks/form"
-	]
+	],
+	"render": "index.php",
+	"apiVersion": 2
 }

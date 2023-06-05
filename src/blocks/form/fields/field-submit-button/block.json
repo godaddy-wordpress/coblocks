@@ -26,5 +26,7 @@
 	"description": "A button for submitting form data.",
 	"parent": [
 		"coblocks/form"
-	]
+	],
+	"render": "index.php",
+	"apiVersion": 2
 }

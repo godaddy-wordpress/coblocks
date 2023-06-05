@@ -11,5 +11,6 @@
 	},
 	"title": "FAQ",
 	"textdomain": "coblocks",
-	"description": "Add a list of questions and answers."
+	"description": "Add a list of questions and answers.",
+	"apiVersion": 2
 }

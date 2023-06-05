@@ -19,5 +19,6 @@
 	"title": "Feature",
 	"textdomain": "coblocks",
 	"description": "A singular child column within a parent features block.",
-	"parent": [ "coblocks/features" ]
+	"parent": [ "coblocks/features" ],
+	"apiVersion": 2
 }

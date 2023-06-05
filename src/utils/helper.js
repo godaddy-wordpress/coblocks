@@ -12,7 +12,7 @@ import { supportsCollections } from './block-helpers';
  * WordPress dependencies
  */
 import { isBlobURL } from '@wordpress/blob';
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, getBlockType } from '@wordpress/blocks';
 import TokenList from '@wordpress/token-list';
 
 // Set dim ratio.
@@ -109,8 +109,13 @@ export const registerBlock = ( block ) => {
 		return;
 	}
 
-	let { category } = block;
 	const { name, settings } = block;
+
+	if ( getBlockType( name ) ) {
+		return;
+	}
+
+	let { category } = block;
 
 	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
 		category = 'coblocks';
@@ -118,19 +123,10 @@ export const registerBlock = ( block ) => {
 
 	const icon = setIconColor( settings?.icon );
 
-	const isV2 = block?.metadata?.apiVersion === 2;
-	const v2Settings = isV2 ? block?.metadata : {};
-	if ( !! settings?.attributes && isV2 ) {
-		v2Settings.attributes = { ...v2Settings.attributes, ...settings?.attributes };
-	}
-
 	registerBlockType( block.metadata, {
 		...settings,
 		category,
 		icon,
-
-		// V2 Block API Upgrades
-		...v2Settings,
 	} );
 };
 

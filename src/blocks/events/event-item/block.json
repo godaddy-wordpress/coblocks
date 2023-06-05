@@ -47,5 +47,6 @@
 	"title": "Event Item",
 	"textdomain": "coblocks",
 	"description": "An event within the events block.",
-	"parent": [ "coblocks/events" ]
+	"parent": [ "coblocks/events" ],
+	"apiVersion": 2
 }

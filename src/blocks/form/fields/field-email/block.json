@@ -16,5 +16,7 @@
 	"description": "A field for collecting a validated email address.",
 	"parent": [
 		"coblocks/form"
-	]
+	],
+	"render": "index.php",
+	"apiVersion": 2
 }

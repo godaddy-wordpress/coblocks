@@ -57,5 +57,7 @@
 	},
 	"title": "Icon",
 	"textdomain": "coblocks",
-	"description": "Add a stylized graphic symbol to communicate something more."
+	"description": "Add a stylized graphic symbol to communicate something more.",
+	"render": "index.php",
+	"apiVersion": 2
 }

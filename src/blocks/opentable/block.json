@@ -13,5 +13,6 @@
 	},
 	"title": "OpenTable",
 	"textdomain": "coblocks",
-	"description": "Embed an OpenTable Reservations Widget."
+	"description": "Embed an OpenTable Reservations Widget.",
+	"apiVersion": 2
 }

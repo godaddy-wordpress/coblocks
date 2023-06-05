@@ -26,6 +26,13 @@ class CoBlocks_Register_Blocks {
 	private static $instance;
 
 	/**
+	 * This plugin's CoBlocks Form class instance.
+	 *
+	 * @var CoBlocks_Form
+	 */
+	private static $coblocks_form;
+
+	/**
 	 * Registers the plugin.
 	 *
 	 * @return CoBlocks_Register_Blocks
@@ -33,6 +40,9 @@ class CoBlocks_Register_Blocks {
 	public static function register() {
 		if ( null === self::$instance ) {
 			self::$instance = new CoBlocks_Register_Blocks();
+
+			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-form.php';
+			self::$coblocks_form = new CoBlocks_Form();
 		}
 
 		return self::$instance;
@@ -100,15 +110,28 @@ class CoBlocks_Register_Blocks {
 
 	/**
 	 * Load block manifest from block-manifest.json file.
+	 * For now we need to collect the `render` property from the block.json files and require manually.
 	 *
 	 * @return array The block manifest or an empty array if no content is found.
 	 */
 	public function load_block_manifest() {
-		$manifest_path = dirname( __DIR__ ) . '/block-manifest.json';
-		$manifest      = array();
+		$block_json_paths = array(
+			COBLOCKS_PLUGIN_DIR . 'src/blocks/*/block.json',
+			COBLOCKS_PLUGIN_DIR . 'src/blocks/*/*/block.json',
+			COBLOCKS_PLUGIN_DIR . 'src/blocks/form/fields/*/block.json',
+		);
 
-		if ( file_exists( $manifest_path ) ) {
-			$manifest = json_decode( file_get_contents( $manifest_path ), true );
+		$manifest = array();
+		foreach ( $block_json_paths as $block_json_path ) {
+			$block_json_files = glob( $block_json_path, GLOB_NOSORT );
+			foreach ( $block_json_files as $block_json_file ) {
+				$block_json                              = json_decode( file_get_contents( $block_json_file ), true );
+				$manifest[ $block_json['name'] ]['path'] = str_replace( '/block.json', '', $block_json_file );
+
+				if ( isset( $block_json['render'] ) ) {
+					$manifest[ $block_json['name'] ]['render_callback'] = $block_json['render'];
+				}
+			}
 		}
 
 		return $manifest;
@@ -126,56 +149,35 @@ class CoBlocks_Register_Blocks {
 			return;
 		}
 
-			// Shortcut for the slug.
-			$slug   = $this->slug;
-			$blocks = $this->load_block_manifest();
-
+		// Shortcut for the slug.
+		$slug   = $this->slug;
+		$blocks = $this->load_block_manifest();
 		foreach ( $blocks as $block_name => $block_options ) {
-			$default_options = array(
-				'editor_script' => $slug . '-editor',
-				'editor_style'  => $slug . '-editor',
-				'style'         => $slug . '-frontend',
-			);
+			$default_options = array();
 
-			$path_to_block_json = $this->get_block_metadata_path( $block_name, $block_options['child'] ?? false );
-
-			// Load block attributes from block.json file.
-			if ( isset( $block_options['attributes'] ) && $block_options['attributes'] ) {
-				$metadata                      = $this->load_block_metadata( $block_name, $block_options['child'] ?? false );
-				$default_options['attributes'] = $metadata['attributes'];
-			}
-
-			// Script can be boolean true or array of script handles/paths using file:.
-			if ( isset( $block_options['script'] ) ) {
-				if ( is_bool( $block_options['script'] ) && $block_options['script'] ) {
-					$default_options['script'] = "coblocks-{$block_name}-script";
-				} elseif ( is_array( $block_options['script'] ) ) {
-					$default_options['script'] = $block_options['script'];
-				}
-			}
-
-			// Script can be boolean true or array of script handles/paths using file:.
-			if ( isset( $block_options['view_script'] ) ) {
-				if ( is_bool( $block_options['view_script'] ) && $block_options['view_script'] ) {
-					$default_options['view_script'] = "coblocks-{$block_name}-script";
-				} elseif ( is_array( $block_options['view_script'] ) ) {
-					$default_options['view_script'] = $block_options['view_script'];
-				}
-			}
-
-			// Get render callback should be named "coblocks_render_{$render_callback_block_name}_block".
+			// Block has a render_callback defined.
 			if ( isset( $block_options['render_callback'] ) ) {
-				$path_to_block = str_replace( '/block.json', '', $path_to_block_json );
-				// Include the render_callback.
-				if ( file_exists( "{$path_to_block}/index.php" ) ) {
-					require_once "{$path_to_block}/index.php";
-				}
-				$render_callback_block_name         = str_replace( '-', '_', $block_name );
-				$default_options['render_callback'] = "coblocks_render_{$render_callback_block_name}_block";
-			}
 
+				// Include the render_callback.
+				$render_callback_require_path = $block_options['path'] . '/' . $block_options['render_callback'];
+				if ( file_exists( $render_callback_require_path ) ) {
+					require_once $render_callback_require_path;
+				}
+				$render_callback_block_name = str_replace( array( '-', '/' ), array( '_', '_' ), $block_name );
+				$render_callback_handle     = "coblocks_render_{$render_callback_block_name}_block";
+
+				// Most SSR blocks have render_callback defined in the block index.php.
+				if ( function_exists( $render_callback_handle ) ) {
+					$default_options['render_callback'] = $render_callback_handle;
+				}
+
+				// Some blocks like Form and child Field blocks have render_callback defined in the CoBlocks_Form class.
+				if ( class_exists( 'CoBlocks_Form' ) && method_exists( 'CoBlocks_Form', $render_callback_handle ) ) {
+					$default_options['render_callback'] = array( self::$coblocks_form, $render_callback_handle );
+				}
+			}
 			register_block_type(
-				$path_to_block_json,
+				$block_options['path'] . '/block.json',
 				$default_options
 			);
 		}

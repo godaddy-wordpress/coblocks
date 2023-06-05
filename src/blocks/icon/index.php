@@ -12,7 +12,7 @@
  *
  * @return string Returns the block content.
  */
-function coblocks_render_icon_block( $attrs ) {
+function coblocks_render_coblocks_icon_block( $attrs ) {
 	if ( ! is_array( $attrs ) ) {
 		$attrs = array();
 	}

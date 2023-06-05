@@ -85,5 +85,7 @@
 	},
 	"title": "Share",
 	"textdomain": "coblocks",
-	"description": "Add social sharing links to help you get likes and shares."
+	"description": "Add social sharing links to help you get likes and shares.",
+	"render": "index.php",
+	"apiVersion": 2
 }

@@ -13,7 +13,7 @@
  *
  * @return string Returns the events content.
  */
-function coblocks_render_events_block( $attributes, $content ) {
+function coblocks_render_coblocks_events_block( $attributes, $content ) {
 
 	if ( empty( $attributes['externalCalendarUrl'] ) ) {
 		return $content;

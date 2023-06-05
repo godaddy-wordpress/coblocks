@@ -22,17 +22,17 @@ import { metadata as stackedMeta, name as stackedName, settings as stackedSettin
 
 // Imports used for registerFormBlocks().
 // Form, Name, Date, Textarea, Phone, Text, Website, Hidden
-import { name as formBlockName, settings as formBlockSettings } from '../../../src/blocks/form';
-import { name as formCheckboxBlockName, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/field-checkbox';
-import { name as formDateBlockName, settings as formDateBlockSettings } from '../../../src/blocks/form/fields/field-date';
-import { name as formHiddenBlockName, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/field-hidden';
-import { name as formNameBlockName, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/field-name';
-import { name as formPhoneBlockName, settings as formPhoneBlockSettings } from '../../../src/blocks/form/fields/field-phone';
-import { name as formRadioBlockName, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/field-radio';
-import { name as formSelectBlockName, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/field-select';
-import { name as formTextareaBlockName, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/field-textarea';
-import { name as formTextBlockName, settings as formTextBlockSettings } from '../../../src/blocks/form/fields/field-text';
-import { name as formWebsiteBlockName, settings as formWebsiteBlockSettings } from '../../../src/blocks/form/fields/field-website';
+import { metadata as formMetaData, settings as formBlockSettings } from '../../../src/blocks/form';
+import { metadata as formCheckboxMetaData, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/field-checkbox';
+import { metadata as formDateMetaData, settings as formDateBlockSettings } from '../../../src/blocks/form/fields/field-date';
+import { metadata as formHiddenMetaData, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/field-hidden';
+import { metadata as formNameMetaData, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/field-name';
+import { metadata as formPhoneMetaData, settings as formPhoneBlockSettings } from '../../../src/blocks/form/fields/field-phone';
+import { metadata as formRadioMetaData, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/field-radio';
+import { metadata as formSelectMetaData, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/field-select';
+import { metadata as formTextareaMetaData, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/field-textarea';
+import { metadata as formTextMetaData, settings as formTextBlockSettings } from '../../../src/blocks/form/fields/field-text';
+import { metadata as formWebsiteMetaData, settings as formWebsiteBlockSettings } from '../../../src/blocks/form/fields/field-website';
 
 /**
  * WordPress dependencies
@@ -68,19 +68,19 @@ export const registerGalleryBlocks = () => {
 
 export const registerFormBlocks = () => {
 	// Form, Name, Date, Textarea, Phone, Text, Website, Hidden
-	registerBlockType( formBlockName, { category: 'common', ...formBlockSettings } ); // Register form block
-	registerBlockType( formNameBlockName, { category: 'common', ...formNameBlockSettings } ); // Register form name block
-	registerBlockType( formDateBlockName, { category: 'common', ...formDateBlockSettings } ); // Register form name block
-	registerBlockType( formTextareaBlockName, { category: 'common', ...formTextareaBlockSettings } ); // Register form textarea block
-	registerBlockType( formPhoneBlockName, { category: 'common', ...formPhoneBlockSettings } ); // Register form phone block
-	registerBlockType( formTextBlockName, { category: 'common', ...formTextBlockSettings } ); // Register form text block
-	registerBlockType( formWebsiteBlockName, { category: 'common', ...formWebsiteBlockSettings } ); // Register form website block
-	registerBlockType( formHiddenBlockName, { category: 'common', ...formHiddenBlockSettings } ); // Register form hidden block
+	registerBlockType( formMetaData, { category: 'common', ...formBlockSettings } ); // Register form block
+	registerBlockType( formNameMetaData, { category: 'common', ...formNameBlockSettings } ); // Register form name block
+	registerBlockType( formDateMetaData, { category: 'common', ...formDateBlockSettings } ); // Register form name block
+	registerBlockType( formTextareaMetaData, { category: 'common', ...formTextareaBlockSettings } ); // Register form textarea block
+	registerBlockType( formPhoneMetaData, { category: 'common', ...formPhoneBlockSettings } ); // Register form phone block
+	registerBlockType( formTextMetaData, { category: 'common', ...formTextBlockSettings } ); // Register form text block
+	registerBlockType( formWebsiteMetaData, { category: 'common', ...formWebsiteBlockSettings } ); // Register form website block
+	registerBlockType( formHiddenMetaData, { category: 'common', ...formHiddenBlockSettings } ); // Register form hidden block
 
 	// Select, Checkbox, Radio
-	registerBlockType( formSelectBlockName, { category: 'common', ...formSelectBlockSettings } ); // Register form name block
-	registerBlockType( formCheckboxBlockName, { category: 'common', ...formCheckboxBlockSettings } ); // Register form name block
-	registerBlockType( formRadioBlockName, { category: 'common', ...formRadioBlockSettings } ); // Register form name block
+	registerBlockType( formSelectMetaData, { category: 'common', ...formSelectBlockSettings } ); // Register form name block
+	registerBlockType( formCheckboxMetaData, { category: 'common', ...formCheckboxBlockSettings } ); // Register form name block
+	registerBlockType( formRadioMetaData, { category: 'common', ...formRadioBlockSettings } ); // Register form name block
 };
 
 /**

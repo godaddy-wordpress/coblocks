@@ -93,5 +93,7 @@
 	},
 	"title": "Social Profiles",
 	"textdomain": "coblocks",
-	"description": "Grow your audience with links to social media profiles."
+	"description": "Grow your audience with links to social media profiles.",
+	"render": "index.php",
+	"apiVersion": 2
 }

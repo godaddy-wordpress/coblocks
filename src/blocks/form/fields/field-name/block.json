@@ -28,5 +28,7 @@
 	"description": "A text field for collecting the first and last names.",
 	"parent": [
 		"coblocks/form"
-	]
+	],
+	"render": "index.php",
+	"apiVersion": 2
 }

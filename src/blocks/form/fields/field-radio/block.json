@@ -24,5 +24,7 @@
 	"description": "A field with multiple options where only one choice can be made.",
 	"parent": [
 		"coblocks/form"
-	]
+	],
+	"render": "index.php",
+	"apiVersion": 2
 }

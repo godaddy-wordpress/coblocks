@@ -21,5 +21,6 @@
 	},
 	"title": "Services",
 	"textdomain": "coblocks",
-	"description": "Add up to four columns of services to display."
+	"description": "Add up to four columns of services to display.",
+	"apiVersion": 2
 }
