@@ -136,7 +136,11 @@ jobs:
         run: |
           postContent=$(cat $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.html)
 
-          postId=$(wp-env run tests-cli "wp post create --post_type=post --post_title='${{matrix.spec}}' --porcelain --post_content='$postContent'")
+          # -d flag indicates detached and does not require TTY.
+          postId=$(wp-env -d run tests-cli bash -s -- <<EOF
+          wp post create --post_type=post --post_title='${{matrix.spec}}' --porcelain --post_content='$postContent'
+          EOF
+          )
           echo "postId=$postId" >> $GITHUB_OUTPUT
         id: create-post
 
