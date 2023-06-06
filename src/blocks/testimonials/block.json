@@ -1,6 +1,5 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
 	"name": "coblocks/testimonials",
 	"title": "Testimonials",
 	"category": "layout",
@@ -25,6 +24,7 @@
 			"default": false
 		}
 	},
+	"editorScript": ["coblocks-1"],
 	"supports": {
 		"align": [ "wide", "full" ],
 		"anchor": true,
