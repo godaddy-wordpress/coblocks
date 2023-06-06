@@ -25,7 +25,7 @@ class CoBlocks_Post_Carousel_Index_Tests extends WP_UnitTestCase {
 	/**
 	 * Test the social block markup returns correctly
 	 */
-	public function test_coblocks_render_post_carousel_block() {
+	public function test_coblocks_render_coblocks_post_carousel_block() {
 		// Test case 1: Default attributes
 		$attributes = array(
 			'className'    => 'test-class-name',
@@ -49,7 +49,7 @@ class CoBlocks_Post_Carousel_Index_Tests extends WP_UnitTestCase {
 		global $post;
 		$post = get_post( $post_id );
 
-		$output = coblocks_render_post_carousel_block( $attributes );
+		$output = coblocks_render_coblocks_post_carousel_block( $attributes );
 		$this->assertStringContainsString( '<div class="wp-block-coblocks-post-carousel external test-class-name">', $output );
 
 		// Test case 2: With categories and categoryRelation attributes
@@ -61,7 +61,7 @@ class CoBlocks_Post_Carousel_Index_Tests extends WP_UnitTestCase {
 		);
 		$attributes['categoryRelation'] = 'and';
 
-		$output = coblocks_render_post_carousel_block( $attributes );
+		$output = coblocks_render_coblocks_post_carousel_block( $attributes );
 		$this->assertStringContainsString( '<div class="wp-block-coblocks-post-carousel external test-class-name">', $output );
 	}
 

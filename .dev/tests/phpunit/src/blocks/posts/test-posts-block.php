@@ -21,7 +21,7 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 	/**
 	 * Test the posts block markup returns correctly
 	 */
-	public function test_coblocks_render_posts_block() {
+	public function test_coblocks_render_coblocks_posts_block() {
 		$attributes = array(
 			'className'    => 'test-class-name',
 			'postsToShow'  => 4,
@@ -42,13 +42,13 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 		global $post;
 		$post = get_post( $post_id );
 
-		$this->assertEquals( '<div class="wp-block-coblocks-posts test-class-name"><div class="wp-block-coblocks-posts__inner"></div></div>', coblocks_render_posts_block( $attributes ) );
+		$this->assertEquals( '<div class="wp-block-coblocks-posts test-class-name"><div class="wp-block-coblocks-posts__inner"></div></div>', coblocks_render_coblocks_posts_block( $attributes ) );
 	}
 
 	/**
 	 * Test the posts block markup returns correctly with styles
 	 */
-	public function test_coblocks_render_posts_block_with_styles() {
+	public function test_coblocks_render_coblocks_posts_block_with_styles() {
 		$attributes = array(
 			'className'    => 'test-class-name',
 			'postsToShow'  => 4,
@@ -83,7 +83,7 @@ class CoBlocks_Posts_Index_Tests extends WP_UnitTestCase {
 		// Test if the style attribute is present and contains the custom styles.
 		$this->assertStringContainsString(
 			'style="background-color: red;"',
-			coblocks_render_posts_block( $attributes )
+			coblocks_render_coblocks_posts_block( $attributes )
 		);
 
 		// Remove the filter after the test.
