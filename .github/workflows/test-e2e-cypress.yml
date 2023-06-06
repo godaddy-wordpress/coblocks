@@ -98,9 +98,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: Setup WP-CLI
-        uses: godaddy-wordpress/setup-wp-cli@1
-
       - name: Install dependencies
         run: |
           composer install --prefer-dist --optimize-autoloader &
@@ -111,9 +108,9 @@ jobs:
           npx grunt build
           # moving the built directory to this location means no dev files in tests-container.
           mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
-          WP_CORE_VERSION=$(wp-env --debug run cli "wp core version")
-
-          echo "WP_CORE_VERSION=${WP_CORE_VERSION}" >> $GITHUB_ENV
+          wp-env --debug run cli "wp db check"
+          wp-env --debug run cli "wp core version"
+          wp-env --debug run cli "wp option get home"
 
       - name: Prepare Theme
         run: |
