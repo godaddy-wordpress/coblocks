@@ -42,7 +42,7 @@ jobs:
 
       - name: Prepare tests
         run: |
-          wp-env run tests-cli "wp db import wp-content/plugins/coblocks/.dev/tests/a11y/coblocks_pa11y.sql"
+          wp-env run tests-cli wp db import wp-content/plugins/coblocks/.dev/tests/a11y/coblocks_pa11y.sql
 
       - name: Run tests
         run: |
