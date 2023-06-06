@@ -1,8 +1,8 @@
-/*global coblocksLigthboxData */
+/*global coblocksLightboxData */
 ( function( ) {
 	'use strict';
 
-	const { closeLabel, leftLabel, rightLabel } = coblocksLigthboxData;
+	const { closeLabel, leftLabel, rightLabel } = coblocksLightboxData;
 	const lightboxModals = document.getElementsByClassName( 'has-lightbox' );
 
 	Array.from( lightboxModals ).forEach( function( lightbox, index ) {
