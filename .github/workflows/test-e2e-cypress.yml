@@ -111,6 +111,9 @@ jobs:
           npx grunt build
           # moving the built directory to this location means no dev files in tests-container.
           mv ./build/coblocks $(wp-env install-path)/tests-WordPress/wp-content/plugins/
+          WP_CORE_VERSION=$(wp-env --debug run cli "wp core version")
+
+          echo "WP_CORE_VERSION=${WP_CORE_VERSION}" >> $GITHUB_ENV
 
       - name: Prepare Theme
         run: |
@@ -124,8 +127,7 @@ jobs:
 
       - name: Prepare tests
         run: |
-          WP_CORE_VERSION=$(wp-env run cli "core version")
-          WP_CORE_VERSION=$(wp-env run cli "wp core version")
+          WP_CORE_VERSION=$(wp-env --debug run cli "wp core version")
 
           echo "WP_CORE_VERSION=${WP_CORE_VERSION}" >> $GITHUB_ENV
           wp-env run tests-cli "wp post generate --count=5"
