@@ -36,7 +36,7 @@ class CoBlocks_Form_Block_Tests extends WP_UnitTestCase {
 
 		$this->expectOutputRegex( '/<div class="coblocks-form" id="(.*?)">/' );
 
-		echo coblocks_render_form_block( array(), '<!-- wp:coblocks/form --><!-- wp:coblocks/field-name --><!-- /wp:coblocks/field-name --><!-- wp:coblocks/field-email --><!-- /wp:coblocks/field-email --><!-- wp:coblocks/field-textarea --><!-- /wp:coblocks/field-textarea --><!-- /wp:coblocks/form -->' );
+		echo $this->coblocks_form->coblocks_render_coblocks_form_block( array(), '<!-- wp:coblocks/form --><!-- wp:coblocks/field-name --><!-- /wp:coblocks/field-name --><!-- wp:coblocks/field-email --><!-- /wp:coblocks/field-email --><!-- wp:coblocks/field-textarea --><!-- /wp:coblocks/field-textarea --><!-- /wp:coblocks/form -->' );
 
 	}
 
@@ -92,7 +92,7 @@ class CoBlocks_Form_Block_Tests extends WP_UnitTestCase {
 
 		$this->coblocks_form = new CoBlocks_Form();
 
-		echo $this->coblocks_form::render_field_label( $atts, '' );
+		echo $this->coblocks_form->render_field_label( $atts, '' );
 
 	}
 }

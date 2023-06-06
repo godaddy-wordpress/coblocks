@@ -8,12 +8,14 @@
 class CoBlocks_Radio_Field_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -61,7 +63,7 @@ class CoBlocks_Radio_Field_Block_Test extends WP_UnitTestCase {
 		$radio_field_block = $registered_blocks['coblocks/field-radio'];
 
 		$this->assertNotNull( $radio_field_block->render_callback );
-		$this->assertTrue( function_exists( $radio_field_block->render_callback ) );
+		$this->assertTrue( is_callable( $radio_field_block->render_callback ) );
 
 	}
 
@@ -71,7 +73,7 @@ class CoBlocks_Radio_Field_Block_Test extends WP_UnitTestCase {
 			'options' => array( 'Option 1', 'Option 2' ),
 		);
 
-		$rendered_output = coblocks_render_field_radio_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_radio_block( $attributes );
 
 		$this->assertStringContainsString( '<legend class="coblocks-label">', $rendered_output );
 		$this->assertStringContainsString( 'Test Radio Label', $rendered_output );
@@ -91,7 +93,7 @@ class CoBlocks_Radio_Field_Block_Test extends WP_UnitTestCase {
 	 */
 	public function test_render_field_radio_inline() {
 
-		$rendered_output = coblocks_render_field_radio_block(
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_radio_block(
 			array(
 				'options'  => array(
 					'option-1' => 'Option 1',
@@ -112,7 +114,7 @@ class CoBlocks_Radio_Field_Block_Test extends WP_UnitTestCase {
 	public function test_render_field_radio_empty_options() {
 
 		$this->assertEquals(
-			coblocks_render_field_radio_block(
+			$this->formClass->coblocks_render_coblocks_field_radio_block(
 				array(
 					'options' => array(),
 				),

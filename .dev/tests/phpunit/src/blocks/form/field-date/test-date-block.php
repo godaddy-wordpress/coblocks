@@ -8,12 +8,14 @@
 class CoBlocks_Date_Field_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -68,7 +70,7 @@ class CoBlocks_Date_Field_Block_Test extends WP_UnitTestCase {
 		$date_field_block  = $registered_blocks['coblocks/field-date'];
 
 		$this->assertNotNull( $date_field_block->render_callback );
-		$this->assertTrue( function_exists( $date_field_block->render_callback ) );
+		$this->assertTrue( is_callable( $date_field_block->render_callback ) );
 
 	}
 
@@ -81,7 +83,7 @@ class CoBlocks_Date_Field_Block_Test extends WP_UnitTestCase {
 			'required' => false,
 		);
 
-		$rendered_output = coblocks_render_field_date_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_date_block( $attributes );
 
 		// Test the label
 		$this->assertStringContainsString( '<label class="coblocks-label">', $rendered_output );

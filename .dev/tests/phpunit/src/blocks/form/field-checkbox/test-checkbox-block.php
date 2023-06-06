@@ -8,12 +8,14 @@
 class CoBlocks_Checkbox_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -69,7 +71,7 @@ class CoBlocks_Checkbox_Block_Test extends WP_UnitTestCase {
 		$checkbox_block    = $registered_blocks['coblocks/field-checkbox'];
 
 		$this->assertNotNull( $checkbox_block->render_callback );
-		$this->assertTrue( function_exists( $checkbox_block->render_callback ) );
+		$this->assertTrue( is_callable( $checkbox_block->render_callback ) );
 
 	}
 
@@ -93,7 +95,7 @@ class CoBlocks_Checkbox_Block_Test extends WP_UnitTestCase {
 			'required' => false,
 		);
 
-		$rendered_output = coblocks_render_field_checkbox_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_checkbox_block( $attributes );
 
 		// Test the label
 		$this->assertStringContainsString( '<label class="coblocks-label">', $rendered_output );
@@ -116,8 +118,9 @@ class CoBlocks_Checkbox_Block_Test extends WP_UnitTestCase {
 	 * are set to required
 	 */
 	public function test_required_checkbox_script() {
-
-		coblocks_render_field_checkbox_block(
+		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+		$checkbox_block    = $registered_blocks['coblocks/field-checkbox'];
+		$this->formClass->coblocks_render_coblocks_field_checkbox_block(
 			array(
 				'options'  => array(
 					'option-1' => 'Option 1',
@@ -141,7 +144,10 @@ class CoBlocks_Checkbox_Block_Test extends WP_UnitTestCase {
 
 		$this->expectOutputRegex( '/<div class="coblocks--inline">/' );
 
-		echo coblocks_render_field_checkbox_block(
+		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+		$checkbox_block    = $registered_blocks['coblocks/field-checkbox'];
+
+		echo $this->formClass->coblocks_render_coblocks_field_checkbox_block(
 			array(
 				'options'  => array(
 					'option-1' => 'Option 1',
@@ -161,7 +167,7 @@ class CoBlocks_Checkbox_Block_Test extends WP_UnitTestCase {
 
 		$this->expectOutputRegex( '/<div class="coblocks-field checkbox required">/' );
 
-		echo coblocks_render_field_checkbox_block(
+		echo $this->formClass->coblocks_render_coblocks_field_checkbox_block(
 			array(
 				'options'  => array(
 					'option-1' => 'Option 1',
@@ -180,7 +186,7 @@ class CoBlocks_Checkbox_Block_Test extends WP_UnitTestCase {
 	public function test_render_field_checkbox_empty_options() {
 
 		$this->assertEquals(
-			coblocks_render_field_checkbox_block(
+			$this->formClass->coblocks_render_coblocks_field_checkbox_block(
 				array(
 					'options' => array(),
 				),

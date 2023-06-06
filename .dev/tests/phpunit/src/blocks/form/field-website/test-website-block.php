@@ -8,12 +8,14 @@
 class CoBlocks_Website_Field_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -59,7 +61,7 @@ class CoBlocks_Website_Field_Block_Test extends WP_UnitTestCase {
 		$website_field_block = $registered_blocks['coblocks/field-website'];
 
 		$this->assertNotNull( $website_field_block->render_callback );
-		$this->assertTrue( function_exists( $website_field_block->render_callback ) );
+		$this->assertTrue( is_callable( $website_field_block->render_callback ) );
 
 	}
 
@@ -68,7 +70,7 @@ class CoBlocks_Website_Field_Block_Test extends WP_UnitTestCase {
 			'label' => 'Test Website Label',
 		);
 
-		$rendered_output = coblocks_render_field_website_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_website_block( $attributes );
 
 		$this->assertStringContainsString( '<label class="coblocks-label">', $rendered_output );
 		$this->assertStringContainsString( 'Test Website Label', $rendered_output );

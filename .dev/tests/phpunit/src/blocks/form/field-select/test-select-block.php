@@ -8,12 +8,14 @@
 class CoBlocks_Select_Field_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -60,7 +62,7 @@ class CoBlocks_Select_Field_Block_Test extends WP_UnitTestCase {
 		$select_field_block = $registered_blocks['coblocks/field-select'];
 
 		$this->assertNotNull( $select_field_block->render_callback );
-		$this->assertTrue( function_exists( $select_field_block->render_callback ) );
+		$this->assertTrue( is_callable( $select_field_block->render_callback ) );
 
 	}
 
@@ -70,7 +72,7 @@ class CoBlocks_Select_Field_Block_Test extends WP_UnitTestCase {
 			'options' => array( 'Option 1', 'Option 2' ),
 		);
 
-		$rendered_output = coblocks_render_field_select_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_select_block( $attributes );
 
 		$this->assertStringContainsString( '<label class="coblocks-label">', $rendered_output );
 		$this->assertStringContainsString( 'Test Select Label', $rendered_output );
@@ -86,7 +88,7 @@ class CoBlocks_Select_Field_Block_Test extends WP_UnitTestCase {
 	public function test_render_field_select_empty_options() {
 
 		$this->assertEquals(
-			coblocks_render_field_select_block(
+			$this->formClass->coblocks_render_coblocks_field_select_block(
 				array(
 					'options' => array(),
 				),

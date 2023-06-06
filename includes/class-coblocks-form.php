@@ -184,7 +184,7 @@ class CoBlocks_Form {
 				<?php
 				// Output a submit button if it's not found in the block content.
 				if ( false === strpos( $content, 'coblocks-form__submit' ) ) :
-					echo $this->coblocks_render_coblocks_field_submit_button( $atts );
+					echo $this->coblocks_render_coblocks_field_submit_button_block( $atts );
 				endif;
 				?>
 			</form>
@@ -327,7 +327,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Markup for the text field.
 	 */
-	public function render_field_text( $atts ) {
+	public function coblocks_render_coblocks_field_text_block( $atts ) {
 
 		static $text_count = 1;
 
@@ -389,7 +389,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Markup for the phone field.
 	 */
-	public function render_field_phone( $atts ) {
+	public function coblocks_render_coblocks_field_phone_block( $atts ) {
 
 		static $phone_count = 1;
 
@@ -746,7 +746,7 @@ class CoBlocks_Form {
 	 *
 	 * @return mixed Form submit button markup.
 	 */
-	public function coblocks_render_coblocks_field_submit_button( $atts ) {
+	public function coblocks_render_coblocks_field_submit_button_block( $atts ) {
 
 		$btn_text             = isset( $atts['submitButtonText'] ) ? $atts['submitButtonText'] : __( 'Submit', 'coblocks' );
 		$btn_class            = isset( $atts['className'] ) ? " {$atts['className']}" : '';

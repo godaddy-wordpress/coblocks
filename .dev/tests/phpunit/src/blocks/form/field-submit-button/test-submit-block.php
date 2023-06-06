@@ -8,12 +8,14 @@
 class CoBlocks_Submit_Button_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -60,7 +62,7 @@ class CoBlocks_Submit_Button_Block_Test extends WP_UnitTestCase {
 		$submit_button_block = $registered_blocks['coblocks/field-submit-button'];
 
 		$this->assertNotNull( $submit_button_block->render_callback );
-		$this->assertTrue( function_exists( $submit_button_block->render_callback ) );
+		$this->assertTrue( is_callable( $submit_button_block->render_callback ) );
 
 	}
 
@@ -71,7 +73,7 @@ class CoBlocks_Submit_Button_Block_Test extends WP_UnitTestCase {
 			'customTextButtonColor'       => '#abcdef',
 		);
 
-		$rendered_output = coblocks_render_field_submit_button_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_submit_button_block( $attributes );
 
 		$this->assertStringContainsString( '<div class="coblocks-form__submit wp-block-button">', $rendered_output );
 		$this->assertStringContainsString( '<button type="submit" class="wp-block-button__link"', $rendered_output );
@@ -90,7 +92,7 @@ class CoBlocks_Submit_Button_Block_Test extends WP_UnitTestCase {
 			'customTextButtonColor'       => '#333333',
 		);
 
-		$rendered_output = coblocks_render_field_submit_button_block( $atts );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_submit_button_block( $atts );
 
 		$this->assertStringContainsString( '<button type="submit" class="wp-block-button__link custom-button-class" style="background-color: #B4D455; color: #333333;">Submit</button>', $rendered_output );
 
@@ -106,9 +108,11 @@ class CoBlocks_Submit_Button_Block_Test extends WP_UnitTestCase {
 			<!-- wp:coblocks/field-textarea /-->
 			<!-- /wp:coblocks/form -->';
 
+		$this->formClass = new CoBlocks_Form();
+
 		$this->assertStringContainsString(
 			'<button type="submit" class="wp-block-button__link" style="">Submit</button>',
-			coblocks_render_form_block( array(), $form_missing_submit_button )
+			$this->formClass->coblocks_render_coblocks_field_submit_button_block( array(), $form_missing_submit_button )
 		);
 	}
 
@@ -125,7 +129,8 @@ class CoBlocks_Submit_Button_Block_Test extends WP_UnitTestCase {
 
 		$this->assertStringContainsString(
 			'<button type="submit" class="wp-block-button__link" style="">Contact Us</button>',
-			coblocks_render_form_block( array(), $form_has_submit_button )
+			// We assert against the form markup as the submit button is rendered within the form.
+			$this->formClass->coblocks_render_coblocks_form_block( array(), $form_has_submit_button )
 		);
 	}
 

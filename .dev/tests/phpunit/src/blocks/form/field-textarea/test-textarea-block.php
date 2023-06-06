@@ -8,12 +8,14 @@
 class CoBlocks_Textarea_Field_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -59,7 +61,7 @@ class CoBlocks_Textarea_Field_Block_Test extends WP_UnitTestCase {
 		$textarea_field_block = $registered_blocks['coblocks/field-textarea'];
 
 		$this->assertNotNull( $textarea_field_block->render_callback );
-		$this->assertTrue( function_exists( $textarea_field_block->render_callback ) );
+		$this->assertTrue( is_callable( $textarea_field_block->render_callback ) );
 
 	}
 
@@ -68,7 +70,7 @@ class CoBlocks_Textarea_Field_Block_Test extends WP_UnitTestCase {
 			'label' => 'Test Textarea Label',
 		);
 
-		$rendered_output = coblocks_render_field_textarea_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_textarea_block( $attributes );
 
 		$this->assertStringContainsString( '<label class="coblocks-label">', $rendered_output );
 		$this->assertStringContainsString( 'Test Textarea Label', $rendered_output );

@@ -8,12 +8,14 @@
 class CoBlocks_Hidden_Field_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -68,7 +70,7 @@ class CoBlocks_Hidden_Field_Block_Test extends WP_UnitTestCase {
 		$hidden_field_block = $registered_blocks['coblocks/field-hidden'];
 
 		$this->assertNotNull( $hidden_field_block->render_callback );
-		$this->assertTrue( function_exists( $hidden_field_block->render_callback ) );
+		$this->assertTrue( is_callable( $hidden_field_block->render_callback ) );
 
 	}
 
@@ -81,7 +83,7 @@ class CoBlocks_Hidden_Field_Block_Test extends WP_UnitTestCase {
 			'value' => 'Test Hidden Value',
 		);
 
-		$rendered_output = coblocks_render_field_hidden_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_hidden_block( $attributes );
 
 		// Test input field
 		$this->assertStringContainsString( 'type="hidden"', $rendered_output );

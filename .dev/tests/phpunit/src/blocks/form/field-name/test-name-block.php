@@ -8,12 +8,14 @@
 class CoBlocks_Name_Field_Block_Test extends WP_UnitTestCase {
 
 	private $coblocks;
+	private $formClass;
 
 	public function setUp(): void {
 
 		parent::setUp();
 
 		new CoBlocks_Register_Blocks();
+		$this->formClass = new CoBlocks_Form();
 
 		set_current_screen( 'dashboard' );
 
@@ -62,7 +64,7 @@ class CoBlocks_Name_Field_Block_Test extends WP_UnitTestCase {
 		$name_field_block  = $registered_blocks['coblocks/field-name'];
 
 		$this->assertNotNull( $name_field_block->render_callback );
-		$this->assertTrue( function_exists( $name_field_block->render_callback ) );
+		$this->assertTrue( is_callable( $name_field_block->render_callback ) );
 
 	}
 
@@ -74,7 +76,7 @@ class CoBlocks_Name_Field_Block_Test extends WP_UnitTestCase {
 			'labelLastName'  => 'Last',
 		);
 
-		$rendered_output = coblocks_render_field_name_block( $attributes );
+		$rendered_output = $this->formClass->coblocks_render_coblocks_field_name_block( $attributes );
 
 		$this->assertStringContainsString( '<label class="coblocks-label">', $rendered_output );
 		$this->assertStringContainsString( 'Test Name Label', $rendered_output );
