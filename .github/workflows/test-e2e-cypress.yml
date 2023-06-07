@@ -134,8 +134,7 @@ jobs:
       - name: Create post and get ID
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'
         run: |
-          # -d flag indicates detached and does not require TTY.
-          postId=$(wp-env -d run tests-cli "wp post create --post_type=post --post_title=\"${{matrix.spec}}\" --porcelain wp-content/plugins/coblocks/.dev/tests/cypress/fixtures/${{matrix.spec}}.html")
+          postId=$(wp-env run tests-cli "wp post create --post_type=post --post_title=\"${{matrix.spec}}\" --porcelain wp-content/plugins/coblocks/.dev/tests/cypress/fixtures/${{matrix.spec}}.html")
           echo "postId=$postId" >> $GITHUB_OUTPUT
         id: create-post
 
