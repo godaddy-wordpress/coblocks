@@ -134,8 +134,8 @@ jobs:
       - name: Create post and get ID
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'
         run: |
-          postId=$(wp-env run tests-cli "wp post create --post_type=post --post_title=\"${{matrix.spec}}\" --porcelain wp-content/plugins/coblocks/.dev/tests/cypress/fixtures/${{matrix.spec}}.html")
-          echo "postId=$postId" >> $GITHUB_OUTPUT
+          wp-env run tests-cli "wp post create --post_type=post --post_title=\"${{matrix.spec}}\" --porcelain wp-content/plugins/coblocks/.dev/tests/cypress/fixtures/${{matrix.spec}}.html" > postid.txt
+          echo "postId=$(cat postid.txt)" >> $GITHUB_OUTPUT
         id: create-post
 
       # Only retrieve the post ID if running the first spec
