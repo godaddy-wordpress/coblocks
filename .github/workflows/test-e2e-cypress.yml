@@ -33,7 +33,7 @@ jobs:
         spec:
           # - accordion.cypress.js
           - alert.cypress.js
-          # - author.cypress.js
+          - author.cypress.js
           # - click-to-tweet.cypress.js
           # - counter.cypress.js
           # - dynamic-separator.cypress.js
@@ -134,7 +134,15 @@ jobs:
       - name: Create post and get ID
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'
         run: |
-          postId=$(wp-env run tests-cli wp post create --post_type=post --post_title="${{matrix.spec}}" --porcelain .dev/tests/cypress/fixtures/${{matrix.spec}}.html)
+          # Generate application-password to use with WP REST API.
+          app_password=$(wp-env run tests-cli wp user application-password create admin gha-password --porcelain)
+
+          # Retrieve post content from fixture.
+          post_content=$(cat .dev/tests/cypress/fixtures/${{matrix.spec}}.html)
+
+          # Create a post using the REST API.
+          postId=$(curl -s -X post 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-urlencode "content=$post_content" --data-urlencode "status=publish" --user "admin:$pw" | jq '.id')
+
           echo "postId=$postId" >> $GITHUB_OUTPUT
         id: create-post
 
