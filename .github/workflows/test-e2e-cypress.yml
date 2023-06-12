@@ -136,18 +136,17 @@ jobs:
         run: |
           # Generate application-password to use with WP REST API.
           app_password=$(wp-env run tests-cli wp user application-password create admin gha-password --porcelain)
-          echo $app_password
 
           # Retrieve post content from fixture.
           post_content=$(cat .dev/tests/cypress/fixtures/${{matrix.spec}}.html)
-          echo $post_content
 
           # Create a post using the REST API.
           curl_response=$(curl -s -X post 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-urlencode "content=$post_content" --data-urlencode "status=publish" --user "admin:$app_password")
+
+          # Parse the postId from the response.
           postId=$($curl_response | jq '.id')
-          echo $curl_response
-          echo $postId
-          wp-env run tests-cli wp post get $postId --field=content
+
+          # Save the postId to the output.
           echo "postId=$postId" >> $GITHUB_OUTPUT
         id: create-post
 
