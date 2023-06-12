@@ -141,7 +141,9 @@ jobs:
           post_content=$(cat .dev/tests/cypress/fixtures/${{matrix.spec}}.html)
 
           # Create a post using the REST API.
-          postId=$(curl -s -X post 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-urlencode "content=$post_content" --data-urlencode "status=publish" --user "admin:$pw" | jq '.id')
+          curl_response=$(curl -s -X post 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-urlencode "content=$post_content" --data-urlencode "status=publish" --user "admin:$pw")
+          postId=$($curl_response | jq '.id')
+          echo $curl_response
           echo $postId
           wp-env run tests-cli wp post get $postId --field=content
           echo "postId=$postId" >> $GITHUB_OUTPUT
