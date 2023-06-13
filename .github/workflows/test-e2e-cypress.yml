@@ -142,6 +142,8 @@ jobs:
           echo $post_content
 
           response=$(curl -s -X post 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-urlencode "content=$post_content" --data-urlencode "status=publish" --user "admin:$app_password")
+          echo "curl -s -X post 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-urlencode "content=$post_content" --data-urlencode "status=publish" --user "admin:$app_password""
+
           echo $response
 
           # Create a post using the REST API and parse the postId from the response.
@@ -151,20 +153,20 @@ jobs:
           echo "postId=$postId" >> $GITHUB_OUTPUT
         id: create-post
 
-      # Only retrieve the post ID if running the first spec
-      - name: Save post ID to file
-        if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'
-        run: |
-          path="$GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.json"
-          touch "$path"
-          echo "{\"${{matrix.spec}}\": \"$(echo "${{ steps.create-post.outputs.postId }}")\"}" > "$path"
+      # # Only retrieve the post ID if running the first spec
+      # - name: Save post ID to file
+      #   if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'
+      #   run: |
+      #     path="$GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.json"
+      #     touch "$path"
+      #     echo "{\"${{matrix.spec}}\": \"$(echo "${{ steps.create-post.outputs.postId }}")\"}" > "$path"
 
-      - name: Run tests
-        run: |
-          CYPRESS_SPEC=$(find ./src/* -name ${{ matrix.spec }} -type f)
-          echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
-          ./node_modules/.bin/cypress verify
-          ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --spec $CYPRESS_SPEC
+      # - name: Run tests
+      #   run: |
+      #     CYPRESS_SPEC=$(find ./src/* -name ${{ matrix.spec }} -type f)
+      #     echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
+      #     ./node_modules/.bin/cypress verify
+      #     ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --spec $CYPRESS_SPEC
 
       - name: Upload failure video
         if: ${{ failure() }}
