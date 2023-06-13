@@ -1,6 +1,5 @@
 # CoBlocks: Page Builder Blocks for Gutenberg
 
-[![Test Accessibility](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-accessibility.yml/badge.svg)](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-accessibility.yml)
 [![Test PHP](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-php.yml/badge.svg)](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-php.yml)
 [![Test JS](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-javascript.yml/badge.svg)](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-javascript.yml)
 [![Test E2E](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-e2e.yml/badge.svg)](https://github.com/godaddy-wordpress/coblocks/actions/workflows/test-e2e.yml)
