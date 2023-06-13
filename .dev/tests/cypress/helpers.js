@@ -73,8 +73,8 @@ export function goTo( path = '/wp-admin', login = false ) {
  * when the window object is not available.
  */
 export function getWPDataObject() {
-	return cy.window().its( 'wp.data' ).then( ( data ) => {
-		return data;
+	return cy.window().its( 'wp' ).then( ( wp ) => {
+		return wp.data;
 	} );
 }
 

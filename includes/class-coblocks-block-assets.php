@@ -501,7 +501,7 @@ class CoBlocks_Block_Assets {
 
 		wp_localize_script(
 			'coblocks-lightbox',
-			'coblocksLigthboxData',
+			'coblocksLightboxData',
 			array(
 				'closeLabel' => __( 'Close Gallery', 'coblocks' ),
 				'leftLabel'  => __( 'Previous', 'coblocks' ),

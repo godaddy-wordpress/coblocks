@@ -98,9 +98,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: Setup WP-CLI
-        uses: godaddy-wordpress/setup-wp-cli@1
-
       - name: Install dependencies
         run: |
           composer install --prefer-dist --optimize-autoloader &
@@ -124,22 +121,30 @@ jobs:
 
       - name: Prepare tests
         run: |
-          WP_CORE_VERSION=$(wp-env run cli "wp core version")
+          WP_CORE_VERSION=$(wp-env run cli wp core version)
           echo "WP_CORE_VERSION=${WP_CORE_VERSION}" >> $GITHUB_ENV
-          wp-env run tests-cli "wp post generate --count=5"
-          wp-env run cli "wp post generate --count=5"
-          wp-env run cli "wp option update permalink_structure '/%postname%'"
+          wp-env run tests-cli wp post generate --count=5
+          wp-env run cli wp post generate --count=5
+          wp-env run cli wp option update permalink_structure '/%postname%'
           if [ "${{ inputs.theme }}" = "https://downloads.wordpress.org/theme/go.zip" ]; then
-            wp-env run tests-cli "wp theme activate go"
+            wp-env run tests-cli wp theme activate go
           fi
 
       # Only create a new post if running the migrated specs
       - name: Create post and get ID
         if: matrix.spec == 'alert.cypress.js' || matrix.spec == 'author.cypress.js'
         run: |
-          postContent=$(cat $GITHUB_WORKSPACE/.dev/tests/cypress/fixtures/${{matrix.spec}}.html)
+          # Generate application-password to use with WP REST API.
+          app_password=$(wp-env run tests-cli wp user application-password create admin gha-password --porcelain)
 
-          postId=$(wp-env run tests-cli "wp post create --post_type=post --post_title='${{matrix.spec}}' --porcelain --post_content='$postContent'")
+          # Retrieve post content from fixture.
+          post_content=$(cat .dev/tests/cypress/fixtures/${{matrix.spec}}.html)
+          echo $post_content
+
+          # Create a post using the REST API and parse the postId from the response.
+          postId=$(curl -s -X POST 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-raw "content=$post_content" --data-urlencode "status=publish" --user "admin:$app_password"| jq '.id')
+
+          # Save the postId to the output.
           echo "postId=$postId" >> $GITHUB_OUTPUT
         id: create-post
 
