@@ -142,7 +142,7 @@ jobs:
           echo $post_content
 
           # Create a post using the REST API and parse the postId from the response.
-          postId=$(curl -s -X post 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-raw "content='$post_content'" --data-urlencode "status=publish" --user "admin:$app_password"| jq '.id')
+          postId=$(curl -s -X POST 'http://localhost:8889/?rest_route=/wp/v2/posts' --data-urlencode "title=${{matrix.spec}}" --data-raw "content=$post_content" --data-urlencode "status=publish" --user "admin:$app_password"| jq '.id')
 
           # Save the postId to the output.
           echo "postId=$postId" >> $GITHUB_OUTPUT
