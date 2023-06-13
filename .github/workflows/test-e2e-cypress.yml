@@ -31,53 +31,53 @@ jobs:
       fail-fast: false
       matrix:
         spec:
-          # - accordion.cypress.js
+          - accordion.cypress.js
           - alert.cypress.js
           - author.cypress.js
-          # - click-to-tweet.cypress.js
-          # - counter.cypress.js
-          # - dynamic-separator.cypress.js
-          # - event-item.cypress.js
-          # - events.cypress.js
-          # - faq.cypress.js
-          # - feature.cypress.js
-          # - features.cypress.js
-          # - food-item.cypress.js
-          # - food-and-drinks.cypress.js
-          # - form.cypress.js
-          # - gallery-carousel.cypress.js
-          # - gallery-collage.cypress.js
-          # - gallery-masonry.cypress.js
-          # - gallery-offset.cypress.js
-          # - gallery-stacked.cypress.js
-          # - gif.cypress.js
-          # - gist.cypress.js
-          # - hero.cypress.js
-          # - highlight.cypress.js
-          # - icon.cypress.js
-          # - logos.cypress.js
-          # - map.cypress.js
-          # - media-card.cypress.js
-          # - opentable.cypress.js
-          # - post-carousel.cypress.js
-          # - posts.cypress.js
-          # - pricing-table-item.cypress.js
-          # - pricing-table.cypress.js
-          # - column.cypress.js
-          # - row.cypress.js
-          # - service.cypress.js
-          # - services.cypress.js
-          # - shape-divider.cypress.js
-          # - social-profiles.cypress.js
-          # - modal.cypress.js
-          # - media-filter-control.cypress.js
-          # - coblocks-labs.cypress.js
-          # - layout-selector.cypress.js
-          # - lightbox-controls-gallery.cypress.js
-          # - lightbox-controls-image.cypress.js
-          # - media-text-styles.cypress.js
-          # - padding-controls.cypress.js
-          # - settings-modal-control.cypress.js
+          - click-to-tweet.cypress.js
+          - counter.cypress.js
+          - dynamic-separator.cypress.js
+          - event-item.cypress.js
+          - events.cypress.js
+          - faq.cypress.js
+          - feature.cypress.js
+          - features.cypress.js
+          - food-item.cypress.js
+          - food-and-drinks.cypress.js
+          - form.cypress.js
+          - gallery-carousel.cypress.js
+          - gallery-collage.cypress.js
+          - gallery-masonry.cypress.js
+          - gallery-offset.cypress.js
+          - gallery-stacked.cypress.js
+          - gif.cypress.js
+          - gist.cypress.js
+          - hero.cypress.js
+          - highlight.cypress.js
+          - icon.cypress.js
+          - logos.cypress.js
+          - map.cypress.js
+          - media-card.cypress.js
+          - opentable.cypress.js
+          - post-carousel.cypress.js
+          - posts.cypress.js
+          - pricing-table-item.cypress.js
+          - pricing-table.cypress.js
+          - column.cypress.js
+          - row.cypress.js
+          - service.cypress.js
+          - services.cypress.js
+          - shape-divider.cypress.js
+          - social-profiles.cypress.js
+          - modal.cypress.js
+          - media-filter-control.cypress.js
+          - coblocks-labs.cypress.js
+          - layout-selector.cypress.js
+          - lightbox-controls-gallery.cypress.js
+          - lightbox-controls-image.cypress.js
+          - media-text-styles.cypress.js
+          - padding-controls.cypress.js
+          - settings-modal-control.cypress.js
 
 
     steps:
