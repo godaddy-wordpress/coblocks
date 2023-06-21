@@ -4,7 +4,6 @@
 import findIndex from 'lodash/findIndex';
 import get from 'lodash/get';
 import pick from 'lodash/pick';
-import merge from 'lodash/merge';
 
 // Categories Helper
 import { supportsCollections } from './block-helpers';
@@ -124,7 +123,7 @@ export const registerBlock = ( block ) => {
 	const icon = setIconColor( settings?.icon );
 
 	const metadataSettings = block?.metadata ? block.metadata : {};
-	const newSettings = merge( metadataSettings, settings );
+	const newSettings = { ...metadataSettings, ...settings };
 
 	// Not all properties from metadata are registered with the block using registerBlockType.
 	// Some props like title and example need to be manually added.

@@ -29,7 +29,7 @@ exports[`coblocks/gallery-masonry should have caption with \`core/image\` and ca
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-border-radius-10' with radius set to 10. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"radius\\":10,\\"gutter\\":\\"medium\\"} -->
+"<!-- wp:coblocks/gallery-masonry {\\"gutter\\":\\"medium\\",\\"radius\\":10} -->
 <figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-border-radius-10 has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
 <figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
 <!-- /wp:image -->
