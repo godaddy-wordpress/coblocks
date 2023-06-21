@@ -297,6 +297,7 @@ class CoBlocks_Block_Assets {
 				),
 				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
 				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
+				'labsSiteDesignNonce'            => wp_create_nonce( 'labsSiteDesignNonce' ),
 				'bundledIconsEnabled'            => $bundled_icons_enabled,
 				'customIcons'                    => $this->get_custom_icons(),
 				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),

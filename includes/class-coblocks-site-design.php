@@ -298,6 +298,16 @@ class CoBlocks_Site_Design {
 	 * Retrieve the selected design style styles and return them for injection into the DOM
 	 */
 	public function update_design_style() {
+		// Nonce check.
+		if ( ! wp_verify_nonce( filter_input( INPUT_POST, 'nonce' ), 'labsSiteDesignNonce' ) ) {
+			wp_send_json_error( 'invalid_nonce', 403 );
+		}
+
+		// Permission check.
+		if ( ! current_user_can( self::USER_CAP ) ) {
+			wp_send_json_error( 'invalid_permissions', 403 );
+		}
+
 		// short-circuit.
 		if ( self::short_circuit_check() ) {
 			return array();
