@@ -6,7 +6,8 @@
 	"description": "Display multiple images in a masonry style gallery.",
 	"keywords": [
 		"images",
-		"photos"
+		"photos",
+		"lightbox"
 	],
 	"textdomain": "coblocks",
 	"attributes": {
@@ -76,6 +77,33 @@
 			"type": "boolean",
 			"default": false
 		}
+	},
+	"example": {
+		"innerBlocks": [
+			{
+				"attributes": { "url": "https://s.w.org/images/core/5.3/Sediment_off_the_Yucatan_Peninsula.jpg" },
+				"name": "core/image"
+			},
+			{
+				"attributes": { "url": "https://s.w.org/images/core/5.3/Windbuchencom.jpg" },
+				"name": "core/image"
+
+			},
+			{
+				"attributes": { "url": "https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg" },
+				"name": "core/image"
+
+			},
+			{
+				"attributes": { "url": "https://s.w.org/images/core/5.3/MtBlanc1.jpg" },
+				"name": "core/image"
+
+			},
+			{
+				"attributes": { "url": "https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg" },
+				"name": "core/image"
+			}
+		]
 	},
 	"providesContext": {
 		"allowResize": "allowResize",

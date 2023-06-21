@@ -31,7 +31,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' ).click();
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-masonry' );
 
@@ -49,7 +49,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	it( 'Test masonry block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -76,7 +76,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -115,7 +115,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	it( 'Test masonry captions allow rich text controls.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+		cy.get( 'figure' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -156,7 +156,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	it( 'Test masonry replace image flow.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -182,7 +182,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button' ).contains( 'Replace' ).click();
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' ).click();
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' ).click();
 
 		cy.get( '.components-popover__content' ).should( 'not.exist' );
 

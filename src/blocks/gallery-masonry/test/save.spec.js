@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { registerCoreBlocks } from '@wordpress/block-library';
-import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
+import { createBlock, serialize } from '@wordpress/blocks';
 
 registerCoreBlocks();
 
@@ -14,7 +14,8 @@ import '@testing-library/jest-dom/extend-expect';
 /**
  * Internal dependencies.
  */
-import { name, settings } from '../index';
+import * as settings from '../index';
+import { registerBlock } from '../../../../src/utils/helper';
 
 // Make variables accessible for all tests.
 let block;
@@ -40,12 +41,12 @@ const baseInnerBlocks = [
 describe( 'coblocks/gallery-masonry', () => {
 	beforeAll( () => {
 		// Register the block.
-		registerBlockType( name, { category: 'common', ...settings } );
+		registerBlock( settings );
 	} );
 
 	beforeEach( () => {
 		// Create the block with the minimum attributes.
-		block = createBlock( name, baseAttributes, baseInnerBlocks );
+		block = createBlock( settings.name, baseAttributes, baseInnerBlocks );
 		// Reset the reused variables.
 		serializedBlock = '';
 	} );
