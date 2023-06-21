@@ -269,5 +269,3 @@ global.siteDesign = {
 };
 
 global.coblocksLabs = true;
-
-global.coblocksBlockData = {};
