@@ -8,6 +8,7 @@ import DesignPreviews from '../design-preview';
 // Setup API globals.
 global.ajaxurl = '';
 global.window.fetch = () => new Promise( () => {} );
+global.coblocksBlockData = {};
 
 const setup = ( props = {} ) => {
 	const { container } = render( <DesignPreviews { ...props } /> );

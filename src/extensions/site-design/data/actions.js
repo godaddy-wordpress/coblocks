@@ -66,6 +66,7 @@ export function* updateDesign( {
 
 	const body = new FormData();
 	body.append( 'action', 'site_design_update_design_style' );
+	body.append( 'nonce', coblocksBlockData.labsSiteDesignNonce );
 	body.append( 'design_style', designStyle );
 	body.append( 'color_palette', colorPalette );
 	body.append( 'fonts', fonts );

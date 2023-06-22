@@ -15,7 +15,6 @@ defined( 'ABSPATH' ) || exit;
  */
 class CoBlocks_Site_Design {
 
-	const USER_CAP             = 'edit_theme_options';
 	const EDITOR_WRAPPER_CLASS = 'editor-styles-wrapper';
 	const API_ROUTE            = 'design';
 
@@ -77,11 +76,11 @@ class CoBlocks_Site_Design {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 
 		// short-circuit.
-		if ( self::short_circuit_check() ) {
+		if ( $this->short_circuit_check() ) {
 			return array();
 		}
 
-		add_action( 'wp_ajax_site_design_update_design_style', array( $this, 'update_design_style' ) );
+		add_action( 'wp_ajax_site_design_update_design_style', array( $this, 'design_endpoint_ajax' ) );
 		add_action( 'rest_api_init', array( $this, 'design_endpoint' ) );
 
 		add_action(
@@ -98,33 +97,26 @@ class CoBlocks_Site_Design {
 	 *
 	 * @return boolean
 	 */
-	public static function short_circuit_check() {
+	public function short_circuit_check() {
 		return 'go' !== get_stylesheet();
 	}
 
 	/**
 	 * Enqueue the scripts and styles.
 	 */
-	public static function get_coblocks_site_design_data() {
-
-		if ( ! current_user_can( self::USER_CAP ) ) {
-
+	public function get_coblocks_site_design_data() {
+		// Permission check.
+		if ( is_wp_error( $this->design_endpoint_permissions_check() ) ) {
 			return array();
-
 		}
 
-		$default_asset_file = array(
-			'dependencies' => array(),
-			'version'      => COBLOCKS_VERSION,
-		);
-
 		// short-circuit.
-		if ( self::short_circuit_check() ) {
+		if ( $this->short_circuit_check() ) {
 			return array();
 		}
 
 		$current_design_style = \Go\Core\get_design_style();
-		$fonts                = self::get_go_fonts();
+		$fonts                = $this->get_go_fonts();
 
 		$data = array(
 			'apiRoute'               => self::API_ROUTE,
@@ -179,24 +171,53 @@ class CoBlocks_Site_Design {
 			self::API_ROUTE,
 			array(
 				'methods'             => WP_REST_Server::CREATABLE,
-				'permission_callback' => function() {
-					// See https://wordpress.org/support/article/roles-and-capabilities/#edit_theme_options.
-					return current_user_can( self::USER_CAP );
-				},
+				'permission_callback' => array( $this, 'design_endpoint_permissions_check' ),
 				'callback'            => array( $this, 'update_design_style' ),
 			)
 		);
 	}
 
+	/**
+	 * Check if the current user can edit theme options.
+	 *
+	 * @return true|WP_Error True if the user can edit theme options, WP_Error otherwise.
+	 */
+	public function design_endpoint_permissions_check() {
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			return new WP_Error(
+				'rest_forbidden',
+				__( 'Sorry, you are not allowed to do that.', 'coblocks' ),
+				array( 'status' => rest_authorization_required_code() )
+			);
+		}
+		return true;
+	}
+
+	/**
+	 * Ajax callback for updating the design style.
+	 */
+	public function design_endpoint_ajax() {
+		// Nonce check.
+		if ( ! wp_verify_nonce( filter_input( INPUT_POST, 'nonce' ), 'labsSiteDesignNonce' ) ) {
+			wp_send_json_error( 'invalid_nonce', 403 );
+		}
+
+		// Permission check.
+		if ( is_wp_error( $this->design_endpoint_permissions_check() ) ) {
+			wp_send_json_error( 'invalid_permissions', 403 );
+		}
+
+		return $this->update_design_style();
+	}
 
 	/**
 	 * Return array of Go fonts.
 	 *
 	 * @return array
 	 */
-	private static function get_go_fonts() {
+	private function get_go_fonts() {
 		// short-circuit.
-		if ( self::short_circuit_check() ) {
+		if ( $this->short_circuit_check() ) {
 			return array();
 		}
 
@@ -299,7 +320,7 @@ class CoBlocks_Site_Design {
 	 */
 	public function update_design_style() {
 		// short-circuit.
-		if ( self::short_circuit_check() ) {
+		if ( $this->short_circuit_check() ) {
 			return array();
 		}
 
