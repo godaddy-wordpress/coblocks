@@ -68,8 +68,8 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 
 		$reflection_method->invoke( coblocks() );
 
-		$expected = array(
-			'version' => '3.0.3',
+		$expected = [
+			'version' => '3.0.4',
 			'plugin_dir'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_path( __FILE__ ) ),
 			'plugin_url'  => str_replace( '.dev/tests/phpunit/', '', plugin_dir_url( __FILE__ ) ),
 			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),

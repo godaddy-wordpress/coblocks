@@ -1,14 +1,14 @@
 # Copyright (c) 2023 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.0.3\n"
+"Project-Id-Version: CoBlocks 3.0.4\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-04-20T20:27:47+00:00\n"
+"POT-Creation-Date: 2023-06-22T14:30:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: coblocks\n"
@@ -64,22 +64,22 @@ msgstr ""
 msgid "Pattern Category"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:406
-#: includes/class-coblocks-block-assets.php:547
+#: includes/class-coblocks-block-assets.php:407
+#: includes/class-coblocks-block-assets.php:548
 msgid "Previous"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:407
-#: includes/class-coblocks-block-assets.php:548
+#: includes/class-coblocks-block-assets.php:408
+#: includes/class-coblocks-block-assets.php:549
 msgid "Next"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:454
+#: includes/class-coblocks-block-assets.php:455
 #: src/blocks/food-and-drinks/food-item/inspector.js:36
 msgid "Image"
 msgstr ""
 
-#: includes/class-coblocks-block-assets.php:546
+#: includes/class-coblocks-block-assets.php:547
 msgid "Close Gallery"
 msgstr ""
 
@@ -271,15 +271,19 @@ msgstr ""
 msgid "Setting use to disable or enable animation controls across the site."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:311
+#: includes/class-coblocks-site-design.php:189
+msgid "Sorry, you are not allowed to do that."
+msgstr ""
+
+#: includes/class-coblocks-site-design.php:332
 msgid "Error processing your request."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:335
+#: includes/class-coblocks-site-design.php:356
 msgid "A design_style must be passed."
 msgstr ""
 
-#: includes/class-coblocks-site-design.php:347
+#: includes/class-coblocks-site-design.php:368
 msgid "An available design_style must be passed."
 msgstr ""
 
