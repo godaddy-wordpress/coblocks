@@ -120,13 +120,17 @@ export const registerBlock = ( block ) => {
 		category = 'coblocks';
 	}
 
+	if ( ! category && block.metadata?.category ) {
+		category = block.metadata.category;
+	}
+
 	const icon = setIconColor( settings?.icon );
 
-	const metadataSettings = block?.metadata ? block.metadata : {};
-	const newSettings = { ...metadataSettings, ...settings };
-
 	// Not all properties from metadata are registered with the block using registerBlockType.
-	// Some props like title and example need to be manually added.
+	// Some props like title and example need to be manually added for example.
+	// To handle the behavior, we merge the metadata with block settings as overrides.
+	const newSettings = { ...( block?.metadata ?? {} ), ...settings };
+
 	registerBlockType( block.metadata, {
 		...newSettings,
 

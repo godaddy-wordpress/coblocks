@@ -55,6 +55,13 @@
 			"default": "wide"
 		}
 	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"gutter": {
+			"default": "small",
+			"customDefault": 0.2
+		}
+	},
 	"title": "Collage",
 	"textdomain": "coblocks",
 	"editorScript": ["coblocks-3"],

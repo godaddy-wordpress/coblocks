@@ -168,12 +168,12 @@ const deprecated =
 		...GalleryAttributes,
 		...metadata.attributes,
 		gutter: {
-			default: 'small',
-			type: 'string',
+			default: 1,
+			type: 'number',
 		},
 		gutterCustom: {
-			default: '3',
-			type: 'string',
+			default: 3,
+			type: 'number',
 		},
 		images: {
 			...metadata.attributes.images,
@@ -259,12 +259,12 @@ const deprecated =
 		...metadata.attributes,
 
 		gutter: {
-			default: 'small',
-			type: 'string',
+			default: 1,
+			type: 'number',
 		},
 		gutterCustom: {
-			default: '3',
-			type: 'string',
+			default: 3,
+			type: 'number',
 		},
 		images: {
 			...metadata.attributes.images,
@@ -362,8 +362,12 @@ const deprecated =
 		...GalleryAttributes,
 		...metadata.attributes,
 		gutter: {
-			default: 'small',
-			type: 'string',
+			default: 1,
+			type: 'number',
+		},
+		gutterCustom: {
+			default: 3,
+			type: 'number',
 		},
 	},
 	save: ( { attributes } ) => {

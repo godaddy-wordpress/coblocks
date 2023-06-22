@@ -126,16 +126,15 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 		// Register the deprecated block to get the attributes with filters applied.
 		deprecatedSettings = Object.assign(
 			{ category: 'common' },
-			omit( blockSettings, [ 'attributes', 'save', 'deprecated', 'supports' ] ),
+
+			// We may need updated exclusion logic once we start deprecated v2 blocks.
+			// For example blocks with 'apiVersion: 2` will not have block wrapper by default.
+			omit( blockSettings, [ 'attributes', 'save', 'deprecated', 'apiVersion' ] ),
 			{
 				attributes: deprecated.attributes,
 				save: deprecated.save,
 			}
 		);
-		deprecatedBlockType = registerBlockType( blockName, deprecatedSettings );
-
-		// Unregister the registered block.
-		unregisterBlockType( blockName );
 
 		describe( `${ blockName } deprecation ${ index }`, () => {
 			beforeEach( () => {

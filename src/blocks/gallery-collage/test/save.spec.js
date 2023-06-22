@@ -7,7 +7,8 @@ import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 /**
  * Internal dependencies.
  */
-import { name, settings } from '../index';
+import * as settings from '../index';
+import { registerBlock } from '../../../../src/utils/helper';
 
 // Make variables accessible for all tests.
 let block;
@@ -19,11 +20,12 @@ const baseAttributes = {
 		{ url: 'https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg', id: 2, index: 1 },
 	],
 };
+const name = settings?.metadata?.name ?? settings?.name;
 
 describe( 'coblocks/gallery-collage', () => {
 	beforeAll( () => {
 		// Register the block.
-		registerBlockType( name, { category: 'common', ...settings } );
+		registerBlock( settings );
 	} );
 
 	beforeEach( () => {

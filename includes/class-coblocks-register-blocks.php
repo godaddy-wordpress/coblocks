@@ -182,10 +182,13 @@ class CoBlocks_Register_Blocks {
 					$default_options['render_callback'] = array( self::$coblocks_form, $render_callback_handle );
 				}
 			}
+
+			// Register the block.
 			register_block_type(
 				$block_options['path'] . '/block.json',
 				$default_options
 			);
+
 		}
 	}
 }
