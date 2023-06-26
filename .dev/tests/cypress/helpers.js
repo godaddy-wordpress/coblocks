@@ -461,12 +461,20 @@ export function openSettingsPanel( panelText ) {
  * @param {number} headingLevel The button that should be located and clicked
  */
 export function openHeadingToolbarAndSelect( headingLevel ) {
-	cy.get( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button' ).each( ( button, index ) => {
-		if ( index === 1 ) { // represents the second position in the toolbar
-			cy.get( button ).click( { force: true } );
-		}
-	} );
-	cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
+	// Button has aria label select the heading
+	if ( Cypress.$( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button[aria-label="Change heading level"]' ) ) {
+		cy.get( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button[aria-label="Change heading level"]' ).click();
+		cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
+	} else {
+		// No aria label present. Attempt to set using old method.
+
+		cy.get( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button' ).each( ( button, index ) => {
+			if ( index === 1 ) { // represents the second position in the toolbar
+				cy.get( button ).click( { force: true } );
+			}
+		} );
+		cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
+	}
 }
 
 /**
