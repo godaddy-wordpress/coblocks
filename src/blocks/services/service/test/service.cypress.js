@@ -7,6 +7,7 @@ describe( 'Test CoBlocks Service Block', function() {
 	/**
 	 * Test that we can add a service block to the content, not alter
 	 * any settings, and are able to successfully save the block without errors.
+	 * The `coblocks-services-script` is what handles this functionality.
 	 */
 	it( 'Test service block does not render on front of site with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
