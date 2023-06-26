@@ -75,16 +75,16 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			'plugin_file' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', __FILE__ ),
 			'plugin_base' => str_replace( '.dev/tests/phpunit/test-class-coblocks.php', 'class-coblocks.php', plugin_basename( __FILE__ ) ),
 			'review_url'  => 'https://wordpress.org/support/plugin/coblocks/reviews/?filter=5',
-		);
+		];
 
-		$check = array(
+		$check = [
 			'version'     => COBLOCKS_VERSION,
 			'plugin_dir'  => COBLOCKS_PLUGIN_DIR,
 			'plugin_url'  => COBLOCKS_PLUGIN_URL,
 			'plugin_file' => COBLOCKS_PLUGIN_FILE,
 			'plugin_base' => COBLOCKS_PLUGIN_BASE,
 			'review_url'  => COBLOCKS_REVIEW_URL,
-		);
+		];
 
 		$this->assertEquals( $expected, $check );
 
@@ -95,7 +95,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_included_files() {
 
-		$check_files = array(
+		$check_files = [
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-register-blocks.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-generated-styles.php',
@@ -108,7 +108,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 			COBLOCKS_PLUGIN_DIR . 'includes/get-dynamic-blocks.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-action-links.php',
 			COBLOCKS_PLUGIN_DIR . 'includes/admin/class-coblocks-install.php',
-		);
+		];
 
 		$this->assertTrue( ! empty( array_intersect( $check_files, get_included_files() ) ) );
 
@@ -119,16 +119,16 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_init_actions() {
 
-		$actions = array(
-			array( 'plugins_loaded', 'load_textdomain', 99 ),
-			array( 'enqueue_block_editor_assets', 'block_localization' ),
-		);
+		$actions = [
+			[ 'plugins_loaded', 'load_textdomain', 99 ],
+			[ 'enqueue_block_editor_assets', 'block_localization' ],
+		];
 
 		foreach ( $actions as $action_data ) {
 
 			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
 
-			if ( ! has_action( $action_data[0], array( coblocks(), $action_data[1] ) ) ) {
+			if ( ! has_action( $action_data[0], [ coblocks(), $action_data[1] ] ) ) {
 
 				$this->fail( "$action_data[0] is not attached to CoBlocks:$action_data[1]. It might also have the wrong priority (validated priority: $priority)" );
 
@@ -180,8 +180,8 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 	 */
 	public function test_final_build_assets_exist() {
 
-		$expected_assets = array(
-			'js'  => array(
+		$expected_assets = [
+			'js'  => [
 				'dist/coblocks-1.js',
 				'dist/js/coblocks-accordion-polyfill.js',
 				'dist/js/coblocks-checkbox-required.js',
@@ -195,12 +195,12 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				'src/js/coblocks-google-maps.js',
 				'src/js/coblocks-google-recaptcha.js',
 				'src/js/coblocks-lightbox.js',
-			),
-			'css' => array(
+			],
+			'css' => [
 				'dist/coblocks-1.css',
 				'dist/style-coblocks-1.css',
-			),
-		);
+			],
+		];
 
 		foreach ( $expected_assets as $asset_type => $assets ) {
 
@@ -214,6 +214,7 @@ class CoBlocks_Tests extends WP_UnitTestCase {
 				);
 
 			}
+
 		}
 
 	}
