@@ -154,8 +154,9 @@ class CoBlocks_Register_Blocks {
 		$blocks = $this->load_block_manifest();
 		foreach ( $blocks as $block_name => $block_options ) {
 
-			// Bulk styles for blocks.
+			// Bulk styles for blocks. `style-coblocks-1` AKA `coblocks-frontend`.
 			// We need to split the styles and specify the handle for each block in the block.json file.
+			// For now we have all style files combined into either editor or frontend styles.
 			$default_options = array(
 				'editor_style' => $slug . '-editor',
 				'style'        => $slug . '-frontend',

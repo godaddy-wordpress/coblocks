@@ -54,6 +54,9 @@ class CoBlocks_Block_Assets {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
+
+		// `render_block` filters must be applied early.
+		add_filter( 'render_block', array( $this, 'coblocks_enqueue_scripts_for_core_blocks' ), 10, 2 );
 	}
 
 	/**
@@ -544,6 +547,8 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
+
+			wp_enqueue_style( 'coblocks-frontend' );
 		}
 
 		if ( in_array( $block_name, $gist_allowed_blocks, true ) ) {
