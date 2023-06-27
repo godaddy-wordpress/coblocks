@@ -129,15 +129,14 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	cy.get( 'div.block-editor-inserter__main-area:not(.show-as-tabs)' );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.editor-block-list-item' + targetClassName ).first().click();
+	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' );
-	// Then close the block inserter if still open.
-	const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
-	if ( !! inserterButton.length ) {
-		cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
-	}
+
+	// A race condition exists where the editor may crash if post is save before inserter is fully loaded.
+	// We must close the inserter to prevent the race condition issue.
+	cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
 }
 
 export function addNewGroupToPost() {
@@ -393,14 +392,15 @@ export const upload = {
 	imageToBlock: ( blockName ) => {
 		const { fileName, pathToFixtures } = upload.spec;
 		let fileContent;
+
 		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileCont ) => {
 			fileContent = fileCont;
-			cy.get( `[data-type="${ blockName }"] input[type="file"]` ).first()
-				.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
+			cy.get( `[data-type="${ blockName }"] .components-drop-zone` ).first()
+				.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { action: 'drag-drop', force: true } ).then( () => {
+					// Now validate upload is complete and is not a blob.
+					cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
+				} );
 		} );
-
-		// Now validate upload is complete and is not a blob.
-		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
 	},
 	spec: {
 		fileName: '150x150.png',
