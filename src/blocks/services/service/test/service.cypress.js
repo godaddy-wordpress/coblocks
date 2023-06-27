@@ -31,7 +31,7 @@ describe( 'Test CoBlocks Service Block', function() {
 
 		cy.get( '.wp-block-coblocks-services [data-type="coblocks/service"]:first-child' ).click( { force: true } );
 
-		helpers.upload.imageToBlock( 'coblocks/service' );
+		helpers.upload.imageToBlock( 'coblocks/service', true );
 
 		cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).then( ( $btn ) => {
 			const isOpen = $btn.attr( 'aria-expanded' );
@@ -48,8 +48,6 @@ describe( 'Test CoBlocks Service Block', function() {
 			} );
 
 		cy.get( '.wp-block-coblocks-services [data-type="coblocks/service"]:last-child' ).click( { force: true } );
-
-		helpers.upload.imageToBlock( 'coblocks/service' );
 
 		cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).then( ( $btn ) => {
 			const isOpen = $btn.attr( 'aria-expanded' );

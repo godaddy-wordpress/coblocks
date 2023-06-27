@@ -386,20 +386,27 @@ export const upload = {
 	/**
 	 * Upload image to input element.
 	 *
-	 * @param {string} blockName The name of the block that is upload target
-	 *                           e.g 'core/image' or 'coblocks/accordion'.
+	 * @param {string}  blockName The name of the block that is upload target
+	 *                            e.g 'core/image' or 'coblocks/accordion'.
+	 * @param {boolean} allBlocks Whether to iterate and upload to all block dropzone selectors.
 	 */
-	imageToBlock: ( blockName ) => {
+	imageToBlock: ( blockName, allBlocks = false ) => {
 		const { fileName, pathToFixtures } = upload.spec;
 		let fileContent;
 
 		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileCont ) => {
 			fileContent = fileCont;
-			cy.get( `[data-type="${ blockName }"] .components-drop-zone` ).first()
-				.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { action: 'drag-drop', force: true } ).then( () => {
-					// Now validate upload is complete and is not a blob.
-					cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
+
+			if ( allBlocks ) {
+				cy.get( `[data-type="${ blockName }"] .components-drop-zone` ).each( ( zone ) => {
+					cy.wrap( zone ).selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { action: 'drag-drop', force: true } );
 				} );
+			} else {
+				cy.get( `[data-type="${ blockName }"] .components-drop-zone` ).first()
+					.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { action: 'drag-drop', force: true } );
+			}
+			// Now validate upload is complete and is not a blob.
+			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
 		} );
 	},
 	spec: {
