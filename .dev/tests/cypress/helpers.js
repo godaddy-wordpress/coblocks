@@ -127,6 +127,9 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
+	// Ensure editor is ready for blocks.
+	cy.get( '.is-root-container.wp-block-post-content' );
+
 	/**
 	 * Insert the block using dispatch to avoid the block inserter
 	 *

@@ -43,7 +43,7 @@ function BackgroundControls( props ) {
 								accept="image/*"
 								allowedTypes={ ALLOWED_BG_MEDIA_TYPES }
 								mediaURL={ backgroundImg }
-								name={ <Icon icon={ PaintCanIcon } /> }
+								name={ <Icon aria-label={ __( 'Replace background image', 'coblocks' ) } icon={ PaintCanIcon } /> }
 								onError={ () => {
 									setAttributes( { backgroundImg: undefined, backgroundType: undefined } );
 								} }
