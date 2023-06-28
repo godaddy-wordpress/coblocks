@@ -69,12 +69,22 @@ export function goTo( path = '/wp-admin', login = false ) {
 }
 
 /**
- * Safely obtain the window object or error
+ * Safely obtain the window data object or error
  * when the window object is not available.
  */
 export function getWPDataObject() {
 	return cy.window().its( 'wp' ).then( ( wp ) => {
 		return wp.data;
+	} );
+}
+
+/**
+ * Safely obtain the window blocks object or error
+ * when the window object is not available.
+ */
+export function getWPBlocksObject() {
+	return cy.window().its( 'wp' ).then( ( wp ) => {
+		return wp.blocks;
 	} );
 }
 
@@ -97,7 +107,9 @@ export function disableGutenbergFeatures() {
 }
 
 /**
- * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
+ * From inside the WordPress editor insert a block by blockName.
+ * This function has changed to insert blocks by the via dispatch to `core/block-editor`.
+ * The old method, using the inserter with Cypress triggers a race condition crashing the editor.
  *
  * @param {string}  blockName   The name to find in the block inserter
  *                              e.g 'core/image' or 'coblocks/accordion'.
@@ -115,28 +127,22 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	if ( Cypress.$( '.edit-post-header-toolbar__inserter-toggle[aria-pressed="false"]' ) ) {
-		cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle[aria-pressed="false"]' ).click();
-	}
-
-	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
-
 	/**
-	 * The network request to block-directory may be cached and is not consistently fired with each test.
-	 * Instead of intercepting we can await known dom elements that appear only when search results are present.
-	 * This should correct a race condition in CI.
+	 * Insert the block using dispatch to avoid the block inserter
+	 *
+	 * Note: This method is preferred over the old method because
+	 * we do not need to test the Core controls around block insertion.
 	 */
-	cy.get( 'div.block-editor-inserter__main-area:not(.show-as-tabs)' );
-
-	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
+	getWPDataObject().then( ( data ) => {
+		getWPBlocksObject().then( ( blocks ) => {
+			data.dispatch( 'core/block-editor' ).insertBlock(
+				blocks.createBlock( blockName )
+			);
+		} );
+	} );
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' );
-
-	// A race condition exists where the editor may crash if post is save before inserter is fully loaded.
-	// We must close the inserter to prevent the race condition issue.
-	cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
 }
 
 export function addNewGroupToPost() {
