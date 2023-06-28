@@ -143,6 +143,9 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' );
+
+	// Give a short delay for blocks to render.
+	cy.wait( 250 );
 }
 
 export function addNewGroupToPost() {
@@ -307,7 +310,7 @@ export function selectBlock( name, isChildBlock = false ) {
 	openBlockNavigator();
 
 	if ( isChildBlock ) {
-		cy.get( '.block-editor-list-view__expander svg' ).first().click();
+		cy.get( '.block-editor-list-view__expander' ).click( { force: true, multiple: true } );
 	}
 
 	// A small wait seems needed to make sure that the list of blocks on the left is complete
