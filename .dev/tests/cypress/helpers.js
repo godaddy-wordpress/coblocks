@@ -322,10 +322,15 @@ export function selectBlock( name, isChildBlock = false ) {
 	// Returning the cy.get function allows to chain off of selectBlock
 	return cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
 		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
-		.click()
+		.focus()
+		.click( { force: true } )
 		.then( () => {
 			// Then close the block navigator if still open.
 			closeBlockNavigator();
+
+			if ( !! Cypress.$( 'button[data-label="Page"].is-active' ).length ) {
+				cy.get( 'button[data-label="Block"]' ).click();
+			}
 		} );
 }
 

@@ -42,8 +42,8 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		helpers.selectBlock( 'hero' );
 
-		cy.get( '[data-type="core/heading"]' ).focus().type( 'Heading Text' );
-		cy.get( '[data-type="core/paragraph"]' ).first().focus().type( 'Paragraph Text' );
+		cy.get( '[data-type="core/heading"]' ).focus().type( 'Heading Text', { force: true } );
+		cy.get( '[data-type="core/paragraph"]' ).first().focus().type( 'Paragraph Text', { force: true } );
 
 		cy.get( '.wp-block-coblocks-hero' ).click( { force: true } );
 

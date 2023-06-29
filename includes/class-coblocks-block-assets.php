@@ -501,17 +501,7 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
-		add_filter( 'render_block', array( $this, 'coblocks_enqueue_scripts_for_core_blocks' ), 10, 2 );
-
-		wp_localize_script(
-			'coblocks-lightbox',
-			'coblocksLightboxData',
-			array(
-				'closeLabel' => __( 'Close Gallery', 'coblocks' ),
-				'leftLabel'  => __( 'Previous', 'coblocks' ),
-				'rightLabel' => __( 'Next', 'coblocks' ),
-			)
-		);
+		$this->localize_lightbox_controls();
 
 	}
 
@@ -525,7 +515,8 @@ class CoBlocks_Block_Assets {
 	 */
 	public function coblocks_enqueue_scripts_for_core_blocks( $block_content, $block ) {
 
-		$block_name = $block['blockName'];
+		$block_name       = $block['blockName'];
+		$block_attributes = $block['attrs'];
 
 		// Allowed blocks for the lightbox script.
 		$lightbox_allowed_blocks = array(
@@ -539,7 +530,15 @@ class CoBlocks_Block_Assets {
 			'core/embed',
 		);
 
-		if ( in_array( $block_name, $lightbox_allowed_blocks, true ) ) {
+		if (
+			in_array( $block_name, $lightbox_allowed_blocks, true ) &&
+			// Has a lightbox attribute set to true.
+			(
+				isset( $block_attributes['lightbox'] ) &&
+				true === $block_attributes['lightbox']
+			)
+		) {
+
 			wp_enqueue_script(
 				'coblocks-lightbox',
 				$this->assets_dir . 'coblocks-lightbox.js',
@@ -548,10 +547,21 @@ class CoBlocks_Block_Assets {
 				true
 			);
 
+			// Script must be localized after the 'handle' script is registered.
+			// `coblocks-lightbox` is the handle that is shared between the scripts.
+			$this->localize_lightbox_controls();
+
 			wp_enqueue_style( 'coblocks-frontend' );
 		}
 
-		if ( in_array( $block_name, $gist_allowed_blocks, true ) ) {
+		if (
+			in_array( $block_name, $gist_allowed_blocks, true ) &&
+			// Has a URL attribute with gist.github.com.
+			(
+				isset( $block_attributes['url'] ) &&
+				str_contains( $block_attributes['url'], 'gist.github.com' )
+			)
+		) {
 			wp_enqueue_script(
 				'coblocks-gist-script',
 				$this->assets_dir . 'coblocks-gist-script.js',
@@ -562,6 +572,21 @@ class CoBlocks_Block_Assets {
 		}
 
 		return $block_content;
+	}
+
+	/**
+	 * Localize language script for the lightbox controls.
+	 */
+	private function localize_lightbox_controls() {
+		wp_localize_script(
+			'coblocks-lightbox',
+			'coblocksLightboxData',
+			array(
+				'closeLabel' => __( 'Close Gallery', 'coblocks' ),
+				'leftLabel'  => __( 'Previous', 'coblocks' ),
+				'rightLabel' => __( 'Next', 'coblocks' ),
+			)
+		);
 	}
 
 	/**
