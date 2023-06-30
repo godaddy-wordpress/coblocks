@@ -34,7 +34,7 @@ export function addFormChild( name ) {
 	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click( { force: true } );
 
 	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
-	cy.get( '.block-editor-inserter__search' ).click().type( name );
+	cy.get( '.block-editor-inserter__search .components-search-control__input' ).click().type( name );
 
 	cy.get( '.editor-block-list-item-coblocks-field-' + name ).first().click( { force: true } );
 	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click( { force: true } );
@@ -468,6 +468,11 @@ export function setColorPanelSetting( settingName, hexColor ) {
  * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
+	// Ensure block tab is selected.
+	if ( Cypress.$( 'button[data-label="Block"]:not(.is-active)' ) ) {
+		cy.get( 'button[data-label="Block"]' ).click();
+	}
+
 	cy.get( '.components-panel__body' )
 		.contains( panelText )
 		.then( ( $panelTop ) => {

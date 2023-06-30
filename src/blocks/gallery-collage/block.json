@@ -64,6 +64,6 @@
 	},
 	"title": "Collage",
 	"textdomain": "coblocks",
-	"editorScript": ["coblocks-3"],
+	"editorScript": ["coblocks-4"],
 	"description": "Assemble images into a beautiful collage gallery."
 }

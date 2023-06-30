@@ -1,8 +1,7 @@
 import { registerBlock } from './utils/helper';
 
 // Register Blocks
-import * as clickToTweet from './blocks/click-to-tweet';
-import * as collage from './blocks/gallery-collage';
+import * as form from './blocks/form';
 import * as fieldCheckbox from './blocks/form/fields/field-checkbox';
 import * as fieldDate from './blocks/form/fields/field-date';
 import * as fieldEmail from './blocks/form/fields/field-email';
@@ -20,8 +19,7 @@ import * as fieldWebsite from './blocks/form/fields/field-website';
  * Function to register blocks provided by CoBlocks.
  */
 [
-	clickToTweet,
-	collage,
+	form,
 	fieldDate,
 	fieldEmail,
 	fieldName,

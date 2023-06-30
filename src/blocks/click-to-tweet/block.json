@@ -50,6 +50,6 @@
 	},
 	"title": "Click to Tweet",
 	"textdomain": "coblocks",
-	"editorScript": ["coblocks-3"],
+	"editorScript": ["coblocks-4"],
 	"description": "Add a quote for readers to tweet via Twitter."
 }
