@@ -91,7 +91,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		if ( helpers.isWP62AtLeast() ) {
-			helpers.selectBlock( 'masonry gallery' );
+			helpers.selectBlock( 'masonry' );
 
 			cy.get( 'figcaption[role="textbox"]' ).click( { force: true } );
 
@@ -130,7 +130,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		if ( helpers.isWP62AtLeast() ) {
-			helpers.selectBlock( 'masonry gallery' );
+			helpers.selectBlock( 'masonry' );
 
 			cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
 
@@ -170,7 +170,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'button' ).contains( /create a new gallery/i ).click();
 		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
-		helpers.selectBlock( 'image', true );
+		helpers.selectBlock( 'image' );
 
 		//'.media-replace-flow button' was deprecated in 5.8.
 		// Media replace button should reside as the 5th button within the toolbar.

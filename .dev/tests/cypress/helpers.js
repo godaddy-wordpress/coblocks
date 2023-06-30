@@ -195,6 +195,9 @@ export function savePage() {
  */
 
 export function checkForBlockErrors( blockName ) {
+	// Ensure editor is ready for blocks.
+	cy.get( '.is-root-container.wp-block-post-content' );
+
 	disableGutenbergFeatures();
 
 	cy.get( '.block-editor-warning' ).should( 'not.exist' );
@@ -306,31 +309,27 @@ export function setNewBlockStyle( style ) {
  * Input parameter is the name of the block to select.
  * Allows chaining.
  *
- * @param {string}  name         The name of the block to select eg: highlight or click-to-tweet
- * @param {boolean} isChildBlock Optional selector for children blocks. Default will be top level blocks.
+ * @param {string} name The name of the block to select eg: highlight or click-to-tweet
  */
-export function selectBlock( name, isChildBlock = false ) {
-	openBlockNavigator();
+export function selectBlock( name ) {
+	/**
+	 * There are network requests taking place to the REST API to get the blocks and block patterns.
+	 * Sometimes these requests occur and other times they are cached and are not called.
+	 * For that reason is difficult to assert against those requests from core code.
+	 * We introduce an arbitrary wait to avoid a race condition by interacting too quickly.
+	 */
+	cy.wait( 1000 );
 
-	if ( isChildBlock ) {
-		cy.get( '.block-editor-list-view__expander' ).click( { force: true, multiple: true } );
-	}
-
-	// A small wait seems needed to make sure that the list of blocks on the left is complete
-	cy.wait( 250 );
-
-	// Returning the cy.get function allows to chain off of selectBlock
-	return cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
-		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
-		.focus()
-		.click( { force: true } )
-		.then( () => {
-			// Then close the block navigator if still open.
-			closeBlockNavigator();
-
-			if ( !! Cypress.$( 'button[data-label="Page"].is-active' ).length ) {
-				cy.get( 'button[data-label="Block"]' ).click();
-			}
+	// `data-type` includes lower case name and `data-title` includes upper case name.
+	// Allows for case insensitive search.
+	cy.get( `.wp-block[data-type*="${ name }"], .wp-block[data-title*="${ name }"]` )
+		.invoke( 'attr', 'data-block' )
+		.then( ( clientId ) => {
+			cy.window().then( ( win ) => {
+				// Open the block sidebar.
+				win.wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
+				win.wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
+			} );
 		} );
 }
 
