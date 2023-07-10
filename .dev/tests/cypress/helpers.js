@@ -322,7 +322,7 @@ export function selectBlock( name ) {
 
 	// `data-type` includes lower case name and `data-title` includes upper case name.
 	// Allows for case insensitive search.
-	cy.get( `.wp-block[data-type*="${ name }"], .wp-block[data-title*="${ name }"]` )
+	cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
 		.invoke( 'attr', 'data-block' )
 		.then( ( clientId ) => {
 			cy.window().then( ( win ) => {
