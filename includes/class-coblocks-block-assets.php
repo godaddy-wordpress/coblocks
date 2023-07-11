@@ -515,6 +515,11 @@ class CoBlocks_Block_Assets {
 	 */
 	public function coblocks_enqueue_scripts_for_core_blocks( $block_content, $block ) {
 
+		// Bail if block does not have name, or does not have attributes.
+		if ( ! isset( $block['blockName'] ) || ! isset( $block['attrs'] ) ) {
+			return $block_content;
+		}
+
 		$block_name       = $block['blockName'];
 		$block_attributes = $block['attrs'];
 
@@ -525,13 +530,7 @@ class CoBlocks_Block_Assets {
 			'core/block',
 		);
 
-		// Allowed blocks for the gist script.
-		$gist_allowed_blocks = array(
-			'core/embed',
-		);
-
-		if (
-			in_array( $block_name, $lightbox_allowed_blocks, true ) &&
+		if ( in_array( $block_name, $lightbox_allowed_blocks, true ) &&
 			// Has a lightbox attribute set to true.
 			(
 				isset( $block_attributes['lightbox'] ) &&
@@ -554,8 +553,12 @@ class CoBlocks_Block_Assets {
 			wp_enqueue_style( 'coblocks-frontend' );
 		}
 
-		if (
-			in_array( $block_name, $gist_allowed_blocks, true ) &&
+		// Allowed blocks for the gist script.
+		$gist_allowed_blocks = array(
+			'core/embed',
+		);
+
+		if ( in_array( $block_name, $gist_allowed_blocks, true ) &&
 			// Has a URL attribute with gist.github.com.
 			(
 				isset( $block_attributes['url'] ) &&
