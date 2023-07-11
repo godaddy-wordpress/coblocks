@@ -46,25 +46,6 @@ import { createBlock, getBlockTransforms, parse, registerBlockType, serialize, u
  *
  */
 export const registerGalleryBlocks = () => {
-	// const getV2Settings = ( blockMeta, blockSettings ) => {
-	// 	const metaClone = { ...blockMeta };
-	// 	if ( !! blockSettings?.attributes ) {
-	// 		metaClone.attributes = { ...metaClone.attributes, ...blockSettings?.attributes };
-	// 	}
-	// 	return metaClone;
-	// };
-
-	// const v2Carousel = getV2Settings( carouselMeta, carouselSettings );
-	// const v2Collage = getV2Settings( collageMeta, collageSettings );
-	// const v2Masonry = getV2Settings( masonryMeta, masonrySettings );
-	// const v2Offset = getV2Settings( offsetMeta, offsetSettings );
-	// const v2Stacked = getV2Settings( stackedMeta, stackedSettings );
-
-	// registerBlockType( carouselMeta, { category: 'common', ...carouselSettings, ...v2Carousel } ); // Register carousel block
-	// registerBlockType( collageMeta, { category: 'common', ...collageSettings, ...v2Collage } ); // Register collage block
-	// registerBlockType( masonryMeta, { category: 'common', ...masonrySettings, ...v2Masonry } ); // Register masonry block
-	// registerBlockType( offsetMeta, { category: 'common', ...offsetSettings, ...v2Offset } ); // Register offset block
-	// registerBlockType( stackedMeta, { category: 'common', ...stackedSettings, ...v2Stacked } ); // Register stacked block
 	[ carouselSettings, masonrySettings, offsetSettings, stackedSettings, collageSettings ].forEach( ( settings ) => {
 		registerBlock( settings );
 	} );
