@@ -109,7 +109,7 @@ class CoBlocks_Register_Blocks {
 	}
 
 	/**
-	 * Load block manifest from block-manifest.json file.
+	 * Build a block manifest. The resulting array is used to register blocks and parses block.json files.
 	 * For now we need to collect the `render` property from the block.json files and require manually.
 	 *
 	 * @return array The block manifest or an empty array if no content is found.
