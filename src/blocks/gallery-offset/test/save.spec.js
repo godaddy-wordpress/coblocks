@@ -2,12 +2,13 @@
  * External dependencies
  */
 import '@testing-library/jest-dom/extend-expect';
-import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
+import { createBlock, serialize } from '@wordpress/blocks';
 
 /**
  * Internal dependencies.
  */
-import { name, settings } from '../index';
+import * as settings from '../index';
+import { registerBlock } from '../../../../src/utils/helper';
 
 // Make variables accessible for all tests.
 let block;
@@ -21,10 +22,11 @@ const baseAttributes = {
 	],
 };
 
+const name = settings?.metadata?.name ?? settings?.name;
 describe( 'coblocks/gallery-offset', () => {
 	beforeAll( () => {
 		// Register the block.
-		registerBlockType( name, { category: 'common', ...settings } );
+		registerBlock( settings );
 	} );
 
 	beforeEach( () => {

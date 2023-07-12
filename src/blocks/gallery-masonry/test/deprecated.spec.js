@@ -2,7 +2,7 @@
  * Internal dependencies.
  */
 import * as helpers from '../../../../.dev/tests/jest/helpers';
-import { name, settings } from '../index';
+import { name, settings, metadata } from '../index';
 
 const variations = {
 	images: [
@@ -13,6 +13,7 @@ const variations = {
 	target: [ '', '_blank', '_self', '_parent' ],
 	rel: [ '', 'alternate', 'author', 'preload' ],
 	align: [ '', 'wide', 'full', 'left', 'center', 'right' ],
+	anchor: [ undefined, 'anchor' ],
 	gutter: [ 0, 10, 100 ],
 	gutterMobile: [ 0, 10, 100 ],
 	radius: [ undefined, 0, 20 ],
@@ -48,4 +49,4 @@ const variations = {
 	noTopMargin: [ undefined, true, false ],
 };
 
-helpers.testDeprecatedBlockVariations( name, settings, variations );
+helpers.testDeprecatedBlockVariations( name, {...metadata, ...settings}, variations );

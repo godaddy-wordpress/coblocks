@@ -17,6 +17,5 @@
 	},
 	"title": "Buttons (Deprecated)",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-1",
 	"description": "This block is replaced by core Buttons block."
 }

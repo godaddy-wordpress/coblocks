@@ -1,0 +1,26 @@
+{
+	"name": "coblocks/field-select",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Select"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"options": {
+			"type": "array",
+			"default": []
+		}
+	},
+	"title": "Select",
+	"textdomain": "coblocks",
+	"description": "A dropdown field with multiple options where only one choice can be made.",
+	"parent": [
+		"coblocks/form"
+	],
+	"editorScript": ["coblocks-3"],
+	"render": "index.php"
+}

@@ -7,6 +7,7 @@ describe( 'Test CoBlocks Service Block', function() {
 	/**
 	 * Test that we can add a service block to the content, not alter
 	 * any settings, and are able to successfully save the block without errors.
+	 * The `coblocks-services-script` is what handles this functionality.
 	 */
 	it( 'Test service block does not render on front of site with empty values.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
@@ -30,7 +31,7 @@ describe( 'Test CoBlocks Service Block', function() {
 
 		cy.get( '.wp-block-coblocks-services [data-type="coblocks/service"]:first-child' ).click( { force: true } );
 
-		helpers.upload.imageToBlock( 'coblocks/service' );
+		helpers.upload.imageToBlock( 'coblocks/service', true );
 
 		cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).then( ( $btn ) => {
 			const isOpen = $btn.attr( 'aria-expanded' );
@@ -47,8 +48,6 @@ describe( 'Test CoBlocks Service Block', function() {
 			} );
 
 		cy.get( '.wp-block-coblocks-services [data-type="coblocks/service"]:last-child' ).click( { force: true } );
-
-		helpers.upload.imageToBlock( 'coblocks/service' );
 
 		cy.get( '.block-editor-block-inspector__advanced' ).scrollIntoView().find( 'button' ).then( ( $btn ) => {
 			const isOpen = $btn.attr( 'aria-expanded' );

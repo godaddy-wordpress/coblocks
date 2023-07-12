@@ -12,7 +12,7 @@
  *
  * @return string Returns the block content.
  */
-function coblocks_render_posts_block( $attributes ) {
+function coblocks_render_coblocks_posts_block( $attributes ) {
 
 	global $post;
 
@@ -119,11 +119,23 @@ function coblocks_posts( $posts, $attributes ) {
 		array_push( $class, 'has-' . $attributes['imageStyle'] . '-image' );
 	}
 
+	/**
+	 * This logic allows for conditional presence of style attribute when custom styles are present.
+	 */
+	$styles               = apply_filters( 'coblocks_render_wrapper_styles', $styles, $attributes );
+	$block_content_format = '<div class="%1$s"><div class="%2$s"%3$s>';
+	if ( ! empty( $styles ) ) {
+		$style_attribute      = ' style="' . esc_attr( implode( ' ', $styles ) ) . '"';
+		$block_content_format = '<div class="%1$s"><div class="%2$s" style="%3$s">';
+	} else {
+		$style_attribute = '';
+	}
+
 	$block_content = sprintf(
-		'<div class="%1$s"><div class="%2$s" style="%3$s">',
+		$block_content_format,
 		esc_attr( implode( ' ', $class_name ) ),
 		esc_attr( implode( ' ', apply_filters( 'coblocks_render_wrapper_class', $class, $attributes ) ) ),
-		esc_attr( implode( ' ', apply_filters( 'coblocks_render_wrapper_styles', $styles, $attributes ) ) )
+		$style_attribute
 	);
 
 	$list_items_markup = '';
@@ -305,31 +317,6 @@ function coblocks_get_rss_post_info( $posts ) {
 	return $formatted_posts;
 
 }
-
-/**
- * Registers the `posts` block on server.
- */
-function coblocks_register_posts_block() {
-	// Return early if this function does not exist.
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	// Load attributes from block.json.
-	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/posts/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
-
-	register_block_type(
-		'coblocks/posts',
-		array(
-			'attributes'      => $metadata['attributes'],
-			'supports'        => $metadata['supports'],
-			'render_callback' => 'coblocks_render_posts_block',
-		)
-	);
-}
-add_action( 'init', 'coblocks_register_posts_block' );
 
 /**
  * Handles outdated versions of the `coblocks/posts` block by converting

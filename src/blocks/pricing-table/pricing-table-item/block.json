@@ -38,8 +38,8 @@
 	},
 	"title": "Pricing Table Item",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-6",
 	"description": "A pricing table to help visitors compare products and plans.",
+	"editorScript": ["coblocks-6"],
 	"parent": [
 		"coblocks/pricing-table"
 	]

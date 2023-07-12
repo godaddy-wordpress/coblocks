@@ -35,10 +35,6 @@ const attributes = {
 };
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Offset', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Display images in an offset brick pattern gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
 	icon: <Icon icon={ icon } />,
 	keywords: [

@@ -13,7 +13,7 @@
  *
  * @return string Returns the events content.
  */
-function coblocks_render_events_block( $attributes, $content ) {
+function coblocks_render_coblocks_events_block( $attributes, $content ) {
 
 	if ( empty( $attributes['externalCalendarUrl'] ) ) {
 		return $content;
@@ -171,8 +171,8 @@ function coblocks_render_events_block( $attributes, $content ) {
 
 		$events_layout .= '</div>';
 
-		$events_layout .= '<button class="wp-coblocks-events-nav-button__prev" id="wp-coblocks-event-swiper-prev" style="visibility: hidden" />';
-		$events_layout .= '<button class="wp-coblocks-events-nav-button__next" id="wp-coblocks-event-swiper-next" style="visibility: hidden" />';
+		$events_layout .= sprintf( '<button class="wp-coblocks-events-nav-button__prev" id="wp-coblocks-event-swiper-prev" style="visibility: hidden" aria-label="%s"/>', __( 'Previous post', 'coblocks' ) );
+		$events_layout .= sprintf( '<button class="wp-coblocks-events-nav-button__next" id="wp-coblocks-event-swiper-next" style="visibility: hidden" aria-label="%s"/>', __( 'Next post', 'coblocks' ) );
 
 		$events_layout .= '</div>';
 
@@ -266,29 +266,3 @@ function coblocks_render_multi_day_event_item( $start_date, $end_date, ...$event
 function coblocks_render_single_day_event_item( ...$event_data ) {
 	return coblocks_render_event_item( ...$event_data );
 }
-
-/**
- * Registers the `events` block on server.
- */
-function coblocks_register_events_block() {
-
-	// Return early if this function does not exist.
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	// Load attributes from block.json.
-	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/events/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
-
-	register_block_type(
-		'coblocks/events',
-		array(
-			'attributes'      => $metadata['attributes'],
-			'render_callback' => 'coblocks_render_events_block',
-		)
-	);
-}
-
-add_action( 'init', 'coblocks_register_events_block' );

@@ -1,0 +1,30 @@
+{
+	"name": "coblocks/field-checkbox",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Checkbox"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"options": {
+			"type": "array",
+			"default": []
+		},
+		"isInline": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"category": "layout",
+	"title": "Checkbox",
+	"textdomain": "coblocks",
+	"description": "A checkbox field with multiple options where multiple choices can be made.",
+	"parent": [
+		"coblocks/form"
+	],
+	"editorScript": ["coblocks-3"],
+	"render": "index.php"
+}

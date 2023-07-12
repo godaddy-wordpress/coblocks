@@ -12,7 +12,7 @@
  *
  * @return string Returns the block content.
  */
-function coblocks_render_post_carousel_block( $attributes ) {
+function coblocks_render_coblocks_post_carousel_block( $attributes ) {
 
 	global $post;
 
@@ -233,8 +233,8 @@ function coblocks_post_carousel( $posts, $attributes ) {
 	$block_content .= '</div>';
 	$block_content .= '</div>';
 
-	$block_content .= '<button class="wp-coblocks-post-carousel-nav-button__prev" id="wp-coblocks-post-carousel-swiper-prev" style="visibility:hidden" />';
-	$block_content .= '<button class="wp-coblocks-post-carousel-nav-button__next" id="wp-coblocks-post-carousel-swiper-next" style="visibility:hidden" />';
+	$block_content .= sprintf( '<button class="wp-coblocks-post-carousel-nav-button__prev" id="wp-coblocks-post-carousel-swiper-prev" style="visibility:hidden" aria-label="%s" />', __( 'Previous post', 'coblocks' ) );
+	$block_content .= sprintf( '<button class="wp-coblocks-post-carousel-nav-button__next" id="wp-coblocks-post-carousel-swiper-next" style="visibility:hidden" aria-label="%s" />', __( 'Next post', 'coblocks' ) );
 
 	$block_content .= '</div>';
 
@@ -323,32 +323,6 @@ function coblocks_get_rss_post_carousel_info( $posts ) {
 	return $formatted_posts;
 
 }
-
-/**
- * Registers the `post-carousel` block on server.
- */
-function coblocks_register_post_carousel_block() {
-	// Return early if this function does not exist.
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	$dir = CoBlocks()->asset_source( 'js' );
-
-	// Load attributes from block.json.
-	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/post-carousel/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
-
-	register_block_type(
-		'coblocks/post-carousel',
-		array(
-			'attributes'      => $metadata['attributes'],
-			'render_callback' => 'coblocks_render_post_carousel_block',
-		)
-	);
-}
-add_action( 'init', 'coblocks_register_post_carousel_block' );
 
 /**
  * Handles outdated versions of the `coblocks/post-carousel` block by converting

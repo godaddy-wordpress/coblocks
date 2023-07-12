@@ -1,6 +1,6 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"name": "coblocks/highlight",
 	"category": "formatting",
 	"attributes": {
@@ -32,6 +32,6 @@
 	},
 	"textdomain": "coblocks",
 	"title": "Highlight",
-	"editorScript": "blocks-9",
+	"editorScript": ["coblocks-9"],
 	"description": "Draw attention and emphasize important narrative."
 }

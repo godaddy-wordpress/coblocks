@@ -1,0 +1,22 @@
+{
+	"name": "coblocks/field-phone",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Phone"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"title": "Phone",
+	"textdomain": "coblocks",
+	"description": "A text field for collecting a phone number.",
+	"parent": [
+		"coblocks/form"
+	],
+	"editorScript": ["coblocks-3"],
+	"render": "index.php"
+}

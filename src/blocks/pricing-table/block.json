@@ -13,6 +13,6 @@
 	},
 	"title": "Pricing Table",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-6",
+	"editorScript": ["coblocks-6"],
 	"description": "Add pricing tables to help visitors compare products and plans."
 }

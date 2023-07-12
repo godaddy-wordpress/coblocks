@@ -1,0 +1,22 @@
+{
+	"name": "coblocks/field-textarea",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Message"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"title": "Textarea",
+	"textdomain": "coblocks",
+	"description": "A text box for longer responses.",
+	"parent": [
+		"coblocks/form"
+	],
+	"editorScript": ["coblocks-3"],
+	"render": "index.php"
+}

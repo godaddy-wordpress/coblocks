@@ -42,8 +42,8 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		helpers.selectBlock( 'hero' );
 
-		cy.get( '[data-type="core/heading"]' ).focus().type( 'Heading Text' );
-		cy.get( '[data-type="core/paragraph"]' ).first().focus().type( 'Paragraph Text' );
+		cy.get( '[data-type="core/heading"]' ).focus().type( 'Heading Text', { force: true } );
+		cy.get( '[data-type="core/paragraph"]' ).first().focus().type( 'Paragraph Text', { force: true } );
 
 		cy.get( '.wp-block-coblocks-hero' ).click( { force: true } );
 
@@ -106,8 +106,9 @@ describe( 'Test CoBlocks Hero Block', function() {
 		cy.get( '.attachment.selected.save-ready' );
 		cy.get( '.media-toolbar-primary > .button' ).click();
 
-		// Media replace button should reside as the 6th button within the toolbar.
-		cy.get( '.block-editor-block-toolbar button:nth(5)' ).click();
+		// Media replace button is the only one without an aria-label.
+		// Added aria-label to the SVG icon manually.
+		cy.get( '.block-editor-block-toolbar svg[aria-label="Replace background image"]' ).click();
 
 		cy.get( '.components-popover__content' ).should( 'be.visible' );
 

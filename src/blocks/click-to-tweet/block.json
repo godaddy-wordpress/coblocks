@@ -1,6 +1,6 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"name": "coblocks/click-to-tweet",
 	"category": "formatting",
 	"attributes": {
@@ -50,6 +50,6 @@
 	},
 	"title": "Click to Tweet",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-3",
+	"editorScript": ["coblocks-4"],
 	"description": "Add a quote for readers to tweet via Twitter."
 }

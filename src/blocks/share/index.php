@@ -7,12 +7,13 @@
 
 /**
  * Renders the block on server.
+ * Share Block AKA Social Block (deprecated name).
  *
  * @param array $attributes The block attributes.
  *
  * @return string Returns the block content.
  */
-function coblocks_render_share_block( $attributes ) {
+function coblocks_render_coblocks_social_block( $attributes ) {
 
 	global $post;
 
@@ -170,9 +171,9 @@ function coblocks_render_share_block( $attributes ) {
 		if ( isset( $attributes[ $id ] ) && $attributes[ $id ] ) {
 			$markup .= sprintf(
 				'<li>
-					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s %9$s %10$s %13$s" title="%2$s" style="%4$s%6$s%11$s%12$s">
+					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s %9$s %10$s %13$s" title="%2$s" style="%4$s%6$s%12$s">
 						<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-						<span class="wp-block-coblocks-social__text">%2$s</span>
+						<span class="wp-block-coblocks-social__text" style="%11$s">%2$s</span>
 					</a>
 				</li>',
 				esc_url( $platform['url'] ),
@@ -233,30 +234,3 @@ function coblocks_render_share_block( $attributes ) {
 
 	return $block_content;
 }
-
-/**
- * Registers the block on server.
- */
-function coblocks_register_share_block() {
-	// Return early if this function does not exist.
-	if ( ! function_exists( 'register_block_type' ) ) {
-		return;
-	}
-
-	// Load attributes from block.json.
-	ob_start();
-	include COBLOCKS_PLUGIN_DIR . 'src/blocks/share/block.json';
-	$metadata = json_decode( ob_get_clean(), true );
-
-	register_block_type(
-		'coblocks/social',
-		array(
-			'editor_script'   => 'coblocks-editor',
-			'editor_style'    => 'coblocks-editor',
-			'style'           => 'coblocks-frontend',
-			'attributes'      => $metadata['attributes'],
-			'render_callback' => 'coblocks_render_share_block',
-		)
-	);
-}
-add_action( 'init', 'coblocks_register_share_block' );

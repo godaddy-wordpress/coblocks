@@ -12,27 +12,28 @@ import '../../../src/extensions/button-controls';
 import '../../../src/extensions/colors';
 import '../../../src/extensions/image-crop';
 import '../../../src/extensions/typography';
+import { registerBlock } from '../../../src/utils/helper';
 
 // Imports used for registerGalleryBlocks().
-import { metadata as carouselMeta, name as carouselName, settings as carouselSettings } from '../../../src/blocks/gallery-carousel';
-import { metadata as collageMeta, name as collageName, settings as collageSettings } from '../../../src/blocks/gallery-collage/';
-import { metadata as masonryMeta, name as masonryName, settings as masonrySettings } from '../../../src/blocks/gallery-masonry';
-import { metadata as offsetMeta, name as offsetName, settings as offsetSettings } from '../../../src/blocks/gallery-offset';
-import { metadata as stackedMeta, name as stackedName, settings as stackedSettings } from '../../../src/blocks/gallery-stacked';
+import * as carouselSettings from '../../../src/blocks/gallery-carousel';
+import * as collageSettings from '../../../src/blocks/gallery-collage/';
+import * as masonrySettings from '../../../src/blocks/gallery-masonry';
+import * as offsetSettings from '../../../src/blocks/gallery-offset';
+import * as stackedSettings from '../../../src/blocks/gallery-stacked';
 
 // Imports used for registerFormBlocks().
 // Form, Name, Date, Textarea, Phone, Text, Website, Hidden
-import { name as formBlockName, settings as formBlockSettings } from '../../../src/blocks/form';
-import { name as formCheckboxBlockName, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/checkbox';
-import { name as formDateBlockName, settings as formDateBlockSettings } from '../../../src/blocks/form/fields/date';
-import { name as formHiddenBlockName, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/hidden';
-import { name as formNameBlockName, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/name';
-import { name as formPhoneBlockName, settings as formPhoneBlockSettings } from '../../../src/blocks/form/fields/phone';
-import { name as formRadioBlockName, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/radio';
-import { name as formSelectBlockName, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/select';
-import { name as formTextareaBlockName, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/textarea';
-import { name as formTextBlockName, settings as formTextBlockSettings } from '../../../src/blocks/form/fields/text';
-import { name as formWebsiteBlockName, settings as formWebsiteBlockSettings } from '../../../src/blocks/form/fields/website';
+import { metadata as formMetaData, settings as formBlockSettings } from '../../../src/blocks/form';
+import { metadata as formCheckboxMetaData, settings as formCheckboxBlockSettings } from '../../../src/blocks/form/fields/field-checkbox';
+import { metadata as formDateMetaData, settings as formDateBlockSettings } from '../../../src/blocks/form/fields/field-date';
+import { metadata as formHiddenMetaData, settings as formHiddenBlockSettings } from '../../../src/blocks/form/fields/field-hidden';
+import { metadata as formNameMetaData, settings as formNameBlockSettings } from '../../../src/blocks/form/fields/field-name';
+import { metadata as formPhoneMetaData, settings as formPhoneBlockSettings } from '../../../src/blocks/form/fields/field-phone';
+import { metadata as formRadioMetaData, settings as formRadioBlockSettings } from '../../../src/blocks/form/fields/field-radio';
+import { metadata as formSelectMetaData, settings as formSelectBlockSettings } from '../../../src/blocks/form/fields/field-select';
+import { metadata as formTextareaMetaData, settings as formTextareaBlockSettings } from '../../../src/blocks/form/fields/field-textarea';
+import { metadata as formTextMetaData, settings as formTextBlockSettings } from '../../../src/blocks/form/fields/field-text';
+import { metadata as formWebsiteMetaData, settings as formWebsiteBlockSettings } from '../../../src/blocks/form/fields/field-website';
 
 /**
  * WordPress dependencies
@@ -45,42 +46,26 @@ import { createBlock, getBlockTransforms, parse, registerBlockType, serialize, u
  *
  */
 export const registerGalleryBlocks = () => {
-	const getV2Settings = ( blockMeta, blockSettings ) => {
-		const metaClone = { ...blockMeta };
-		if ( !! blockSettings?.attributes ) {
-			metaClone.attributes = { ...metaClone.attributes, ...blockSettings?.attributes };
-		}
-		return metaClone;
-	};
-
-	const v2Carousel = stackedMeta?.apiVersion === 2 ? getV2Settings( carouselMeta, carouselSettings ) : {};
-	const v2Collage = stackedMeta?.apiVersion === 2 ? getV2Settings( collageMeta, collageSettings ) : {};
-	const v2Masonry = stackedMeta?.apiVersion === 2 ? getV2Settings( masonryMeta, masonrySettings ) : {};
-	const v2Offset = stackedMeta?.apiVersion === 2 ? getV2Settings( offsetMeta, offsetSettings ) : {};
-	const v2Stacked = stackedMeta?.apiVersion === 2 ? getV2Settings( stackedMeta, stackedSettings ) : {};
-
-	registerBlockType( carouselName, { category: 'common', ...carouselSettings, ...v2Carousel } ); // Register carousel block
-	registerBlockType( collageName, { category: 'common', ...collageSettings, ...v2Collage } ); // Register collage block
-	registerBlockType( masonryName, { category: 'common', ...masonrySettings, ...v2Masonry } ); // Register masonry block
-	registerBlockType( offsetName, { category: 'common', ...offsetSettings, ...v2Offset } ); // Register offset block
-	registerBlockType( stackedName, { category: 'common', ...stackedSettings, ...v2Stacked } ); // Register stacked block
+	[ carouselSettings, masonrySettings, offsetSettings, stackedSettings, collageSettings ].forEach( ( settings ) => {
+		registerBlock( settings );
+	} );
 };
 
 export const registerFormBlocks = () => {
 	// Form, Name, Date, Textarea, Phone, Text, Website, Hidden
-	registerBlockType( formBlockName, { category: 'common', ...formBlockSettings } ); // Register form block
-	registerBlockType( formNameBlockName, { category: 'common', ...formNameBlockSettings } ); // Register form name block
-	registerBlockType( formDateBlockName, { category: 'common', ...formDateBlockSettings } ); // Register form name block
-	registerBlockType( formTextareaBlockName, { category: 'common', ...formTextareaBlockSettings } ); // Register form textarea block
-	registerBlockType( formPhoneBlockName, { category: 'common', ...formPhoneBlockSettings } ); // Register form phone block
-	registerBlockType( formTextBlockName, { category: 'common', ...formTextBlockSettings } ); // Register form text block
-	registerBlockType( formWebsiteBlockName, { category: 'common', ...formWebsiteBlockSettings } ); // Register form website block
-	registerBlockType( formHiddenBlockName, { category: 'common', ...formHiddenBlockSettings } ); // Register form hidden block
+	registerBlockType( formMetaData, { category: 'common', ...formBlockSettings } ); // Register form block
+	registerBlockType( formNameMetaData, { category: 'common', ...formNameBlockSettings } ); // Register form name block
+	registerBlockType( formDateMetaData, { category: 'common', ...formDateBlockSettings } ); // Register form name block
+	registerBlockType( formTextareaMetaData, { category: 'common', ...formTextareaBlockSettings } ); // Register form textarea block
+	registerBlockType( formPhoneMetaData, { category: 'common', ...formPhoneBlockSettings } ); // Register form phone block
+	registerBlockType( formTextMetaData, { category: 'common', ...formTextBlockSettings } ); // Register form text block
+	registerBlockType( formWebsiteMetaData, { category: 'common', ...formWebsiteBlockSettings } ); // Register form website block
+	registerBlockType( formHiddenMetaData, { category: 'common', ...formHiddenBlockSettings } ); // Register form hidden block
 
 	// Select, Checkbox, Radio
-	registerBlockType( formSelectBlockName, { category: 'common', ...formSelectBlockSettings } ); // Register form name block
-	registerBlockType( formCheckboxBlockName, { category: 'common', ...formCheckboxBlockSettings } ); // Register form name block
-	registerBlockType( formRadioBlockName, { category: 'common', ...formRadioBlockSettings } ); // Register form name block
+	registerBlockType( formSelectMetaData, { category: 'common', ...formSelectBlockSettings } ); // Register form name block
+	registerBlockType( formCheckboxMetaData, { category: 'common', ...formCheckboxBlockSettings } ); // Register form name block
+	registerBlockType( formRadioMetaData, { category: 'common', ...formRadioBlockSettings } ); // Register form name block
 };
 
 /**
@@ -122,16 +107,15 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 		// Register the deprecated block to get the attributes with filters applied.
 		deprecatedSettings = Object.assign(
 			{ category: 'common' },
-			omit( blockSettings, [ 'attributes', 'save', 'deprecated' ] ),
+
+			// We may need updated exclusion logic once we start deprecated v2 blocks.
+			// For example blocks with 'apiVersion: 2` will not have block wrapper by default.
+			omit( blockSettings, [ 'attributes', 'save', 'deprecated', 'apiVersion' ] ),
 			{
 				attributes: deprecated.attributes,
 				save: deprecated.save,
 			}
 		);
-		deprecatedBlockType = registerBlockType( blockName, deprecatedSettings );
-
-		// Unregister the registered block.
-		unregisterBlockType( blockName );
 
 		describe( `${ blockName } deprecation ${ index }`, () => {
 			beforeEach( () => {
@@ -163,7 +147,7 @@ export const testDeprecatedBlockVariations = ( blockName, blockSettings, blockVa
 				).toEqual( [] );
 			} );
 
-			Object.keys( deprecatedBlockType.attributes ).forEach( ( attribute ) => {
+			Object.keys( deprecatedBlockType?.attributes ?? {} ).forEach( ( attribute ) => {
 				// This test helps expose attributes we need variations for.
 				it( `should have variations for attribute.${ attribute }`, () => {
 					expect( blockVariations.hasOwnProperty( attribute ) ).toBe( true );

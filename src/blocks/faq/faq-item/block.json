@@ -14,7 +14,7 @@
 	},
 	"title": "FAQ Item",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-2",
 	"description": "A question/answer within the FAQ block.",
+	"editorScript": ["coblocks-2"],
 	"parent": [ "coblocks/faq" ]
 }

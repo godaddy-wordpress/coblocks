@@ -20,8 +20,8 @@
 	},
 	"title": "Column",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-2",
 	"description": "An immediate child of a row.",
+	"editorScript": ["coblocks-2"],
 	"parent": [
 		"coblocks/row"
 	]

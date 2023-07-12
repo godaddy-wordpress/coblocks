@@ -15,6 +15,6 @@
 	},
 	"title": "Dynamic Separator",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-2",
+	"editorScript": ["coblocks-2"],
 	"description": "Add a resizable spacer between other blocks."
 }

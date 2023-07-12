@@ -12,7 +12,7 @@ import { supportsCollections } from './block-helpers';
  * WordPress dependencies
  */
 import { isBlobURL } from '@wordpress/blob';
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, getBlockType } from '@wordpress/blocks';
 import TokenList from '@wordpress/token-list';
 
 // Set dim ratio.
@@ -108,29 +108,34 @@ export const registerBlock = ( block ) => {
 	if ( ! block ) {
 		return;
 	}
+	const { name, settings } = block;
+
+	if ( getBlockType( name ) ) {
+		return;
+	}
 
 	let { category } = block;
-	const { name, settings } = block;
 
 	if ( ! supportsCollections() && ! name.includes( 'gallery' ) ) {
 		category = 'coblocks';
 	}
 
-	const icon = setIconColor( settings?.icon );
-
-	const isV2 = block?.metadata?.apiVersion === 2;
-	const v2Settings = isV2 ? block?.metadata : {};
-	if ( !! settings?.attributes && isV2 ) {
-		v2Settings.attributes = { ...v2Settings.attributes, ...settings?.attributes };
+	if ( ! category && block.metadata?.category ) {
+		category = block.metadata.category;
 	}
 
-	registerBlockType( name, {
-		...settings,
+	const icon = setIconColor( settings?.icon );
+
+	// Not all properties from metadata are registered with the block using registerBlockType.
+	// Some props like title and example need to be manually added for example.
+	// To handle the behavior, we merge the metadata with block settings as overrides.
+	const newSettings = { ...( block?.metadata ?? {} ), ...settings };
+
+	registerBlockType( block.metadata, {
+		...newSettings,
+
 		category,
 		icon,
-
-		// V2 Block API Upgrades
-		...v2Settings,
 	} );
 };
 

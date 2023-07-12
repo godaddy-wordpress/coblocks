@@ -25,6 +25,6 @@
 	},
 	"title": "Food & Drink",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-4",
+	"editorScript": ["coblocks-4"],
 	"description": "Display a menu or price list."
 }
