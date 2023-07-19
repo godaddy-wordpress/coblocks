@@ -437,7 +437,7 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 
-	if( isWP63AtLeast() ) {
+	if ( isWP63AtLeast() ) {
 		cy.get( '.components-color-palette__custom-color-button' ).click();
 	} else {
 		cy.get( '.components-color-palette__custom-color' ).click();
@@ -454,7 +454,12 @@ export function setColorPanelSetting( settingName, hexColor ) {
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
-	cy.get( '.components-color-palette__custom-color' ).click();
+
+	if ( isWP63AtLeast() ) {
+		cy.get( '.components-color-palette__custom-color-button' ).click();
+	} else {
+		cy.get( '.components-color-palette__custom-color' ).click();
+	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
