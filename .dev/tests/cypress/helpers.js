@@ -17,9 +17,7 @@ export function closeLayoutSelector() {
  * Returns true if styles tab exists false otherwise.
  */
 export function selectStylesTabIfExists() {
-	if ( isWP62AtLeast() ) {
-		cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
-	}
+	cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
 }
 
 /**
@@ -157,13 +155,9 @@ export function addNewGroupToPost() {
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
 
-	if ( isWP62AtLeast() ) {
-		cy.wait( 1000 );
+	cy.wait( 1000 );
 
-		cy.get( '.block-editor-block-types-list__list-item' ).contains( 'Group' ).click();
-	} else {
-		cy.get( '.block-editor-block-types-list__item' ).first().click();
-	}
+	cy.get( '.block-editor-block-types-list__list-item' ).contains( 'Group' ).click();
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type='core/group']` ).should( 'exist' ).then( () => {
@@ -442,7 +436,12 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
-	cy.get( '.components-color-palette__custom-color' ).click();
+
+	if( isWP63AtLeast() ) {
+		cy.get( '.components-color-palette__custom-color-button' ).click();
+	} else {
+		cy.get( '.components-color-palette__custom-color' ).click();
+	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -608,10 +607,10 @@ export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
 
-// A condition to determine if we are testing on WordPress 6.2+
-// This function should be removed in the process of the work for WP 6.3 compatibility
-export function isWP62AtLeast() {
-	return Cypress.$( "[class*='branch-6-2']" ).length > 0 || Cypress.$( "[class*='branch-6-3']" ).length > 0;
+// A condition to determine if we are testing on WordPress 6.3+
+// This function should be removed in the process of the work for WP 6.4 compatibility
+export function isWP63AtLeast() {
+	return Cypress.$( "[class*='branch-6-3']" ).length > 0 || Cypress.$( "[class*='branch-6-4']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {
