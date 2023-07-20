@@ -34,3 +34,12 @@ jobs:
     concurrency:
       group: chrome-php74
       cancel-in-progress: true
+
+  chrome_e2e_wp_63_rc1:
+    name: Chrome on PHP 7.4
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      wpVersion: "https://wordpress.org/wordpress-6.3-RC1.zip"
+    concurrency:
+      group: chrome-wp_63_rc1
+      cancel-in-progress: true
