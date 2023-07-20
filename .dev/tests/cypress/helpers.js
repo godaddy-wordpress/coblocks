@@ -1,19 +1,4 @@
 /**
- * Close layout selector.
- */
-export function closeLayoutSelector() {
-	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
-		if ( layoutSelectorModal > 0 ) {
-			cy.get( '.coblocks-layout-selector-modal' )
-				.find( '.components-button[aria-label*="Close"]' ).first()
-				.click();
-		}
-	} );
-
-	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
-}
-
-/**
  * Returns true if styles tab exists false otherwise.
  */
 export function selectStylesTabIfExists() {
@@ -251,28 +236,6 @@ export function getBlockSlug() {
 }
 
 /**
- * Open the block navigator.
- */
-export function openBlockNavigator( ) {
-	cy.get( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle,.edit-post-header-toolbar__document-overview-toggle' ).then( ( element ) => {
-		if ( ! element.hasClass( 'is-pressed' ) ) {
-			element.click();
-		}
-	} );
-}
-
-/**
- * Close the block navigator.
- */
-export function closeBlockNavigator() {
-	const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
-	if ( inserterButton.length > 0 ) {
-		cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' )
-			.click();
-	}
-}
-
-/**
  * Click on a style button within the style panel
  *
  * @param {string} style Name of the style to apply
@@ -315,7 +278,7 @@ export function selectBlock( name ) {
 	cy.wait( 1000 );
 
 	// `data-type` includes lower case name and `data-title` includes upper case name.
-	// Allows for case insensitive search.
+	// Allows for case-insensitive search.
 	cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
 		.invoke( 'attr', 'data-block' )
 		.then( ( clientId ) => {
@@ -358,7 +321,7 @@ export const upload = {
 	/**
 	 * Upload image to input element and trigger replace image flow.
 	 *
-	 * @param {string} blockName The name of the block that is replace target
+	 * @param {string} blockName The name of the block that is replacing target
 	 *                           imageReplaceFlow works with CoBlocks Galleries: Carousel, Collage, Masonry, Offset, Stacked.
 	 */
 	imageReplaceFlow: ( blockName ) => {
@@ -510,7 +473,7 @@ export function openHeadingToolbarAndSelect( headingLevel ) {
 }
 
 /**
- * Toggle an checkbox in the settings panel of the block editor
+ * Toggle a checkbox in the settings panel of the block editor
  *
  * @param {string} checkboxLabelText The checkbox label text. eg: Drop Cap
  */
@@ -525,7 +488,7 @@ export function toggleSettingCheckbox( checkboxLabelText ) {
 /**
  * Add custom classes to a block
  *
- * @param {string} classes Custom classe(s) to add to the block
+ * @param {string} classes Custom class(es) to add to the block
  * @param {string} blockID The name of the block e.g. (accordion, alert, map)
  */
 export function addCustomBlockClass( classes, blockID = '' ) {
@@ -555,20 +518,6 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 				}
 			} );
 		} );
-}
-
-/**
- * Open the Editor Settings panel.
- */
-export function openEditorSettingsModal() {
-	// Open "more" menu.
-	cy.get( '.edit-post-more-menu button' ).click();
-	cy.get( '.components-menu-group' ).contains( 'Editor settings' ).click();
-
-	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
-
-	// Ensure settings have loaded.
-	cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
 }
 
 /**
