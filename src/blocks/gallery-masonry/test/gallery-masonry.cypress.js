@@ -2,6 +2,7 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
+import { isWP63AtLeast } from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	/**
@@ -156,15 +157,19 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		helpers.selectBlock( 'image' );
 
-		//'.media-replace-flow button' was deprecated in 5.8.
-		// Media replace button should reside as the 5th button within the toolbar.
-		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button:not(.has-icon)' ).click();
+		let replaceButtonPosition = '4';
+
+		if ( isWP63AtLeast() ) {
+			replaceButtonPosition = '5';
+		}
+
+		cy.get( '.block-editor-block-toolbar div:nth-of-type(' + replaceButtonPosition + ') button:not(.has-icon)' ).click();
 
 		cy.get( '.components-popover__content' ).should( 'be.visible' );
 
 		cy.get( '.block-editor-media-replace-flow__media-upload-menu .components-menu-item__button' ).contains( 'Open Media Library' );
 
-		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button:not(.has-icon)' ).click();
+		cy.get( '.block-editor-block-toolbar div:nth-of-type(' + replaceButtonPosition + ') button:not(.has-icon)' ).click();
 
 		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' ).click();
 
