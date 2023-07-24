@@ -17,7 +17,10 @@ const save = ( { attributes } ) => {
 	const { align, content } = attributes;
 
 	const saveBlockProps = useBlockProps.save();
-	saveBlockProps.style.textAlign = align;
+
+	if ( saveBlockProps.style ) {
+		saveBlockProps.style.textAlign = align;
+	}
 
 	/**
 	 * In the Highlight block we descend only the `color` and `backgroundColor` styles and classnames but keep all others on the parent.
