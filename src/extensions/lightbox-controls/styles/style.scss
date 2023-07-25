@@ -5,6 +5,9 @@
 	padding-right: 16px;
 }
 
-.edit-post-sidebar .coblocks-lightbox-controls {
-	display: none;
+.components-panel__row.coblocks-lightbox-controls {
+	display: flex;
+	margin-top: 0;
+	padding-left: 16px;
+	padding-right: 16px;
 }
