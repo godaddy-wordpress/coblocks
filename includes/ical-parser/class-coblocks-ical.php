@@ -512,7 +512,9 @@ class CoBlocks_ICal {
 	 * @return void
 	 */
 	public function __construct( $files = false, array $options = array() ) {
-		ini_set( 'auto_detect_line_endings', '1' );
+		if (\PHP_VERSION_ID < 80100) {
+			ini_set('auto_detect_line_endings', '1');
+		}
 
 		// Used only for strtotime(), i18n not needed.
 		$this->day_ordinals = array(
