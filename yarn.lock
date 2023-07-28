@@ -3239,10 +3239,10 @@
     react "^18.2.0"
     react-dom "^18.2.0"
 
-"@wordpress/env@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/env/-/env-7.0.0.tgz#2e9b562e53b5ca6df090f22c763d153e630cf721"
-  integrity sha512-C0Z/smvyEeMFPjoDo149dv/w83W9hVOIkBQSGpRzeWSwDEJVYPKeZ1sUSC4y01zdXVyIxeyWIRLSm611pYIlAQ==
+"@wordpress/env@^8.1.1":
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/env/-/env-8.4.0.tgz#5e8af0d1904e1a49f1d71bba7a71e50818c00bc4"
+  integrity sha512-3DnTW/WanvQpWqagCIMQYtSBYj9wXLQQqGgmKl8gVJ4MfxV3K5A9zE25Rv6iogdr7ydLcPSbmNJx6mYgQRaSog==
   dependencies:
     chalk "^4.0.0"
     copy-dir "^1.3.0"
