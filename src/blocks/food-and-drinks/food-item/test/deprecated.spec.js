@@ -25,6 +25,7 @@ const variations = {
 	showImage: [ undefined, true, false ],
 	showPrice: [ undefined, true, false ],
 	headingLevel: [ 2, 3, 4 ],
+	className: [ undefined, '', 'className' ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

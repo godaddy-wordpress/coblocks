@@ -21,6 +21,6 @@
 	},
 	"title": "Services",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-6",
+	"editorScript": ["coblocks-6"],
 	"description": "Add up to four columns of services to display."
 }

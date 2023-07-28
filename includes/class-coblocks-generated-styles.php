@@ -56,7 +56,7 @@ class CoBlocks_Generated_Styles {
 		if ( is_null( $styles ) ) {
 			return;
 		}
-		wp_add_inline_style( 'coblocks-frontend', $styles );
+		wp_add_inline_style( 'coblocks-frontend-inline', $styles );
 	}
 
 	/**

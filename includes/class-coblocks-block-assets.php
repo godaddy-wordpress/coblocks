@@ -17,6 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class CoBlocks_Block_Assets {
 
+	/**
+	 * This plugin's assets path.
+	 *
+	 * @var CoBlocks_Block_Assets
+	 */
+	private $assets_dir = '';
 
 	/**
 	 * This plugin's instance.
@@ -42,12 +48,15 @@ class CoBlocks_Block_Assets {
 	 * The Constructor.
 	 */
 	public function __construct() {
+		$this->assets_dir = CoBlocks()->asset_source( 'js' );
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_only_scripts' ) );
+
+		// `render_block` filters must be applied early.
+		add_filter( 'render_block', array( $this, 'coblocks_enqueue_scripts_for_core_blocks' ), 10, 2 );
 	}
 
 	/**
@@ -67,29 +76,6 @@ class CoBlocks_Block_Assets {
 				'dependencies' => array(),
 				'version'      => COBLOCKS_VERSION,
 			);
-	}
-
-	/**
-	 * Enqueue scripts that should only be available on the front end
-	 */
-	public function frontend_only_scripts() {
-		// Define where the asset is loaded from.
-		$dir = CoBlocks()->asset_source( 'js' );
-
-		// Define where the vendor asset is loaded from.
-		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
-
-		// Gist block.
-		// only want this loading in front end.
-		if ( has_block( 'coblocks/gist' ) || has_block( 'core/embed' ) ) {
-			wp_enqueue_script(
-				'coblocks-gist',
-				$dir . 'coblocks-gist.js',
-				array(),
-				COBLOCKS_VERSION,
-				true
-			);
-		}
 	}
 
 	/**
@@ -153,7 +139,7 @@ class CoBlocks_Block_Assets {
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
 
-		wp_enqueue_style(
+		wp_register_style(
 			'coblocks-frontend',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
@@ -188,7 +174,7 @@ class CoBlocks_Block_Assets {
 		$asset_file = $this->get_asset_file( $filepath );
 		$rtl        = ! is_rtl() ? '' : '-rtl';
 
-		wp_enqueue_style(
+		wp_register_style(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			array(),
@@ -213,7 +199,7 @@ class CoBlocks_Block_Assets {
 			add_filter( 'coblocks_patterns_show_settings_panel', '__return_false' );
 		}
 
-		wp_enqueue_script(
+		wp_register_script(
 			'coblocks-editor',
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
 			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
@@ -240,7 +226,7 @@ class CoBlocks_Block_Assets {
 				}
 			}
 
-			wp_enqueue_script(
+			wp_register_script(
 				$name,
 				COBLOCKS_PLUGIN_URL . $filepath . '.js',
 				array_merge( $asset_file['dependencies'], array( 'wp-api', 'coblocks-editor' ) ),
@@ -398,9 +384,6 @@ class CoBlocks_Block_Assets {
 			return;
 		}
 
-		// Define where the asset is loaded from.
-		$dir = CoBlocks()->asset_source( 'js' );
-
 		// Define where the vendor asset is loaded from.
 		$vendors_dir = CoBlocks()->asset_source( 'js/vendors' );
 
@@ -410,37 +393,43 @@ class CoBlocks_Block_Assets {
 		// Enqueue for coblocks animations.
 		wp_enqueue_script(
 			'coblocks-animation',
-			$dir . 'coblocks-animation.js',
+			$this->assets_dir . 'coblocks-animation.js',
 			array(),
 			COBLOCKS_VERSION,
 			true
 		);
 
-		// Masonry block.
+		// Masonry v1 block scripts.
 		if ( $this->has_masonry_v1_block() ) {
 			wp_enqueue_script(
 				'coblocks-masonry',
-				$dir . 'coblocks-masonry.js',
+				$this->assets_dir . 'coblocks-masonry.js',
 				array( 'jquery', 'masonry', 'imagesloaded' ),
 				COBLOCKS_VERSION,
 				true
 			);
 		}
 
-		// Carousel block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/gallery-carousel' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'coblocks-tiny-swiper',
-				$vendors_dir . 'tiny-swiper.js',
-				array(),
-				COBLOCKS_VERSION,
-				true
-			);
-		}
+		wp_register_script(
+			'coblocks-gist-script',
+			$this->assets_dir . 'coblocks-gist-script.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
 
-		wp_enqueue_script(
+		// Carousel block scripts.
+		wp_register_script(
+			'coblocks-tiny-swiper',
+			$vendors_dir . 'tiny-swiper.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
+
+		wp_register_script(
 			'coblocks-tinyswiper-initializer',
-			$dir . 'coblocks-tinyswiper-initializer.js',
+			$this->assets_dir . 'coblocks-tinyswiper-initializer.js',
 			array(),
 			COBLOCKS_VERSION,
 			true
@@ -456,90 +445,142 @@ class CoBlocks_Block_Assets {
 			)
 		);
 
-		// Post Carousel block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/post-carousel' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'coblocks-post-carousel',
-				$dir . 'coblocks-post-carousel.js',
-				array(),
-				COBLOCKS_VERSION,
-				true
-			);
+		// Post Carousel block script.
+		wp_register_script(
+			'coblocks-post-carousel',
+			$this->assets_dir . 'coblocks-post-carousel.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
 
-			wp_localize_script(
-				'coblocks-post-carousel',
-				'coblocksPostCarousel',
-				array(
-					'carouselPrevButtonAriaLabel' => $previous_aria_label,
-					'carouselNextButtonAriaLabel' => $next_aria_label,
-				)
-			);
-		}
+		wp_localize_script(
+			'coblocks-post-carousel',
+			'coblocksPostCarousel',
+			array(
+				'carouselPrevButtonAriaLabel' => $previous_aria_label,
+				'carouselNextButtonAriaLabel' => $next_aria_label,
+			)
+		);
 
 		// Events block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/events' ) || has_block( 'core/block' ) ) {
-			wp_enqueue_script(
-				'coblocks-events',
-				$dir . 'coblocks-events.js',
-				array(),
-				COBLOCKS_VERSION,
-				true
-			);
+		wp_register_script(
+			'coblocks-events',
+			$this->assets_dir . 'coblocks-events.js',
+			array(),
+			COBLOCKS_VERSION,
+			true
+		);
 
-			wp_localize_script(
-				'coblocks-events',
-				'coblocksEvents',
-				array(
-					'carouselPrevButtonAriaLabel' => $previous_aria_label,
-					'carouselNextButtonAriaLabel' => $next_aria_label,
-				)
-			);
-		}
+		wp_localize_script(
+			'coblocks-events',
+			'coblocksEvents',
+			array(
+				'carouselPrevButtonAriaLabel' => $previous_aria_label,
+				'carouselNextButtonAriaLabel' => $next_aria_label,
+			)
+		);
 
 		// Counter block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/counter' ) || has_block( 'core/block' ) ) {
-			$asset_file = $this->get_asset_file( 'dist/js/coblocks-counter' );
-			wp_enqueue_script(
-				'coblocks-counter-script',
-				$dir . 'coblocks-counter.js',
-				$asset_file['dependencies'],
-				COBLOCKS_VERSION,
-				true
-			);
-		}
+		$asset_file = $this->get_asset_file( 'dist/js/coblocks-counter-script' );
+		wp_register_script(
+			'coblocks-counter-script',
+			$this->assets_dir . 'coblocks-counter-script.js',
+			$asset_file['dependencies'],
+			COBLOCKS_VERSION,
+			true
+		);
 
 		// Services block.
-		if ( $this->is_page_gutenberg() || has_block( 'coblocks/services' ) ) {
-			$asset_file = $this->get_asset_file( 'dist/js/coblocks-services' );
+		$asset_file = $this->get_asset_file( 'dist/js/coblocks-services-script' );
+		wp_register_script(
+			'coblocks-services-script',
+			$this->assets_dir . 'coblocks-services-script.js',
+			$asset_file['dependencies'],
+			COBLOCKS_VERSION,
+			true
+		);
+
+		$this->localize_lightbox_controls();
+
+	}
+
+	/**
+	 * Enqueue specific scripts for the given core blocks.
+	 *
+	 * @param string $block_content The block content to be rendered.
+	 * @param array  $block         The block attributes.
+	 *
+	 * @return string The original block content.
+	 */
+	public function coblocks_enqueue_scripts_for_core_blocks( $block_content, $block ) {
+
+		// Bail if block does not have name, or does not have attributes.
+		if ( ! isset( $block['blockName'] ) || ! isset( $block['attrs'] ) ) {
+			return $block_content;
+		}
+
+		$block_name       = $block['blockName'];
+		$block_attributes = $block['attrs'];
+
+		// Allowed blocks for the lightbox script.
+		$lightbox_allowed_blocks = array(
+			'core/gallery',
+			'core/image',
+			'core/block',
+		);
+
+		if ( in_array( $block_name, $lightbox_allowed_blocks, true ) &&
+			// Has a lightbox attribute set to true.
+			(
+				isset( $block_attributes['lightbox'] ) &&
+				true === $block_attributes['lightbox']
+			)
+		) {
+
 			wp_enqueue_script(
-				'coblocks-services-script',
-				$dir . 'coblocks-services.js',
-				$asset_file['dependencies'],
+				'coblocks-lightbox',
+				$this->assets_dir . 'coblocks-lightbox.js',
+				array(),
 				COBLOCKS_VERSION,
 				true
 			);
+
+			// Script must be localized after the 'handle' script is registered.
+			// `coblocks-lightbox` is the handle that is shared between the scripts.
+			$this->localize_lightbox_controls();
+
+			wp_enqueue_style( 'coblocks-frontend' );
 		}
 
-		// Lightbox.
-		if (
-			has_block( 'coblocks/gallery-masonry' ) ||
-			has_block( 'coblocks/gallery-stacked' ) ||
-			has_block( 'coblocks/gallery-collage' ) ||
-			has_block( 'coblocks/gallery-carousel' ) ||
-			has_block( 'coblocks/gallery-offset' ) ||
-			has_block( 'core/gallery' ) ||
-			has_block( 'core/image' ) ||
-			has_block( 'core/block' )
+		// Allowed blocks for the gist script.
+		$gist_allowed_blocks = array(
+			'core/embed',
+		);
+
+		if ( in_array( $block_name, $gist_allowed_blocks, true ) &&
+			// Has a URL attribute with gist.github.com.
+			(
+				isset( $block_attributes['url'] ) &&
+				str_contains( $block_attributes['url'], 'gist.github.com' )
+			)
 		) {
 			wp_enqueue_script(
-				'coblocks-lightbox',
-				$dir . 'coblocks-lightbox.js',
+				'coblocks-gist-script',
+				$this->assets_dir . 'coblocks-gist-script.js',
 				array(),
 				COBLOCKS_VERSION,
 				true
 			);
 		}
 
+		return $block_content;
+	}
+
+	/**
+	 * Localize language script for the lightbox controls.
+	 */
+	private function localize_lightbox_controls() {
 		wp_localize_script(
 			'coblocks-lightbox',
 			'coblocksLightboxData',

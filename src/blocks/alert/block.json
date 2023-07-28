@@ -1,6 +1,5 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
 	"name": "coblocks/alert",
 	"attributes": {
 		"content": {
@@ -13,6 +12,7 @@
 		}
 	},
 	"textdomain": "coblocks",
+	"editorScript": ["coblocks-1"],
 	"title": "Alert",
 	"category": "theme"
 }

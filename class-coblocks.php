@@ -110,7 +110,6 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-register-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-generated-styles.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-body-classes.php';
-			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-form.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-font-loader.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-post-meta.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-google-map-block.php';

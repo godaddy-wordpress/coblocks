@@ -97,4 +97,4 @@ const settings = {
 	},
 };
 
-export { name, category, settings };
+export { name, category, settings, metadata };

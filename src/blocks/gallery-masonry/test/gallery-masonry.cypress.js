@@ -31,7 +31,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		const { imageBase } = helpers.upload.spec;
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' ).click();
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' ).click();
 
 		helpers.upload.imageToBlock( 'coblocks/gallery-masonry' );
 
@@ -49,7 +49,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	it( 'Test masonry block saves with images from media library.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -76,7 +76,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		const { caption } = galleryData;
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -91,7 +91,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		if ( helpers.isWP62AtLeast() ) {
-			helpers.selectBlock( 'masonry gallery' );
+			helpers.selectBlock( 'masonry' );
 
 			cy.get( 'figcaption[role="textbox"]' ).click( { force: true } );
 
@@ -115,7 +115,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	it( 'Test masonry captions allow rich text controls.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+		cy.get( 'figure' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -130,7 +130,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
 		if ( helpers.isWP62AtLeast() ) {
-			helpers.selectBlock( 'masonry gallery' );
+			helpers.selectBlock( 'masonry' );
 
 			cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
 
@@ -156,7 +156,7 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	it( 'Test masonry replace image flow.', function() {
 		helpers.addBlockToPost( 'coblocks/gallery-masonry', true );
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' )
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' )
 			.click()
 			.contains( /media library/i )
 			.click();
@@ -170,19 +170,19 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'button' ).contains( /create a new gallery/i ).click();
 		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
-		helpers.selectBlock( 'image', true );
+		helpers.selectBlock( 'image' );
 
 		//'.media-replace-flow button' was deprecated in 5.8.
 		// Media replace button should reside as the 5th button within the toolbar.
-		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button' ).contains( 'Replace' ).click();
+		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button:not(.has-icon)' ).click();
 
 		cy.get( '.components-popover__content' ).should( 'be.visible' );
 
 		cy.get( '.block-editor-media-replace-flow__media-upload-menu .components-menu-item__button' ).contains( 'Open Media Library' );
 
-		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button' ).contains( 'Replace' ).click();
+		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button:not(.has-icon)' ).click();
 
-		cy.get( '[data-type="coblocks/gallery-masonry"]' ).click();
+		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' ).click();
 
 		cy.get( '.components-popover__content' ).should( 'not.exist' );
 

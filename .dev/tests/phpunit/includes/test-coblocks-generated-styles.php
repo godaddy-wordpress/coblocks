@@ -19,35 +19,35 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 
 		set_current_screen( 'dashboard' );
 
-		$this->dimensions = [
-			'element' => [
-				[
+		$this->dimensions = array(
+			'element' => array(
+				array(
 					'height' => '300px',
 					'Mobile' => 'height: 200px; color: red;',
 					'Tablet' => 'height: 300px; color: green;',
-				],
-			],
-		];
+				),
+			),
+		);
 
-		$this->responsive_height = [
-			'divider_key' => [
-				'height'           => [
+		$this->responsive_height = array(
+			'divider_key' => array(
+				'height'           => array(
 					'heightTablet' => '200',
 					'heightMobile' => '300',
-				],
-				'shapeHeight'      => [
+				),
+				'shapeHeight'      => array(
 					'heightTablet' => '300',
 					'heightMobile' => '400',
-				],
-				'backgroundHeight' => [
+				),
+				'backgroundHeight' => array(
 					'heightTablet' => '400',
 					'heightMobile' => '500',
-				],
-			],
-		];
+				),
+			),
+		);
 
 		$this->coblocks_generated_styles = new CoBlocks_Generated_Styles();
-		$this->coblocks_block_assets = new CoBlocks_Block_Assets();
+		$this->coblocks_block_assets     = new CoBlocks_Block_Assets();
 
 	}
 
@@ -82,16 +82,16 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 	 */
 	public function test_construct_actions() {
 
-		$actions = [
-			[ 'wp_enqueue_scripts', 'enqueue_styles' ],
-			[ 'admin_enqueue_scripts', 'enqueue_styles' ],
-		];
+		$actions = array(
+			array( 'wp_enqueue_scripts', 'enqueue_styles' ),
+			array( 'admin_enqueue_scripts', 'enqueue_styles' ),
+		);
 
 		foreach ( $actions as $action_data ) {
 
 			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
 
-			if ( ! has_action( $action_data[0], [ $this->coblocks_generated_styles, $action_data[1] ] ) ) {
+			if ( ! has_action( $action_data[0], array( $this->coblocks_generated_styles, $action_data[1] ) ) ) {
 
 				$this->fail( "$action_data[0] is not attached to CoBlocks:$action_data[1]. It might also have the wrong priority (validated priority: $priority)" );
 
@@ -110,12 +110,12 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 		unset( $GLOBALS['current_screen'] );
 
 		$post_id = wp_insert_post(
-			[
+			array(
 				'post_author'  => 1,
 				'post_content' => '<!-- wp:coblocks/block_with_custom_styles --><!-- /wp:coblocks/block_with_custom_styles -->',
 				'post_title'   => 'Post title',
 				'post_status'  => 'publish',
-			]
+			)
 		);
 
 		update_post_meta( $post_id, '_coblocks_dimensions', json_encode( $this->dimensions ) );
@@ -156,12 +156,12 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 	public function test_styles_dashboard() {
 
 		$post_id = wp_insert_post(
-			[
+			array(
 				'post_author'  => 1,
 				'post_content' => 'Post content',
 				'post_title'   => 'Post title',
 				'post_status'  => 'publish',
-			]
+			)
 		);
 
 		update_post_meta( $post_id, '_coblocks_dimensions', json_encode( $this->dimensions ) );
@@ -183,12 +183,12 @@ class CoBlocks_Generated_Styles_Tests extends WP_UnitTestCase {
 		unset( $GLOBALS['current_screen'] );
 
 		$post_id = wp_insert_post(
-			[
+			array(
 				'post_author'  => 1,
 				'post_content' => 'Post content',
 				'post_title'   => 'Post title',
 				'post_status'  => 'publish',
-			]
+			)
 		);
 
 		update_post_meta( $post_id, '_coblocks_dimensions', json_encode( $this->dimensions ) );

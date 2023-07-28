@@ -52,10 +52,10 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 		$reflection     = new ReflectionClass( $this->coblocks_google_map_block );
 		$new_reflection = new CoBlocks_Google_Map_Block();
 
-		$expected = [
-			'slug'    => 'coblocks',
-			'url'     => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
-		];
+		$expected = array(
+			'slug' => 'coblocks',
+			'url'  => str_replace( '/.dev/tests/phpunit', '', untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) ) ), // Fix inconsistencies path between plugin and unit tests
+		);
 
 		$slug = $reflection->getProperty( 'slug' );
 		$url  = $reflection->getProperty( 'url' );
@@ -63,10 +63,10 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 		$slug->setAccessible( true );
 		$url->setAccessible( true );
 
-		$check = [
+		$check = array(
 			'slug' => $slug->getValue( $new_reflection ),
 			'url'  => $url->getValue( $new_reflection ),
-		];
+		);
 
 		$this->assertEquals( $expected, $check );
 
@@ -77,17 +77,17 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 	 */
 	public function test_construct_actions() {
 
-		$actions = [
-			[ 'wp_enqueue_scripts', 'map_assets' ],
-			[ 'the_post', 'map_assets' ],
-			[ 'init', 'register_settings' ],
-		];
+		$actions = array(
+			array( 'wp_enqueue_scripts', 'map_assets' ),
+			array( 'the_post', 'map_assets' ),
+			array( 'init', 'register_settings' ),
+		);
 
 		foreach ( $actions as $action_data ) {
 
 			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
 
-			if ( ! has_action( $action_data[0], [ $this->coblocks_google_map_block, $action_data[1] ] ) ) {
+			if ( ! has_action( $action_data[0], array( $this->coblocks_google_map_block, $action_data[1] ) ) ) {
 
 				$this->fail( "$action_data[0] is not attached to CoBlocks:$action_data[1]. It might also have the wrong priority (validated priority: $priority)" );
 
@@ -107,12 +107,12 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 		update_option( 'coblocks_google_maps_api_key', '123' );
 
 		$post_id = wp_insert_post(
-			[
+			array(
 				'post_author'  => 1,
 				'post_content' => '<!-- wp:coblocks/map --><!-- /wp:coblocks/map -->',
 				'post_title'   => 'CoBlocks Map',
 				'post_status'  => 'publish',
-			]
+			)
 		);
 
 		global $post;
@@ -125,10 +125,10 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 
 		$wp_scripts = wp_scripts();
 
-		$enqueued = [
+		$enqueued = array(
 			'coblocks-google-maps',
 			'coblocks-google-maps-api',
-		];
+		);
 
 		foreach ( $enqueued as $script ) {
 
@@ -151,12 +151,12 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 		update_option( 'coblocks_google_maps_api_key', '123' );
 
 		$post_id = wp_insert_post(
-			[
+			array(
 				'post_author'  => 1,
 				'post_content' => '<!-- wp:coblocks/map --><!-- /wp:coblocks/map -->',
 				'post_title'   => 'CoBlocks Map',
 				'post_status'  => 'publish',
-			]
+			)
 		);
 
 		global $post;
@@ -168,7 +168,7 @@ class CoBlocks_Google_Map_Block_Tests extends WP_UnitTestCase {
 		do_action( 'wp_enqueue_scripts' );
 
 		$wp_scripts = wp_scripts();
-		$site_url = str_replace( '/', '\/', get_site_url() );
+		$site_url   = str_replace( '/', '\/', get_site_url() );
 
 		$this->assertMatchesRegularExpression( '/var coblocksGoogleMaps = {"url":"' . $site_url . '\/wp-content\/plugins/', stripslashes_deep( $wp_scripts->registered['coblocks-google-maps']->extra['data'] ) );
 

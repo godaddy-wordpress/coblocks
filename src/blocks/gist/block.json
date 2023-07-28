@@ -18,6 +18,6 @@
 	},
 	"title": "Gist",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-9",
+	"editorScript": ["coblocks-9"],
 	"description": "Embed a GitHub Gist."
 }

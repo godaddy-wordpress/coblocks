@@ -33,15 +33,15 @@ class CoBlocks_Action_Links_Tests extends WP_UnitTestCase {
 	 */
 	public function test_construct_actions() {
 
-		$actions = [
-			[ 'plugin_row_meta', 'plugin_row_meta', 10 ],
-		];
+		$actions = array(
+			array( 'plugin_row_meta', 'plugin_row_meta', 10 ),
+		);
 
 		foreach ( $actions as $action_data ) {
 
 			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
 
-			if ( ! has_action( $action_data[0], [ $this->coblocks_action_links, $action_data[1] ] ) ) {
+			if ( ! has_action( $action_data[0], array( $this->coblocks_action_links, $action_data[1] ) ) ) {
 
 				$this->fail( "$action_data[0] is not attached to CoBlocks:$action_data[1]. It might also have the wrong priority (validated priority: $priority)" );
 
@@ -57,7 +57,7 @@ class CoBlocks_Action_Links_Tests extends WP_UnitTestCase {
 	 */
 	public function test_plugin_row_meta_non_coblocks() {
 
-		$this->assertFalse( array_key_exists( 'review', $this->coblocks_action_links->plugin_row_meta( [], 'some-plugin' ) ) );
+		$this->assertFalse( array_key_exists( 'review', $this->coblocks_action_links->plugin_row_meta( array(), 'some-plugin' ) ) );
 
 	}
 
@@ -66,7 +66,7 @@ class CoBlocks_Action_Links_Tests extends WP_UnitTestCase {
 	 */
 	public function test_plugin_row_meta() {
 
-		$this->assertTrue( array_key_exists( 'review', $this->coblocks_action_links->plugin_row_meta( [], COBLOCKS_PLUGIN_BASE ) ) );
+		$this->assertTrue( array_key_exists( 'review', $this->coblocks_action_links->plugin_row_meta( array(), COBLOCKS_PLUGIN_BASE ) ) );
 
 	}
 }

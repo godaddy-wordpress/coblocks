@@ -17,6 +17,19 @@
 	"name": "coblocks/form",
 	"title": "Form",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-4",
-	"description": "Add a contact form to your page."
+	"description": "Add a contact form to your page.",
+	"render": "index.php",
+	"editorScript": ["coblocks-3"],
+	"keywords": ["about", "contact", "email"],
+	"supports": {
+		"customClassName": false,
+		"html": false,
+		"labelColor": true,
+		"reusable": false
+	},
+	"example": {
+		"attributes": {
+			"subject": "Subject example"
+		}
+	}
 }

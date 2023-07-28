@@ -55,8 +55,15 @@
 			"default": "wide"
 		}
 	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"gutter": {
+			"default": "small",
+			"customDefault": 0.2
+		}
+	},
 	"title": "Collage",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-3",
+	"editorScript": ["coblocks-4"],
 	"description": "Assemble images into a beautiful collage gallery."
 }

@@ -14,17 +14,17 @@ const scripts = [
 	'coblocks-accordion-polyfill',
 	'coblocks-animation',
 	'coblocks-checkbox-required',
-	'coblocks-counter',
-	'coblocks-events',
+	'coblocks-counter-script',
+	'coblocks-events-script',
 	'coblocks-fromEntries',
 	'coblocks-google-maps',
 	'coblocks-google-recaptcha',
 	'coblocks-lightbox',
 	'coblocks-masonry',
-	'coblocks-post-carousel',
-	'coblocks-services',
+	'coblocks-post-carousel-script',
+	'coblocks-services-script',
 	'coblocks-tinyswiper-initializer',
-	'coblocks-gist',
+	'coblocks-gist-script',
 ];
 
 const coblocksEntries = fs.readdirSync( path.resolve( process.cwd(), 'src' ) ).filter( ( file ) => file.startsWith( 'blocks-' ) );

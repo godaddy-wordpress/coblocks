@@ -31,16 +31,16 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 	 */
 	public function test_construct() {
 
-		$actions = [
-			[ 'body_class', 'body_class' ],
-			[ 'admin_body_class', 'admin_body_class' ],
-		];
+		$actions = array(
+			array( 'body_class', 'body_class' ),
+			array( 'admin_body_class', 'admin_body_class' ),
+		);
 
 		foreach ( $actions as $action_data ) {
 
 			$priority = isset( $action_data[2] ) ? $action_data[2] : 10;
 
-			if ( ! has_action( $action_data[0], [ $this->coblocks_body_classes, $action_data[1] ] ) ) {
+			if ( ! has_action( $action_data[0], array( $this->coblocks_body_classes, $action_data[1] ) ) ) {
 
 				$this->fail( "$action_data[0] is not attached to CoBlocks:$action_data[1]. It might also have the wrong priority (validated priority: $priority)" );
 
@@ -65,7 +65,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 	 */
 	public function test_themes() {
 
-		$expected = [
+		$expected = array(
 			'twentytwentyone',
 			'twentytwenty',
 			'twentynineteen',
@@ -76,7 +76,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 			'twentythirteen',
 			'twentyeleven',
 			'twentytwelve',
-		];
+		);
 
 		$this->assertEquals( $expected, $this->coblocks_body_classes->themes() );
 
@@ -87,7 +87,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 	 */
 	public function test_filtered_themes() {
 
-		$expected = [
+		$expected = array(
 			'twentytwentyone',
 			'twentytwenty',
 			'twentynineteen',
@@ -99,7 +99,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 			'twentyeleven',
 			'twentytwelve',
 			'test',
-		];
+		);
 
 		add_filter(
 			'coblocks_theme_body_classes',
@@ -141,7 +141,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 			}
 		);
 
-		$this->assertEquals( $this->coblocks_body_classes->body_class( [ 'existing' ] ), [ 'existing', 'is-twentynineteen' ] );
+		$this->assertEquals( $this->coblocks_body_classes->body_class( array( 'existing' ) ), array( 'existing', 'is-twentynineteen' ) );
 
 	}
 
@@ -150,7 +150,7 @@ class CoBlocks_Body_Classes_Tests extends WP_UnitTestCase {
 	 */
 	public function test_non_admin_body_class() {
 
-		$this->assertEquals( $this->coblocks_body_classes->admin_body_class( [ 'existing' ] ), [ 'existing' ] );
+		$this->assertEquals( $this->coblocks_body_classes->admin_body_class( array( 'existing' ) ), array( 'existing' ) );
 
 	}
 

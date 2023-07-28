@@ -1,0 +1,32 @@
+{
+	"name": "coblocks/field-submit-button",
+	"category": "layout",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Submit"
+		},
+		"required": {
+			"type": "boolean",
+			"default": true
+		},
+		"submitButtonText": {
+			"type": "string",
+			"default": "Submit"
+		},
+		"customBackgroundButtonColor": {
+			"type": "string"
+		},
+		"customTextButtonColor": {
+			"type": "string"
+		}
+	},
+	"title": "Submit",
+	"textdomain": "coblocks",
+	"description": "A button for submitting form data.",
+	"parent": [
+		"coblocks/form"
+	],
+	"editorScript": ["coblocks-3"],
+	"render": "index.php"
+}

@@ -34,7 +34,7 @@ export function addFormChild( name ) {
 	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click( { force: true } );
 
 	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
-	cy.get( '.block-editor-inserter__search' ).click().type( name );
+	cy.get( '.block-editor-inserter__search .components-search-control__input' ).click().type( name );
 
 	cy.get( '.editor-block-list-item-coblocks-field-' + name ).first().click( { force: true } );
 	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click( { force: true } );
@@ -69,12 +69,22 @@ export function goTo( path = '/wp-admin', login = false ) {
 }
 
 /**
- * Safely obtain the window object or error
+ * Safely obtain the window data object or error
  * when the window object is not available.
  */
 export function getWPDataObject() {
 	return cy.window().its( 'wp' ).then( ( wp ) => {
 		return wp.data;
+	} );
+}
+
+/**
+ * Safely obtain the window blocks object or error
+ * when the window object is not available.
+ */
+export function getWPBlocksObject() {
+	return cy.window().its( 'wp' ).then( ( wp ) => {
+		return wp.blocks;
 	} );
 }
 
@@ -97,7 +107,9 @@ export function disableGutenbergFeatures() {
 }
 
 /**
- * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
+ * From inside the WordPress editor insert a block by blockName.
+ * This function has changed to insert blocks by the via dispatch to `core/block-editor`.
+ * The old method, using the inserter with Cypress triggers a race condition crashing the editor.
  *
  * @param {string}  blockName   The name to find in the block inserter
  *                              e.g 'core/image' or 'coblocks/accordion'.
@@ -115,29 +127,28 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	if ( Cypress.$( '.edit-post-header-toolbar__inserter-toggle[aria-pressed="false"]' ) ) {
-		cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle[aria-pressed="false"]' ).click();
-	}
-
-	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( blockName );
+	// Ensure editor is ready for blocks.
+	cy.get( '.is-root-container.wp-block-post-content' );
 
 	/**
-	 * The network request to block-directory may be cached and is not consistently fired with each test.
-	 * Instead of intercepting we can await known dom elements that appear only when search results are present.
-	 * This should correct a race condition in CI.
+	 * Insert the block using dispatch to avoid the block inserter
+	 *
+	 * Note: This method is preferred over the old method because
+	 * we do not need to test the Core controls around block insertion.
 	 */
-	cy.get( 'div.block-editor-inserter__main-area:not(.show-as-tabs)' );
-
-	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
-	cy.get( '.editor-block-list-item' + targetClassName ).first().click( { force: true } );
+	getWPDataObject().then( ( data ) => {
+		getWPBlocksObject().then( ( blocks ) => {
+			data.dispatch( 'core/block-editor' ).insertBlock(
+				blocks.createBlock( blockName )
+			);
+		} );
+	} );
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).should( 'exist' );
-	// Then close the block inserter if still open.
-	const inserterButton = Cypress.$( 'button[class*="__inserter-toggle"].is-pressed' );
-	if ( !! inserterButton.length ) {
-		cy.get( 'button[class*="__inserter-toggle"].is-pressed' ).click();
-	}
+
+	// Give a short delay for blocks to render.
+	cy.wait( 250 );
 }
 
 export function addNewGroupToPost() {
@@ -184,6 +195,9 @@ export function savePage() {
  */
 
 export function checkForBlockErrors( blockName ) {
+	// Ensure editor is ready for blocks.
+	cy.get( '.is-root-container.wp-block-post-content' );
+
 	disableGutenbergFeatures();
 
 	cy.get( '.block-editor-warning' ).should( 'not.exist' );
@@ -295,26 +309,27 @@ export function setNewBlockStyle( style ) {
  * Input parameter is the name of the block to select.
  * Allows chaining.
  *
- * @param {string}  name         The name of the block to select eg: highlight or click-to-tweet
- * @param {boolean} isChildBlock Optional selector for children blocks. Default will be top level blocks.
+ * @param {string} name The name of the block to select eg: highlight or click-to-tweet
  */
-export function selectBlock( name, isChildBlock = false ) {
-	openBlockNavigator();
+export function selectBlock( name ) {
+	/**
+	 * There are network requests taking place to the REST API to get the blocks and block patterns.
+	 * Sometimes these requests occur and other times they are cached and are not called.
+	 * For that reason is difficult to assert against those requests from core code.
+	 * We introduce an arbitrary wait to avoid a race condition by interacting too quickly.
+	 */
+	cy.wait( 1000 );
 
-	if ( isChildBlock ) {
-		cy.get( '.block-editor-list-view__expander svg' ).first().click();
-	}
-
-	// A small wait seems needed to make sure that the list of blocks on the left is complete
-	cy.wait( 250 );
-
-	// Returning the cy.get function allows to chain off of selectBlock
-	return cy.get( '.block-editor-block-navigation-leaf,.block-editor-list-view-leaf' )
-		.contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) )
-		.click()
-		.then( () => {
-			// Then close the block navigator if still open.
-			closeBlockNavigator();
+	// `data-type` includes lower case name and `data-title` includes upper case name.
+	// Allows for case insensitive search.
+	cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
+		.invoke( 'attr', 'data-block' )
+		.then( ( clientId ) => {
+			cy.window().then( ( win ) => {
+				// Open the block sidebar.
+				win.wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
+				win.wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
+			} );
 		} );
 }
 
@@ -387,20 +402,28 @@ export const upload = {
 	/**
 	 * Upload image to input element.
 	 *
-	 * @param {string} blockName The name of the block that is upload target
-	 *                           e.g 'core/image' or 'coblocks/accordion'.
+	 * @param {string}  blockName The name of the block that is upload target
+	 *                            e.g 'core/image' or 'coblocks/accordion'.
+	 * @param {boolean} allBlocks Whether to iterate and upload to all block dropzone selectors.
 	 */
-	imageToBlock: ( blockName ) => {
+	imageToBlock: ( blockName, allBlocks = false ) => {
 		const { fileName, pathToFixtures } = upload.spec;
 		let fileContent;
+
 		cy.fixture( pathToFixtures + fileName, { encoding: null } ).then( ( fileCont ) => {
 			fileContent = fileCont;
-			cy.get( `[data-type="${ blockName }"] input[type="file"]` ).first()
-				.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { force: true } );
-		} );
 
-		// Now validate upload is complete and is not a blob.
-		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
+			if ( allBlocks ) {
+				cy.get( `[data-type="${ blockName }"] .components-drop-zone` ).each( ( zone ) => {
+					cy.wrap( zone ).selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { action: 'drag-drop', force: true } );
+				} );
+			} else {
+				cy.get( `[data-type="${ blockName }"] .components-drop-zone` ).first()
+					.selectFile( { contents: fileContent, fileName: pathToFixtures + fileName, mimeType: 'image/png' }, { action: 'drag-drop', force: true } );
+			}
+			// Now validate upload is complete and is not a blob.
+			cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] [src^="http"]` );
+		} );
 	},
 	spec: {
 		fileName: '150x150.png',
@@ -445,6 +468,11 @@ export function setColorPanelSetting( settingName, hexColor ) {
  * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
+	// Ensure block tab is selected.
+	if ( Cypress.$( 'button[data-label="Block"]:not(.is-active)' ) ) {
+		cy.get( 'button[data-label="Block"]' ).click();
+	}
+
 	cy.get( '.components-panel__body' )
 		.contains( panelText )
 		.then( ( $panelTop ) => {
@@ -461,12 +489,20 @@ export function openSettingsPanel( panelText ) {
  * @param {number} headingLevel The button that should be located and clicked
  */
 export function openHeadingToolbarAndSelect( headingLevel ) {
-	cy.get( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button' ).each( ( button, index ) => {
-		if ( index === 1 ) { // represents the second position in the toolbar
-			cy.get( button ).click( { force: true } );
-		}
-	} );
-	cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
+	// Button has aria label select the heading
+	if ( Cypress.$( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button[aria-label="Change heading level"]' ) ) {
+		cy.get( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button[aria-label="Change heading level"]' ).click();
+		cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
+	} else {
+		// No aria label present. Attempt to set using old method.
+
+		cy.get( '.block-editor-block-toolbar .block-editor-block-toolbar__slot button' ).each( ( button, index ) => {
+			if ( index === 1 ) { // represents the second position in the toolbar
+				cy.get( button ).click( { force: true } );
+			}
+		} );
+		cy.get( '.components-popover__content div[role="menu"] button' ).contains( headingLevel ).focus().click();
+	}
 }
 
 /**

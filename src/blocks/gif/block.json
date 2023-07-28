@@ -32,6 +32,6 @@
 	},
 	"title": "Gif",
 	"textdomain": "coblocks",
-	"editorScript": "blocks-9",
+	"editorScript": ["coblocks-9"],
 	"description": "Pick a gif, any gif."
 }

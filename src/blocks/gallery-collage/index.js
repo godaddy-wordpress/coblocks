@@ -36,10 +36,6 @@ const attributes = {
 };
 
 const settings = {
-	/* translators: block name */
-	title: __( 'Collage', 'coblocks' ),
-	/* translators: block description */
-	description: __( 'Assemble images into a beautiful collage gallery.', 'coblocks' ),
 	category: hasFormattingCategory ? 'coblocks-galleries' : 'media',
 	icon: <Icon icon={ icon } />,
 	keywords: [
@@ -67,12 +63,6 @@ const settings = {
 			label: __( 'Layered', 'coblocks' ),
 		},
 	],
-	supports: {
-		align: [ 'wide', 'full' ],
-		gutter: {
-			default: 'small',
-		},
-	},
 	example: {
 		attributes: {
 			images: [

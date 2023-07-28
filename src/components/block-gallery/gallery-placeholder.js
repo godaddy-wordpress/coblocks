@@ -94,7 +94,10 @@ GalleryPlaceholder.propTypes = {
 	isSelected: PropTypes.bool,
 	label: PropTypes.string,
 	setAttributes: PropTypes.func,
-	variationLabel: PropTypes.string,
+	variationLabel: PropTypes.oneOfType( [
+		PropTypes.string,
+		PropTypes.bool,
+	] ),
 };
 
 export default GalleryPlaceholder;

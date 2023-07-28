@@ -10,9 +10,10 @@ describe( 'Block: Food and Drinks', function() {
 	 */
 	it( 'can be inserted without errors', function() {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
 
+		helpers.selectBlock( 'Food & Drink' );
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'exist' );
+
 		helpers.checkForBlockErrors( 'coblocks/food-and-drinks' );
 	} );
 
@@ -21,8 +22,8 @@ describe( 'Block: Food and Drinks', function() {
 	 */
 	it( 'can set custom classes', () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', false ); // Was failing when true here
-		helpers.selectBlock( 'food & drink' );
 
+		helpers.selectBlock( 'Food & Drink' );
 		helpers.addCustomBlockClass( 'my-custom-class', 'food-and-drinks' );
 		cy.get( '.wp-block-coblocks-food-and-drinks' ).should( 'have.class', 'my-custom-class' );
 
@@ -31,10 +32,9 @@ describe( 'Block: Food and Drinks', function() {
 
 	it( 'can set the number of columns between 2 and 4', () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
 
+		helpers.selectBlock( 'Food & Drink' );
 		helpers.setBlockStyle( 'grid' );
-
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		[ 2, 3, 4 ].forEach( ( columns ) => {
@@ -49,10 +49,9 @@ describe( 'Block: Food and Drinks', function() {
 
 	it( 'can set the gutter to small, medium, large, and huge', () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
 
+		helpers.selectBlock( 'Food & Drink' );
 		helpers.setBlockStyle( 'grid' );
-
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		[ 'Small', 'Medium', 'Large', 'Huge' ].forEach( ( gutter ) => {
@@ -65,13 +64,15 @@ describe( 'Block: Food and Drinks', function() {
 
 	it( 'can toggle images for inner food-item blocks', () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
 
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '.block-editor-media-placeholder' ).should( 'not.exist' );
 		} );
 
+		// An unknown condition is causing the food-and-drinks block to become unselected.
+		// Two select block logics are needed to get the block to be selected.
+		helpers.selectBlock( 'Food & Drink' );
 		helpers.selectBlock( 'Food & Drink' );
 
 		helpers.openSettingsPanel( /food & drinks settings/i );
@@ -89,15 +90,16 @@ describe( 'Block: Food and Drinks', function() {
 
 	it( 'can toggle prices for inner food-item blocks', () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
 
 		cy.get( '[data-type="coblocks/food-and-drinks"]' ).first().within( () => {
 			cy.get( '[data-type="coblocks/food-item"]' ).first().click( 'left' );
 			cy.get( '[data-type="coblocks/food-item"]' ).first().find( '[aria-label="$0.00"]' ).should( 'exist' );
 		} );
 
+		// An unknown condition is causing the block to become unselected only in headless.
+		// Two select block logics are needed to get the block to be selected.
 		helpers.selectBlock( 'Food & Drink' );
-
+		helpers.selectBlock( 'Food & Drink' );
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
 
@@ -116,12 +118,8 @@ describe( 'Block: Food and Drinks', function() {
 	 */
 	it( 'Test the food-and-drinks block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
 
-		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-
-		helpers.selectBlock( 'food & drink' );
-
+		helpers.selectBlock( 'Food & Drink' );
 		helpers.openSettingsPanel( /food & drinks settings/i );
 		cy.get( '.components-toggle-control' ).find( '.components-base-control__field' ).contains( /prices/i ).click();
 
@@ -137,8 +135,8 @@ describe( 'Block: Food and Drinks', function() {
 
 	it( 'can insert menu section with the same attributes', () => {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
 
+		helpers.selectBlock( 'Food & Drink' );
 		helpers.openSettingsPanel( /food & drinks settings/i );
 
 		// Set a couple attributes.
@@ -168,12 +166,12 @@ describe( 'Block: Food and Drinks', function() {
 	 */
 	it( 'Updates the inner blocks when the "Heading Level" control is changed.', function() {
 		helpers.addBlockToPost( 'coblocks/food-and-drinks', true );
-		helpers.selectBlock( 'food & drink' );
 
 		// Assert headings levels are set to default (h4)
 		cy.get( '[data-type="coblocks/food-and-drinks"] [data-type="coblocks/food-item"] h4' ).should( 'have.length', 2 );
 
 		// Modify the heading level
+		helpers.selectBlock( 'Food & Drink' );
 		cy.get( '.block-editor-block-toolbar [aria-label="Change heading level"]' ).click();
 		cy.get( 'div[aria-label="Change heading level"][role="menu"] button' ).contains( 'Heading 2' ).click();
 

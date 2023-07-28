@@ -29,10 +29,12 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 		$this->assertSame( coblocks_block_gist_handler( array( 'https://gist.github.com' ) ), '' );
 
 		$this->assertNotEmpty(
-			coblocks_block_gist_handler( array(
-				'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7',
-				'someuser/a04f4e14e3cd3b6d48157ea0706114f7'
-			) )
+			coblocks_block_gist_handler(
+				array(
+					'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7',
+					'someuser/a04f4e14e3cd3b6d48157ea0706114f7',
+				)
+			)
 		);
 	}
 
@@ -40,7 +42,7 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 	 * Test that the embed handler returns the proper Gist embed code.
 	 */
 	public function test_coblocks_block_gist_handler_returns_valid_embed() {
-		$gist_url = 'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7';
+		$gist_url  = 'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7';
 		$gist_path = 'someuser/a04f4e14e3cd3b6d48157ea0706114f7';
 
 		$this->assertEquals(
@@ -53,9 +55,9 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 	 * Test the file actions are hooked properly.
 	 */
 	public function test_file_actions() {
-		$actions = [
-			[ 'init', 'coblocks_register_gist_oembed' ],
-		];
+		$actions = array(
+			array( 'init', 'coblocks_register_gist_oembed' ),
+		);
 
 		foreach ( $actions as $action_data ) {
 			if ( ! has_action( $action_data[0], $action_data[1] ) ) {

@@ -247,7 +247,7 @@ const Swiper = ( props ) => {
 
 Swiper.propTypes = {
 	autoPlaySpeed: PropTypes.number.isRequired,
-	children: PropTypes.node,
+	children: PropTypes.func,
 	isDraggable: PropTypes.bool.isRequired,
 	list: PropTypes.array,
 	loop: PropTypes.bool.isRequired,
