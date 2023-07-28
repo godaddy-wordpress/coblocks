@@ -16,7 +16,7 @@ import variations from './variations';
  * WordPress dependencies
  */
 import { Icon } from '@wordpress/components';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 const { name, category, attributes } = metadata;
 let conditionalBlockAttributes = { ...attributes };
@@ -42,7 +42,15 @@ const settings = {
 	attributes: conditionalBlockAttributes,
 	edit,
 	icon: <Icon icon={ icon } />,
-	save: InnerBlocks.Content,
+	save: () => {
+		const blockProps = useBlockProps.save();
+
+		return (
+			<div { ...blockProps }>
+				<InnerBlocks.Content />
+			</div>
+		);
+	},
 	variations,
 };
 
