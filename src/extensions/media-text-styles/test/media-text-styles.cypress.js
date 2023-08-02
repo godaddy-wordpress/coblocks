@@ -20,11 +20,7 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 
 		selectBlock();
 
-		if ( helpers.isWP62AtLeast() ) {
-			helpers.setNewBlockStyle( 'card' );
-		} else {
-			helpers.setBlockStyle( 'card' );
-		}
+		helpers.setNewBlockStyle( 'card' );
 
 		cy.get( '.edit-post-visual-editor .wp-block-media-text.is-style-card' ).should( 'exist' );
 		helpers.savePage();
@@ -34,11 +30,7 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 		helpers.editPage();
 		selectBlock();
 
-		if ( helpers.isWP62AtLeast() ) {
-			helpers.setNewBlockStyle( 'overlap' );
-		} else {
-			helpers.setBlockStyle( 'overlap' );
-		}
+		helpers.setNewBlockStyle( 'overlap' );
 
 		cy.get( '.edit-post-visual-editor .wp-block-media-text.is-style-overlap' ).should( 'exist' );
 		helpers.savePage();
@@ -48,11 +40,7 @@ describe( 'Test CoBlocks Media Text styles extension', function() {
 		helpers.editPage();
 		selectBlock();
 
-		if ( helpers.isWP62AtLeast() ) {
-			helpers.setNewBlockStyle( 'outline' );
-		} else {
-			helpers.setBlockStyle( 'outline' );
-		}
+		helpers.setNewBlockStyle( 'outline' );
 
 		cy.get( '.edit-post-visual-editor .wp-block-media-text.is-style-outline' ).should( 'exist' );
 		helpers.savePage();
