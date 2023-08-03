@@ -2,6 +2,7 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
+import { isWP63AtLeast } from '../../../../.dev/tests/cypress/helpers';
 
 describe( 'Test CoBlocks Gallery Masonry Block', function() {
 	/**
@@ -90,19 +91,11 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'button' ).contains( /create a new gallery/i ).click();
 		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
-		if ( helpers.isWP62AtLeast() ) {
-			helpers.selectBlock( 'masonry' );
+		helpers.selectBlock( 'masonry' );
 
-			cy.get( 'figcaption[role="textbox"]' ).click( { force: true } );
+		cy.get( 'figcaption[role="textbox"]' ).click( { force: true } );
 
-			cy.get( 'figcaption[role="textbox"]' ).focus().type( caption );
-		} else {
-			cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).click();
-
-			cy.get( '.edit-post-visual-editor figcaption[role="textbox"] span' ).click( { force: true } );
-
-			cy.get( '.edit-post-visual-editor figcaption[role="textbox"]' ).focus().type( caption );
-		}
+		cy.get( 'figcaption[role="textbox"]' ).focus().type( caption );
 
 		helpers.savePage();
 
@@ -129,19 +122,11 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 		cy.get( 'button' ).contains( /create a new gallery/i ).click();
 		cy.get( 'button' ).contains( /insert gallery/i ).click();
 
-		if ( helpers.isWP62AtLeast() ) {
-			helpers.selectBlock( 'masonry' );
+		helpers.selectBlock( 'masonry' );
 
-			cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
+		cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
 
-			cy.get( 'figcaption[role="textbox"]' ).click();
-		} else {
-			cy.get( 'figure[data-type="core/image"] img[src*="http"]' ).click();
-
-			cy.get( '.block-editor-format-toolbar' ).should( 'not.exist' );
-
-			cy.get( '.edit-post-visual-editor figcaption[role="textbox"]' ).focus();
-		}
+		cy.get( 'figcaption[role="textbox"]' ).click();
 
 		cy.get( '.block-editor-format-toolbar, .block-editor-rich-text__inline-format-toolbar-group' );
 
@@ -172,15 +157,19 @@ describe( 'Test CoBlocks Gallery Masonry Block', function() {
 
 		helpers.selectBlock( 'image' );
 
-		//'.media-replace-flow button' was deprecated in 5.8.
-		// Media replace button should reside as the 5th button within the toolbar.
-		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button:not(.has-icon)' ).click();
+		let replaceButtonPosition = '4';
+
+		if ( isWP63AtLeast() ) {
+			replaceButtonPosition = '5';
+		}
+
+		cy.get( '.block-editor-block-toolbar div:nth-of-type(' + replaceButtonPosition + ') button:not(.has-icon)' ).click();
 
 		cy.get( '.components-popover__content' ).should( 'be.visible' );
 
 		cy.get( '.block-editor-media-replace-flow__media-upload-menu .components-menu-item__button' ).contains( 'Open Media Library' );
 
-		cy.get( '.block-editor-block-toolbar div:nth-of-type(4) button:not(.has-icon)' ).click();
+		cy.get( '.block-editor-block-toolbar div:nth-of-type(' + replaceButtonPosition + ') button:not(.has-icon)' ).click();
 
 		cy.get( 'figure[data-type="coblocks/gallery-masonry"]' ).click();
 

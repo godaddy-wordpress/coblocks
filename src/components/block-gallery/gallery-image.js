@@ -273,7 +273,7 @@ class GalleryImage extends Component {
 						placeholder={ __( 'Write caption…', 'coblocks' ) }
 						style={ captionStyles }
 						tagName="figcaption"
-						unstableOnFocus={ this.onSelectCaption }
+						onFocus={ this.onSelectCaption }
 						value={ caption }
 					/>
 				) : null }

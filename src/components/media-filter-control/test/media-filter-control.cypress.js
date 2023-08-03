@@ -2,7 +2,7 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
-import { getWPDataObject } from '../../../../.dev/tests/cypress/helpers';
+import { getWPDataObject, isWP63AtLeast } from '../../../../.dev/tests/cypress/helpers';
 
 const filters = [
 	'Original',
@@ -105,10 +105,12 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 			.should( 'exist' )
 			.click();
 
-		helpers.selectBlock( 'Gallery' );
+		if ( ! isWP63AtLeast() ) {
+			helpers.selectBlock( 'Gallery' );
 
-		cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
-			.click();
+			cy.get( '.block-editor-block-toolbar__slot .components-coblocks-media-filter' )
+				.click();
+		}
 
 		let childIteration = 1;
 

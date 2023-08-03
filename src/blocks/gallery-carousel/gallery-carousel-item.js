@@ -52,7 +52,7 @@ const GalleryCarouselItem = ( {
 				onChange={ ( val ) => handleCaptionChange( val ) }
 				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
 				tagName="figcaption"
-				unstableOnFocus={ () => {
+				onFocus={ () => {
 					setCaptionFocused( ! captionFocused );
 				} }
 				value={ images[ selectedImage ]?.caption }
