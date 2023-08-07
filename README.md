@@ -78,9 +78,9 @@ CoBlocks is built by [contributors and volunteers](CONTRIBUTORS.md) around the g
 
 ## How You Can Contribute
 
-Well first off, thank you for your contributions to CoBlocks; every contribution counts. And if you are feeling a little lost, know that you are welcome to submit an issue on any topic, or even submit a pull request on any issue. The worst that can happen is that you'll be politely directed to the best location to ask your question.
+First, thank you for your contributions to CoBlocks; every contribution counts. And if you are feeling a little lost, know that you are welcome to submit an issue on any topic, or even submit a pull request on any issue. The worst that can happen is that you'll be politely directed to the best location to ask your question.
 
-We appreciate all contributions and don't want a wall of rules to get in the way of that. That saying, please read our [Contributing Guidelines](.github/CONTRIBUTING.md) and know that you're expected to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
+We appreciate all contributions and don't want a wall of rules to get in the way of that. That said, please read our [Contributing Guidelines](.github/CONTRIBUTING.md) and know that you're expected to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 **Ways to contribute:**
 
