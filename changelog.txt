@@ -1,3 +1,15 @@
+3.1.0 / 2023-08-08
+===================
+# Enhancements
+* Register all blocks in PHP [#2521](https://github.com/godaddy-wordpress/coblocks/pull/2521)
+
+# Bug fix
+* Fix captions RichText controls across all galleries [#2545](https://github.com/godaddy-wordpress/coblocks/pull/2545)
+* Fix form block test automation with WP 6.3 [#2546](https://github.com/godaddy-wordpress/coblocks/pull/2546)
+* Fix form block saving with WP 6.3 [#2543](https://github.com/godaddy-wordpress/coblocks/pull/2543)
+* Fix blocks for WP 6.3 compatibility [#2538](https://github.com/godaddy-wordpress/coblocks/pull/2538)
+* Fix PHP Unit tests & update to WP-ENV 8.1.1 [#2544](https://github.com/godaddy-wordpress/coblocks/pull/2544)
+
 3.0.4 / 2023-06-22
 ===================
 # Bug fix
