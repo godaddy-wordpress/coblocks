@@ -1,25 +1,8 @@
 /**
- * Close layout selector.
- */
-export function closeLayoutSelector() {
-	cy.get( '.coblocks-layout-selector-modal' ).its( 'length' ).then( ( layoutSelectorModal ) => {
-		if ( layoutSelectorModal > 0 ) {
-			cy.get( '.coblocks-layout-selector-modal' )
-				.find( '.components-button[aria-label*="Close"]' ).first()
-				.click();
-		}
-	} );
-
-	cy.get( '.coblocks-layout-selector-modal' ).should( 'not.exist' );
-}
-
-/**
  * Returns true if styles tab exists false otherwise.
  */
 export function selectStylesTabIfExists() {
-	if ( isWP62AtLeast() ) {
-		cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
-	}
+	cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
 }
 
 /**
@@ -30,7 +13,7 @@ export function selectStylesTabIfExists() {
 export function addFormChild( name ) {
 	cy.get( '[data-type="coblocks/form"] [data-type^="coblocks/field"]' ).first().click( { force: true } );
 	cy.get( '.block-editor-block-settings-menu' ).click();
-	cy.get( '.components-popover__content button' ).contains( /insert after/i ).click( { force: true } );
+	cy.get( '.components-popover__content button' ).contains( /insert after|add after/i ).click( { force: true } );
 	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click( { force: true } );
 
 	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
@@ -157,13 +140,9 @@ export function addNewGroupToPost() {
 	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
 
-	if ( isWP62AtLeast() ) {
-		cy.wait( 1000 );
+	cy.wait( 1000 );
 
-		cy.get( '.block-editor-block-types-list__list-item' ).contains( 'Group' ).click();
-	} else {
-		cy.get( '.block-editor-block-types-list__item' ).first().click();
-	}
+	cy.get( '.block-editor-block-types-list__list-item' ).contains( 'Group' ).click();
 
 	// Make sure the block was added to our page
 	cy.get( `[class*="-visual-editor"] [data-type='core/group']` ).should( 'exist' ).then( () => {
@@ -257,28 +236,6 @@ export function getBlockSlug() {
 }
 
 /**
- * Open the block navigator.
- */
-export function openBlockNavigator( ) {
-	cy.get( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle,.edit-post-header-toolbar__document-overview-toggle' ).then( ( element ) => {
-		if ( ! element.hasClass( 'is-pressed' ) ) {
-			element.click();
-		}
-	} );
-}
-
-/**
- * Close the block navigator.
- */
-export function closeBlockNavigator() {
-	const inserterButton = Cypress.$( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' );
-	if ( inserterButton.length > 0 ) {
-		cy.get( '.edit-post-header__toolbar button.edit-post-header-toolbar__list-view-toggle.is-pressed' )
-			.click();
-	}
-}
-
-/**
  * Click on a style button within the style panel
  *
  * @param {string} style Name of the style to apply
@@ -321,7 +278,7 @@ export function selectBlock( name ) {
 	cy.wait( 1000 );
 
 	// `data-type` includes lower case name and `data-title` includes upper case name.
-	// Allows for case insensitive search.
+	// Allows for case-insensitive search.
 	cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
 		.invoke( 'attr', 'data-block' )
 		.then( ( clientId ) => {
@@ -364,7 +321,7 @@ export const upload = {
 	/**
 	 * Upload image to input element and trigger replace image flow.
 	 *
-	 * @param {string} blockName The name of the block that is replace target
+	 * @param {string} blockName The name of the block that is replacing target
 	 *                           imageReplaceFlow works with CoBlocks Galleries: Carousel, Collage, Masonry, Offset, Stacked.
 	 */
 	imageReplaceFlow: ( blockName ) => {
@@ -442,7 +399,12 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
-	cy.get( '.components-color-palette__custom-color' ).click();
+
+	if ( isWP63AtLeast() ) {
+		cy.get( '.components-color-palette__custom-color-button' ).click();
+	} else {
+		cy.get( '.components-color-palette__custom-color' ).click();
+	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -455,7 +417,12 @@ export function setColorPanelSetting( settingName, hexColor ) {
 	const formattedHex = hexColor.split( '#' )[ 1 ];
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
-	cy.get( '.components-color-palette__custom-color' ).click();
+
+	if ( isWP63AtLeast() ) {
+		cy.get( '.components-color-palette__custom-color-button' ).click();
+	} else {
+		cy.get( '.components-color-palette__custom-color' ).click();
+	}
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -506,7 +473,7 @@ export function openHeadingToolbarAndSelect( headingLevel ) {
 }
 
 /**
- * Toggle an checkbox in the settings panel of the block editor
+ * Toggle a checkbox in the settings panel of the block editor
  *
  * @param {string} checkboxLabelText The checkbox label text. eg: Drop Cap
  */
@@ -521,7 +488,7 @@ export function toggleSettingCheckbox( checkboxLabelText ) {
 /**
  * Add custom classes to a block
  *
- * @param {string} classes Custom classe(s) to add to the block
+ * @param {string} classes Custom class(es) to add to the block
  * @param {string} blockID The name of the block e.g. (accordion, alert, map)
  */
 export function addCustomBlockClass( classes, blockID = '' ) {
@@ -551,20 +518,6 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 				}
 			} );
 		} );
-}
-
-/**
- * Open the Editor Settings panel.
- */
-export function openEditorSettingsModal() {
-	// Open "more" menu.
-	cy.get( '.edit-post-more-menu button' ).click();
-	cy.get( '.components-menu-group' ).contains( 'Editor settings' ).click();
-
-	cy.get( '.components-modal__frame' ).contains( 'Editor settings' ).should( 'exist' );
-
-	// Ensure settings have loaded.
-	cy.get( '.coblocks-settings-modal input[type="checkbox"]' ).should( 'have.length', 6 );
 }
 
 /**
@@ -608,10 +561,10 @@ export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
 
-// A condition to determine if we are testing on WordPress 6.2+
-// This function should be removed in the process of the work for WP 6.3 compatibility
-export function isWP62AtLeast() {
-	return Cypress.$( "[class*='branch-6-2']" ).length > 0 || Cypress.$( "[class*='branch-6-3']" ).length > 0;
+// A condition to determine if we are testing on WordPress 6.3+
+// This function should be removed in the process of the work for WP 6.4 compatibility
+export function isWP63AtLeast() {
+	return Cypress.$( "[class*='branch-6-3']" ).length > 0 || Cypress.$( "[class*='branch-6-4']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {

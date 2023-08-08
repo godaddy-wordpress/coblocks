@@ -204,7 +204,7 @@ export const getColorClassnames = ( blockProps ) => {
  * @return {Object?} The active style.name.
  */
 export const getColorStyles = ( blockProps ) => {
-	const { backgroundColor, color } = blockProps.style;
+	const { backgroundColor, color } = blockProps.style || {};
 	const originalStyles = { ...blockProps.style };
 
 	const descendingStyles = { backgroundColor, color };
