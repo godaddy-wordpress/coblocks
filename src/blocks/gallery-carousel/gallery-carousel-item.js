@@ -47,14 +47,13 @@ const GalleryCarouselItem = ( {
 		return (
 			<RichText
 				className="coblocks-gallery--caption coblocks-gallery--primary-caption"
-				inlineToolbar
-				isSelected={ captionFocused }
-				onChange={ ( val ) => handleCaptionChange( val ) }
+				inlineToolbar={ captionFocused }
+				onChange={ ( val ) => !! val ? handleCaptionChange( val ) : null }
 				placeholder={ __( 'Write gallery caption…', 'coblocks' ) }
 				tagName="figcaption"
-				unstableOnFocus={ () => {
-					setCaptionFocused( ! captionFocused );
-				} }
+				unstableOnFocus={ setCaptionFocused( true ) } // Backwards compat < WP 6.3
+				onFocus={ setCaptionFocused( true ) }
+				onBlur={ () => setCaptionFocused( false ) }
 				value={ images[ selectedImage ]?.caption }
 			/>
 		);
