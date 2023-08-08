@@ -2,7 +2,7 @@
 	"name": "coblocks",
 	"title": "CoBlocks",
 	"description": "CoBlocks is a suite of professional page building blocks for the WordPress Gutenberg block editor.",
-	"version": "3.0.4",
+	"version": "3.1.0",
 	"tested_up_to": "6.3",
 	"author": "GoDaddy",
 	"license": "GPL-2.0",
