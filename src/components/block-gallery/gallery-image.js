@@ -267,13 +267,13 @@ class GalleryImage extends Component {
 				{ ( supportsCaption === true ) && ( ! RichText.isEmpty( caption ) || isSelected ) && captions ? (
 					<RichText
 						className="coblocks-gallery--caption"
-						inlineToolbar
-						isSelected={ captionSelected }
+						inlineToolbar={ captionSelected }
 						onChange={ ( newCaption ) => setAttributes( { caption: newCaption } ) }
 						placeholder={ __( 'Write caption…', 'coblocks' ) }
 						style={ captionStyles }
 						tagName="figcaption"
 						onFocus={ this.onSelectCaption }
+						unstableOnFocus={ this.onSelectCaption }
 						value={ caption }
 					/>
 				) : null }

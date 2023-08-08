@@ -13,7 +13,7 @@ export function selectStylesTabIfExists() {
 export function addFormChild( name ) {
 	cy.get( '[data-type="coblocks/form"] [data-type^="coblocks/field"]' ).first().click( { force: true } );
 	cy.get( '.block-editor-block-settings-menu' ).click();
-	cy.get( '.components-popover__content button' ).contains( /insert after/i ).click( { force: true } );
+	cy.get( '.components-popover__content button' ).contains( /insert after|add after/i ).click( { force: true } );
 	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click( { force: true } );
 
 	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
