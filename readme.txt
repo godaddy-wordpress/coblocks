@@ -2,7 +2,7 @@
 Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur, jasonlemay, snovosel
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
-Requires at least: 5.5
+Requires at least: 6.2
 Tested up to: 6.3
 Requires PHP: 7.4
 Stable tag: 3.1.0
@@ -121,6 +121,12 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
 == Changelog ==
+
+= 3.1.1 / 2023-08-09 =
+
+# Bug fix
+* Correct `Requires at least` value to 6.2 [#2552](https://github.com/godaddy-wordpress/coblocks/pull/2552)
+
 
 = 3.1.0 / 2023-08-08 =
 
