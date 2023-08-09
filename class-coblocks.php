@@ -4,10 +4,10 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: GoDaddy
  * Author URI: https://www.godaddy.com
- * Version: 3.0.4
+ * Version: 3.1.0
  * Text Domain: coblocks
  * Domain Path: /languages
- * Tested up to: 6.2
+ * Tested up to: 6.3
  *
  * CoBlocks is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'COBLOCKS_VERSION', '3.0.4' );
+define( 'COBLOCKS_VERSION', '3.1.0' );
 define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );

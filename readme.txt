@@ -3,9 +3,9 @@ Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur, jasonlemay, snovosel
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
 Requires at least: 5.5
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 3.0.4
+Stable tag: 3.1.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,7 +122,20 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
-= 3.0.3 / 2023-06-22 =
+= 3.1.0 / 2023-08-08 =
+
+# Enhancements
+* Register all blocks in PHP [#2521](https://github.com/godaddy-wordpress/coblocks/pull/2521)
+
+# Bug fix
+* Fix captions RichText controls across all galleries [#2545](https://github.com/godaddy-wordpress/coblocks/pull/2545)
+* Fix form block test automation with WP 6.3 [#2546](https://github.com/godaddy-wordpress/coblocks/pull/2546)
+* Fix form block saving with WP 6.3 [#2543](https://github.com/godaddy-wordpress/coblocks/pull/2543)
+* Fix blocks for WP 6.3 compatibility [#2538](https://github.com/godaddy-wordpress/coblocks/pull/2538)
+* Fix PHP Unit tests & update to WP-ENV 8.1.1 [#2544](https://github.com/godaddy-wordpress/coblocks/pull/2544)
+
+
+= 3.0.4 / 2023-06-22 =
 
 # Bug fix
 * Validate Site Design nonce and capabilities [#2535](https://github.com/godaddy-wordpress/coblocks/pull/2535)
