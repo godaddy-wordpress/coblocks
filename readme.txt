@@ -122,6 +122,12 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 3.1.1 / 2023-08-09 =
+
+# Bug fix
+* Correct `Requires at least` value to 6.2 [#2552](https://github.com/godaddy-wordpress/coblocks/pull/2552)
+
+
 = 3.1.0 / 2023-08-08 =
 
 # Enhancements
