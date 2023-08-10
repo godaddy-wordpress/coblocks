@@ -51,13 +51,9 @@ function coblocks_render_coblocks_shape_divider_block( $attributes ) {
 		? "background-color: {$attributes['customBackgroundColor']};"
 		: false;
 
-	$is_vertically_flipped = ( isset( $attributes['verticalFlip'] ) && true === $attributes['verticalFlip'] )
-		? 'is-vertically-flipped'
-		: false;
+	$is_vertically_flipped = empty( $attributes['verticalFlip'] ) ? false : 'is-vertically-flipped';
 
-	$is_horizontally_flipped = ( isset( $attributes['horizontalFlip'] ) && true === $attributes['horizontalFlip'] )
-		? 'is-horizontally-flipped'
-		: false;
+	$is_horizontally_flipped = empty( $attributes['horizontalFlip'] ) ? false : 'is-horizontally-flipped';
 
 	$shape_height = isset( $attributes['shapeHeight'] )
 		? $attributes['shapeHeight']
