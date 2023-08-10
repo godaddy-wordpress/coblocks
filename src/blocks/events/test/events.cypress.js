@@ -32,21 +32,25 @@ describe( 'Block: Events', function() {
 	/**
 	 * Test that we can add a events block to the content, and
 	 * import a calendar from a public ICS Google calendar
+	 *
+	 * Disabled because ICS import is not working on some URI's.
+	 * https://github.com/godaddy-wordpress/coblocks/issues/2548
 	 */
-	it( 'can import an ICS calendar', function() {
-		const { ical } = eventsData;
+	// eslint-disable-next-line jest/no-commented-out-tests
+	// it( 'can import an ICS calendar', function() {
+	// 	const { ical } = eventsData;
 
-		helpers.toggleSettingCheckbox( /link a calendar/i );
+	// 	helpers.toggleSettingCheckbox( /link a calendar/i );
 
-		cy.get( '[data-type="coblocks/events"]' ).first().within( () => {
-			cy.get( 'input[placeholder="Enter URL here…"]' ).type( ical, { delay: 0 } );
-			cy.get( 'button' ).contains( 'Use URL' ).click();
-		} );
+	// 	cy.get( '[data-type="coblocks/events"]' ).first().within( () => {
+	// 		cy.get( 'input[placeholder="Enter URL here…"]' ).type( ical, { delay: 0 } );
+	// 		cy.get( 'button' ).contains( 'Use URL' ).click();
+	// 	} );
 
-		cy.get( '.wp-block-coblocks-event-item', { timeout: 10000 } ).should( 'exist' );
+	// 	cy.get( '.wp-block-coblocks-event-item', { timeout: 10000 } ).should( 'exist' );
 
-		helpers.checkForBlockErrors( 'coblocks/events' );
-	} );
+	// 	helpers.checkForBlockErrors( 'coblocks/events' );
+	// } );
 
 	/**
 	 * Test that multiple event items display as expected
