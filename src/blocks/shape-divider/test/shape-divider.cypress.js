@@ -32,6 +32,23 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 	} );
 
 	/**
+	 * Test that we can add a shape-divider block to the content, and default styles are applied.
+	 */
+	it( 'Test shape-divider block saves with default style.', function() {
+		helpers.addBlockToPost( 'coblocks/shape-divider', true );
+
+		cy.get( '.edit-post-visual-editor .wp-block-coblocks-shape-divider.is-horizontally-flipped' ).should( 'not.exist' );
+		cy.get( '.edit-post-visual-editor .wp-block-coblocks-shape-divider.is-vertically-flipped' ).should( 'not.exist' );
+
+		helpers.savePage();
+		helpers.viewPage();
+		cy.get( '.wp-block-coblocks-shape-divider.is-horizontally-flipped' ).should( 'not.exist' );
+		cy.get( '.wp-block-coblocks-shape-divider.is-vertically-flipped' ).should( 'not.exist' );
+		helpers.editPage();
+		helpers.checkForBlockErrors( 'coblocks/shape-divider' );
+	} );
+
+	/**
 	 * Test that we can add a shape-divider block to the content, adjust height
 	 * and are able to successfully save the block without errors.
 	 */
