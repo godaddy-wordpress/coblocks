@@ -893,6 +893,12 @@ class CoBlocks_Form {
 
 		foreach ( $_POST as $key => $data ) {
 
+			if ( ! is_array( $data ) ) {
+
+				continue;
+
+			}
+
 			if ( is_array( $data['value'] ) ) {
 
 				$data['value'] = implode( ', ', $data['value'] );
