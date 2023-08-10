@@ -903,7 +903,7 @@ class CoBlocks_Form {
 
 			if ( is_array( $data['value'] ) ) {
 
-				$data['value'] = ( array_key_exists( 'first-name', $data['value'] ) && array_key_exists( 'first-name', $data['value'] ) ) ? $data['value']['last-name'] . ', ' . $data['value']['first-name'] : implode( ', ', $data['value'] );
+				$data['value'] = ( array_key_exists( 'first-name', $data['value'] ) && array_key_exists( 'last-name', $data['value'] ) ) ? $data['value']['last-name'] . ', ' . $data['value']['first-name'] : implode( ', ', $data['value'] );
 
 			}
 
