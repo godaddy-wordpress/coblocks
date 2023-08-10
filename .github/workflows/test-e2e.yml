@@ -12,7 +12,7 @@ jobs:
     with:
       wpVersion: "WordPress/WordPress#6.2"
     concurrency:
-      group: chrome-defaults
+      group: chrome-defaults-previous-major
       cancel-in-progress: true
 
   chrome_e2e:
