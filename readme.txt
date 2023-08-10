@@ -122,6 +122,11 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 
 == Changelog ==
 
+= 3.1.2 / 2023-08-10 =
+
+# Bug fix
+* Resolve Shape Divider bug [#2553](https://github.com/godaddy-wordpress/coblocks/pull/2553)
+
 = 3.1.1 / 2023-08-09 =
 
 # Bug fix
