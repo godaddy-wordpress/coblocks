@@ -127,6 +127,7 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 # Bug fix
 * Resolve Shape Divider bug [#2553](https://github.com/godaddy-wordpress/coblocks/pull/2553)
 * Resolve Form Label warnings [#2555](https://github.com/godaddy-wordpress/coblocks/pull/2555)
+* Resolve Form Array condition [#2557](https://github.com/godaddy-wordpress/coblocks/pull/2557)
 
 = 3.1.1 / 2023-08-09 =
 
