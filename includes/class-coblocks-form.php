@@ -441,6 +441,8 @@ class CoBlocks_Form {
 
 		ob_start();
 
+		$this->render_field_label( array_merge( $atts, array( 'hidden' => true ) ), $label, $radio_count );
+
 		print( '<div class="coblocks-field"><fieldset>' );
 
 		printf(
