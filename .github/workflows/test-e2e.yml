@@ -7,7 +7,7 @@ on:
 
 jobs:
   chrome_e2e_major_before_previous_major:
-    name: Chrome with previous major WP version.
+    name: Chrome with major before previous major WP version
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
       wpVersion: "WordPress/WordPress#6.1"
@@ -16,7 +16,7 @@ jobs:
       cancel-in-progress: true
 
   chrome_e2e_previous_major:
-    name: Chrome with previous major WP version.
+    name: Chrome with previous major WP version
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
       wpVersion: "WordPress/WordPress#6.2"
