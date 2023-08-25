@@ -7,25 +7,43 @@ on:
 
 jobs:
   php_unit_74:
-    name: PHP 7.4
+    name: PHP 7.4 Current Major
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: '7.4'
+      wpVersion: 'WordPress/WordPress#6.3'
 
   php_unit_80:
-    name: PHP 8.0
+    name: PHP 8.0 Current Major
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: '8.0'
+      wpVersion: 'WordPress/WordPress#6.3'
 
   php_unit_81:
-    name: PHP 8.1
+    name: PHP 8.1 Current Major
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: '8.1'
-    
+      wpVersion: 'WordPress/WordPress#6.3'
+
   php_unit_82:
-    name: PHP 8.2
+    name: PHP 8.2 Current Major
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: '8.2'
+      wpVersion: 'WordPress/WordPress#6.3'
+
+  php_unit_82_wp_last_major:
+    name: PHP 8.2 Last Major
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.2'
+      wpVersion: 'WordPress/WordPress#6.2'
+
+  php_unit_82_wp_major_before_last_major:
+    name: PHP 8.2 Major Before Last Major
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.2'
+      wpVersion: 'WordPress/WordPress#6.1'

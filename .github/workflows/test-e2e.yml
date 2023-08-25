@@ -6,14 +6,15 @@ on:
       - master
 
 jobs:
-  chrome_e2e_major_before_previous_major:
-    name: Chrome with major before previous major WP version
-    uses: ./.github/workflows/test-e2e-cypress.yml
-    with:
-      wpVersion: "WordPress/WordPress#6.1"
-    concurrency:
-      group: chrome-defaults-major-before-previous-major
-      cancel-in-progress: true
+  # Requires re-working our helpers to be backward compat.
+  # chrome_e2e_major_before_previous_major:
+  #   name: Chrome with major before previous major WP version
+  #   uses: ./.github/workflows/test-e2e-cypress.yml
+  #   with:
+  #     wpVersion: "WordPress/WordPress#6.1"
+  #   concurrency:
+  #     group: chrome-defaults-major-before-previous-major
+  #     cancel-in-progress: true
 
   chrome_e2e_previous_major:
     name: Chrome with previous major WP version

@@ -7,6 +7,10 @@ on:
         required: false
         type: string
         default: '8.1'
+      wpVersion:
+        required: false
+        type: string
+        default: ''
 
 jobs:
   php_unit:
@@ -34,6 +38,7 @@ jobs:
       - name: Setup wp-env
         uses: godaddy-wordpress/setup-wp-env@v1
         with:
+          core: ${{ inputs.wpVersion }}
           phpVersion: ${{ inputs.phpVersion }}
           plugins: '[".","https://downloads.wordpress.org/plugin/woocommerce.zip"]'
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
