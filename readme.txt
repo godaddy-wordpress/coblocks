@@ -120,6 +120,9 @@ Any properly developed WordPress theme will work with CoBlocks, though if you're
 
 Developers can also apply minor style touch-ups to their themes if necessary. If you're a developer and you need help, don't hesitate to [reach out](https://wordpress.org/support/plugin/coblocks/).
 
+= What version of WordPress does CoBlocks work on? =
+CoBlocks is designed to support the last two major versions of WordPress that are currently released. If you're using one of these versions, you're all set to enjoy everything CoBlocks has to offer!
+
 == Changelog ==
 
 = 3.1.2 / 2023-08-10 =
