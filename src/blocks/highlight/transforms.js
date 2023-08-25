@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import metadata from './block.json';
-import getPhrasingContentSchema from '../../utils/get-phrasing-content-schema';
 
 /**
  * WordPress dependencies
@@ -18,19 +17,6 @@ const transforms = {
 				return createBlock( metadata.name, {
 					content,
 				} );
-			},
-		},
-		{
-			type: 'raw',
-			selector: 'p.wp-block-coblocks-highlight',
-			schema: {
-				p: {
-					children: {
-						mark: {
-							children: getPhrasingContentSchema(),
-						},
-					},
-				},
 			},
 		},
 		{
