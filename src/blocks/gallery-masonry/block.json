@@ -111,6 +111,7 @@
 		"imageCrop": "imageCrop"
 	},
 	"editorScript": ["coblocks-5"],
+	"viewScript": ["coblocks-lightbox"],
 	"supports": {
 		"anchor": true,
 		"gutter": {

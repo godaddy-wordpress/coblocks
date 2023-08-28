@@ -142,7 +142,7 @@ class CoBlocks_Block_Assets {
 		wp_register_style(
 			'coblocks-frontend',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
-			array(),
+			$asset_file['dependencies'],
 			$asset_file['version']
 		);
 
@@ -154,8 +154,8 @@ class CoBlocks_Block_Assets {
 		wp_enqueue_style(
 			'coblocks-extensions',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
-			array(),
-			$asset_file['version']
+			$asset_file['dependencies'],
+			$asset_file['version'],
 		);
 	}
 
@@ -410,6 +410,7 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
+		// Gist block script.
 		wp_register_script(
 			'coblocks-gist-script',
 			$this->assets_dir . 'coblocks-gist-script.js',
@@ -501,6 +502,17 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
+		$name       = 'coblocks-lightbox';
+		$filepath   = 'dist/js/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
+		wp_register_script(
+			'coblocks-lightbox',
+			$this->assets_dir . 'coblocks-lightbox.js',
+			$asset_file['dependencies'],
+			$asset_file['version'],
+			true
+		);
+
 		$this->localize_lightbox_controls();
 
 	}
@@ -538,13 +550,7 @@ class CoBlocks_Block_Assets {
 			)
 		) {
 
-			wp_enqueue_script(
-				'coblocks-lightbox',
-				$this->assets_dir . 'coblocks-lightbox.js',
-				array(),
-				COBLOCKS_VERSION,
-				true
-			);
+			wp_enqueue_script( 'coblocks-lightbox' );
 
 			// Script must be localized after the 'handle' script is registered.
 			// `coblocks-lightbox` is the handle that is shared between the scripts.

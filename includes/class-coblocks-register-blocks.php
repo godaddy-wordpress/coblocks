@@ -109,6 +109,23 @@ class CoBlocks_Register_Blocks {
 	}
 
 	/**
+	 * Some blocks are conditionally registered this function determines if block should be conditional.
+	 * Returns true if restricted and false otherwise.
+	 *
+	 * @param string $path The path to the block.json file.
+	 * @return bool
+	 */
+	public function is_excluded_block_filepaths( $path ) {
+		$restricted = array( '/gallery-masonry/v1' );
+		foreach ( $restricted as $r ) {
+			if ( strpos( $path, $r ) !== false ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Build a block manifest. The resulting array is used to register blocks and parses block.json files.
 	 * For now we need to collect the `render` property from the block.json files and require manually.
 	 *
@@ -125,6 +142,11 @@ class CoBlocks_Register_Blocks {
 		foreach ( $block_json_paths as $block_json_path ) {
 			$block_json_files = glob( $block_json_path, GLOB_NOSORT );
 			foreach ( $block_json_files as $block_json_file ) {
+				// We conditionally load some block for backward compat.
+				if ( $this->is_excluded_block_filepaths( $block_json_file ) ) {
+					continue;
+				}
+
 				$block_json                              = json_decode( file_get_contents( $block_json_file ), true );
 				$manifest[ $block_json['name'] ]['path'] = str_replace( '/block.json', '', $block_json_file );
 
