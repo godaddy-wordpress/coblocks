@@ -80,6 +80,10 @@ module.exports = function( grunt ) {
 						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
 						to: 'Tested up to:$1' + pkg.tested_up_to,
 					},
+					{
+						from: /Requires at least:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
+						to: 'Requires at least:$1' + pkg.requires_at_least,
+					},
 				],
 			},
 			readme: {
@@ -93,6 +97,10 @@ module.exports = function( grunt ) {
 					{
 						from: /Tested up to:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
 						to: 'Tested up to:$1' + pkg.tested_up_to,
+					},
+					{
+						from: /Requires at least:(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
+						to: 'Requires at least:$1' + pkg.requires_at_least,
 					},
 				],
 			},
