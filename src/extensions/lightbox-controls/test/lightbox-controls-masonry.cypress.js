@@ -50,9 +50,7 @@ describe( 'Test CoBlocks Lightbox Controls extension on core/masonry', function(
 
 			helpers.upload.imageToBlock( 'coblocks/gallery-masonry' );
 
-			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).click();
-
-			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).contains( new RegExp( alignment, 'i' ) ).click();
+			helpers.setBlockAlignment( alignment );
 
 			helpers.toggleSettingCheckbox( /Lightbox/ );
 
@@ -60,11 +58,11 @@ describe( 'Test CoBlocks Lightbox Controls extension on core/masonry', function(
 
 			helpers.viewPage();
 
-			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"], figure img[src*="http"][class^="wp-image-"]` ).should( 'have.attr', 'src' ).should( 'include', imageBase );
+			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"]` ).should( 'have.attr', 'src' ).should( 'include', imageBase );
 
 			cy.get( '.coblocks-lightbox' ).should( 'be.hidden' );
 
-			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"], figure img[src*="http"][class^="wp-image-"]` ).click( { force: true } );
+			cy.get( `figure[class*="align${ alignment }"] img[src*="http"][class^="wp-image-"]` ).click( { force: true } );
 
 			cy.get( '.coblocks-lightbox' ).should( 'be.visible' );
 

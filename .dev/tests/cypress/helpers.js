@@ -291,6 +291,25 @@ export function selectBlock( name ) {
 }
 
 /**
+ * Helper function to set the block alignment.
+ *
+ * @param {string} alignment The alignment to set.
+ *
+ */
+export function setBlockAlignment( alignment ) {
+	// Open alignment toolbar for selected block.
+	cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).click();
+
+	if ( alignment !== 'wide' && alignment !== 'full' ) {	// Label prefixed with "Align".
+		alignment = `Align ${ alignment }`;
+	} else { 												// Label starts with capitalized letter.
+		alignment = alignment.charAt( 0 ).toUpperCase() + alignment.slice( 1 );
+	}
+
+	cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).contains( alignment ).click();
+}
+
+/**
  * Set a value within the input box
  *
  * @param {string}  panelName   Name of the panel to open

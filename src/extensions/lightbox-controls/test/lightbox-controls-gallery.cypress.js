@@ -54,9 +54,7 @@ describe( 'Test CoBlocks Lightbox Controls extension on core/gallery', function(
 
 			cy.contains( 'Lightbox' );
 
-			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).click();
-
-			cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).contains( new RegExp( alignment, 'i' ) ).click();
+			helpers.setBlockAlignment( alignment );
 
 			helpers.selectBlock( 'Gallery' );
 
