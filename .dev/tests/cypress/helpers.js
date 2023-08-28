@@ -300,9 +300,9 @@ export function setBlockAlignment( alignment ) {
 	// Open alignment toolbar for selected block.
 	cy.get( '[aria-label="Change alignment"], [aria-label="Align"]' ).click();
 
-	if ( alignment !== 'wide' && alignment !== 'full' ) {	// Label prefixed with "Align".
+	if ( alignment !== 'wide' && alignment !== 'full' ) { // Label prefixed with "Align".
 		alignment = `Align ${ alignment }`;
-	} else { 												// Label starts with capitalized letter.
+	} else { // Label starts with capitalized letter.
 		alignment = alignment.charAt( 0 ).toUpperCase() + alignment.slice( 1 );
 	}
 
