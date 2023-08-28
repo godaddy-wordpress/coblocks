@@ -1,3 +1,12 @@
+3.1.3 / 2023-08-28
+===================
+# Bug fix
+* Fix text formatting bug [#2563](https://github.com/godaddy-wordpress/coblocks/pull/2563)
+* Fix Lightbox for Masonry block  [#2565](https://github.com/godaddy-wordpress/coblocks/pull/2565)
+
+# Misc
+* Set supported version to 6.1 [#2564](https://github.com/godaddy-wordpress/coblocks/pull/2564)
+
 3.1.2 / 2023-08-10
 ===================
 # Bug fix
