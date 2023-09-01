@@ -449,7 +449,7 @@ class CoBlocks_Block_Assets {
 		// Post Carousel block script.
 		wp_register_script(
 			'coblocks-post-carousel',
-			$this->assets_dir . 'coblocks-post-carousel.js',
+			$this->assets_dir . 'coblocks-post-carousel-script.js',
 			array(),
 			COBLOCKS_VERSION,
 			true
@@ -467,7 +467,7 @@ class CoBlocks_Block_Assets {
 		// Events block.
 		wp_register_script(
 			'coblocks-events',
-			$this->assets_dir . 'coblocks-events.js',
+			$this->assets_dir . 'coblocks-events-script.js',
 			array(),
 			COBLOCKS_VERSION,
 			true

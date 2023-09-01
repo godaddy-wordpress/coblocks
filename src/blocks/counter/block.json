@@ -44,5 +44,6 @@
 			}
 		}
 	},
-	"editorScript": ["coblocks-13"]
+	"editorScript": ["coblocks-13"],
+	"viewScript": ["coblocks-counter-script"]
 }

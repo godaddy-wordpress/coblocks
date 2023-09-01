@@ -22,4 +22,26 @@ describe( 'Test CoBlocks Gist Block', function() {
 
 		helpers.checkForBlockErrors( 'core/embed' );
 	} );
+
+	/**
+	 * Test that we can add counter block and use locale formatting controls
+	 * and save block without errors.
+	 */
+	it( 'Test embedded gist properly enqueues its scripts.', function() {
+		helpers.addBlockToPost( 'core/embed', true );
+
+		cy.get( '.wp-block-embed .components-placeholder__input' ).type( 'https://gist.github.com/jrtashjian/98c1fcfd0e9f9ed59d710ccf7ef4291c#file-block-variation-js' );
+		cy.get( '.wp-block-embed .components-button.is-primary' ).click();
+
+		cy.get( '.components-sandbox' ).should( 'exist' );
+
+		helpers.savePage();
+		helpers.checkForBlockErrors( 'core/embed' );
+
+		helpers.viewPage();
+
+		cy.get( "script[src*='coblocks-gist-script']" );
+
+		helpers.editPage();
+	} );
 } );

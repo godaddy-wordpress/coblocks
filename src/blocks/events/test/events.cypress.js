@@ -75,4 +75,22 @@ describe( 'Block: Events', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/events' );
 	} );
+
+	/**
+	 * Test the events block saves with custom classes
+	 */
+	it( 'properly enqueues scripts', function() {
+		// Workaround for the advanced panel not loading consistently.
+		cy.get( '.editor-post-title' ).click();
+
+		helpers.checkForBlockErrors( 'coblocks/events' );
+
+		helpers.savePage();
+		helpers.viewPage();
+
+		cy.get( "script[src*='coblocks-events-script']" );
+		cy.get( "script[src*='coblocks-tiny-swiper']" );
+
+		helpers.editPage();
+	} );
 } );

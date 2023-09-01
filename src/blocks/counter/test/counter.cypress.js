@@ -102,4 +102,25 @@ describe( 'Test CoBlocks Counter Block', function() {
 
 		helpers.checkForBlockErrors( 'coblocks/counter' );
 	} );
+
+	/**
+	 * Test that we can add counter block and use locale formatting controls
+	 * and save block without errors.
+	 */
+	it( 'Test counter block properly enqueues its scripts.', function() {
+		helpers.addBlockToPost( 'coblocks/counter', true );
+
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).first().focus().type( counterData.counterText );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).last().focus().type( counterData.counterDescription );
+		cy.get( '.wp-block-coblocks-counter.rich-text' ).first().contains( '10000 hours' );
+
+		helpers.savePage();
+		helpers.checkForBlockErrors( 'coblocks/counter' );
+
+		helpers.viewPage();
+
+		cy.get( "script[src*='coblocks-counter-script']" );
+
+		helpers.editPage();
+	} );
 } );
