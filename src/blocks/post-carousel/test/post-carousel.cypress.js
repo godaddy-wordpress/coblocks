@@ -88,7 +88,7 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 		helpers.viewPage();
 
 		cy.get( "script[src*='coblocks-post-carousel-script']" );
-		cy.get( "script[src*='coblocks-tiny-swiper']" );
+		cy.get( "script[src*='tiny-swiper']" );
 
 		helpers.editPage();
 	} );

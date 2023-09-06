@@ -89,7 +89,7 @@ describe( 'Block: Events', function() {
 		helpers.viewPage();
 
 		cy.get( "script[src*='coblocks-events-script']" );
-		cy.get( "script[src*='coblocks-tiny-swiper']" );
+		cy.get( "script[src*='tiny-swiper']" );
 
 		helpers.editPage();
 	} );
