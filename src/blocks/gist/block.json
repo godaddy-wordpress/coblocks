@@ -19,5 +19,6 @@
 	"title": "Gist",
 	"textdomain": "coblocks",
 	"editorScript": ["coblocks-9"],
+	"viewScript": ["coblocks-gist-script"],
 	"description": "Embed a GitHub Gist."
 }

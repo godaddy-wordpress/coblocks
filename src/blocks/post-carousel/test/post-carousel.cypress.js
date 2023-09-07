@@ -75,4 +75,21 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 
 		helpers.editPage();
 	} );
+
+	/**
+	 * Test the post-carousel block saves with custom classes
+	 */
+	it( 'Test the post-carousel properly enqueues its scripts.', function() {
+		helpers.addBlockToPost( 'coblocks/post-carousel', true );
+
+		helpers.savePage();
+		helpers.checkForBlockErrors( 'coblocks/post-carousel' );
+
+		helpers.viewPage();
+
+		cy.get( "script[src*='coblocks-post-carousel-script']" );
+		cy.get( "script[src*='tiny-swiper']" );
+
+		helpers.editPage();
+	} );
 } );
