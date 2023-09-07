@@ -125,7 +125,11 @@ CoBlocks is designed to support the last two major versions of WordPress that ar
 
 == Changelog ==
 
-= 3.1.3 / 2023-08-10 =
+= 3.1.4 / 2023-09-07 =
+
+* Fix missing registered scripts [#2566](https://github.com/godaddy-wordpress/coblocks/pull/2566)
+
+= 3.1.3 / 2023-08-28 =
 
 # Bug fix
 * Fix text formatting bug [#2563](https://github.com/godaddy-wordpress/coblocks/pull/2563)
