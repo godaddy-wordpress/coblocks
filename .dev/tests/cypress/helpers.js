@@ -419,11 +419,7 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 
-	if ( isWP63AtLeast() ) {
-		cy.get( '.components-color-palette__custom-color-button' ).click();
-	} else {
-		cy.get( '.components-color-palette__custom-color' ).click();
-	}
+	cy.get( '.components-color-palette__custom-color-button' ).click();
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -437,11 +433,7 @@ export function setColorPanelSetting( settingName, hexColor ) {
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 
-	if ( isWP63AtLeast() ) {
-		cy.get( '.components-color-palette__custom-color-button' ).click();
-	} else {
-		cy.get( '.components-color-palette__custom-color' ).click();
-	}
+	cy.get( '.components-color-palette__custom-color-button' ).click();
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -580,10 +572,10 @@ export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
 
-// A condition to determine if we are testing on WordPress 6.3+
-// This function should be removed in the process of the work for WP 6.4 compatibility
-export function isWP63AtLeast() {
-	return Cypress.$( "[class*='branch-6-3']" ).length > 0 || Cypress.$( "[class*='branch-6-4']" ).length > 0;
+// A condition to determine if we are testing on WordPress 6.4+
+// This function should be removed in the process of the work for WP 6.5 compatibility
+export function isWP64AtLeast() {
+	return Cypress.$( "[class*='branch-6-4']" ).length > 0 || Cypress.$( "[class*='branch-6-5']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {
