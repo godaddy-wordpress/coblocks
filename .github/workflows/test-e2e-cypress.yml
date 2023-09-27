@@ -13,7 +13,7 @@ on:
       wpVersion:
         required: false
         type: string
-        default: "https://wordpress.org/wordpress-6.4-beta1.zip"
+        default: ""
       phpVersion:
         required: false
         type: string

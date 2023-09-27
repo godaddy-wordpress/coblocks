@@ -28,6 +28,8 @@ jobs:
   chrome_e2e:
     name: Chrome with defaults
     uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      wpVersion: "https://wordpress.org/wordpress-6.4-beta1.zip"
     concurrency:
       group: chrome-defaults
       cancel-in-progress: true
@@ -36,6 +38,7 @@ jobs:
     name: Chrome and Go theme
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
+      wpVersion: "https://wordpress.org/wordpress-6.4-beta1.zip"
       theme: "https://downloads.wordpress.org/theme/go.zip"
     concurrency:
       group: chrome-go-theme
@@ -45,6 +48,7 @@ jobs:
     name: Chrome on PHP 7.4
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
+      wpVersion: "https://wordpress.org/wordpress-6.4-beta1.zip"
       phpVersion: "7.4"
     concurrency:
       group: chrome-php74
