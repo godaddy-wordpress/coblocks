@@ -1,0 +1,63 @@
+name: Test / E2E Runner & Jest & PHP Unit runner for WordPress Next version.
+
+on:
+  pull_request:
+    branches:
+      - master
+
+
+env:
+  # 6.4 RC1
+  WP_NEXT_VERSION:
+
+jobs:
+  # Create WP NEXT Version Constant
+  set_constant:
+    runs-on: ubuntu-latest
+    outputs:
+      wp_next: "https://wordpress.org/wordpress-6.4-RC1.zip"
+
+
+  # E2E Testing
+  chrome_e2e_wp_next:
+    needs: set_constant
+    name: Chrome with defaults
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      wpVersion: ${{needs.set_constant.outputs.wp_next}}
+    concurrency:
+      group: chrome-defaults
+      cancel-in-progress: true
+
+  # PHP Unit testing
+  php_unit_74_wp_next:
+    needs: set_constant
+    name: PHP 7.4 Current Major
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '7.4'
+      wpVersion: ${{needs.set_constant.outputs.wp_next}}
+
+  php_unit_80_wp_next:
+    needs: set_constant
+    name: PHP 8.0 Current Major
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.0'
+      wpVersion: ${{needs.set_constant.outputs.wp_next}}
+
+  php_unit_81_wp_next:
+    needs: set_constant
+    name: PHP 8.1 Current Major
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.1'
+      wpVersion: ${{needs.set_constant.outputs.wp_next}}
+
+  php_unit_82_wp_next:
+    needs: set_constant
+    name: PHP 8.2 Current Major
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: '8.2'
+      wpVersion: ${{needs.set_constant.outputs.wp_next}}
