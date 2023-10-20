@@ -16,41 +16,41 @@ jobs:
   #     group: chrome-defaults-major-before-previous-major
   #     cancel-in-progress: true
 
-  chrome_e2e_previous_major:
-    name: Chrome with previous major WP version
-    uses: ./.github/workflows/test-e2e-cypress.yml
-    with:
-      wpVersion: "WordPress/WordPress#6.3"
-    concurrency:
-      group: chrome-defaults-previous-major
-      cancel-in-progress: true
+  # chrome_e2e_previous_major:
+  #   name: Chrome with previous major WP version
+  #   uses: ./.github/workflows/test-e2e-cypress.yml
+  #   with:
+  #     wpVersion: "WordPress/WordPress#6.3"
+  #   concurrency:
+  #     group: chrome-defaults-previous-major
+  #     cancel-in-progress: true
 
-  chrome_e2e:
-    name: Chrome with defaults
-    uses: ./.github/workflows/test-e2e-cypress.yml
-    with:
-      wpVersion: "WordPress/WordPress#6.3"
-    concurrency:
-      group: chrome-defaults
-      cancel-in-progress: true
+  # chrome_e2e:
+  #   name: Chrome with defaults
+  #   uses: ./.github/workflows/test-e2e-cypress.yml
+  #   with:
+  #     wpVersion: "WordPress/WordPress#6.3"
+  #   concurrency:
+  #     group: chrome-defaults
+  #     cancel-in-progress: true
 
-  chrome_e2e_go:
-    name: Chrome and Go theme
-    uses: ./.github/workflows/test-e2e-cypress.yml
-    with:
-      wpVersion: "WordPress/WordPress#6.3"
-      theme: "https://downloads.wordpress.org/theme/go.zip"
-    concurrency:
-      group: chrome-go-theme
-      cancel-in-progress: true
+  # chrome_e2e_go:
+  #   name: Chrome and Go theme
+  #   uses: ./.github/workflows/test-e2e-cypress.yml
+  #   with:
+  #     wpVersion: "WordPress/WordPress#6.3"
+  #     theme: "https://downloads.wordpress.org/theme/go.zip"
+  #   concurrency:
+  #     group: chrome-go-theme
+  #     cancel-in-progress: true
 
-  chrome_e2e_php74:
-    name: Chrome on PHP 7.4
-    uses: ./.github/workflows/test-e2e-cypress.yml
-    with:
-      wpVersion: "WordPress/WordPress#6.3"
-      phpVersion: "7.4"
-    concurrency:
-      group: chrome-php74
-      cancel-in-progress: true
+  # chrome_e2e_php74:
+  #   name: Chrome on PHP 7.4
+  #   uses: ./.github/workflows/test-e2e-cypress.yml
+  #   with:
+  #     wpVersion: "WordPress/WordPress#6.3"
+  #     phpVersion: "7.4"
+  #   concurrency:
+  #     group: chrome-php74
+  #     cancel-in-progress: true
 

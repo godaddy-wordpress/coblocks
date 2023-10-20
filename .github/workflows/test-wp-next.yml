@@ -6,10 +6,18 @@ on:
       - master
 
 jobs:
+  # Check if WP Next is released
+  check_date:
+    uses: ./.github/workflow/date-checker.yml
+    with:
+      expiry_date: "2023-11-7" # WP 6.4 schedueld release date.
+
   # Create WP NEXT Version Constant
   set_constant:
+    needs: check_date
     runs-on: ubuntu-latest
     outputs:
+      # WP 6.4 RC1 zip.
       wp_next: "https://wordpress.org/wordpress-6.4-RC1.zip"
     steps:
       - run: echo "Setting WP Next Constant"
