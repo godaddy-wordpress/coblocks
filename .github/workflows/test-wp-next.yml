@@ -8,7 +8,7 @@ on:
 jobs:
   # Check if WP Next is released
   check_date:
-    uses: ./.github/workflows/date-checker.yml@WP64-compat
+    uses: ./.github/workflows/date-checker.yml
     with:
       expiry_date: "2023-11-7" # WP 6.4 schedueld release date.
 
