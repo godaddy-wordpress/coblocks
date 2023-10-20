@@ -104,7 +104,7 @@ jobs:
             cache: 'yarn'
 
       - name: Prepare tests
-        run: echo $(npx wp-env install-path)
+        run: ls $(wp-env install-path)
       # - name: Install dependencies
       #   run: |
       #     composer install --prefer-dist --optimize-autoloader &
