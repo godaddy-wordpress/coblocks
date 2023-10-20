@@ -5,17 +5,14 @@ on:
     branches:
       - master
 
-
-env:
-  # 6.4 RC1
-  WP_NEXT_VERSION:
-
 jobs:
   # Create WP NEXT Version Constant
   set_constant:
     runs-on: ubuntu-latest
     outputs:
       wp_next: "https://wordpress.org/wordpress-6.4-RC1.zip"
+    steps:
+      - run: echo "Setting WP Next Constant"
 
 
   # E2E Testing
