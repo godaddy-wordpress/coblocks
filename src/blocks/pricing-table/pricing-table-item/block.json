@@ -7,8 +7,7 @@
 			"selector": ".wp-block-coblocks-pricing-table-item__title"
 		},
 		"features": {
-			"source": "children",
-			"selector": ".wp-block-coblocks-pricing-table-item__features"
+			"type": "string"
 		},
 		"currency": {
 			"type": "array",
