@@ -10,7 +10,8 @@ jobs:
   check_date:
     uses: ./.github/workflows/date-checker.yml
     with:
-      cutoff_date: "2023-11-7" # WP 6.4 schedueld release date.
+      # WP 6.4 schedueld release date.
+      cutoff_date: "2023-11-7"
 
   # Create WP NEXT Version Constant
   set_constant:
