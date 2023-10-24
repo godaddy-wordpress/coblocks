@@ -51,7 +51,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__title' ).focus().type( `{selectall}${ title }` );
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__currency' ).focus().type( `{selectall}${ currency }` );
 		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__amount' ).focus().type( `{selectall}${ amount }` );
-		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features' ).focus().type( `{selectall} ${ features }` );
+		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features [role="textbox"]' ).focus().type( `{selectall} ${ features }` );
 		firstTableItem().find( '.wp-block-button' ).find( 'div[role="textbox"]' ).focus().type( `{selectall}${ buttonText }` );
 
 		firstTableItem().click( 'topRight' );

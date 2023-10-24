@@ -2,27 +2,60 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { chunk } from 'lodash';
-
-/**
- * Internal dependencies
- */
-import metadata from './block.json';
+import { isEmpty } from 'lodash';
+import { RichText, getColorClassName, InnerBlocks } from '@wordpress/block-editor';
+import { createBlock } from '@wordpress/blocks';
 
 const deprecated = [
 	{
 		migrate: ( attributes, innerBlocks ) => {
 			const { features } = attributes;
-
-			const listBlock = wp.blocks.createBlock( 'core/list', {
-				content: features,
+			const newListItemBlocks = features.map( ( feature ) => {
+				return createBlock( 'core/list-item', {	content: feature?.props?.children[ 0 ] } );
 			} );
 
+			const listBlock = createBlock( 'core/list', {
+				className: 'wp-block-coblocks-pricing-table-item__features',
+			}, newListItemBlocks );
+
 			delete attributes.features;
-			return { attributes, innerBlocks: [ listBlock, ...innerBlocks ] };
+			innerBlocks = [ listBlock, ...innerBlocks ];
+			return [ attributes, innerBlocks ];
 		},
-		attributes: {
-			...metadata.attributes,
+		attributes:	{
+			title: {
+				source: 'children',
+				selector: '.wp-block-coblocks-pricing-table-item__title',
+			},
+			features: {
+				source: 'children',
+				selector: '.wp-block-coblocks-pricing-table-item__features',
+			},
+			currency: {
+				type: 'array',
+				source: 'children',
+				selector: '.wp-block-coblocks-pricing-table-item__currency',
+			},
+			amount: {
+				type: 'array',
+				source: 'children',
+				selector: '.wp-block-coblocks-pricing-table-item__amount',
+			},
+			backgroundColor: {
+				type: 'string',
+			},
+			customBackgroundColor: {
+				type: 'string',
+			},
+			textColor: {
+				type: 'string',
+			},
+			customTextColor: {
+				type: 'string',
+			},
+			placeholder: {
+				type: 'string',
+			},
 		},
 		save: ( { attributes } ) => {
 			const {
@@ -91,6 +124,7 @@ const deprecated = [
 					<InnerBlocks.Content />
 				</div>
 			);
+		},
 	},
 ];
 

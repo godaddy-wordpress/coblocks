@@ -6,9 +6,6 @@
 			"source": "children",
 			"selector": ".wp-block-coblocks-pricing-table-item__title"
 		},
-		"features": {
-			"type": "string"
-		},
 		"currency": {
 			"type": "array",
 			"source": "children",

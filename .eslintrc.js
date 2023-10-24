@@ -10,6 +10,8 @@ module.exports = {
 	},
 	plugins: [
 		'cypress',
+		'react',
+		'jest',
 	],
 
 	// Specific Globals used in CoBlocks

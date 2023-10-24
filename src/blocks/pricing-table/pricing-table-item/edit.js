@@ -42,10 +42,8 @@ const Edit = ( props ) => {
 	const allowedFormats = [ 'bold', 'italic', 'strikethrough' ];
 
 	/**
-	 * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
-	 * The contents of the array should never change.
-	 * The array should contain the name of each block that is allowed.
-	 * In standout block, the only block we allow is 'core/list'.
+	 * This block now allows several innerBlock types and has refactored to
+	 * use core/list block instead of a custom RichText multiline solution.
 	 *
 	 * @constant
 	 * @type {string[]}
@@ -104,14 +102,6 @@ const Edit = ( props ) => {
 						allowedFormats={ allowedFormats }
 					/>
 				</div>
-				{ /* <RichText
-					tagName="ul"
-					multiline="li"
-					className="wp-block-coblocks-pricing-table-item__features"
-					onChange={ ( nextFeatures ) => setAttributes( { features: nextFeatures } ) }
-					value={ features }
-					placeholder={  }
-				/> */ }
 				<InnerBlocks
 					template={ TEMPLATE }
 					templateLock={ false }
