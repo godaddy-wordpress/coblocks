@@ -14,7 +14,6 @@ const variations = {
 	},
 	alt: [ undefined, '', 'alt' ],
 	focalPoint: [ undefined, { x: 0, y: 0 }, { x: 0.33663366336633666, y: 0.8335193452380952 } ],
-	focalPoint: [ undefined, true, false ],
 	glutenFree: [ undefined, true, false ],
 	pescatarian: [ undefined, true, false ],
 	popular: [ undefined, true, false ],

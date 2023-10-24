@@ -43,7 +43,7 @@
 		"wp-cli/wp-cli-bundle": "^2.4",
 		"wp-coding-standards/wpcs": "^2.1",
 		"wp-phpunit/wp-phpunit": "^6.0.1",
-		"yoast/phpunit-polyfills": "^1.0.1",
+		"yoast/phpunit-polyfills": "^1.1.0",
 		"coenjacobs/mozart": "^0.3.0"
 	},
 	"scripts": {

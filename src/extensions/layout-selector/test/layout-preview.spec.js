@@ -107,13 +107,13 @@ const setup = ( overrideProps = {} ) => {
 describe( 'layout-selector-results', () => {
 	describe( 'when there are shown layouts available', () => {
 		it( 'it renders the LayoutPreview component', () => {
-			const view = setup();
+			setup();
 			expect( screen.queryAllByTestId( 'coblocks-layout-selector__layout-button' ) ).toHaveLength( layouts.length );
 			expect( screen.queryAllByTestId( 'coblocks-layout-selector__layout-placeholder' ) ).toHaveLength( 0 );
 		} );
 
 		it( 'should call onClickLayout on Button click', () => {
-			const view = setup();
+			setup();
 			fireEvent.click( screen.queryAllByTestId( 'coblocks-layout-selector__layout-button' )[ 0 ] );
 
 			expect( defaultProps.onClickLayout ).toHaveBeenCalled();
@@ -122,7 +122,7 @@ describe( 'layout-selector-results', () => {
 
 	describe( 'when there are no shown layouts available', () => {
 		it( 'should show the LayoutPreviewPlaceholder component', () => {
-			const view = setup( { shownLayouts: [] } );
+			setup( { shownLayouts: [] } );
 			expect( screen.queryAllByTestId( 'coblocks-layout-selector__layout-placeholder' ) ).toHaveLength( layouts.length );
 			expect( screen.queryAllByTestId( 'coblocks-layout-selector__layout-button' ) ).toHaveLength( 0 );
 		} );
@@ -142,36 +142,36 @@ describe( 'layout-selector-results', () => {
 					name: 'core/gallery',
 					isValid: true,
 					attributes: {
-					  images: [
+						images: [
 							{
-						  url: 'https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=2&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion',
-						  link: 'https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=2&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion',
-						  alt: 'Image Description',
-						  id: '2',
-						  caption: '',
+								url: 'https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=2&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion',
+								link: 'https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=2&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion',
+								alt: 'Image Description',
+								id: '2',
+								caption: '',
 							},
 							{
-						  url: 'https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=3&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion',
-						  link: 'https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=3&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion',
-						  alt: 'Image Description',
-						  id: '3',
-						  caption: '',
+								url: 'https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=3&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion',
+								link: 'https://wpnux.godaddy.com/v2/api/image?aspect=3%3A4&index=3&lang=en_US&seed=wpnux_layout_home-1&size=large&category=fashion',
+								alt: 'Image Description',
+								id: '3',
+								caption: '',
 							},
-					  ],
-					  ids: [
+						],
+						ids: [
 							{},
 							{},
-					  ],
-					  caption: '',
-					  imageCrop: true,
-					  linkTo: 'none',
-					  sizeSlug: 'large',
-					  align: 'wide',
-					  animation: 'slideInBottom',
-					  noBottomMargin: false,
-					  noTopMargin: false,
-					  lightbox: false,
-					  filter: 'none',
+						],
+						caption: '',
+						imageCrop: true,
+						linkTo: 'none',
+						sizeSlug: 'large',
+						align: 'wide',
+						animation: 'slideInBottom',
+						noBottomMargin: false,
+						noTopMargin: false,
+						lightbox: false,
+						filter: 'none',
 					},
 					innerBlocks: [],
 				},

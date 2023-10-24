@@ -7,6 +7,7 @@ module.exports = {
 		browser: true,
 		'cypress/globals': true,
 		jest: true,
+		'jest/globals': true,
 	},
 	plugins: [
 		'cypress',

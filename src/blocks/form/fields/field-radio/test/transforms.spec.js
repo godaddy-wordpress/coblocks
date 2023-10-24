@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { registerCoreBlocks } from '@wordpress/block-library';
-import { registerBlockType, createBlock, switchToBlockType } from '@wordpress/blocks';
+import { createBlock, switchToBlockType } from '@wordpress/blocks';
 
 registerCoreBlocks();
 
@@ -10,7 +10,7 @@ registerCoreBlocks();
  * Internal dependencies.
  */
 import { registerFormBlocks } from '../../../../../../.dev/tests/jest/helpers';
-import { name, settings } from '../index';
+import { name } from '../index';
 
 describe( 'coblocks/field-radio transforms', () => {
 	// Shared attributes

@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { registerCoreBlocks } from '@wordpress/block-library';
-import { registerBlockType, createBlock, switchToBlockType, serialize, parse, rawHandler } from '@wordpress/blocks';
+import { registerBlockType, createBlock, switchToBlockType, parse } from '@wordpress/blocks';
 
 registerCoreBlocks();
 
@@ -50,7 +50,7 @@ describe( 'coblocks/gist transforms', () => {
 	} );
 
 	it( 'should transform to embed block with deprecated wp-block-coblocks-gist--no-meta classname to no-meta classname', () => {
-		const serializedBlock = "<!-- wp:coblocks\/gist {\"url\":\"https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c\",\"meta\":false} -->\r\n<div class=\"wp-block-coblocks-gist--no-meta wp-block-coblocks-gist\"><script src=\"https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c.js\"><\/script><noscript><a href=\"https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c\">View this gist on GitHub<\/a><\/noscript><\/div>\r\n<!-- \/wp:coblocks\/gist -->";
+		const serializedBlock = '<!-- wp:coblocks\/gist {"url":"https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c","meta":false} -->\r\n<div class="wp-block-coblocks-gist--no-meta wp-block-coblocks-gist"><script src="https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c.js"><\/script><noscript><a href="https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c">View this gist on GitHub<\/a><\/noscript><\/div>\r\n<!-- \/wp:coblocks\/gist -->';
 		const url = 'https://gist.github.com/jrtashjian/98c1fcfd0e9f9ed59d710ccf7ef4291c';
 
 		const block = parse( serializedBlock );
@@ -62,7 +62,7 @@ describe( 'coblocks/gist transforms', () => {
 	} );
 
 	it( 'should transform to embed block with caption', () => {
-		const serializedBlock = "<!-- wp:coblocks\/gist {\"url\":\"https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c\"} -->\r\n<div class=\"wp-block-coblocks-gist\"><script src=\"https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c.js\"><\/script><noscript><a href=\"https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c\">View this gist on GitHub<\/a><\/noscript><figcaption>This is a caption<\/figcaption><\/div>\r\n<!-- \/wp:coblocks\/gist -->";
+		const serializedBlock = '<!-- wp:coblocks\/gist {"url":"https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c"} -->\r\n<div class="wp-block-coblocks-gist"><script src="https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c.js"><\/script><noscript><a href="https:\/\/gist.github.com\/jrtashjian\/98c1fcfd0e9f9ed59d710ccf7ef4291c">View this gist on GitHub<\/a><\/noscript><figcaption>This is a caption<\/figcaption><\/div>\r\n<!-- \/wp:coblocks\/gist -->';
 		const url = 'https://gist.github.com/jrtashjian/98c1fcfd0e9f9ed59d710ccf7ef4291c';
 
 		const block = parse( serializedBlock );

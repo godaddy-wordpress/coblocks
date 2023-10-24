@@ -48,4 +48,4 @@ const variations = {
 	noTopMargin: [ undefined, true, false ],
 };
 
-helpers.testDeprecatedBlockVariations( name, {...metadata, ...settings}, variations );
+helpers.testDeprecatedBlockVariations( name, { ...metadata, ...settings }, variations );
