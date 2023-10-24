@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`coblocks/social-profiles should render with className 1`] = `"<!-- wp:coblocks/social-profiles {\\"className\\":\\"my-custom-class\\"} /-->"`;
+exports[`coblocks/social-profiles should render with className 1`] = `"<!-- wp:coblocks/social-profiles {"className":"my-custom-class"} /-->"`;
 
-exports[`coblocks/social-profiles should render with hasColors 1`] = `"<!-- wp:coblocks/social-profiles {\\"hasColors\\":false} /-->"`;
+exports[`coblocks/social-profiles should render with hasColors 1`] = `"<!-- wp:coblocks/social-profiles {"hasColors":false} /-->"`;
 
-exports[`coblocks/social-profiles should render with iconSize 1`] = `"<!-- wp:coblocks/social-profiles {\\"iconSize\\":\\"22\\"} /-->"`;
+exports[`coblocks/social-profiles should render with iconSize 1`] = `"<!-- wp:coblocks/social-profiles {"iconSize":"22"} /-->"`;
 
-exports[`coblocks/social-profiles should render with styles 1`] = `"<!-- wp:coblocks/social-profiles {\\"className\\":\\"is-style-circular\\"} /-->"`;
+exports[`coblocks/social-profiles should render with styles 1`] = `"<!-- wp:coblocks/social-profiles {"className":"is-style-circular"} /-->"`;
 
-exports[`coblocks/social-profiles should render with styles 2`] = `"<!-- wp:coblocks/social-profiles {\\"className\\":\\"is-style-icon-and-text\\"} /-->"`;
+exports[`coblocks/social-profiles should render with styles 2`] = `"<!-- wp:coblocks/social-profiles {"className":"is-style-icon-and-text"} /-->"`;
 
-exports[`coblocks/social-profiles should render with styles 3`] = `"<!-- wp:coblocks/social-profiles {\\"className\\":\\"is-style-text\\"} /-->"`;
+exports[`coblocks/social-profiles should render with styles 3`] = `"<!-- wp:coblocks/social-profiles {"className":"is-style-text"} /-->"`;
 
-exports[`coblocks/social-profiles should render with styles 4`] = `"<!-- wp:coblocks/social-profiles {\\"className\\":\\"is-style-icon\\"} /-->"`;
+exports[`coblocks/social-profiles should render with styles 4`] = `"<!-- wp:coblocks/social-profiles {"className":"is-style-icon"} /-->"`;
 
-exports[`coblocks/social-profiles should render with styles 5`] = `"<!-- wp:coblocks/social-profiles {\\"className\\":\\"is-style-mask\\"} /-->"`;
+exports[`coblocks/social-profiles should render with styles 5`] = `"<!-- wp:coblocks/social-profiles {"className":"is-style-mask"} /-->"`;
 
-exports[`coblocks/social-profiles should render with textAlign 1`] = `"<!-- wp:coblocks/social-profiles {\\"textAlign\\":\\"left\\"} /-->"`;
+exports[`coblocks/social-profiles should render with textAlign 1`] = `"<!-- wp:coblocks/social-profiles {"textAlign":"left"} /-->"`;
 
-exports[`coblocks/social-profiles should render with textAlign 2`] = `"<!-- wp:coblocks/social-profiles {\\"textAlign\\":\\"center\\"} /-->"`;
+exports[`coblocks/social-profiles should render with textAlign 2`] = `"<!-- wp:coblocks/social-profiles {"textAlign":"center"} /-->"`;
 
-exports[`coblocks/social-profiles should render with textAlign 3`] = `"<!-- wp:coblocks/social-profiles {\\"textAlign\\":\\"right\\"} /-->"`;
+exports[`coblocks/social-profiles should render with textAlign 3`] = `"<!-- wp:coblocks/social-profiles {"textAlign":"right"} /-->"`;

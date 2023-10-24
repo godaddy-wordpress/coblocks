@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`coblocks/service should render 1`] = `
-"<!-- wp:coblocks/service {\\"showCta\\":1,\\"focalPoint\\":{\\"x\\":100,\\"y\\":0}} -->
-<div class=\\"wp-block-coblocks-service\\"><figure class=\\"wp-block-coblocks-service__figure\\"><img src=\\"https://website.com/wp-content/uploads/1234/56/image.jpg\\" alt=\\"alt text\\" style=\\"object-position:10000% 0%\\"/></figure><div class=\\"wp-block-coblocks-service__content\\"></div></div>
+"<!-- wp:coblocks/service {"showCta":1,"focalPoint":{"x":100,"y":0}} -->
+<div class="wp-block-coblocks-service"><figure class="wp-block-coblocks-service__figure"><img src="https://website.com/wp-content/uploads/1234/56/image.jpg" alt="alt text" style="object-position:10000% 0%"/></figure><div class="wp-block-coblocks-service__content"></div></div>
 <!-- /wp:coblocks/service -->"
 `;
 
 exports[`coblocks/service should render with href 1`] = `
-"<!-- wp:coblocks/service {\\"showCta\\":1} -->
-<div class=\\"wp-block-coblocks-service\\"><figure class=\\"wp-block-coblocks-service__figure\\"><a href=\\"https://www.godaddy.com\\" target=\\"_blank\\"><img src=\\"https://website.com/wp-content/uploads/1234/56/image.jpg\\" alt=\\"alt text\\"/></a></figure><div class=\\"wp-block-coblocks-service__content\\"></div></div>
+"<!-- wp:coblocks/service {"showCta":1} -->
+<div class="wp-block-coblocks-service"><figure class="wp-block-coblocks-service__figure"><a href="https://www.godaddy.com" target="_blank"><img src="https://website.com/wp-content/uploads/1234/56/image.jpg" alt="alt text"/></a></figure><div class="wp-block-coblocks-service__content"></div></div>
 <!-- /wp:coblocks/service -->"
 `;

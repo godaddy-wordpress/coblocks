@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`coblocks/click-to-tweet should render with buttonColor 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"buttonColor\\":\\"accent\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with buttonColor 1`] = `"<!-- wp:coblocks/click-to-tweet {"buttonColor":"accent"} /-->"`;
 
-exports[`coblocks/click-to-tweet should render with className 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"className\\":\\"my-custom-class\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with className 1`] = `"<!-- wp:coblocks/click-to-tweet {"className":"my-custom-class"} /-->"`;
 
 exports[`coblocks/click-to-tweet should render with content 1`] = `
 "<!-- wp:coblocks/click-to-tweet -->
-<blockquote class=\\"wp-block-coblocks-click-to-tweet\\"><p class=\\"wp-block-coblocks-click-to-tweet__text\\">Quote to tweet</p><a class=\\"wp-block-coblocks-click-to-tweet__twitter-btn\\" href=\\"http://twitter.com/share?&amp;text=Quote%20to%20tweet&amp;url=[post_permalink]\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\">Tweet</a></blockquote>
+<blockquote class="wp-block-coblocks-click-to-tweet"><p class="wp-block-coblocks-click-to-tweet__text">Quote to tweet</p><a class="wp-block-coblocks-click-to-tweet__twitter-btn" href="http://twitter.com/share?&amp;text=Quote%20to%20tweet&amp;url=[post_permalink]" rel="noopener noreferrer" target="_blank">Tweet</a></blockquote>
 <!-- /wp:coblocks/click-to-tweet -->"
 `;
 
-exports[`coblocks/click-to-tweet should render with customButtonColor 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"customButtonColor\\":\\"#7b3749\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with customButtonColor 1`] = `"<!-- wp:coblocks/click-to-tweet {"customButtonColor":"#7b3749"} /-->"`;
 
-exports[`coblocks/click-to-tweet should render with customTextColor 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"customTextColor\\":\\"#da5d5d\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with customTextColor 1`] = `"<!-- wp:coblocks/click-to-tweet {"customTextColor":"#da5d5d"} /-->"`;
 
-exports[`coblocks/click-to-tweet should render with textAlign 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"textAlign\\":\\"left\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with textAlign 1`] = `"<!-- wp:coblocks/click-to-tweet {"textAlign":"left"} /-->"`;
 
-exports[`coblocks/click-to-tweet should render with textAlign 2`] = `"<!-- wp:coblocks/click-to-tweet {\\"textAlign\\":\\"center\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with textAlign 2`] = `"<!-- wp:coblocks/click-to-tweet {"textAlign":"center"} /-->"`;
 
-exports[`coblocks/click-to-tweet should render with textAlign 3`] = `"<!-- wp:coblocks/click-to-tweet {\\"textAlign\\":\\"right\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with textAlign 3`] = `"<!-- wp:coblocks/click-to-tweet {"textAlign":"right"} /-->"`;
 
-exports[`coblocks/click-to-tweet should render with textColor 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"textColor\\":\\"primary\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with textColor 1`] = `"<!-- wp:coblocks/click-to-tweet {"textColor":"primary"} /-->"`;
 
-exports[`coblocks/click-to-tweet should render with via 1`] = `"<!-- wp:coblocks/click-to-tweet {\\"via\\":\\"username\\"} /-->"`;
+exports[`coblocks/click-to-tweet should render with via 1`] = `"<!-- wp:coblocks/click-to-tweet {"via":"username"} /-->"`;

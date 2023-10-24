@@ -9,7 +9,7 @@ registerCoreBlocks();
 /**
  * External dependencies
  */
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 /**
  * Internal dependencies.
@@ -86,7 +86,7 @@ describe( 'coblocks/gallery-masonry', () => {
 
 		expect( serializedBlock ).toBeDefined();
 		expect( serializedBlock ).toContain( `src="https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg"` );
-		expect( serializedBlock ).toContain( '<figcaption>Test Caption</figcaption>' );
+		expect( serializedBlock ).toContain( '<figcaption class=\"wp-element-caption\">Test Caption</figcaption>' );
 		expect( serializedBlock ).not.toContain( '<figcaption class="blocks-gallery-caption">' );
 
 		block.attributes.caption = 'Masonry Caption';

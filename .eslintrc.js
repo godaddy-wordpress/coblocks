@@ -32,6 +32,9 @@ module.exports = {
 		'sort-keys': [ 'off' ],
 		'react/jsx-sort-props': [ 'off' ],
 	},
+
+	noInlineConfig: false,
+
 	overrides: [
 		{
 			files: [ 'deprecated.js', 'save.js' ],

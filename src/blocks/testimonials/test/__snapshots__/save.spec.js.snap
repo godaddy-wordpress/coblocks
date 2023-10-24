@@ -2,6 +2,6 @@
 
 exports[`coblocks/testimonials should render with content 1`] = `
 "<!-- wp:coblocks/testimonials -->
-<div class=\\"wp-block-coblocks-testimonials wp-block-coblocks-testimonials has-columns has-responsive-columns has-2-columns\\" data-columns=\\"2\\"></div>
+<div class="wp-block-coblocks-testimonials wp-block-coblocks-testimonials has-columns has-responsive-columns has-2-columns" data-columns="2"></div>
 <!-- /wp:coblocks/testimonials -->"
 `;

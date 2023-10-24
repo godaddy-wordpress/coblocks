@@ -1,149 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`coblocks/gallery-masonry should have \`core/image\` innerBlocks rendered 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"gutter\\":\\"medium\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"gutter":"medium"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have caption with \`core/image\` and caption with \`coblocks/masonry\`. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"gutter\\":\\"medium\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"gutter":"medium"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":3} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg\\" alt=\\"\\" class=\\"wp-image-3\\"/><figcaption>Test Caption</figcaption></figure>
-<!-- /wp:image --></figure><figcaption class=\\"blocks-gallery-caption\\">Masonry Caption</figcaption>
+<!-- wp:image {"id":3} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-3.jpg" alt="" class="wp-image-3"/><figcaption class="wp-element-caption">Test Caption</figcaption></figure>
+<!-- /wp:image --></figure><figcaption class="blocks-gallery-caption">Masonry Caption</figcaption>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-border-radius-10' with radius set to 10. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"gutter\\":\\"medium\\",\\"radius\\":10} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-border-radius-10 has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"gutter":"medium","radius":10} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-border-radius-10 has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-filter-dim' with filter set to 'dim'. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"filter\\":\\"dim\\",\\"gutter\\":\\"medium\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-filter-dim has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"filter":"dim","gutter":"medium"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-filter-dim has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-filter-grayscale' with filter set to 'grayscale'. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"filter\\":\\"grayscale\\",\\"gutter\\":\\"medium\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-filter-grayscale has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"filter":"grayscale","gutter":"medium"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-filter-grayscale has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-filter-saturation' with filter set to 'saturation'. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"filter\\":\\"saturation\\",\\"gutter\\":\\"medium\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-filter-saturation has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"filter":"saturation","gutter":"medium"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-filter-saturation has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-filter-sepia' with filter set to 'sepia'. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"filter\\":\\"sepia\\",\\"gutter\\":\\"medium\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-filter-sepia has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"filter":"sepia","gutter":"medium"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-filter-sepia has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-filter-vintage' with filter set to 'vintage'. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"filter\\":\\"vintage\\",\\"gutter\\":\\"medium\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-filter-vintage has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"filter":"vintage","gutter":"medium"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-filter-vintage has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-large-gutter' with gutter set to 'large'. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"gutter\\":\\"large\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-large-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"gutter":"large"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-large-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-lightbox' with lightbox enabled. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"gutter\\":\\"medium\\",\\"lightbox\\":true} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-lightbox has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"gutter":"medium","lightbox":true} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-lightbox has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-medium-gutter' with gutter set to 'medium'. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"gutter\\":\\"medium\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-medium-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"gutter":"medium"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-medium-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;
 
 exports[`coblocks/gallery-masonry should have className 'has-small-gutter' with gutter set to 'small'. 1`] = `
-"<!-- wp:coblocks/gallery-masonry {\\"gutter\\":\\"small\\"} -->
-<figure class=\\"wp-block-coblocks-gallery-masonry masonry-grid has-small-gutter\\"><!-- wp:image {\\"id\\":1} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg\\" alt=\\"\\" class=\\"wp-image-1\\"/></figure>
+"<!-- wp:coblocks/gallery-masonry {"gutter":"small"} -->
+<figure class="wp-block-coblocks-gallery-masonry masonry-grid has-small-gutter"><!-- wp:image {"id":1} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg" alt="" class="wp-image-1"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:image {\\"id\\":2} -->
-<figure class=\\"wp-block-image\\"><img src=\\"https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg\\" alt=\\"\\" class=\\"wp-image-2\\"/></figure>
+<!-- wp:image {"id":2} -->
+<figure class="wp-block-image"><img src="https://wordpress.com/wp-content/uploads/1234/56/image-2.jpg" alt="" class="wp-image-2"/></figure>
 <!-- /wp:image --></figure>
 <!-- /wp:coblocks/gallery-masonry -->"
 `;

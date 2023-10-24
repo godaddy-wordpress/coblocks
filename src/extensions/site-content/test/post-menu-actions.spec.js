@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import PostMenuActions from '../post-menu-actions';
 
@@ -23,35 +23,20 @@ const setup = ( props = {} ) => {
 describe( 'post-menu-actions', () => {
 	let wrapper;
 
-	beforeEach( () => {
+	it( 'should render in wrapper', () => {
 		wrapper = setup();
-	} );
-
-	describe( '#render', () => {
-		it( 'should show the dropdown button', () => {
-			expect( wrapper.querySelector( '.content-management__panel__actions__button' ) ).toBeInTheDocument;
-		} );
-
-		it( 'should show the dropdown once activated', () => {
-			const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[0];
-
-			expect( wrapper.querySelectorAll( '.content-management-actions' ) ).toHaveLength( 0 );
-
-			fireEvent.click( toggleButton );
-
-			expect( wrapper.querySelectorAll( '.content-management-actions' ) ).toBeInTheDocument;
-		} );
+		// eslint-disable-next-line no-unused-expressions
+		expect( wrapper.querySelectorAll( '.content-management__panel__actions__button' ) ).toHaveLength( 1 );
 	} );
 
 	describe( '#methods', () => {
 		describe( 'onRenamePost()', () => {
-			it( 'should trigger post duplication', () => {
-				const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[0];
-
+			it( 'should trigger post rename', () => {
+				wrapper = setup();
+				const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[ 0 ];
 				fireEvent.click( toggleButton );
 
-				const renameButton = wrapper.querySelectorAll( '.content-management-actions__item' )[0];
-
+				const renameButton = document.querySelectorAll( '.content-management-actions__item' )[ 0 ];
 				fireEvent.click( renameButton );
 
 				expect( defaultProps.onRenamePost ).toHaveBeenCalled();
@@ -60,11 +45,12 @@ describe( 'post-menu-actions', () => {
 
 		describe( 'onDuplicatePost()', () => {
 			it( 'should trigger post duplication', () => {
-				const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[0];
+				wrapper = setup();
+				const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' )[ 0 ];
 
 				fireEvent.click( toggleButton );
 
-				const duplicateButton = wrapper.querySelectorAll( '.content-management-actions__item' )[2];
+				const duplicateButton = document.querySelectorAll( '.content-management-actions__item' )[ 2 ];
 
 				fireEvent.click( duplicateButton );
 
@@ -74,15 +60,16 @@ describe( 'post-menu-actions', () => {
 
 		describe( 'onDeletePost()', () => {
 			it( 'should trigger post deletion', () => {
+				wrapper = setup();
 				const toggleButton = wrapper.querySelector( '.content-management__panel__actions__button' );
 
-				fireEvent.click(toggleButton);
+				fireEvent.click( toggleButton );
 
-				let contentManagementItem = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
+				let contentManagementItem = document.querySelectorAll( '.content-management-actions__item' )[ 3 ];
 
 				fireEvent.click( contentManagementItem );
 
-				contentManagementItem = wrapper.querySelectorAll( '.content-management-actions__item' )[3];
+				contentManagementItem = document.querySelectorAll( '.content-management-actions__item' )[ 3 ];
 
 				fireEvent.click( contentManagementItem );
 
@@ -92,15 +79,16 @@ describe( 'post-menu-actions', () => {
 
 		describe( 'onSetAsHomePost()', () => {
 			it( 'should trigger post being set as home', () => {
+				wrapper = setup();
 				const toggleButton = wrapper.querySelector( '.content-management__panel__actions__button' );
 
 				fireEvent.click( toggleButton );
 
-				let contentManagementActionsItem = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
+				let contentManagementActionsItem = document.querySelectorAll( '.content-management-actions__item' )[ 1 ];
 
 				fireEvent.click( contentManagementActionsItem );
 
-				contentManagementActionsItem = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
+				contentManagementActionsItem = document.querySelectorAll( '.content-management-actions__item' )[ 1 ];
 
 				fireEvent.click( contentManagementActionsItem );
 
@@ -120,7 +108,7 @@ describe( 'post-menu-actions', () => {
 
 				fireEvent.click( toggleButton );
 
-				const pinButton = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
+				const pinButton = document.querySelectorAll( '.content-management-actions__item' )[ 1 ];
 
 				fireEvent.click( pinButton );
 
@@ -139,12 +127,21 @@ describe( 'post-menu-actions', () => {
 
 				fireEvent.click( toggleButton );
 
-				const pinButton = wrapper.querySelectorAll( '.content-management-actions__item' )[1];
+				const pinButton = document.querySelectorAll( '.content-management-actions__item' )[ 1 ];
 
 				fireEvent.click( pinButton );
 
 				expect( defaultProps.onPinPost ).toHaveBeenCalled();
 			} );
 		} );
+	} );
+
+	it( 'should should toggle popover', () => {
+		wrapper = setup();
+		const toggleButton = wrapper.querySelectorAll( '.content-management__panel__actions__button' );
+		expect( toggleButton ).toHaveLength( 1 );
+
+		fireEvent.click( toggleButton[ 0 ] );
+		expect( document.querySelectorAll( '.content-management__panel__actions__button.is-open' ) ).toHaveLength( 1 );
 	} );
 } );

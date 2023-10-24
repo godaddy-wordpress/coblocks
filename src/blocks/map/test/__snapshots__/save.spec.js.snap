@@ -1,55 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`coblocks/map should render with address attribute 1`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\"} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12\\"></iframe></div>
+"<!-- wp:coblocks/map {"address":"New York"} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map"><iframe title="Google Map" frameborder="0" style="width:100%;min-height:400px" src="https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12"></iframe></div>
 <!-- /wp:coblocks/map -->"
 `;
 
 exports[`coblocks/map should render with align attribute 1`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\",\\"align\\":\\"wide\\"} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map alignwide\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12\\"></iframe></div>
+"<!-- wp:coblocks/map {"address":"New York","align":"wide"} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map alignwide"><iframe title="Google Map" frameborder="0" style="width:100%;min-height:400px" src="https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12"></iframe></div>
 <!-- /wp:coblocks/map -->"
 `;
 
 exports[`coblocks/map should render with align attribute 2`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\",\\"align\\":\\"full\\"} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map alignfull\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12\\"></iframe></div>
+"<!-- wp:coblocks/map {"address":"New York","align":"full"} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map alignfull"><iframe title="Google Map" frameborder="0" style="width:100%;min-height:400px" src="https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12"></iframe></div>
 <!-- /wp:coblocks/map -->"
 `;
 
 exports[`coblocks/map should render with className attribute 1`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\",\\"className\\":\\"my-custom-class\\"} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map my-custom-class\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12\\"></iframe></div>
+"<!-- wp:coblocks/map {"address":"New York","className":"my-custom-class"} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map my-custom-class"><iframe title="Google Map" frameborder="0" style="width:100%;min-height:400px" src="https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12"></iframe></div>
 <!-- /wp:coblocks/map -->"
 `;
 
 exports[`coblocks/map should render with controls attribute 1`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\",\\"controls\\":false} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12\\"></iframe></div>
+"<!-- wp:coblocks/map {"address":"New York","controls":false} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map"><iframe title="Google Map" frameborder="0" style="width:100%;min-height:400px" src="https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12"></iframe></div>
 <!-- /wp:coblocks/map -->"
 `;
 
 exports[`coblocks/map should render with hasApiKey attribute 1`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\",\\"hasApiKey\\":true} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map\\"></div>
+"<!-- wp:coblocks/map {"address":"New York","hasApiKey":true} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map"></div>
 <!-- /wp:coblocks/map -->"
 `;
 
 exports[`coblocks/map should render with height attribute 1`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\"} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12\\"></iframe></div>
+"<!-- wp:coblocks/map {"address":"New York"} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map"><iframe title="Google Map" frameborder="0" style="width:100%;min-height:400px" src="https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12"></iframe></div>
 <!-- /wp:coblocks/map -->"
 `;
 
 exports[`coblocks/map should render with iconSize attribute 1`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\",\\"iconSize\\":40} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q40/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12\\"></iframe></div>
+"<!-- wp:coblocks/map {"address":"New York","iconSize":40} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q12/q||/qiconSize/q:/q40/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map"><iframe title="Google Map" frameborder="0" style="width:100%;min-height:400px" src="https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=12"></iframe></div>
 <!-- /wp:coblocks/map -->"
 `;
 
 exports[`coblocks/map should render with zoom attribute 1`] = `
-"<!-- wp:coblocks/map {\\"address\\":\\"New York\\",\\"zoom\\":15} -->
-<div style=\\"min-height:400px\\" data-map-attr=\\"/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q15/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q\\" class=\\"wp-block-coblocks-map\\"><iframe title=\\"Google Map\\" frameborder=\\"0\\" style=\\"width:100%;min-height:400px\\" src=\\"https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=15\\"></iframe></div>
+"<!-- wp:coblocks/map {"address":"New York","zoom":15} -->
+<div style="min-height:400px" data-map-attr="/qaddress/q:/qNew York/q||/qlat/q:/qundefined/q||/qlng/q:/qundefined/q||/qskin/q:/qstandard/q||/qzoom/q:/q15/q||/qiconSize/q:/q36/q||/qmapTypeControl/q:/qtrue/q||/qzoomControl/q:/qtrue/q||/qstreetViewControl/q:/qtrue/q||/qfullscreenControl/q:/qtrue/q" class="wp-block-coblocks-map"><iframe title="Google Map" frameborder="0" style="width:100%;min-height:400px" src="https://www.google.com/maps?q=New%20York&amp;output=embed&amp;hl=&amp;z=15"></iframe></div>
 <!-- /wp:coblocks/map -->"
 `;

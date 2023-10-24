@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 import { replaceActiveStyle } from '@wordpress/block-editor/build/components/block-styles/utils';
 

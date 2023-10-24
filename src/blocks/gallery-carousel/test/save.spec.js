@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { JSDOM } from 'jsdom';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**

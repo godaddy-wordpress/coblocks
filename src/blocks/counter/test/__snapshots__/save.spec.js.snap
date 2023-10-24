@@ -1,37 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`coblocks/counter should have attribute 'counterDescription' defined. 1`] = `
-"<!-- wp:coblocks/counter {\\"counterDescription\\":\\"Always always tested 1000 times\\",\\"counterText\\":\\"10000 hours 20000 days\\"} -->
-<div class=\\"wp-block-coblocks-counter\\" data-counter-speed=\\"1\\">10000 hours 20000 days</div><div class=\\"wp-block-coblocks-counter\\" data-counter-speed=\\"1\\">Always always tested 1000 times</div>
+"<!-- wp:coblocks/counter {"counterDescription":"Always always tested 1000 times","counterText":"10000 hours 20000 days"} -->
+<div class="wp-block-coblocks-counter" data-counter-speed="1">10000 hours 20000 days</div><div class="wp-block-coblocks-counter" data-counter-speed="1">Always always tested 1000 times</div>
 <!-- /wp:coblocks/counter -->"
 `;
 
 exports[`coblocks/counter should have attribute 'counterText' defined. 1`] = `
-"<!-- wp:coblocks/counter {\\"counterDescription\\":\\"Always always tested 1000 times\\",\\"counterText\\":\\"10000 hours 20000 days\\"} -->
-<div class=\\"wp-block-coblocks-counter\\" data-counter-speed=\\"1\\">10000 hours 20000 days</div><div class=\\"wp-block-coblocks-counter\\" data-counter-speed=\\"1\\">Always always tested 1000 times</div>
+"<!-- wp:coblocks/counter {"counterDescription":"Always always tested 1000 times","counterText":"10000 hours 20000 days"} -->
+<div class="wp-block-coblocks-counter" data-counter-speed="1">10000 hours 20000 days</div><div class="wp-block-coblocks-counter" data-counter-speed="1">Always always tested 1000 times</div>
 <!-- /wp:coblocks/counter -->"
 `;
 
 exports[`coblocks/counter should have className 'has-text-align-center' with align set to 'center'. 1`] = `
-"<!-- wp:coblocks/counter {\\"align\\":\\"center\\",\\"counterDescription\\":\\"Always always tested 1000 times\\",\\"counterText\\":\\"10000 hours 20000 days\\"} -->
-<div class=\\"wp-block-coblocks-counter has-text-align-center\\" data-counter-speed=\\"1\\">10000 hours 20000 days</div><div class=\\"wp-block-coblocks-counter has-text-align-center\\" data-counter-speed=\\"1\\">Always always tested 1000 times</div>
+"<!-- wp:coblocks/counter {"align":"center","counterDescription":"Always always tested 1000 times","counterText":"10000 hours 20000 days"} -->
+<div class="wp-block-coblocks-counter has-text-align-center" data-counter-speed="1">10000 hours 20000 days</div><div class="wp-block-coblocks-counter has-text-align-center" data-counter-speed="1">Always always tested 1000 times</div>
 <!-- /wp:coblocks/counter -->"
 `;
 
 exports[`coblocks/counter should have className 'has-text-align-left' with align set to 'left'. 1`] = `
-"<!-- wp:coblocks/counter {\\"align\\":\\"left\\",\\"counterDescription\\":\\"Always always tested 1000 times\\",\\"counterText\\":\\"10000 hours 20000 days\\"} -->
-<div class=\\"wp-block-coblocks-counter has-text-align-left\\" data-counter-speed=\\"1\\">10000 hours 20000 days</div><div class=\\"wp-block-coblocks-counter has-text-align-left\\" data-counter-speed=\\"1\\">Always always tested 1000 times</div>
+"<!-- wp:coblocks/counter {"align":"left","counterDescription":"Always always tested 1000 times","counterText":"10000 hours 20000 days"} -->
+<div class="wp-block-coblocks-counter has-text-align-left" data-counter-speed="1">10000 hours 20000 days</div><div class="wp-block-coblocks-counter has-text-align-left" data-counter-speed="1">Always always tested 1000 times</div>
 <!-- /wp:coblocks/counter -->"
 `;
 
 exports[`coblocks/counter should have className 'has-text-align-right' with align set to 'right'. 1`] = `
-"<!-- wp:coblocks/counter {\\"align\\":\\"right\\",\\"counterDescription\\":\\"Always always tested 1000 times\\",\\"counterText\\":\\"10000 hours 20000 days\\"} -->
-<div class=\\"wp-block-coblocks-counter has-text-align-right\\" data-counter-speed=\\"1\\">10000 hours 20000 days</div><div class=\\"wp-block-coblocks-counter has-text-align-right\\" data-counter-speed=\\"1\\">Always always tested 1000 times</div>
+"<!-- wp:coblocks/counter {"align":"right","counterDescription":"Always always tested 1000 times","counterText":"10000 hours 20000 days"} -->
+<div class="wp-block-coblocks-counter has-text-align-right" data-counter-speed="1">10000 hours 20000 days</div><div class="wp-block-coblocks-counter has-text-align-right" data-counter-speed="1">Always always tested 1000 times</div>
 <!-- /wp:coblocks/counter -->"
 `;
 
 exports[`coblocks/counter should have data attribute '[data-counter-speed]' with counterSpeed value. 1`] = `
-"<!-- wp:coblocks/counter {\\"counterDescription\\":\\"Always always tested 1000 times\\",\\"counterSpeed\\":5,\\"counterText\\":\\"10000 hours 20000 days\\"} -->
-<div class=\\"wp-block-coblocks-counter\\" data-counter-speed=\\"5\\">10000 hours 20000 days</div><div class=\\"wp-block-coblocks-counter\\" data-counter-speed=\\"5\\">Always always tested 1000 times</div>
+"<!-- wp:coblocks/counter {"counterDescription":"Always always tested 1000 times","counterSpeed":5,"counterText":"10000 hours 20000 days"} -->
+<div class="wp-block-coblocks-counter" data-counter-speed="5">10000 hours 20000 days</div><div class="wp-block-coblocks-counter" data-counter-speed="5">Always always tested 1000 times</div>
 <!-- /wp:coblocks/counter -->"
 `;
