@@ -84,7 +84,6 @@ const enhance = compose(
 		return {
 			getBlocks: select( 'core/block-editor' ).getBlocks,
 			select,
-			selected: select( 'core/block-editor' ).getSelectedBlock(),
 		};
 	} ),
 );
