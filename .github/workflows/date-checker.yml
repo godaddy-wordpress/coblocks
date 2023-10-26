@@ -21,12 +21,12 @@ jobs:
       - name: Check if workflow should run
         id: date_check
         env:
-          # Get expiration date
-          EXPIRY_DATE: ${{github.event.inputs.cutoff_date}}
+          # Get release cut off date
+          CUTOFF_DATE: ${{github.event.inputs.cutoff_date}}
         run: |
-          expiry_date_unix=$(date -d "$EXPIRY_DATE" +%s)
+          cutoff_date_unix=$(date -d "$CUTOFF_DATE" +%s)
           current_date=$(date +%s)
-          if [[ $current_date -lt $expiry_date_unix ]]; then
+          if [[ $current_date -lt $CUTOFF_DATE_unix ]]; then
             echo "is_expired=false" >> $GITHUB_OUTPUT
           else
             echo "is_expired=true" >> $GITHUB_OUTPUT
