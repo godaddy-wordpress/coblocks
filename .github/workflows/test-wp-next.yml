@@ -32,6 +32,7 @@ jobs:
     with:
       wpVersion: ${{needs.set_constant.outputs.wp_next}}
       installPath: "tests-wordpress-6.4-RC2"
+      theme: "https://downloads.wordpress.org/theme/go.zip"
     concurrency:
       group: chrome-defaults
       cancel-in-progress: true
