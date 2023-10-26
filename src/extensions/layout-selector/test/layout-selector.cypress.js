@@ -13,11 +13,17 @@ describe( 'Extension: Layout Selector', () => {
 			helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 			helpers.disableGutenbergFeatures();
 
+			// Go Should always load '#go-block-filters-js' script.
+			if ( ! Cypress.$( '#go-block-filters-js' ).length ) {
+				cy.then( () => cy.state( 'test' ).skip() ); // Only run tests on Go theme.
+			}
+
 			// Reset settings.
-			helpers.getWPDataObject().then( ( data ) => {
-				data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
-					[ LAYOUT_SELECTOR_FEATURE_ENABLED_KEY ]: true,
+			helpers.getWPDataObject().then( async ( data ) => {
+				const setLayoutSelector = ( setting ) => data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
+					[ LAYOUT_SELECTOR_FEATURE_ENABLED_KEY ]: setting,
 				} );
+				setLayoutSelector( false ); // Hide layout selector first to refresh settings.
 
 				data.dispatch( 'coblocks/template-selector' ).updateCategories(
 					[
@@ -40,15 +46,15 @@ describe( 'Extension: Layout Selector', () => {
 						},
 					]
 				);
+
+				setLayoutSelector( true ); // Enable layout selector
 			} );
 
 			// The new page post_type admin page is already loaded before tests run.
 			cy.get( '.coblocks-layout-selector-modal' ).should( 'exist' );
 		} );
 
-		// Ignore for the moment, as it conflicts with the layout choices in WordPress
-		// eslint-disable-next-line jest/no-disabled-tests
-		it.skip( 'loads layouts of each category', () => {
+		it( 'loads layouts of each category', () => {
 			// Click "Test One" category.
 			cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
 			cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
@@ -58,9 +64,7 @@ describe( 'Extension: Layout Selector', () => {
 			cy.get( '.coblocks-layout-selector__layouts .coblocks-layout-selector__layout' ).should( 'not.have.length', 0 );
 		} );
 
-		// Ignore for the moment, as it conflicts with the layout choices in WordPress
-		// eslint-disable-next-line jest/no-disabled-tests
-		it.skip( 'inserts layout into page', () => {
+		it( 'inserts layout into page', () => {
 			cy.get( '.coblocks-layout-selector__sidebar__item:nth-child(1)' ).find( 'a' ).click();
 
 			// Ensure layout is loaded
