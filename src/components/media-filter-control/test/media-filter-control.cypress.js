@@ -2,7 +2,6 @@
  * Include our constants
  */
 import * as helpers from '../../../../.dev/tests/cypress/helpers';
-import { getWPDataObject } from '../../../../.dev/tests/cypress/helpers';
 
 const filters = [
 	'Original',
@@ -19,6 +18,8 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 	 * and alter image using the media filter control component
 	 */
 	it( 'Test core/image block extends with Media Filter Control component.', function() {
+		helpers.disableGutenbergFeatures(); // Ensure top toolbar is set for all tests.
+
 		helpers.addBlockToPost( 'core/image', true );
 
 		helpers.upload.imageToBlock( 'core/image' );
@@ -93,9 +94,7 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 	 */
 	it( 'Test core/gallery block extends with Media Filter Control component.', function() {
 		// Remove the fixed toolbar that sometime causes a detached element of the DOM
-		getWPDataObject().then( ( data ) => {
-			data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
-		} );
+		helpers.disableGutenbergFeatures(); // Ensure top toolbar is set for all tests.
 
 		helpers.addBlockToPost( 'core/gallery', true );
 
@@ -118,8 +117,8 @@ describe( 'Test CoBlocks Media Filter Control component', function() {
 
 		// Check the classes are applied correctly to the block
 		for ( let i = 0; i < filters.length; i++ ) {
-			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' )
-				.click();
+			cy.get( '.components-popover__content [aria-label="Apply filter"] .components-menu-group' ).should( 'exist' );
+			cy.get( '.components-dropdown-menu__menu button:nth-child(' + childIteration + ')' ).click();
 
 			// 'Original' filter does not add any class to the element
 			if ( 1 === childIteration ) {

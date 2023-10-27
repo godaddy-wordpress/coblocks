@@ -4,30 +4,30 @@ name: Date Checker Workflow
 on:
   workflow_call:
     inputs:
-      cutoff_date:
+      scheduled_release_date:
         required: true
         type: string
     outputs:
-      run_workflow:
+      should_run_workflow:
         description: "Boolean indicating if the workflow should run"
-        value: ${{jobs.check_date.outputs.run_workflow}}
+        value: ${{jobs.check_date.outputs.should_run_workflow}}
 
 jobs:
   check_date:
     runs-on: ubuntu-latest
     outputs:
-      run_workflow: ${{ steps.date_check.outputs.run_workflow }}
+      should_run_workflow: ${{ steps.date_check.outputs.should_run_workflow }}
     steps:
       - name: Check if workflow should run
         id: date_check
         env:
           # Get release cut off date
-          CUTOFF_DATE: ${{github.event.inputs.cutoff_date}}
+          SCHEDULED_RELEASE_DATE: ${{github.event.inputs.scheduled_release_date}}
         run: |
-          cutoff_date_unix=$(date -d "$CUTOFF_DATE" +%s)
+          SCHEDULED_RELEASE_DATE_UNIX=$(date -d "$SCHEDULED_RELEASE_DATE" +%s)
           current_date=$(date +%s)
-          if [[ $current_date -lt $CUTOFF_DATE_unix ]]; then
-            echo "is_expired=false" >> $GITHUB_OUTPUT
+          if [[ $current_date -lt $SCHEDULED_RELEASE_DATE_UNIX ]]; then
+            echo "should_run_workflow=false" >> $GITHUB_OUTPUT
           else
-            echo "is_expired=true" >> $GITHUB_OUTPUT
+            echo "should_run_workflow=true" >> $GITHUB_OUTPUT
           fi

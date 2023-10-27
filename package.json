@@ -186,7 +186,7 @@
 			"stylelint src/**/*.scss --fix"
 		],
 		"*.js": [
-			"wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --silent --findRelatedTests",
+			"wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --silent --findRelatedTests --passWithNoTests",
 			"yarn lint:js"
 		],
 		"*.php": [
