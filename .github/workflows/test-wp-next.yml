@@ -18,7 +18,7 @@ jobs:
   set_constant:
     name: Set WP Next Version Constant
     needs: check_if_released
-    if: needs.check_if_released.outputs.should_run_workflow == true
+    if: needs.check_if_released.outputs.should_run_workflow == 'true'
     runs-on: ubuntu-latest
     outputs:
       # Should be current latest WP Next release on `wordpress.org`. eg: `https://wordpress.org/wordpress-6.4-RC2.zip`

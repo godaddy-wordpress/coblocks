@@ -9,7 +9,7 @@ on:
         type: string
     outputs:
       should_run_workflow:
-        description: "Boolean indicating if the workflow should run"
+        description: "String as `true` or `false` indicating if the workflow should run"
         value: ${{jobs.check_date.outputs.should_run_workflow}}
 
 jobs:
