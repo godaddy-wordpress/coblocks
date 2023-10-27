@@ -411,7 +411,7 @@ export const upload = {
 const customColorPalatteSelector = ( () => [
 	'.components-color-palette__custom-color-button', // WP 6.3+
 	'.components-color-palette__custom-color', // WP 6.2.
-] )();
+].join() )();
 
 /**
  * Set a Color Setting value to a custom hex color
