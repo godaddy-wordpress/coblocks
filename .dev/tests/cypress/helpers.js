@@ -275,19 +275,21 @@ export function selectBlock( name ) {
 	 * For that reason is difficult to assert against those requests from core code.
 	 * We introduce an arbitrary wait to avoid a race condition by interacting too quickly.
 	 */
-	cy.wait( 1000 );
+	cy.wait( 600 );
 
-	// `data-type` includes lower case name and `data-title` includes upper case name.
-	// Allows for case-insensitive search.
-	cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
-		.invoke( 'attr', 'data-block' )
-		.then( ( clientId ) => {
-			cy.window().then( ( win ) => {
-				// Open the block sidebar.
-				win.wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
-				win.wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
-			} );
-		} );
+	let id = ''; // The block client ID.
+	cy.window().then( ( win ) => {
+		id = win.wp.data.select( 'core/block-editor' ).getBlocks().filter( ( i ) => i?.name === name )[ 0 ]?.clientId;
+	} );
+
+	cy.window().then( ( win ) => {
+		win.wp.data.dispatch( 'core/block-editor' ).selectBlock( id );
+	} );
+
+	cy.window().then( ( win ) => {
+		win.wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
+	} );
+	cy.wait( 600 );
 }
 
 /**

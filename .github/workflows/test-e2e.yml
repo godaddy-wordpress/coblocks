@@ -8,12 +8,12 @@ on:
 jobs:
   chrome_e2e_gammut_tests:
     name: >
-      ${{
+      E2E - ${{
         format(
-          'Chrome with WP{0} PHP{1} and {2} theme',
+          'WP{0} + PHP{1} + {2} theme',
           matrix.wp,
           matrix.php,
-          matrix.theme == '' && 'twentytwentythree' || 'go'
+          matrix.theme == '' && 'TwentyTwentyThree' || 'Go'
         )
       }}
     uses: ./.github/workflows/test-e2e-cypress.yml
@@ -26,7 +26,7 @@ jobs:
           # - "6.4" Should enable this when 6.4 is released.
         theme:
           - "https://downloads.wordpress.org/theme/go.zip"
-          - "" # Default theme is twentytwentythree
+          - "" # Default theme is TwentyTwentyThree
         php: # Test against minimum and latest PHP versions.
           - "7.4"
           - "8.2"
