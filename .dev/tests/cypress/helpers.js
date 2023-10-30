@@ -279,7 +279,15 @@ export function selectBlock( name ) {
 
 	let id = ''; // The block client ID.
 	cy.window().then( ( win ) => {
+		// Prefer selector from data-store.
 		id = win.wp.data.select( 'core/block-editor' ).getBlocks().filter( ( i ) => i?.name === name )[ 0 ]?.clientId;
+
+		// Fallback to selector from DOM.
+		if ( ! id ) {
+			cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
+				.invoke( 'attr', 'data-block' )
+				.then( ( clientId ) => id = clientId );
+		}
 	} );
 
 	cy.window().then( ( win ) => {
