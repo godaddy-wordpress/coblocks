@@ -25,7 +25,6 @@ const save = ( { attributes } ) => {
 		currency,
 		customBackgroundColor,
 		customTextColor,
-		features,
 		backgroundColor,
 		textColor,
 		title,
@@ -74,14 +73,6 @@ const save = ( { attributes } ) => {
 						value={ amount }
 					/>
 				</div>
-			) }
-			{ ! RichText.isEmpty( features ) && (
-				<RichText.Content
-					tagName="ul"
-					multiline="li"
-					className="wp-block-coblocks-pricing-table-item__features"
-					value={ features }
-				/>
 			) }
 			<InnerBlocks.Content />
 		</div>

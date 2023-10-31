@@ -84,7 +84,7 @@ describe( 'font-preview', () => {
 		it( 'should update the selected font', () => {
 			expect( select( STORE_KEY ).getSelectedFonts() ).toEqual( [ [ 'Poppins', [ '600' ] ], [ 'Quicksand', [ '400', '600' ] ] ] );
 
-			fireEvent.click( screen.getByRole('button') );
+			fireEvent.click( screen.getByRole( 'button' ) );
 
 			expect( select( STORE_KEY ).getSelectedFonts() ).toEqual( defaultProps.font );
 		} );

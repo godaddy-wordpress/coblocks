@@ -1,55 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`coblocks/buttons should render up to 4 buttons 1`] = `
-"<!-- wp:coblocks/buttons {\\"items\\":1} -->
-<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left\\"></div></div>
+"<!-- wp:coblocks/buttons {"items":1} -->
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-left"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 
 exports[`coblocks/buttons should render up to 4 buttons 2`] = `
-"<!-- wp:coblocks/buttons {\\"items\\":2} -->
-<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left\\"></div></div>
+"<!-- wp:coblocks/buttons {"items":2} -->
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-left"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 
 exports[`coblocks/buttons should render up to 4 buttons 3`] = `
-"<!-- wp:coblocks/buttons {\\"items\\":3} -->
-<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left\\"></div></div>
+"<!-- wp:coblocks/buttons {"items":3} -->
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-left"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 
 exports[`coblocks/buttons should render up to 4 buttons 4`] = `
-"<!-- wp:coblocks/buttons {\\"items\\":4} -->
-<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left\\"></div></div>
+"<!-- wp:coblocks/buttons {"items":4} -->
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-left"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 
 exports[`coblocks/buttons should render with contentAlign set 1`] = `
 "<!-- wp:coblocks/buttons -->
-<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left\\"></div></div>
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-left"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 
 exports[`coblocks/buttons should render with contentAlign set 2`] = `
-"<!-- wp:coblocks/buttons {\\"contentAlign\\":\\"center\\"} -->
-<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-center\\"></div></div>
+"<!-- wp:coblocks/buttons {"contentAlign":"center"} -->
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-center"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 
 exports[`coblocks/buttons should render with contentAlign set 3`] = `
-"<!-- wp:coblocks/buttons {\\"contentAlign\\":\\"right\\"} -->
-<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-right\\"></div></div>
+"<!-- wp:coblocks/buttons {"contentAlign":"right"} -->
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-right"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 
 exports[`coblocks/buttons should render with custom class name 1`] = `
-"<!-- wp:coblocks/buttons {\\"className\\":\\"my-custom-class\\"} -->
-<div class=\\"wp-block-coblocks-buttons my-custom-class\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left\\"></div></div>
+"<!-- wp:coblocks/buttons {"className":"my-custom-class"} -->
+<div class="wp-block-coblocks-buttons my-custom-class"><div class="wp-block-coblocks-buttons__inner flex-align-left"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;
 
 exports[`coblocks/buttons should render with isStackedOnMobile enabled 1`] = `
-"<!-- wp:coblocks/buttons {\\"isStackedOnMobile\\":true} -->
-<div class=\\"wp-block-coblocks-buttons\\"><div class=\\"wp-block-coblocks-buttons__inner flex-align-left is-stacked-on-mobile\\"></div></div>
+"<!-- wp:coblocks/buttons {"isStackedOnMobile":true} -->
+<div class="wp-block-coblocks-buttons"><div class="wp-block-coblocks-buttons__inner flex-align-left is-stacked-on-mobile"></div></div>
 <!-- /wp:coblocks/buttons -->"
 `;

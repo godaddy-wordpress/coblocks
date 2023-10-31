@@ -2,96 +2,96 @@
 
 exports[`coblocks/column should render 1`] = `
 "<!-- wp:coblocks/column -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-no-padding has-no-margin\\"></div></div>
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render content align classes 1`] = `
-"<!-- wp:coblocks/column {\\"contentAlign\\":\\"left\\"} -->
-<div class=\\"wp-block-coblocks-column has-text-align-left\\"><div class=\\"wp-block-coblocks-column__inner has-no-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"contentAlign":"left"} -->
+<div class="wp-block-coblocks-column has-text-align-left"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render content align classes 2`] = `
-"<!-- wp:coblocks/column {\\"contentAlign\\":\\"center\\"} -->
-<div class=\\"wp-block-coblocks-column has-text-align-center\\"><div class=\\"wp-block-coblocks-column__inner has-no-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"contentAlign":"center"} -->
+<div class="wp-block-coblocks-column has-text-align-center"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render content align classes 3`] = `
-"<!-- wp:coblocks/column {\\"contentAlign\\":\\"right\\"} -->
-<div class=\\"wp-block-coblocks-column has-text-align-right\\"><div class=\\"wp-block-coblocks-column__inner has-no-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"contentAlign":"right"} -->
+<div class="wp-block-coblocks-column has-text-align-right"><div class="wp-block-coblocks-column__inner has-no-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render custom text color 1`] = `
-"<!-- wp:coblocks/column {\\"customTextColor\\":\\"#b4d455\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-text-color has-no-padding has-no-margin\\" style=\\"color:#b4d455\\"></div></div>
+"<!-- wp:coblocks/column {"customTextColor":"#b4d455"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-text-color has-no-padding has-no-margin" style="color:#b4d455"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render margin classes 1`] = `
-"<!-- wp:coblocks/column {\\"marginSize\\":\\"none\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-margin has-no-padding has-none-margin\\"></div></div>
+"<!-- wp:coblocks/column {"marginSize":"none"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-margin has-no-padding has-none-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render margin classes 2`] = `
-"<!-- wp:coblocks/column {\\"marginSize\\":\\"small\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-margin has-no-padding has-small-margin\\"></div></div>
+"<!-- wp:coblocks/column {"marginSize":"small"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-margin has-no-padding has-small-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render margin classes 3`] = `
-"<!-- wp:coblocks/column {\\"marginSize\\":\\"medium\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-margin has-no-padding has-medium-margin\\"></div></div>
+"<!-- wp:coblocks/column {"marginSize":"medium"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-margin has-no-padding has-medium-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render margin classes 4`] = `
-"<!-- wp:coblocks/column {\\"marginSize\\":\\"large\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-margin has-no-padding has-large-margin\\"></div></div>
+"<!-- wp:coblocks/column {"marginSize":"large"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-margin has-no-padding has-large-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render margin classes 5`] = `
-"<!-- wp:coblocks/column {\\"marginSize\\":\\"huge\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-margin has-no-padding has-huge-margin\\"></div></div>
+"<!-- wp:coblocks/column {"marginSize":"huge"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-margin has-no-padding has-huge-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render padding classes 1`] = `
-"<!-- wp:coblocks/column {\\"paddingSize\\":\\"none\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-padding has-none-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"paddingSize":"none"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-padding has-none-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render padding classes 2`] = `
-"<!-- wp:coblocks/column {\\"paddingSize\\":\\"small\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-padding has-small-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"paddingSize":"small"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-padding has-small-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render padding classes 3`] = `
-"<!-- wp:coblocks/column {\\"paddingSize\\":\\"medium\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-padding has-medium-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"paddingSize":"medium"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-padding has-medium-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render padding classes 4`] = `
-"<!-- wp:coblocks/column {\\"paddingSize\\":\\"large\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-padding has-large-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"paddingSize":"large"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-padding has-large-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render padding classes 5`] = `
-"<!-- wp:coblocks/column {\\"paddingSize\\":\\"huge\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-padding has-huge-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"paddingSize":"huge"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-padding has-huge-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;
 
 exports[`coblocks/column should render text color 1`] = `
-"<!-- wp:coblocks/column {\\"textColor\\":\\"#333333\\"} -->
-<div class=\\"wp-block-coblocks-column\\"><div class=\\"wp-block-coblocks-column__inner has-text-color has-333333-color has-no-padding has-no-margin\\"></div></div>
+"<!-- wp:coblocks/column {"textColor":"#333333"} -->
+<div class="wp-block-coblocks-column"><div class="wp-block-coblocks-column__inner has-text-color has-333333-color has-no-padding has-no-margin"></div></div>
 <!-- /wp:coblocks/column -->"
 `;

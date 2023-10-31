@@ -69,7 +69,7 @@ const Edit = ( props ) => {
 							[ textColor.class ]: textColor.class,
 						}
 					) }
-					multiline="false"
+					multiline={ false }
 					onChange={ ( nextContent ) => setAttributes( { content: nextContent } ) }
 					onRemove={ ( forward ) => {
 						const hasEmptyTweet = content.length === 0 || content.length === 1;
@@ -95,7 +95,6 @@ const Edit = ( props ) => {
 							[ buttonColor.class ]: buttonColor.class,
 						}
 					) }
-					multiline="false"
 					onChange={ ( nextButtonText ) => setAttributes( { buttonText: nextButtonText } ) }
 					placeholder={ __( 'Add button…', 'coblocks' ) }
 					style={ {

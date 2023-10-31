@@ -2,6 +2,6 @@
 
 exports[`coblocks/accordion should render with content 1`] = `
 "<!-- wp:coblocks/accordion -->
-<div class=\\"wp-block-coblocks-accordion\\"></div>
+<div class="wp-block-coblocks-accordion"></div>
 <!-- /wp:coblocks/accordion -->"
 `;

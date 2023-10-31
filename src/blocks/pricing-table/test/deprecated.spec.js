@@ -22,6 +22,7 @@ const variations = {
 	noBottomSpacing: [ undefined, true, false ],
 	noTopSpacing: [ undefined, true, false ],
 	gutter: [ undefined, 'no', 'small', 'medium', 'large', 'huge' ],
+	features: [ undefined, 'cool feature' ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );

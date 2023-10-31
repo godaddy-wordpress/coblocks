@@ -1,7 +1,8 @@
 /**
  * External dependencies
  */
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
+import { registerCoreBlocks } from '@wordpress/block-library';
 import { createBlock, registerBlockType, serialize } from '@wordpress/blocks';
 
 /**
@@ -17,6 +18,7 @@ describe( 'coblocks/pricing-table-item', () => {
 	beforeAll( () => {
 		// Register the block.
 		registerBlockType( name, { category: 'common', ...settings } );
+		registerCoreBlocks();
 	} );
 
 	beforeEach( () => {
@@ -28,6 +30,8 @@ describe( 'coblocks/pricing-table-item', () => {
 	} );
 
 	it( 'should render with content', () => {
+		const listItemBlock = createBlock( 'core/list-item', { content: '- Feature 1' }, [] );
+		block.innerBlocks = [ createBlock( 'core/list', {}, [ listItemBlock ] ) ];
 		block.attributes.title = 'Plan Title';
 		block.attributes.features = '- Feature 1';
 		block.attributes.currency = '$';

@@ -6,44 +6,17 @@ on:
       - master
 
 jobs:
-  php_unit_74:
-    name: PHP 7.4 Current Major
+  # PHP Unit testing
+  # Unit testing should be run across WP current, previous, and major before previous.
+  # Unit tests should be run across all supported versions of PHP.
+  php_unit_versions_matrix:
+    strategy:
+      matrix:
+        php: ['7.4','8.0','8.1','8.2']
+        wp: ['6.3', '6.2', '6.1']
+    name: PHP Unit ${{ matrix.php }} | WP Version ${{ matrix.wp }}
     uses: ./.github/workflows/test-php-unit.yml
     with:
-      phpVersion: '7.4'
-      wpVersion: 'WordPress/WordPress#6.3'
+      phpVersion: ${{ matrix.php }}
+      wpVersion: 'WordPress/WordPress#${{ matrix.wp }}'
 
-  php_unit_80:
-    name: PHP 8.0 Current Major
-    uses: ./.github/workflows/test-php-unit.yml
-    with:
-      phpVersion: '8.0'
-      wpVersion: 'WordPress/WordPress#6.3'
-
-  php_unit_81:
-    name: PHP 8.1 Current Major
-    uses: ./.github/workflows/test-php-unit.yml
-    with:
-      phpVersion: '8.1'
-      wpVersion: 'WordPress/WordPress#6.3'
-
-  php_unit_82:
-    name: PHP 8.2 Current Major
-    uses: ./.github/workflows/test-php-unit.yml
-    with:
-      phpVersion: '8.2'
-      wpVersion: 'WordPress/WordPress#6.3'
-
-  php_unit_82_wp_last_major:
-    name: PHP 8.2 Last Major
-    uses: ./.github/workflows/test-php-unit.yml
-    with:
-      phpVersion: '8.2'
-      wpVersion: 'WordPress/WordPress#6.2'
-
-  php_unit_82_wp_major_before_last_major:
-    name: PHP 8.2 Major Before Last Major
-    uses: ./.github/workflows/test-php-unit.yml
-    with:
-      phpVersion: '8.2'
-      wpVersion: 'WordPress/WordPress#6.1'

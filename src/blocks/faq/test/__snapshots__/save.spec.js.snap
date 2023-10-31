@@ -2,6 +2,6 @@
 
 exports[`coblocks/faq should render with content 1`] = `
 "<!-- wp:coblocks/faq -->
-<div class=\\"wp-block-coblocks-faq\\" itemscope itemtype=\\"https://schema.org/FAQPage\\"></div>
+<div class="wp-block-coblocks-faq" itemscope itemtype="https://schema.org/FAQPage"></div>
 <!-- /wp:coblocks/faq -->"
 `;

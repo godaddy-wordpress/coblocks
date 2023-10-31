@@ -17,17 +17,6 @@ import { compose } from '@wordpress/compose';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
- * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
- * The contents of the array should never change.
- * The array should contain the name of each block that is allowed.
- * In standout block, the only block we allow is 'core/list'.
- *
- * @constant
- * @type {string[]}
- */
-const TEMPLATE = [ [ 'core/button', { placeholder: __( 'Buy Now', 'coblocks' ) } ] ];
-
-/**
  * Block edit function
  *
  * @param {Object} props
@@ -45,12 +34,26 @@ const Edit = ( props ) => {
 	const {
 		amount,
 		currency,
-		features,
 		title,
 		placeholder,
+		features,
 	} = attributes;
 
 	const allowedFormats = [ 'bold', 'italic', 'strikethrough' ];
+
+	/**
+	 * This block now allows several innerBlock types and has refactored to
+	 * use core/list block instead of a custom RichText multiline solution.
+	 *
+	 * @constant
+	 * @type {string[]}
+	 */
+	const TEMPLATE = [
+		[ 'core/list', { className: 'wp-block-coblocks-pricing-table-item__features' },
+			[ [ 'core/list-item', { content: features, placeholder: __( 'Add features', 'coblocks' ) }, [] ] ],
+		],
+		[ 'core/button', { placeholder: __( 'Buy Now', 'coblocks' ) } ],
+	];
 
 	return (
 		<>
@@ -99,14 +102,6 @@ const Edit = ( props ) => {
 						allowedFormats={ allowedFormats }
 					/>
 				</div>
-				<RichText
-					tagName="ul"
-					multiline="li"
-					className="wp-block-coblocks-pricing-table-item__features"
-					onChange={ ( nextFeatures ) => setAttributes( { features: nextFeatures } ) }
-					value={ features }
-					placeholder={ __( 'Add features', 'coblocks' ) }
-				/>
 				<InnerBlocks
 					template={ TEMPLATE }
 					templateLock={ false }

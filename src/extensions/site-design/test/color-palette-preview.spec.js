@@ -1,13 +1,10 @@
+/* eslint-disable no-unused-expressions */
 import { fireEvent, render } from '@testing-library/react';
 
 import {
 	registerStore,
 	select,
 } from '@wordpress/data';
-import {
-	ColorIndicator,
-	ColorPicker,
-} from '@wordpress/components';
 
 // Mock `core/block-editor` store.
 registerStore( 'core/block-editor', {
@@ -60,7 +57,7 @@ describe( 'color-palette-preview', () => {
 
 				const newPalette = wrapper.querySelectorAll( '.color-palette' );
 
-				fireEvent.click( newPalette[1] );
+				fireEvent.click( newPalette[ 1 ] );
 
 				expect( select( STORE_KEY ).getCurrentColors().primary ).toEqual( '#165153' );
 			} );
@@ -90,7 +87,7 @@ describe( 'color-palette-preview', () => {
 			} );
 
 			it( 'should dismiss custom palette on close button', () => {
-				const palette = wrapper.querySelectorAll( '.color-palette' )[1];
+				const palette = wrapper.querySelectorAll( '.color-palette' )[ 1 ];
 
 				fireEvent.click( palette );
 
@@ -102,7 +99,7 @@ describe( 'color-palette-preview', () => {
 
 				const liveSiteDismiss = wrapper.querySelector( '.color-palette-custom .components-site-design__custom__dismiss' );
 
-				fireEvent.click( liveSiteDismiss )
+				fireEvent.click( liveSiteDismiss );
 
 				expect( wrapper.querySelector( '.color-palette-custom' ) ).toBeInTheDocument;
 			} );

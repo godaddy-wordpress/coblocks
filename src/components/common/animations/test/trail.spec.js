@@ -20,7 +20,7 @@ const defaultProps = {
 const setup = () => {
 	const { container } = render( <Trail { ...defaultProps } /> );
 	return container;
-}
+};
 
 describe( 'animations-trail', () => {
 	afterEach( () => {

@@ -11,7 +11,6 @@ import { supportsCollections } from './block-helpers';
 /**
  * WordPress dependencies
  */
-import { isBlobURL } from '@wordpress/blob';
 import { registerBlockType, getBlockType } from '@wordpress/blocks';
 import TokenList from '@wordpress/token-list';
 
@@ -24,10 +23,10 @@ export function overlayToClass( ratio ) {
 
 /**
  * The `blockProps` will indicate in the editor what is the block root
- * by applying block classnames and DOM attributes. By default `blockProps`
+ * by applying block classnames and DOM attributes. By default, `blockProps`
  * will contain the block styles set through block supports.
  *
- * We can descend those styles into sub components and thereby
+ * We can descend those styles into subcomponents and thereby
  * eliminate superfluous style bleed.
  *
  * @param {Object} blockProps Object from `useBlockProps`
@@ -50,16 +49,6 @@ export const pickRelevantMediaFiles = ( image, images ) => {
 	imageProps.imgLink = imgKey >= 0 ? images[ imgKey ].imgLink : '';
 	return imageProps;
 };
-
-/**
- * Is the URL a temporary blob URL? A blob URL is one that is used temporarily
- * while the image is being uploaded and will not have an id yet allocated.
- *
- * @param {number=} id  The id of the image.
- * @param {string=} url The url of the image.
- * @return {boolean} Is the URL a Blob URL
- */
-export const isTemporaryImage = ( id, url ) => ! id && isBlobURL( url );
 
 // Define accepted media for gallery blocks.
 export const ALLOWED_GALLERY_MEDIA_TYPES = [ 'image' ];

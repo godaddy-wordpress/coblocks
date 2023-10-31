@@ -13,7 +13,7 @@ const variations = {
 	target: [ '', '_blank', '_self', '_parent' ],
 	rel: [ '', 'alternate', 'author', 'preload' ],
 	align: [ '', 'wide', 'full', 'left', 'center', 'right' ],
-	gutter: [ 0, 10, 100, ],
+	gutter: [ 0, 10, 100 ],
 	gutterCustom: [ 0, 10, 100 ],
 	gutterMobile: [ 0, 10, 100 ],
 	radius: [ undefined, 0, 20 ],
@@ -49,4 +49,4 @@ const variations = {
 	noTopMargin: [ undefined, true, false ],
 };
 
-helpers.testDeprecatedBlockVariations( name, {...metadata, ...settings}, variations );
+helpers.testDeprecatedBlockVariations( name, { ...metadata, ...settings }, variations );

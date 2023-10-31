@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`coblocks/pricing-table-item should render with content 1`] = `
-"<!-- wp:coblocks/pricing-table-item {\\"backgroundColor\\":\\"#333333\\",\\"textColor\\":\\"#123456\\"} -->
-<div class=\\"wp-block-coblocks-pricing-table-item has-background has-333333-background-color has-text-color has-123456-color\\"><span class=\\"wp-block-coblocks-pricing-table-item__title\\">Plan Title</span><div class=\\"wp-block-coblocks-pricing-table-item__price-wrapper\\"><span class=\\"wp-block-coblocks-pricing-table-item__currency\\">$</span><span class=\\"wp-block-coblocks-pricing-table-item__amount\\">49</span></div><ul class=\\"wp-block-coblocks-pricing-table-item__features\\">- Feature 1</ul></div>
+"<!-- wp:coblocks/pricing-table-item {"backgroundColor":"#333333","textColor":"#123456"} -->
+<div class="wp-block-coblocks-pricing-table-item has-background has-333333-background-color has-text-color has-123456-color"><span class="wp-block-coblocks-pricing-table-item__title">Plan Title</span><div class="wp-block-coblocks-pricing-table-item__price-wrapper"><span class="wp-block-coblocks-pricing-table-item__currency">$</span><span class="wp-block-coblocks-pricing-table-item__amount">49</span></div><!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>- Feature 1</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
 <!-- /wp:coblocks/pricing-table-item -->"
 `;
 
 exports[`coblocks/pricing-table-item should render with custom colors 1`] = `
-"<!-- wp:coblocks/pricing-table-item {\\"customBackgroundColor\\":\\"#333333\\",\\"customTextColor\\":\\"#123456\\"} -->
-<div class=\\"wp-block-coblocks-pricing-table-item has-background has-text-color\\" style=\\"background-color:#333333;color:#123456\\"><span class=\\"wp-block-coblocks-pricing-table-item__title\\">Plan Title</span></div>
+"<!-- wp:coblocks/pricing-table-item {"customBackgroundColor":"#333333","customTextColor":"#123456"} -->
+<div class="wp-block-coblocks-pricing-table-item has-background has-text-color" style="background-color:#333333;color:#123456"><span class="wp-block-coblocks-pricing-table-item__title">Plan Title</span></div>
 <!-- /wp:coblocks/pricing-table-item -->"
 `;

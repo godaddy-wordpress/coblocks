@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`coblocks/icon should render 1`] = `"<!-- wp:coblocks/icon {\\"icon\\":\\"coblocks\\"} /-->"`;
+exports[`coblocks/icon should render 1`] = `"<!-- wp:coblocks/icon {"icon":"coblocks"} /-->"`;
 
-exports[`coblocks/icon should render with an icon 1`] = `"<!-- wp:coblocks/icon {\\"icon\\":\\"coblocks\\",\\"href\\":\\"https://www.godaddy.com\\"} /-->"`;
+exports[`coblocks/icon should render with an icon 1`] = `"<!-- wp:coblocks/icon {"icon":"coblocks","href":"https://www.godaddy.com"} /-->"`;
 
-exports[`coblocks/icon should render with backgroundColor 1`] = `"<!-- wp:coblocks/icon {\\"backgroundColor\\":\\"primary\\"} /-->"`;
+exports[`coblocks/icon should render with backgroundColor 1`] = `"<!-- wp:coblocks/icon {"backgroundColor":"primary"} /-->"`;
 
-exports[`coblocks/icon should render with borderRadius and padding 1`] = `"<!-- wp:coblocks/icon {\\"borderRadius\\":\\"200\\",\\"padding\\":\\"30\\"} /-->"`;
+exports[`coblocks/icon should render with borderRadius and padding 1`] = `"<!-- wp:coblocks/icon {"borderRadius":"200","padding":"30"} /-->"`;
 
-exports[`coblocks/icon should render with className 1`] = `"<!-- wp:coblocks/icon {\\"className\\":\\"my-custom-class is-style-filled\\"} /-->"`;
+exports[`coblocks/icon should render with className 1`] = `"<!-- wp:coblocks/icon {"className":"my-custom-class is-style-filled"} /-->"`;
 
-exports[`coblocks/icon should render with customBackgroundColor 1`] = `"<!-- wp:coblocks/icon {\\"customBackgroundColor\\":\\"#da5d5d\\"} /-->"`;
+exports[`coblocks/icon should render with customBackgroundColor 1`] = `"<!-- wp:coblocks/icon {"customBackgroundColor":"#da5d5d"} /-->"`;
 
-exports[`coblocks/icon should render with customIconColor 1`] = `"<!-- wp:coblocks/icon {\\"customIconColor\\":\\"#da5d5d\\"} /-->"`;
+exports[`coblocks/icon should render with customIconColor 1`] = `"<!-- wp:coblocks/icon {"customIconColor":"#da5d5d"} /-->"`;
 
-exports[`coblocks/icon should render with height and width 1`] = `"<!-- wp:coblocks/icon {\\"height\\":\\"200\\",\\"width\\":\\"200\\"} /-->"`;
+exports[`coblocks/icon should render with height and width 1`] = `"<!-- wp:coblocks/icon {"height":"200","width":"200"} /-->"`;
 
-exports[`coblocks/icon should render with href, rel, and linkTarget 1`] = `"<!-- wp:coblocks/icon {\\"href\\":\\"https://wordpress.org\\",\\"rel\\":\\"rel\\",\\"linkTarget\\":\\"_blank\\"} /-->"`;
+exports[`coblocks/icon should render with href, rel, and linkTarget 1`] = `"<!-- wp:coblocks/icon {"href":"https://wordpress.org","rel":"rel","linkTarget":"_blank"} /-->"`;
 
-exports[`coblocks/icon should render with iconColor 1`] = `"<!-- wp:coblocks/icon {\\"iconColor\\":\\"primary\\"} /-->"`;
+exports[`coblocks/icon should render with iconColor 1`] = `"<!-- wp:coblocks/icon {"iconColor":"primary"} /-->"`;

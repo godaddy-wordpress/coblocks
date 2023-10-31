@@ -7,9 +7,12 @@ module.exports = {
 		browser: true,
 		'cypress/globals': true,
 		jest: true,
+		'jest/globals': true,
 	},
 	plugins: [
 		'cypress',
+		'react',
+		'jest',
 	],
 
 	// Specific Globals used in CoBlocks
@@ -30,6 +33,9 @@ module.exports = {
 		'sort-keys': [ 'off' ],
 		'react/jsx-sort-props': [ 'off' ],
 	},
+
+	noInlineConfig: false,
+
 	overrides: [
 		{
 			files: [ 'deprecated.js', 'save.js' ],

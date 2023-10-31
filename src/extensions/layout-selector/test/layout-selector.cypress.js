@@ -13,11 +13,17 @@ describe( 'Extension: Layout Selector', () => {
 			helpers.goTo( '/wp-admin/post-new.php?post_type=page' );
 			helpers.disableGutenbergFeatures();
 
+			// Go Should always load '#go-block-filters-js' script.
+			if ( ! Cypress.$( '#go-block-filters-js' ).length ) {
+				cy.then( () => cy.state( 'test' ).skip() ); // Only run tests on Go theme.
+			}
+
 			// Reset settings.
-			helpers.getWPDataObject().then( ( data ) => {
-				data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
-					[ LAYOUT_SELECTOR_FEATURE_ENABLED_KEY ]: true,
+			helpers.getWPDataObject().then( async ( data ) => {
+				const setLayoutSelector = ( setting ) => data.dispatch( 'core' ).saveEntityRecord( 'root', 'site', {
+					[ LAYOUT_SELECTOR_FEATURE_ENABLED_KEY ]: setting,
 				} );
+				setLayoutSelector( false ); // Hide layout selector first to refresh settings.
 
 				data.dispatch( 'coblocks/template-selector' ).updateCategories(
 					[
@@ -40,6 +46,8 @@ describe( 'Extension: Layout Selector', () => {
 						},
 					]
 				);
+
+				setLayoutSelector( true ); // Enable layout selector
 			} );
 
 			// The new page post_type admin page is already loaded before tests run.

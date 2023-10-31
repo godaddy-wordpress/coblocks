@@ -86,7 +86,7 @@ $styles: ("standard"), ("silver"), ("retro"), ("dark"), ("night"), ("aubergine")
 		width: calc(50% - 8px);
 
 		&.is-selected {
-			box-shadow: 0 0 0 $border-width-focus var(--wp-admin-theme-color, #007cba);
+			box-shadow: 0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color, #007cba);
 		}
 	}
 

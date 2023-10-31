@@ -1,0 +1,33 @@
+# .github/workflows/date-checker.yml
+name: Date Checker Workflow
+
+on:
+  workflow_call:
+    inputs:
+      scheduled_release_date:
+        required: true
+        type: string
+    outputs:
+      should_run_workflow:
+        description: "String as `true` or `false` indicating if the workflow should run"
+        value: ${{jobs.check_date.outputs.should_run_workflow}}
+
+jobs:
+  check_date:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run_workflow: ${{ steps.date_check.outputs.should_run_workflow }}
+    steps:
+      - name: Check if workflow should run
+        id: date_check
+        env:
+          # Get release cut off date
+          SCHEDULED_RELEASE_DATE: ${{github.event.inputs.scheduled_release_date}}
+        run: |
+          SCHEDULED_RELEASE_DATE_UNIX=$(date -d "$SCHEDULED_RELEASE_DATE" +%s)
+          current_date=$(date +%s)
+          if [[ $current_date -lt $SCHEDULED_RELEASE_DATE_UNIX ]]; then
+            echo "should_run_workflow=false" >> $GITHUB_OUTPUT
+          else
+            echo "should_run_workflow=true" >> $GITHUB_OUTPUT
+          fi

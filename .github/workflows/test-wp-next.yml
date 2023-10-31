@@ -1,0 +1,53 @@
+name: Test / E2E Runner & Jest & PHP Unit runner for WordPress Next version.
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  # Check if WP Next is released
+  check_if_released:
+    name: Check if WP Next is released
+    uses: ./.github/workflows/date-checker.yml
+    with:
+      # WP Next scheduled release date. Should be based on `https://make.wordpress.org/core/6-4/` or later.
+      scheduled_release_date: "2023-11-7"
+
+  # Create WP NEXT Version Constant
+  set_constant:
+    name: Set WP Next Version Constant
+    needs: check_if_released
+    if: needs.check_if_released.outputs.should_run_workflow == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      # Should be current latest WP Next release on `wordpress.org`. eg: `https://wordpress.org/wordpress-6.4-RC2.zip`
+      wp_next: "https://wordpress.org/wordpress-6.4-RC2.zip"
+    steps:
+      - run: echo "Setting WP Next Constant"
+
+
+  # E2E Testing
+  chrome_e2e_wp_next:
+    name: Chrome E2E WP Next Version
+    needs: set_constant
+    uses: ./.github/workflows/test-e2e-cypress.yml
+    with:
+      wpVersion: ${{ needs.set_constant.outputs.wp_next }}
+      installPath: "tests-wordpress-6.4-RC2"
+      theme: "https://downloads.wordpress.org/theme/go.zip"
+    concurrency:
+      group: chrome-wp-next
+      cancel-in-progress: true
+
+  # PHP Unit testing
+  php_unit_wp_next:
+    needs: set_constant
+    name: PHP ${{ matrix.php }} WP Next Version
+    strategy:
+      matrix:
+        php: ['7.4','8.0','8.1','8.2']
+    uses: ./.github/workflows/test-php-unit.yml
+    with:
+      phpVersion: ${{ matrix.php }}
+      wpVersion: ${{ needs.set_constant.outputs.wp_next }}

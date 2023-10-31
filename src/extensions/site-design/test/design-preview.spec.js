@@ -45,7 +45,7 @@ describe( 'design-preview', () => {
 				expect( button ).toHaveLength( 1 );
 				expect( select( STORE_KEY ).getDesignStyle() ).toBe( 'traditional' );
 
-				fireEvent.click( button[0] );
+				fireEvent.click( button[ 0 ] );
 
 				expect( select( STORE_KEY ).getDesignStyle() ).toBe( 'modern' );
 			} );
@@ -55,7 +55,7 @@ describe( 'design-preview', () => {
 
 				expect( select( STORE_KEY ).getDesignStyle() ).toBe( 'modern' );
 
-				fireEvent.click( button[0] );
+				fireEvent.click( button[ 0 ] );
 
 				expect( select( STORE_KEY ).getDesignStyle() ).toBe( 'modern' );
 			} );

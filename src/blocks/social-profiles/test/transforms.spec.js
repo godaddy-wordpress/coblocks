@@ -11,7 +11,6 @@ registerCoreBlocks();
  */
 import metadata from '../block.json';
 import shareMetadata from '../../share/block.json';
-import transforms from '../transforms';
 import { name, settings } from '../index';
 import { name as shareName, settings as shareSettings } from '../../share/';
 

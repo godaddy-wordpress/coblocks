@@ -275,19 +275,29 @@ export function selectBlock( name ) {
 	 * For that reason is difficult to assert against those requests from core code.
 	 * We introduce an arbitrary wait to avoid a race condition by interacting too quickly.
 	 */
-	cy.wait( 1000 );
+	cy.wait( 600 );
 
-	// `data-type` includes lower case name and `data-title` includes upper case name.
-	// Allows for case-insensitive search.
-	cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
-		.invoke( 'attr', 'data-block' )
-		.then( ( clientId ) => {
-			cy.window().then( ( win ) => {
-				// Open the block sidebar.
-				win.wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
-				win.wp.data.dispatch( 'core/block-editor' ).selectBlock( clientId );
-			} );
-		} );
+	let id = ''; // The block client ID.
+	cy.window().then( ( win ) => {
+		// Prefer selector from data-store.
+		id = win.wp.data.select( 'core/block-editor' ).getBlocks().filter( ( i ) => i?.name === name )[ 0 ]?.clientId;
+
+		// Fallback to selector from DOM.
+		if ( ! id ) {
+			cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
+				.invoke( 'attr', 'data-block' )
+				.then( ( clientId ) => id = clientId );
+		}
+	} );
+
+	cy.window().then( ( win ) => {
+		win.wp.data.dispatch( 'core/block-editor' ).selectBlock( id );
+	} );
+
+	cy.window().then( ( win ) => {
+		win.wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
+	} );
+	cy.wait( 600 );
 }
 
 /**
@@ -408,6 +418,11 @@ export const upload = {
 	},
 };
 
+const customColorPalatteSelector = ( () => [
+	'.components-color-palette__custom-color-button', // WP 6.3+
+	'.components-color-palette__custom-color', // WP 6.2.
+].join() )();
+
 /**
  * Set a Color Setting value to a custom hex color
  *
@@ -419,11 +434,7 @@ export function setColorSettingsFoldableSetting( settingName, hexColor ) {
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 
-	if ( isWP63AtLeast() ) {
-		cy.get( '.components-color-palette__custom-color-button' ).click();
-	} else {
-		cy.get( '.components-color-palette__custom-color' ).click();
-	}
+	cy.get( customColorPalatteSelector ).click();
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -437,11 +448,7 @@ export function setColorPanelSetting( settingName, hexColor ) {
 
 	cy.get( '.block-editor-panel-color-gradient-settings__dropdown' ).contains( settingName, { matchCase: false } ).click();
 
-	if ( isWP63AtLeast() ) {
-		cy.get( '.components-color-palette__custom-color-button' ).click();
-	} else {
-		cy.get( '.components-color-palette__custom-color' ).click();
-	}
+	cy.get( customColorPalatteSelector ).click();
 
 	cy.get( '.components-color-picker' ).find( '.components-input-control__input' ).click().clear().type( formattedHex );
 
@@ -580,10 +587,10 @@ export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
 
-// A condition to determine if we are testing on WordPress 6.3+
-// This function should be removed in the process of the work for WP 6.4 compatibility
-export function isWP63AtLeast() {
-	return Cypress.$( "[class*='branch-6-3']" ).length > 0 || Cypress.$( "[class*='branch-6-4']" ).length > 0;
+// A condition to determine if we are testing on WordPress 6.4+
+// This function should be removed in the process of the work for WP 6.5 compatibility
+export function isWP64AtLeast() {
+	return Cypress.$( "[class*='branch-6-4']" ).length > 0 || Cypress.$( "[class*='branch-6-5']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {

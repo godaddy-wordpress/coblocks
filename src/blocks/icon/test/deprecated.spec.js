@@ -21,7 +21,7 @@ const variations = {
 	padding: [ undefined, 0, 10, 100 ],
 	href: [ undefined, '', 'https://wordpress.com/wp-content/uploads/1234/56/image-1.jpg' ],
 	rel: [ '', 'alternate', 'author', 'preload' ],
-	linkTarget: [ '', '_blank', '_self', '_parent' ]
+	linkTarget: [ '', '_blank', '_self', '_parent' ],
 };
 
 helpers.testDeprecatedBlockVariations( name, settings, variations );
