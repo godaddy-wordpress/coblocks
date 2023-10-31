@@ -10,9 +10,13 @@ const deprecated = [
 	{
 		migrate: ( attributes, innerBlocks ) => {
 			const { features } = attributes;
-			const newListItemBlocks = features.map( ( feature ) => {
-				return createBlock( 'core/list-item', {	content: feature?.props?.children[ 0 ] } );
-			} );
+
+			const newListItemBlocks = features.map( ( feature ) =>
+				createBlock( 'core/list-item',
+					{ content: feature?.props?.children.map( ( child ) => child ) },
+					[ ]
+				)
+			);
 
 			const listBlock = createBlock( 'core/list', {
 				className: 'wp-block-coblocks-pricing-table-item__features',

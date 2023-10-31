@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  chrome_e2e_gammut_tests:
+  chrome_e2e_gamut_tests:
     name: >
       E2E - ${{
         format(
