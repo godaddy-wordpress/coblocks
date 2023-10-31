@@ -21,8 +21,8 @@ jobs:
     if: needs.check_if_released.outputs.should_run_workflow == 'true'
     runs-on: ubuntu-latest
     outputs:
-      # Should be current latest WP Next release on `wordpress.org`. eg: `https://wordpress.org/wordpress-6.4-RC3.zip`
-      wp_next: "https://wordpress.org/wordpress-6.4-RC3.zip"
+      # Should be current latest WP Next release on `wordpress.org`. eg: `https://wordpress.org/wordpress-6.4-RC2.zip`
+      wp_next: "https://wordpress.org/wordpress-6.4-RC2.zip"
     steps:
       - run: echo "Setting WP Next Constant"
 
@@ -33,8 +33,8 @@ jobs:
     needs: set_constant
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
-      wpVersion: ${{needs.set_constant.outputs.wp_next}}
-      installPath: "tests-wordpress-6.4-RC3"
+      wpVersion: ${{ needs.set_constant.outputs.wp_next }}
+      installPath: "tests-wordpress-6.4-RC2"
       theme: "https://downloads.wordpress.org/theme/go.zip"
     concurrency:
       group: chrome-wp-next
@@ -50,4 +50,4 @@ jobs:
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: ${{ matrix.php }}
-      wpVersion: ${{needs.set_constant.outputs.wp_next}}
+      wpVersion: ${{ needs.set_constant.outputs.wp_next }}
