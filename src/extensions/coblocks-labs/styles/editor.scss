@@ -42,7 +42,7 @@
 
 	.components-button {
 		&:focus {
-			box-shadow: 0 0 0 var() $godaddy-everyday-blue-500;
+			box-shadow: 0 0 0 var(--wp-admin-border-width-focus) $godaddy-everyday-blue-500;
 		}
 
 		&:hover {
