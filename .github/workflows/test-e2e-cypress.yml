@@ -33,7 +33,10 @@ jobs:
     outputs:
       matrix: ${{ steps.setup-spec-matrix.outputs.matrix }}
     steps:
-      - name: Setup wp-env
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Spec Matrix
         id: setup-spec-matrix
         run: |
           changed_files=$(git diff --name-only --diff-filter=ACDMRTUXB origin/master)
@@ -78,9 +81,6 @@ jobs:
 
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - name: Setup wp-env
         uses: godaddy-wordpress/setup-wp-env@v1
         with:
@@ -227,9 +227,6 @@ jobs:
 
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - name: Setup wp-env
         uses: godaddy-wordpress/setup-wp-env@v1
         with:
