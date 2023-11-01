@@ -47,7 +47,7 @@ jobs:
 
           for line in $changed_files; do
 
-            if [[ "$line" =~ src/(blocks|extensions|componets).* ]]; then
+            if [[ "$line" =~ src/(blocks|extensions|components).* ]]; then
               changed_path=$(echo $line | cut -d'/' -f3)
 
               # Only add the spec if it has not already been processed.
@@ -66,7 +66,7 @@ jobs:
           updated_string=$(echo $specs | sed 's/,$//')
 
           # Wrap in brackets.
-          $updated_string=[$updated_string]
+          updated_string=[$updated_string]
 
           # Save the matrix array to the output.
           echo "matrix=$updated_string" >> $GITHUB_OUTPUT
