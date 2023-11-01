@@ -10,7 +10,7 @@ import { createBlock } from '@wordpress/blocks';
 import { dispatch, select } from '@wordpress/data';
 
 /**
- * Block constants
+ * Block constants.
  */
 const { name } = metadata;
 
