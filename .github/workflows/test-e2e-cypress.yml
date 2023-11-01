@@ -69,7 +69,8 @@ jobs:
           updated_string=[$updated_string]
 
           # Save the matrix array to the output.
-          echo "matrix=$updated_string" >> $GITHUB_ENV
+          echo $updated_string
+          echo "matrix=$updated_string" >> "$GITHUB_OUTPUT"
 
   test_cypress_e2e_changed_files:
     needs: setup-matrix
