@@ -45,9 +45,6 @@ jobs:
           spec_list=()
           specs=""
 
-          echo $changed_files
-
-
           for line in $changed_files; do
             if [[ "$line" =~ src/(blocks|extensions|componets).* ]]; then
 
@@ -63,7 +60,7 @@ jobs:
                   spec=$(echo $spec | sed 's:.*/::')
 
                   # Build spec list for cypress run.
-                  spec_list+=""${spec}","
+                  spec_list+="'${spec}',"
 
                 fi
               done
@@ -76,11 +73,11 @@ jobs:
           updated_string=$(echo $spec_list | sed 's/,$//' )
 
           # Wrap list in brackets for GH Workflow.
-          echo [$updated_string]
+          wrapped_string="[$updated_string]"
 
           # Save the matrix array to the output.
-          echo $updated_string
-          echo "matrix=$updated_string" >> "$GITHUB_OUTPUT"
+          echo $wrapped_string
+          echo "matrix=$wrapped_string" >> "$GITHUB_OUTPUT"
 
   test_cypress_e2e_changed_files:
     needs: setup-matrix
