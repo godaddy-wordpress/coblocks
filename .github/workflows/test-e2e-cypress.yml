@@ -45,7 +45,7 @@ jobs:
           spec_list=()
           specs=""
 
-          # echo $changed_files
+          echo $changed_files
 
 
           for line in $changed_files; do
