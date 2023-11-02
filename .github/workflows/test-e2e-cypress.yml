@@ -41,32 +41,42 @@ jobs:
       - name: Setup Spec Matrix
         id: setup-spec-matrix
         run: |
-          changed_files=$(git diff --name-only --diff-filter=ACDMRTUXB origin/master)
+          changed_files=$(git diff --name-only --diff-filter=ACDMRTUXB ${{ github.event.before }} ${{ github.sha }})
           spec_list=()
           specs=""
 
+          # echo $changed_files
+
+
           for line in $changed_files; do
+            if [[ "$line" =~ src/(blocks|extensions|componets).* ]]; then
 
-            if [[ "$line" =~ src/(blocks|extensions|components).* ]]; then
-              changed_path=$(echo $line | cut -d'/' -f3)
+              changed_path=$(echo $line | cut -d'/' -f3) # Get the main path of the changed file, e.g. author, food-and-drinks, lightbox.
 
-              # Only add the spec if it has not already been processed.
-              if [[ ! " ${spec_list[@]} " =~ " ${changed_path} " ]]; then # changed_path is not in spec_list
-                spec_list+=" ${changed_path} " # Add to list of processed specs
+              found_specs=$(find . -type f -name "*.cypress.js") # Find real spec files.
+              pattern="/src/(blocks|extensions|components)/${changed_path}/" # Changed files pattern to match against.
 
-                # Append spec file path
-                specs+="\"src/**/${changed_path}/**/*.cypress.js\","
+              for spec in $found_specs; do
+                if [[ $spec  =~ $pattern ]]; then
 
-              fi
+                  # Remove the path from the spec.
+                  spec=$(echo $spec | sed 's:.*/::')
+
+                  # Build spec list for cypress run.
+                  spec_list+="${spec},"
+
+                fi
+              done
+
             fi
           done
 
           # All changes processed. Format string for cypress run.
-          # Remove trailing comma.
-          updated_string=$(echo $specs | sed 's/,$//')
+          # Remove trailing comma from spec_list.
+          updated_string=$(echo $spec_list | sed 's/,$//' )
 
-          # Wrap in brackets.
-          updated_string=[$updated_string]
+          # Wrap list in brackets for GH Workflow.
+          echo [$updated_string]
 
           # Save the matrix array to the output.
           echo $updated_string
@@ -161,6 +171,7 @@ jobs:
 
       - name: Run tests
         run: |
+          CYPRESS_SPEC=$(find ./src/* -name ${{ matrix.spec }} -type f)
           echo '{"wpUsername":"admin","wpPassword":"password","testURL":"http://localhost:8889"}' | jq . > cypress.env.json
           ./node_modules/.bin/cypress verify
           ./node_modules/.bin/cypress run --browser ${{ inputs.browser }} --spec "${{ matrix.spec }}"
