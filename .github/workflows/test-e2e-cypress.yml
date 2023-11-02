@@ -41,7 +41,7 @@ jobs:
       - name: Setup Spec Matrix
         id: setup-spec-matrix
         run: |
-          changed_files=$(git diff --name-only --diff-filter=ACDMRTUXB ${{ github.event.before }} ${{ github.sha }})
+          changed_files=$(git diff --name-only --diff-filter=ACDMRTUXB ${{ github.event.before }} origin/master)
           spec_list=()
           specs=""
 
@@ -84,7 +84,7 @@ jobs:
 
   test_cypress_e2e_changed_files:
     needs: setup-matrix
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && needs.setup-matrix.outputs.matrix != '[]'
     name: E2E Test - Changed Files
     runs-on: ubuntu-latest
     strategy:
