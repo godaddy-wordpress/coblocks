@@ -63,7 +63,7 @@ jobs:
                   spec=$(echo $spec | sed 's:.*/::')
 
                   # Build spec list for cypress run.
-                  spec_list+="${spec},"
+                  spec_list+=""${spec}","
 
                 fi
               done
