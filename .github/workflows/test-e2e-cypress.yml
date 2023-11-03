@@ -41,7 +41,7 @@ jobs:
       - name: Setup Spec Matrix
         id: setup-spec-matrix
         run: |
-          changed_files=$(git diff --name-only --diff-filter=ACDMRTUXB ${{ github.event.before }} origin/master)
+          changed_files=$(git diff --name-only --diff-filter=ADMR ${{ github.event.before }} origin/master)
           spec_list=()
 
           for line in $changed_files; do
