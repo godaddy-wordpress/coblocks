@@ -112,7 +112,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 				)
 			);
 
-			if ($dist_script == 'coblocks-plugin-deactivation') {
+			if ( $dist_script == 'coblocks-plugin-deactivation' ) {
 				$this->assertFalse( array_key_exists( $dist_script, $wp_scripts->registered  ) );
 				continue;
 			}
