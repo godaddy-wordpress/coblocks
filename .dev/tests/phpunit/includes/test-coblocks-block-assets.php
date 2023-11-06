@@ -100,7 +100,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 
 		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered,  ) );
 
-		$path = 'wp-content/plugins/coblocks/dist/coblocks-*.js';
+		$path  = dirname( __FILE__ ) . '/../../../../dist/coblocks-*.js';
 		$files = glob( $path );
 
 		foreach($files as $file) {
