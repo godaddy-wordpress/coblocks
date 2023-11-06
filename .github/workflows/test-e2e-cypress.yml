@@ -79,39 +79,8 @@ jobs:
           echo $wrapped_string
           echo "matrix=$wrapped_string" >> "$GITHUB_OUTPUT"
 
-  build-coblocks:
-    name: Build CoBlocks and Upload build Artifacts
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: |
-          composer install --prefer-dist --optimize-autoloader &
-          yarn install --immutable
-
-      - name: Build plugin
-        run: |
-           npx grunt build
-           # moving the built directory to this location means no dev files in tests-container.
-           # mv ./build/coblocks $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: coblocks-build
-          path: ./build/coblocks
-
-      # - name: Upload node_modules artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: node_modules
-      #     path: ./node_modules
-
-
   test_cypress_e2e_changed_files:
-    needs: [setup-matrix, build-coblocks]
+    needs: setup-matrix
     if: github.event_name == 'pull_request' && needs.setup-matrix.outputs.matrix != '[]'
     name: E2E Test - Changed Files
     runs-on: ubuntu-latest
@@ -144,18 +113,11 @@ jobs:
           composer install --prefer-dist --optimize-autoloader &
           yarn install --immutable
 
-      - name: Download dependencies
-        uses: actions/download-artifact@v2
-        with:
-          name: coblocks-build
-          path: $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
-
-
-      # - name: Build plugin
-      #   run: |
-      #     npx grunt build
-      #     # moving the built directory to this location means no dev files in tests-container.
-      #     mv ./build/coblocks $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
+      - name: Build plugin
+        run: |
+          npx grunt build
+          # moving the built directory to this location means no dev files in tests-container.
+          mv ./build/coblocks $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
 
       - name: Prepare Theme
         run: |
@@ -222,7 +184,7 @@ jobs:
 
   test_cypress_e2e_full:
     if: github.event_name == 'push'
-    needs: [setup-matrix, build-coblocks]
+    needs: setup-matrix
     name: E2E Test
     runs-on: ubuntu-latest
     strategy:
@@ -277,7 +239,6 @@ jobs:
           - padding-controls.cypress.js
           - settings-modal-control.cypress.js
 
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -290,7 +251,6 @@ jobs:
           plugins: '["."]'
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -302,19 +262,11 @@ jobs:
           composer install --prefer-dist --optimize-autoloader &
           yarn install --immutable
 
-      - name: Download dependencies
-        uses: actions/download-artifact@v2
-        with:
-          name: coblocks-build
-          path: $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
-
-
-
-      # - name: Build plugin
-      #   run: |
-      #     npx grunt build
-      #     # moving the built directory to this location means no dev files in tests-container.
-      #     mv ./build/coblocks $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
+      - name: Build plugin
+        run: |
+          npx grunt build
+          # moving the built directory to this location means no dev files in tests-container.
+          mv ./build/coblocks $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
 
       - name: Prepare Theme
         run: |
