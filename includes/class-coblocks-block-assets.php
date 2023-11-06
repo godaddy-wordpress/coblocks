@@ -133,7 +133,11 @@ class CoBlocks_Block_Assets {
 			return;
 		}
 
-		// Styles.
+		/**
+		 * Check the `test-coblocks-block-assets.php` file.
+		 * Registered scripts should show for specific blocks that need them.
+		 * For example the Core blocks all use `coblocks-animation` style
+		 * */
 		$name       = 'style-coblocks-1';
 		$filepath   = 'dist/' . $name;
 		$asset_file = $this->get_asset_file( $filepath );
@@ -153,6 +157,18 @@ class CoBlocks_Block_Assets {
 
 		wp_enqueue_style(
 			'coblocks-extensions',
+			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
+			$asset_file['dependencies'],
+			$asset_file['version'],
+		);
+
+		$name       = 'style-coblocks-animation';
+		$filepath   = 'dist/' . $name;
+		$asset_file = $this->get_asset_file( $filepath );
+		$rtl        = ! is_rtl() ? '' : '-rtl';
+
+		wp_enqueue_style(
+			'coblocks-animation',
 			COBLOCKS_PLUGIN_URL . $filepath . $rtl . '.css',
 			$asset_file['dependencies'],
 			$asset_file['version'],
@@ -200,7 +216,7 @@ class CoBlocks_Block_Assets {
 		}
 
 		wp_register_script(
-			'coblocks-editor',
+			'coblocks-editor', // 'coblocks-extensions'
 			COBLOCKS_PLUGIN_URL . $filepath . '.js',
 			array_merge( $asset_file['dependencies'], array( 'wp-api' ) ),
 			$asset_file['version'],

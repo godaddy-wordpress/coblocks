@@ -99,6 +99,24 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->editor_assets();
 
 		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered ) );
+
+		$path  = dirname( __FILE__ ) . '/../../../../dist/coblocks-*.js';
+		$files = glob( $path );
+
+		foreach( $files as $file ) {
+			$dist_script = pathinfo( $file, PATHINFO_FILENAME );
+
+			if ( $dist_script === 'coblocks-plugin-deactivation' ) {
+				$this->assertFalse( array_key_exists( $dist_script, $wp_scripts->registered ) );
+				continue;
+			}
+
+			if ( $dist_script === 'coblocks-extensions' ) {
+				$dist_script = 'coblocks-editor';
+			}
+
+			$this->assertTrue( array_key_exists( $dist_script, $wp_scripts->registered ) );
+		}
 	}
 
 	/**
@@ -154,6 +172,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		do_action( 'enqueue_block_assets' );
 
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue ); // Should have animation
 	}
 
 	public function test_block_assets_loaded_with_any_reusable_block() {
@@ -212,7 +231,11 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->block_assets();
 		do_action( 'enqueue_block_assets' );
 
+		// Core blocks should also have coblocks-animation.
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
+
 	}
 
 	public function test_typography_styles_loaded_with_core_button_block() {
@@ -235,7 +258,10 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->block_assets();
 		do_action( 'enqueue_block_assets' );
 
+		// Core blocks should also have coblocks-animation.
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
 	}
 
 	public function test_typography_styles_loaded_with_core_cover_block() {
@@ -258,7 +284,10 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->block_assets();
 		do_action( 'enqueue_block_assets' );
 
+		// Core blocks should also have coblocks-animation.
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
 	}
 
 	public function test_typography_styles_loaded_with_core_heading_block() {
@@ -281,7 +310,10 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->block_assets();
 		do_action( 'enqueue_block_assets' );
 
+		// Core blocks should also have coblocks-animation.
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
 	}
 
 	public function test_typography_styles_loaded_with_core_list_block() {
@@ -304,7 +336,10 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->block_assets();
 		do_action( 'enqueue_block_assets' );
 
+		// Core blocks should also have coblocks-animation.
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
 	}
 
 	public function test_typography_styles_loaded_with_core_paragraph_block() {
@@ -327,7 +362,10 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->block_assets();
 		do_action( 'enqueue_block_assets' );
 
+		// Core blocks should also have coblocks-animation.
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
 	}
 
 	public function test_typography_styles_loaded_with_core_pullquote_block() {
@@ -350,7 +388,10 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->block_assets();
 		do_action( 'enqueue_block_assets' );
 
+		// Core blocks should also have coblocks-animation.
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
 	}
 
 	public function test_typography_styles_loaded_with_core_quote_block() {
@@ -373,6 +414,9 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->coblocks_block_assets->block_assets();
 		do_action( 'enqueue_block_assets' );
 
+		// Core blocks should also have coblocks-animation.
 		$this->assertContains( 'coblocks-frontend', $wp_styles->queue );
+		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
 	}
 }

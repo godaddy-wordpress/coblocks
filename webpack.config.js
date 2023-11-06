@@ -40,6 +40,7 @@ module.exports = {
 		...coblocksChunks,
 		'coblocks-extensions': path.resolve( process.cwd(), 'src/extensions.js' ),
 		'coblocks-plugin-deactivation': path.resolve( process.cwd(), 'src/components/coblocks-deactivate-modal/index.js' ),
+		'style-coblocks-animation': path.resolve( process.cwd(), 'src/styles/coblocks-animation.scss' ),
 
 		...scripts.reduce( ( memo, script ) => {
 			memo[ `js/${ script }` ] = path.resolve( process.cwd(), 'src', 'js', `${ script }.js` );
