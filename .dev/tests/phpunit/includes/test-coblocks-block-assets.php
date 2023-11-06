@@ -115,7 +115,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 				$dist_script = 'coblocks-editor';
 			}
 
-			$this->assertTrue( array_key_exists( $dist_script, $wp_scripts->registered  ) );
+			$this->assertTrue( array_key_exists( $dist_script, $wp_scripts->registered ) );
 		}
 	}
 
