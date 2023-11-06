@@ -2,8 +2,8 @@
 Author URI: https://www.godaddy.com
 Contributors: godaddy, richtabor, eherman24, jonathanbardo, jrtashjian, paranoia1906, fjarrett, olivierlafleur, jasonlemay, snovosel
 Tags: page builder, Gutenberg blocks, WordPress blocks, gutenberg, blocks
-Requires at least: 6.1
-Tested up to: 6.3
+Requires at least: 6.2
+Tested up to: 6.4
 Requires PHP: 7.4
 Stable tag: 3.1.4
 License: GPL-2.0
@@ -124,6 +124,16 @@ Developers can also apply minor style touch-ups to their themes if necessary. If
 CoBlocks is designed to support the last two major versions of WordPress that are currently released. If you're using one of these versions, you're all set to enjoy everything CoBlocks has to offer!
 
 == Changelog ==
+
+= 3.1.5 / 2023-11-06 =
+
+# Enhancements
+* Compatibility changes for WP 6.4 [#2568](https://github.com/godaddy-wordpress/coblocks/pull/2568)
+
+# Bug fix
+* Fix performance around superfluous data-store selectors [#2575](https://github.com/godaddy-wordpress/coblocks/pull/2575)
+* Fix missing animation scripts in some cases [#2576](https://github.com/godaddy-wordpress/coblocks/pull/2576)
+* Fix php warning occurring in some cases [#2572](https://github.com/godaddy-wordpress/coblocks/pull/2572)
 
 = 3.1.4 / 2023-09-07 =
 
