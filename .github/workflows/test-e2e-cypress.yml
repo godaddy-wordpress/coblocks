@@ -103,11 +103,11 @@ jobs:
           name: coblocks-build
           path: ./build/coblocks
 
-      - name: Upload node_modules artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: node_modules
-          path: ./node_modules
+      # - name: Upload node_modules artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: node_modules
+      #     path: ./node_modules
 
 
   test_cypress_e2e_changed_files:
@@ -139,11 +139,10 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: Download dependencies
-        uses: actions/download-artifact@v2
-        with:
-          name: node_modules
-          path: ./node_modules
+      - name: Install dependencies
+        run: |
+          composer install --prefer-dist --optimize-autoloader &
+          yarn install --immutable
 
       - name: Download dependencies
         uses: actions/download-artifact@v2
@@ -151,10 +150,6 @@ jobs:
           name: coblocks-build
           path: $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
 
-      # - name: Install dependencies
-      #   run: |
-      #     composer install --prefer-dist --optimize-autoloader &
-      #     yarn install --immutable
 
       # - name: Build plugin
       #   run: |
@@ -302,11 +297,10 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'yarn'
 
-      - name: Download dependencies
-        uses: actions/download-artifact@v2
-        with:
-          name: node_modules
-          path: ./node_modules
+      - name: Install dependencies
+        run: |
+          composer install --prefer-dist --optimize-autoloader &
+          yarn install --immutable
 
       - name: Download dependencies
         uses: actions/download-artifact@v2
@@ -314,10 +308,7 @@ jobs:
           name: coblocks-build
           path: $(wp-env install-path)/${{ inputs.installPath }}/wp-content/plugins/
 
-      # - name: Install dependencies
-      #   run: |
-      #     composer install --prefer-dist --optimize-autoloader &
-      #     yarn install --immutable
+
 
       # - name: Build plugin
       #   run: |
