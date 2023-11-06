@@ -107,7 +107,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 			$dist_script = pathinfo( $file, PATHINFO_FILENAME );
 
 			if ( $dist_script == 'coblocks-plugin-deactivation' ) {
-				$this->assertFalse( array_key_exists( $dist_script, $wp_scripts->registered  ) );
+				$this->assertFalse( array_key_exists( $dist_script, $wp_scripts->registered ) );
 				continue;
 			}
 
