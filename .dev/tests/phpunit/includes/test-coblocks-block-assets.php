@@ -103,7 +103,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$path  = dirname( __FILE__ ) . '/../../../../dist/coblocks-*.js';
 		$files = glob( $path );
 
-		foreach($files as $file) {
+		foreach( $files as $file ) {
 			$dist_script = pathinfo( $file, PATHINFO_FILENAME );
 
 			if ( $dist_script == 'coblocks-plugin-deactivation' ) {
