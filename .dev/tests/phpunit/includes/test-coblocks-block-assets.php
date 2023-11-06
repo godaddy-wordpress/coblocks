@@ -98,7 +98,7 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->go_to( '/wp-admin/post-new.php' );
 		$this->coblocks_block_assets->editor_assets();
 
-		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered,  ) );
+		$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered ) );
 
 		$path  = dirname( __FILE__ ) . '/../../../../dist/coblocks-*.js';
 		$files = glob( $path );
