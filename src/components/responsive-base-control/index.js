@@ -103,7 +103,7 @@ class ResponsiveBaseControl extends Component {
 			}
 			if ( tabName === 'default' ) {
 				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ type }--tablet` );
-				button[ 0 ].click();
+				button[ 0 ]?.click();
 			} else {
 				const button = document.getElementsByClassName( `components-coblocks-dimensions-control__mobile-controls-item-${ type }--${ selected }` );
 				button[ 0 ].style.display = 'block';

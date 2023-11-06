@@ -1,13 +1,3 @@
-3.1.5 / 2023-11-06
-===================
-# Enhancements
-* Compatibility changes for WP 6.4 [#2568](https://github.com/godaddy-wordpress/coblocks/pull/2568)
-
-# Bug fix
-* Fix performance around superfluous data-store selectors [#2575](https://github.com/godaddy-wordpress/coblocks/pull/2575)
-* Fix missing animation scripts in some cases [#2576](https://github.com/godaddy-wordpress/coblocks/pull/2576)
-* Fix php warning occurring in some cases [#2572](https://github.com/godaddy-wordpress/coblocks/pull/2572)
-
 3.1.4 / 2023-09-07
 ===================
 # Bug fix
