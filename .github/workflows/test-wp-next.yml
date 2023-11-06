@@ -2,8 +2,9 @@ name: Test / E2E Runner & Jest & PHP Unit runner for WordPress Next version.
 
 on:
   pull_request:
-    branches:
-      - master
+    branches: [ master ]
+  push:
+    branches: [ master ]
 
 jobs:
   # Check if WP Next is released
