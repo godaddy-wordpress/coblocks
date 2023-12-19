@@ -1,0 +1,13 @@
+{
+    "landingPage": "\/wp-admin\/edit.php",
+    "phpExtensionBundles": [
+        "kitchen-sink"
+    ],
+    "steps": [
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        }
+    ]
+}
