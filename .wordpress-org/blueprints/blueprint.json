@@ -1,5 +1,5 @@
 {
-    "landingPage": "\/wp-admin\/edit.php",
+    "landingPage": "/wp-admin/post.php?post=5&action=edit",
     "phpExtensionBundles": [
         "kitchen-sink"
     ],
@@ -8,6 +8,17 @@
             "step": "login",
             "username": "admin",
             "password": "password"
+        },
+        {
+            "step": "installTheme",
+            "themeZipFile": {
+                "resource": "wordpress.org\/themes",
+                "slug": "go"
+            }
+        },
+        {
+            "step": "runPHP",
+            "code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_post(array(\n'import_id' => 5,\n'post_title' => 'CoBlocks Demo',\n'post_content' => '<!-- wp:paragraph -->\n<p>You can test out CoBlocks by adding any CoBlocks block to the page.</p>\n<!-- \/wp:paragraph -->',\n'post_status' => 'publish',\n'post_author' => 1\n));"
         }
     ]
 }
