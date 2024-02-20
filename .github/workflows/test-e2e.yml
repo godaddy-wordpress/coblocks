@@ -22,9 +22,8 @@ jobs:
       fail-fast: false
       matrix:
         wp: # Test against Prev-Prev Major, Prev-Major, and current Major release versions.
-          - "6.2"
           - "6.3"
-          # - "6.4" Should enable this when 6.4 is released.
+          - "6.4"
         theme:
           - "https://downloads.wordpress.org/theme/go.zip"
           - "" # Default theme is TwentyTwentyThree
