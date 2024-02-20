@@ -62,14 +62,14 @@ function FontFamilyPicker( { label, value, help, instanceId, onChange, className
 		if ( ba.length > 0 ) {
 			//Load fonts on the header
 			if ( ! ba.includes( event.target.value ) && ! isSystemFont ) {
-				link.href = 'https://fonts.googleapis.com/css?family=' + event.target.value.replace( / /g, '+' ) + googleFontsAttr;
+				link.href = 'https://fonts.googleapis.com/css?family=' + window.encodeURIComponent( event.target.value.replace( / /g, '+' ) ) + googleFontsAttr;
 				document.head.appendChild( link );
 			}
 
 			ba = ba.replace( ',' + event.target.value, '' );
 			ba = ba + ',' + event.target.value;
 		} else {
-			link.href = 'https://fonts.googleapis.com/css?family=' + event.target.value.replace( / /g, '+' ) + googleFontsAttr;
+			link.href = 'https://fonts.googleapis.com/css?family=' + window.encodeURIComponent( event.target.value.replace( / /g, '+' ) ) + googleFontsAttr;
 			document.head.appendChild( link );
 
 			ba = event.target.value;
