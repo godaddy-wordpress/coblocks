@@ -22,7 +22,6 @@ jobs:
       fail-fast: false
       matrix:
         wp: # Test against Prev-Prev Major, Prev-Major, and current Major release versions.
-          - "6.2"
           - "6.3"
           - "6.4"
         theme:
