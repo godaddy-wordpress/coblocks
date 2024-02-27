@@ -143,10 +143,15 @@
 
 						// If the src is lazy loaded, use the data-src attribute.
 						// Compatibility with A3 Lazy Load plugin and maybe others.
-						if ( img.attributes.src.value?.includes( 'lazy-load' ) ) {
-							imagePreloader[ `img-${ imgIndex }` ].src = img.attributes[ 'data-src' ].value;
+						if (
+							img.attributes.src.value?.includes( 'lazy-load' ) &&
+							'undefined' !== typeof img.attributes?.[ 'data-src' ]?.value
+						) {
+							imagePreloader[ `img-${ imgIndex }` ].src =
+								img.attributes[ 'data-src' ].value;
 						} else {
-							imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
+							imagePreloader[ `img-${ imgIndex }` ].src =
+								img.attributes.src.value;
 						}
 
 						imagePreloader[ `img-${ imgIndex }` ][ 'data-caption' ] =
