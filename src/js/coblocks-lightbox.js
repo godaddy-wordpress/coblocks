@@ -140,7 +140,15 @@
 					imagePreloader.preloaded = true;
 					Array.from( images ).forEach( function( img, imgIndex ) {
 						imagePreloader[ `img-${ imgIndex }` ] = new window.Image();
-						imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
+
+						// If the src is lazy loaded, use the data-src attribute.
+						// Compatibility with A3 Lazy Load plugin and maybe others.
+						if ( img.attributes.src.value?.includes( 'lazy-load' ) ) {
+							imagePreloader[ `img-${ imgIndex }` ].src = img.attributes[ 'data-src' ].value;
+						} else {
+							imagePreloader[ `img-${ imgIndex }` ].src = img.attributes.src.value;
+						}
+
 						imagePreloader[ `img-${ imgIndex }` ][ 'data-caption' ] =
 								( images[ imgIndex ] && images[ imgIndex ].nextElementSibling )
 									? getImageCaption( images[ imgIndex ] ) : '';
