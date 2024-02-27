@@ -10,5 +10,6 @@
 	"title": "Offset",
 	"textdomain": "coblocks",
 	"editorScript": ["coblocks-7"],
+	"viewScript": ["coblocks-lightbox"],
 	"description": "Display images in an offset brick pattern gallery."
 }

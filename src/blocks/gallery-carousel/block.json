@@ -111,6 +111,7 @@
 	"title": "Carousel",
 	"textdomain": "coblocks",
 	"editorScript": ["coblocks-1"],
+	"viewScript": ["coblocks-lightbox"],
 	"script": [ "coblocks-tiny-swiper", "coblocks-tinyswiper-initializer" ],
 	"description": "Display multiple images in a beautiful carousel gallery.",
 	"supports": {
