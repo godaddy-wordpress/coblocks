@@ -546,6 +546,32 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test extension styles loaded with core media text block.
+	 */
+	public function test_extension_styles_loaded_with_core_media_text_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/media-text
+		$post_id = wp_insert_post(
+			array(
+				'post_author'  => 1,
+				'post_content' => '<!-- wp:core/media-text /-->',
+				'post_title'   => 'Core Media Text Block',
+				'post_status'  => 'publish',
+			)
+		);
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
+	}
+
+	/**
 	 * Test extension styles are not loaded when unsupported core block is only block.
 	 */
 	public function test_extension_styles_not_loaded_with_unsupported_core_block() {
