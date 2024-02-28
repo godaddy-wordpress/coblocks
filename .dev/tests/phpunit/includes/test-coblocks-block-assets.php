@@ -419,4 +419,181 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 		$this->assertContains( 'coblocks-animation', $wp_styles->queue );
 		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
 	}
+
+	/**
+	 * Test extension styles loaded with core image block.
+	 */
+	public function test_extension_styles_loaded_with_core_image_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/image
+		$post_id = wp_insert_post(
+			array(
+				'post_author'  => 1,
+				'post_content' => '<!-- wp:core/image /-->',
+				'post_title'   => 'Core Image Block',
+				'post_status'  => 'publish',
+			)
+		);
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		// Core blocks should also have coblocks-animation.
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
+	}
+
+	/**
+	 * Test extension styles loaded with core buttons block.
+	 */
+	public function test_extension_styles_loaded_with_core_buttons_button_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/buttons
+		$post_id = wp_insert_post(
+			array(
+				'post_author'  => 1,
+				'post_content' => '<!-- wp:core/buttons /-->',
+				'post_title'   => 'Core Buttons Block',
+				'post_status'  => 'publish',
+			)
+		);
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		// Does not contain for buttons but does contain for inner button block.
+		$this->assertNotContains( 'coblocks-extensions', $wp_styles->queue );
+
+		// Now test against inner block core/button.
+		$post_id = wp_insert_post(
+			array(
+				'post_author'  => 1,
+				'post_content' => '<!-- wp:core/buttons --><div class="wp-block-buttons"><!-- wp:core/button /--></div><!-- /wp:core/buttons -->',
+				'post_title'   => 'Core Buttons Block with Button',
+				'post_status'  => 'publish',
+			)
+		);
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		// Core blocks should also have coblocks-animation.
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
+	}
+
+	/**
+	 * Test extension styles loaded with core cover block.
+	 */
+	public function test_extension_styles_loaded_with_core_cover_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/cover
+		$post_id = wp_insert_post(
+			array(
+				'post_author'  => 1,
+				'post_content' => '<!-- wp:core/cover /-->',
+				'post_title'   => 'Core Cover Block',
+				'post_status'  => 'publish',
+			)
+		);
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
+	}
+
+	/**
+	 * Test extension styles loaded with core list block.
+	 */
+	public function test_extension_styles_loaded_with_core_list_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/list
+		$post_id = wp_insert_post(
+			array(
+				'post_author'  => 1,
+				'post_content' => '<!-- wp:core/list /-->',
+				'post_title'   => 'Core List Block',
+				'post_status'  => 'publish',
+			)
+		);
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
+	}
+
+	/**
+	 * Test extension styles loaded with core media text block.
+	 */
+	public function test_extension_styles_loaded_with_core_media_text_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/media-text
+		$post_id = wp_insert_post(
+			array(
+				'post_author'  => 1,
+				'post_content' => '<!-- wp:core/media-text /-->',
+				'post_title'   => 'Core Media Text Block',
+				'post_status'  => 'publish',
+			)
+		);
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertContains( 'coblocks-extensions', $wp_styles->queue );
+	}
+
+	/**
+	 * Test extension styles are not loaded when unsupported core block is only block.
+	 */
+	public function test_extension_styles_not_loaded_with_unsupported_core_block() {
+		global $post, $wp_styles;
+		unset( $GLOBALS['current_screen'] );
+
+		// core/unsupported
+		$post_id = wp_insert_post(
+			array(
+				'post_author'  => 1,
+				'post_content' => '<!-- wp:core/rss /-->',
+				'post_title'   => 'Core Unsupported Block',
+				'post_status'  => 'publish',
+			)
+		);
+
+		$this->go_to( "/?p={$post_id}" );
+		$post = get_post( $post_id );
+
+		$this->coblocks_block_assets->block_assets();
+		do_action( 'enqueue_block_assets' );
+
+		$this->assertNotContains( 'coblocks-extensions', $wp_styles->queue );
+	}
 }

@@ -4,24 +4,26 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockStyle } from '@wordpress/blocks';
 
-// Add default for reset, until WordPress 5.3 is released.
-registerBlockStyle( 'core/cover', {
+import './style.scss';
+
+// Default list style for reset.
+registerBlockStyle( 'core/list', {
 	name: 'default',
 	/* translators: block style */
 	label: __( 'Default', 'coblocks' ),
 	isDefault: true,
 } );
 
-registerBlockStyle( 'core/cover', {
-	name: 'bottom-wave',
+registerBlockStyle( 'core/list', {
+	name: 'none',
 	/* translators: block style */
-	label: __( 'Bottom Wave', 'coblocks' ),
+	label: __( 'None', 'coblocks' ),
 	isDefault: false,
 } );
 
-registerBlockStyle( 'core/cover', {
-	name: 'top-wave',
+registerBlockStyle( 'core/list', {
+	name: 'checkbox',
 	/* translators: block style */
-	label: __( 'Top Wave', 'coblocks' ),
+	label: __( 'Checkbox', 'coblocks' ),
 	isDefault: false,
 } );
