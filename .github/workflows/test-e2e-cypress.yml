@@ -45,7 +45,7 @@ jobs:
           spec_list=()
 
           for line in $changed_files; do
-            if [[ "$line" =~ src/(blocks|extensions|componets|block-styles).* ]]; then # If changed file is within our tested paths.
+            if [[ "$line" =~ src/(blocks|extensions|components|block-styles).* ]]; then # If changed file is within our tested paths.
 
               changed_path=$(echo $line | cut -d'/' -f3) # Get the main path of the changed file, e.g. author, food-and-drinks, lightbox.
 
