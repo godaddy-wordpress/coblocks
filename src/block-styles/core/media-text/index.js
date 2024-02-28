@@ -4,6 +4,8 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockStyle } from '@wordpress/blocks';
 
+import './style.scss';
+
 registerBlockStyle( 'core/media-text', {
 	name: 'default',
 	/* translators: block style */
