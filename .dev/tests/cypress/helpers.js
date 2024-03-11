@@ -16,7 +16,12 @@ export function addFormChild( name ) {
 	cy.get( '.components-popover__content button' ).contains( /insert after|add after/i ).click( { force: true } );
 	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click( { force: true } );
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
+	if ( isWP65AtLeast() ) {
+		cy.get( '.edit-post-header-toolbar' ).find( '.editor-document-tools__inserter-toggle' ).click( { force: true } );
+	} else {
+		cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
+	}
+
 	cy.get( '.block-editor-inserter__search .components-search-control__input' ).click().type( name );
 
 	cy.get( '.editor-block-list-item-coblocks-field-' + name ).first().click( { force: true } );
@@ -137,7 +142,12 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 export function addNewGroupToPost() {
 	clearBlocks();
 
-	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
+	if ( isWP65AtLeast() ) {
+		cy.get( '.editor-document-tools__inserter-toggle' ).click();
+	} else {
+		cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
+	}
+
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
 
 	cy.wait( 1000 );
