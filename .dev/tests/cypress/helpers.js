@@ -196,9 +196,15 @@ export function viewPage() {
 		}
 	} );
 
-	cy.get( 'button[data-label="Post"]' );
+	if ( isWP65AtLeast() ) {
+		cy.get( '[data-tab-id="edit-post/document"]' );
 
-	cy.get( '.edit-post-post-url__dropdown button' ).click();
+		cy.get( '.editor-post-url__panel-dropdown button' ).click();
+	} else {
+		cy.get( 'button[data-label="Post"]' );
+
+		cy.get( '.edit-post-post-url__dropdown button' ).click();
+	}
 
 	cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
 		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
@@ -461,9 +467,14 @@ export function setColorPanelSetting( settingName, hexColor ) {
  * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	// Ensure block tab is selected.
-	if ( Cypress.$( 'button[data-label="Block"]:not(.is-active)' ) ) {
-		cy.get( 'button[data-label="Block"]' ).click();
+	if ( isWP65AtLeast() ) {
+		cy.get( '[data-tab-id="edit-post/block"]' ).click();
+	} else {
+		// Ensure block tab is selected.
+		// eslint-disable-next-line no-lonely-if
+		if ( Cypress.$( 'button[data-label="Block"]:not(.is-active)' ) ) {
+			cy.get( 'button[data-label="Block"]' ).click();
+		}
 	}
 
 	cy.get( '.components-panel__body' )
@@ -588,9 +599,12 @@ export function isNotWPLocalEnv() {
 }
 
 // A condition to determine if we are testing on WordPress 6.4+
-// This function should be removed in the process of the work for WP 6.5 compatibility
 export function isWP64AtLeast() {
 	return Cypress.$( "[class*='branch-6-4']" ).length > 0 || Cypress.$( "[class*='branch-6-5']" ).length > 0;
+}
+
+export function isWP65AtLeast() {
+	return Cypress.$( "[class*='branch-6-5']" ).length > 0 || Cypress.$( "[class*='branch-6-6']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {
