@@ -1,5 +1,9 @@
 3.1.7 / 2024-03-11
 ===================
+
+
+3.1.7 / 2024-03-11
+===================
 # Bug Fix
 * Security issue patched [#2594](https://github.com/godaddy-wordpress/coblocks/pull/2594)
 
