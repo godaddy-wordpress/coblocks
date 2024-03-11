@@ -1,14 +1,14 @@
-# Copyright (c) 2023 GoDaddy Operating Company, LLC. All Rights Reserved.
+# Copyright (c) 2024 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.1.5\n"
+"Project-Id-Version: CoBlocks 3.1.7\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-06T20:40:53+00:00\n"
+"POT-Creation-Date: 2024-03-11T17:57:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: coblocks\n"
@@ -436,6 +436,93 @@ msgstr ""
 
 #: src/extensions/layout-selector/index.php:33
 msgid "Portfolio"
+msgstr ""
+
+#. translators: block style
+#: src/block-styles/core/buttons/index.js:13
+#: src/blocks/form/fields/field-submit-button/index.js:38
+#: src/blocks/share/index.js:54
+#: src/blocks/social-profiles/index.js:66
+msgid "Circular"
+msgstr ""
+
+#. translators: block style
+#: src/block-styles/core/buttons/index.js:20
+#: src/blocks/form/fields/field-submit-button/index.js:39
+msgid "3D"
+msgstr ""
+
+#. translators: block style
+#: src/block-styles/core/buttons/index.js:27
+#: src/blocks/form/fields/field-submit-button/index.js:40
+#: src/blocks/gallery-collage/inspector.js:94
+#: src/blocks/gallery-stacked/inspector.js:143
+msgid "Shadow"
+msgstr ""
+
+#. translators: block style
+#. translators: typography style
+#: src/block-styles/core/cover/index.js:13
+#: src/block-styles/core/image/index.js:13
+#: src/block-styles/core/list/index.js:13
+#: src/block-styles/core/media-text/index.js:12
+#: src/blocks/gallery-collage/index.js:52
+#: src/blocks/logos/index.js:48
+#: src/components/font-family/index.js:21
+#: src/components/typography-controls/index.js:95
+#: src/components/typography-controls/index.js:113
+msgid "Default"
+msgstr ""
+
+#. translators: block style
+#: src/block-styles/core/cover/index.js:20
+#: src/block-styles/core/image/index.js:20
+msgid "Bottom Wave"
+msgstr ""
+
+#. translators: block style
+#: src/block-styles/core/cover/index.js:27
+#: src/block-styles/core/image/index.js:27
+msgid "Top Wave"
+msgstr ""
+
+#. translators: block style
+#. translators: visual style option
+#: src/block-styles/core/list/index.js:20
+#: src/blocks/gallery-stacked/inspector.js:22
+#: src/blocks/gallery-stacked/inspector.js:23
+#: src/components/block-gallery/options/caption-options.js:22
+#: src/components/block-gallery/options/link-options.js:10
+#: src/components/dimensions-control/dimensions-select.js:15
+#: src/components/option-selector-control/index.js:55
+#: src/components/option-selector-control/index.js:56
+#: src/extensions/padding-controls/index.js:23
+#: src/extensions/padding-controls/index.js:24
+msgid "None"
+msgstr ""
+
+#. translators: block style
+#. translators: block name
+#: src/block-styles/core/list/index.js:27
+#: src/blocks/form/fields/field-checkbox/index.js:23
+#: src/blocks/form/fields/field-checkbox/transforms.js:14
+msgid "Checkbox"
+msgstr ""
+
+#. translators: block style
+#: src/block-styles/core/media-text/index.js:19
+msgid "Card"
+msgstr ""
+
+#. translators: block style
+#: src/block-styles/core/media-text/index.js:26
+msgid "Overlap"
+msgstr ""
+
+#. translators: block style
+#: src/block-styles/core/media-text/index.js:33
+#: src/blocks/form/fields/field-submit-button/index.js:37
+msgid "Outline"
 msgstr ""
 
 #: src/block-styles/core/paragraph/index.js:11
@@ -1793,14 +1880,6 @@ msgstr ""
 msgid "Remove Option"
 msgstr ""
 
-#. translators: block name
-#. translators: block style
-#: src/blocks/form/fields/field-checkbox/index.js:23
-#: src/blocks/form/fields/field-checkbox/transforms.js:14
-#: src/extensions/list-styles/index.js:25
-msgid "Checkbox"
-msgstr ""
-
 #. translators: block description
 #: src/blocks/form/fields/field-checkbox/index.js:25
 msgid "A checkbox field with multiple options where multiple choices can be made."
@@ -2059,34 +2138,6 @@ msgstr ""
 
 #: src/blocks/form/fields/field-submit-button/index.js:36
 msgid "Fill"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/form/fields/field-submit-button/index.js:37
-#: src/extensions/media-text-styles/index.js:31
-msgid "Outline"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/form/fields/field-submit-button/index.js:38
-#: src/blocks/share/index.js:54
-#: src/blocks/social-profiles/index.js:66
-#: src/extensions/button-styles/index.js:11
-msgid "Circular"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/form/fields/field-submit-button/index.js:39
-#: src/extensions/button-styles/index.js:18
-msgid "3D"
-msgstr ""
-
-#. translators: block style
-#: src/blocks/form/fields/field-submit-button/index.js:40
-#: src/blocks/gallery-collage/inspector.js:94
-#: src/blocks/gallery-stacked/inspector.js:143
-#: src/extensions/button-styles/index.js:25
-msgid "Shadow"
 msgstr ""
 
 #. translators: block description
@@ -2410,20 +2461,6 @@ msgid "Write caption…"
 msgstr ""
 
 #. translators: block style
-#. translators: typography style
-#: src/blocks/gallery-collage/index.js:52
-#: src/blocks/logos/index.js:48
-#: src/components/font-family/index.js:21
-#: src/components/typography-controls/index.js:95
-#: src/components/typography-controls/index.js:113
-#: src/extensions/cover-styles/index.js:11
-#: src/extensions/image-styles/index.js:11
-#: src/extensions/list-styles/index.js:11
-#: src/extensions/media-text-styles/index.js:10
-msgid "Default"
-msgstr ""
-
-#. translators: block style
 #: src/blocks/gallery-collage/index.js:58
 msgid "Tiled"
 msgstr ""
@@ -2586,21 +2623,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/gallery-stacked/index.js:32
 msgid "Display multiple images in a single column stacked gallery."
-msgstr ""
-
-#. translators: visual style option
-#. translators: block style
-#: src/blocks/gallery-stacked/inspector.js:22
-#: src/blocks/gallery-stacked/inspector.js:23
-#: src/components/block-gallery/options/caption-options.js:22
-#: src/components/block-gallery/options/link-options.js:10
-#: src/components/dimensions-control/dimensions-select.js:15
-#: src/components/option-selector-control/index.js:55
-#: src/components/option-selector-control/index.js:56
-#: src/extensions/list-styles/index.js:18
-#: src/extensions/padding-controls/index.js:23
-#: src/extensions/padding-controls/index.js:24
-msgid "None"
 msgstr ""
 
 #: src/blocks/gallery-stacked/inspector.js:89
@@ -10067,18 +10089,6 @@ msgstr ""
 msgid "Gradient styles"
 msgstr ""
 
-#. translators: block style
-#: src/extensions/cover-styles/index.js:18
-#: src/extensions/image-styles/index.js:18
-msgid "Bottom Wave"
-msgstr ""
-
-#. translators: block style
-#: src/extensions/cover-styles/index.js:25
-#: src/extensions/image-styles/index.js:25
-msgid "Top Wave"
-msgstr ""
-
 #: src/extensions/image-crop/index.js:158
 msgid "Crop settings"
 msgstr ""
@@ -10127,16 +10137,6 @@ msgstr ""
 
 #: src/extensions/layout-selector/settings-modal-control.js:19
 msgid "Layout selector"
-msgstr ""
-
-#. translators: block style
-#: src/extensions/media-text-styles/index.js:17
-msgid "Card"
-msgstr ""
-
-#. translators: block style
-#: src/extensions/media-text-styles/index.js:24
-msgid "Overlap"
 msgstr ""
 
 #. translators: %1$s is placeholder for block name such as Group, or Embed

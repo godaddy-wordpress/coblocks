@@ -4,6 +4,8 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockStyle } from '@wordpress/blocks';
 
+import './style.scss';
+
 // Add default for reset, until WordPress 5.3 is released.
 registerBlockStyle( 'core/image', {
 	name: 'default',

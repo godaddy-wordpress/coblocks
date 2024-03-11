@@ -641,6 +641,7 @@ class CoBlocks_Block_Assets {
 			array_filter(
 				array(
 					false !== strpos( $post_object->post_content, '<!-- wp:coblocks/' ),
+					// Having core blocks here, ensures that enqueues from block_assets are loaded.
 					has_block( 'core/block', $post_object ),
 					has_block( 'core/button', $post_object ),
 					has_block( 'core/cover', $post_object ),
@@ -651,6 +652,7 @@ class CoBlocks_Block_Assets {
 					has_block( 'core/paragraph', $post_object ),
 					has_block( 'core/pullquote', $post_object ),
 					has_block( 'core/quote', $post_object ),
+					has_block( 'core/media-text', $post_object ),
 				)
 			)
 		);

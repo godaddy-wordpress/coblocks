@@ -88,7 +88,7 @@ function coblocks_render_coblocks_icon_block( $attrs ) {
 	if ( ! empty( $attrs['href'] ) ) {
 		$icon = sprintf(
 			'<a href="%1$s" rel="%2$s" target="%3$s" style="%4$s">%5$s</a>',
-			$attrs['href'],
+			esc_url( $attrs['href'] ),
 			! empty( $attrs['rel'] ) ? esc_attr( $attrs['rel'] ) : '',
 			! empty( $attrs['linkTarget'] ) ? esc_attr( $attrs['linkTarget'] ) : '_self',
 			esc_attr( $color_styles ), // To make sure the color gets to the svg when there is an anchor.

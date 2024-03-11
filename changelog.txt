@@ -1,3 +1,25 @@
+3.1.7 / 2024-03-11
+===================
+
+
+3.1.7 / 2024-03-11
+===================
+# Bug Fix
+* Security issue patched [#2594](https://github.com/godaddy-wordpress/coblocks/pull/2594)
+
+3.1.6 / 2024-02-28
+===================
+# Enhancements
+* Introduce a blueprint for WordPress preview [#2580](https://github.com/godaddy-wordpress/coblocks/pull/2580)
+
+# Bug fix
+* Load extension styles for core blocks [#2591](https://github.com/godaddy-wordpress/coblocks/pull/2591)
+* Fix Lightbox for all CoBlocks galleries [#2589](https://github.com/godaddy-wordpress/coblocks/pull/2589)
+* Fix Lightbox with A3 Lazy Loading plugin [#2588](https://github.com/godaddy-wordpress/coblocks/pull/2588)
+
+# Misc
+* Encode URI component in Typography settings [#2584](https://github.com/godaddy-wordpress/coblocks/pull/2584)
+
 3.1.5 / 2023-11-06
 ===================
 # Enhancements
