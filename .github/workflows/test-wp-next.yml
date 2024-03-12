@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/date-checker.yml
     with:
       # WP Next scheduled release date. Should be based on `https://make.wordpress.org/core/6-4/` or later.
-      scheduled_release_date: "2024-03-26"
+      scheduled_release_date: "2023-11-7"
 
   # Create WP NEXT Version Constant
   set_constant:
