@@ -577,7 +577,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 export function openCoBlocksLabsModal() {
 	// Open "more" menu.
 	cy.get( '.edit-post-more-menu button, .interface-more-menu-dropdown button' ).click();
-	cy.get( '.components-menu-group' ).contains( 'CoBlocks Labs' ).click();
+	cy.get( '.components-menu-group' ).contains( 'CoBlocks Labs' ).click( { force: true } );
 
 	cy.get( '.components-modal__frame' ).contains( 'CoBlocks Labs' ).should( 'exist' );
 }
