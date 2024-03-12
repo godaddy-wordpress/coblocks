@@ -146,11 +146,13 @@ export function addNewGroupToPost() {
 
 	if ( isWP65AtLeast() ) {
 		cy.get( '.editor-document-tools__inserter-toggle' ).click();
+
+		cy.get( '.components-input-control__input' ).click().type( 'group' );
 	} else {
 		cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
-	}
 
-	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
+		cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
+	}
 
 	cy.wait( 1000 );
 
