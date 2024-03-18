@@ -41,7 +41,7 @@ function coblocks_counter_register_block_patterns() {
 		'coblocks',
 		array(
 			'label'       => 'Coblocks',
-			'description' => 'Coblocks Patterns'
+			'description' => 'Coblocks Patterns',
 		)
 	);
 }
