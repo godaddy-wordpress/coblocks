@@ -34,7 +34,7 @@ jobs:
       matrix: ${{ steps.setup-spec-matrix.outputs.matrix }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -92,7 +92,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup wp-env
         uses: godaddy-wordpress/setup-wp-env@v1
@@ -103,7 +103,7 @@ jobs:
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -175,7 +175,7 @@ jobs:
 
       - name: Upload failure video
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.spec }}-fail.mp4
           path: ./.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
@@ -241,7 +241,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup wp-env
         uses: godaddy-wordpress/setup-wp-env@v1
@@ -252,7 +252,7 @@ jobs:
           themes: '["https://downloads.wordpress.org/theme/go.zip"]'
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
@@ -324,7 +324,7 @@ jobs:
 
       - name: Upload failure video
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.spec }}-fail.mp4
           path: ./.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
