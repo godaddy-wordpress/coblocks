@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/date-checker.yml
     with:
       # WP Next scheduled release date. Should be based on `https://make.wordpress.org/core/6-4/` or later.
-      scheduled_release_date: "2023-11-7"
+      scheduled_release_date: "2024-03-26"
 
   # Create WP NEXT Version Constant
   set_constant:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       # Should be current latest WP Next release on `wordpress.org`. eg: `https://wordpress.org/wordpress-6.5-beta2.zip`
-      wp_next: "https://wordpress.org/wordpress-6.5-RC2.zip"
+      wp_next: "https://wordpress.org/wordpress-6.5-RC4.zip"
     steps:
       - run: echo "Setting WP Next Constant"
 
@@ -35,7 +35,7 @@ jobs:
     uses: ./.github/workflows/test-e2e-cypress.yml
     with:
       wpVersion: ${{ needs.set_constant.outputs.wp_next }}
-      installPath: "tests-wordpress-6.5-RC2"
+      installPath: "tests-wordpress-6.5-RC4"
       theme: "https://downloads.wordpress.org/theme/go.zip"
     concurrency:
       group: chrome-wp-next
