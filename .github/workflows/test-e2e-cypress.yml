@@ -17,7 +17,7 @@ on:
       phpVersion:
         required: false
         type: string
-        default: "8.2"
+        default: "8.3"
       installPath:
           required: false
           type: string
