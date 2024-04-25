@@ -34,7 +34,7 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 				'use_timezone_with_r_rules'     => false,
 			)
 		);
-		$ical->init_url( sanitize_url( $attributes['externalCalendarUrl'] ) );
+		$ical->init_url( esc_url( $attributes['externalCalendarUrl'] ) );
 
 		if ( 'all' === $attributes['eventsRange'] ) {
 			$events = $ical->events_from_range();
