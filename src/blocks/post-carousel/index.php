@@ -22,7 +22,7 @@ function coblocks_render_coblocks_post_carousel_block( $attributes ) {
 		'order'            => $attributes['order'],
 		'orderby'          => $attributes['orderBy'],
 		'suppress_filters' => false,
-		'post__not_in'     => array( $post->ID ),
+		'post__not_in'     => ! is_null( $post ) ? array( $post->ID ) : array(),
 	);
 
 	if ( isset( $attributes['categories'] ) ) {
