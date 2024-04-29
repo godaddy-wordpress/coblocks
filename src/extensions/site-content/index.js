@@ -45,11 +45,6 @@ export const CoBlocksSiteContent = ( props ) => {
 
 	const { postTypes } = props;
 
-	// Prevent Site Content from loading outside of post-new.php pages.
-	if ( ! window.location.pathname.includes( 'post-new.php' ) ) {
-		return;
-	}
-
 	return (
 		<span data-test="site-content__container">
 			<PluginSidebar
@@ -79,10 +74,12 @@ registerPlugin( PLUGIN_NAME, {
 	icon,
 	render: compose( [
 		ifCondition( () => {
+			// Prevent Site Content from loading outside of post-new.php pages.
+			const isPostEditor = window.location.pathname.includes( 'post-new.php' )
 			const [ siteContentEnabled ] = useEntityProp( 'root', 'site', SITE_CONTENT_FEATURE_ENABLED_KEY );
 			// In the context of `widgets.php` site content is incompatible due to missing dependencies.
 			const isCompatible = !! selectWithoutHooks( 'core/editor' );
-			return siteContentEnabled && isCompatible;
+			return isPostEditor && siteContentEnabled && isCompatible;
 		} ),
 		withSelect( ( select ) => {
 			const {
