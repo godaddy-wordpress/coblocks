@@ -45,6 +45,10 @@ export const CoBlocksSiteContent = ( props ) => {
 
 	const { postTypes } = props;
 
+	if ( ! window.location.pathname.includes( 'post-new.php' ) ) {
+		return;
+	}
+
 	return (
 		<span data-test="site-content__container">
 			<PluginSidebar

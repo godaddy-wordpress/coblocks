@@ -20,15 +20,6 @@ class CoBlocks_Site_Content {
 	 */
 	public function __construct() {
 
-		global $pagenow;
-
-		// Ensure Site Content only loads if within the post editor.
-		if (
-			! isset( $pagenow ) || strpos( $pagenow, 'post-new.php' ) === false
-		) {
-			return;
-		}
-
 		add_action( 'init', array( $this, 'register_settings' ), 11 );
 		add_filter( 'wp_insert_post_empty_content', array( $this, 'allow_empty_post_content' ), 10, 2 );
 
