@@ -45,6 +45,7 @@ export const CoBlocksSiteContent = ( props ) => {
 
 	const { postTypes } = props;
 
+	// Prevent Site Content from loading outside of post-new.php pages.
 	if ( ! window.location.pathname.includes( 'post-new.php' ) ) {
 		return;
 	}
