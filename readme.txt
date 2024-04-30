@@ -125,6 +125,12 @@ CoBlocks is designed to support the last two major versions of WordPress that ar
 
 == Changelog ==
 
+= 3.1.9 / 2024-04-30 =
+# Bug fix
+* Prevent local URLs from loading with events block [#2607](https://github.com/godaddy-wordpress/coblocks/pull/2607)
+* Fix Site Content extension loading outside of editor [#2609](https://github.com/godaddy-wordpress/coblocks/pull/2609)
+* Fix Site Design extension failing dom operations [#2610](https://github.com/godaddy-wordpress/coblocks/pull/2610)
+
 = 3.1.8 / 2024-04-02 =
 # Enhancements
 * Introduce WP 6.5 compatibility [#2601](https://github.com/godaddy-wordpress/coblocks/pull/2601)
