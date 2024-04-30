@@ -75,7 +75,7 @@ registerPlugin( PLUGIN_NAME, {
 	render: compose( [
 		ifCondition( () => {
 			// Prevent Site Content from loading outside of post-new.php pages.
-			const isPostEditor = window.location.pathname.includes( 'post-new.php' )
+			const isPostEditor = window.location.pathname.includes( 'post-new.php' );
 			const [ siteContentEnabled ] = useEntityProp( 'root', 'site', SITE_CONTENT_FEATURE_ENABLED_KEY );
 			// In the context of `widgets.php` site content is incompatible due to missing dependencies.
 			const isCompatible = !! selectWithoutHooks( 'core/editor' );
