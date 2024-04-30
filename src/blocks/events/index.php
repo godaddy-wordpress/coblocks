@@ -19,6 +19,11 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 		return $content;
 	}
 
+	// If externalCalendarUrl contains a localhost URL, return an error message.
+	if ( strpos( $attributes['externalCalendarUrl'], 'localhost' ) !== false || strpos( $attributes['externalCalendarUrl'], '127.0' ) !== false ) {
+		return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred. localhost URLs are not permitted.', 'coblocks' ) . '</div></div>';
+	}
+
 	try {
 		$ical = new \CoBlocks_ICal(
 			false,
@@ -34,7 +39,7 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 				'use_timezone_with_r_rules'     => false,
 			)
 		);
-		$ical->init_url( $attributes['externalCalendarUrl'] );
+		$ical->init_url( esc_url_raw( $attributes['externalCalendarUrl'] ) );
 
 		if ( 'all' === $attributes['eventsRange'] ) {
 			$events = $ical->events_from_range();
