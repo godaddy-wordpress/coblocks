@@ -29,7 +29,7 @@ jobs:
           - "" # Default theme is TwentyTwentyThree
         php: # Test against minimum and latest PHP versions.
           - "7.4"
-          - "8.2"
+          - "8.3"
     with:
       wpVersion: "WordPress/WordPress#${{matrix.wp}}"
       theme: ${{matrix.theme}}

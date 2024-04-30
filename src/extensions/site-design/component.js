@@ -74,7 +74,13 @@ export function SiteDesignStyles() {
 		// Here we move the style element so that we can continue to target and change on user action.
 		// Only move element if it is not yet under the desktop preview div.
 		if ( ! stylesElement.closest( 'div.is-desktop-preview' ) ) {
-			document.querySelectorAll( '.is-desktop-preview style:last-of-type' )?.[ 0 ].after( stylesElement );
+			const target =
+				document.querySelectorAll( '.is-desktop-preview style:last-of-type' )?.[ 0 ] ??
+				document.querySelectorAll( '.is-desktop-preview div' )?.[ 0 ];
+
+			if ( !! target ) {
+				target?.after?.( stylesElement );
+			}
 		}
 	}, [ isUpdating, designResp ] );
 

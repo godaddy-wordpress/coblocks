@@ -1,3 +1,21 @@
+3.1.8 / 2024-04-02
+===================
+# Enhancements
+* Introduce WP 6.5 compatibility [#2601](https://github.com/godaddy-wordpress/coblocks/pull/2601)
+* Introduce PHP 8.3 compatibility [#2600](https://github.com/godaddy-wordpress/coblocks/pull/2600)
+
+# Bug fix
+* Fix bug around CoBlocks patterns [#2599](https://github.com/godaddy-wordpress/coblocks/pull/2599)
+
+# Misc
+* Improve tests for WP 6.5 [#2597](https://github.com/godaddy-wordpress/coblocks/pull/2597)
+* Improve CICD logic for WP 6.5 [#2590](https://github.com/godaddy-wordpress/coblocks/pull/2590)
+
+3.1.7 / 2024-03-11
+===================
+# Bug Fix
+* Security issue patched [#2594](https://github.com/godaddy-wordpress/coblocks/pull/2594)
+
 3.1.6 / 2024-02-28
 ===================
 # Enhancements

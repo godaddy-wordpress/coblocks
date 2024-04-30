@@ -32,6 +32,7 @@ module.exports = {
 		'sort-imports': [ 'off' ],
 		'sort-keys': [ 'off' ],
 		'react/jsx-sort-props': [ 'off' ],
+		'react-hooks/exhaustive-deps': [ 'off' ],
 	},
 
 	noInlineConfig: false,

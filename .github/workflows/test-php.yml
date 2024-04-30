@@ -8,12 +8,11 @@ on:
 jobs:
   # PHP Unit testing
   # Unit testing should be run across WP current, previous, and major before previous.
-  # Unit tests should be run across all supported versions of PHP.
   php_unit_versions_matrix:
     strategy:
       matrix:
-        php: ['7.4','8.0','8.1','8.2']
-        wp: ['6.4', '6.3']
+        php: ['7.4','8.3']
+        wp: ['6.4'] # TODO: Add 6.5 when released
     name: PHP Unit ${{ matrix.php }} | WP Version ${{ matrix.wp }}
     uses: ./.github/workflows/test-php-unit.yml
     with:

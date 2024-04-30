@@ -6,7 +6,7 @@ on:
       phpVersion:
         required: false
         type: string
-        default: '8.1'
+        default: '8.3'
       wpVersion:
         required: false
         type: string
@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'

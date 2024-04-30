@@ -16,8 +16,15 @@ export function addFormChild( name ) {
 	cy.get( '.components-popover__content button' ).contains( /insert after|add after/i ).click( { force: true } );
 	cy.get( '[data-type="coblocks/form"] [data-type="core/paragraph"]' ).click( { force: true } );
 
-	cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
-	cy.get( '.block-editor-inserter__search .components-search-control__input' ).click().type( name );
+	if ( isWP65AtLeast() ) {
+		cy.get( '.edit-post-header-toolbar' ).find( '.editor-document-tools__inserter-toggle' ).click( { force: true } );
+
+		cy.get( '.components-input-control__input' ).click().type( name );
+	} else {
+		cy.get( '.edit-post-header-toolbar' ).find( '.edit-post-header-toolbar__inserter-toggle' ).click( { force: true } );
+
+		cy.get( '.block-editor-inserter__search .components-search-control__input' ).click().type( name );
+	}
 
 	cy.get( '.editor-block-list-item-coblocks-field-' + name ).first().click( { force: true } );
 	cy.get( `[data-type="coblocks/field-${ name }"]` ).should( 'exist' ).click( { force: true } );
@@ -137,8 +144,15 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 export function addNewGroupToPost() {
 	clearBlocks();
 
-	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
-	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
+	if ( isWP65AtLeast() ) {
+		cy.get( '.editor-document-tools__inserter-toggle' ).click();
+
+		cy.get( '.components-input-control__input' ).click().type( 'group' );
+	} else {
+		cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
+
+		cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search, .components-search-control__input' ).click().type( 'group' );
+	}
 
 	cy.wait( 1000 );
 
@@ -196,9 +210,15 @@ export function viewPage() {
 		}
 	} );
 
-	cy.get( 'button[data-label="Post"]' );
+	if ( isWP65AtLeast() ) {
+		cy.get( '[data-tab-id="edit-post/document"]' );
 
-	cy.get( '.edit-post-post-url__dropdown button' ).click();
+		cy.get( '.editor-post-url__panel-dropdown button' ).click();
+	} else {
+		cy.get( 'button[data-label="Post"]' );
+
+		cy.get( '.edit-post-post-url__dropdown button' ).click();
+	}
 
 	cy.get( '.editor-post-url__link' ).then( ( pageLink ) => {
 		const linkAddress = Cypress.$( pageLink ).attr( 'href' );
@@ -461,9 +481,14 @@ export function setColorPanelSetting( settingName, hexColor ) {
  * @param {RegExp} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
-	// Ensure block tab is selected.
-	if ( Cypress.$( 'button[data-label="Block"]:not(.is-active)' ) ) {
-		cy.get( 'button[data-label="Block"]' ).click();
+	if ( isWP65AtLeast() ) {
+		cy.get( '[data-tab-id="edit-post/block"]' ).click();
+	} else {
+		// Ensure block tab is selected.
+		// eslint-disable-next-line no-lonely-if
+		if ( Cypress.$( 'button[data-label="Block"]:not(.is-active)' ) ) {
+			cy.get( 'button[data-label="Block"]' ).click();
+		}
 	}
 
 	cy.get( '.components-panel__body' )
@@ -552,7 +577,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 export function openCoBlocksLabsModal() {
 	// Open "more" menu.
 	cy.get( '.edit-post-more-menu button, .interface-more-menu-dropdown button' ).click();
-	cy.get( '.components-menu-group' ).contains( 'CoBlocks Labs' ).click();
+	cy.get( '.components-menu-group' ).contains( 'CoBlocks Labs' ).click( { force: true } );
 
 	cy.get( '.components-modal__frame' ).contains( 'CoBlocks Labs' ).should( 'exist' );
 }
@@ -588,9 +613,12 @@ export function isNotWPLocalEnv() {
 }
 
 // A condition to determine if we are testing on WordPress 6.4+
-// This function should be removed in the process of the work for WP 6.5 compatibility
 export function isWP64AtLeast() {
 	return Cypress.$( "[class*='branch-6-4']" ).length > 0 || Cypress.$( "[class*='branch-6-5']" ).length > 0;
+}
+
+export function isWP65AtLeast() {
+	return Cypress.$( "[class*='branch-6-5']" ).length > 0 || Cypress.$( "[class*='branch-6-6']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {
