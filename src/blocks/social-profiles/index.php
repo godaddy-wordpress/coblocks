@@ -14,167 +14,166 @@
  */
 function coblocks_render_coblocks_social_profiles_block( $attributes ) {
 
-	global $post;
-
-	// Get the featured image.
-	if ( has_post_thumbnail() ) {
-		$thumbnail_id = get_post_thumbnail_id( $post->ID );
-		$thumbnail    = $thumbnail_id ? current( wp_get_attachment_image_src( $thumbnail_id, 'large', true ) ) : '';
-	} else {
-		$thumbnail = null;
-	}
-
-	// Attributes.
-	$background_color_style = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? 'style=background-color:' . $attributes['customBlockBackgroundColor'] : '';
-	$border_radius          = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
-	$has_padding            = is_array( $attributes ) && isset( $attributes['padding'] ) ? 'has-padding' : '';
-	$opens_in_new_tab       = is_array( $attributes ) && isset( $attributes['opensInNewTab'] ) && $attributes['opensInNewTab'];
-
-	$has_background          = '';
-	$background_color_class  = '';
-	$custom_background_color = '';
-	$has_color               = '';
-	$text_color_class        = '';
-	$custom_text_color       = '';
-	$icon_size               = '';
-	$padding                 = '';
-
-	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) !== false ) {
-		$has_background          = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( $attributes['backgroundColor'] || $attributes['customBackgroundColor'] ) ) ? 'has-text-color' : '';
-		$background_color_class  = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-color" : false;
-		$custom_background_color = is_array( $attributes ) && isset( $attributes['customBackgroundColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['backgroundColor'] ) ) ? "color: {$attributes['customBackgroundColor']};" : '';
-	} else {
-		$has_background          = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) && ( $attributes['hasColors'] || ( isset( $attributes['backgroundColor'] ) || $attributes['customBackgroundColor'] ) ) ? 'has-background' : '';
-		$background_color_class  = is_array( $attributes ) && isset( $attributes['backgroundColor'] ) ? "has-{$attributes['backgroundColor']}-background-color" : false;
-		$custom_background_color = is_array( $attributes ) && isset( $attributes['customBackgroundColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['backgroundColor'] ) ) ? "background-color: {$attributes['customBackgroundColor']};" : '';
-
-		$has_color         = is_array( $attributes ) && isset( $attributes['hasColors'] ) && ( isset( $attributes['textColor'] ) || isset( $attributes['customTextColor'] ) ) && ( $attributes['hasColors'] || ( isset( $attributes['textColor'] ) || $attributes['customTextColor'] ) ) ? 'has-text-color' : '';
-		$text_color_class  = is_array( $attributes ) && isset( $attributes['textColor'] ) ? "has-{$attributes['textColor']}-color" : false;
-		$custom_text_color = is_array( $attributes ) && isset( $attributes['customTextColor'] ) && isset( $attributes['hasColors'] ) && ( ! $attributes['hasColors'] && ! isset( $attributes['textColor'] ) ) ? "color: {$attributes['customTextColor']};" : '';
-	}
-
-	if ( isset( $attributes['className'] ) && ( strpos( $attributes['className'], 'is-style-mask' ) !== false || strpos( $attributes['className'], 'is-style-circular' ) !== false ) ) {
-		$icon_size = is_array( $attributes ) && isset( $attributes['iconSize'] ) ? "height:{$attributes['iconSize']}px;width: {$attributes['iconSize']}px;" : '';
-	}
-
-	if ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-circular' ) !== false ) {
-		$padding = is_array( $attributes ) && isset( $attributes['padding'] ) ? "padding:{$attributes['padding']}px;" : '';
-	}
-
 	// Supported social media platforms.
 	$platforms = array(
-
-		'facebook'  => array(
-			'text' => esc_html__( 'Facebook', 'coblocks' ),
-			'url'  => $attributes['facebook'],
-		),
-		'twitter'   => array(
-			'text' => esc_html__( 'Twitter', 'coblocks' ),
-			'url'  => $attributes['twitter'],
-		),
-		'instagram' => array(
-			'text' => esc_html__( 'Instagram', 'coblocks' ),
-			'url'  => $attributes['instagram'],
-		),
-		'tiktok'    => array(
-			'text' => esc_html__( 'TikTok', 'coblocks' ),
-			'url'  => $attributes['tiktok'],
-		),
-		'pinterest' => array(
-			'text' => esc_html__( 'Pinterest', 'coblocks' ),
-			'url'  => $attributes['pinterest'],
-		),
-		'linkedin'  => array(
-			'text' => esc_html__( 'Linkedin', 'coblocks' ),
-			'url'  => $attributes['linkedin'],
-		),
-
-		'youtube'   => array(
-			'text' => esc_html__( 'YouTube', 'coblocks' ),
-			'url'  => $attributes['youtube'],
-		),
-		'yelp'      => array(
-			'text' => esc_html__( 'Yelp', 'coblocks' ),
-			'url'  => $attributes['yelp'],
-		),
-		'houzz'     => array(
-			'text' => esc_html__( 'Houzz', 'coblocks' ),
-			'url'  => $attributes['houzz'],
-		),
+		'facebook'  => __( 'Facebook', 'coblocks' ),
+		'twitter'   => __( 'Twitter', 'coblocks' ),
+		'instagram' => __( 'Instagram', 'coblocks' ),
+		'tiktok'    => __( 'TikTok', 'coblocks' ),
+		'pinterest' => __( 'Pinterest', 'coblocks' ),
+		'linkedin'  => __( 'Linkedin', 'coblocks' ),
+		'youtube'   => __( 'YouTube', 'coblocks' ),
+		'yelp'      => __( 'Yelp', 'coblocks' ),
+		'houzz'     => __( 'Houzz', 'coblocks' ),
 	);
 
-	// Start markup.
-	$markup = '';
+	$icons_markup = array();
 
-	// Set the social link target.
-	$link_target = $opens_in_new_tab ? 'target="_blank" rel="noopener noreferrer"' : '';
-
-	foreach ( $platforms as $id => $platform ) {
-
-		if ( isset( $attributes[ $id ] ) && $attributes[ $id ] ) {
-			$markup .= sprintf(
-				'<li>
-					<a href="%1$s" class="wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--%8$s %3$s %7$s %9$s %10$s %13$s" title="%2$s" style="%4$s%6$s%11$s%12$s" %14$s>
-						<span class="wp-block-coblocks-social__icon" style="%5$s"></span>
-						<span class="wp-block-coblocks-social__text">%2$s</span>
-					</a>
-				</li>',
-				esc_url( $platform['url'] ),
-				esc_html( $platform['text'] ),
-				esc_attr( $has_background ),
-				esc_attr( $border_radius ),
-				esc_attr( $icon_size ),
-				esc_attr( $custom_background_color ),
-				esc_attr( $background_color_class ),
-				esc_attr( $id ),
-				esc_attr( $has_color ),
-				esc_attr( $text_color_class ),
-				esc_attr( $custom_text_color ),
-				esc_attr( $padding ),
-				esc_attr( $has_padding ),
-				$link_target
-			);
+	foreach ( $platforms as $slug => $name ) {
+		if ( empty( $attributes[ $slug ] ) ) {
+			continue;
 		}
+
+		$icon_wrapper_class = array( 'wp-block-button__link wp-block-coblocks-social__button wp-block-coblocks-social__button--' . $slug );
+		$icon_wrapper_style = array();
+
+		$has_classname = ! empty( $attributes['className'] );
+
+		$has_style_mask     = $has_classname && strpos( $attributes['className'], 'is-style-mask' ) !== false;
+		$has_style_circular = $has_classname && strpos( $attributes['className'], 'is-style-circular' ) !== false;
+
+		if ( isset( $attributes['backgroundColor'] ) || isset( $attributes['customBackgroundColor'] ) ) {
+			$icon_wrapper_class[] = $has_style_mask
+				? 'has-' . $attributes['backgroundColor'] . '-color'
+				: 'has-' . $attributes['backgroundColor'] . '-background-color';
+
+			if ( isset( $attributes['customBackgroundColor'] ) ) {
+				$icon_wrapper_style[] = $has_style_mask
+					? 'color:' . $attributes['customBackgroundColor'] . ';'
+					: 'background-color:' . $attributes['customBackgroundColor'] . ';';
+			}
+		}
+
+		if ( isset( $attributes['textColor'] ) || isset( $attributes['customTextColor'] ) ) {
+			$icon_wrapper_class[] = 'has-text-color';
+			$icon_wrapper_class[] = 'has-' . $attributes['textColor'] . '-color';
+
+			if ( isset( $attributes['customTextColor'] ) ) {
+				$icon_wrapper_style[] = 'color:' . $attributes['customTextColor'] . ';';
+			}
+		}
+
+		$icon_size_css = '';
+		if ( $has_style_mask || $has_style_circular ) {
+			$icon_size_css = 'height:' . $attributes['iconSize'] . 'px; width:' . $attributes['iconSize'] . 'px;';
+		}
+
+		if ( $has_style_circular ) {
+			$icon_wrapper_style[] = 'padding:' . $attributes['padding'] . 'px;';
+		}
+
+		if ( ! empty( $attributes['borderRadius'] ) ) {
+			$icon_wrapper_style[] = 'border-radius:' . $attributes['borderRadius'] . 'px;';
+		}
+
+		if ( ! empty( $attributes['padding'] ) ) {
+			$icon_wrapper_class[] = 'has-padding';
+		}
+
+		$icon_wrapper_open = wp_kses(
+			sprintf(
+				'<li><a href="%s" title="%s" class="%s" style="%s"%s>',
+				esc_url( $attributes[ $slug ] ),
+				esc_html( $name ),
+				esc_attr( implode( ' ', $icon_wrapper_class ) ),
+				esc_attr( implode( '', $icon_wrapper_style ) ),
+				empty( $attributes['opensInNewTab'] ) ? '' : ' target="_blank" rel="noopener noreferrer"'
+			),
+			array(
+				'li' => array(),
+				'a'  => array(
+					'class'  => true,
+					'href'   => true,
+					'rel'    => true,
+					'style'  => true,
+					'target' => true,
+					'title'  => true,
+				),
+			)
+		);
+
+		$icon_wrapper_close = '</a></li>';
+
+		$icon_inner_markup = wp_kses(
+			sprintf(
+				'<span class="wp-block-coblocks-social__icon" style="%s"></span><span class="wp-block-coblocks-social__text">%s</span>',
+				esc_attr( $icon_size_css ),
+				esc_html( $name )
+			),
+			array(
+				'span' => array(
+					'class' => true,
+					'style' => true,
+				),
+			)
+		);
+
+		$icons_markup[] = $icon_wrapper_open . $icon_inner_markup . $icon_wrapper_close;
 	}
 
-	// Build classes.
-	$class = 'wp-block-coblocks-social wp-block-coblocks-social-profiles';
+	// Block wrapper.
+	$block_wrapper_class = array( 'wp-block-coblocks-social wp-block-coblocks-social-profiles' );
 
 	if ( isset( $attributes['className'] ) ) {
-		$class .= ' ' . $attributes['className'];
+		$block_wrapper_class[] = $attributes['className'];
 	}
 
 	if ( isset( $attributes['align'] ) ) {
-		$class .= ' align' . $attributes['align'];
+		$block_wrapper_class[] = 'align' . $attributes['align'];
 	}
 
 	if ( isset( $attributes['textAlign'] ) ) {
-		$class .= " has-text-align-{$attributes['textAlign']}";
+		$block_wrapper_class[] = 'has-text-align-' . $attributes['textAlign'];
 	}
 
 	if ( isset( $attributes['blockBackgroundColor'] ) || isset( $attributes['customBlockBackgroundColor'] ) ) {
-		$class .= ' has-background';
+		$block_wrapper_class[] = 'has-background';
 	}
 
 	if ( isset( $attributes['blockBackgroundColor'] ) ) {
-		$class .= " has-{$attributes['blockBackgroundColor']}-background-color";
+		$block_wrapper_class[] = 'has-' . $attributes['blockBackgroundColor'] . '-background-color';
 	}
 
-	if ( isset( $attributes['hasColors'] ) && $attributes['hasColors'] ) {
-		$class .= ' has-colors';
+	if ( ! empty( $attributes['hasColors'] ) ) {
+		$block_wrapper_class[] = 'has-colors';
 	}
 
 	if ( isset( $attributes['size'] ) && ( isset( $attributes['className'] ) && strpos( $attributes['className'], 'is-style-mask' ) === false ) ) {
-		$class .= ' has-button-size-' . $attributes['size'];
+		$block_wrapper_class[] = 'has-button-size-' . $attributes['size'];
 	}
 
-	// Render block content.
-	$block_content = sprintf(
-		'<div class="%1$s" %2$s><ul>%3$s</ul></div>',
-		esc_attr( $class ),
-		esc_attr( $background_color_style ),
-		$markup
+	$block_wrapper_style = array();
+
+	if ( isset( $attributes['customBlockBackgroundColor'] ) ) {
+		$block_wrapper_style[] = 'background-color:' . $attributes['customBlockBackgroundColor'] . ';';
+	}
+
+	$block_wrapper_open = wp_kses(
+		sprintf(
+			'<div class="%s" style="%s"><ul>',
+			esc_attr( implode( ' ', $block_wrapper_class ) ),
+			esc_attr( implode( '', $block_wrapper_style ) )
+		),
+		array(
+			'div' => array(
+				'class' => true,
+				'style' => true,
+			),
+			'ul'  => array(),
+		)
 	);
 
-	return $block_content;
+	$block_wrapper_close = '</ul></div>';
+
+	return $block_wrapper_open . implode( '', $icons_markup ) . $block_wrapper_close;
 }
