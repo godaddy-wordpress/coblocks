@@ -14,16 +14,6 @@
  */
 function coblocks_render_coblocks_social_profiles_block( $attributes ) {
 
-	global $post;
-
-	// Get the featured image.
-	if ( has_post_thumbnail() ) {
-		$thumbnail_id = get_post_thumbnail_id( $post->ID );
-		$thumbnail    = $thumbnail_id ? current( wp_get_attachment_image_src( $thumbnail_id, 'large', true ) ) : '';
-	} else {
-		$thumbnail = null;
-	}
-
 	// Attributes.
 	$background_color_style = is_array( $attributes ) && isset( $attributes['customBlockBackgroundColor'] ) ? 'style=background-color:' . $attributes['customBlockBackgroundColor'] : '';
 	$border_radius          = is_array( $attributes ) && isset( $attributes['borderRadius'] ) ? "border-radius: {$attributes['borderRadius']}px;" : '';
