@@ -125,6 +125,10 @@ CoBlocks is designed to support the last two major versions of WordPress that ar
 
 == Changelog ==
 
+= 3.1.10 / 2024-05-30 =
+# Bug fix
+* Fix a possible XSS vector [#2612](https://github.com/godaddy-wordpress/coblocks/pull/2612)
+
 = 3.1.9 / 2024-04-30 =
 # Bug fix
 * Prevent local URLs from loading with events block [#2607](https://github.com/godaddy-wordpress/coblocks/pull/2607)
