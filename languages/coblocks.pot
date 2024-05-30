@@ -1,14 +1,14 @@
 # Copyright (c) 2024 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.1.9\n"
+"Project-Id-Version: CoBlocks 3.1.10\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-30T18:06:27+00:00\n"
+"POT-Creation-Date: 2024-05-30T16:08:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: coblocks\n"
@@ -373,49 +373,49 @@ msgid "Share on Reddit"
 msgstr ""
 
 #. translators: icon label
-#: src/blocks/social-profiles/index.php:68
+#: src/blocks/social-profiles/index.php:19
 #: src/blocks/icon/svgs-generated.js:1031
 #: src/blocks/social-profiles/edit.js:123
 msgid "Facebook"
 msgstr ""
 
 #. translators: icon label
-#: src/blocks/social-profiles/index.php:72
+#: src/blocks/social-profiles/index.php:20
 #: src/blocks/icon/svgs-generated.js:2975
 #: src/blocks/social-profiles/edit.js:129
 msgid "Twitter"
 msgstr ""
 
-#: src/blocks/social-profiles/index.php:76
+#: src/blocks/social-profiles/index.php:21
 #: src/blocks/social-profiles/edit.js:135
 msgid "Instagram"
 msgstr ""
 
-#: src/blocks/social-profiles/index.php:80
+#: src/blocks/social-profiles/index.php:22
 #: src/blocks/social-profiles/edit.js:141
 msgid "TikTok"
 msgstr ""
 
-#: src/blocks/social-profiles/index.php:84
+#: src/blocks/social-profiles/index.php:23
 #: src/blocks/social-profiles/edit.js:147
 msgid "Pinterest"
 msgstr ""
 
-#: src/blocks/social-profiles/index.php:88
+#: src/blocks/social-profiles/index.php:24
 msgid "Linkedin"
 msgstr ""
 
-#: src/blocks/social-profiles/index.php:93
+#: src/blocks/social-profiles/index.php:25
 #: src/blocks/social-profiles/edit.js:159
 msgid "YouTube"
 msgstr ""
 
-#: src/blocks/social-profiles/index.php:97
+#: src/blocks/social-profiles/index.php:26
 #: src/blocks/social-profiles/edit.js:165
 msgid "Yelp"
 msgstr ""
 
-#: src/blocks/social-profiles/index.php:101
+#: src/blocks/social-profiles/index.php:27
 #: src/blocks/social-profiles/edit.js:171
 msgid "Houzz"
 msgstr ""
