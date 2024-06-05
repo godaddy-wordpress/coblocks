@@ -43,15 +43,15 @@ describe( 'Test CoBlocks Features Block', function() {
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 2 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).focus().type( '{selectall}' ).type( 1 );
+		cy.get( helpers.sidebarClass() ).find( 'input[aria-label="Columns"][type="number"]' ).focus().type( '{selectall}' ).type( 1 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 2 ); // Children should never decrease with column count
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).focus().type( '{selectall}' ).type( 3 );
+		cy.get( helpers.sidebarClass() ).find( 'input[aria-label="Columns"][type="number"]' ).focus().type( '{selectall}' ).type( 3 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 3 );
 
-		cy.get( '.edit-post-sidebar' ).find( 'input[aria-label="Columns"][type="number"]' ).focus().type( '{selectall}' ).type( 4 );
+		cy.get( helpers.sidebarClass() ).find( 'input[aria-label="Columns"][type="number"]' ).focus().type( '{selectall}' ).type( 4 );
 
 		cy.get( '.wp-block-coblocks-feature' ).should( 'have.length', 4 );
 

@@ -401,7 +401,7 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '[data-type="coblocks/form"]' )
 			.click( { force: true } );
 
-		cy.get( 'div.edit-post-sidebar' )
+		cy.get( 'div' + helpers.sidebarClass() )
 			.contains( /Subject/i )
 			.next( 'input' )
 			.then( ( $inputElem ) => {
@@ -479,7 +479,7 @@ describe( 'Test CoBlocks Form Block', function() {
 		cy.get( '[data-type="coblocks/form"]' )
 			.click( { force: true } );
 
-		cy.get( 'div.edit-post-sidebar' )
+		cy.get( 'div' + helpers.sidebarClass() )
 			.contains( /Success Message/i )
 			.next( 'textarea' )
 			.then( ( $inputElem ) => {

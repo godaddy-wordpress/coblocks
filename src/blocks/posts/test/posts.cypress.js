@@ -74,9 +74,9 @@ describe( 'Test CoBlocks Posts Block', function() {
 	it( 'Test posts block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/posts', true );
 
-		cy.get( '.edit-post-sidebar' ).contains( /posts settings/i ).click( { force: true } );
+		cy.get( helpers.sidebarClass() ).contains( /posts settings/i ).click( { force: true } );
 
-		cy.get( '.edit-post-sidebar' ).contains( /feed settings/i ).click( { force: true } );
+		cy.get( helpers.sidebarClass() ).contains( /feed settings/i ).click( { force: true } );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'posts' );
 

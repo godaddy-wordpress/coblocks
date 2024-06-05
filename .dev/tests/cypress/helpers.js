@@ -2,7 +2,7 @@
  * Returns true if styles tab exists false otherwise.
  */
 export function selectStylesTabIfExists() {
-	cy.get( '.edit-post-sidebar' ).find( 'button[aria-label="Styles"]' ).click();
+	cy.get( sidebarClass() ).find( 'button[aria-label="Styles"]' ).click();
 }
 
 /**
@@ -267,7 +267,7 @@ export function getBlockSlug() {
 export function setBlockStyle( style ) {
 	openSettingsPanel( RegExp( 'styles', 'i' ) );
 
-	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
+	cy.get( sidebarClass() + ' [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
 		.click();
 }
@@ -280,7 +280,7 @@ export function setBlockStyle( style ) {
 export function setNewBlockStyle( style ) {
 	selectStylesTabIfExists();
 
-	cy.get( '.edit-post-sidebar [class*="editor-block-styles"]' )
+	cy.get( sidebarClass() + ' [class*="editor-block-styles"]' )
 		.contains( RegExp( style, 'i' ) )
 		.click();
 }
@@ -354,7 +354,7 @@ export function setBlockAlignment( alignment ) {
 export function setInputValue( panelName, settingName, value, ignoreCase = true ) {
 	openSettingsPanel( ignoreCase ? RegExp( panelName, 'i' ) : panelName );
 
-	cy.get( '.edit-post-sidebar' )
+	cy.get( sidebarClass() )
 		.contains( ignoreCase ? RegExp( settingName, 'i' ) : settingName ).not( '.block-editor-block-card__description' )
 		.then( ( $settingSection ) => {
 			cy.get( Cypress.$( $settingSection ).parent() )
@@ -561,13 +561,7 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		}
 	} );
 
-	let sidebarClass = 'div.edit-post-sidebar';
-
-	if ( isWP66AtLeast() ) {
-		sidebarClass = 'div.editor-sidebar__panel';
-	}
-
-	cy.get( sidebarClass )
+	cy.get( 'div' + sidebarClass() )
 		.contains( /Additional CSS/i )
 		.next( 'input' )
 		.then( ( $inputElem ) => {
@@ -640,3 +634,7 @@ export function getIframeBody( containerClass ) {
 		// chaining more Cypress commands, like ".find(...)"
 		.then( cy.wrap );
 }
+
+export const sidebarClass = () => {
+	return isWP66AtLeast() ? '.editor-sidebar__panel' : '.edit-post-sidebar';
+};

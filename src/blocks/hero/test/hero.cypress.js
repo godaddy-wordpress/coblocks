@@ -75,7 +75,7 @@ describe( 'Test CoBlocks Hero Block', function() {
 
 		cy.get( '.wp-block-coblocks-hero' ).find( '.is-fullscreen' ).should( 'exist' );
 
-		cy.get( '.edit-post-sidebar' ).find( 'div[aria-label="Select layout"]' ).children().each( ( $layoutButton ) => {
+		cy.get( helpers.sidebarClass() ).find( 'div[aria-label="Select layout"]' ).children().each( ( $layoutButton ) => {
 			cy.get( $layoutButton ).click();
 		} );
 
