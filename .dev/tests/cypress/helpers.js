@@ -172,7 +172,11 @@ export function addNewGroupToPost() {
  * From inside the WordPress editor open the CoBlocks Gutenberg editor panel
  */
 export function savePage() {
-	cy.get( '.edit-post-header__settings button.is-primary' ).click();
+	if ( isWP66AtLeast() ) {
+		cy.get( '.editor-header__settings button.is-primary' ).click();
+	} else {
+		cy.get( '.edit-post-header__settings button.is-primary' ).click();
+	}
 
 	cy.get( '.components-editor-notices__snackbar', { timeout: 120000 } ).should( 'not.be.empty' );
 
@@ -557,7 +561,13 @@ export function addCustomBlockClass( classes, blockID = '' ) {
 		}
 	} );
 
-	cy.get( 'div.edit-post-sidebar' )
+	let sidebarClass = 'div.edit-post-sidebar';
+
+	if ( isWP66AtLeast() ) {
+		sidebarClass = 'div.editor-sidebar__panel';
+	}
+
+	cy.get( sidebarClass )
 		.contains( /Additional CSS/i )
 		.next( 'input' )
 		.then( ( $inputElem ) => {
@@ -612,13 +622,12 @@ export function isNotWPLocalEnv() {
 	return Cypress.env( 'testURL' ) !== 'http://localhost:8889';
 }
 
-// A condition to determine if we are testing on WordPress 6.4+
-export function isWP64AtLeast() {
-	return Cypress.$( "[class*='branch-6-4']" ).length > 0 || Cypress.$( "[class*='branch-6-5']" ).length > 0;
-}
-
 export function isWP65AtLeast() {
 	return Cypress.$( "[class*='branch-6-5']" ).length > 0 || Cypress.$( "[class*='branch-6-6']" ).length > 0;
+}
+
+export function isWP66AtLeast() {
+	return Cypress.$( "[class*='branch-6-6']" ).length > 0 || Cypress.$( "[class*='branch-6-7']" ).length > 0;
 }
 
 function getIframeDocument( containerClass ) {
