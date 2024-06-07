@@ -32,7 +32,6 @@ describe( 'coblocks/services', () => {
 		block.attributes.gutter = 'huge';
 		block.attributes.alignment = 'center';
 		block.attributes.headingLevel = 2;
-		block.attributes.buttons = true;
 		serializedBlock = serialize( block );
 
 		expect( serializedBlock ).toBeDefined();
@@ -40,7 +39,6 @@ describe( 'coblocks/services', () => {
 		expect( serializedBlock ).toContain( 'has-huge-gutter' );
 		expect( serializedBlock ).toContain( '"alignment":"center"' );
 		expect( serializedBlock ).toContain( '"headingLevel":2' );
-		expect( serializedBlock ).toContain( '"buttons":true' );
 		expect( serializedBlock ).toMatchSnapshot();
 	} );
 } );

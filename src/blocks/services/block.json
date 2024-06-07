@@ -13,10 +13,6 @@
 		"headingLevel": {
 			"type": "integer",
 			"default": 3
-		},
-		"buttons": {
-			"type": "boolean",
-			"default": false
 		}
 	},
 	"title": "Services",

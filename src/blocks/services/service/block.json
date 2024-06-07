@@ -6,10 +6,6 @@
 			"type": "integer",
 			"default": 3
 		},
-		"showCta": {
-			"type": "boolean",
-			"default": false
-		},
 		"imageUrl": {
 			"type": "string",
 			"source": "attribute",
