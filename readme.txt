@@ -125,6 +125,11 @@ CoBlocks is designed to support the last two major versions of WordPress that ar
 
 == Changelog ==
 
+= 3.1.11 / 2024-06-13 =
+# Bug fix
+* Fix disappearing buttons in Services block [#2613](https://github.com/godaddy-wordpress/coblocks/pull/2613)
+
+
 = 3.1.10 / 2024-05-30 =
 # Bug fix
 * Fix a possible XSS vector [#2612](https://github.com/godaddy-wordpress/coblocks/pull/2612)
