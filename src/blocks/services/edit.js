@@ -66,13 +66,6 @@ const Edit = ( props ) => {
 		updateInnerAttributes( 'coblocks/service', { headingLevel } );
 	};
 
-	const toggleCtas = () => {
-		const buttons = ! attributes.buttons;
-		setAttributes( { buttons } );
-
-		updateInnerAttributes( 'coblocks/service', { showCta: buttons } );
-	};
-
 	const setColumns = ( value ) => {
 		setAttributes( { columns: parseInt( value ) } );
 	};
@@ -90,10 +83,9 @@ const Edit = ( props ) => {
 	/* istanbul ignore next */
 	useEffect( () => {
 		// Handle add and removal of service block when column is changed.
-		const { buttons, headingLevel, alignment } = props;
+		const { headingLevel, alignment } = props;
 
 		handlePlaceholderPlacement( 'coblocks/service', {
-			showCta: buttons,
 			headingLevel,
 			alignment,
 		} );
@@ -159,7 +151,6 @@ const Edit = ( props ) => {
 				setAttributes={ setAttributes }
 				activeStyle={ activeStyle }
 				layoutOptions={ layoutOptions }
-				onToggleCtas={ toggleCtas }
 				onUpdateStyle={ updateStyle }
 				onSetColumns={ setColumns }
 			/>

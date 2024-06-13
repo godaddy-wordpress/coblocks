@@ -12,7 +12,7 @@ import GutterControl from '../../components/gutter-control/gutter-control';
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, RangeControl } from '@wordpress/components';
+import { PanelBody, RangeControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ENTER, SPACE } from '@wordpress/keycodes';
 
@@ -22,7 +22,6 @@ const Inspector = ( props ) => {
 		setAttributes,
 		activeStyle,
 		layoutOptions,
-		onToggleCtas,
 		onUpdateStyle,
 	} = props;
 
@@ -71,17 +70,6 @@ const Inspector = ( props ) => {
 					onChange={ ( columns ) => setAttributes( { columns } ) }
 				/>
 				{ attributes.columns >= 2 && <GutterControl { ...props } /> }
-				<ToggleControl
-					label={ __( 'Display buttons', 'coblocks' ) }
-					className="components-toggle-control--services-action-button"
-					help={
-						attributes.buttons
-							? __( 'Showing the call to action buttons.', 'coblocks' )
-							: __( 'Toggle to show call to action buttons.', 'coblocks' )
-					}
-					checked={ attributes.buttons }
-					onChange={ onToggleCtas }
-				/>
 			</PanelBody>
 		</InspectorControls>
 	);

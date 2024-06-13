@@ -89,21 +89,31 @@ describe( 'Test CoBlocks Services Block', function() {
 	} );
 
 	/**
-	 * Test that we can add a services block to the content, enable
-	 * action buttons and  are able to successfully save the block without errors.
+	 * Test that we can add a services block to the content with a nested button block
+	 * and are able to successfully save the services and button blocks without errors.
 	 */
-	it( 'Test services block saves with action buttons enabled.', function() {
+	it( 'Test services block saves after adding button', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
 		cy.get( 'div.wp-block-button' ).should( 'not.exist' );
 
-		helpers.toggleSettingCheckbox( /display buttons/i );
+		const servicesBlock = cy.get( '[data-type="coblocks/services"]' );
 
-		cy.get( '.wp-block-buttons' ).should( 'have.length', 2 );
+		// Select the first child paragraph block of the parent services block
+		const servicesBlockParagraph = servicesBlock.find( '[data-type="core/paragraph"]' ).first();
 
+		// Insert a new buttons block into the services block
+		servicesBlockParagraph.click().type( '/buttons' ).type( '{enter}' );
+
+		cy.get( 'div.wp-block-button' ).should( 'exist' );
+
+		// Check ability to save page without errors
 		helpers.savePage();
 
 		helpers.checkForBlockErrors( 'coblocks/services' );
+
+		// Check button persists after saving
+		cy.get( 'div.wp-block-button' ).should( 'exist' );
 	} );
 
 	/**

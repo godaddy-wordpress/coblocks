@@ -14,7 +14,6 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { closeSmall } from '@wordpress/icons';
-import { createBlock } from '@wordpress/blocks';
 import { isBlobURL } from '@wordpress/blob';
 import { useEffect } from '@wordpress/element';
 import {
@@ -58,7 +57,7 @@ const Edit = ( props ) => {
 		return isSelected || rootClientId === selectedRootClientId;
 	} );
 
-	const { updateBlockAttributes, insertBlock, removeBlocks } = useDispatch( 'core/block-editor' );
+	const { updateBlockAttributes } = useDispatch( 'core/block-editor' );
 
 	const updateInnerAttributes = ( blockName, newAttributes ) => {
 		innerItems.forEach( ( item ) => {
@@ -71,30 +70,6 @@ const Edit = ( props ) => {
 		} );
 	};
 
-	const manageInnerBlock = ( blockName, blockAttributes, show = true ) => {
-		const migrateButton = innerItems.filter( ( item ) => item.name === 'core/button' );
-
-		// Migrate core/button to core/buttons block
-		if ( !! migrateButton.length ) {
-			removeBlocks( migrateButton.map( ( item ) => item.clientId ),	false );
-			const newBlock = createBlock( blockName, blockAttributes, migrateButton );
-			insertBlock( newBlock, innerItems.length, clientId, false );
-			return;
-		}
-
-		const targetBlock = innerItems.filter( ( item ) => item.name === blockName );
-
-		if ( ! targetBlock.length && show ) {
-			const newButton = createBlock( 'core/button', {} );
-			const newBlock = createBlock( blockName, blockAttributes, [ newButton ] );
-			insertBlock( newBlock, innerItems.length, clientId, false );
-		}
-
-		if ( targetBlock.length && ! show ) {
-			removeBlocks( targetBlock.map( ( item ) => item.clientId ),	false );
-		}
-	};
-
 	/* istanbul ignore next */
 	useEffect( () => {
 		updateInnerAttributes( 'core/heading', { level: attributes.headingLevel } );
@@ -104,15 +79,6 @@ const Edit = ( props ) => {
 	useEffect( () => {
 		updateInnerAttributes( 'core/buttons', { contentJustification: attributes.alignment } );
 	}, [ attributes.alignment ] );
-
-	/* istanbul ignore next */
-	useEffect( () => {
-		manageInnerBlock( 'core/buttons', { contentJustification: attributes.alignment }, attributes.showCta );
-	}, [ attributes.showCta ] );
-
-	const toggleCta = () => {
-		setAttributes( { showCta: ! showCta } );
-	};
 
 	const replaceImage = ( file ) => {
 		setAttributes( { imageAlt: file.alt, imageId: file.id, imageUrl: file.url } );
@@ -197,7 +163,6 @@ const Edit = ( props ) => {
 		linkDestination,
 		linkTarget,
 		rel,
-		showCta,
 		alignment,
 	} = attributes;
 
@@ -255,7 +220,6 @@ const Edit = ( props ) => {
 			</BlockControls>
 			<InspectorControls
 				attributes={ attributes }
-				onToggleCta={ toggleCta }
 				setAttributes={ setAttributes }
 			/>
 			<div className={ className }>

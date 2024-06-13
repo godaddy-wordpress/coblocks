@@ -2,30 +2,17 @@
  * WordPress dependencies.
  */
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, TextareaControl, ExternalLink, FocalPointPicker } from '@wordpress/components';
+import { PanelBody, TextareaControl, ExternalLink, FocalPointPicker } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 
 const Inspector = ( props ) => {
 	const {
 		attributes,
 		setAttributes,
-		onToggleCta,
 	} = props;
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Service settings', 'coblocks' ) }>
-				<ToggleControl
-					label={ __( 'Display button', 'coblocks' ) }
-					help={
-						attributes.showCta
-							? __( 'Showing the call to action button.', 'coblocks' )
-							: __( 'Toggle to show a call to action button.', 'coblocks' )
-					}
-					checked={ attributes.showCta }
-					onChange={ onToggleCta }
-				/>
-			</PanelBody>
 			{ attributes.imageUrl &&
 				<PanelBody title={ __( 'Image settings', 'coblocks' ) } initialOpen={ false }>
 					<TextareaControl
