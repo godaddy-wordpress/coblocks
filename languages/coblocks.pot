@@ -1,14 +1,14 @@
 # Copyright (c) 2024 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.1.10\n"
+"Project-Id-Version: CoBlocks 3.1.11\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-30T16:08:59+00:00\n"
+"POT-Creation-Date: 2024-06-13T21:16:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: coblocks\n"
@@ -1302,7 +1302,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/inspector.js:102
 #: src/blocks/post-carousel/inspector.js:85
 #: src/blocks/posts/inspector.js:171
-#: src/blocks/services/inspector.js:67
+#: src/blocks/services/inspector.js:66
 #: src/blocks/testimonials/inspector.js:34
 msgid "Columns"
 msgstr ""
@@ -1406,14 +1406,14 @@ msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:181
 #: src/blocks/gallery-collage/edit.js:127
-#: src/blocks/services/service/edit.js:129
+#: src/blocks/services/service/edit.js:95
 #: src/blocks/testimonials/testimonial/edit.js:158
 msgid "Drop image to replace"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/edit.js:195
 #: src/blocks/gallery-collage/edit.js:170
-#: src/blocks/services/service/edit.js:149
+#: src/blocks/services/service/edit.js:115
 #: src/blocks/testimonials/testimonial/edit.js:190
 #: src/components/block-gallery/gallery-image.js:224
 msgid "Remove image"
@@ -1486,7 +1486,7 @@ msgid "Item attributes"
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:97
-#: src/blocks/services/service/inspector.js:30
+#: src/blocks/services/service/inspector.js:17
 #: src/blocks/testimonials/testimonial/inspector.js:71
 msgid "Image settings"
 msgstr ""
@@ -1494,7 +1494,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/inspector.js:99
 #: src/blocks/gif/inspector.js:30
 #: src/blocks/media-card/inspector.js:95
-#: src/blocks/services/service/inspector.js:32
+#: src/blocks/services/service/inspector.js:19
 #: src/blocks/testimonials/testimonial/inspector.js:130
 msgid "Alt text (alternative text)"
 msgstr ""
@@ -1502,7 +1502,7 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/inspector.js:105
 #: src/blocks/gif/inspector.js:36
 #: src/blocks/media-card/inspector.js:101
-#: src/blocks/services/service/inspector.js:38
+#: src/blocks/services/service/inspector.js:25
 #: src/blocks/testimonials/testimonial/inspector.js:125
 msgid "Describe the purpose of the image"
 msgstr ""
@@ -1510,13 +1510,13 @@ msgstr ""
 #: src/blocks/food-and-drinks/food-item/inspector.js:107
 #: src/blocks/gif/inspector.js:38
 #: src/blocks/media-card/inspector.js:103
-#: src/blocks/services/service/inspector.js:40
+#: src/blocks/services/service/inspector.js:27
 #: src/blocks/testimonials/testimonial/inspector.js:127
 msgid "Leave empty if the image is purely decorative."
 msgstr ""
 
 #: src/blocks/food-and-drinks/food-item/inspector.js:112
-#: src/blocks/services/service/inspector.js:45
+#: src/blocks/services/service/inspector.js:32
 #: src/blocks/testimonials/testimonial/inspector.js:135
 #: src/components/background/panel.js:197
 msgid "Focal point"
@@ -1670,7 +1670,7 @@ msgstr ""
 #: src/blocks/map/inspector.js:82
 #: src/blocks/posts/inspector.js:306
 #: src/blocks/row/inspector.js:127
-#: src/blocks/services/inspector.js:31
+#: src/blocks/services/inspector.js:30
 msgid "Styles"
 msgstr ""
 
@@ -2441,13 +2441,13 @@ msgid "Collage Gallery"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:156
-#: src/blocks/services/service/edit.js:154
+#: src/blocks/services/service/edit.js:120
 #: src/components/block-gallery/gallery-image.js:209
 msgid "Replace Image"
 msgstr ""
 
 #: src/blocks/gallery-collage/edit.js:159
-#: src/blocks/services/service/edit.js:157
+#: src/blocks/services/service/edit.js:123
 #: src/components/block-gallery/gallery-image.js:212
 msgid "Replace"
 msgstr ""
@@ -8915,29 +8915,17 @@ msgstr ""
 msgid "features"
 msgstr ""
 
-#: src/blocks/services/inspector.js:65
+#: src/blocks/services/inspector.js:64
 msgid "Services settings"
 msgstr ""
 
-#: src/blocks/services/inspector.js:75
-msgid "Display buttons"
-msgstr ""
-
-#: src/blocks/services/inspector.js:79
-msgid "Showing the call to action buttons."
-msgstr ""
-
-#: src/blocks/services/inspector.js:80
-msgid "Toggle to show call to action buttons."
-msgstr ""
-
 #. translators: placeholder text for input box
-#: src/blocks/services/service/edit.js:219
+#: src/blocks/services/service/edit.js:184
 msgid "Write title…"
 msgstr ""
 
 #. translators: content placeholder
-#: src/blocks/services/service/edit.js:228
+#: src/blocks/services/service/edit.js:193
 msgid "Write description…"
 msgstr ""
 
@@ -8949,22 +8937,6 @@ msgstr ""
 #. translators: block description
 #: src/blocks/services/service/index.js:28
 msgid "A single service item within a services block."
-msgstr ""
-
-#: src/blocks/services/service/inspector.js:17
-msgid "Service settings"
-msgstr ""
-
-#: src/blocks/services/service/inspector.js:19
-msgid "Display button"
-msgstr ""
-
-#: src/blocks/services/service/inspector.js:22
-msgid "Showing the call to action button."
-msgstr ""
-
-#: src/blocks/services/service/inspector.js:23
-msgid "Toggle to show a call to action button."
 msgstr ""
 
 #: src/blocks/shape-divider/controls.js:28
