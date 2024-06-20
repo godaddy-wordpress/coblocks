@@ -2719,36 +2719,6 @@ class CoBlocks_ICal {
 			}
 			return explode( "\n", wp_remote_retrieve_body( $request ) );
 		}
-
-		$options = array();
-		if ( ! empty( $this->http_basic_auth ) || ! empty( $this->http_user_agent ) ) {
-			$options['http']           = array();
-			$options['http']['header'] = array();
-
-			if ( ! empty( $this->http_basic_auth ) ) {
-				$username = $this->http_basic_auth['username'];
-				$password = $this->http_basic_auth['password'];
-				// base64_encode() used to encode auth credentials.
-				$basic_auth = base64_encode( "{$username}:{$password}" ); // phpcs:ignore
-
-				array_push( $options['http']['header'], "Authorization: Basic {$basic_auth}" );
-			}
-
-			if ( ! empty( $this->http_user_agent ) ) {
-				array_push( $options['http']['header'], "User-Agent: {$this->http_user_agent}" );
-			}
-		}
-
-		$context = stream_context_create( $options );
-		$lines   = file( $filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES, $context );
-
-		if ( false === $lines ) {
-
-			throw new \Exception( "The file path or URL '{$filename}' does not exist." );
-
-		}
-
-		return $lines;
 	}
 
 	/**
