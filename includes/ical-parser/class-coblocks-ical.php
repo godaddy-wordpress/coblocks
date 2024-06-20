@@ -2711,7 +2711,7 @@ class CoBlocks_ICal {
 	 * @throws \Exception Exception thrown on error.
 	 */
 	protected function file_or_url( $filename ) {
-		// If this is a URL, let's use wp_safe_remote_get instead.
+		// If this is a URL, let's use wp_safe_remote_get.
 		if ( filter_var( $filename, FILTER_VALIDATE_URL ) ) {
 			$request = wp_safe_remote_get( $filename );
 			if ( is_wp_error( $request ) ) {
