@@ -169,6 +169,18 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 					$location
 				);
 
+			} else {
+
+				$events_layout .= coblocks_render_single_day_event_item(
+					$start_date,
+					$month,
+					$year,
+					$title,
+					$description,
+					null,
+					$location
+				);
+
 			}
 
 			$events_layout .= '</div>';
