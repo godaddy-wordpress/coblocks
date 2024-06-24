@@ -11,6 +11,7 @@
 	<exclude-pattern>vendor/*</exclude-pattern>
 	<exclude-pattern>node_modules/*</exclude-pattern>
 	<exclude-pattern>includes/Dependencies/*</exclude-pattern>
+	<exclude-pattern>includes/ical-parser/*</exclude-pattern>
 	<exclude-pattern type="relative">wordpress/*</exclude-pattern>
 	<exclude-pattern>\.dev\/.*</exclude-pattern>
 
