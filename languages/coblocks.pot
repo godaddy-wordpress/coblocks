@@ -1,14 +1,14 @@
 # Copyright (c) 2024 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.1.11\n"
+"Project-Id-Version: CoBlocks 3.1.12\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-13T21:16:38+00:00\n"
+"POT-Creation-Date: 2024-06-24T21:30:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: coblocks\n"
@@ -298,17 +298,17 @@ msgstr ""
 msgid "An error has occurred. localhost URLs are not permitted."
 msgstr ""
 
-#: src/blocks/events/index.php:179
+#: src/blocks/events/index.php:191
 #: src/blocks/post-carousel/index.php:236
 msgid "Previous post"
 msgstr ""
 
-#: src/blocks/events/index.php:180
+#: src/blocks/events/index.php:192
 #: src/blocks/post-carousel/index.php:237
 msgid "Next post"
 msgstr ""
 
-#: src/blocks/events/index.php:190
+#: src/blocks/events/index.php:202
 msgid "An error has occurred, check for calendar privileges to make sure it is public or try again later."
 msgstr ""
 
