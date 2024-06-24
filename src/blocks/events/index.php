@@ -39,12 +39,12 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 				'use_timezone_with_r_rules'     => false,
 			)
 		);
-		$ical->init_url( esc_url_raw( $attributes['externalCalendarUrl'] ) );
+		$ical->initUrl( esc_url_raw( $attributes['externalCalendarUrl'] ) ); // @codingStandardsIgnoreLine.
 
 		if ( 'all' === $attributes['eventsRange'] ) {
-			$events = $ical->events_from_range();
+			$events = $ical->eventsFromRange(); // @codingStandardsIgnoreLine.
 		} else {
-			$events = $ical->events_from_interval( $attributes['eventsRange'] );
+			$events = $ical->eventsFromInterval( $attributes['eventsRange'] ); // @codingStandardsIgnoreLine.
 		}
 		// Limit to 100 events.
 		$events = array_slice( $events, 0, 100 );
@@ -77,8 +77,8 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 		foreach ( $events as $event ) {
 			$events_layout .= '<div class="wp-block-coblocks-event-item swiper-slide">';
 
-			$dtstart           = $ical->ical_date_to_date_time( $event->dtstart_array[3] );
-			$dtend             = $ical->ical_date_to_date_time( $event->dtend_array[3] );
+			$dtstart           = $ical->icalDateToDateTime( $event->dtstart_array[3] ); // @codingStandardsIgnoreLine.
+			$dtend             = $ical->icalDateToDateTime( $event->dtend_array[3] ); // @codingStandardsIgnoreLine.
 			$start_date_string = strtotime( $dtstart->format( 'YmdHis' ) );
 			$end_date_string   = strtotime( $dtend->format( 'YmdHis' ) );
 			$year              = gmdate( 'Y', $start_date_string );
@@ -166,6 +166,18 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 					$title,
 					$description,
 					$event_time_string,
+					$location
+				);
+
+			} else {
+
+				$events_layout .= coblocks_render_single_day_event_item(
+					$start_date,
+					$month,
+					$year,
+					$title,
+					$description,
+					null,
 					$location
 				);
 
