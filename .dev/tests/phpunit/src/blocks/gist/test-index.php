@@ -28,14 +28,27 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 		$this->assertSame( coblocks_block_gist_handler( array( 'http://godaddy.com' ) ), '' );
 		$this->assertSame( coblocks_block_gist_handler( array( 'https://gist.github.com' ) ), '' );
 
-		$this->assertEmpty(
-			coblocks_block_gist_handler(
-				array(
-					'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7',
-					'someuser/a04f4e14e3cd3b6d48157ea0706114f7',
+		global $wp_version;
+
+		if ( version_compare( $wp_version, '6.4', '<=' ) {
+			$this->assertNotEmpty(
+				coblocks_block_gist_handler(
+					array(
+						'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7',
+						'someuser/a04f4e14e3cd3b6d48157ea0706114f7',
+					)
 				)
-			)
-		);
+			);
+		} else {
+			$this->assertEmpty(
+				coblocks_block_gist_handler(
+					array(
+						'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7',
+						'someuser/a04f4e14e3cd3b6d48157ea0706114f7',
+					)
+				)
+			);
+		}
 	}
 
 	/**
