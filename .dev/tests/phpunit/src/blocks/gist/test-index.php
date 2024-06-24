@@ -46,7 +46,7 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 		$gist_path = 'EvanHerman/3e8058a093800e1b7c8b605a64525514';
 
 		$this->assertMatchesRegularExpression(
-			"/<span class='coblocks-gist__container' style='pointer-events: none'><script src=\"https://gist.github.com/{$gist_path}.js\">/", 
+			"/<span class='coblocks-gist__container' style='pointer-events: all'><script src=\"https://gist.github.com/{$gist_path}.js\">/", 
 			coblocks_block_gist_handler( array( $gist_url, $gist_path ) )
 		);
 	}
