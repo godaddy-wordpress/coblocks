@@ -42,8 +42,8 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 	 * Test that the embed handler returns the proper Gist embed code.
 	 */
 	public function test_coblocks_block_gist_handler_returns_valid_embed() {
-		$gist_url  = 'https://gist.github.com/EvanHerman/3e8058a093800e1b7c8b605a64525514';
-		$gist_path = 'EvanHerman/3e8058a093800e1b7c8b605a64525514';
+		$gist_url  = 'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7';
+		$gist_path = 'someuser/a04f4e14e3cd3b6d48157ea0706114f7';
 
 		$this->assertMatchesRegularExpression(
 			"/<span class='coblocks-gist__container' style='pointer-events: all'><script src=\"https:\/\/gist.github.com\/{$gist_path}.js\">/", 
