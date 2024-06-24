@@ -1,3 +1,8 @@
+3.1.12 / 2024-06-24
+===================
+# Bug fix
+* Use `wp_safe_remote_get()` to retreive remote `.ics` data [#2614](https://github.com/godaddy-wordpress/coblocks/pull/2614)
+
 3.1.11 / 2024-06-13
 ===================
 # Bug fix

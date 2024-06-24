@@ -125,6 +125,10 @@ CoBlocks is designed to support the last two major versions of WordPress that ar
 
 == Changelog ==
 
+= 3.1.12 / 2024-06-24 =
+# Misc
+* Use `wp_safe_remote_get()` to retreive remote `.ics` data [#2614](https://github.com/godaddy-wordpress/coblocks/pull/2614)
+
 = 3.1.11 / 2024-06-13 =
 # Bug fix
 * Fix disappearing buttons in Services block [#2613](https://github.com/godaddy-wordpress/coblocks/pull/2613)
