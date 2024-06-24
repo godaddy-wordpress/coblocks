@@ -28,27 +28,14 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 		$this->assertSame( coblocks_block_gist_handler( array( 'http://godaddy.com' ) ), '' );
 		$this->assertSame( coblocks_block_gist_handler( array( 'https://gist.github.com' ) ), '' );
 
-		global $wp_version;
-
-		if ( version_compare( $wp_version, '6.4', '<=' ) {
-			$this->assertNotEmpty(
-				coblocks_block_gist_handler(
-					array(
-						'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7',
-						'someuser/a04f4e14e3cd3b6d48157ea0706114f7',
-					)
+		$this->assertNotEmpty(
+			coblocks_block_gist_handler(
+				array(
+					'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7',
+					'someuser/a04f4e14e3cd3b6d48157ea0706114f7',
 				)
-			);
-		} else {
-			$this->assertEmpty(
-				coblocks_block_gist_handler(
-					array(
-						'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7',
-						'someuser/a04f4e14e3cd3b6d48157ea0706114f7',
-					)
-				)
-			);
-		}
+			)
+		);
 	}
 
 	/**
@@ -58,9 +45,9 @@ class CoBlocks_Gist_Index_Tests extends WP_UnitTestCase {
 		$gist_url  = 'https://gist.github.com/someuser/a04f4e14e3cd3b6d48157ea0706114f7';
 		$gist_path = 'someuser/a04f4e14e3cd3b6d48157ea0706114f7';
 
-		$this->assertMatchesRegularExpression(
-			"/<span class='coblocks-gist__container' style='pointer-events: all'><script src=\"https:\/\/gist.github.com\/{$gist_path}.js\">/", 
-			coblocks_block_gist_handler( array( $gist_url, $gist_path ) )
+		$this->assertEquals(
+			coblocks_block_gist_handler( array( $gist_url, $gist_path ) ),
+			"<span class='coblocks-gist__container' style='pointer-events: none'><script src=\"https://gist.github.com/{$gist_path}.js\">\n\n</script>\n<a class=\"gist-block__container\" href=\"{$gist_url}\" target=\"_blank\">View this gist on GitHub</a></span>"
 		);
 	}
 

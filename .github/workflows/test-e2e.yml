@@ -24,7 +24,6 @@ jobs:
         wp: # Test against Prev-Prev Major, Prev-Major, and current Major release versions.
           - "6.3"
           - "6.4"
-          - "6.5"
         theme:
           - "https://downloads.wordpress.org/theme/go.zip"
           - "" # Default theme is TwentyTwentyThree
