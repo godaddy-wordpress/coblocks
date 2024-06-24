@@ -15,178 +15,263 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.20.0
  */
-class CoBlocks_ICal_Event {
+class CoBlocks_ICal_Event
+{
+    // phpcs:disable Generic.Arrays.DisallowLongArraySyntax
 
-	const HTML_TEMPLATE = '<p>%s: %s</p>';
+    const HTML_TEMPLATE = '<p>%s: %s</p>';
 
-	/**
-	 * Defines a short summary or subject for the calendar component.
-	 * https://www.kanzaki.com/docs/ical/summary.html
-	 *
-	 * @var $summary
-	 */
-	public $summary;
+    /**
+     * https://www.kanzaki.com/docs/ical/summary.html
+     *
+     * @var string
+     */
+    public $summary;
 
-	/**
-	 * Specifies when the calendar component begins.
-	 * https://www.kanzaki.com/docs/ical/dtstart.html
-	 *
-	 * @var $dtstart
-	 */
-	public $dtstart;
+    /**
+     * https://www.kanzaki.com/docs/ical/dtstart.html
+     *
+     * @var string
+     */
+    public $dtstart;
 
-	/**
-	 * Specifies the date and time that a calendar component ends.
-	 * https://www.kanzaki.com/docs/ical/dtend.html
-	 *
-	 * @var $dtend
-	 */
-	public $dtend;
+    /**
+     * https://www.kanzaki.com/docs/ical/dtend.html
+     *
+     * @var string
+     */
+    public $dtend;
 
-	/**
-	 * Specifies a positive duration of time.
-	 * https://www.kanzaki.com/docs/ical/duration.html
-	 *
-	 * @var $duration
-	 */
-	public $duration;
+    /**
+     * https://www.kanzaki.com/docs/ical/duration.html
+     *
+     * @var string|null
+     */
+    public $duration;
 
-	/**
-	 * Indicates the date/time that the instance of the iCalendar object was created.
-	 * https://www.kanzaki.com/docs/ical/dtstamp.html
-	 *
-	 * @var $dtstamp
-	 */
-	public $dtstamp;
+    /**
+     * https://www.kanzaki.com/docs/ical/dtstamp.html
+     *
+     * @var string
+     */
+    public $dtstamp;
 
-	/**
-	 * Defines the persistent, globally unique identifier for the calendar component.
-	 * https://www.kanzaki.com/docs/ical/uid.html
-	 *
-	 * @var $uid
-	 */
-	public $uid;
+    /**
+     * When the event starts, represented as a timezone-adjusted string
+     *
+     * @var string
+     */
+    public $dtstart_tz;
 
-	/**
-	 * Specifies the date and time that the calendar information was created by
-	 * the calendar user agent in the calendar store.
-	 * https://www.kanzaki.com/docs/ical/created.html
-	 *
-	 * @var $created
-	 */
-	public $created;
+    /**
+     * When the event ends, represented as a timezone-adjusted string
+     *
+     * @var string
+     */
+    public $dtend_tz;
 
-	/**
-	 * Specifies the date and time that the information associated with the
-	 * calendar component was last revised in the calendar store.
-	 * https://www.kanzaki.com/docs/ical/lastModified.html
-	 *
-	 * @var $lastmodified
-	 */
-	public $lastmodified;
+    /**
+     * https://www.kanzaki.com/docs/ical/uid.html
+     *
+     * @var string
+     */
+    public $uid;
 
-	/**
-	 * Provides a more complete description of the calendar component, than that
-	 * provided by the "SUMMARY" property.
-	 * https://www.kanzaki.com/docs/ical/description.html
-	 *
-	 * @var $description
-	 */
-	public $description;
+    /**
+     * https://www.kanzaki.com/docs/ical/created.html
+     *
+     * @var string
+     */
+    public $created;
 
-	/**
-	 * Defines the intended venue for the activity defined by a calendar component.
-	 * https://www.kanzaki.com/docs/ical/location.html
-	 *
-	 * @var $location
-	 */
-	public $location;
+    /**
+     * https://www.kanzaki.com/docs/ical/lastModified.html
+     *
+     * @var string
+     */
+    public $last_modified;
 
-	/**
-	 * Defines the revision sequence number of the calendar component within a
-	 * sequence of revisions.
-	 * https://www.kanzaki.com/docs/ical/sequence.html
-	 *
-	 * @var $sequence
-	 */
-	public $sequence;
+    /**
+     * https://www.kanzaki.com/docs/ical/description.html
+     *
+     * @var string|null
+     */
+    public $description;
 
-	/**
-	 * Defines the overall status or confirmation for the calendar component.
-	 * https://www.kanzaki.com/docs/ical/status.html
-	 *
-	 * @var $status
-	 */
-	public $status;
+    /**
+     * https://www.kanzaki.com/docs/ical/location.html
+     *
+     * @var string|null
+     */
+    public $location;
 
-	/**
-	 * Defines whether an event is transparent or not to busy time searches.
-	 * https://www.kanzaki.com/docs/ical/transp.html
-	 *
-	 * @var $transp
-	 */
-	public $transp;
+    /**
+     * https://www.kanzaki.com/docs/ical/sequence.html
+     *
+     * @var string
+     */
+    public $sequence;
 
-	/**
-	 * Defines the organizer for a calendar component.
-	 * https://www.kanzaki.com/docs/ical/organizer.html
-	 *
-	 * @var $organizer
-	 */
-	public $organizer;
+    /**
+     * https://www.kanzaki.com/docs/ical/status.html
+     *
+     * @var string
+     */
+    public $status;
 
-	/**
-	 * Defines an "Attendee" within a calendar component.
-	 * https://www.kanzaki.com/docs/ical/attendee.html
-	 *
-	 * @var $attendee
-	 */
-	public $attendee;
+    /**
+     * https://www.kanzaki.com/docs/ical/transp.html
+     *
+     * @var string
+     */
+    public $transp;
 
-	/**
-	 * Creates the Event object
-	 *
-	 * @param  array $data Calendar data.
-	 * @return void
-	 */
-	public function __construct( array $data = array() ) {
-		if ( ! empty( $data ) ) {
-			foreach ( $data as $key => $value ) {
-				$variable          = self::snake_case( $key );
-				$this->{$variable} = self::prepare_data( $value );
-			}
-		}
-	}
+    /**
+     * https://www.kanzaki.com/docs/ical/organizer.html
+     *
+     * @var string
+     */
+    public $organizer;
 
-	/**
-	 * Prepares the data for output
-	 *
-	 * @param  mixed $value Value to prepare.
-	 *
-	 * @return mixed
-	 */
-	protected function prepare_data( $value ) {
-		if ( is_string( $value ) ) {
-			return stripslashes( trim( str_replace( '\n', "\n", $value ) ) );
-		} elseif ( is_array( $value ) ) {
-			return array_map( 'self::prepare_data', $value );
-		}
-		return $value;
-	}
+    /**
+     * https://www.kanzaki.com/docs/ical/attendee.html
+     *
+     * @var string
+     */
+    public $attendee;
 
-	/**
-	 * Converts the given input to snake_case
-	 *
-	 * @param  string $input     Input value.
-	 * @param  string $glue      Character to join values with.
-	 * @param  string $separator Character to separate values with.
-	 *
-	 * @return string
-	 */
-	protected static function snake_case( $input, $glue = '_', $separator = '-' ) {
-		$input = preg_split( '/(?<=[a-z])(?=[A-Z])/x', $input );
-		$input = implode( $glue, $input );
-		$input = str_replace( $separator, $glue, $input );
-		return strtolower( $input );
-	}
+    /**
+     * Manage additional properties
+     *
+     * @var array<string, mixed>
+     */
+    public $additionalProperties = array();
+
+    /**
+     * Creates the Event object
+     *
+     * @param  array $data
+     * @return void
+     */
+    public function __construct(array $data = array())
+    {
+        foreach ($data as $key => $value) {
+            $variable = self::snakeCase($key);
+            if (property_exists($this, $variable)) {
+                $this->{$variable} = $this->prepareData($value);
+            } else {
+                $this->additionalProperties[$variable] = $this->prepareData($value);
+            }
+        }
+    }
+
+    /**
+     * Magic getter method
+     *
+     * @param  string $additionalPropertyName
+     * @return mixed
+     */
+    public function __get($additionalPropertyName)
+    {
+        if (array_key_exists($additionalPropertyName, $this->additionalProperties)) {
+            return $this->additionalProperties[$additionalPropertyName];
+        }
+
+        return null;
+    }
+
+    /**
+     * Magic isset method
+     *
+     * @param  string $name
+     * @return boolean
+     */
+    public function __isset($name)
+    {
+        return is_null($this->$name) === false;
+    }
+
+    /**
+     * Prepares the data for output
+     *
+     * @param  mixed $value
+     * @return mixed
+     */
+    protected function prepareData($value)
+    {
+        if (is_string($value)) {
+            return stripslashes(trim(str_replace('\n', "\n", $value)));
+        }
+
+        if (is_array($value)) {
+            return array_map(function ($value) {
+                return $this->prepareData($value);
+            }, $value);
+        }
+
+        return $value;
+    }
+
+    /**
+     * Returns Event data excluding anything blank
+     * within an HTML template
+     *
+     * @param  string $html HTML template to use
+     * @return string
+     */
+    public function printData($html = self::HTML_TEMPLATE)
+    {
+        $data = array(
+            'SUMMARY'       => $this->summary,
+            'DTSTART'       => $this->dtstart,
+            'DTEND'         => $this->dtend,
+            'DTSTART_TZ'    => $this->dtstart_tz,
+            'DTEND_TZ'      => $this->dtend_tz,
+            'DURATION'      => $this->duration,
+            'DTSTAMP'       => $this->dtstamp,
+            'UID'           => $this->uid,
+            'CREATED'       => $this->created,
+            'LAST-MODIFIED' => $this->last_modified,
+            'DESCRIPTION'   => $this->description,
+            'LOCATION'      => $this->location,
+            'SEQUENCE'      => $this->sequence,
+            'STATUS'        => $this->status,
+            'TRANSP'        => $this->transp,
+            'ORGANISER'     => $this->organizer,
+            'ATTENDEE(S)'   => $this->attendee,
+        );
+
+        // Remove any blank values
+        $data = array_filter($data);
+
+        $output = '';
+
+        foreach ($data as $key => $value) {
+            $output .= sprintf($html, $key, $value);
+        }
+
+        return $output;
+    }
+
+    /**
+     * Converts the given input to snake_case
+     *
+     * @param  string $input
+     * @param  string $glue
+     * @param  string $separator
+     * @return string
+     */
+    protected static function snakeCase($input, $glue = '_', $separator = '-')
+    {
+        $inputSplit = preg_split('/(?<=[a-z])(?=[A-Z])/x', $input);
+
+        if ($inputSplit === false) {
+            return $input;
+        }
+
+        $inputSplit = implode($glue, $inputSplit);
+        $inputSplit = str_replace($separator, $glue, $inputSplit);
+
+        return strtolower($inputSplit);
+    }
 }
