@@ -73,7 +73,8 @@ describe( 'Test CoBlocks Services Block', function() {
 	it( 'Test service block has the proper arrow orientation.', function() {
 		helpers.addBlockToPost( 'coblocks/services', true );
 
-		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]:first-child' ).click();
+		// helpers.selectBlock('service');
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]:first-child' ).focus();
 		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
 
 		// Select parent block
@@ -81,7 +82,7 @@ describe( 'Test CoBlocks Services Block', function() {
 
 		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
 
-		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]:first-child' ).click();
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]:first-child' ).focus();
 		cy.get( 'div.block-editor-block-mover' ).should( 'not.have.class', 'is-horizontal' );
 
 		helpers.savePage();
