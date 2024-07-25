@@ -35,6 +35,11 @@ add_action(
 			return;
 		}
 
+		// Bail if DOMDocument is not available.
+		if ( ! class_exists( 'DOMDocument' ) ) {
+			return;
+		}
+
 		// Parse the blocks so we can search them in a standard way.
 		$parsed_blocks = parse_blocks( $post->post_content );
 
