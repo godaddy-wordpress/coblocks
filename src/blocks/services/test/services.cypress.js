@@ -77,8 +77,7 @@ describe( 'Test CoBlocks Services Block', function() {
 		cy.get( 'div.block-editor-block-mover' ).should( 'have.class', 'is-horizontal' );
 
 		// Select parent block
-		helpers.selectBlock( 'services' );
-
+		cy.get( '.edit-post-visual-editor [data-type="coblocks/services"]:first-child' ).click();
 		helpers.setInputValue( 'Services settings', 'Columns', 1, false );
 
 		cy.get( '.edit-post-visual-editor [data-type="coblocks/service"]:first-child' ).click();
