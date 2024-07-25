@@ -125,6 +125,11 @@ CoBlocks is designed to support the last two major versions of WordPress that ar
 
 == Changelog ==
 
+= 3.1.13 / 2024-07-25 =
+# Bug fix
+* Fix block migration error without dependency [#2619](https://github.com/godaddy-wordpress/coblocks/pull/2619)
+* Fix unescaped excerpts in Posts Blocks - Thank you CleanTalk and Dmitrii Ignatyev [#2618](https://github.com/godaddy-wordpress/coblocks/pull/2618)
+
 = 3.1.12 / 2024-06-24 =
 # Misc
 * Use `wp_safe_remote_get()` to retreive remote `.ics` data [#2614](https://github.com/godaddy-wordpress/coblocks/pull/2614)
