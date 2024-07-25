@@ -71,11 +71,7 @@ describe( 'Test CoBlocks Pricing Table Item Block', function() {
 
 		featuresText = ' ' + featuresText;
 
-		if ( helpers.isWP64AtLeast() ) {
-			firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features' ).should( 'have.text', featuresText );
-		} else {
-			firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features > li' ).should( 'have.text', featuresText );
-		}
+		firstTableItem().find( '.wp-block-coblocks-pricing-table-item__features' ).should( 'have.text', featuresText );
 
 		firstTableItem().find( '.wp-block-button' ).should( 'have.text', buttonText );
 	} );

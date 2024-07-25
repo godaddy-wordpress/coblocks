@@ -13,6 +13,7 @@ import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 import { compose, usePrevious } from '@wordpress/compose';
 import { lazy, RawHTML, useState, useEffect, useRef } from '@wordpress/element';
+import { escapeHTML } from '@wordpress/escape-html';
 import { addQueryArgs } from '@wordpress/url';
 // Disable reason: We choose to use unsafe APIs in our codebase.
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
@@ -435,8 +436,8 @@ const PostsEdit = ( props ) => {
 														key="html"
 													>
 														{ excerptLength < excerpt.trim().split( ' ' ).length
-															? excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + '…'
-															: excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+															? escapeHTML( excerpt.trim().split( ' ', excerptLength ).join( ' ' ) ) + '…'
+															: escapeHTML( excerpt.trim().split( ' ', excerptLength ).join( ' ' ) ) }
 													</RawHTML>
 												</div>
 											}

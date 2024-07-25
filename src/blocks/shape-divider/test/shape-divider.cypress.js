@@ -60,7 +60,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 
 		helpers.openSettingsPanel( 'Divider settings' );
 
-		cy.get( '.edit-post-sidebar' )
+		cy.get( helpers.sidebarClass() )
 			.contains( 'Shape height' ).not( '.block-editor-block-card__description' )
 			.then( ( $settingSection ) => {
 				cy.get( Cypress.$( $settingSection ).parent().parent() )
@@ -69,7 +69,7 @@ describe( 'Test CoBlocks Shape Divider Block', function() {
 					.type( `{selectall}${ shapeHeight }` );
 			} );
 
-		cy.get( '.edit-post-sidebar' )
+		cy.get( helpers.sidebarClass() )
 			.contains( 'Background height' ).not( '.block-editor-block-card__description' )
 			.then( ( $settingSection ) => {
 				cy.get( Cypress.$( $settingSection ).parent().parent() )

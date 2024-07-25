@@ -40,7 +40,7 @@ describe( 'Test CoBlocks Service Block', function() {
 			}
 		} );
 
-		cy.get( 'div.edit-post-sidebar' )
+		cy.get( 'div' + helpers.sidebarClass() )
 			.contains( /Additional CSS/i )
 			.next( 'input' )
 			.then( ( $inputElem ) => {
@@ -56,7 +56,7 @@ describe( 'Test CoBlocks Service Block', function() {
 			}
 		} );
 
-		cy.get( 'div.edit-post-sidebar' )
+		cy.get( 'div' + helpers.sidebarClass() )
 			.contains( /Additional CSS/i )
 			.next( 'input' )
 			.then( ( $inputElem ) => {
