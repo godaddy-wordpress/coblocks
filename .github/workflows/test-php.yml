@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         php: ['7.4','8.3']
-        wp: ['6.4'] # TODO: Add 6.6 when released
+        wp: ['6.6']
     name: PHP Unit ${{ matrix.php }} | WP Version ${{ matrix.wp }}
     uses: ./.github/workflows/test-php-unit.yml
     with:
