@@ -17,7 +17,7 @@ import save from './save';
  */
 import { __ } from '@wordpress/i18n';
 import { Icon } from '@wordpress/components';
- 
+
 /**
  * Block constants.
  */
