@@ -104,7 +104,7 @@ describe( 'Test CoBlocks Row Block', function() {
 
 		cy.get( '.wp-block-coblocks-row' ).click( { force: true } );
 
-		cy.get( '.edit-post-sidebar' ).contains( /row settings/i ).click();
+		cy.get( helpers.sidebarClass() ).contains( /row settings/i ).click();
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'row' );
 
