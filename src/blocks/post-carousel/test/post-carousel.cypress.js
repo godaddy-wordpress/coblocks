@@ -57,9 +57,9 @@ describe( 'Test CoBlocks Post Carousel Block', function() {
 	it( 'Test the post-carousel block custom classes.', function() {
 		helpers.addBlockToPost( 'coblocks/post-carousel', true );
 
-		cy.get( '.edit-post-sidebar' ).contains( /post carousel settings/i ).click( { force: true } );
+		cy.get( helpers.sidebarClass() ).contains( /post carousel settings/i ).click( { force: true } );
 
-		cy.get( '.edit-post-sidebar' ).contains( /feed settings/i ).click( { force: true } );
+		cy.get( helpers.sidebarClass() ).contains( /feed settings/i ).click( { force: true } );
 
 		helpers.addCustomBlockClass( 'my-custom-class', 'post-carousel' );
 

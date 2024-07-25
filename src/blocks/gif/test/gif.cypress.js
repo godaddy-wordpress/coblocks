@@ -42,7 +42,7 @@ describe( 'Test CoBlocks Gif Block', function() {
 
 		cy.get( '.wp-block-coblocks-gif' ).find( 'img' ).should( 'have.length', 1 );
 
-		cy.get( '.edit-post-sidebar' ).contains( /Alt text/ ).parent().find( 'textarea' ).type( gifText );
+		cy.get( helpers.sidebarClass() ).contains( /Alt text/ ).parent().find( 'textarea' ).type( gifText );
 
 		helpers.savePage();
 

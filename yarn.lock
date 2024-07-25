@@ -4172,6 +4172,13 @@
   dependencies:
     "@babel/runtime" "^7.16.0"
 
+"@wordpress/escape-html@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/escape-html/-/escape-html-3.4.0.tgz#ec625d409b018ff68d6081c66586fd420f74e122"
+  integrity sha512-KcUv+s0J/LEZEEvd+E3IkNCeW8wde0TjO+1HrcfvqI8Rfuc0zOAZeS/6ZqIeX0m/mhQ0xS2Y3e8hsnU+wAG6Mw==
+  dependencies:
+    "@babel/runtime" "^7.16.0"
+
 "@wordpress/eslint-plugin@^12.7.0":
   version "12.9.0"
   resolved "https://registry.yarnpkg.com/@wordpress/eslint-plugin/-/eslint-plugin-12.9.0.tgz#c49f0a523c8c72ade28c2b86a975668832b22938"

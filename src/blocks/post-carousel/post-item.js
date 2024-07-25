@@ -13,6 +13,7 @@ import {
 } from '@wordpress/components';
 import { PlainText } from '@wordpress/block-editor';
 import { RawHTML } from '@wordpress/element';
+import { escapeHTML } from '@wordpress/escape-html';
 import { withSelect } from '@wordpress/data';
 // Disable reason: We choose to use unsafe APIs in our codebase.
 // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
@@ -78,7 +79,7 @@ const PostItem = ( {
 					<RawHTML
 						key="html"
 					>
-						{ excerpt.trim().split( ' ', excerptLength ).join( ' ' ) }
+						{ escapeHTML( excerpt.trim().split( ' ', excerptLength ).join( ' ' ) ) }
 					</RawHTML>
 				</div>
 				}
