@@ -125,6 +125,10 @@ CoBlocks is designed to support the last two major versions of WordPress that ar
 
 == Changelog ==
 
+= 3.1.14 / 2024-12-20 =
+# Bug Fix
+* Improve nonce handling and permissions in crop settings API. [#2624](https://github.com/godaddy-wordpress/coblocks/pull/2624)
+
 = 3.1.13 / 2024-07-25 =
 # Bug fix
 * Fix block migration error without dependency [#2619](https://github.com/godaddy-wordpress/coblocks/pull/2619)
