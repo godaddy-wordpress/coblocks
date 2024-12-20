@@ -288,28 +288,28 @@ class CoBlocks_Block_Assets {
 		$form_subject = $form->default_subject();
 		$success_text = $form->default_success_text();
 
-		wp_localize_script(
-			'coblocks-editor',
-			'coblocksBlockData',
-			array(
-				'form'                           => array(
-					'adminEmail'   => $email_to,
-					'emailSubject' => $form_subject,
-					'successText'  => $success_text,
-				),
-				'cropSettingsOriginalImageNonce' => wp_create_nonce( 'cropSettingsOriginalImageNonce' ),
-				'cropSettingsNonce'              => wp_create_nonce( 'cropSettingsNonce' ),
-				'labsSiteDesignNonce'            => wp_create_nonce( 'labsSiteDesignNonce' ),
-				'bundledIconsEnabled'            => $bundled_icons_enabled,
-				'customIcons'                    => $this->get_custom_icons(),
-				'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
-				'typographyControlsEnabled'      => $typography_controls_enabled,
-				'animationControlsEnabled'       => $animation_controls_enabled,
-				'localeCode'                     => get_locale(),
-				'baseApiNamespace'               => COBLOCKS_API_NAMESPACE,
-			)
+		$localize_data = array(
+			'form'                           => array(
+				'adminEmail'   => $email_to,
+				'emailSubject' => $form_subject,
+				'successText'  => $success_text,
+			),
+			'labsSiteDesignNonce'            => wp_create_nonce( 'labsSiteDesignNonce' ),
+			'bundledIconsEnabled'            => $bundled_icons_enabled,
+			'customIcons'                    => $this->get_custom_icons(),
+			'customIconConfigExists'         => file_exists( get_stylesheet_directory() . '/coblocks/icons/config.json' ),
+			'typographyControlsEnabled'      => $typography_controls_enabled,
+			'animationControlsEnabled'       => $animation_controls_enabled,
+			'localeCode'                     => get_locale(),
+			'baseApiNamespace'               => COBLOCKS_API_NAMESPACE,
 		);
 
+		if ( current_user_can( 'upload_files' ) ) {
+			$localize_data['cropSettingsOriginalImageNonce'] = wp_create_nonce( 'cropSettingsOriginalImageNonce' );
+			$localize_data['cropSettingsNonce']              = wp_create_nonce( 'cropSettingsNonce' );
+		}
+
+		wp_localize_script( 'coblocks-editor', 'coblocksBlockData', $localize_data );
 	}
 
 	/**
