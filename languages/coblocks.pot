@@ -1,21 +1,20 @@
 # Copyright (c) 2024 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.1.13\n"
+"Project-Id-Version: CoBlocks 3.1.14\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-20T21:38:23+00:00\n"
+"POT-Creation-Date: 2024-12-20T22:05:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: coblocks\n"
 
 #. Plugin Name of the plugin
 #. translators: icon label
-#: class-coblocks.php
 #: src/blocks/icon/deprecated/svgs.js:15
 #: src/blocks/icon/deprecated/svgsfocusable.js:14
 #: src/blocks/icon/deprecated/svgsv1.js:25
@@ -24,17 +23,14 @@ msgid "CoBlocks"
 msgstr ""
 
 #. Description of the plugin
-#: class-coblocks.php
 msgid "CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress."
 msgstr ""
 
 #. Author of the plugin
-#: class-coblocks.php
 msgid "GoDaddy"
 msgstr ""
 
 #. Author URI of the plugin
-#: class-coblocks.php
 msgid "https://www.godaddy.com"
 msgstr ""
 
