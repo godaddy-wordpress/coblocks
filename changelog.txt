@@ -4,6 +4,10 @@
 
 3.1.14 / 2024-12-20
 ===================
+
+
+3.1.14 / 2024-12-20
+===================
 # Bug Fix
 * Improve nonce handling and permissions in crop settings API. [#2624](https://github.com/godaddy-wordpress/coblocks/pull/2624)
 
