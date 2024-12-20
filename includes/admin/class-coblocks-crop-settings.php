@@ -86,7 +86,7 @@ class CoBlocks_Crop_Settings {
 	 * Retrieve the original image.
 	 */
 	public function get_original_image() {
-		if ( ! wp_verify_nonce( filter_input( INPUT_POST, 'nonce' ), 'cropSettingsOriginalImageNonce' ) ) {
+		if ( ! wp_verify_nonce( sanitize_text_field( filter_input( INPUT_POST, 'nonce' ) ), 'cropSettingsOriginalImageNonce' ) ) {
 			wp_send_json_error( 'Invalid nonce value.', 403 );
 		}
 
@@ -123,7 +123,7 @@ class CoBlocks_Crop_Settings {
 	 * Cropping.
 	 */
 	public function api_crop() {
-		if ( ! wp_verify_nonce( filter_input( INPUT_POST, 'nonce' ), 'cropSettingsNonce' ) ) {
+		if ( ! wp_verify_nonce( sanitize_text_field( filter_input( INPUT_POST, 'nonce' ) ), 'cropSettingsNonce' ) ) {
 			wp_send_json_error( 'Invalid nonce value.', 403 );
 		}
 
