@@ -16,7 +16,19 @@ function useFontSize() {
 		if ( ! baseFontSize ) {
 			return;
 		}
-		document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( '--go--font-size', `${ baseFontSize }rem` );
+		const iframe = document.getElementsByName('editor-canvas')[ 0 ];
+		if ( iframe ) {
+			const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+			const targetElement = iframeDocument.querySelector('.editor-styles-wrapper');
+			if ( targetElement ) {
+				targetElement.style.setProperty( '--go--font-size', `${ baseFontSize }rem` );
+			}
+		} else {
+			const editor = document.getElementsByClassName( siteDesign.editorClass )[ 0 ];
+			if ( editor ) {
+				editor.style.setProperty( '--go--font-size', `${ baseFontSize }rem` );
+			}
+		}
 	}, [ baseFontSize ] );
 
 	return [ baseFontSize, designFontSize ];

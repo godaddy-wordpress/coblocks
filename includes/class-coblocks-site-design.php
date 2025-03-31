@@ -90,6 +90,13 @@ class CoBlocks_Site_Design {
 			}
 		);
 
+		add_action(
+			'enqueue_block_assets',
+			function() {
+				printf( '<style id="site-design-styles">%s</style>', esc_html( $this->get_editor_styles() ) );
+			}
+		);
+
 	}
 
 	/**
