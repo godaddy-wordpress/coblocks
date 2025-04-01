@@ -61,21 +61,11 @@ export function SiteDesignStyles() {
 			return;
 		}
 
-		let stylesElement = document.getElementById( 'site-design-styles' );
+		const stylesElement = document.getElementById( 'site-design-styles' );
 
 		if ( ! stylesElement ) {
-			const iframe = document.getElementsByName('editor-canvas')[ 0 ];
-			if ( iframe ) {
-				const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-				stylesElement = iframeDocument.getElementById( 'site-design-styles' );
-
-				if ( ! stylesElement ) {
-					return;
-				}
-			}
+			return;
 		}
-
-		alert( 'heyyyy' );
 
 		fontStylesCache = !! fontStylesCache ? fontStylesCache : designResp.fontStyles;
 

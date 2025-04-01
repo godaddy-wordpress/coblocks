@@ -45,18 +45,9 @@ export function ColorPalettePreviews() {
 		updateColors();
 
 		Object.entries( currentColors ).forEach( ( [ name, color ] ) => {
-			const iframe = document.getElementsByName('editor-canvas')[ 0 ];
-			if ( iframe ) {
-				const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-				const targetElement = iframeDocument.querySelector('.editor-styles-wrapper');
-				if ( targetElement ) {
-					targetElement.style.setProperty( `--go--color--${ name }`, color );
-				}
-			} else {
-				const editor = document.getElementsByClassName( siteDesign.editorClass )[ 0 ];
-				if ( editor ) {
-					document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( `--go--color--${ name }`, color );
-				}
+			const editor = document.getElementsByClassName( siteDesign.editorClass )[ 0 ];
+			if ( editor ) {
+				document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( `--go--color--${ name }`, color );
 			}
 		} );
 	}, [ currentColors ] );

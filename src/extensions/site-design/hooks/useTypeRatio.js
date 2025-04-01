@@ -14,18 +14,9 @@ function useTypeRatio() {
 		if ( ! typeRatio ) {
 			return;
 		}
-		const iframe = document.getElementsByName('editor-canvas')[ 0 ];
-		if ( iframe ) {
-			const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-			const targetElement = iframeDocument.querySelector('.editor-styles-wrapper');
-			if ( targetElement ) {
-				targetElement.style.setProperty( '--go--type-ratio', typeRatio );
-			}
-		} else {
-			const editor = document.getElementsByClassName( siteDesign.editorClass )[ 0 ];
-			if ( editor ) {
-				editor.style.setProperty( '--go--type-ratio', typeRatio );
-			}
+		const editor = document.getElementsByClassName( siteDesign.editorClass )[ 0 ];
+		if ( editor ) {
+			editor.style.setProperty( '--go--type-ratio', typeRatio );
 		}
 	}, [ typeRatio ] );
 
