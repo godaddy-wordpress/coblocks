@@ -125,6 +125,10 @@ CoBlocks is designed to support the last two major versions of WordPress that ar
 
 == Changelog ==
 
+= 3.1.15 / 2025-04-09 =
+# Bug Fix
+* Prevent site editor crashing when altering the site design styles from within the CoBlocks Labs Site Design. [#2631](https://github.com/godaddy-wordpress/coblocks/pull/2631)
+
 = 3.1.14 / 2024-12-20 =
 # Bug Fix
 * Improve nonce handling and permissions in crop settings API. [#2624](https://github.com/godaddy-wordpress/coblocks/pull/2624)
