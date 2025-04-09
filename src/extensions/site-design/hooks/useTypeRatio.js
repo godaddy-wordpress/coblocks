@@ -14,7 +14,10 @@ function useTypeRatio() {
 		if ( ! typeRatio ) {
 			return;
 		}
-		document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( '--go--type-ratio', typeRatio );
+		const editor = document.getElementsByClassName( siteDesign.editorClass )[ 0 ];
+		if ( editor ) {
+			editor.style.setProperty( '--go--type-ratio', typeRatio );
+		}
 	}, [ typeRatio ] );
 
 	return [ typeRatio, designTypeRatio ];

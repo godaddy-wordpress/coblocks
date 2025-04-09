@@ -45,7 +45,10 @@ export function ColorPalettePreviews() {
 		updateColors();
 
 		Object.entries( currentColors ).forEach( ( [ name, color ] ) => {
-			document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( `--go--color--${ name }`, color );
+			const editor = document.getElementsByClassName( siteDesign.editorClass )[ 0 ];
+			if ( editor ) {
+				document.getElementsByClassName( siteDesign.editorClass )[ 0 ].style.setProperty( `--go--color--${ name }`, color );
+			}
 		} );
 	}, [ currentColors ] );
 

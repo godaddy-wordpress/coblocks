@@ -63,6 +63,10 @@ export function SiteDesignStyles() {
 
 		const stylesElement = document.getElementById( 'site-design-styles' );
 
+		if ( ! stylesElement ) {
+			return;
+		}
+
 		fontStylesCache = !! fontStylesCache ? fontStylesCache : designResp.fontStyles;
 
 		// Set the style element innerHTML to remove the old design style.
