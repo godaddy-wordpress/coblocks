@@ -1,14 +1,14 @@
-# Copyright (c) 2024 GoDaddy Operating Company, LLC. All Rights Reserved.
+# Copyright (c) 2025 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.1.14\n"
+"Project-Id-Version: CoBlocks 3.1.15\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-20T22:25:21+00:00\n"
+"POT-Creation-Date: 2025-04-09T18:31:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: coblocks\n"
@@ -6925,7 +6925,7 @@ msgstr ""
 #: src/blocks/icon/inspector.js:219
 #: src/blocks/testimonials/testimonial/inspector.js:116
 #: src/components/option-selector-control/index.js:62
-#: src/extensions/site-design/color-palette-preview.js:102
+#: src/extensions/site-design/color-palette-preview.js:105
 #: src/extensions/site-design/font-preview.js:85
 msgid "Custom"
 msgstr ""
@@ -10217,19 +10217,19 @@ msgstr ""
 msgid "Site Content"
 msgstr ""
 
-#: src/extensions/site-design/color-palette-preview.js:88
+#: src/extensions/site-design/color-palette-preview.js:91
 msgid "Colors"
 msgstr ""
 
-#: src/extensions/site-design/color-palette-preview.js:97
+#: src/extensions/site-design/color-palette-preview.js:100
 msgid "Color Palettes"
 msgstr ""
 
-#: src/extensions/site-design/color-palette-preview.js:171
+#: src/extensions/site-design/color-palette-preview.js:174
 msgid "Custom Colors"
 msgstr ""
 
-#: src/extensions/site-design/color-palette-preview.js:177
+#: src/extensions/site-design/color-palette-preview.js:180
 msgid "Dismiss custom color"
 msgstr ""
 
