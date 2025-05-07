@@ -11,11 +11,11 @@ const fetchData = async ( apiUrl, getParams = null ) => {
 		random: 1,
 		language,
 	};
-	let paramString = '';
-	Object.keys( params ).forEach( ( key ) => paramString += `${ key }=${ params[ key ] }&` );
+
+	const paramString = new URLSearchParams( params ).toString();
 
 	try {
-		const response = await fetch( `${ apiUrl }?${ paramString.slice( 0, -1 ) }` );
+		const response = await fetch( `${ apiUrl }?${ paramString }` );
 		if ( ! response.ok ) {
 			return null;
 		}
