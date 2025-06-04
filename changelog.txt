@@ -1,3 +1,7 @@
+3.1.16 / 2025-06-04
+===================
+- Use URLSearchParams for query string generation
+
 3.1.15 / 2025-04-09
 ===================
 
