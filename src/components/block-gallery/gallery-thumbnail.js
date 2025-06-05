@@ -7,7 +7,7 @@ const GalleryCarouselThumbnail = ( { changeStep, item, index } ) => {
 			'is-active': false,
 			'wp-block-coblocks-gallery-carousel-thumbnail': true,
 		} ) } onClick={ () => changeStep( index ) } style={ { height: '80px', width: '100px' } } >
-			<img alt={ item.alt } data-id={ item.id } data-link={ item.link } src={ item.url } style={ { height: '100%', width: '100%' } } />
+			<img className={ `wp-image-${ item.id || 'id' }` } alt={ item.alt } data-id={ item.id } data-link={ item.link } src={ item.url } style={ { height: '100%', width: '100%' } } />
 		</button>
 	);
 };
