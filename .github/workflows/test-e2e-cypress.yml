@@ -43,6 +43,7 @@ jobs:
         run: |
           changed_files=$(git diff --name-only --diff-filter=ADMR ${{ github.event.before }} origin/master)
           spec_list=()
+          declare -A spec_seen
 
           for line in $changed_files; do
             if [[ "$line" =~ src/(blocks|extensions|components|block-styles).* ]]; then # If changed file is within our tested paths.
@@ -59,7 +60,10 @@ jobs:
                   spec=$(echo $spec | sed 's:.*/::')
 
                   # Build spec list for cypress run.
-                  spec_list+="'${spec}',"
+                  if [[ -z "${spec_seen[$spec]}" ]]; then
+                    spec_list+="'${spec}',"
+                    spec_seen[$spec]=1
+                  fi
 
                 fi
               done
@@ -177,10 +181,9 @@ jobs:
         if: ${{ failure() }}
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.spec }}-fail.mp4
+          name: ${{ matrix.spec }}-wp${{ env.WP_CORE_VERSION }}-php${{ inputs.phpVersion }}-fail.mp4
           path: ./.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
           retention-days: 1
-
 
   test_cypress_e2e_full:
     if: github.event_name == 'push'
@@ -326,7 +329,8 @@ jobs:
         if: ${{ failure() }}
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.spec }}-fail.mp4
+          name: ${{ matrix.spec }}-wp${{ env.WP_CORE_VERSION }}-php${{ inputs.phpVersion }}-fail.mp4
           path: ./.dev/tests/cypress/videos/${{ matrix.spec }}.mp4
           retention-days: 1
+          
 
