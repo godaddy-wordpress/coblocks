@@ -178,11 +178,29 @@ class LayoutSelector extends Component {
 const LayoutSelectorApp = () => {
 	// Hooks must be called unconditionally and in the same order every render.
 	const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', LAYOUT_SELECTOR_FEATURE_ENABLED_KEY );
-	const tsSelect = useSelect( ( select ) => select( 'coblocks/template-selector' ), [] ) || {};
-	const viewportSelect = useSelect( ( select ) => select( 'core/viewport' ), [] ) || {};
 
 	const layouts = useComputedLayouts();
 	const categories = useCategories( layouts );
+
+	const {
+		hasLayouts,
+		hasCategories,
+		selectedCategory,
+		templateSelectorActive,
+		isMobile,
+		hasComputedLayouts,
+	} = useSelect( ( select ) => {
+		const ts = select( 'coblocks/template-selector' ) || {};
+		const vp = select( 'core/viewport' ) || {};
+		return {
+			hasLayouts: typeof ts.hasLayouts === 'function' ? ts.hasLayouts() : false,
+			hasCategories: typeof ts.hasCategories === 'function' ? ts.hasCategories() : false,
+			selectedCategory: typeof ts.getSelectedCategory === 'function' ? ts.getSelectedCategory() : 'most-used',
+			templateSelectorActive: typeof ts.isTemplateSelectorActive === 'function' ? ts.isTemplateSelectorActive() : false,
+			isMobile: typeof vp.isViewportMatch === 'function' ? vp.isViewportMatch( '< medium' ) : false,
+			hasComputedLayouts: typeof ts.getComputedLayouts === 'function' ? ( ( ts.getComputedLayouts() || [] ).length > 0 ) : false,
+		};
+	}, [] );
 
 	const tsDispatch = useDispatch( 'coblocks/template-selector' ) || {};
 	const editorDispatch = useDispatch( 'core/editor' ) || {};
@@ -190,17 +208,11 @@ const LayoutSelectorApp = () => {
 
 	// Non-hook logic can be conditional.
 	const labsIsPresent = !! document.getElementsByClassName( 'coblocks-labs-modal' )?.[ 0 ];
-	const hasLayouts = typeof tsSelect.hasLayouts === 'function' ? tsSelect.hasLayouts() : false;
-	const hasCategories = typeof tsSelect.hasCategories === 'function' ? tsSelect.hasCategories() : false;
-	const shouldRender = layoutSelectorEnabled && ! labsIsPresent && hasLayouts && hasCategories;
-	// eslint-disable-next-line no-console
+	const shouldRender = layoutSelectorEnabled && ! labsIsPresent && hasLayouts && hasCategories && hasComputedLayouts;
+
 	if ( ! shouldRender ) {
 		return null;
 	}
-
-	const getSelectedCategory = typeof tsSelect.getSelectedCategory === 'function' ? tsSelect.getSelectedCategory : () => 'most-used';
-	const isTemplateSelectorActive = typeof tsSelect.isTemplateSelectorActive === 'function' ? tsSelect.isTemplateSelectorActive : () => false;
-	const isViewportMatch = typeof viewportSelect.isViewportMatch === 'function' ? viewportSelect.isViewportMatch : () => false;
 
 	const closeTemplateSelector = typeof tsDispatch.closeTemplateSelector === 'function' ? tsDispatch.closeTemplateSelector : () => {};
 	const incrementLayoutUsage = typeof tsDispatch.incrementLayoutUsage === 'function' ? tsDispatch.incrementLayoutUsage : () => {};
@@ -233,10 +245,10 @@ const LayoutSelectorApp = () => {
 	return (
 		<LayoutSelector
 			categories={ categories }
-			selectedCategory={ getSelectedCategory() }
+			selectedCategory={ selectedCategory }
 			updateSelectedCategory={ updateSelectedCategory }
-			isActive={ isTemplateSelectorActive() }
-			isMobile={ isViewportMatch( '< medium' ) }
+			isActive={ templateSelectorActive }
+			isMobile={ isMobile }
 			useEmptyTemplateLayout={ useEmptyTemplateLayout }
 			useTemplateLayout={ useTemplateLayout }
 			layouts={ layouts }
@@ -245,7 +257,6 @@ const LayoutSelectorApp = () => {
 };
 
 if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.postTypeEnabled ) {
-	// eslint-disable-next-line no-console
 	registerPlugin( 'coblocks-layout-selector', {
 		render: LayoutSelectorApp,
 	} );
