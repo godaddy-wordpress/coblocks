@@ -13,8 +13,7 @@ import { useEntityProp } from '@wordpress/core-data';
 import { __, sprintf } from '@wordpress/i18n';
 import { Button, DropdownMenu, Icon, MenuGroup, MenuItem, Modal, Path, SVG } from '@wordpress/components';
 import { Component, isValidElement } from '@wordpress/element';
-import { compose, ifCondition } from '@wordpress/compose';
-import { register, useSelect, withDispatch, withSelect } from '@wordpress/data';
+import { register, useSelect, useDispatch } from '@wordpress/data';
 
 /**
  * Internal dependencies
@@ -176,78 +175,78 @@ class LayoutSelector extends Component {
 	}
 }
 
+const LayoutSelectorApp = () => {
+	// Hooks must be called unconditionally and in the same order every render.
+	const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', LAYOUT_SELECTOR_FEATURE_ENABLED_KEY );
+	const tsSelect = useSelect( ( select ) => select( 'coblocks/template-selector' ), [] ) || {};
+	const viewportSelect = useSelect( ( select ) => select( 'core/viewport' ), [] ) || {};
+
+	const layouts = useComputedLayouts();
+	const categories = useCategories( layouts );
+
+	const tsDispatch = useDispatch( 'coblocks/template-selector' ) || {};
+	const editorDispatch = useDispatch( 'core/editor' ) || {};
+	const noticesDispatch = useDispatch( 'core/notices' ) || {};
+
+	// Non-hook logic can be conditional.
+	const labsIsPresent = !! document.getElementsByClassName( 'coblocks-labs-modal' )?.[ 0 ];
+	const hasLayouts = typeof tsSelect.hasLayouts === 'function' ? tsSelect.hasLayouts() : false;
+	const hasCategories = typeof tsSelect.hasCategories === 'function' ? tsSelect.hasCategories() : false;
+	const shouldRender = layoutSelectorEnabled && ! labsIsPresent && hasLayouts && hasCategories;
+	// eslint-disable-next-line no-console
+	if ( ! shouldRender ) {
+		return null;
+	}
+
+	const getSelectedCategory = typeof tsSelect.getSelectedCategory === 'function' ? tsSelect.getSelectedCategory : () => 'most-used';
+	const isTemplateSelectorActive = typeof tsSelect.isTemplateSelectorActive === 'function' ? tsSelect.isTemplateSelectorActive : () => false;
+	const isViewportMatch = typeof viewportSelect.isViewportMatch === 'function' ? viewportSelect.isViewportMatch : () => false;
+
+	const closeTemplateSelector = typeof tsDispatch.closeTemplateSelector === 'function' ? tsDispatch.closeTemplateSelector : () => {};
+	const incrementLayoutUsage = typeof tsDispatch.incrementLayoutUsage === 'function' ? tsDispatch.incrementLayoutUsage : () => {};
+	const updateSelectedCategory = typeof tsDispatch.updateSelectedCategory === 'function' ? tsDispatch.updateSelectedCategory : () => {};
+	const editPost = typeof editorDispatch.editPost === 'function' ? editorDispatch.editPost : () => {};
+	const createSuccessNotice = typeof noticesDispatch.createSuccessNotice === 'function' ? noticesDispatch.createSuccessNotice : () => {};
+
+	const useEmptyTemplateLayout = () => {
+		editPost( { blocks: [], title: '' } );
+		closeTemplateSelector();
+	};
+
+	const useTemplateLayout = ( layout ) => {
+		editPost( {
+			blocks: layout.blocks,
+			title: layout.label,
+		} );
+		closeTemplateSelector();
+		incrementLayoutUsage( layout );
+		createSuccessNotice(
+			sprintf(
+				/* translators: %s: layout name */
+				__( '"%s" layout has been added to the page.', 'coblocks' ),
+				layout.label
+			),
+			{ type: 'snackbar' }
+		);
+	};
+
+	return (
+		<LayoutSelector
+			categories={ categories }
+			selectedCategory={ getSelectedCategory() }
+			updateSelectedCategory={ updateSelectedCategory }
+			isActive={ isTemplateSelectorActive() }
+			isMobile={ isViewportMatch( '< medium' ) }
+			useEmptyTemplateLayout={ useEmptyTemplateLayout }
+			useTemplateLayout={ useTemplateLayout }
+			layouts={ layouts }
+		/>
+	);
+};
+
 if ( typeof coblocksLayoutSelector !== 'undefined' && coblocksLayoutSelector.postTypeEnabled ) {
+	// eslint-disable-next-line no-console
 	registerPlugin( 'coblocks-layout-selector', {
-		render: compose( [
-			ifCondition( () => {
-				const [ layoutSelectorEnabled ] = useEntityProp( 'root', 'site', LAYOUT_SELECTOR_FEATURE_ENABLED_KEY );
-				// Prevent render if labs modal is open.
-				const labsIsPresent = !! document.getElementsByClassName( 'coblocks-labs-modal' )?.[ 0 ];
-				const {
-					hasLayouts,
-					hasCategories,
-				} = useSelect( ( select ) => select( 'coblocks/template-selector' ) );
-
-				return layoutSelectorEnabled && ! labsIsPresent && hasLayouts() && hasCategories();
-			} ),
-			withSelect( ( select ) => {
-				const {
-					getSelectedCategory,
-					isTemplateSelectorActive,
-				} = select( 'coblocks/template-selector' );
-
-				const { isViewportMatch } = select( 'core/viewport' );
-
-				const layouts = useComputedLayouts();
-
-				return {
-					categories: useCategories( layouts ),
-					isActive: isTemplateSelectorActive(),
-					isMobile: isViewportMatch( '< medium' ),
-					layouts,
-					selectedCategory: getSelectedCategory(),
-				};
-			} ),
-			withDispatch( ( dispatch ) => {
-				const {
-					closeTemplateSelector,
-					incrementLayoutUsage,
-					updateSelectedCategory,
-				} = dispatch( 'coblocks/template-selector' );
-				const { editPost } = dispatch( 'core/editor' );
-				const { createWarningNotice, createSuccessNotice } = dispatch( 'core/notices' );
-
-				return {
-					closeTemplateSelector,
-					createSuccessNotice,
-					createWarningNotice,
-					editPost,
-					updateSelectedCategory,
-
-					useEmptyTemplateLayout: () => {
-						editPost( { blocks: [], title: '' } );
-						closeTemplateSelector();
-					},
-
-					// Replace any blocks with the selected layout.
-					useTemplateLayout: ( layout ) => {
-						editPost( {
-							blocks: layout.blocks,
-							title: layout.label,
-						} );
-						closeTemplateSelector();
-						incrementLayoutUsage( layout );
-						createSuccessNotice(
-							sprintf(
-								// translators: %s is the post title.
-								__( '"%s" layout has been added to the page.', 'coblocks' ),
-								layout.label
-							),
-							{ type: 'snackbar' }
-						);
-					},
-				};
-			} ),
-		] )( LayoutSelector ),
+		render: LayoutSelectorApp,
 	} );
 }
