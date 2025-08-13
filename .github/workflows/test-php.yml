@@ -11,8 +11,8 @@ jobs:
   php_unit_versions_matrix:
     strategy:
       matrix:
-        php: ['7.4','8.3']
-        wp: ['6.7']
+        php: ['7.4','8.4']
+        wp: ['6.8']
     name: PHP Unit ${{ matrix.php }} | WP Version ${{ matrix.wp }}
     uses: ./.github/workflows/test-php-unit.yml
     with:

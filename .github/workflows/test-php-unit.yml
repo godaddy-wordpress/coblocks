@@ -6,7 +6,7 @@ on:
       phpVersion:
         required: false
         type: string
-        default: '8.3'
+        default: '8.4'
       wpVersion:
         required: false
         type: string

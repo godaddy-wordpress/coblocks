@@ -47,7 +47,7 @@ jobs:
     name: PHP ${{ matrix.php }} WP Next Version
     strategy:
       matrix:
-        php: ['7.4','8.3']
+        php: ['7.4','8.4']
     uses: ./.github/workflows/test-php-unit.yml
     with:
       phpVersion: ${{ matrix.php }}
