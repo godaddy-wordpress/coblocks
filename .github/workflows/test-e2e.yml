@@ -35,14 +35,3 @@ jobs:
       wpVersion: "WordPress/WordPress#${{matrix.wp}}"
       theme: ${{matrix.theme}}
       phpVersion: ${{matrix.php}}
-    concurrency:
-      group: >
-        ${{
-          format(
-            'chrome-e2e-WP{0}-PHP{1}-{2}',
-            matrix.wp,
-            matrix.php,
-            matrix.theme == '' && 'twentytwentythree' || 'go'
-          )
-        }}
-      cancel-in-progress: true

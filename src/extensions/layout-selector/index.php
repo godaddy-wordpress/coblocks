@@ -62,8 +62,8 @@ function coblocks_layout_selector_layouts() {
  * Localize layout and category definitions for the Layout Selector component.
  */
 function coblocks_localize_layout_selector() {
-	$current_screen   = get_current_screen();
-	$screen_post_type = $current_screen->post_type;
+	$current_screen   = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+	$screen_post_type = ( $current_screen && isset( $current_screen->post_type ) ) ? $current_screen->post_type : null;
 
 	$allowed_post_types = array(
 		'page',
@@ -73,7 +73,7 @@ function coblocks_localize_layout_selector() {
 		'coblocks-editor',
 		'coblocksLayoutSelector',
 		array(
-			'postTypeEnabled' => in_array( $screen_post_type, $allowed_post_types, true ),
+			'postTypeEnabled' => $screen_post_type ? in_array( $screen_post_type, $allowed_post_types, true ) : false,
 			'layouts'         => coblocks_layout_selector_layouts(),
 			'categories'      => coblocks_layout_selector_categories(),
 		)

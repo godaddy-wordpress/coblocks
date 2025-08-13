@@ -37,9 +37,6 @@ jobs:
       wpVersion: ${{ needs.set_constant.outputs.wp_next }}
       installPath: "tests-wordpress-6.8-RC2"
       theme: "https://downloads.wordpress.org/theme/go.zip"
-    concurrency:
-      group: chrome-wp-next
-      cancel-in-progress: true
 
   # PHP Unit testing
   php_unit_wp_next:
