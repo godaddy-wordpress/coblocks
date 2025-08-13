@@ -22,15 +22,15 @@ jobs:
       fail-fast: false
       matrix:
         wp: # Test against Prev-Prev Major, Prev-Major, and current Major release versions.
-          - "6.5"
           - "6.6"
           - "6.7"
+          - "6.8"
         theme:
           - "https://downloads.wordpress.org/theme/go.zip"
           - "" # Default theme is TwentyTwentyThree
         php: # Test against minimum and latest PHP versions.
           - "7.4"
-          - "8.3"
+          - "8.4"
     with:
       wpVersion: "WordPress/WordPress#${{matrix.wp}}"
       theme: ${{matrix.theme}}
