@@ -68,6 +68,28 @@ export function getWPDataObject() {
 }
 
 /**
+ * Wait for WordPress data stores to be fully initialized.
+ * This prevents race conditions where wp.data exists but stores aren't registered yet.
+ */
+export function waitForDataStores() {
+	return cy.window().should( ( win ) => {
+		// eslint-disable-next-line no-unused-expressions
+		expect( win.wp ).to.exist;
+		// eslint-disable-next-line no-unused-expressions
+		expect( win.wp.data ).to.exist;
+		// eslint-disable-next-line no-unused-expressions
+		expect( win.wp.data.select ).to.be.a( 'function' );
+
+		// Ensure core stores are registered
+		const coreEditPostSelect = win.wp.data.select( 'core/edit-post' );
+		// eslint-disable-next-line no-unused-expressions
+		expect( coreEditPostSelect ).to.exist;
+		// eslint-disable-next-line no-unused-expressions
+		expect( coreEditPostSelect.isFeatureActive ).to.be.a( 'function' );
+	} );
+}
+
+/**
  * Safely obtain the window blocks object or error
  * when the window object is not available.
  */
@@ -81,17 +103,19 @@ export function getWPBlocksObject() {
  * Disable Gutenberg Tips
  */
 export function disableGutenbergFeatures() {
-	return getWPDataObject().then( ( data ) => {
-		// Enable "Top Toolbar"
-		if ( ! data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
-			data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
-		}
+	return waitForDataStores().then( () => {
+		return getWPDataObject().then( ( data ) => {
+			// Enable "Top Toolbar"
+			if ( ! data.select( 'core/edit-post' ).isFeatureActive( 'fixedToolbar' ) ) {
+				data.dispatch( 'core/edit-post' ).toggleFeature( 'fixedToolbar' );
+			}
 
-		if ( data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
-			data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
-		}
+			if ( data.select( 'core/edit-post' ).isFeatureActive( 'welcomeGuide' ) ) {
+				data.dispatch( 'core/edit-post' ).toggleFeature( 'welcomeGuide' );
+			}
 
-		data.dispatch( 'core/editor' ).disablePublishSidebar();
+			data.dispatch( 'core/editor' ).disablePublishSidebar();
+		} );
 	} );
 }
 
@@ -125,11 +149,13 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 	 * Note: This method is preferred over the old method because
 	 * we do not need to test the Core controls around block insertion.
 	 */
-	getWPDataObject().then( ( data ) => {
-		getWPBlocksObject().then( ( blocks ) => {
-			data.dispatch( 'core/block-editor' ).insertBlock(
-				blocks.createBlock( blockName )
-			);
+	waitForDataStores().then( () => {
+		getWPDataObject().then( ( data ) => {
+			getWPBlocksObject().then( ( blocks ) => {
+				data.dispatch( 'core/block-editor' ).insertBlock(
+					blocks.createBlock( blockName )
+				);
+			} );
 		} );
 	} );
 
@@ -293,10 +319,12 @@ export function editPage() {
  * Clear all blocks from the editor and wait for them to be fully removed
  */
 export function clearBlocks() {
-	getWPDataObject().then( ( data ) => {
-		data.dispatch( 'core/block-editor' ).removeBlocks(
-			data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
-		);
+	waitForDataStores().then( () => {
+		getWPDataObject().then( ( data ) => {
+			data.dispatch( 'core/block-editor' ).removeBlocks(
+				data.select( 'core/block-editor' ).getBlocks().map( ( block ) => block.clientId )
+			);
+		} );
 	} );
 
 	// Simple wait and verify no blocks remain
@@ -354,24 +382,26 @@ export function selectBlock( name ) {
 	cy.get( `[data-type*="${ name }"], [data-title*="${ name }"]` ).should( 'exist' );
 
 	let id = ''; // The block client ID.
-	cy.window().then( ( win ) => {
-		// Prefer selector from data-store.
-		id = win.wp.data.select( 'core/block-editor' ).getBlocks().filter( ( i ) => i?.name === name )[ 0 ]?.clientId;
+	waitForDataStores().then( () => {
+		cy.window().then( ( win ) => {
+			// Prefer selector from data-store.
+			id = win.wp.data.select( 'core/block-editor' ).getBlocks().filter( ( i ) => i?.name === name )[ 0 ]?.clientId;
 
-		// Fallback to selector from DOM.
-		if ( ! id ) {
-			cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
-				.invoke( 'attr', 'data-block' )
-				.then( ( clientId ) => id = clientId );
-		}
-	} );
+			// Fallback to selector from DOM.
+			if ( ! id ) {
+				cy.get(	`[data-type*="${ name }"], [data-title*="${ name }"]` )
+					.invoke( 'attr', 'data-block' )
+					.then( ( clientId ) => id = clientId );
+			}
+		} );
 
-	cy.window().then( ( win ) => {
-		win.wp.data.dispatch( 'core/block-editor' ).selectBlock( id );
-	} );
+		cy.window().then( ( win ) => {
+			win.wp.data.dispatch( 'core/block-editor' ).selectBlock( id );
+		} );
 
-	cy.window().then( ( win ) => {
-		win.wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
+		cy.window().then( ( win ) => {
+			win.wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'edit-post/block' );
+		} );
 	} );
 	// Wait for sidebar to be visible
 	cy.get( '.interface-interface-skeleton__sidebar' ).should( 'be.visible' );
