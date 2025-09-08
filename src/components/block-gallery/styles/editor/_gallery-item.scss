@@ -59,3 +59,8 @@
 		pointer-events: none;
 	}
 }
+
+// Even higher specificity with block context to override WordPress core
+[data-type*="coblocks/gallery"] .coblocks-gallery .coblocks-gallery--item figure img {
+	pointer-events: auto;
+}

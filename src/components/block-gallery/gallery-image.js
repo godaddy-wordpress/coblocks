@@ -20,7 +20,12 @@ import { BACKSPACE, DELETE } from '@wordpress/keycodes';
 import { Button, ButtonGroup, Dashicon, Spinner } from '@wordpress/components';
 import { chevronDown, chevronLeft, chevronRight, chevronUp, closeSmall } from '@wordpress/icons';
 import { Component, createRef, Fragment } from '@wordpress/element';
-import { MediaUpload, MediaUploadCheck, RichText, URLInput } from '@wordpress/block-editor';
+import {
+	MediaUpload,
+	MediaUploadCheck,
+	RichText,
+	URLInput,
+} from '@wordpress/block-editor';
 
 class GalleryImage extends Component {
 	constructor() {
@@ -30,6 +35,7 @@ class GalleryImage extends Component {
 		this.onSelectCaption = this.onSelectCaption.bind( this );
 		this.onKeyDown = this.onKeyDown.bind( this );
 		this.saveCustomLink = this.saveCustomLink.bind( this );
+		this.renderURLInput = this.renderURLInput.bind( this );
 
 		this.state = {
 			captionFocused: false,
@@ -54,11 +60,9 @@ class GalleryImage extends Component {
 	}
 
 	onImageClick() {
-		const { isSelected, onSelect } = this.props;
+		const { onSelect } = this.props;
 
-		if ( ! isSelected ) {
-			onSelect();
-		}
+		onSelect();
 
 		const { captionSelected } = this.state;
 		if ( captionSelected ) {
@@ -111,6 +115,47 @@ class GalleryImage extends Component {
 		}
 	}
 
+	renderURLInput() {
+		const { setAttributes, imgLink } = this.props;
+		const { isSaved } = this.state;
+
+		// Enhanced URL input with better error handling and compatibility
+		return (
+			<form
+				className="components-coblocks-gallery-item__image-link"
+				onSubmit={ ( event ) => {
+					event.preventDefault();
+					this.saveCustomLink();
+				} }
+			>
+				<Dashicon icon="admin-links" />
+
+				{ /* Primary URLInput with fallback handling */ }
+				<URLInput
+					key="url-input"
+					onChange={ ( value ) => {
+						// Ensure the value is properly handled
+						const urlValue = value || '';
+						setAttributes( { imgLink: urlValue } );
+					} }
+					value={ imgLink || '' }
+					placeholder={ __( 'Enter URL', 'coblocks' ) }
+					disableSuggestions={ false }
+					__nextHasNoMarginBottom={ true }
+				/>
+
+				<Button
+					icon={ isSaved ? 'saved' : 'editor-break' }
+					label={ isSaved ? __( 'Saved', 'coblocks' ) : __( 'Apply', 'coblocks' ) }
+					onClick={ this.saveCustomLink }
+					type="submit"
+					variant="primary"
+					size="compact"
+				/>
+			</form>
+		);
+	}
+
 	render() {
 		const {
 			alt,
@@ -143,7 +188,7 @@ class GalleryImage extends Component {
 			replaceImage,
 		} = this.props;
 
-		const { captionSelected, isSaved } = this.state;
+		const { captionSelected } = this.state;
 
 		const imgClasses = classnames( {
 			[ `has-shadow-${ shadow }` ]: shadow !== 'none' || shadow !== undefined,
@@ -249,18 +294,7 @@ class GalleryImage extends Component {
 								/>
 							</ButtonGroup>
 						}
-						{ linkTo === 'custom' &&
-							<form
-								className="components-coblocks-gallery-item__image-link"
-								onSubmit={ ( event ) => event.preventDefault() }>
-								<Dashicon icon="admin-links" />
-								<URLInput
-									onChange={ ( value ) => setAttributes( { imgLink: value } ) }
-									value={ imgLink }
-								/>
-								<Button icon={ isSaved ? 'saved' : 'editor-break' } label={ isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ this.saveCustomLink } type="submit" />
-							</form>
-						}
+						{ linkTo === 'custom' && this.renderURLInput() }
 					</Fragment>
 				}
 				{ img }
