@@ -88,6 +88,9 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
+		// Dismiss any popovers that might interfere with clicking
+		helpers.dismissPopovers();
+
 		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click()
 			.find( 'figcaption' ).focus().type( caption, { force: true } );
 
@@ -116,6 +119,9 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		cy.get( '.media-modal-content' ).find( '.media-button-select' ).click();
 
 		helpers.toggleSettingCheckbox( /captions/i );
+
+		// Dismiss any popovers that might interfere with clicking
+		helpers.dismissPopovers();
 
 		// Focus the image
 		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click();

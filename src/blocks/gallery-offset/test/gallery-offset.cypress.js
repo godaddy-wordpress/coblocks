@@ -108,6 +108,9 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 		// Wait for block to be selected (has is-selected class)
 		cy.get( '[data-type="coblocks/gallery-offset"].is-selected' );
 
+		// Dismiss any popovers that might interfere with clicking
+		helpers.dismissPopovers();
+
 		cy.get( '[data-type="coblocks/gallery-offset"]' ).within( () => {
 			cy.get( '.coblocks-gallery--item' ).first().click();
 		} );
@@ -161,6 +164,9 @@ describe( 'Test CoBlocks Gallery Offset Block', function() {
 
 		// Wait for block to be selected (has is-selected class)
 		cy.get( '[data-type="coblocks/gallery-offset"].is-selected' );
+
+		// Dismiss any popovers that might interfere with clicking
+		helpers.dismissPopovers();
 
 		cy.get( '[data-type="coblocks/gallery-offset"]' ).within( () => {
 			cy.get( '.coblocks-gallery--item' ).first().click();

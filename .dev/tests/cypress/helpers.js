@@ -441,6 +441,9 @@ export const upload = {
 
 		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"]` ).click();
 
+		// Dismiss any popovers that might interfere with clicking
+		dismissPopovers();
+
 		cy.get( `[class*="-visual-editor"] [data-type="${ blockName }"] img` ).first().click( { force: true } );
 
 		cy.get( '.coblocks-gallery-item__button-replace' ).click( { force: true } );
@@ -751,6 +754,40 @@ export function openInspectorPanel() {
 }
 
 /**
+ * Dismiss any open popovers that might interfere with test interactions
+ * This is particularly useful for rich text formatting toolbars that appear unexpectedly
+ * and prevent clicking on gallery items or other elements.
+ *
+ * This function is backward compatible with existing test patterns that expect
+ * formatting toolbars to appear/disappear in specific sequences.
+ */
+export function dismissPopovers() {
+	// Only dismiss popovers if they are currently interfering with interactions
+	cy.get( 'body' ).then( ( $body ) => {
+		// Look for specifically problematic popovers that cover content
+		const interferingPopovers = $body.find( '.components-popover.block-editor-rich-text__inline-format-toolbar.is-positioned:visible' );
+
+		if ( interferingPopovers.length > 0 ) {
+			// Use escape key to dismiss - this is the standard WordPress way
+			cy.get( 'body' ).type( '{esc}' );
+			// Brief wait for dismissal
+			cy.wait( 100 );
+		}
+	} );
+
+	// Additional check for any other visible popovers that might interfere
+	cy.get( 'body' ).then( ( $body ) => {
+		const otherPopovers = $body.find( '.components-popover:visible' );
+		// Only dismiss if there are multiple popovers or if they're not expected rich text toolbars
+		if ( otherPopovers.length > 1 ) {
+			// Press escape to clear any unexpected popover stack
+			cy.get( 'body' ).type( '{esc}' );
+			cy.wait( 100 );
+		}
+	} );
+}
+
+/**
  * Open a specific panel in the inspector with cross-version compatibility
  *
  * @param {string} panelName - The name of the panel to open (case-insensitive)
@@ -840,6 +877,7 @@ export function setGalleryCustomLink( blockName, customUrl, imageSelector = 'img
 	} );
 
 	// Step 6: Click the image to show URL input
+	dismissPopovers();
 	if ( blockName.includes( 'collage' ) ) {
 		cy.get( `[data-type="${ blockName }"] .wp-block-coblocks-gallery-collage__item` ).first().click();
 		cy.get( `[data-type="${ blockName }"] img` ).first().click( { force: true } );
