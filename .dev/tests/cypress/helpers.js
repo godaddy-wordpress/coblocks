@@ -36,6 +36,8 @@ export function addFormChild( name ) {
 export function loginToSite() {
 	return goTo( '/wp-login.php', true )
 		.then( () => {
+			// Arbitrary wait to ensure the login form is ready in CI
+			cy.wait( 1000 );
 			// Wait for login form to be ready
 			cy.get( '#user_login' ).type( Cypress.env( 'wpUsername' ) );
 			cy.get( '#user_pass' ).type( Cypress.env( 'wpPassword' ) );
