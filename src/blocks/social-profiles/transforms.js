@@ -52,7 +52,7 @@ export const transforms = {
 				return createBlock( 'coblocks/social', {
 					...attributes,
 					facebook: getPreviousAttributes( 'share', 'facebook', attributes ),
-					twitter: getPreviousAttributes( 'share', 'twitter', attributes ),
+					x: getPreviousAttributes( 'share', 'x', attributes ),
 					pinterest: getPreviousAttributes( 'share', 'pinterest', attributes ),
 					linkedin: getPreviousAttributes( 'share', 'linkedin', attributes ),
 					email: getPreviousAttributes( 'share', 'email', attributes ),
@@ -76,9 +76,9 @@ export const transforms = {
 						'facebook',
 						attributes
 					),
-					twitter: getPreviousAttributes(
+					x: getPreviousAttributes(
 						'social-profiles',
-						'twitter',
+						'x',
 						attributes
 					),
 					pinterest: getPreviousAttributes(
