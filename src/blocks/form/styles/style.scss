@@ -52,15 +52,15 @@
 	input[type="date"],
 	input[type="number"],
 	select {
-		min-height: 40px;
-		padding: 8px 12px;
+		min-height: 2.5rem;
+		padding: 0.5rem 0.75rem;
 	}
 
 	textarea {
 		float: none;
 		height: 200px;
 		margin: 0 0 1.15rem 0;
-		padding: 8px 12px;
+		padding: 0.5rem 0.75rem;
 		resize: vertical;
 		width: 100%;
 	}
