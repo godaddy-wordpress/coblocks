@@ -44,10 +44,23 @@
 		}
 	}
 
+	// Fallback padding and height for form inputs
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="date"],
+	input[type="number"],
+	select {
+		min-height: 40px;
+		padding: 8px 12px;
+	}
+
 	textarea {
 		float: none;
 		height: 200px;
 		margin: 0 0 1.15rem 0;
+		padding: 8px 12px;
 		resize: vertical;
 		width: 100%;
 	}
