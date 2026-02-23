@@ -12,6 +12,17 @@
 	right: 0;
 	z-index: 20;
 
+	// Ensure URL input overlays the image correctly for all gallery types
+	// Make it responsive and properly sized to the container
+	.coblocks-gallery--item figure & {
+		bottom: 2px;
+		box-sizing: border-box;
+		left: 2px;
+		min-width: 0; // Allow shrinking
+		right: 2px;
+		width: auto;
+	}
+
 	.dashicon {
 		color: $white;
 	}
@@ -28,10 +39,11 @@
 	}
 
 	.block-editor-url-input {
-		flex: 1 2;
+		flex: 1 1 auto;
+		min-width: 0; // Allow shrinking
 		padding: 2px;
 		position: relative;
-		width: calc(100% - 73px);
+		width: auto;
 
 		.components-base-control__field {
 			margin-bottom: 4px;
@@ -40,8 +52,16 @@
 
 		input[type="text"] {
 			border-radius: 3px;
-			padding: 8px;
+			box-sizing: border-box;
+			min-width: 0; // Allow shrinking
+			padding: 6px 8px;
 			width: 100%;
 		}
+	}
+
+	// Make the submit button responsive too
+	.components-button {
+		flex-shrink: 0;
+		min-width: auto;
 	}
 }
