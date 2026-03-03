@@ -99,8 +99,8 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 
 				$event_time_string = sprintf(
 					'<span class="wp-block-coblocks-events__time">%1$s - %2$s</span>',
-					gmdate( 'g:ia', $start_date_string ),
-					gmdate( 'g:ia', $end_date_string )
+					esc_html( gmdate( 'g:ia', $start_date_string ) ),
+					esc_html( gmdate( 'g:ia', $end_date_string ) )
 				);
 
 				$events_layout .= coblocks_render_single_day_event_item(
@@ -117,8 +117,8 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 
 				$event_time_string = sprintf(
 					'<span class="wp-block-coblocks-events__time">%1$s - %2$s</span>',
-					gmdate( 'g:ia', $start_date_string ),
-					gmdate( 'g:ia', $end_date_string )
+					esc_html( gmdate( 'g:ia', $start_date_string ) ),
+					esc_html( gmdate( 'g:ia', $end_date_string ) )
 				);
 
 				$events_layout .= coblocks_render_multi_day_event_item(
@@ -136,8 +136,8 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 
 				$event_time_string = sprintf(
 					'<span data-start-time=%1$s data-end-time=%2$s class="wp-block-coblocks-events__time wp-block-coblocks-events__time-formatted"></span>',
-					gmdate( 'c', $start_date_string ),
-					gmdate( 'c', $end_date_string )
+					esc_html( gmdate( 'c', $start_date_string ) ),
+					esc_html( gmdate( 'c', $end_date_string ) )
 				);
 
 				$events_layout .= coblocks_render_single_day_event_item(
@@ -154,8 +154,8 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 
 				$event_time_string = sprintf(
 					'<span data-start-time=%1$s data-end-time=%2$s class="wp-block-coblocks-events__time wp-block-coblocks-events__time-formatted"></span>',
-					gmdate( 'c', $start_date_string ),
-					gmdate( 'c', $end_date_string )
+					esc_html( gmdate( 'c', $start_date_string ) ),
+					esc_html( gmdate( 'c', $end_date_string ) )
 				);
 
 				$events_layout .= coblocks_render_multi_day_event_item(
@@ -188,8 +188,8 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 
 		$events_layout .= '</div>';
 
-		$events_layout .= sprintf( '<button class="wp-coblocks-events-nav-button__prev" id="wp-coblocks-event-swiper-prev" style="visibility: hidden" aria-label="%s"/>', __( 'Previous post', 'coblocks' ) );
-		$events_layout .= sprintf( '<button class="wp-coblocks-events-nav-button__next" id="wp-coblocks-event-swiper-next" style="visibility: hidden" aria-label="%s"/>', __( 'Next post', 'coblocks' ) );
+		$events_layout .= sprintf( '<button class="wp-coblocks-events-nav-button__prev" id="wp-coblocks-event-swiper-prev" style="visibility: hidden" aria-label="%s"/>', esc_attr__( 'Previous post', 'coblocks' ) );
+		$events_layout .= sprintf( '<button class="wp-coblocks-events-nav-button__next" id="wp-coblocks-event-swiper-next" style="visibility: hidden" aria-label="%s"/>', esc_attr__( 'Next post', 'coblocks' ) );
 
 		$events_layout .= '</div>';
 
@@ -199,7 +199,7 @@ function coblocks_render_coblocks_events_block( $attributes, $content ) {
 
 	} catch ( \Exception $e ) {
 
-		return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, check for calendar privileges to make sure it is public or try again later.', 'coblocks' ) . '</div></div>';
+		return '<div class="components-placeholder"><div class="notice notice-error">' . esc_html__( 'An error has occurred, check for calendar privileges to make sure it is public or try again later.', 'coblocks' ) . '</div></div>';
 
 	}
 }
@@ -234,9 +234,9 @@ function coblocks_render_event_item(
 				<span class="wp-block-coblocks-events__year">%3$s</span>
 			</div>
 		</div>',
-		$date_range,
-		$month,
-		$year
+		esc_html( $date_range ),
+		esc_html( $month ),
+		esc_html( $year ),
 	);
 
 	$event_layout .= sprintf(
@@ -244,8 +244,8 @@ function coblocks_render_event_item(
 			<span class="wp-block-coblocks-events__title">%1$s</span>
 			<span class="wp-block-coblocks-events__description">%2$s</span>
 		</div>',
-		$title,
-		$description
+		esc_html( $title ),
+		esc_html( $description )
 	);
 
 	$event_layout .= sprintf(
@@ -254,7 +254,7 @@ function coblocks_render_event_item(
 			<span class="wp-block-coblocks-events__location">%2$s</span>
 		</div>',
 		$time_string,
-		$location
+		esc_html( $location )
 	);
 
 	return $event_layout;
