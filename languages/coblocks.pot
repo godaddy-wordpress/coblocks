@@ -1,14 +1,14 @@
-# Copyright (c) 2025 GoDaddy Operating Company, LLC. All Rights Reserved.
+# Copyright (c) 2026 GoDaddy Operating Company, LLC. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoBlocks 3.1.16\n"
+"Project-Id-Version: CoBlocks 3.1.17\n"
 "Report-Msgid-Bugs-To: https://github.com/godaddy-wordpress/coblocks/issues\n"
 "Last-Translator: plugins@godaddy.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-04T13:33:52+00:00\n"
+"POT-Creation-Date: 2026-03-05T15:21:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: coblocks\n"
@@ -10069,25 +10069,25 @@ msgstr ""
 msgid "Crop settings"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:95
+#: src/extensions/layout-selector/index.js:94
 msgid "Add New Page"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:96
+#: src/extensions/layout-selector/index.js:95
 msgid "Pick one of these layouts or start with a blank page."
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:109
+#: src/extensions/layout-selector/index.js:108
 msgid "Layouts"
 msgstr ""
 
-#: src/extensions/layout-selector/index.js:133
-#: src/extensions/layout-selector/index.js:161
+#: src/extensions/layout-selector/index.js:132
+#: src/extensions/layout-selector/index.js:160
 msgid "Add blank page"
 msgstr ""
 
-#. translators: %s is the post title.
-#: src/extensions/layout-selector/index.js:243
+#. translators: %s: layout name
+#: src/extensions/layout-selector/index.js:238
 msgid "\"%s\" layout has been added to the page."
 msgstr ""
 

@@ -1,3 +1,7 @@
+3.1.17 / 2026-03-05
+===================
+- Sanitize event time and error messages to prevent XSS
+
 3.1.16 / 2025-06-04
 ===================
 - Use URLSearchParams for query string generation
