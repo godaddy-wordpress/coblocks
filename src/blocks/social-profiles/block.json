@@ -58,7 +58,7 @@
 			"type": "string",
 			"default": ""
 		},
-		"twitter": {
+		"x": {
 			"type": "string",
 			"default": ""
 		},

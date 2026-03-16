@@ -17,7 +17,7 @@ function coblocks_render_coblocks_social_profiles_block( $attributes ) {
 	// Supported social media platforms.
 	$platforms = array(
 		'facebook'  => __( 'Facebook', 'coblocks' ),
-		'twitter'   => __( 'Twitter', 'coblocks' ),
+		'x'   => __( 'X', 'coblocks' ),
 		'instagram' => __( 'Instagram', 'coblocks' ),
 		'tiktok'    => __( 'TikTok', 'coblocks' ),
 		'pinterest' => __( 'Pinterest', 'coblocks' ),

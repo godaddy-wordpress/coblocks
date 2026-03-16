@@ -59,7 +59,7 @@ const Inspector = ( props ) => {
 		iconSize,
 		padding,
 		facebook,
-		twitter,
+		x,
 		instagram,
 		tiktok,
 		pinterest,
@@ -171,9 +171,9 @@ const Inspector = ( props ) => {
 							onChange={ ( value ) => setAttributes( { facebook: escape( value ) } ) }
 						/>
 						<TextControl
-							label="Twitter"
-							value={ twitter }
-							onChange={ ( value ) => setAttributes( { twitter: escape( value ) } ) }
+							label="X (formerly Twitter)"
+							value={ x }
+							onChange={ ( value ) => setAttributes( { x: escape( value ) } ) }
 						/>
 						<TextControl
 							label="Instagram"

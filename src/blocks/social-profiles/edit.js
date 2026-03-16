@@ -52,7 +52,7 @@ const SocialProfilesEdit = ( props ) => {
 		size,
 		textAlign,
 		tiktok,
-		twitter,
+		x,
 		yelp,
 		youtube,
 	} = attributes;
@@ -125,10 +125,10 @@ const SocialProfilesEdit = ( props ) => {
 			ariaLabel: __( 'Add Facebook profile', 'coblocks' ),
 		},
 		{
-			slug: 'twitter',
-			name: __( 'Twitter', 'coblocks' ),
-			placeholder: __( 'https://twitter.com/', 'coblocks' ),
-			ariaLabel: __( 'Add Twitter profile', 'coblocks' ),
+			slug: 'x',
+			name: __( 'X', 'coblocks' ),
+			placeholder: __( 'https://x.com/', 'coblocks' ),
+			ariaLabel: __( 'Add X profile', 'coblocks' ),
 		},
 		{
 			slug: 'instagram',
@@ -176,7 +176,7 @@ const SocialProfilesEdit = ( props ) => {
 
 	const placeholder = ! (
 		facebook ||
-		twitter ||
+		x ||
 		instagram ||
 		tiktok ||
 		pinterest ||
