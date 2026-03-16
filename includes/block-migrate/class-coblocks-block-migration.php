@@ -195,11 +195,11 @@ abstract class CoBlocks_Block_Migration {
 	 * Evaluates the given XPath expression and returns the full DOMNodeList.
 	 *
 	 * @param string  $expression The XPath expression to execute.
-	 * @param DOMNode $context_node The optional context_node can be specified for doing relative XPath queries.
+	 * @param DOMNode|null $context_node The optional context_node can be specified for doing relative XPath queries.
 	 *
 	 * @return DOMNodeList|false all nodes matching the given XPath expression.
 	 */
-	protected function query_selector_all( $expression, DOMNode $context_node = null ) {
+	protected function query_selector_all( $expression, ?DOMNode $context_node = null ) {
 		return empty( $this->xpath ) ? new DOMNodeList() : $this->xpath->query( $expression, $context_node );
 	}
 
@@ -207,11 +207,11 @@ abstract class CoBlocks_Block_Migration {
 	 * Evaluates the given XPath expression and returns the node at the first position in the DOMNodeList.
 	 *
 	 * @param string  $expression The XPath expression to execute.
-	 * @param DOMNode $context_node The optional context_node can be specified for doing relative XPath queries.
+	 * @param DOMNode|null $context_node The optional context_node can be specified for doing relative XPath queries.
 	 *
 	 * @return DOMNode|null The node at the first position in the DOMNodeList, or null if that is not a valid index.
 	 */
-	protected function query_selector( $expression, DOMNode $context_node = null ) {
+	protected function query_selector( $expression, ?DOMNode $context_node = null ) {
 		return $this->query_selector_all( $expression, $context_node )->item( 0 );
 	}
 

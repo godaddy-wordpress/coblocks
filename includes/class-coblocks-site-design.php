@@ -77,7 +77,7 @@ class CoBlocks_Site_Design {
 
 		// short-circuit.
 		if ( $this->short_circuit_check() ) {
-			return array();
+			return;
 		}
 
 		add_action( 'wp_ajax_site_design_update_design_style', array( $this, 'design_endpoint_ajax' ) );

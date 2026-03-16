@@ -62,10 +62,10 @@ class StylesLoader {
     /**
      * Set the instance.
      *
-     * @param  StylesLoader|null  $instance
+     * @param  StylesLoader  $instance
      * @return StylesLoader|static
      */
-    public static function setInstance( StylesLoader $instance = null ) {
+    public static function setInstance( StylesLoader $instance ) {
         return static::$instance = $instance;
     }
 
