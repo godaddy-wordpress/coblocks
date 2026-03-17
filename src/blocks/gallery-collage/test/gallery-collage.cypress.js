@@ -88,6 +88,9 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
+		// Dismiss any popovers that might interfere with clicking
+		helpers.dismissPopovers();
+
 		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click()
 			.find( 'figcaption' ).focus().type( caption, { force: true } );
 
@@ -117,6 +120,9 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 
 		helpers.toggleSettingCheckbox( /captions/i );
 
+		// Dismiss any popovers that might interfere with clicking
+		helpers.dismissPopovers();
+
 		// Focus the image
 		cy.get( '.wp-block-coblocks-gallery-collage__item' ).first().click();
 
@@ -139,6 +145,30 @@ describe( 'Test CoBlocks Gallery Collage Block', function() {
 		helpers.upload.imageReplaceFlow( 'coblocks/gallery-collage' );
 
 		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
+
+		helpers.savePage();
+
+		helpers.checkForBlockErrors( 'coblocks/gallery-collage' );
+	} );
+
+	/**
+	 * Test that custom link editing works properly for collage block images.
+	 */
+	it( 'Test collage block custom link functionality.', function() {
+		helpers.addBlockToPost( 'coblocks/gallery-collage', true );
+
+		// Upload image to the block
+		helpers.upload.imageToBlock( 'coblocks/gallery-collage' );
+
+		// Wait for image to load
+		cy.get( '.wp-block-coblocks-gallery-collage__item img[src*="http"]' ).should( 'be.visible' );
+
+		// Use the helper function to set custom link
+		helpers.setGalleryCustomLink(
+			'coblocks/gallery-collage',
+			'https://example.com',
+			'.wp-block-coblocks-gallery-collage__item img'
+		);
 
 		helpers.savePage();
 

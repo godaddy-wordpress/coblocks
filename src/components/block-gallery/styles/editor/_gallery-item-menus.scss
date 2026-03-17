@@ -9,3 +9,33 @@
 .is-visible.block-library-gallery-item__inline-menu {
 	display: inline-flex;
 }
+
+// Position button menus to overlay the image correctly
+.coblocks-gallery--item .block-library-gallery-item__inline-menu {
+	position: absolute;
+	top: 1px;
+	z-index: 10;
+
+	&.is-left {
+		left: 1px;
+	}
+
+	&.is-right {
+		right: 1px;
+	}
+
+	// Ensure buttons are visible with proper styling
+	.components-button {
+		background: rgba(0, 0, 0, 0.6) !important;
+		border: 1px solid rgba(255, 255, 255, 0.2) !important;
+		color: #fff !important;
+
+		&:hover {
+			background: rgba(0, 0, 0, 0.8) !important;
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 1px #fff !important;
+		}
+	}
+}

@@ -176,18 +176,36 @@ const GalleryCollageEdit = ( props ) => {
 						{ selectedImage === image.index && attributes.linkTo === 'custom' &&
 							<form
 								className="components-coblocks-gallery-item__image-link"
-								onSubmit={ ( event ) => event.preventDefault() }>
+								onSubmit={ ( event ) => {
+									event.preventDefault();
+									saveCustomLink();
+								} }>
 								<Dashicon icon="admin-links" />
 								<URLInput
-									onChange={ ( imgLink ) => updateImageAttributes( index, { imgLink } ) }
-									value={ image.imgLink }
+									key="url-input"
+									onChange={ ( imgLink ) => {
+										// Ensure the value is properly handled
+										const urlValue = imgLink || '';
+										updateImageAttributes( index, { imgLink: urlValue } );
+									} }
+									value={ image.imgLink || '' }
+									placeholder={ __( 'Enter URL', 'coblocks' ) }
+									disableSuggestions={ false }
+									__nextHasNoMarginBottom={ true }
 								/>
-								<Button icon={ isSaved ? 'saved' : 'editor-break' } label={ isSaved ? __( 'Saving', 'coblocks' ) : __( 'Apply', 'coblocks' ) } onClick={ saveCustomLink } type="submit" />
+								<Button
+									icon={ isSaved ? 'saved' : 'editor-break' }
+									label={ isSaved ? __( 'Saved', 'coblocks' ) : __( 'Apply', 'coblocks' ) }
+									onClick={ saveCustomLink }
+									type="submit"
+									variant="primary"
+									size="compact"
+								/>
 							</form>
 						}
 						{ dropZone }
 						{ isBlobURL( image.url ) && <Spinner /> }
-						<img alt={ image.alt } src={ image.url } />
+						<img alt={ image.alt } src={ image.url } data-imglink={ image.imgLink } />
 						{ enableCaptions && attributes.captions && ( image.caption || isImageSelected ) &&
 							<RichText
 								className="coblocks-gallery--caption"
