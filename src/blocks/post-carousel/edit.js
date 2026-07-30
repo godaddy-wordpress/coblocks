@@ -105,7 +105,8 @@ const PostCarousel = ( props ) => {
 	useEffect( () => {
 		if ( postFeedType === 'external' ) {
 			setTimeout( () => {
-				const postCarouselContainer = document.querySelector( `.wp-block-coblocks-post-carousel-external-container-${ carouselUuid }` );
+				// ponytail: same-document DOM lookup. Container rendered in iframe editor, scoped by unique uuid class.
+					const postCarouselContainer = document.querySelector( `.wp-block-coblocks-post-carousel-external-container-${ carouselUuid }` );
 
 				// remove the swiper classes so that the external feed does not display within carousel in editor
 				const swiperWrapper = postCarouselContainer.querySelector( '.swiper-wrapper' );

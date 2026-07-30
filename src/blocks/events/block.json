@@ -1,4 +1,5 @@
 {
+	"apiVersion": 3,
 	"name": "coblocks/events",
 	"category": "layout",
 	"attributes": {

@@ -40,6 +40,7 @@ const PostItem = ( {
 	if ( post.excerpt.raw === '' ) {
 		excerpt = post.content.raw;
 	}
+	// ponytail: offscreen element, document scope is irrelevant to parsing, works in iframe.
 	const excerptElement = document.createElement( 'div' );
 
 	excerptElement.innerHTML = excerpt;

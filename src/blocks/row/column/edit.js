@@ -206,6 +206,7 @@ const Edit = ( props ) => {
 					topLeft: false,
 				} }
 				onResizeStop={ () => {
+					// ponytail: same-document DOM lookup. Safe in WP 7.0 editor iframe.
 					const currentBlock = document.getElementById(
 						'block-' + clientId
 					);
@@ -247,6 +248,7 @@ const Edit = ( props ) => {
 						} );
 					}
 				} }
+					// ponytail: same-document DOM lookup. Safe in WP 7.0 editor iframe.
 				onResizeStart={ () => {
 					const currentBlock = document.getElementById(
 						'block-' + clientId

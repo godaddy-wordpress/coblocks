@@ -1,4 +1,5 @@
 {
+	"apiVersion": 3,
 	"name": "coblocks/shape-divider",
 	"category": "layout",
 	"attributes": {
