@@ -120,6 +120,44 @@ class CoBlocks_Block_Assets_Tests extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test that wp-edit-post dependency is stripped on customize.php
+	 * to prevent conflicts with themes like Blocksy in the customizer.
+	 */
+	public function test_wp_edit_post_stripped_on_customize_php() {
+		global $pagenow, $wp_scripts;
+
+		$previous_pagenow = $pagenow ?? null;
+
+		try {
+			$pagenow = 'customize.php';
+			$this->go_to( '/wp-admin/customize.php' );
+
+			$this->coblocks_block_assets->editor_assets();
+
+			// coblocks-editor should still be registered.
+			$this->assertTrue( array_key_exists( 'coblocks-editor', $wp_scripts->registered ) );
+
+			// wp-edit-post must not appear in coblocks-editor dependencies.
+			$this->assertNotContains( 'wp-edit-post', $wp_scripts->registered['coblocks-editor']->deps );
+
+			// wp-edit-post and wp-editor must not appear in any coblocks-N chunk dependencies.
+			$matching_chunks = 0;
+			foreach ( $wp_scripts->registered as $handle => $script ) {
+				if ( preg_match( '/^coblocks-\d+$/', $handle ) ) {
+					++$matching_chunks;
+					$this->assertNotContains( 'wp-edit-post', $script->deps );
+					$this->assertNotContains( 'wp-editor', $script->deps );
+				}
+			}
+
+			// Ensure the loop above did not pass vacuously.
+			$this->assertGreaterThan( 0, $matching_chunks, 'No coblocks-N chunks were registered to verify.' );
+		} finally {
+			$pagenow = $previous_pagenow;
+		}
+	}
+
+	/**
 	 * Test the editor asset scripts localized data
 	 */
 	public function test_editor_assets_localized_data() {
