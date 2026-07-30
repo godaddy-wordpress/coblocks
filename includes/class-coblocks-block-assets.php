@@ -596,6 +596,11 @@ class CoBlocks_Block_Assets {
 			);
 		}
 
+		// Enqueue frontend styles when a core block uses the uppercase rich-text format.
+		if ( false !== strpos( $block_content, 'class="uppercase"' ) ) {
+			wp_enqueue_style( 'coblocks-frontend' );
+		}
+
 		return $block_content;
 	}
 
@@ -641,6 +646,8 @@ class CoBlocks_Block_Assets {
 			array_filter(
 				array(
 					false !== strpos( $post_object->post_content, '<!-- wp:coblocks/' ),
+					// Detect CoBlocks rich-text format marks on core blocks (e.g. uppercase on core/paragraph) so frontend styles load when the format is in use.
+					false !== strpos( $post_object->post_content, 'class="uppercase"' ),
 					// Having core blocks here, ensures that enqueues from block_assets are loaded.
 					has_block( 'core/block', $post_object ),
 					has_block( 'core/button', $post_object ),
