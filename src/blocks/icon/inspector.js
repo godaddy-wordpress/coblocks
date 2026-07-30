@@ -178,6 +178,7 @@ const Inspector = ( props ) => {
 								isSecondary
 								isSmall
 								onClick={ () => {
+									// ponytail: same-document DOM lookup. Safe in WP 7.0 editor iframe.
 									document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[ 0 ].style.height = 'auto';
 									onChangeSize( 'medium', DEFAULT_ICON_SIZE );
 								} }
@@ -190,6 +191,7 @@ const Inspector = ( props ) => {
 								max={ MAX_ICON_SIZE }
 								min={ padding ? MIN_ICON_SIZE + 28 : MIN_ICON_SIZE }
 								onChange={ ( nextWidth ) => {
+										// ponytail: same-document DOM lookup. Safe in WP 7.0 editor iframe.
 									document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-icon__inner' )[ 0 ].style.height = 'auto';
 									setAttributes( {
 										height: nextWidth,

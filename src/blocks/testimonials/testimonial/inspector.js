@@ -76,6 +76,7 @@ const Inspector = ( props ) => {
 								isSecondary
 								isSmall
 								onClick={ () => {
+										// ponytail: same-document DOM lookup. Safe in WP 7.0 editor iframe.
 									document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-testimonial__image' )[ 0 ].style.height = 'auto';
 									onChangeSize( 'medium', DEFAULT_IMAGE_SIZE );
 								} }
@@ -87,6 +88,7 @@ const Inspector = ( props ) => {
 								label={ __( 'Size', 'coblocks' ) }
 								max={ MAX_IMAGE_SIZE }
 								min={ MIN_IMAGE_SIZE }
+											// ponytail: same-document DOM lookup. Safe in WP 7.0 editor iframe.
 								onChange={ ( nextWidth ) => {
 									document.getElementById( 'block-' + clientId ).getElementsByClassName( 'wp-block-coblocks-testimonial__image' )[ 0 ].style.height = 'auto';
 									setAttributes( {

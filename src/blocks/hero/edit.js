@@ -20,7 +20,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { isBlobURL } from '@wordpress/blob';
 import { ResizableBox, Spinner } from '@wordpress/components';
 import { useDispatch, withDispatch, withSelect } from '@wordpress/data';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useRef, useState } from '@wordpress/element';
 
 /**
  * Allowed blocks and template constant is passed to InnerBlocks precisely as specified here.
@@ -116,33 +116,34 @@ const Edit = ( props ) => {
 	const [ resizingInner ] = useState( false );
 	const [ resizing, setResizing ] = useState( false );
 	const [ innerWidth, setInnerWidth ] = useState( null );
+	const blockRef = useRef( null );
 
 	const { __unstableMarkAutomaticChange } = useDispatch( 'core/block-editor' );
 
+	// ponytail: useRef + iframe-resilient DOM access (WP 7.0 always iframes the editor).
+	const queryContent = () =>
+		blockRef.current?.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ];
+
 	useEffect( () => {
-		const currentBlock = document.getElementById( 'block-' + clientId );
-		if ( currentBlock ) {
-			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
-			currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = attributes.maxWidth + 'px';
+		const content = queryContent();
+		if ( content ) {
+			content.style.width = 'auto';
+			content.style.maxWidth = attributes.maxWidth + 'px';
 		}
 
-		const win = document.defaultView;
-
 		getBrowserWidth();
-		win.addEventListener( 'resize', getBrowserWidth );
+		window.addEventListener( 'resize', getBrowserWidth );
 
 		__unstableMarkAutomaticChange();
 
 		return () => {
-			win.removeEventListener( 'resize', getBrowserWidth );
+			window.removeEventListener( 'resize', getBrowserWidth );
 		};
 	}, [] );
 
 	const getBrowserWidth = () => {
-		const win = document.defaultView;
-
-		setInnerWidth( win.innerWidth );
-		return win.innerWidth;
+		setInnerWidth( window.innerWidth );
+		return window.innerWidth;
 	};
 
 	const saveMeta = ( type ) => {
@@ -268,6 +269,7 @@ const Edit = ( props ) => {
 			) }
 			<div
 				className={ classes }
+				ref={ blockRef }
 			>
 				{ fullscreen
 					? <div className={ innerClasses } style={ innerStyles } >
@@ -287,18 +289,22 @@ const Edit = ( props ) => {
 									minWidth="400"
 									onResizeStart={ () => {
 										setResizing( true );
-										const currentBlock = document.getElementById( 'block-' + clientId );
-										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = '';
-										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = maxWidth + 'px';
+										const content = queryContent();
+										if ( content ) {
+											content.style.maxWidth = '';
+											content.style.width = maxWidth + 'px';
+										}
 									} }
 									onResizeStop={ ( _event, _direction, _elt, delta ) => {
 										setAttributes( {
 											maxWidth: parseInt( maxWidth + delta.width, 10 ),
 										} );
 										setResizing( false );
-										const currentBlock = document.getElementById( 'block-' + clientId );
-										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
-										currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
+										const content = queryContent();
+										if ( content ) {
+											content.style.width = 'auto';
+											content.style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
+										}
 									} }
 									showHandle={ isSelected }
 									size={ { width: maxWidth } }
@@ -374,18 +380,22 @@ const Edit = ( props ) => {
 										minWidth="400"
 										onResizeStart={ () => {
 											setResizing( true );
-											const currentBlock = document.getElementById( 'block-' + clientId );
-											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = '';
-											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = maxWidth + 'px';
+											const content = queryContent();
+											if ( content ) {
+												content.style.maxWidth = '';
+												content.style.width = maxWidth + 'px';
+											}
 										} }
 										onResizeStop={ ( _event, _direction, _elt, delta ) => {
 											setAttributes( {
 												maxWidth: parseInt( maxWidth + delta.width, 10 ),
 											} );
 											setResizing( false );
-											const currentBlock = document.getElementById( 'block-' + clientId );
-											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.width = 'auto';
-											currentBlock.getElementsByClassName( 'wp-block-coblocks-hero__content' )[ 0 ].style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
+											const content = queryContent();
+											if ( content ) {
+												content.style.width = 'auto';
+												content.style.maxWidth = parseInt( maxWidth + delta.width, 10 ) + 'px';
+											}
 										} }
 										showHandle={ isSelected }
 										size={ { width: maxWidth } }

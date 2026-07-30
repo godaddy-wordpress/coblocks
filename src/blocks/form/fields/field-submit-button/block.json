@@ -1,4 +1,5 @@
 {
+	"apiVersion": 3,
 	"name": "coblocks/field-submit-button",
 	"category": "layout",
 	"attributes": {
