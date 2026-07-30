@@ -12,6 +12,7 @@ const fs = require( 'fs' );
 
 const scripts = [
 	'coblocks-accordion-polyfill',
+	'coblocks-accordion-script',
 	'coblocks-animation',
 	'coblocks-checkbox-required',
 	'coblocks-counter-script',

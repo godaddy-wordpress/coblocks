@@ -508,6 +508,16 @@ class CoBlocks_Block_Assets {
 			true
 		);
 
+		// Accordion block deep-link helper (issue #2663).
+		$asset_file = $this->get_asset_file( 'dist/js/coblocks-accordion-script' );
+		wp_register_script(
+			'coblocks-accordion-script',
+			$this->assets_dir . 'coblocks-accordion-script.js',
+			$asset_file['dependencies'],
+			COBLOCKS_VERSION,
+			true
+		);
+
 		// Services block.
 		$asset_file = $this->get_asset_file( 'dist/js/coblocks-services-script' );
 		wp_register_script(
@@ -594,6 +604,16 @@ class CoBlocks_Block_Assets {
 				COBLOCKS_VERSION,
 				true
 			);
+		}
+
+		// Allowed blocks for the accordion deep-link helper (issue #2663).
+		$accordion_allowed_blocks = array(
+			'coblocks/accordion',
+			'coblocks/accordion-item',
+		);
+
+		if ( in_array( $block_name, $accordion_allowed_blocks, true ) ) {
+			wp_enqueue_script( 'coblocks-accordion-script' );
 		}
 
 		return $block_content;
